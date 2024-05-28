@@ -66,7 +66,7 @@ class Client implements ClientInterface
      *
      * @return void
      */
-    public function addMessageCommandProcess(string $command, string $updateProcessor): void
+    public function addCommandMessageProcess(string $command, string $updateProcessor): void
     {
         $this->processCollection->addProcess(
             new CheckableProcess(
