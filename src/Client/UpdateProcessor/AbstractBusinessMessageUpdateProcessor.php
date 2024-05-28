@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Client\UpdateProcessor;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
-use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\Message;
 use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
@@ -13,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractBusinessMessageUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected Message $business_message;
+    protected Message $businessMessage;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -21,6 +20,6 @@ abstract class AbstractBusinessMessageUpdateProcessor extends AbstractUpdateProc
         if (!$update->getBusinessMessage()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::BusinessMessage);
         }
-        $this->business_message = $update->getBusinessMessage();
+        $this->businessMessage = $update->getBusinessMessage();
     }
 }

@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractPreCheckoutQueryUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected PreCheckoutQuery $pre_checkout_query;
+    protected PreCheckoutQuery $preCheckoutQuery;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractPreCheckoutQueryUpdateProcessor extends AbstractUpdatePro
         if (!$update->getPreCheckoutQuery()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::PreCheckoutQuery);
         }
-        $this->pre_checkout_query = $update->getPreCheckoutQuery();
+        $this->preCheckoutQuery = $update->getPreCheckoutQuery();
     }
 }

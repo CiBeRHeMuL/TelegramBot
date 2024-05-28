@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractBusinessConnectionUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected BusinessConnection $business_connection;
+    protected BusinessConnection $businessConnection;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractBusinessConnectionUpdateProcessor extends AbstractUpdateP
         if (!$update->getBusinessConnection()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::BusinessConnection);
         }
-        $this->business_connection = $update->getBusinessConnection();
+        $this->businessConnection = $update->getBusinessConnection();
     }
 }

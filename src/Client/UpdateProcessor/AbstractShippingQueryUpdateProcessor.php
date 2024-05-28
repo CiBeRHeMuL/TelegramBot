@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractShippingQueryUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected ShippingQuery $shipping_query;
+    protected ShippingQuery $shippingQuery;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractShippingQueryUpdateProcessor extends AbstractUpdateProces
         if (!$update->getShippingQuery()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::ShippingQuery);
         }
-        $this->shipping_query = $update->getShippingQuery();
+        $this->shippingQuery = $update->getShippingQuery();
     }
 }

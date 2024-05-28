@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractChosenInlineResultUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected ChosenInlineResult $chosen_inline_result;
+    protected ChosenInlineResult $chosenInlineResult;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractChosenInlineResultUpdateProcessor extends AbstractUpdateP
         if (!$update->getChosenInlineResult()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::ChosenInlineResult);
         }
-        $this->chosen_inline_result = $update->getChosenInlineResult();
+        $this->chosenInlineResult = $update->getChosenInlineResult();
     }
 }

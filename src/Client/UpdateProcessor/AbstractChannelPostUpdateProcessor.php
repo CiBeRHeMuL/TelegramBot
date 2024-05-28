@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractChannelPostUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected Message $channel_post;
+    protected Message $channelPost;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractChannelPostUpdateProcessor extends AbstractUpdateProcesso
         if (!$update->getChannelPost()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::ChannelPost);
         }
-        $this->channel_post = $update->getChannelPost();
+        $this->channelPost = $update->getChannelPost();
     }
 }

@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractPollAnswerUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected PollAnswer $poll_answer;
+    protected PollAnswer $pollAnswer;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractPollAnswerUpdateProcessor extends AbstractUpdateProcessor
         if (!$update->getPollAnswer()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::PollAnswer);
         }
-        $this->poll_answer = $update->getPollAnswer();
+        $this->pollAnswer = $update->getPollAnswer();
     }
 }

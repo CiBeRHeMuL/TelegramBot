@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractDeletedBusinessMessagesUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected BusinessMessagesDeleted $deleted_business_messages;
+    protected BusinessMessagesDeleted $deletedBusinessMessages;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractDeletedBusinessMessagesUpdateProcessor extends AbstractUp
         if (!$update->getDeletedBusinessMessages()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::DeletedBusinessMessages);
         }
-        $this->deleted_business_messages = $update->getDeletedBusinessMessages();
+        $this->deletedBusinessMessages = $update->getDeletedBusinessMessages();
     }
 }

@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractEditedMessageUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected Message $edited_message;
+    protected Message $editedMessage;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractEditedMessageUpdateProcessor extends AbstractUpdateProces
         if (!$update->getEditedMessage()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::EditedMessage);
         }
-        $this->edited_message = $update->getEditedMessage();
+        $this->editedMessage = $update->getEditedMessage();
     }
 }

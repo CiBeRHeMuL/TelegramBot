@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractMessageReactionUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected MessageReactionUpdated $message_reaction;
+    protected MessageReactionUpdated $messageReaction;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractMessageReactionUpdateProcessor extends AbstractUpdateProc
         if (!$update->getMessageReaction()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::MessageReaction);
         }
-        $this->message_reaction = $update->getMessageReaction();
+        $this->messageReaction = $update->getMessageReaction();
     }
 }

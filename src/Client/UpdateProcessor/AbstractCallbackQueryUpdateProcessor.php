@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractCallbackQueryUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected CallbackQuery $callback_query;
+    protected CallbackQuery $callbackQuery;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractCallbackQueryUpdateProcessor extends AbstractUpdateProces
         if (!$update->getCallbackQuery()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::CallbackQuery);
         }
-        $this->callback_query = $update->getCallbackQuery();
+        $this->callbackQuery = $update->getCallbackQuery();
     }
 }

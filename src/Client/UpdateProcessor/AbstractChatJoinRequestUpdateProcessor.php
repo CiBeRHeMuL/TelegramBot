@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractChatJoinRequestUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected ChatJoinRequest $chat_join_request;
+    protected ChatJoinRequest $chatJoinRequest;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractChatJoinRequestUpdateProcessor extends AbstractUpdateProc
         if (!$update->getChatJoinRequest()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::ChatJoinRequest);
         }
-        $this->chat_join_request = $update->getChatJoinRequest();
+        $this->chatJoinRequest = $update->getChatJoinRequest();
     }
 }

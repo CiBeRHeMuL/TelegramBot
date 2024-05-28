@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractRemovedChatBoostUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected ChatBoostRemoved $removed_chat_boost;
+    protected ChatBoostRemoved $removedChatBoost;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractRemovedChatBoostUpdateProcessor extends AbstractUpdatePro
         if (!$update->getRemovedChatBoost()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::RemovedChatBoost);
         }
-        $this->removed_chat_boost = $update->getRemovedChatBoost();
+        $this->removedChatBoost = $update->getRemovedChatBoost();
     }
 }

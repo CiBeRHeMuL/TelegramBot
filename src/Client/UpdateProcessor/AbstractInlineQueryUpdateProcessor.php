@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  */
 abstract class AbstractInlineQueryUpdateProcessor extends AbstractUpdateProcessor
 {
-    protected InlineQuery $inline_query;
+    protected InlineQuery $inlineQuery;
 
     public function __construct(Update $update, ApiInterface $api)
     {
@@ -20,6 +20,6 @@ abstract class AbstractInlineQueryUpdateProcessor extends AbstractUpdateProcesso
         if (!$update->getInlineQuery()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::InlineQuery);
         }
-        $this->inline_query = $update->getInlineQuery();
+        $this->inlineQuery = $update->getInlineQuery();
     }
 }
