@@ -4,6 +4,7 @@ namespace AndrewGos\TelegramBot\Client\UpdateProcessor;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\Update;
+use Psr\Log\LoggerInterface;
 
 interface UpdateProcessorInterface
 {
@@ -22,6 +23,12 @@ interface UpdateProcessorInterface
      * @return ApiInterface
      */
     public function getApi(): ApiInterface;
+
+    /**
+     * Current logger
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface;
 
     /**
      * Called before update processing. Update processing will be skipped if false is returned.

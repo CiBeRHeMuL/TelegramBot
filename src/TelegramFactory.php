@@ -23,18 +23,19 @@ class TelegramFactory
      */
     public static function getDefaultTelegram(BotToken $token): Telegram
     {
+        $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
             $token,
             $classBuilder,
             new TelegramRequestFactory(),
             new HttpClient(),
-            new NullLogger(),
+            $logger,
         );
         return new Telegram(
             $token,
             $api,
-            new Client(new PhpInputUpdateSource($classBuilder), $api)
+            new Client(new PhpInputUpdateSource($classBuilder), $api, $logger),
         );
     }
 
@@ -47,18 +48,19 @@ class TelegramFactory
      */
     public static function getGetUpdatesTelegram(BotToken $token): Telegram
     {
+        $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
             $token,
             $classBuilder,
             new TelegramRequestFactory(),
             new HttpClient(),
-            new NullLogger(),
+            $logger,
         );
         return new Telegram(
             $token,
             $api,
-            new Client(new GetUpdatesUpdateSource($api), $api)
+            new Client(new GetUpdatesUpdateSource($api), $api, $logger),
         );
     }
 }

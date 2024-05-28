@@ -9,15 +9,25 @@ use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use ErrorException;
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 interface ClientInterface
 {
     /**
-     * CurrentUpdateSource
+     * Current update source
      * @return UpdateSourceInterface
      */
     public function getUpdateSource(): UpdateSourceInterface;
+
+    /**
+     * Set current update source
+     *
+     * @param UpdateSourceInterface $updateSource
+     *
+     * @return $this
+     */
+    public function setUpdateSource(UpdateSourceInterface $updateSource): static;
 
     /**
      * Current api
@@ -26,10 +36,18 @@ interface ClientInterface
     public function getApi(): ApiInterface;
 
     /**
-     * Current container used to create update processors
-     * @return ContainerInterface|null
+     * Current logger
+     * @return LoggerInterface
      */
-    public function getContainer(): ContainerInterface|null;
+    public function getLogger(): LoggerInterface;
+
+    /**
+     * Set current logger
+     * @param LoggerInterface $logger
+     *
+     * @return $this
+     */
+    public function setLogger(LoggerInterface $logger): static;
 
     /**
      * Add process for command update (message update with message starting with '/') (ex. /start)

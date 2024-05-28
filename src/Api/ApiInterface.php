@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
 use AndrewGos\TelegramBot\Request as Req;
 use AndrewGos\TelegramBot\Response as Res;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
+use Psr\Log\LoggerInterface;
 
 interface ApiInterface
 {
@@ -14,6 +15,20 @@ interface ApiInterface
      * @return BotToken
      */
     public function getToken(): BotToken;
+
+    /**
+     * Current logger
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface;
+
+    /**
+     * Set current logger
+     * @param LoggerInterface $logger
+     *
+     * @return $this
+     */
+    public function setLogger(LoggerInterface $logger): static;
 
     /**
      * Version of used Telegram Bot Api

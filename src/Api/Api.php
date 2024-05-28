@@ -25,7 +25,7 @@ class Api implements ApiInterface
     private const TELEGRAM_BOT_API_VERSION = '7.3';
 
     public function __construct(
-        private BotToken $token,
+        private readonly BotToken $token,
         private ClassBuilderInterface $classBuilder,
         private TelegramRequestFactoryInterface $telegramRequestFactory,
         private ClientInterface $client,
@@ -50,6 +50,27 @@ class Api implements ApiInterface
     public function getToken(): BotToken
     {
         return $this->token;
+    }
+
+    /**
+     * Current logger
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface
+    {
+        return $this->logger;
+    }
+
+    /**
+     * Set current logger
+     * @param LoggerInterface $logger
+     *
+     * @return $this
+     */
+    public function setLogger(LoggerInterface $logger): static
+    {
+        $this->logger = $logger;
+        return $this;
     }
 
     /**
