@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
@@ -12,7 +12,7 @@ use stdClass;
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  * @link https://core.telegram.org/bots/api#encryptedpassportelement
  */
-class EncryptedPassportElement implements EntityInterface
+class EncryptedPassportElement extends AbstractEntity
 {
     /**
      * @param EncryptedPassportElementTypeEnum $type Element type.
@@ -40,17 +40,18 @@ class EncryptedPassportElement implements EntityInterface
      * @param string|null $hash Base64-encoded element hash for using in PassportElementErrorUnspecified
      */
     public function __construct(
-        private EncryptedPassportElementTypeEnum $type,
-        private string|null $data = null,
-        private Phone|null $phone_number = null,
-        private Email|null $email = null,
-        #[ArrayType(PassportFile::class)] private array|null $files = null,
-        private PassportFile|null $front_side = null,
-        private PassportFile|null $reverse_side = null,
-        private PassportFile|null $selfie = null,
-        #[ArrayType(PassportFile::class)] private array|null $translation = null,
-        private string|null $hash = null,
+        protected EncryptedPassportElementTypeEnum $type,
+        protected string|null $data = null,
+        protected Phone|null $phone_number = null,
+        protected Email|null $email = null,
+        #[ArrayType(PassportFile::class)] protected array|null $files = null,
+        protected PassportFile|null $front_side = null,
+        protected PassportFile|null $reverse_side = null,
+        protected PassportFile|null $selfie = null,
+        #[ArrayType(PassportFile::class)] protected array|null $translation = null,
+        protected string|null $hash = null,
     ) {
+        parent::__construct();
     }
 
     public function getType(): EncryptedPassportElementTypeEnum

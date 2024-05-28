@@ -8,14 +8,15 @@ use stdClass;
  * This object represents the bot's name.
  * @link https://core.telegram.org/bots/api#botname
  */
-class BotName implements EntityInterface
+class BotName extends AbstractEntity
 {
     /**
      * @param string $name The bot's name
      */
     public function __construct(
-        private string $name,
+        protected string $name,
     ) {
+        parent::__construct();
     }
 
     public function getName(): string

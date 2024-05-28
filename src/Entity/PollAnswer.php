@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  * @link https://core.telegram.org/bots/api#pollanswer
  */
-class PollAnswer implements EntityInterface
+class PollAnswer extends AbstractEntity
 {
     /**
      * @param string $poll_id Unique poll identifier
@@ -18,11 +18,12 @@ class PollAnswer implements EntityInterface
      * @param Chat|null $voter_chat Optional. The chat that changed the answer to the poll, if the voter is anonymous
      */
     public function __construct(
-        private string $poll_id,
-        #[ArrayType('int')] private array $option_ids,
-        private User|null $user = null,
-        private Chat|null $voter_chat = null,
+        protected string $poll_id,
+        #[ArrayType('int')] protected array $option_ids,
+        protected User|null $user = null,
+        protected Chat|null $voter_chat = null,
     ) {
+        parent::__construct();
     }
 
     public function getPollId(): string

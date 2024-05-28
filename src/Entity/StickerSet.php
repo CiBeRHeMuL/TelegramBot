@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 use stdClass;
 
@@ -10,7 +10,7 @@ use stdClass;
  * This object represents a sticker set.
  * @link https://core.telegram.org/bots/api#stickerset
  */
-class StickerSet implements EntityInterface
+class StickerSet extends AbstractEntity
 {
     /**
      * @param string $name Sticker set name
@@ -20,12 +20,13 @@ class StickerSet implements EntityInterface
      * @param PhotoSize|null $thumbnail Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
      */
     public function __construct(
-        private string $name,
-        private string $title,
-        private StickerTypeEnum $sticker_type,
-        #[ArrayType(Sticker::class)] private array $stickers,
-        private PhotoSize|null $thumbnail = null,
+        protected string $name,
+        protected string $title,
+        protected StickerTypeEnum $sticker_type,
+        #[ArrayType(Sticker::class)] protected array $stickers,
+        protected PhotoSize|null $thumbnail = null,
     ) {
+        parent::__construct();
     }
 
     public function getName(): string

@@ -12,7 +12,7 @@ use stdClass;
  * The maximum file size to download is 20 MB
  * @link https://core.telegram.org/bots/api#file
  */
-class File implements EntityInterface
+class File extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -25,11 +25,12 @@ class File implements EntityInterface
      * @param string|null $file_path Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int|null $file_size = null,
-        private string|null $file_path = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int|null $file_size = null,
+        protected string|null $file_path = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

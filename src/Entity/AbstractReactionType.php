@@ -2,19 +2,20 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
 
 /**
  * This object describes the type of a reaction
  * @link https://core.telegram.org/bots/api#reactiontype
  */
-#[AvailableExtensions([ReactionTypeEmoji::class, ReactionTypeCustomEmoji::class])]
-abstract class AbstractReactionType implements EntityInterface
+#[AvailableInheritors([ReactionTypeEmoji::class, ReactionTypeCustomEmoji::class])]
+abstract class AbstractReactionType extends AbstractEntity
 {
     public function __construct(
         protected readonly ReactionTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): ReactionTypeEnum

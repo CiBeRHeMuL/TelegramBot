@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 use stdClass;
 
@@ -18,7 +18,7 @@ class BackgroundTypeChatTheme extends AbstractBackgroundType
      * @param string $theme_name Name of the chat theme, which is usually an emoji
      */
     public function __construct(
-        private string $theme_name,
+        protected string $theme_name,
     ) {
         parent::__construct(BackgroundTypeTypeEnum::ChatTheme);
     }

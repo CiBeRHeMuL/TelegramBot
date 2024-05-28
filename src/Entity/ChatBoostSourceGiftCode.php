@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
 use stdClass;
 
@@ -19,7 +19,7 @@ class ChatBoostSourceGiftCode extends AbstractChatBoostSource
      * @param User $user User for which the gift code was created
      */
     public function __construct(
-        private User $user,
+        protected User $user,
     ) {
         parent::__construct(ChatBoostSourceEnum::GiftCode);
     }

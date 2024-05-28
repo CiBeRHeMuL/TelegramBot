@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\ValueObject\Url;
+
 class AnswerCallbackQueryRequest implements RequestInterface
 {
     /**
@@ -11,7 +13,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
      * @param bool|null $show_alert If True, an alert will be shown by the client instead of a notification at the top of the chat
      * screen. Defaults to false.
      * @param string|null $text Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
-     * @param string|null $url URL that will be opened by the user's client. If you have created a Game and accepted the conditions
+     * @param Url|null $url URL that will be opened by the user's client. If you have created a Game and accepted the conditions
      * via @BotFather, specify the URL that opens your game - note that this will only work if the query comes from a callback_game
      * button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
      */
@@ -20,7 +22,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
         private int|null $cache_time = null,
         private bool|null $show_alert = null,
         private string|null $text = null,
-        private string|null $url = null,
+        private Url|null $url = null,
     ) {
     }
 
@@ -68,12 +70,12 @@ class AnswerCallbackQueryRequest implements RequestInterface
         return $this;
     }
 
-    public function getUrl(): string|null
+    public function getUrl(): Url|null
     {
         return $this->url;
     }
 
-    public function setUrl(string|null $url): AnswerCallbackQueryRequest
+    public function setUrl(Url|null $url): AnswerCallbackQueryRequest
     {
         $this->url = $url;
         return $this;
@@ -86,7 +88,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
             'cache_time' => $this->cache_time,
             'show_alert' => $this->show_alert,
             'text' => $this->text,
-            'url' => $this->url,
+            'url' => $this->url?->getUrl(),
         ];
     }
 }

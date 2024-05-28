@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 use stdClass;
 
@@ -10,7 +10,7 @@ use stdClass;
  * This object represents a message about a scheduled giveaway.
  * @link https://core.telegram.org/bots/api#giveaway
  */
-class Giveaway implements EntityInterface
+class Giveaway extends AbstractEntity
 {
     /**
      * @param Chat[] $chats Array of Chat. The list of chats which the user must join to participate in the giveaway.
@@ -26,17 +26,21 @@ class Giveaway implements EntityInterface
      * Users with a phone number that was bought on Fragment can always participate in giveaways.
      * @param int|null $premium_subscription_month_count Optional.
      * The number of months the Telegram Premium subscription won from the giveaway will be active for.
+     * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners;
+     * for Telegram Star giveaways only
      */
     public function __construct(
-        #[ArrayType(Chat::class)] private array $chats,
-        private int $winners_selection_date,
-        private int $winner_count,
-        private bool|null $only_new_members = null,
-        private bool|null $has_public_winners = null,
-        private string|null $prize_description = null,
-        #[ArrayType(CountryCodeEnum::class)] private array|null $country_codes = null,
-        private int|null $premium_subscription_month_count = null,
+        #[ArrayType(Chat::class)] protected array $chats,
+        protected int $winners_selection_date,
+        protected int $winner_count,
+        protected bool|null $only_new_members = null,
+        protected bool|null $has_public_winners = null,
+        protected string|null $prize_description = null,
+        #[ArrayType(CountryCodeEnum::class)] protected array|null $country_codes = null,
+        protected int|null $premium_subscription_month_count = null,
+        protected int|null $prize_star_count = null,
     ) {
+        parent::__construct();
     }
 
     public function getChats(): array
@@ -127,6 +131,17 @@ class Giveaway implements EntityInterface
         return $this;
     }
 
+    public function getPrizeStarCount(): int|null
+    {
+        return $this->prize_star_count;
+    }
+
+    public function setPrizeStarCount(int|null $prize_star_count): Giveaway
+    {
+        $this->prize_star_count = $prize_star_count;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -140,6 +155,7 @@ class Giveaway implements EntityInterface
                 ? array_map(fn(CountryCodeEnum $c) => $c->value, $this->country_codes)
                 : null,
             'premium_subscription_month_count' => $this->premium_subscription_month_count,
+            'prize_star_count' => $this->prize_star_count,
         ];
     }
 }

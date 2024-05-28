@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 
 /**
  * This object represents the scope to which bot commands are applied.
  * @link https://core.telegram.org/bots/api#botcommandscope
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     BotCommandScopeDefault::class,
     BotCommandScopeAllPrivateChats::class,
     BotCommandScopeAllGroupChats::class,
@@ -18,11 +18,12 @@ use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
     BotCommandScopeChatAdministrators::class,
     BotCommandScopeChatMember::class,
 ])]
-abstract class AbstractBotCommandScope implements EntityInterface
+abstract class AbstractBotCommandScope extends AbstractEntity
 {
     public function __construct(
         protected readonly BotCommandScopeTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): BotCommandScopeTypeEnum

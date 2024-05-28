@@ -2,13 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use stdClass;
 
 /**
  * This object represents reaction changes on a message with anonymous reactions.
  * @link https://core.telegram.org/bots/api#messagereactioncountupdated
  */
-class MessageReactionCountUpdated implements EntityInterface
+class MessageReactionCountUpdated extends AbstractEntity
 {
     /**
      * @param Chat $chat The chat containing the message
@@ -17,11 +18,12 @@ class MessageReactionCountUpdated implements EntityInterface
      * @param ReactionCount[] $reactions List of reactions that are present on the message
      */
     public function __construct(
-        private Chat $chat,
-        private int $message_id,
-        private int $date,
-        #[ArrayType(ReactionCount::class)] private array $reactions,
+        protected Chat $chat,
+        protected int $message_id,
+        protected int $date,
+        #[ArrayType(ReactionCount::class)] protected array $reactions,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat
@@ -68,7 +70,7 @@ class MessageReactionCountUpdated implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

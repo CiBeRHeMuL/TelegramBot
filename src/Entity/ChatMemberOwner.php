@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 use stdClass;
 
@@ -20,9 +20,9 @@ class ChatMemberOwner extends AbstractChatMember
      * @param string|null $custom_title Optional. Custom title for this user
      */
     public function __construct(
-        private User $user,
-        private bool $is_anonymous,
-        private string|null $custom_title = null,
+        protected User $user,
+        protected bool $is_anonymous,
+        protected string|null $custom_title = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Creator);
     }

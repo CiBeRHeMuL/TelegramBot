@@ -2,9 +2,10 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
+use stdClass;
 
 /**
  * Represents a Game.
@@ -19,9 +20,9 @@ class InlineQueryResultGame extends AbstractInlineQueryResult
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      */
     public function __construct(
-        private string $id,
-        private string $game_short_name,
-        private InlineKeyboardMarkup|null $reply_markup = null,
+        protected string $id,
+        protected string $game_short_name,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Game);
     }
@@ -59,7 +60,7 @@ class InlineQueryResultGame extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

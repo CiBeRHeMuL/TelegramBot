@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a boost removed from a chat.
  * @link https://core.telegram.org/bots/api#chatboostremoved
  */
-class ChatBoostRemoved implements EntityInterface
+class ChatBoostRemoved extends AbstractEntity
 {
     /**
      * @param Chat $chat Chat which was boosted
@@ -17,11 +17,12 @@ class ChatBoostRemoved implements EntityInterface
      * @param AbstractChatBoostSource $source Source of the removed boost
      */
     public function __construct(
-        private Chat $chat,
-        private string $boost_id,
-        private int $remove_date,
-        private AbstractChatBoostSource $source,
+        protected Chat $chat,
+        protected string $boost_id,
+        protected int $remove_date,
+        protected AbstractChatBoostSource $source,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat

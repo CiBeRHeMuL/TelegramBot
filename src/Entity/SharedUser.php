@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -10,7 +10,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#shareduser
  * @see KeyboardButtonRequestUsers
  */
-class SharedUser implements EntityInterface
+class SharedUser extends AbstractEntity
 {
     /**
      * @param int $user_id Identifier of the shared user. This number may have more than 32 significant bits and some programming
@@ -23,12 +23,13 @@ class SharedUser implements EntityInterface
      * @param string|null $username Optional. Username of the user, if the username was requested by the bot
      */
     public function __construct(
-        private int $user_id,
-        private string|null $first_name = null,
-        private string|null $last_name = null,
-        #[ArrayType(PhotoSize::class)] private array|null $photo = null,
-        private string|null $username = null,
+        protected int $user_id,
+        protected string|null $first_name = null,
+        protected string|null $last_name = null,
+        #[ArrayType(PhotoSize::class)] protected array|null $photo = null,
+        protected string|null $username = null,
     ) {
+        parent::__construct();
     }
 
     public function getUserId(): int

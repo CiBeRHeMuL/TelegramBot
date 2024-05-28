@@ -2,53 +2,54 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 use stdClass;
 
 /**
  * This object contains full information about a chat.
  * @link https://core.telegram.org/bots/api#chatfullinfo
  */
-class ChatFullInfo implements EntityInterface
+class ChatFullInfo extends AbstractEntity
 {
     /**
      * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
      * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
      * or double-precision float type are safe for storing this identifier.
-     * @param string $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
+     * @param ChatTypeEnum $type Type of the chat, can be either “protected”, “group”, “supergroup” or “channel”
      * @param int $accent_color_id Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
      * and link preview. See accent colors for more details.
      * @param int $max_reaction_count The maximum number of reactions that can be set on a message in the chat
-     * @param string[]|null $active_usernames Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups
+     * @param string[]|null $active_usernames Optional. If non-empty, the list of all active chat usernames; for protected chats, supergroups
      * and channels
      * @param AbstractReactionType[]|null $available_reactions Optional. List of available reactions allowed
      * in the chat. If omitted, then all emoji reactions are allowed.
      * @param string|null $background_custom_emoji_id Optional. Custom emoji identifier of the emoji chosen by the chat for the reply
      * header and link preview background
-     * @param string|null $bio Optional. Bio of the other party in a private chat
-     * @param Birthdate|null $birthdate Optional. For private chats, the date of birth of the user
-     * @param BusinessIntro|null $business_intro Optional. For private chats with business accounts, the intro of the business
-     * @param BusinessLocation|null $business_location Optional. For private chats with business accounts, the location of the business
-     * @param BusinessOpeningHours|null $business_opening_hours Optional. For private chats with business accounts, the opening hours
+     * @param string|null $bio Optional. Bio of the other party in a protected chat
+     * @param Birthdate|null $birthdate Optional. For protected chats, the date of birth of the user
+     * @param BusinessIntro|null $business_intro Optional. For protected chats with business accounts, the intro of the business
+     * @param BusinessLocation|null $business_location Optional. For protected chats with business accounts, the location of the business
+     * @param BusinessOpeningHours|null $business_opening_hours Optional. For protected chats with business accounts, the opening hours
      * of the business
      * @param bool|null $can_set_sticker_set Optional. True, if the bot can change the group sticker set
      * @param string|null $custom_emoji_sticker_set_name Optional. For supergroups, the name of the group's custom emoji sticker
      * set. Custom emoji from this set can be used by all users and bots in the group.
      * @param string|null $description Optional. Description, for groups, supergroups and channel chats
      * @param string|null $emoji_status_custom_emoji_id Optional. Custom emoji identifier of the emoji status of the chat or the
-     * other party in a private chat
+     * other party in a protected chat
      * @param int|null $emoji_status_expiration_date Optional. Expiration date of the emoji status of the chat or the other party
-     * in a private chat, in Unix time, if any
-     * @param string|null $first_name Optional. First name of the other party in a private chat
+     * in a protected chat, in Unix time, if any
+     * @param string|null $first_name Optional. First name of the other party in a protected chat
      * @param bool|null $has_aggressive_anti_spam_enabled Optional. True, if aggressive anti-spam checks are enabled in the supergroup.
      * The field is only available to chat administrators.
      * @param bool|null $has_hidden_members Optional. True, if non-administrators can only get the list of bots and administrators
      * in the chat
-     * @param bool|null $has_private_forwards Optional. True, if privacy settings of the other party in the private chat allows to
+     * @param bool|null $has_protected_forwards Optional. True, if privacy settings of the other party in the protected chat allows to
      * use tg://user?id=<user_id> links only in chats with the user
      * @param bool|null $has_protected_content Optional. True, if messages from the chat can't be forwarded to other chats
      * @param bool|null $has_restricted_voice_and_video_messages Optional. True, if the privacy settings of the other party restrict
-     * sending voice and video note messages in the private chat
+     * sending voice and video note messages in the protected chat
      * @param bool|null $has_visible_history Optional. True, if new chat members will have access to old messages; available only
      * to chat administrators
      * @param string|null $invite_link Optional. Primary invite link, for groups, supergroups and channel chats
@@ -56,7 +57,7 @@ class ChatFullInfo implements EntityInterface
      * @param bool|null $join_by_request Optional. True, if all users directly joining the supergroup without using an invite link
      * need to be approved by supergroup administrators
      * @param bool|null $join_to_send_messages Optional. True, if users need to join the supergroup before they can send messages
-     * @param string|null $last_name Optional. Last name of the other party in a private chat
+     * @param string|null $last_name Optional. Last name of the other party in a protected chat
      * @param int|null $linked_chat_id Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for
      * a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming
      * languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer
@@ -65,7 +66,7 @@ class ChatFullInfo implements EntityInterface
      * @param int|null $message_auto_delete_time Optional. The time after which all messages sent to the chat will be automatically
      * deleted; in seconds
      * @param ChatPermissions|null $permissions Optional. Default chat member permissions, for groups and supergroups
-     * @param Chat|null $personal_chat Optional. For private chats, the personal channel of the user
+     * @param Chat|null $personal_chat Optional. For protected chats, the personal channel of the user
      * @param ChatPhoto|null $photo Optional. Chat photo
      * @param Message|null $pinned_message Optional. The most recent pinned message (by sending date)
      * @param int|null $profile_accent_color_id Optional. Identifier of the accent color for the chat's profile background. See profile
@@ -78,53 +79,60 @@ class ChatFullInfo implements EntityInterface
      * @param string|null $title Optional. Title, for supergroups, channels and group chats
      * @param int|null $unrestrict_boost_count Optional. For supergroups, the minimum number of boosts that a non-administrator user
      * needs to add in order to ignore slow mode and chat permissions
-     * @param string|null $username Optional. Username, for private chats, supergroups and channels if available
+     * @param string|null $username Optional. Username, for protected chats, supergroups and channels if available
+     * @param bool|null $can_send_paid_media Optional. True, if paid media messages can be sent or forwarded to the channel chat.
+     * The field is available only for channel chats.
+     * @param AcceptedGiftTypes|null $accepted_gift_types Information about types of gifts that are accepted by the chat
+     * or by the corresponding user for private chats
      */
     public function __construct(
-        private int $id,
-        private string $type,
-        private int $accent_color_id,
-        private int $max_reaction_count,
-        #[ArrayType('string')] private array|null $active_usernames = null,
-        #[ArrayType([AbstractReactionType::class])] private array|null $available_reactions = null,
-        private string|null $background_custom_emoji_id = null,
-        private string|null $bio = null,
-        private Birthdate|null $birthdate = null,
-        private BusinessIntro|null $business_intro = null,
-        private BusinessLocation|null $business_location = null,
-        private BusinessOpeningHours|null $business_opening_hours = null,
-        private bool|null $can_set_sticker_set = null,
-        private string|null $custom_emoji_sticker_set_name = null,
-        private string|null $description = null,
-        private string|null $emoji_status_custom_emoji_id = null,
-        private int|null $emoji_status_expiration_date = null,
-        private string|null $first_name = null,
-        private bool|null $has_aggressive_anti_spam_enabled = null,
-        private bool|null $has_hidden_members = null,
-        private bool|null $has_private_forwards = null,
-        private bool|null $has_protected_content = null,
-        private bool|null $has_restricted_voice_and_video_messages = null,
-        private bool|null $has_visible_history = null,
-        private string|null $invite_link = null,
-        private bool|null $is_forum = null,
-        private bool|null $join_by_request = null,
-        private bool|null $join_to_send_messages = null,
-        private string|null $last_name = null,
-        private int|null $linked_chat_id = null,
-        private ChatLocation|null $location = null,
-        private int|null $message_auto_delete_time = null,
-        private ChatPermissions|null $permissions = null,
-        private Chat|null $personal_chat = null,
-        private ChatPhoto|null $photo = null,
-        private Message|null $pinned_message = null,
-        private int|null $profile_accent_color_id = null,
-        private string|null $profile_background_custom_emoji_id = null,
-        private int|null $slow_mode_delay = null,
-        private string|null $sticker_set_name = null,
-        private string|null $title = null,
-        private int|null $unrestrict_boost_count = null,
-        private string|null $username = null,
+        protected int $id,
+        protected ChatTypeEnum $type,
+        protected int $accent_color_id,
+        protected int $max_reaction_count,
+        #[ArrayType('string')] protected array|null $active_usernames = null,
+        #[ArrayType(AbstractReactionType::class)] protected array|null $available_reactions = null,
+        protected string|null $background_custom_emoji_id = null,
+        protected string|null $bio = null,
+        protected Birthdate|null $birthdate = null,
+        protected BusinessIntro|null $business_intro = null,
+        protected BusinessLocation|null $business_location = null,
+        protected BusinessOpeningHours|null $business_opening_hours = null,
+        protected bool|null $can_set_sticker_set = null,
+        protected string|null $custom_emoji_sticker_set_name = null,
+        protected string|null $description = null,
+        protected string|null $emoji_status_custom_emoji_id = null,
+        protected int|null $emoji_status_expiration_date = null,
+        protected string|null $first_name = null,
+        protected bool|null $has_aggressive_anti_spam_enabled = null,
+        protected bool|null $has_hidden_members = null,
+        protected bool|null $has_protected_forwards = null,
+        protected bool|null $has_protected_content = null,
+        protected bool|null $has_restricted_voice_and_video_messages = null,
+        protected bool|null $has_visible_history = null,
+        protected string|null $invite_link = null,
+        protected bool|null $is_forum = null,
+        protected bool|null $join_by_request = null,
+        protected bool|null $join_to_send_messages = null,
+        protected string|null $last_name = null,
+        protected int|null $linked_chat_id = null,
+        protected ChatLocation|null $location = null,
+        protected int|null $message_auto_delete_time = null,
+        protected ChatPermissions|null $permissions = null,
+        protected Chat|null $personal_chat = null,
+        protected ChatPhoto|null $photo = null,
+        protected Message|null $pinned_message = null,
+        protected int|null $profile_accent_color_id = null,
+        protected string|null $profile_background_custom_emoji_id = null,
+        protected int|null $slow_mode_delay = null,
+        protected string|null $sticker_set_name = null,
+        protected string|null $title = null,
+        protected int|null $unrestrict_boost_count = null,
+        protected string|null $username = null,
+        protected bool|null $can_send_paid_media = null,
+        protected AcceptedGiftTypes|null $accepted_gift_types = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): int
@@ -138,12 +146,12 @@ class ChatFullInfo implements EntityInterface
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ChatTypeEnum
     {
         return $this->type;
     }
 
-    public function setType(string $type): ChatFullInfo
+    public function setType(ChatTypeEnum $type): ChatFullInfo
     {
         $this->type = $type;
         return $this;
@@ -349,12 +357,12 @@ class ChatFullInfo implements EntityInterface
 
     public function getHasPrivateForwards(): bool|null
     {
-        return $this->has_private_forwards;
+        return $this->has_protected_forwards;
     }
 
-    public function setHasPrivateForwards(bool|null $has_private_forwards): ChatFullInfo
+    public function setHasPrivateForwards(bool|null $has_protected_forwards): ChatFullInfo
     {
-        $this->has_private_forwards = $has_private_forwards;
+        $this->has_protected_forwards = $has_protected_forwards;
         return $this;
     }
 
@@ -600,11 +608,43 @@ class ChatFullInfo implements EntityInterface
         return $this;
     }
 
+    public function getHasProtectedForwards(): bool|null
+    {
+        return $this->has_protected_forwards;
+    }
+
+    public function setHasProtectedForwards(bool|null $has_protected_forwards): ChatFullInfo
+    {
+        $this->has_protected_forwards = $has_protected_forwards;
+        return $this;
+    }
+
+    public function getCanSendPaidMedia(): bool|null
+    {
+        return $this->can_send_paid_media;
+    }
+
+    public function setCanSendPaidMedia(bool|null $can_send_paid_media): ChatFullInfo
+    {
+        $this->can_send_paid_media = $can_send_paid_media;
+        return $this;
+    }
+
+    public function getAcceptedGiftTypes(): ?AcceptedGiftTypes
+    {
+        return $this->accepted_gift_types;
+    }
+
+    public function setAcceptedGiftTypes(?AcceptedGiftTypes $accepted_gift_types): void
+    {
+        $this->accepted_gift_types = $accepted_gift_types;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,
-            'type' => $this->type,
+            'type' => $this->type->value,
             'accent_color_id' => $this->accent_color_id,
             'max_reaction_count' => $this->max_reaction_count,
             'active_usernames' => $this->active_usernames,
@@ -625,7 +665,7 @@ class ChatFullInfo implements EntityInterface
             'first_name' => $this->first_name,
             'has_aggressive_anti_spam_enabled' => $this->has_aggressive_anti_spam_enabled,
             'has_hidden_members' => $this->has_hidden_members,
-            'has_private_forwards' => $this->has_private_forwards,
+            'has_protected_forwards' => $this->has_protected_forwards,
             'has_protected_content' => $this->has_protected_content,
             'has_restricted_voice_and_video_messages' => $this->has_restricted_voice_and_video_messages,
             'has_visible_history' => $this->has_visible_history,
@@ -648,6 +688,8 @@ class ChatFullInfo implements EntityInterface
             'title' => $this->title,
             'unrestrict_boost_count' => $this->unrestrict_boost_count,
             'username' => $this->username,
+            'can_send_paid_media' => $this->can_send_paid_media,
+            'accepted_gift_types' => $this->accepted_gift_types?->toArray(),
         ];
     }
 }

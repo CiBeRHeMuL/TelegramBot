@@ -9,22 +9,26 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class CreateInvoiceLinkRequest implements RequestInterface
 {
     /**
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies
+     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
      * @param string $description Product description, 1-255 characters
      * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal
      * processes.
      * @param LabeledPrice[] $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
-     * cost, delivery tax, bonus, etc.)
-     * @param string $provider_token Payment provider token, obtained via BotFather
+     * cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
+     * @param string $provider_token Payment provider token, obtained via BotFather.
+     * Pass an empty string for payments in Telegram Stars.
      * @param string $title Product name, 1-32 characters
-     * @param bool|null $is_flexible Pass True if the final price depends on the shipping method
+     * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
      * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
      * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the
-     * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0
-     * @param bool|null $need_email Pass True if you require the user's email address to complete the order
-     * @param bool|null $need_name Pass True if you require the user's full name to complete the order
-     * @param bool|null $need_phone_number Pass True if you require the user's phone number to complete the order
-     * @param bool|null $need_shipping_address Pass True if you require the user's shipping address to complete the order
+     * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0.
+     * Not supported for payments in Telegram Stars.
+     * @param bool|null $need_email Pass True if you require the user's email address to complete the order. Ignored for payments in Telegram Stars.
+     * @param bool|null $need_name Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram Stars.
+     * @param bool|null $need_phone_number Pass True if you require the user's phone number to complete the order.
+     * Ignored for payments in Telegram Stars.
+     * @param bool|null $need_shipping_address Pass True if you require the user's shipping address to complete the order.
+     * Ignored for payments in Telegram Stars.
      * @param int|null $photo_height Photo height
      * @param int|null $photo_size Photo size in bytes
      * @param Url|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for
@@ -32,11 +36,21 @@ class CreateInvoiceLinkRequest implements RequestInterface
      * @param int|null $photo_width Photo width
      * @param string|null $provider_data JSON-serialized data about the invoice, which will be shared with the payment provider.
      * A detailed description of required fields should be provided by the payment provider.
-     * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider
-     * @param bool|null $send_phone_number_to_provider Pass True if the user's phone number should be sent to the provider
+     * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider.
+     * Ignored for payments in Telegram Stars.
+     * @param bool|null $send_phone_number_to_provider Pass True if the user's phone number should be sent to the provider.
+     * Ignored for payments in Telegram Stars.
      * @param int[]|null $suggested_tip_amounts A JSON-serialized array of suggested amounts of tips in the smallest units of the
      * currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be
      * positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     * @param int|null $subscription_period The number of seconds the subscription will be active for before the next payment.
+     * The currency must be set to “XTR” (Telegram Stars) if the parameter is used.
+     * Currently, it must always be 2592000 (30 days) if specified.
+     * Any number of subscriptions can be active for a given bot at the same time,
+     * including multiple concurrent subscriptions from the same user.
+     * Subscription price must no exceed 2500 Telegram Stars.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be created.
+     * For payments in Telegram Stars only.
      */
     public function __construct(
         private CurrencyEnum $currency,
@@ -59,6 +73,8 @@ class CreateInvoiceLinkRequest implements RequestInterface
         private bool|null $send_email_to_provider = null,
         private bool|null $send_phone_number_to_provider = null,
         private array|null $suggested_tip_amounts = null,
+        private int|null $subscription_period = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -282,6 +298,26 @@ class CreateInvoiceLinkRequest implements RequestInterface
         return $this;
     }
 
+    public function getSubscriptionPeriod(): ?int
+    {
+        return $this->subscription_period;
+    }
+
+    public function setSubscriptionPeriod(?int $subscription_period): void
+    {
+        $this->subscription_period = $subscription_period;
+    }
+
+    public function getBusinessConnectionId(): ?string
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(?string $business_connection_id): void
+    {
+        $this->business_connection_id = $business_connection_id;
+    }
+
     public function toArray(): array
     {
         return [
@@ -305,6 +341,8 @@ class CreateInvoiceLinkRequest implements RequestInterface
             'send_email_to_provider' => $this->send_email_to_provider,
             'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
             'suggested_tip_amounts' => $this->suggested_tip_amounts,
+            'subscription_period' => $this->subscription_period,
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

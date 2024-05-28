@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
+use stdClass;
 
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
@@ -31,15 +32,16 @@ class InputVenueMessageContent extends AbstractInputMessageContent
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
      */
     public function __construct(
-        private float $latitude,
-        private float $longitude,
-        private string $title,
-        private string $address,
-        private string|null $foursquare_id = null,
-        private string|null $foursquare_type = null,
-        private string|null $google_place_id = null,
-        private string|null $google_place_type = null,
+        protected float $latitude,
+        protected float $longitude,
+        protected string $title,
+        protected string $address,
+        protected string|null $foursquare_id = null,
+        protected string|null $foursquare_type = null,
+        protected string|null $google_place_id = null,
+        protected string|null $google_place_type = null,
     ) {
+        parent::__construct();
     }
 
     public function getLatitude(): float
@@ -130,7 +132,7 @@ class InputVenueMessageContent extends AbstractInputMessageContent
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'latitude' => $this->latitude,

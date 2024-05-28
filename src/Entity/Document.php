@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  * @link https://core.telegram.org/bots/api#document
  */
-class Document implements EntityInterface
+class Document extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -23,13 +23,14 @@ class Document implements EntityInterface
      * for storing this value.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private PhotoSize|null $thumbnail = null,
-        private string|null $file_name = null,
-        private string|null $mime_type = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected PhotoSize|null $thumbnail = null,
+        protected string|null $file_name = null,
+        protected string|null $mime_type = null,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

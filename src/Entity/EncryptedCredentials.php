@@ -10,7 +10,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#encryptedcredentials
  * @link https://core.telegram.org/passport#receiving-information
  */
-class EncryptedCredentials implements EntityInterface
+class EncryptedCredentials extends AbstractEntity
 {
     /**
      * @param string $data Base64-encoded encrypted JSON-serialized data with unique user's payload,
@@ -19,10 +19,11 @@ class EncryptedCredentials implements EntityInterface
      * @param string $secret Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption
      */
     public function __construct(
-        private string $data,
-        private string $hash,
-        private string $secret,
+        protected string $data,
+        protected string $hash,
+        protected string $secret,
     ) {
+        parent::__construct();
     }
 
     public function getData(): string

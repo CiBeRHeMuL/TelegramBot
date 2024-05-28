@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -10,16 +10,17 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#usersshared
  * @see KeyboardButtonRequestUsers
  */
-class UsersShared implements EntityInterface
+class UsersShared extends AbstractEntity
 {
     /**
      * @param int $request_id Identifier of the request
      * @param int[] $user_ids Identifiers of the shared users
      */
     public function __construct(
-        private int $request_id,
-        #[ArrayType('int')] private array $user_ids
+        protected int $request_id,
+        #[ArrayType('int')] protected array $user_ids,
     ) {
+        parent::__construct();
     }
 
     public function getRequestId(): int

@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -37,17 +37,19 @@ class InputMediaAnimation extends AbstractInputMedia
      * @param int|null $height Optional. Animation height
      * @param int|null $duration Optional. Animation duration in seconds
      * @param bool|null $has_spoiler Optional. Pass True if the animation needs to be covered with a spoiler animation
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
-        private Filename|Url|string $media,
-        private Filename|Url|string|null $thumbnail = null,
-        private ?string $caption = null,
-        private ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private ?array $caption_entities = null,
-        private ?int $width = null,
-        private ?int $height = null,
-        private ?int $duration = null,
-        private ?bool $has_spoiler = null
+        protected Filename|Url|string $media,
+        protected Filename|Url|string|null $thumbnail = null,
+        protected string|null $caption = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected int|null $width = null,
+        protected int|null $height = null,
+        protected int|null $duration = null,
+        protected bool|null $has_spoiler = null,
+        protected bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Animation);
     }
@@ -151,6 +153,17 @@ class InputMediaAnimation extends AbstractInputMedia
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaAnimation
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -170,6 +183,7 @@ class InputMediaAnimation extends AbstractInputMedia
             'height' => $this->height,
             'duration' => $this->duration,
             'has_spoiler' => $this->has_spoiler,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

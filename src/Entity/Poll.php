@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 use stdClass;
 
@@ -10,7 +10,7 @@ use stdClass;
  * This object contains information about a poll.
  * @link https://core.telegram.org/bots/api#poll
  */
-class Poll implements EntityInterface
+class Poll extends AbstractEntity
 {
     /**
      * @param string $id Unique poll identifier.
@@ -24,7 +24,7 @@ class Poll implements EntityInterface
      * @param array|null $question_entities Optional. Special entities that appear in the question.
      * Currently, only custom emoji entities are allowed in poll questions
      * @param int|null $correct_option_id Optional. 0-based identifier of the correct answer option.
-     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
+     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the protected chat with the bot.
      * @param string|null $explanation Optional.
      * Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters.
      * @param MessageEntity[]|null $explanation_entities Optional.
@@ -33,21 +33,22 @@ class Poll implements EntityInterface
      * @param int|null $close_date Optional. Point in time (Unix timestamp) when the poll will be automatically closed.
      */
     public function __construct(
-        private string $id,
-        private string $question,
-        #[ArrayType(PollOption::class)] private array $options,
-        private int $total_voter_count,
-        private bool $is_closed,
-        private bool $is_anonymous,
-        private PollTypeEnum $type,
-        private bool $allows_multiple_answers,
-        #[ArrayType(MessageEntity::class)] private array|null $question_entities = null,
-        private int|null $correct_option_id = null,
-        private string|null $explanation = null,
-        #[ArrayType(MessageEntity::class)] private array|null $explanation_entities = null,
-        private int|null $open_period = null,
-        private int|null $close_date = null,
+        protected string $id,
+        protected string $question,
+        #[ArrayType(PollOption::class)] protected array $options,
+        protected int $total_voter_count,
+        protected bool $is_closed,
+        protected bool $is_anonymous,
+        protected PollTypeEnum $type,
+        protected bool $allows_multiple_answers,
+        #[ArrayType(MessageEntity::class)] protected array|null $question_entities = null,
+        protected int|null $correct_option_id = null,
+        protected string|null $explanation = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $explanation_entities = null,
+        protected int|null $open_period = null,
+        protected int|null $close_date = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): string

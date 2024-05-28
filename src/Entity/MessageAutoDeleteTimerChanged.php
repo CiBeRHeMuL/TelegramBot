@@ -8,14 +8,15 @@ use stdClass;
  * This object represents a service message about a change in auto-delete timer settings.
  * @link https://core.telegram.org/bots/api#messageautodeletetimerchanged
  */
-class MessageAutoDeleteTimerChanged implements EntityInterface
+class MessageAutoDeleteTimerChanged extends AbstractEntity
 {
     /**
      * @param int $message_auto_delete_time New auto-delete time for messages in the chat; in seconds.
      */
     public function __construct(
-        private int $message_auto_delete_time
+        protected int $message_auto_delete_time,
     ) {
+        parent::__construct();
     }
 
     public function getMessageAutoDeleteTime(): int

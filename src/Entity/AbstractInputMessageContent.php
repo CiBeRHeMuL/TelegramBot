@@ -2,19 +2,19 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 
 /**
  * This object represents the content of a message to be sent as a result of an inline query.
  * @link https://core.telegram.org/bots/api#inputmessagecontent
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     InputTextMessageContent::class,
     InputLocationMessageContent::class,
     InputVenueMessageContent::class,
     InputContactMessageContent::class,
     InputInvoiceMessageContent::class,
 ])]
-abstract class AbstractInputMessageContent implements EntityInterface
+abstract class AbstractInputMessageContent extends AbstractEntity
 {
 }

@@ -2,16 +2,18 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Describes the current status of a webhook.
  * @link https://core.telegram.org/bots/api#webhookinfo
  */
-class WebhookInfo implements EntityInterface
+class WebhookInfo extends AbstractEntity
 {
     /**
      * @param Url $url Webhook URL, may be empty if webhook is not set up
@@ -30,16 +32,17 @@ class WebhookInfo implements EntityInterface
      * update delivery
      */
     public function __construct(
-        private Url $url,
-        private bool $has_custom_certificate,
-        private int $pending_update_count,
-        private array|null $allowed_updates = null,
-        private IpV4|IpV6|null $ip_address = null,
-        private int|null $last_error_date = null,
-        private string|null $last_error_message = null,
-        private int|null $last_synchronization_error_date = null,
-        private int|null $max_connections = null,
+        protected Url $url,
+        protected bool $has_custom_certificate,
+        protected int $pending_update_count,
+        #[ArrayType(UpdateTypeEnum::class)] protected array|null $allowed_updates = null,
+        protected IpV4|IpV6|null $ip_address = null,
+        protected int|null $last_error_date = null,
+        protected string|null $last_error_message = null,
+        protected int|null $last_synchronization_error_date = null,
+        protected int|null $max_connections = null,
     ) {
+        parent::__construct();
     }
 
     public function getUrl(): Url
@@ -141,7 +144,7 @@ class WebhookInfo implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'url' => $this->url->getUrl(),

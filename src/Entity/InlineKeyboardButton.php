@@ -10,12 +10,11 @@ use stdClass;
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  * @link https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-class InlineKeyboardButton implements EntityInterface
+class InlineKeyboardButton extends AbstractEntity
 {
     /**
      * @param string $text Label text on the button
      * @param CallbackData|null $callback_data Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
-     * Not supported for messages sent on behalf of a Telegram Business account.
      * @param CallbackGame|null $callback_game Optional. Description of the game that will be launched when the user presses the
      * button.NOTE: This type of button must always be the first button in the first row.
      * @param LoginUrl|null $login_url Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement
@@ -36,20 +35,23 @@ class InlineKeyboardButton implements EntityInterface
      * can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
-     * only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * only in protected chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * @param CopyTextButton|null $copy_text Optional. Description of the button that copies the specified text to the clipboard.
      */
     public function __construct(
-        private string $text,
-        private CallbackData|null $callback_data = null,
-        private CallbackGame|null $callback_game = null,
-        private LoginUrl|null $login_url = null,
-        private bool|null $pay = null,
-        private string|null $switch_inline_query = null,
-        private SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat = null,
-        private string|null $switch_inline_query_current_chat = null,
-        private Url|null $url = null,
-        private WebAppInfo|null $web_app = null,
+        protected string $text,
+        protected CallbackData|null $callback_data = null,
+        protected CallbackGame|null $callback_game = null,
+        protected LoginUrl|null $login_url = null,
+        protected bool|null $pay = null,
+        protected string|null $switch_inline_query = null,
+        protected SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat = null,
+        protected string|null $switch_inline_query_current_chat = null,
+        protected Url|null $url = null,
+        protected WebAppInfo|null $web_app = null,
+        protected CopyTextButton|null $copy_text = null,
     ) {
+        parent::__construct();
     }
 
     public function getText(): string
@@ -162,6 +164,17 @@ class InlineKeyboardButton implements EntityInterface
         return $this;
     }
 
+    public function getCopyText(): CopyTextButton|null
+    {
+        return $this->copy_text;
+    }
+
+    public function setCopyText(CopyTextButton|null $copy_text): InlineKeyboardButton
+    {
+        $this->copy_text = $copy_text;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -175,6 +188,7 @@ class InlineKeyboardButton implements EntityInterface
             'switch_inline_query_current_chat' => $this->switch_inline_query_current_chat,
             'url' => $this->url?->getUrl(),
             'web_app' => $this->web_app?->toArray(),
+            'copy_text' => $this->copy_text?->toArray(),
         ];
     }
 }

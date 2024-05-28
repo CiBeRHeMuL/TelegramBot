@@ -8,7 +8,7 @@ use stdClass;
  * Contains information about the start page settings of a Telegram Business account.
  * @link https://core.telegram.org/bots/api#businessintro
  */
-class BusinessIntro implements EntityInterface
+class BusinessIntro extends AbstractEntity
 {
     /**
      * @param string|null $message Optional. Message text of the business intro
@@ -16,10 +16,11 @@ class BusinessIntro implements EntityInterface
      * @param string|null $title Optional. Title text of the business intro
      */
     public function __construct(
-        private string|null $message = null,
-        private Sticker|null $sticker = null,
-        private string|null $title = null,
+        protected string|null $message = null,
+        protected Sticker|null $sticker = null,
+        protected string|null $title = null,
     ) {
+        parent::__construct();
     }
 
     public function getMessage(): string|null

@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 use stdClass;
 
@@ -24,11 +24,11 @@ class BackgroundTypePattern extends AbstractBackgroundType
      * @param bool|null $is_moving Optional. True, if the background moves slightly when the device is tilted
      */
     public function __construct(
-        private Document $document,
-        private AbstractBackgroundFill $fill,
-        private int $intensity,
-        private bool|null $is_inverted = null,
-        private bool|null $is_moving = null,
+        protected Document $document,
+        protected AbstractBackgroundFill $fill,
+        protected int $intensity,
+        protected bool|null $is_inverted = null,
+        protected bool|null $is_moving = null,
     ) {
         parent::__construct(BackgroundTypeTypeEnum::Pattern);
     }

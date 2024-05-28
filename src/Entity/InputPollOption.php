@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use stdClass;
 
@@ -10,7 +10,7 @@ use stdClass;
  * This object contains information about one answer option in a poll to send.
  * @link https://core.telegram.org/bots/api#inputpolloption
  */
-class InputPollOption implements EntityInterface
+class InputPollOption extends AbstractEntity
 {
     /**
      * @param string $text Option text, 1-100 characters
@@ -20,10 +20,11 @@ class InputPollOption implements EntityInterface
      * It can be specified instead of text_parse_mode
      */
     public function __construct(
-        private string $text,
-        private TelegramParseModeEnum|null $text_parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private array|null $text_entities = null,
+        protected string $text,
+        protected TelegramParseModeEnum|null $text_parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $text_entities = null,
     ) {
+        parent::__construct();
     }
 
     public function getText(): string

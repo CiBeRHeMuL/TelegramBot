@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
 use stdClass;
 
@@ -19,8 +19,8 @@ class MessageOriginHiddenUser extends AbstractMessageOrigin
      * @param string $sender_user_name Name of the user that sent the message originally
      */
     public function __construct(
-        private int $date,
-        private string $sender_user_name,
+        protected int $date,
+        protected string $sender_user_name,
     ) {
         parent::__construct(MessageOriginTypeEnum::HiddenUser);
     }

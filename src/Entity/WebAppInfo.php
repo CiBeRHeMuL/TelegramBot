@@ -10,11 +10,15 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#webappinfo
  * @link https://core.telegram.org/bots/webapps
  */
-class WebAppInfo implements EntityInterface
+class WebAppInfo extends AbstractEntity
 {
+    /**
+     * @param Url $url An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
+     */
     public function __construct(
-        private Url $url,
+        protected Url $url,
     ) {
+        parent::__construct();
     }
 
     public function getUrl(): Url

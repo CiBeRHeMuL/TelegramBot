@@ -3,10 +3,11 @@
 namespace AndrewGos\TelegramBot;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
-use AndrewGos\TelegramBot\Client\ClientInterface;
 use AndrewGos\TelegramBot\Entity\User;
+use AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 class Telegram
@@ -14,22 +15,17 @@ class Telegram
     /**
      * Library version
      */
-    private const VERSION = '1.0.0';
+    private const VERSION = '2.0';
 
     private User $me;
 
     public function __construct(
         private readonly BotToken $token,
         private readonly ApiInterface $api,
-        private readonly ClientInterface $client,
+        private readonly UpdateHandlerInterface $updateHandler,
     ) {
         if ($this->token->getToken() !== $this->api->getToken()->getToken()) {
             throw new InvalidArgumentException('Api and bot must have same tokens');
-        }
-        try {
-            $this->me = $this->api->getMe()->getUser();
-        } catch (Throwable $e) {
-            throw new InvalidArgumentException('Invalid token! Bot not found');
         }
     }
 
@@ -43,18 +39,30 @@ class Telegram
         return $this->api;
     }
 
-    public function getClient(): ClientInterface
+    public function getUpdateHandler(): UpdateHandlerInterface
     {
-        return $this->client;
+        return $this->updateHandler;
     }
 
     public function getMe(): User
     {
+        try {
+            $this->me ??= $this->api->getMe()->getUser();
+        } catch (Throwable) {
+            throw new InvalidArgumentException('Invalid token! Bot not found');
+        }
         return $this->me;
     }
 
     public function getVersion(): string
     {
         return static::VERSION;
+    }
+
+    public function setLogger(LoggerInterface $logger): static
+    {
+        $this->api->setLogger($logger);
+        $this->updateHandler->setLogger($logger);
+        return $this;
     }
 }

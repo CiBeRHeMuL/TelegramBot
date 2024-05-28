@@ -8,14 +8,15 @@ use stdClass;
  * This object represents a service message about a video chat ended in the chat.
  * @link https://core.telegram.org/bots/api#videochatended
  */
-class VideoChatEnded implements EntityInterface
+class VideoChatEnded extends AbstractEntity
 {
     /**
      * @param int $duration Video chat duration in seconds
      */
     public function __construct(
-        private int $duration
+        protected int $duration,
     ) {
+        parent::__construct();
     }
 
     public function getDuration(): int

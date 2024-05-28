@@ -2,23 +2,24 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represent a user's profile pictures.
  * @link https://core.telegram.org/bots/api#userprofilephotos
  */
-class UserProfilePhotos implements EntityInterface
+class UserProfilePhotos extends AbstractEntity
 {
     /**
      * @param int $total_count
      * @param PhotoSize[][] $photos
      */
     public function __construct(
-        private int $total_count,
-        #[ArrayType(new ArrayType(PhotoSize::class))] private array $photos,
+        protected int $total_count,
+        #[ArrayType(new ArrayType(PhotoSize::class))] protected array $photos,
     ) {
+        parent::__construct();
     }
 
     public function getTotalCount(): int

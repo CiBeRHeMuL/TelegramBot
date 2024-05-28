@@ -2,16 +2,17 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultVideoMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent
@@ -45,22 +46,24 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
      * @param int|null $video_duration Optional. Video duration in seconds
      * @param int|null $video_height Optional. Video height
      * @param int|null $video_width Optional. Video width
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
-        private string $id,
-        private Url $video_url,
-        private InlineQueryResultVideoMimeTypeEnum $mime_type,
-        private Url $thumbnail_url,
-        private string $title,
-        private string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] private array|null $caption_entities = null,
-        private string|null $description = null,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $video_duration = null,
-        private int|null $video_height = null,
-        private int|null $video_width = null,
+        protected string $id,
+        protected Url $video_url,
+        protected InlineQueryResultVideoMimeTypeEnum $mime_type,
+        protected Url $thumbnail_url,
+        protected string $title,
+        protected string|null $caption = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected string|null $description = null,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $video_duration = null,
+        protected int|null $video_height = null,
+        protected int|null $video_width = null,
+        protected bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Video);
     }
@@ -219,7 +222,18 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultVideo
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,
@@ -239,6 +253,7 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
             'video_duration' => $this->video_duration,
             'video_height' => $this->video_height,
             'video_width' => $this->video_width,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

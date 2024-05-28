@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerFormatEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
@@ -12,7 +12,7 @@ use stdClass;
  * This object describes a sticker to be added to a sticker set.
  * @link https://core.telegram.org/bots/api#inputsticker
  */
-class InputSticker implements EntityInterface
+class InputSticker extends AbstractEntity
 {
     /**
      * @param Filename|Url|string $sticker The added sticker. Pass a file_id as a String to send a file that already exists on the
@@ -28,12 +28,13 @@ class InputSticker implements EntityInterface
      * only.
      */
     public function __construct(
-        private Filename|Url|string $sticker,
-        private StickerFormatEnum $format,
-        #[ArrayType('string')] private array $emoji_list,
-        #[ArrayType('string')] private array|null $keywords = null,
-        private MaskPosition|null $mask_position = null,
+        protected Filename|Url|string $sticker,
+        protected StickerFormatEnum $format,
+        #[ArrayType('string')] protected array $emoji_list,
+        #[ArrayType('string')] protected array|null $keywords = null,
+        protected MaskPosition|null $mask_position = null,
     ) {
+        parent::__construct();
     }
 
     public function getSticker(): Filename|Url|string

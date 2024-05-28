@@ -2,34 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 use stdClass;
 
 /**
  * This object represents a chat.
  * @link https://core.telegram.org/bots/api#chat
  */
-class Chat implements EntityInterface
+class Chat extends AbstractEntity
 {
     /**
      * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
      * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
      * or double-precision float type are safe for storing this identifier.
-     * @param string $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
-     * @param string|null $first_name Optional. First name of the other party in a private chat
+     * @param ChatTypeEnum $type Type of the chat, can be either “protected”, “group”, “supergroup” or “channel”
+     * @param string|null $first_name Optional. First name of the other party in a protected chat
      * @param bool|null $is_forum Optional. True, if the supergroup chat is a forum (has topics enabled)
-     * @param string|null $last_name Optional. Last name of the other party in a private chat
+     * @param string|null $last_name Optional. Last name of the other party in a protected chat
      * @param string|null $title Optional. Title, for supergroups, channels and group chats
-     * @param string|null $username Optional. Username, for private chats, supergroups and channels if available
+     * @param string|null $username Optional. Username, for protected chats, supergroups and channels if available
      */
     public function __construct(
-        private int $id,
-        private string $type,
-        private string|null $first_name = null,
-        private bool|null $is_forum = null,
-        private string|null $last_name = null,
-        private string|null $title = null,
-        private string|null $username = null,
+        protected int $id,
+        protected ChatTypeEnum $type,
+        protected string|null $first_name = null,
+        protected bool|null $is_forum = null,
+        protected string|null $last_name = null,
+        protected string|null $title = null,
+        protected string|null $username = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): int
@@ -43,12 +45,12 @@ class Chat implements EntityInterface
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ChatTypeEnum
     {
         return $this->type;
     }
 
-    public function setType(string $type): Chat
+    public function setType(ChatTypeEnum $type): Chat
     {
         $this->type = $type;
         return $this;
@@ -113,7 +115,7 @@ class Chat implements EntityInterface
     {
         return [
             'id' => $this->id,
-            'type' => $this->type,
+            'type' => $this->type->value,
             'first_name' => $this->first_name,
             'is_forum' => $this->is_forum,
             'last_name' => $this->last_name,

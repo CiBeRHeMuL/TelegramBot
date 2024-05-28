@@ -8,16 +8,17 @@ use stdClass;
  * This object represents a bot command.
  * @link https://core.telegram.org/bots/api#botcommand
  */
-class BotCommand implements EntityInterface
+class BotCommand extends AbstractEntity
 {
     /**
      * @param string $command Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
      * @param string $description Description of the command; 1-256 characters.
      */
     public function __construct(
-        private string $command,
-        private string $description,
+        protected string $command,
+        protected string $description,
     ) {
+        parent::__construct();
     }
 
     public function getCommand(): string

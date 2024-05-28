@@ -14,12 +14,15 @@ class StopMessageLiveLocationRequest implements RequestInterface
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to
      * stop
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
+     * of which the message to be edited was sent
      */
     public function __construct(
         private ChatId|null $chat_id = null,
         private string|null $inline_message_id = null,
         private int|null $message_id = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -67,6 +70,17 @@ class StopMessageLiveLocationRequest implements RequestInterface
         return $this;
     }
 
+    public function getBusinessConnectionId(): string|null
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string|null $business_connection_id): StopMessageLiveLocationRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -74,6 +88,7 @@ class StopMessageLiveLocationRequest implements RequestInterface
             'inline_message_id' => $this->inline_message_id,
             'message_id' => $this->message_id,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

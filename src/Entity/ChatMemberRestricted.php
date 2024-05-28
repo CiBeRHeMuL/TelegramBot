@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 use stdClass;
 
@@ -35,23 +35,23 @@ class ChatMemberRestricted extends AbstractChatMember
      * @param int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
      */
     public function __construct(
-        private User $user,
-        private bool $is_member,
-        private bool $can_send_messages,
-        private bool $can_send_audios,
-        private bool $can_send_documents,
-        private bool $can_send_photos,
-        private bool $can_send_videos,
-        private bool $can_send_video_notes,
-        private bool $can_send_voice_notes,
-        private bool $can_send_polls,
-        private bool $can_send_other_messages,
-        private bool $can_add_web_page_previews,
-        private bool $can_change_info,
-        private bool $can_invite_users,
-        private bool $can_pin_messages,
-        private bool $can_manage_topics,
-        private int $until_date,
+        protected User $user,
+        protected bool $is_member,
+        protected bool $can_send_messages,
+        protected bool $can_send_audios,
+        protected bool $can_send_documents,
+        protected bool $can_send_photos,
+        protected bool $can_send_videos,
+        protected bool $can_send_video_notes,
+        protected bool $can_send_voice_notes,
+        protected bool $can_send_polls,
+        protected bool $can_send_other_messages,
+        protected bool $can_add_web_page_previews,
+        protected bool $can_change_info,
+        protected bool $can_invite_users,
+        protected bool $can_pin_messages,
+        protected bool $can_manage_topics,
+        protected int $until_date,
     ) {
         parent::__construct(ChatMemberStatusEnum::Restricted);
     }

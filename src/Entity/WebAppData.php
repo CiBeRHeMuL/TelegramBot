@@ -9,7 +9,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#webappdata
  * @link https://core.telegram.org/bots/webapps
  */
-class WebAppData implements EntityInterface
+class WebAppData extends AbstractEntity
 {
     /**
      * @param string $data The data. Be aware that a bad client can send arbitrary data in this field.
@@ -17,9 +17,10 @@ class WebAppData implements EntityInterface
      * Be aware that a bad client can send arbitrary data in this field.
      */
     public function __construct(
-        private string $data,
-        private string $button_text
+        protected string $data,
+        protected string $button_text,
     ) {
+        parent::__construct();
     }
 
     public function getData(): string

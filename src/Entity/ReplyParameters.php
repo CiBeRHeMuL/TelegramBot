@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use stdClass;
@@ -11,7 +11,7 @@ use stdClass;
  * Describes reply parameters for the message that is being sent.
  * @link https://core.telegram.org/bots/api#replyparameters
  */
-class ReplyParameters implements EntityInterface
+class ReplyParameters extends AbstractEntity
 {
     /**
      * @param int $message_id
@@ -23,14 +23,15 @@ class ReplyParameters implements EntityInterface
      * @param int|null $quote_position
      */
     public function __construct(
-        private int $message_id,
-        private ChatId|null $chat_id = null,
-        private bool|null $allow_sending_without_reply = null,
-        private string|null $quote = null,
-        private TelegramParseModeEnum|null $quote_parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private array|null $quote_entities = null,
-        private int|null $quote_position = null,
+        protected int $message_id,
+        protected ChatId|null $chat_id = null,
+        protected bool|null $allow_sending_without_reply = null,
+        protected string|null $quote = null,
+        protected TelegramParseModeEnum|null $quote_parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $quote_entities = null,
+        protected int|null $quote_position = null,
     ) {
+        parent::__construct();
     }
 
     public function getMessageId(): int

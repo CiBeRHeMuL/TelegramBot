@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -41,18 +41,27 @@ class InputMediaVideo extends AbstractInputMedia
      * @param int|null $duration Optional. Video duration in seconds
      * @param bool|null $supports_streaming Optional. Pass True if the uploaded video is suitable for streaming
      * @param bool|null $has_spoiler Optional. Pass True if the video needs to be covered with a spoiler animation
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message.
+     * Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet,
+     * or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name.
+     * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
      */
     public function __construct(
-        private Filename|Url|string $media,
-        private Filename|Url|string|null $thumbnail = null,
-        private ?string $caption = null,
-        private ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private ?array $caption_entities = null,
-        private ?int $width = null,
-        private ?int $height = null,
-        private ?int $duration = null,
-        private ?bool $supports_streaming = null,
-        private ?bool $has_spoiler = null
+        protected Filename|Url|string $media,
+        protected Filename|Url|string|null $thumbnail = null,
+        protected string|null $caption = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected int|null $width = null,
+        protected int|null $height = null,
+        protected int|null $duration = null,
+        protected bool|null $supports_streaming = null,
+        protected bool|null $has_spoiler = null,
+        protected bool|null $show_caption_above_media = null,
+        protected Filename|Url|string|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Video);
     }
@@ -167,6 +176,37 @@ class InputMediaVideo extends AbstractInputMedia
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaVideo
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
+    public function getCover(): Filename|string|Url|null
+    {
+        return $this->cover;
+    }
+
+    public function setCover(Filename|string|Url|null $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    public function getStartTimestamp(): ?int
+    {
+        return $this->start_timestamp;
+    }
+
+    public function setStartTimestamp(?int $start_timestamp): void
+    {
+        $this->start_timestamp = $start_timestamp;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -187,6 +227,11 @@ class InputMediaVideo extends AbstractInputMedia
             'duration' => $this->duration,
             'supports_streaming' => $this->supports_streaming,
             'has_spoiler' => $this->has_spoiler,
+            'show_caption_above_media' => $this->show_caption_above_media,
+            'cover' => $this->cover
+                ? (($this->cover instanceof Url) ? $this->cover->getUrl() : $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

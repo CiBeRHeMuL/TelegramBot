@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
+use stdClass;
 
 /**
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated
@@ -15,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\CallbackData;
  * (e.g., without specifying any of the optional parameters)
  * @link https://core.telegram.org/bots/api#callbackquery
  */
-class CallbackQuery implements EntityInterface
+class CallbackQuery extends AbstractEntity
 {
     /**
      * @param string $id Unique identifier for this query
@@ -32,14 +33,15 @@ class CallbackQuery implements EntityInterface
      * query
      */
     public function __construct(
-        private string $id,
-        private User $from,
-        private string $chat_instance,
-        private CallbackData|null $data = null,
-        private string|null $game_short_name = null,
-        private string|null $inline_message_id = null,
-        private AbstractMaybeInaccessibleMessage|null $message = null,
+        protected string $id,
+        protected User $from,
+        protected string $chat_instance,
+        protected CallbackData|null $data = null,
+        protected string|null $game_short_name = null,
+        protected string|null $inline_message_id = null,
+        protected AbstractMaybeInaccessibleMessage|null $message = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): string
@@ -119,7 +121,7 @@ class CallbackQuery implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

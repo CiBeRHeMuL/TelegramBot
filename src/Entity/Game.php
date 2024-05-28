@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  * @link https://core.telegram.org/bots/api#game
  */
-class Game implements EntityInterface
+class Game extends AbstractEntity
 {
     /**
      * @param string $title Title of the game.
@@ -22,13 +22,14 @@ class Game implements EntityInterface
      * @param Animation|null $animation Optional. Animation that will be displayed in the game message in chats. Upload via BotFather.
      */
     public function __construct(
-        private string $title,
-        private string $description,
-        #[ArrayType(PhotoSize::class)] private array $photo,
-        private string|null $text = null,
-        #[ArrayType(MessageEntity::class)] private array|null $text_entities = null,
-        private Animation|null $animation = null,
+        protected string $title,
+        protected string $description,
+        #[ArrayType(PhotoSize::class)] protected array $photo,
+        protected string|null $text = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $text_entities = null,
+        protected Animation|null $animation = null,
     ) {
+        parent::__construct();
     }
 
     public function getTitle(): string

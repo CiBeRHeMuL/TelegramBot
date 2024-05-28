@@ -2,21 +2,22 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  * @link https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */
-class InlineKeyboardMarkup implements EntityInterface
+class InlineKeyboardMarkup extends AbstractEntity
 {
     /**
      * @param InlineKeyboardButton[][] $inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton objects
      */
     public function __construct(
-        #[ArrayType(new ArrayType(InlineKeyboardButton::class))] private array $inline_keyboard,
+        #[ArrayType(new ArrayType(InlineKeyboardButton::class))] protected array $inline_keyboard,
     ) {
+        parent::__construct();
     }
 
     public function getInlineKeyboard(): array

@@ -2,15 +2,15 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use stdClass;
 
 /**
  *
- * Represents the scope of bot commands, covering all private chats.
- * @link https://core.telegram.org/bots/api#botcommandscopeallprivatechats
+ * Represents the scope of bot commands, covering all protected chats.
+ * @link https://core.telegram.org/bots/api#botcommandscopeallprotectedchats
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::AllPrivateChats))]
 class BotCommandScopeAllPrivateChats extends AbstractBotCommandScope
@@ -23,7 +23,7 @@ class BotCommandScopeAllPrivateChats extends AbstractBotCommandScope
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
+            'type' => $this->type->value,
         ];
     }
 }

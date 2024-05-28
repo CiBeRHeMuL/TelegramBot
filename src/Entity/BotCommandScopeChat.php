@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use stdClass;
@@ -19,7 +19,7 @@ class BotCommandScopeChat extends AbstractBotCommandScope
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
      */
     public function __construct(
-        private ChatId $chat_id,
+        protected ChatId $chat_id,
     ) {
         parent::__construct(BotCommandScopeTypeEnum::Chat);
     }
@@ -38,7 +38,7 @@ class BotCommandScopeChat extends AbstractBotCommandScope
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
+            'type' => $this->type->value,
             'chat_id' => $this->chat_id->getId(),
         ];
     }

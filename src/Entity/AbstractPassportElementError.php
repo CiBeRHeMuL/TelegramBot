@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
 /**
  * This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user.
  * @link https://core.telegram.org/bots/api#passportelementerror
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     PassportElementErrorDataField::class,
     PassportElementErrorFrontSide::class,
     PassportElementErrorReverseSide::class,
@@ -20,11 +20,12 @@ use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
     PassportElementErrorTranslationFiles::class,
     PassportElementErrorUnspecified::class,
 ])]
-abstract class AbstractPassportElementError implements EntityInterface
+abstract class AbstractPassportElementError extends AbstractEntity
 {
     public function __construct(
         protected readonly PassportElementErrorSourceEnum $source,
     ) {
+        parent::__construct();
     }
 
     public function getSource(): PassportElementErrorSourceEnum

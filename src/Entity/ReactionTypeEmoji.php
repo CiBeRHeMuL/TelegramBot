@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EmojiEnum;
 use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
 use stdClass;
@@ -19,7 +19,7 @@ class ReactionTypeEmoji extends AbstractReactionType
      * @param EmojiEnum $emoji Reaction emoji
      */
     public function __construct(
-        private EmojiEnum $emoji,
+        protected EmojiEnum $emoji,
     ) {
         parent::__construct(ReactionTypeEnum::Emoji);
     }

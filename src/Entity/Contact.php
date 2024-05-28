@@ -9,7 +9,7 @@ use stdClass;
  * This object represents a phone contact.
  * @link https://core.telegram.org/bots/api#contact
  */
-class Contact implements EntityInterface
+class Contact extends AbstractEntity
 {
     /**
      * @param Phone $phone_number Contact's phone number.
@@ -22,12 +22,13 @@ class Contact implements EntityInterface
      * @param string|null $vcard Optional. Additional data about the contact in the form of a vCard.
      */
     public function __construct(
-        private Phone $phone_number,
-        private string $first_name,
-        private string|null $last_name = null,
-        private int|null $user_id = null,
-        private string|null $vcard = null,
+        protected Phone $phone_number,
+        protected string $first_name,
+        protected string|null $last_name = null,
+        protected int|null $user_id = null,
+        protected string|null $vcard = null,
     ) {
+        parent::__construct();
     }
 
     public function getPhoneNumber(): Phone

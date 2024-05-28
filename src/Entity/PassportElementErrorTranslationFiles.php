@@ -2,11 +2,12 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorTranslationFilesTypeEnum;
+use stdClass;
 
 /**
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change.
@@ -23,9 +24,9 @@ class PassportElementErrorTranslationFiles extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private PassportElementErrorTranslationFilesTypeEnum $type,
-        #[ArrayType('string')] private array $file_hashes,
-        private string $message,
+        protected PassportElementErrorTranslationFilesTypeEnum $type,
+        #[ArrayType('string')] protected array $file_hashes,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::TranslationFiles);
     }
@@ -63,7 +64,7 @@ class PassportElementErrorTranslationFiles extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

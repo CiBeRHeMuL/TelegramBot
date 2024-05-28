@@ -8,14 +8,15 @@ use stdClass;
  * This object represents a service message about a user boosting a chat.
  * @link https://core.telegram.org/bots/api#chatboostadded
  */
-class ChatBoostAdded implements EntityInterface
+class ChatBoostAdded extends AbstractEntity
 {
     /**
      * @param int $boost_count Number of boosts added by the user
      */
     public function __construct(
-        private int $boost_count
+        protected int $boost_count,
     ) {
+        parent::__construct();
     }
 
     public function getBoostCount(): int

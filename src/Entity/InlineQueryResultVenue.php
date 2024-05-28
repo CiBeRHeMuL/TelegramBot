@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send
@@ -34,20 +35,20 @@ class InlineQueryResultVenue extends AbstractInlineQueryResult
      * @param int|null $thumbnail_width Optional. Thumbnail width
      */
     public function __construct(
-        private string $id,
-        private float $latitude,
-        private float $longitude,
-        private string $title,
-        private string $address,
-        private string|null $foursquare_id = null,
-        private string|null $foursquare_type = null,
-        private string|null $google_place_id = null,
-        private string|null $google_place_type = null,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $thumbnail_height = null,
-        private Url|null $thumbnail_url = null,
-        private int|null $thumbnail_width = null,
+        protected string $id,
+        protected float $latitude,
+        protected float $longitude,
+        protected string $title,
+        protected string $address,
+        protected string|null $foursquare_id = null,
+        protected string|null $foursquare_type = null,
+        protected string|null $google_place_id = null,
+        protected string|null $google_place_type = null,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $thumbnail_height = null,
+        protected Url|null $thumbnail_url = null,
+        protected int|null $thumbnail_width = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Venue);
     }
@@ -206,7 +207,7 @@ class InlineQueryResultVenue extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

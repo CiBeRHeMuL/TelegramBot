@@ -2,11 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
+use stdClass;
+
 /**
  * This object represents an incoming update.At most one of the optional parameters can be present in any given update.
  * @link https://core.telegram.org/bots/api#update
  */
-class Update implements EntityInterface
+class Update extends AbstractEntity
 {
     /**
      * @param int $update_id The update's unique identifier. Update identifiers start from a certain positive number and increase
@@ -42,7 +45,7 @@ class Update implements EntityInterface
      * @param MessageReactionCountUpdated|null $message_reaction_count Optional. Reactions to a message with anonymous reactions
      * were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list
      * of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
-     * @param ChatMemberUpdated|null $my_chat_member Optional. The bot's chat member status was updated in a chat. For private chats,
+     * @param ChatMemberUpdated|null $my_chat_member Optional. The bot's chat member status was updated in a chat. For protected chats,
      * this update is received only when the bot is blocked or unblocked by the user.
      * @param Poll|null $poll Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are
      * sent by the bot
@@ -53,32 +56,36 @@ class Update implements EntityInterface
      * @param ChatBoostRemoved|null $removed_chat_boost Optional. A boost was removed from a chat. The bot must be an administrator
      * in the chat to receive these updates.
      * @param ShippingQuery|null $shipping_query Optional. New incoming shipping query. Only for invoices with flexible price
+     * @param PaidMediaPurchased|null $purchased_paid_media Optional. A user purchased paid media with a non-empty payload
+     * sent by the bot in a non-channel chat
      */
     public function __construct(
-        private int $update_id,
-        private BusinessConnection|null $business_connection = null,
-        private Message|null $business_message = null,
-        private CallbackQuery|null $callback_query = null,
-        private Message|null $channel_post = null,
-        private ChatBoostUpdated|null $chat_boost = null,
-        private ChatJoinRequest|null $chat_join_request = null,
-        private ChatMemberUpdated|null $chat_member = null,
-        private ChosenInlineResult|null $chosen_inline_result = null,
-        private BusinessMessagesDeleted|null $deleted_business_messages = null,
-        private Message|null $edited_business_message = null,
-        private Message|null $edited_channel_post = null,
-        private Message|null $edited_message = null,
-        private InlineQuery|null $inline_query = null,
-        private Message|null $message = null,
-        private MessageReactionUpdated|null $message_reaction = null,
-        private MessageReactionCountUpdated|null $message_reaction_count = null,
-        private ChatMemberUpdated|null $my_chat_member = null,
-        private Poll|null $poll = null,
-        private PollAnswer|null $poll_answer = null,
-        private PreCheckoutQuery|null $pre_checkout_query = null,
-        private ChatBoostRemoved|null $removed_chat_boost = null,
-        private ShippingQuery|null $shipping_query = null,
+        protected int $update_id,
+        protected BusinessConnection|null $business_connection = null,
+        protected Message|null $business_message = null,
+        protected CallbackQuery|null $callback_query = null,
+        protected Message|null $channel_post = null,
+        protected ChatBoostUpdated|null $chat_boost = null,
+        protected ChatJoinRequest|null $chat_join_request = null,
+        protected ChatMemberUpdated|null $chat_member = null,
+        protected ChosenInlineResult|null $chosen_inline_result = null,
+        protected BusinessMessagesDeleted|null $deleted_business_messages = null,
+        protected Message|null $edited_business_message = null,
+        protected Message|null $edited_channel_post = null,
+        protected Message|null $edited_message = null,
+        protected InlineQuery|null $inline_query = null,
+        protected Message|null $message = null,
+        protected MessageReactionUpdated|null $message_reaction = null,
+        protected MessageReactionCountUpdated|null $message_reaction_count = null,
+        protected ChatMemberUpdated|null $my_chat_member = null,
+        protected Poll|null $poll = null,
+        protected PollAnswer|null $poll_answer = null,
+        protected PreCheckoutQuery|null $pre_checkout_query = null,
+        protected ChatBoostRemoved|null $removed_chat_boost = null,
+        protected ShippingQuery|null $shipping_query = null,
+        protected PaidMediaPurchased|null $purchased_paid_media = null,
     ) {
+        parent::__construct();
     }
 
     public function getUpdateId(): int
@@ -334,7 +341,18 @@ class Update implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function getPurchasedPaidmedia(): PaidMediaPurchased|null
+    {
+        return $this->purchased_paid_media;
+    }
+
+    public function setPurchasedPaidmedia(PaidMediaPurchased|null $purchased_paid_media): Update
+    {
+        $this->purchased_paid_media = $purchased_paid_media;
+        return $this;
+    }
+
+    public function toArray(): array|stdClass
     {
         return [
             'update_id' => $this->update_id,
@@ -360,6 +378,37 @@ class Update implements EntityInterface
             'pre_checkout_query' => $this->pre_checkout_query?->toArray(),
             'removed_chat_boost' => $this->removed_chat_boost?->toArray(),
             'shipping_query' => $this->shipping_query?->toArray(),
+            'purchased_paid_media' => $this->purchased_paid_media?->toArray(),
         ];
+    }
+
+    public function getType(): UpdateTypeEnum|null
+    {
+        return match (true) {
+            $this->getBusinessConnection() !== null => UpdateTypeEnum::BusinessConnection,
+            $this->getBusinessMessage() !== null => UpdateTypeEnum::BusinessMessage,
+            $this->getCallbackQuery() !== null => UpdateTypeEnum::CallbackQuery,
+            $this->getChannelPost() !== null => UpdateTypeEnum::ChannelPost,
+            $this->getChatBoost() !== null => UpdateTypeEnum::ChatBoost,
+            $this->getChatJoinRequest() !== null => UpdateTypeEnum::ChatJoinRequest,
+            $this->getChatMember() !== null => UpdateTypeEnum::ChatMember,
+            $this->getChosenInlineResult() !== null => UpdateTypeEnum::ChosenInlineResult,
+            $this->getDeletedBusinessMessages() !== null => UpdateTypeEnum::DeletedBusinessMessages,
+            $this->getEditedBusinessMessage() !== null => UpdateTypeEnum::EditedBusinessMessage,
+            $this->getEditedChannelPost() !== null => UpdateTypeEnum::EditedChannelPost,
+            $this->getEditedMessage() !== null => UpdateTypeEnum::EditedMessage,
+            $this->getInlineQuery() !== null => UpdateTypeEnum::InlineQuery,
+            $this->getMessage() !== null => UpdateTypeEnum::Message,
+            $this->getMessageReaction() !== null => UpdateTypeEnum::MessageReaction,
+            $this->getMessageReactionCount() !== null => UpdateTypeEnum::MessageReactionCount,
+            $this->getMyChatMember() !== null => UpdateTypeEnum::MyChatMember,
+            $this->getPoll() !== null => UpdateTypeEnum::Poll,
+            $this->getPollAnswer() !== null => UpdateTypeEnum::PollAnswer,
+            $this->getPreCheckoutQuery() !== null => UpdateTypeEnum::PreCheckoutQuery,
+            $this->getRemovedChatBoost() !== null => UpdateTypeEnum::RemovedChatBoost,
+            $this->getShippingQuery() !== null => UpdateTypeEnum::ShippingQuery,
+            $this->getPurchasedPaidmedia() !== null => UpdateTypeEnum::PurchasedPaidMedia,
+            default => null,
+        };
     }
 }

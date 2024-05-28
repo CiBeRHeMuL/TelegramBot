@@ -2,10 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Api;
 
-use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
+use AndrewGos\TelegramBot\Entity as Ent;
+use AndrewGos\TelegramBot\Filesystem as Fs;
 use AndrewGos\TelegramBot\Request as Req;
 use AndrewGos\TelegramBot\Response as Res;
+use AndrewGos\TelegramBot\Response\GetFileResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
+use Psr\Log\LoggerInterface;
 
 interface ApiInterface
 {
@@ -14,6 +17,21 @@ interface ApiInterface
      * @return BotToken
      */
     public function getToken(): BotToken;
+
+    /**
+     * Current logger
+     * @return LoggerInterface
+     */
+    public function getLogger(): LoggerInterface;
+
+    /**
+     * Set current logger
+     *
+     * @param LoggerInterface $logger
+     *
+     * @return $this
+     */
+    public function setLogger(LoggerInterface $logger): static;
 
     /**
      * Version of used Telegram Bot Api
@@ -152,7 +170,7 @@ interface ApiInterface
 
     /**
      * Use this method to copy messages of any kind.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message.
      * Returns the MessageId of the sent message on success.
@@ -168,7 +186,7 @@ interface ApiInterface
     /**
      * Use this method to copy messages of any kind.
      * If some of the specified messages can't be found or copied, they are skipped.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message.
      * Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
@@ -1035,6 +1053,8 @@ interface ApiInterface
     /**
      * Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message
      * is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageTextRequest $request
      *
@@ -1046,6 +1066,8 @@ interface ApiInterface
     /**
      * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message
      * is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageCaptionRequest $request
      *
@@ -1059,6 +1081,8 @@ interface ApiInterface
      * it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise.
      * When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify
      * a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageMediaRequest $request
      *
@@ -1093,6 +1117,8 @@ interface ApiInterface
     /**
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the
      * edited Message is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageReplyMarkupRequest $request
      *
@@ -1423,11 +1449,403 @@ interface ApiInterface
     public function getGameHighScores(Req\GetGameHighScoresRequest $request): Res\GetGameHighScoresResponse;
 
     /**
-     * @param string $method method (ex. getMe)
-     * @param array $data
-     * @param HttpMethodEnum $httpMethod
+     * Refunds a successful payment in Telegram Stars. Returns True on success.
+     *
+     * @param Req\RefundStarPaymentRequest $request
      *
      * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#refundstarpayment
      */
-    public function send(string $method, array $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse;
+    public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse;
+
+    /**
+     * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
+     *
+     * @param Req\GetStarTransactionsRequest $request
+     *
+     * @return Res\GetStarTransactionsResponse
+     * @link https://core.telegram.org/bots/api#getstartransactions
+     */
+    public function getStarTransactions(Req\GetStarTransactionsRequest $request): Res\GetStarTransactionsResponse;
+
+    /**
+     * Use this method to send paid media to channel chats. On success, the sent Message is returned.
+     *
+     * @param Req\SendPaidMediaRequest $request
+     *
+     * @return Res\SendPaidMediaResponse
+     * @link https://core.telegram.org/bots/api#sendpaidmedia
+     */
+    public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse;
+
+    /**
+     * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator
+     * rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink.
+     * Returns the new invite link as a ChatInviteLink object.
+     *
+     * @param Req\CreateChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\CreateChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
+     */
+    public function createChatSubscriptionInviteLink(
+        Req\CreateChatSubscriptionInviteLinkRequest $request,
+    ): Res\CreateChatSubscriptionInviteLinkResponse;
+
+    /**
+     * Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator
+     * rights. Returns the edited invite link as a ChatInviteLink object.
+     *
+     * @param Req\EditChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\EditChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
+     */
+    public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse;
+
+    /**
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success.
+     *
+     * @param Req\EditUserStarSubscriptionRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     */
+    public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method
+     * requestEmojiStatusAccess. Returns True on success.
+     *
+     * @param Req\SetUserEmojiStatusRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setuseremojistatus
+     */
+    public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse;
+
+    /**
+     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+     *
+     * @param Req\SavePreparedInlineMessageRequest $request
+     *
+     * @return Res\SavePreparedInlineMessageResponse
+     * @link https://core.telegram.org/bots/api#savepreparedinlinemessage
+     */
+    public function savePreparedInlineMessage(Req\SavePreparedInlineMessageRequest $request): Res\SavePreparedInlineMessageResponse;
+
+    /**
+     * Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts
+     * object.
+     *
+     * @return Res\GetAvailableGiftsResponse
+     * @link https://core.telegram.org/bots/api#getavailablegifts
+     */
+    public function getAvailableGifts(): Res\GetAvailableGiftsResponse;
+
+    /**
+     * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True
+     * on success.
+     *
+     * @param Req\SendGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#sendgift
+     */
+    public function sendGift(Req\SendGiftRequest $request): Res\RawResponse;
+
+    /**
+     * Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
+     *
+     * @param Req\VerifyUserRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#verifyuser
+     */
+    public function verifyUser(Req\VerifyUserRequest $request): Res\RawResponse;
+
+    /**
+     * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success.
+     *
+     * @param Req\VerifyChatRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#verifychat
+     */
+    public function verifyChat(Req\VerifyChatRequest $request): Res\RawResponse;
+
+    /**
+     * Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True
+     * on success.
+     *
+     * @param Req\RemoveUserVerificationRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removeuserverification
+     */
+    public function removeUserVerification(Req\RemoveUserVerificationRequest $request): Res\RawResponse;
+
+    /**
+     * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns
+     * True on success.
+     *
+     * @param Req\RemoveChatVerificationRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removechatverification
+     */
+    public function removeChatVerification(Req\RemoveChatVerificationRequest $request): Res\RawResponse;
+
+    /**
+     * Marks incoming message as read on behalf of a business account. Requires the can_read_messages business bot right. Returns
+     * True on success.
+     *
+     * @param Req\ReadBusinessMessageRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#readbusinessmessage
+     */
+    public function readBusinessMessage(Req\ReadBusinessMessageRequest $request): Res\RawResponse;
+
+    /**
+     * Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages
+     * sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success.
+     *
+     * @param Req\DeleteBusinessMessagesRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#deletebusinessmessages
+     */
+    public function deleteBusinessMessages(Req\DeleteBusinessMessagesRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the first and last name of a managed business account. Requires the can_change_name business bot right. Returns True
+     * on success.
+     *
+     * @param Req\SetBusinessAccountNameRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setbusinessaccountname
+     */
+    public function setBusinessAccountName(Req\SetBusinessAccountNameRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the username of a managed business account. Requires the can_change_username business bot right. Returns True on success.
+     *
+     * @param Req\SetBusinessAccountUsernameRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setbusinessaccountusername
+     */
+    public function setBusinessAccountUsername(Req\SetBusinessAccountUsernameRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the bio of a managed business account. Requires the can_change_bio business bot right. Returns True on success.
+     *
+     * @param Req\SetBusinessAccountBioRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setbusinessaccountbio
+     */
+    public function setBusinessAccountBio(Req\SetBusinessAccountBioRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns True
+     * on success.
+     *
+     * @param Req\SetBusinessAccountProfilePhotoRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
+     */
+    public function setBusinessAccountProfilePhoto(Req\SetBusinessAccountProfilePhotoRequest $request): Res\RawResponse;
+
+    /**
+     * Removes the current profile photo of a managed business account. Requires the can_edit_profile_photo business bot right. Returns
+     * True on success.
+     *
+     * @param Req\RemoveBusinessAccountProfilePhotoRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removebusinessaccountprofilephoto
+     */
+    public function removeBusinessAccountProfilePhoto(Req\RemoveBusinessAccountProfilePhotoRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the privacy settings pertaining to incoming gifts in a managed business account. Requires the can_change_gift_settings
+     * business bot right. Returns True on success.
+     *
+     * @param Req\SetBusinessAccountGiftSettingsRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
+     */
+    public function setBusinessAccountGiftSettings(Req\SetBusinessAccountGiftSettingsRequest $request): Res\RawResponse;
+
+    /**
+     * Returns the amount of Telegram Stars owned by a managed business account. Requires the can_view_gifts_and_stars business bot
+     * right. Returns StarAmount on success.
+     *
+     * @param Req\GetBusinessAccountStarBalanceRequest $request
+     *
+     * @return Res\GetBusinessAccountStarBalanceResponse
+     * @link https://core.telegram.org/bots/api#getbusinessaccountstarbalance
+     */
+    public function getBusinessAccountStarBalance(Req\GetBusinessAccountStarBalanceRequest $request): Res\GetBusinessAccountStarBalanceResponse;
+
+    /**
+     * Transfers Telegram Stars from the business account balance to the bot's balance. Requires the can_transfer_stars business
+     * bot right. Returns True on success.
+     *
+     * @param Req\TransferBusinessAccountStarsRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#transferbusinessaccountstars
+     */
+    public function transferBusinessAccountStars(Req\TransferBusinessAccountStarsRequest $request): Res\RawResponse;
+
+    /**
+     * Returns the gifts received and owned by a managed business account. Requires the can_view_gifts_and_stars business bot right.
+     * Returns OwnedGifts on success.
+     *
+     * @param Req\GetBusinessAccountGiftsRequest $request
+     *
+     * @return Res\GetBusinessAccountGiftsResponse
+     * @link https://core.telegram.org/bots/api#getbusinessaccountgifts
+     */
+    public function getBusinessAccountGifts(Req\GetBusinessAccountGiftsRequest $request): Res\GetBusinessAccountGiftsResponse;
+
+    /**
+     * Converts a given regular gift to Telegram Stars. Requires the can_convert_gifts_to_stars business bot right. Returns True
+     * on success.
+     *
+     * @param Req\ConvertGiftToStarsRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#convertgifttostars
+     */
+    public function convertGiftToStars(Req\ConvertGiftToStarsRequest $request): Res\RawResponse;
+
+    /**
+     * Upgrades a given regular gift to a unique gift. Requires the can_transfer_and_upgrade_gifts business bot right. Additionally
+     * requires the can_transfer_stars business bot right if the upgrade is paid. Returns True on success.
+     *
+     * @param Req\UpgradeGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#upgradegift
+     */
+    public function upgradeGift(Req\UpgradeGiftRequest $request): Res\RawResponse;
+
+    /**
+     * Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires can_transfer_stars
+     * business bot right if the transfer is paid. Returns True on success.
+     *
+     * @param Req\TransferGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#transfergift
+     */
+    public function transferGift(Req\TransferGiftRequest $request): Res\RawResponse;
+
+    /**
+     * Posts a story on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on
+     * success.
+     *
+     * @param Req\PostStoryRequest $request
+     *
+     * @return Res\PostStoryResponse
+     * @link https://core.telegram.org/bots/api#poststory
+     */
+    public function postStory(Req\PostStoryRequest $request): Res\PostStoryResponse;
+
+    /**
+     * Edits a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business
+     * bot right. Returns Story on success.
+     *
+     * @param Req\EditStoryRequest $request
+     *
+     * @return Res\EditStoryResponse
+     * @link https://core.telegram.org/bots/api#editstory
+     */
+    public function editStory(Req\EditStoryRequest $request): Res\EditStoryResponse;
+
+    /**
+     * Deletes a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business
+     * bot right. Returns True on success.
+     *
+     * @param Req\DeleteStoryRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#deletestory
+     */
+    public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse;
+
+    /**
+     * Gifts a Telegram Premium subscription to the given user. Returns True on success.
+     *
+     * @param Req\GiftPremiumSubscriptionRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#giftpremiumsubscription
+     */
+    public function giftPremiumSubscription(Req\GiftPremiumSubscriptionRequest $request): Res\RawResponse;
+
+    /**
+     * Download file to specific dir
+     *
+     * @param Ent\File $file
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFileToDir(Ent\File $file, Fs\Dir $targetDir, bool $overwrite): bool;
+
+    /**
+     * Download file by id to specific dir
+     *
+     * @param string $fileId
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     *  you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileToDirById(
+        string $fileId,
+        Fs\Dir $targetDir,
+        bool $overwrite = false,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool;
+
+    /**
+     * Download file by id to specific path
+     *
+     * @param string $fileId
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     * you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileById(
+        string $fileId,
+        Fs\File $targetFile,
+        bool $overwrite,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool;
+
+    /**
+     * Download file to specific path
+     *
+     * @param Ent\File $file
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFile(Ent\File $file, Fs\File $targetFile, bool $overwrite): bool;
 }

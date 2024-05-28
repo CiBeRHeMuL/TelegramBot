@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -29,13 +29,15 @@ class InputMediaPhoto extends AbstractInputMedia
      * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption,
      * which can be specified instead of parse_mode
      * @param bool|null $has_spoiler Optional. Pass True if the photo needs to be covered with a spoiler animation
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
-        private string|Filename|Url $media,
-        private ?string $caption = null,
-        private ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private ?array $caption_entities = null,
-        private ?bool $has_spoiler = null
+        protected string|Filename|Url $media,
+        protected string|null $caption = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected bool|null $has_spoiler = null,
+        protected bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Photo);
     }
@@ -95,6 +97,17 @@ class InputMediaPhoto extends AbstractInputMedia
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaPhoto
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -108,6 +121,7 @@ class InputMediaPhoto extends AbstractInputMedia
                 ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
                 : null,
             'has_spoiler' => $this->has_spoiler,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

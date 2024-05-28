@@ -9,7 +9,6 @@ use Iterator;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 use Throwable;
-use function stream_get_meta_data;
 
 final class Utils
 {
@@ -86,7 +85,7 @@ final class Utils
      *
      * @throws InvalidArgumentException if the $resource arg is not valid.
      */
-    public static function streamFor($resource = '', array $options = []): StreamInterface
+    public static function streamFor(mixed $resource = '', array $options = []): StreamInterface
     {
         if (is_scalar($resource)) {
             $stream = self::tryFopen('php://temp', 'r+');

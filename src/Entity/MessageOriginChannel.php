@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
 use stdClass;
 
@@ -21,10 +21,10 @@ class MessageOriginChannel extends AbstractMessageOrigin
      * @param string|null $author_signature Optional. Signature of the original post author
      */
     public function __construct(
-        private int $date,
-        private Chat $chat,
-        private int $message_id,
-        private string|null $author_signature = null,
+        protected int $date,
+        protected Chat $chat,
+        protected int $message_id,
+        protected string|null $author_signature = null,
     ) {
         parent::__construct(MessageOriginTypeEnum::Channel);
     }

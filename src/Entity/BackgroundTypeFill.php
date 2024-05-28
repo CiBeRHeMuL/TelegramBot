@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 use stdClass;
 
@@ -19,8 +19,8 @@ class BackgroundTypeFill extends AbstractBackgroundType
      * @param int $dark_theme_dimming Dimming of the background in dark themes, as a percentage; 0-100
      */
     public function __construct(
-        private AbstractBackgroundFill $fill,
-        private int $dark_theme_dimming,
+        protected AbstractBackgroundFill $fill,
+        protected int $dark_theme_dimming,
     ) {
         parent::__construct(BackgroundTypeTypeEnum::Fill);
     }

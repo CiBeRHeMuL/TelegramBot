@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Represents the rights of an administrator in a chat.
  * @link https://core.telegram.org/bots/api#chatadministratorrights
  */
-class ChatAdministratorRights implements EntityInterface
+class ChatAdministratorRights extends AbstractEntity
 {
     /**
      * @param bool $is_anonymous True, if the user's presence in the chat is hidden
@@ -34,22 +36,23 @@ class ChatAdministratorRights implements EntityInterface
      * statistics; for channels only
      */
     public function __construct(
-        private bool $is_anonymous,
-        private bool $can_manage_chat,
-        private bool $can_delete_messages,
-        private bool $can_manage_video_chats,
-        private bool $can_restrict_members,
-        private bool $can_promote_members,
-        private bool $can_change_info,
-        private bool $can_invite_users,
-        private bool $can_post_stories,
-        private bool $can_edit_stories,
-        private bool $can_delete_stories,
-        private bool|null $can_edit_messages = null,
-        private bool|null $can_manage_topics = null,
-        private bool|null $can_pin_messages = null,
-        private bool|null $can_post_messages = null,
+        protected bool $is_anonymous,
+        protected bool $can_manage_chat,
+        protected bool $can_delete_messages,
+        protected bool $can_manage_video_chats,
+        protected bool $can_restrict_members,
+        protected bool $can_promote_members,
+        protected bool $can_change_info,
+        protected bool $can_invite_users,
+        protected bool $can_post_stories,
+        protected bool $can_edit_stories,
+        protected bool $can_delete_stories,
+        protected bool|null $can_edit_messages = null,
+        protected bool|null $can_manage_topics = null,
+        protected bool|null $can_pin_messages = null,
+        protected bool|null $can_post_messages = null,
     ) {
+        parent::__construct();
     }
 
     public function getIsAnonymous(): bool
@@ -217,7 +220,7 @@ class ChatAdministratorRights implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'is_anonymous' => $this->is_anonymous,

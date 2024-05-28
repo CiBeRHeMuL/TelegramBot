@@ -89,6 +89,7 @@ enum CurrencyEnum: string
     case UZS = 'UZS';
     case VND = 'VND';
     case YER = 'YER';
+    case XTR = 'XTR';
     case ZAR = 'ZAR';
 
     public function getSymbol(): string
@@ -179,6 +180,7 @@ enum CurrencyEnum: string
             self::UZS => 'UZS',
             self::VND => '₫',
             self::YER => 'ر.ي.‏',
+            self::XTR => 'XTR',
             self::ZAR => 'R',
             default => $this->value,
         };
@@ -272,6 +274,7 @@ enum CurrencyEnum: string
             self::UZS => 'Uzbekistani Som',
             self::VND => 'Vietnamese Đồng',
             self::YER => 'Yemeni Rial',
+            self::XTR => 'Telegram XTR',
             self::ZAR => 'South African Rand',
             default => $this->value,
         };

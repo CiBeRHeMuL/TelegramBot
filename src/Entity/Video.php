@@ -2,13 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a video file.
  * @link https://core.telegram.org/bots/api#video
  */
-class Video implements EntityInterface
+class Video extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -23,18 +24,24 @@ class Video implements EntityInterface
      * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31,
      * and some programming languages may have difficulty/silent defects in interpreting it.
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
+     * @param PhotoSize[]|null $cover Optional. Available sizes of the cover of the video in the message
+     * @param int|null $start_timestamp Optional. Timestamp in seconds from which the video will play in the message
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $width,
-        private int $height,
-        private int $duration,
-        private PhotoSize|null $thumbnail = null,
-        private string|null $file_name = null,
-        private string|null $mime_type = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $width,
+        protected int $height,
+        protected int $duration,
+        protected PhotoSize|null $thumbnail = null,
+        protected string|null $file_name = null,
+        protected string|null $mime_type = null,
+        protected int|null $file_size = null,
+        #[ArrayType(PhotoSize::class)]
+        protected array|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string
@@ -136,6 +143,26 @@ class Video implements EntityInterface
         return $this;
     }
 
+    public function getCover(): ?array
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?array $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    public function getStartTimestamp(): ?int
+    {
+        return $this->start_timestamp;
+    }
+
+    public function setStartTimestamp(?int $start_timestamp): void
+    {
+        $this->start_timestamp = $start_timestamp;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -148,6 +175,10 @@ class Video implements EntityInterface
             'file_name' => $this->file_name,
             'mime_type' => $this->mime_type,
             'file_size' => $this->file_size,
+            'cover' => $this->cover !== null
+                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

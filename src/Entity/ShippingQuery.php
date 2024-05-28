@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object contains information about an incoming shipping query.
  * @link https://core.telegram.org/bots/api#shippingquery
  */
-class ShippingQuery implements EntityInterface
+class ShippingQuery extends AbstractEntity
 {
     /**
      * @param string $id Unique query identifier
@@ -15,11 +17,12 @@ class ShippingQuery implements EntityInterface
      * @param ShippingAddress $shipping_address User specified shipping address
      */
     public function __construct(
-        private string $id,
-        private User $from,
-        private string $invoice_payload,
-        private ShippingAddress $shipping_address,
+        protected string $id,
+        protected User $from,
+        protected string $invoice_payload,
+        protected ShippingAddress $shipping_address,
     ) {
+        parent::__construct();
     }
 
     public function getId(): string
@@ -66,7 +69,7 @@ class ShippingQuery implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents one row of the high scores table for a game.
  * @link https://core.telegram.org/bots/api#gamehighscore
  */
-class GameHighScore implements EntityInterface
+class GameHighScore extends AbstractEntity
 {
     /**
      * @param int $position Position in high score table for the game
@@ -14,10 +16,11 @@ class GameHighScore implements EntityInterface
      * @param int $score Score
      */
     public function __construct(
-        private int $position,
-        private User $user,
-        private int $score,
+        protected int $position,
+        protected User $user,
+        protected int $score,
     ) {
+        parent::__construct();
     }
 
     public function getPosition(): int
@@ -53,7 +56,7 @@ class GameHighScore implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'position' => $this->position,

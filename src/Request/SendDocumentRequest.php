@@ -45,6 +45,11 @@ class SendDocumentRequest implements RequestInterface
      * @param $reply_markup InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
      * to remove a reply keyboard or to force a reply from the user. @channelusername).
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
+     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *
+     * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
     public function __construct(
         private ChatId $chat_id,
@@ -59,7 +64,9 @@ class SendDocumentRequest implements RequestInterface
         private bool|null $disable_notification = null,
         private bool|null $protect_content = null,
         private ReplyParameters|null $reply_parameters = null,
-        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null
+        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
+        private string|null $message_effect_id = null,
+        private bool|null $allow_paid_broadcast = null,
     ) {
     }
 
@@ -206,6 +213,28 @@ class SendDocumentRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendDocumentRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
+    public function getAllowPaidBroadcast(): bool|null
+    {
+        return $this->allow_paid_broadcast;
+    }
+
+    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendDocumentRequest
+    {
+        $this->allow_paid_broadcast = $allow_paid_broadcast;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -227,6 +256,8 @@ class SendDocumentRequest implements RequestInterface
             'protect_content' => $this->protect_content,
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'reply_markup' => $this->reply_markup?->toArray(),
+            'message_effect_id' => $this->message_effect_id,
+            'allow_paid_broadcast' => $this->allow_paid_broadcast,
         ];
     }
 }

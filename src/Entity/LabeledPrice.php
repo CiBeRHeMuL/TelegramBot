@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents a portion of the price for goods or services.
  * @link https://core.telegram.org/bots/api#labeledprice
  */
-class LabeledPrice implements EntityInterface
+class LabeledPrice extends AbstractEntity
 {
     /**
      * @param string $label Portion label
@@ -15,9 +17,10 @@ class LabeledPrice implements EntityInterface
      * point for each currency (2 for the majority of currencies).
      */
     public function __construct(
-        private string $label,
-        private int $amount,
+        protected string $label,
+        protected int $amount,
     ) {
+        parent::__construct();
     }
 
     public function getLabel(): string
@@ -42,7 +45,7 @@ class LabeledPrice implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'label' => $this->label,

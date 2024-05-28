@@ -8,16 +8,17 @@ use stdClass;
  * This object represents a boost added to a chat or changed.
  * @link https://core.telegram.org/bots/api#chatboostupdated
  */
-class ChatBoostUpdated implements EntityInterface
+class ChatBoostUpdated extends AbstractEntity
 {
     /**
      * @param Chat $chat Chat which was boosted
      * @param ChatBoost $boost Information about the chat boost
      */
     public function __construct(
-        private Chat $chat,
-        private ChatBoost $boost,
+        protected Chat $chat,
+        protected ChatBoost $boost,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat

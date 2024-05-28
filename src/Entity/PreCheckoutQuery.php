@@ -3,12 +3,13 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
+use stdClass;
 
 /**
  * This object contains information about an incoming pre-checkout query.
  * @link https://core.telegram.org/bots/api#precheckoutquery
  */
-class PreCheckoutQuery implements EntityInterface
+class PreCheckoutQuery extends AbstractEntity
 {
     /**
      * @param string $id Unique query identifier
@@ -22,14 +23,15 @@ class PreCheckoutQuery implements EntityInterface
      * @param string|null $shipping_option_id Optional. Identifier of the shipping option chosen by the user
      */
     public function __construct(
-        private string $id,
-        private User $from,
-        private CurrencyEnum $currency,
-        private int $total_amount,
-        private string $invoice_payload,
-        private OrderInfo|null $order_info = null,
-        private string|null $shipping_option_id = null,
+        protected string $id,
+        protected User $from,
+        protected CurrencyEnum $currency,
+        protected int $total_amount,
+        protected string $invoice_payload,
+        protected OrderInfo|null $order_info = null,
+        protected string|null $shipping_option_id = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): string
@@ -109,7 +111,7 @@ class PreCheckoutQuery implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

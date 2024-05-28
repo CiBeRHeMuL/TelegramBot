@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use stdClass;
 
 /**
@@ -18,8 +18,8 @@ class InaccessibleMessage extends AbstractMaybeInaccessibleMessage
      * @param int $message_id Unique message identifier inside the chat.
      */
     public function __construct(
-        private Chat $chat,
-        private int $message_id,
+        protected Chat $chat,
+        protected int $message_id,
     ) {
         parent::__construct(0);
     }

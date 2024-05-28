@@ -2,23 +2,24 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * Describes Telegram Passport data shared with the bot by the user.
  * @link https://core.telegram.org/bots/api#passportdata
  */
-class PassportData implements EntityInterface
+class PassportData extends AbstractEntity
 {
     /**
      * @param EncryptedPassportElement[] $data
      * @param EncryptedCredentials $credentials
      */
     public function __construct(
-        #[ArrayType(EncryptedPassportElement::class)] private array $data,
-        private EncryptedCredentials $credentials
+        #[ArrayType(EncryptedPassportElement::class)] protected array $data,
+        protected EncryptedCredentials $credentials,
     ) {
+        parent::__construct();
     }
 
     public function getData(): array

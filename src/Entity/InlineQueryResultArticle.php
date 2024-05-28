@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to an article or web page.
@@ -19,7 +20,6 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
      * @param string $title Title of the result
      * @param AbstractInputMessageContent $input_message_content Content of the message to be sent
      * @param string|null $description Optional. Short description of the result
-     * @param bool|null $hide_url Optional. Pass True if you don't want the URL to be shown in the message
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      * @param int|null $thumbnail_height Optional. Thumbnail height
      * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
@@ -27,16 +27,15 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
      * @param Url|null $url Optional. URL of the result
      */
     public function __construct(
-        private string $id,
-        private string $title,
-        private AbstractInputMessageContent $input_message_content,
-        private string|null $description = null,
-        private bool|null $hide_url = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $thumbnail_height = null,
-        private Url|null $thumbnail_url = null,
-        private int|null $thumbnail_width = null,
-        private Url|null $url = null,
+        protected string $id,
+        protected string $title,
+        protected AbstractInputMessageContent $input_message_content,
+        protected string|null $description = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $thumbnail_height = null,
+        protected Url|null $thumbnail_url = null,
+        protected int|null $thumbnail_width = null,
+        protected Url|null $url = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Article);
     }
@@ -82,17 +81,6 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setDescription(string|null $description): InlineQueryResultArticle
     {
         $this->description = $description;
-        return $this;
-    }
-
-    public function getHideUrl(): bool|null
-    {
-        return $this->hide_url;
-    }
-
-    public function setHideUrl(bool|null $hide_url): InlineQueryResultArticle
-    {
-        $this->hide_url = $hide_url;
         return $this;
     }
 
@@ -151,7 +139,7 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,
@@ -159,7 +147,6 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
             'title' => $this->title,
             'input_message_content' => $this->input_message_content->toArray(),
             'description' => $this->description,
-            'hide_url' => $this->hide_url,
             'reply_markup' => $this->reply_markup?->toArray(),
             'thumbnail_height' => $this->thumbnail_height,
             'thumbnail_url' => $this->thumbnail_url?->getUrl(),

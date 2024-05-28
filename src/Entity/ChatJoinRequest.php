@@ -3,17 +3,18 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
+use stdClass;
 
 /**
  * Represents a join request sent to a chat.
  * @link https://core.telegram.org/bots/api#chatjoinrequest
  */
-class ChatJoinRequest implements EntityInterface
+class ChatJoinRequest extends AbstractEntity
 {
     /**
      * @param Chat $chat Chat to which the request was sent
      * @param User $from User that sent the join request
-     * @param ChatId $user_chat_id Identifier of a private chat with the user who sent the join request. This number may have more than
+     * @param ChatId $user_chat_id Identifier of a protected chat with the user who sent the join request. This number may have more than
      * 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most
      * 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can
      * use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted
@@ -23,13 +24,14 @@ class ChatJoinRequest implements EntityInterface
      * @param ChatInviteLink|null $invite_link Optional. Chat invite link that was used by the user to send the join request
      */
     public function __construct(
-        private Chat $chat,
-        private User $from,
-        private ChatId $user_chat_id,
-        private int $date,
-        private string|null $bio = null,
-        private ChatInviteLink|null $invite_link = null,
+        protected Chat $chat,
+        protected User $from,
+        protected ChatId $user_chat_id,
+        protected int $date,
+        protected string|null $bio = null,
+        protected ChatInviteLink|null $invite_link = null,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat
@@ -98,7 +100,7 @@ class ChatJoinRequest implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

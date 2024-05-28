@@ -8,7 +8,7 @@ use stdClass;
  * Describes the birthdate of a user.
  * @link https://core.telegram.org/bots/api#birthdate
  */
-class Birthdate implements EntityInterface
+class Birthdate extends AbstractEntity
 {
     /**
      * @param int $day Day of the user's birth; 1-31
@@ -16,10 +16,11 @@ class Birthdate implements EntityInterface
      * @param int|null $year Optional. Year of the user's birth
      */
     public function __construct(
-        private int $day,
-        private int $month,
-        private int|null $year = null,
+        protected int $day,
+        protected int $month,
+        protected int|null $year = null,
     ) {
+        parent::__construct();
     }
 
     public function getDay(): int

@@ -8,11 +8,11 @@ class RevokeChatInviteLinkResponse extends AbstractResponse
 {
     /**
      * @param RawResponse $rawResponse
-     * @param ChatInviteLink $chatInviteLink
+     * @param ChatInviteLink|null $chatInviteLink
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ChatInviteLink|null $chatInviteLink
+        private readonly ChatInviteLink|null $chatInviteLink,
     ) {
         parent::__construct($rawResponse);
     }

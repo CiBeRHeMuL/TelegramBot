@@ -4,7 +4,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use stdClass;
 
-class ChatInviteLinkRequest implements EntityInterface
+class ChatInviteLinkRequest extends AbstractEntity
 {
     /**
      * @param string $invite_link The invite link. If the link was created by another chat administrator, then the second part of
@@ -20,16 +20,17 @@ class ChatInviteLinkRequest implements EntityInterface
      * @param int|null $pending_join_request_count Optional. Number of pending join requests created using this link
      */
     public function __construct(
-        private string $invite_link,
-        private User $creator,
-        private bool $creates_join_request,
-        private bool $is_primary,
-        private bool $is_revoked,
-        private int|null $expire_date = null,
-        private int|null $member_limit = null,
-        private string|null $name = null,
-        private int|null $pending_join_request_count = null,
+        protected string $invite_link,
+        protected User $creator,
+        protected bool $creates_join_request,
+        protected bool $is_primary,
+        protected bool $is_revoked,
+        protected int|null $expire_date = null,
+        protected int|null $member_limit = null,
+        protected string|null $name = null,
+        protected int|null $pending_join_request_count = null,
     ) {
+        parent::__construct();
     }
 
     public function toArray(): array|stdClass

@@ -13,6 +13,7 @@ class ForwardMessageRequest implements RequestInterface
      * @param int|null $message_thread_id Unique identifier for the target message thread (for supergroups and channels).
      * @param bool|null $disable_notification Flag for sending the message silently. Users will receive a notification without sound.
      * @param bool|null $protect_content Flag to protect the content of the forwarded message from being forwarded and saved.
+     * @param int|null $video_start_timestamp New start timestamp for the forwarded video in the message
      */
     public function __construct(
         private ChatId $chat_id,
@@ -21,6 +22,7 @@ class ForwardMessageRequest implements RequestInterface
         private int|null $message_thread_id = null,
         private bool|null $disable_notification = null,
         private bool|null $protect_content = null,
+        private int|null $video_start_timestamp = null,
     ) {
     }
 
@@ -90,6 +92,16 @@ class ForwardMessageRequest implements RequestInterface
         return $this;
     }
 
+    public function getVideoStartTimestamp(): ?int
+    {
+        return $this->video_start_timestamp;
+    }
+
+    public function setVideoStartTimestamp(?int $video_start_timestamp): void
+    {
+        $this->video_start_timestamp = $video_start_timestamp;
+    }
+
     public function toArray(): array
     {
         return [
@@ -99,6 +111,7 @@ class ForwardMessageRequest implements RequestInterface
             'disable_notification' => $this->disable_notification,
             'protect_content' => $this->protect_content,
             'message_id' => $this->message_id,
+            'video_start_timestamp' => $this->video_start_timestamp,
         ];
     }
 }

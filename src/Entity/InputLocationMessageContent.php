@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
+use stdClass;
 
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
@@ -30,13 +31,14 @@ class InputLocationMessageContent extends AbstractInputMessageContent
      * another chat member, in meters. Must be between 1 and 100000 if specified.
      */
     public function __construct(
-        private float $latitude,
-        private float $longitude,
-        private int|null $heading = null,
-        private float|null $horizontal_accuracy = null,
-        private int|null $live_period = null,
-        private int|null $proximity_alert_radius = null,
+        protected float $latitude,
+        protected float $longitude,
+        protected int|null $heading = null,
+        protected float|null $horizontal_accuracy = null,
+        protected int|null $live_period = null,
+        protected int|null $proximity_alert_radius = null,
     ) {
+        parent::__construct();
     }
 
     public function getLatitude(): float
@@ -105,7 +107,7 @@ class InputLocationMessageContent extends AbstractInputMessageContent
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'latitude' => $this->latitude,

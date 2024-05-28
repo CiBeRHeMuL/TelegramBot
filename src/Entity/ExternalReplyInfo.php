@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  * @link https://core.telegram.org/bots/api#externalreplyinfo
  */
-class ExternalReplyInfo implements EntityInterface
+class ExternalReplyInfo extends AbstractEntity
 {
     /**
      * @param AbstractMessageOrigin $origin Origin of the message
@@ -38,32 +38,35 @@ class ExternalReplyInfo implements EntityInterface
      * @param Location|null $location Message is a shared location, information about the location
      * @param Poll|null $poll Message is a native poll, information about the poll
      * @param Venue|null $venue Message is a venue, information about the venue
+     * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
      */
     public function __construct(
-        private AbstractMessageOrigin $origin,
-        private Chat|null $chat = null,
-        private int|null $message_id = null,
-        private LinkPreviewOptions|null $link_preview_options = null,
-        private Animation|null $animation = null,
-        private Audio|null $audio = null,
-        private Document|null $document = null,
-        #[ArrayType(PhotoSize::class)] private array|null $photo = null,
-        private Sticker|null $sticker = null,
-        private Story|null $story = null,
-        private Video|null $video = null,
-        private VideoNote|null $video_note = null,
-        private Voice|null $voice = null,
-        private bool|null $has_media_spoiler = null,
-        private Contact|null $contact = null,
-        private Dice|null $dice = null,
-        private Game|null $game = null,
-        private Giveaway|null $giveaway = null,
-        private GiveawayWinners|null $giveaway_winners = null,
-        private Invoice|null $invoice = null,
-        private Location|null $location = null,
-        private Poll|null $poll = null,
-        private Venue|null $venue = null,
+        protected AbstractMessageOrigin $origin,
+        protected Chat|null $chat = null,
+        protected int|null $message_id = null,
+        protected LinkPreviewOptions|null $link_preview_options = null,
+        protected Animation|null $animation = null,
+        protected Audio|null $audio = null,
+        protected Document|null $document = null,
+        #[ArrayType(PhotoSize::class)] protected array|null $photo = null,
+        protected Sticker|null $sticker = null,
+        protected Story|null $story = null,
+        protected Video|null $video = null,
+        protected VideoNote|null $video_note = null,
+        protected Voice|null $voice = null,
+        protected bool|null $has_media_spoiler = null,
+        protected Contact|null $contact = null,
+        protected Dice|null $dice = null,
+        protected Game|null $game = null,
+        protected Giveaway|null $giveaway = null,
+        protected GiveawayWinners|null $giveaway_winners = null,
+        protected Invoice|null $invoice = null,
+        protected Location|null $location = null,
+        protected Poll|null $poll = null,
+        protected Venue|null $venue = null,
+        protected PaidMediaInfo|null $paid_media = null,
     ) {
+        parent::__construct();
     }
 
     public function getOrigin(): AbstractMessageOrigin
@@ -319,6 +322,17 @@ class ExternalReplyInfo implements EntityInterface
         return $this;
     }
 
+    public function getPaidMedia(): PaidMediaInfo|null
+    {
+        return $this->paid_media;
+    }
+
+    public function setPaidMedia(PaidMediaInfo|null $paid_media): ExternalReplyInfo
+    {
+        $this->paid_media = $paid_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -347,6 +361,7 @@ class ExternalReplyInfo implements EntityInterface
             'location' => $this->location?->toArray(),
             'poll' => $this->poll?->toArray(),
             'venue' => $this->venue?->toArray(),
+            'paid_media' => $this->paid_media?->toArray(),
         ];
     }
 }

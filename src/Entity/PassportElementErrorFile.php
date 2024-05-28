@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFileTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
+use stdClass;
 
 /**
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
@@ -21,9 +22,9 @@ class PassportElementErrorFile extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private PassportElementErrorFileTypeEnum $type,
-        private string $file_hash,
-        private string $message,
+        protected PassportElementErrorFileTypeEnum $type,
+        protected string $file_hash,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::File);
     }
@@ -61,7 +62,7 @@ class PassportElementErrorFile extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

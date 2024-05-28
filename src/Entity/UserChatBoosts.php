@@ -2,21 +2,22 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a list of boosts added to a chat by a user.
  * @link https://core.telegram.org/bots/api#userchatboosts
  */
-class UserChatBoosts implements EntityInterface
+class UserChatBoosts extends AbstractEntity
 {
     /**
      * @param ChatBoost[] $boosts The list of boosts added to the chat by the user
      */
     public function __construct(
-        #[ArrayType(UserChatBoosts::class)] private array $boosts,
+        #[ArrayType(UserChatBoosts::class)] protected array $boosts,
     ) {
+        parent::__construct();
     }
 
     public function getBoosts(): array

@@ -26,4 +26,5 @@ enum UpdateTypeEnum: string
     case PreCheckoutQuery = 'pre_checkout_query';
     case RemovedChatBoost = 'removed_chat_boost';
     case ShippingQuery = 'shipping_query';
+    case PurchasedPaidMedia = 'purchased_paid_media';
 }

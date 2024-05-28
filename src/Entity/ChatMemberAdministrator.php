@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 use stdClass;
 
@@ -43,24 +43,24 @@ class ChatMemberAdministrator extends AbstractChatMember
      * @param string|null $custom_title Optional. Custom title for this user
      */
     public function __construct(
-        private User $user,
-        private bool $can_be_edited,
-        private bool $is_anonymous,
-        private bool $can_manage_chat,
-        private bool $can_delete_messages,
-        private bool $can_manage_video_chats,
-        private bool $can_restrict_members,
-        private bool $can_promote_members,
-        private bool $can_change_info,
-        private bool $can_invite_users,
-        private bool $can_post_stories,
-        private bool $can_edit_stories,
-        private bool $can_delete_stories,
-        private bool|null $can_edit_messages = null,
-        private bool|null $can_manage_topics = null,
-        private bool|null $can_pin_messages = null,
-        private bool|null $can_post_messages = null,
-        private string|null $custom_title = null,
+        protected User $user,
+        protected bool $can_be_edited,
+        protected bool $is_anonymous,
+        protected bool $can_manage_chat,
+        protected bool $can_delete_messages,
+        protected bool $can_manage_video_chats,
+        protected bool $can_restrict_members,
+        protected bool $can_promote_members,
+        protected bool $can_change_info,
+        protected bool $can_invite_users,
+        protected bool $can_post_stories,
+        protected bool $can_edit_stories,
+        protected bool $can_delete_stories,
+        protected bool|null $can_edit_messages = null,
+        protected bool|null $can_manage_topics = null,
+        protected bool|null $can_pin_messages = null,
+        protected bool|null $can_post_messages = null,
+        protected string|null $custom_title = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Administrator);
     }

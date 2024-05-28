@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -11,7 +11,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#replykeyboardmarkup
  * @link https://core.telegram.org/bots/features#keyboards
  */
-class ReplyKeyboardMarkup implements EntityInterface
+class ReplyKeyboardMarkup extends AbstractEntity
 {
     /**
      * @param KeyboardButton[][] $keyboard Array of button rows, each represented by an Array of KeyboardButton objects
@@ -30,13 +30,14 @@ class ReplyKeyboardMarkup implements EntityInterface
      * 2) if the bot's message is a reply to a message in the same chat and forum topic, sender of the original message.
      */
     public function __construct(
-        #[ArrayType(new ArrayType(KeyboardButton::class))] private array $keyboard,
-        private bool|null $is_persistent = null,
-        private bool|null $resize_keyboard = null,
-        private bool|null $one_time_keyboard = null,
-        private string|null $input_field_placeholder = null,
-        private bool|null $selective = null,
+        #[ArrayType(new ArrayType(KeyboardButton::class))] protected array $keyboard,
+        protected bool|null $is_persistent = null,
+        protected bool|null $resize_keyboard = null,
+        protected bool|null $one_time_keyboard = null,
+        protected string|null $input_field_placeholder = null,
+        protected bool|null $selective = null,
     ) {
+        parent::__construct();
     }
 
     public function getKeyboard(): array

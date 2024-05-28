@@ -8,14 +8,15 @@ use stdClass;
  * This object represents the bot's short description.
  * @link https://core.telegram.org/bots/api#botshortdescription
  */
-class BotShortDescription implements EntityInterface
+class BotShortDescription extends AbstractEntity
 {
     /**
      * @param string $short_description The bot's short description
      */
     public function __construct(
-        private string $short_description,
+        protected string $short_description,
     ) {
+        parent::__construct();
     }
 
     public function getShortDescription(): string

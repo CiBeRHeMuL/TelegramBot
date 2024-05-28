@@ -22,6 +22,8 @@ class EditMessageTextRequest implements RequestInterface
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message text. See formatting options for more
      * details.
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
+     * of which the message to be edited was sent
      */
     public function __construct(
         private string $text,
@@ -32,6 +34,7 @@ class EditMessageTextRequest implements RequestInterface
         private int|null $message_id = null,
         private TelegramParseModeEnum|null $parse_mode = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -123,6 +126,17 @@ class EditMessageTextRequest implements RequestInterface
         return $this;
     }
 
+    public function getBusinessConnectionId(): string|null
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageTextRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -136,6 +150,7 @@ class EditMessageTextRequest implements RequestInterface
             'message_id' => $this->message_id,
             'parse_mode' => $this->parse_mode?->value,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

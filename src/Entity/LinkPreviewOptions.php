@@ -9,15 +9,27 @@ use stdClass;
  * Describes the options used for link preview generation.
  * @link https://core.telegram.org/bots/api#linkpreviewoptions
  */
-class LinkPreviewOptions implements EntityInterface
+class LinkPreviewOptions extends AbstractEntity
 {
+    /**
+     * @param bool|null $is_disabled Optional. True, if the link preview is disabled
+     * @param Url|null $url Optional. URL to use for the link preview.
+     * If empty, then the first URL found in the message text will be used
+     * @param bool|null $prefer_small_media Optional. True, if the media in the link preview is supposed to be shrunk;
+     * ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+     * @param bool|null $prefer_large_media Optional. True, if the media in the link preview is supposed to be enlarged;
+     * ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+     * @param bool|null $show_above_text Optional. True, if the link preview must be shown above the message text;
+     * otherwise, the link preview will be shown below the message text
+     */
     public function __construct(
-        private bool|null $is_disabled,
-        private Url|null $url,
-        private bool|null $prefer_small_media,
-        private bool|null $prefer_large_media,
-        private bool|null $show_above_text,
+        protected bool|null $is_disabled = null,
+        protected Url|null $url = null,
+        protected bool|null $prefer_small_media = null,
+        protected bool|null $prefer_large_media = null,
+        protected bool|null $show_above_text = null,
     ) {
+        parent::__construct();
     }
 
     public function getIsDisabled(): bool|null

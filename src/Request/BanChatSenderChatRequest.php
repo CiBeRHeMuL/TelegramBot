@@ -16,6 +16,28 @@ class BanChatSenderChatRequest implements RequestInterface
     ) {
     }
 
+    public function getChatId(): ChatId
+    {
+        return $this->chat_id;
+    }
+
+    public function setChatId(ChatId $chat_id): BanChatSenderChatRequest
+    {
+        $this->chat_id = $chat_id;
+        return $this;
+    }
+
+    public function getSenderChatId(): int
+    {
+        return $this->sender_chat_id;
+    }
+
+    public function setSenderChatId(int $sender_chat_id): BanChatSenderChatRequest
+    {
+        $this->sender_chat_id = $sender_chat_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [

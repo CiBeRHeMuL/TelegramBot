@@ -5,7 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 use stdClass;
 
-class Sticker implements EntityInterface
+class Sticker extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -29,22 +29,23 @@ class Sticker implements EntityInterface
      * @param int|null $file_size Optional. File size in bytes.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private StickerTypeEnum $type,
-        private int $width,
-        private int $height,
-        private bool $is_animated,
-        private bool $is_video,
-        private PhotoSize|null $thumbnail = null,
-        private string|null $emoji = null,
-        private string|null $set_name = null,
-        private File|null $premium_animation = null,
-        private MaskPosition|null $mask_position = null,
-        private string|null $custom_emoji_id = null,
-        private bool|null $needs_repainting = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected StickerTypeEnum $type,
+        protected int $width,
+        protected int $height,
+        protected bool $is_animated,
+        protected bool $is_video,
+        protected PhotoSize|null $thumbnail = null,
+        protected string|null $emoji = null,
+        protected string|null $set_name = null,
+        protected File|null $premium_animation = null,
+        protected MaskPosition|null $mask_position = null,
+        protected string|null $custom_emoji_id = null,
+        protected bool|null $needs_repainting = null,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

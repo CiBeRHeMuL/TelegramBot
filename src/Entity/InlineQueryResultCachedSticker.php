@@ -2,12 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
+use stdClass;
 
 /**
  * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively,
@@ -28,10 +29,10 @@ class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      */
     public function __construct(
-        private string $id,
-        private string $sticker_file_id,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
+        protected string $id,
+        protected string $sticker_file_id,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Sticker);
     }
@@ -80,7 +81,7 @@ class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

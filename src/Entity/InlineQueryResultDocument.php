@@ -2,16 +2,17 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultDocumentMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can
@@ -44,19 +45,19 @@ class InlineQueryResultDocument extends AbstractInlineQueryResult
      * @param int|null $thumbnail_width Optional. Thumbnail width
      */
     public function __construct(
-        private string $id,
-        private string $title,
-        private Url $document_url,
-        private InlineQueryResultDocumentMimeTypeEnum $mime_type,
-        private string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] private array|null $caption_entities = null,
-        private string|null $description = null,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $thumbnail_height = null,
-        private Url|null $thumbnail_url = null,
-        private int|null $thumbnail_width = null,
+        protected string $id,
+        protected string $title,
+        protected Url $document_url,
+        protected InlineQueryResultDocumentMimeTypeEnum $mime_type,
+        protected string|null $caption = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected string|null $description = null,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $thumbnail_height = null,
+        protected Url|null $thumbnail_url = null,
+        protected int|null $thumbnail_width = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Document);
     }
@@ -204,7 +205,7 @@ class InlineQueryResultDocument extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

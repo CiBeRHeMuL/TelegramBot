@@ -10,7 +10,7 @@ use stdClass;
  * This object represents information about an order.
  * @link https://core.telegram.org/bots/api#orderinfo
  */
-class OrderInfo implements EntityInterface
+class OrderInfo extends AbstractEntity
 {
     /**
      * @param string|null $name Optional. User name.
@@ -19,11 +19,12 @@ class OrderInfo implements EntityInterface
      * @param ShippingAddress|null $shipping_address Optional. User shipping address.
      */
     public function __construct(
-        private string|null $name = null,
-        private Phone|null $phone_number = null,
-        private Email|null $email = null,
-        private ShippingAddress|null $shipping_address = null
+        protected string|null $name = null,
+        protected Phone|null $phone_number = null,
+        protected Email|null $email = null,
+        protected ShippingAddress|null $shipping_address = null,
     ) {
+        parent::__construct();
     }
 
     public function getName(): string|null

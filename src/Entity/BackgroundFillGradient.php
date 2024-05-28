@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
 use stdClass;
 
@@ -20,9 +20,9 @@ class BackgroundFillGradient extends AbstractBackgroundFill
      * @param int $rotation_angle Clockwise rotation angle of the background fill in degrees; 0-359
      */
     public function __construct(
-        private int $top_color,
-        private int $bottom_color,
-        private int $rotation_angle,
+        protected int $top_color,
+        protected int $bottom_color,
+        protected int $rotation_angle,
     ) {
         parent::__construct(BackgroundFillTypeEnum::Gradient);
     }

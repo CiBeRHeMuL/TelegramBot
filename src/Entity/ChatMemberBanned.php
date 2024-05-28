@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 use stdClass;
 
@@ -19,8 +19,8 @@ class ChatMemberBanned extends AbstractChatMember
      * @param int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever
      */
     public function __construct(
-        private User $user,
-        private int $until_date,
+        protected User $user,
+        protected int $until_date,
     ) {
         parent::__construct(ChatMemberStatusEnum::Kicked);
     }

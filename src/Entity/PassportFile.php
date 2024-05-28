@@ -9,7 +9,7 @@ use stdClass;
  * Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
  * @link https://core.telegram.org/bots/api#passportfile
  */
-class PassportFile implements EntityInterface
+class PassportFile extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -19,11 +19,12 @@ class PassportFile implements EntityInterface
      * @param int $file_date Unix time when the file was uploaded
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $file_size,
-        private int $file_date
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $file_size,
+        protected int $file_date,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

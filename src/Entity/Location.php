@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a point on the map.
  * @link https://core.telegram.org/bots/api#location
  */
-class Location implements EntityInterface
+class Location extends AbstractEntity
 {
     /**
      * @param float $latitude Latitude as defined by sender
@@ -21,13 +21,14 @@ class Location implements EntityInterface
      * For sent live locations only.
      */
     public function __construct(
-        private float $latitude,
-        private float $longitude,
-        private float|null $horizontal_accuracy = null,
-        private int|null $live_period = null,
-        private int|null $heading = null,
-        private int|null $proximity_alert_radius = null,
+        protected float $latitude,
+        protected float $longitude,
+        protected float|null $horizontal_accuracy = null,
+        protected int|null $live_period = null,
+        protected int|null $heading = null,
+        protected int|null $proximity_alert_radius = null,
     ) {
+        parent::__construct();
     }
 
     public function getLatitude(): float

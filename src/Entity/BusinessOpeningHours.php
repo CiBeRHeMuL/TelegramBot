@@ -2,22 +2,23 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * Describes the opening hours of a business.
  */
-class BusinessOpeningHours implements EntityInterface
+class BusinessOpeningHours extends AbstractEntity
 {
     /**
      * @param string $time_zone_name Unique name of the time zone for which the opening hours are defined
      * @param BusinessOpeningHoursInterval[] $opening_hours List of time intervals describing business opening hours
      */
     public function __construct(
-        private string $time_zone_name,
-        #[ArrayType(BusinessOpeningHoursInterval::class)] private array $opening_hours,
+        protected string $time_zone_name,
+        #[ArrayType(BusinessOpeningHoursInterval::class)] protected array $opening_hours,
     ) {
+        parent::__construct();
     }
 
     public function getTimeZoneName(): string

@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object contains information about the quoted part of a message that is replied to by the given message.
  * @link https://core.telegram.org/bots/api#textquote
  */
-class TextQuote implements EntityInterface
+class TextQuote extends AbstractEntity
 {
     /**
      * @param string $text Text of the quoted part of a message that is replied to by the given message.
@@ -21,11 +21,12 @@ class TextQuote implements EntityInterface
      * Otherwise, the quote was added automatically by the server.
      */
     public function __construct(
-        private string $text,
-        private int $position,
-        #[ArrayType(MessageEntity::class)] private array|null $entities = null,
-        private bool|null $is_manual = null,
+        protected string $text,
+        protected int $position,
+        #[ArrayType(MessageEntity::class)] protected array|null $entities = null,
+        protected bool|null $is_manual = null,
     ) {
+        parent::__construct();
     }
 
     public function getText(): string

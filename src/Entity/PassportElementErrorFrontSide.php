@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFrontSideTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
+use stdClass;
 
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side
@@ -22,9 +23,9 @@ class PassportElementErrorFrontSide extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private PassportElementErrorFrontSideTypeEnum $type,
-        private string $file_hash,
-        private string $message,
+        protected PassportElementErrorFrontSideTypeEnum $type,
+        protected string $file_hash,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::FrontSide);
     }
@@ -62,7 +63,7 @@ class PassportElementErrorFrontSide extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

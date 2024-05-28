@@ -3,10 +3,12 @@
 namespace AndrewGos\TelegramBot\Http\Message;
 
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
-use AndrewGos\TelegramBot\Enum\HttpVerionEnum;
+use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainerInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use InvalidArgumentException;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -17,14 +19,14 @@ class HttpRequest implements RequestInterface
     private UriInterface $uri;
     private HttpHeadersContainerInterface $headers;
     private StreamInterface|null $body;
-    private HttpVerionEnum $protocolVersion;
+    private HttpVersionEnum $protocolVersion;
 
     public function __construct(
         HttpMethodEnum $method,
         UriInterface $uri,
         HttpHeadersContainerInterface $headers,
         StreamInterface|null $body = null,
-        HttpVerionEnum $protocolVersion = HttpVerionEnum::Http11,
+        HttpVersionEnum $protocolVersion = HttpVersionEnum::Http11,
     ) {
         $this->method = $method;
         $this->uri = $uri;
@@ -87,7 +89,7 @@ class HttpRequest implements RequestInterface
 
     public function withProtocolVersion(string $version): RequestInterface
     {
-        $this->protocolVersion = HttpVerionEnum::from($version);
+        $this->protocolVersion = HttpVersionEnum::from($version);
         return $this;
     }
 
@@ -101,11 +103,25 @@ class HttpRequest implements RequestInterface
         return $this->headers->has($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return array|string[]
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeader(string $name): array
     {
         return $this->headers->get($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeaderLine(string $name): string
     {
         return implode(', ', $this->getHeader($name));

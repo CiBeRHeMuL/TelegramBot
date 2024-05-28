@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use stdClass;
 
@@ -11,7 +11,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatshared
  * @see KeyboardButtonRequestChat
  */
-class ChatShared implements EntityInterface
+class ChatShared extends AbstractEntity
 {
     /**
      * @param int $request_id Identifier of the request
@@ -24,12 +24,13 @@ class ChatShared implements EntityInterface
      * @param string|null $username Optional. Username of the chat, if the username was requested by the bot and available.
      */
     public function __construct(
-        private int $request_id,
-        private ChatId $chat_id,
-        #[ArrayType(PhotoSize::class)] private array|null $photo = null,
-        private string|null $title = null,
-        private string|null $username = null,
+        protected int $request_id,
+        protected ChatId $chat_id,
+        #[ArrayType(PhotoSize::class)] protected array|null $photo = null,
+        protected string|null $title = null,
+        protected string|null $username = null,
     ) {
+        parent::__construct();
     }
 
     public function getRequestId(): int

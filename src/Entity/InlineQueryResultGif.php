@@ -2,16 +2,17 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\AndChecker;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultThumbnailMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption.
@@ -41,21 +42,23 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
      * @param InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”,
      * “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      * @param string|null $title Optional. Title for the result
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
-        private string $id,
-        private Url $gif_url,
-        private Url $thumbnail_url,
-        private string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] private array|null $caption_entities = null,
-        private int|null $gif_duration = null,
-        private int|null $gif_height = null,
-        private int|null $gif_width = null,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type = null,
-        private string|null $title = null,
+        protected string $id,
+        protected Url $gif_url,
+        protected Url $thumbnail_url,
+        protected string|null $caption = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected int|null $gif_duration = null,
+        protected int|null $gif_height = null,
+        protected int|null $gif_width = null,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type = null,
+        protected string|null $title = null,
+        protected bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Gif);
     }
@@ -203,7 +206,18 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultGif
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,
@@ -222,6 +236,7 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
             'reply_markup' => $this->reply_markup?->toArray(),
             'thumbnail_mime_type' => $this->thumbnail_mime_type?->value,
             'title' => $this->title,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

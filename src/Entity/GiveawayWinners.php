@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a message about the completion of a giveaway with public winners.
  * @link https://core.telegram.org/bots/api#giveawaywinners
  */
-class GiveawayWinners implements EntityInterface
+class GiveawayWinners extends AbstractEntity
 {
     /**
      * @param Chat $chat The chat that created the giveaway.
@@ -26,20 +26,24 @@ class GiveawayWinners implements EntityInterface
      * True, if only users who had joined the chats after the giveaway started were eligible to win.
      * @param bool|null $was_refunded Optional. True, if the giveaway was canceled because the payment for it was refunded.
      * @param string|null $prize_description Optional. Description of additional giveaway prize.
+     * @param int|null $prize_star_count Optional. The number of Telegram Stars that were split between giveaway winners;
+     * for Telegram Star giveaways only
      */
     public function __construct(
-        private Chat $chat,
-        private int $giveaway_message_id,
-        private int $winners_selection_date,
-        private int $winner_count,
-        #[ArrayType(User::class)] private array $winners,
-        private int|null $additional_chat_count = null,
-        private int|null $premium_subscription_month_count = null,
-        private int|null $unclaimed_prize_count = null,
-        private bool|null $only_new_members = null,
-        private bool|null $was_refunded = null,
-        private string|null $prize_description = null,
+        protected Chat $chat,
+        protected int $giveaway_message_id,
+        protected int $winners_selection_date,
+        protected int $winner_count,
+        #[ArrayType(User::class)] protected array $winners,
+        protected int|null $additional_chat_count = null,
+        protected int|null $premium_subscription_month_count = null,
+        protected int|null $unclaimed_prize_count = null,
+        protected bool|null $only_new_members = null,
+        protected bool|null $was_refunded = null,
+        protected string|null $prize_description = null,
+        protected int|null $prize_star_count = null,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat
@@ -163,6 +167,17 @@ class GiveawayWinners implements EntityInterface
         return $this;
     }
 
+    public function getPrizeStarCount(): int|null
+    {
+        return $this->prize_star_count;
+    }
+
+    public function setPrizeStarCount(int|null $prize_star_count): GiveawayWinners
+    {
+        $this->prize_star_count = $prize_star_count;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -177,6 +192,7 @@ class GiveawayWinners implements EntityInterface
             'only_new_members' => $this->only_new_members,
             'was_refunded' => $this->was_refunded,
             'prize_description' => $this->prize_description,
+            'prize_star_count' => $this->prize_star_count,
         ];
     }
 }

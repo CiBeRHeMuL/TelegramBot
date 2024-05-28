@@ -32,6 +32,11 @@ class SendLocationRequest implements RequestInterface
      * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
      * a reply from the user
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
+     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *
+     * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
     public function __construct(
         private ChatId $chat_id,
@@ -47,6 +52,8 @@ class SendLocationRequest implements RequestInterface
         private int|null $proximity_alert_radius = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ReplyParameters|null $reply_parameters = null,
+        private string|null $message_effect_id = null,
+        private bool|null $allow_paid_broadcast = null,
     ) {
     }
 
@@ -193,6 +200,28 @@ class SendLocationRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendLocationRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
+    public function getAllowPaidBroadcast(): bool|null
+    {
+        return $this->allow_paid_broadcast;
+    }
+
+    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendLocationRequest
+    {
+        $this->allow_paid_broadcast = $allow_paid_broadcast;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -209,6 +238,8 @@ class SendLocationRequest implements RequestInterface
             'proximity_alert_radius' => $this->proximity_alert_radius,
             'reply_markup' => $this->reply_markup?->toArray(),
             'reply_parameters' => $this->reply_parameters?->toArray(),
+            'message_effect_id' => $this->message_effect_id,
+            'allow_paid_broadcast' => $this->allow_paid_broadcast,
         ];
     }
 }

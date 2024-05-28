@@ -2,21 +2,22 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a service message about new members invited to a video chat.
  * @link https://core.telegram.org/bots/api#videochatparticipantsinvited
  */
-class VideoChatParticipantsInvited implements EntityInterface
+class VideoChatParticipantsInvited extends AbstractEntity
 {
     /**
      * @param User[] $users New members that were invited to the video chat
      */
     public function __construct(
-        #[ArrayType(User::class)] private array $users
+        #[ArrayType(User::class)] protected array $users,
     ) {
+        parent::__construct();
     }
 
     public function getUsers(): array

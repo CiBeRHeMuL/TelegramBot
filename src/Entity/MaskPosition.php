@@ -5,7 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Enum\MaskPositionEnum;
 use stdClass;
 
-class MaskPosition implements EntityInterface
+class MaskPosition extends AbstractEntity
 {
     /**
      * @param MaskPositionEnum $point The part of the face relative to which the mask should be placed.
@@ -16,11 +16,12 @@ class MaskPosition implements EntityInterface
      * @param float $scale Mask scaling coefficient. For example, 2.0 means double size.
      */
     public function __construct(
-        private MaskPositionEnum $point,
-        private float $x_shift,
-        private float $y_shift,
-        private float $scale,
+        protected MaskPositionEnum $point,
+        protected float $x_shift,
+        protected float $y_shift,
+        protected float $scale,
     ) {
+        parent::__construct();
     }
 
     public function getPoint(): MaskPositionEnum

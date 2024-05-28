@@ -8,16 +8,17 @@ use stdClass;
  * This object represents a story.
  * @link https://core.telegram.org/bots/api#story
  */
-class Story implements EntityInterface
+class Story extends AbstractEntity
 {
     /**
      * @param Chat $chat Chat that posted the story.
      * @param int $id Unique identifier for the story in the chat.
      */
     public function __construct(
-        private Chat $chat,
-        private int $id,
+        protected Chat $chat,
+        protected int $id,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat

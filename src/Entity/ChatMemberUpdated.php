@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents changes in the status of a chat member.
  * @link https://core.telegram.org/bots/api#chatmemberupdated
  */
-class ChatMemberUpdated implements EntityInterface
+class ChatMemberUpdated extends AbstractEntity
 {
     /**
      * @param Chat $chat Chat the user belongs to
@@ -21,15 +23,16 @@ class ChatMemberUpdated implements EntityInterface
      * using an invite link and being approved by an administrator
      */
     public function __construct(
-        private Chat $chat,
-        private User $from,
-        private int $date,
-        private AbstractChatMember $old_chat_member,
-        private AbstractChatMember $new_chat_member,
-        private ChatInviteLink|null $invite_link = null,
-        private bool|null $via_chat_folder_invite_link = null,
-        private bool|null $via_join_request = null,
+        protected Chat $chat,
+        protected User $from,
+        protected int $date,
+        protected AbstractChatMember $old_chat_member,
+        protected AbstractChatMember $new_chat_member,
+        protected ChatInviteLink|null $invite_link = null,
+        protected bool|null $via_chat_folder_invite_link = null,
+        protected bool|null $via_join_request = null,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat
@@ -120,7 +123,7 @@ class ChatMemberUpdated implements EntityInterface
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

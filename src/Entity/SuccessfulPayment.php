@@ -9,7 +9,7 @@ use stdClass;
  * This object contains basic information about a successful payment.
  * @link https://core.telegram.org/bots/api#successfulpayment
  */
-class SuccessfulPayment implements EntityInterface
+class SuccessfulPayment extends AbstractEntity
 {
     /**
      * @param CurrencyEnum $currency Three-letter ISO 4217 currency code.
@@ -19,16 +19,24 @@ class SuccessfulPayment implements EntityInterface
      * @param string $provider_payment_charge_id Provider payment identifier.
      * @param string|null $shipping_option_id Optional. Identifier of the shipping option chosen by the user.
      * @param OrderInfo|null $order_info Optional. Order information provided by the user.
+     * @param int|null $subscription_expiration_date Optional. Expiration date of the subscription, in Unix time;
+     * for recurring payments only
+     * @param bool|null $is_recurring Optional. True, if the payment is a recurring payment for a subscription
+     * @param bool|null $is_first_recurring Optional. True, if the payment is the first payment for a subscription
      */
     public function __construct(
-        private CurrencyEnum $currency,
-        private int $total_amount,
-        private string $invoice_payload,
-        private string $telegram_payment_charge_id,
-        private string $provider_payment_charge_id,
-        private string|null $shipping_option_id = null,
-        private OrderInfo|null $order_info = null
+        protected CurrencyEnum $currency,
+        protected int $total_amount,
+        protected string $invoice_payload,
+        protected string $telegram_payment_charge_id,
+        protected string $provider_payment_charge_id,
+        protected string|null $shipping_option_id = null,
+        protected OrderInfo|null $order_info = null,
+        protected int|null $subscription_expiration_date = null,
+        protected bool|null $is_recurring = null,
+        protected bool|null $is_first_recurring = null,
     ) {
+        parent::__construct();
     }
 
     public function getCurrency(): CurrencyEnum
@@ -108,6 +116,36 @@ class SuccessfulPayment implements EntityInterface
         return $this;
     }
 
+    public function getSubscriptionExpirationDate(): ?int
+    {
+        return $this->subscription_expiration_date;
+    }
+
+    public function setSubscriptionExpirationDate(?int $subscription_expiration_date): void
+    {
+        $this->subscription_expiration_date = $subscription_expiration_date;
+    }
+
+    public function getIsRecurring(): ?bool
+    {
+        return $this->is_recurring;
+    }
+
+    public function setIsRecurring(?bool $is_recurring): void
+    {
+        $this->is_recurring = $is_recurring;
+    }
+
+    public function getIsFirstRecurring(): ?bool
+    {
+        return $this->is_first_recurring;
+    }
+
+    public function setIsFirstRecurring(?bool $is_first_recurring): void
+    {
+        $this->is_first_recurring = $is_first_recurring;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -118,6 +156,9 @@ class SuccessfulPayment implements EntityInterface
             'order_info' => $this->order_info?->toArray(),
             'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
             'provider_payment_charge_id' => $this->provider_payment_charge_id,
+            'subscription_expiration_date' => $this->subscription_expiration_date,
+            'is_recurring' => $this->is_recurring,
+            'is_first_recurring' => $this->is_first_recurring,
         ];
     }
 }

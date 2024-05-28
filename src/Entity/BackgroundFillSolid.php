@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
 use stdClass;
 
@@ -18,7 +18,7 @@ class BackgroundFillSolid extends AbstractBackgroundFill
      * @param int $color The color of the background fill in the RGB24 format
      */
     public function __construct(
-        private int $color,
+        protected int $color,
     ) {
         parent::__construct(BackgroundFillTypeEnum::Solid);
     }

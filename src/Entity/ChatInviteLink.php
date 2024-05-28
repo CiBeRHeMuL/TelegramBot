@@ -9,7 +9,7 @@ use stdClass;
  * Represents an invite link for a chat.
  * @link https://core.telegram.org/bots/api#chatinvitelink
  */
-class ChatInviteLink implements EntityInterface
+class ChatInviteLink extends AbstractEntity
 {
     /**
      * @param Url $invite_link The invite link. If the link was created by another chat administrator, then the second part of
@@ -23,18 +23,24 @@ class ChatInviteLink implements EntityInterface
      * the chat via this invite link; 1-99999
      * @param string|null $name Optional. Invite link name
      * @param int|null $pending_join_request_count Optional. Number of pending join requests created using this link
+     * @param int|null $subscription_period Optional. The number of seconds the subscription will be active for before the next payment
+     * @param int|null $subscription_price Optional. The amount of Telegram Stars a user must pay initially and after each subsequent
+     * subscription period to be a member of the chat using the link
      */
     public function __construct(
-        private Url $invite_link,
-        private User $creator,
-        private bool $creates_join_request,
-        private bool $is_primary,
-        private bool $is_revoked,
-        private int|null $expire_date = null,
-        private int|null $member_limit = null,
-        private string|null $name = null,
-        private int|null $pending_join_request_count = null,
+        protected Url $invite_link,
+        protected User $creator,
+        protected bool $creates_join_request,
+        protected bool $is_primary,
+        protected bool $is_revoked,
+        protected int|null $expire_date = null,
+        protected int|null $member_limit = null,
+        protected string|null $name = null,
+        protected int|null $pending_join_request_count = null,
+        protected int|null $subscription_period = null,
+        protected int|null $subscription_price = null,
     ) {
+        parent::__construct();
     }
 
     public function getInviteLink(): Url
@@ -136,6 +142,28 @@ class ChatInviteLink implements EntityInterface
         return $this;
     }
 
+    public function getSubscriptionPeriod(): int|null
+    {
+        return $this->subscription_period;
+    }
+
+    public function setSubscriptionPeriod(int|null $subscription_period): ChatInviteLink
+    {
+        $this->subscription_period = $subscription_period;
+        return $this;
+    }
+
+    public function getSubscriptionPrice(): int|null
+    {
+        return $this->subscription_price;
+    }
+
+    public function setSubscriptionPrice(int|null $subscription_price): ChatInviteLink
+    {
+        $this->subscription_price = $subscription_price;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -148,6 +176,8 @@ class ChatInviteLink implements EntityInterface
             'member_limit' => $this->member_limit,
             'name' => $this->name,
             'pending_join_request_count' => $this->pending_join_request_count,
+            'subscription_period' => $this->subscription_period,
+            'subscription_price' => $this->subscription_price,
         ];
     }
 }

@@ -8,7 +8,7 @@ use stdClass;
  * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
  * @link https://core.telegram.org/bots/api#proximityalerttriggered
  */
-class ProximityAlertTriggered implements EntityInterface
+class ProximityAlertTriggered extends AbstractEntity
 {
     /**
      * @param User $traveler User that triggered the alert
@@ -16,10 +16,11 @@ class ProximityAlertTriggered implements EntityInterface
      * @param int $distance The distance between the users
      */
     public function __construct(
-        private User $traveler,
-        private User $watcher,
-        private int $distance
+        protected User $traveler,
+        protected User $watcher,
+        protected int $distance,
     ) {
+        parent::__construct();
     }
 
     public function getTraveler(): User

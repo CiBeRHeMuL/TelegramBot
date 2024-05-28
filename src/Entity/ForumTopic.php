@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a forum topic.
  * @link https://core.telegram.org/bots/api#forumtopic
  */
-class ForumTopic implements EntityInterface
+class ForumTopic extends AbstractEntity
 {
     /**
      * @param int $message_thread_id Unique identifier of the forum topic
@@ -17,11 +17,12 @@ class ForumTopic implements EntityInterface
      * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown as the topic icon
      */
     public function __construct(
-        private int $message_thread_id,
-        private string $name,
-        private int $icon_color,
-        private string|null $icon_custom_emoji_id = null,
+        protected int $message_thread_id,
+        protected string $name,
+        protected int $icon_color,
+        protected string|null $icon_custom_emoji_id = null,
     ) {
+        parent::__construct();
     }
 
     public function getMessageThreadId(): int

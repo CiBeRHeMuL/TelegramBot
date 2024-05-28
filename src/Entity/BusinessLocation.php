@@ -8,16 +8,17 @@ use stdClass;
  * Contains information about the location of a Telegram Business account.
  * @link https://core.telegram.org/bots/api#businesslocation
  */
-class BusinessLocation implements EntityInterface
+class BusinessLocation extends AbstractEntity
 {
     /**
      * @param string $address Address of the business
      * @param Location|null $location Optional. Location of the business
      */
     public function __construct(
-        private string $address,
-        private Location|null $location = null,
+        protected string $address,
+        protected Location|null $location = null,
     ) {
+        parent::__construct();
     }
 
     public function getAddress(): string

@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a service message about an edited forum topic.
  * @link https://core.telegram.org/bots/api#forumtopicedited
  */
-class ForumTopicEdited implements EntityInterface
+class ForumTopicEdited extends AbstractEntity
 {
     /**
      * @param string|null $name Optional. New name of the topic, if it was edited
@@ -16,9 +16,10 @@ class ForumTopicEdited implements EntityInterface
      * if it was edited; an empty string if the icon was removed
      */
     public function __construct(
-        private string|null $name = null,
-        private string|null $icon_custom_emoji_id = null
+        protected string|null $name = null,
+        protected string|null $icon_custom_emoji_id = null,
     ) {
+        parent::__construct();
     }
 
     public function getName(): string|null

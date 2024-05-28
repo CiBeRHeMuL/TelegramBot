@@ -10,7 +10,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#writeaccessallowed
  * @link https://core.telegram.org/bots/webapps#initializing-mini-apps
  */
-class WriteAccessAllowed implements EntityInterface
+class WriteAccessAllowed extends AbstractEntity
 {
     /**
      * @param bool|null $from_request
@@ -18,10 +18,11 @@ class WriteAccessAllowed implements EntityInterface
      * @param bool|null $from_attachment_menu
      */
     public function __construct(
-        private bool|null $from_request = null,
-        private string|null $web_app_name = null,
-        private bool|null $from_attachment_menu = null
+        protected bool|null $from_request = null,
+        protected string|null $web_app_name = null,
+        protected bool|null $from_attachment_menu = null,
     ) {
+        parent::__construct();
     }
 
     public function getFromRequest(): bool|null

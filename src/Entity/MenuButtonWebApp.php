@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
 use stdClass;
 
@@ -18,10 +18,12 @@ class MenuButtonWebApp extends AbstractMenuButton
      * @param string $text Text on the button
      * @param WebAppInfo $web_app Description of the Web App that will be launched when the user presses the button. The Web App
      * will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
+     * Alternatively, a t.me link to a Web App of the bot can be specified in the object instead of the Web App's URL,
+     * in which case the Web App will be opened as if the user pressed the link.
      */
     public function __construct(
-        private string $text,
-        private WebAppInfo $web_app,
+        protected string $text,
+        protected WebAppInfo $web_app,
     ) {
         parent::__construct(MenuButtonTypeEnum::WebApp);
     }

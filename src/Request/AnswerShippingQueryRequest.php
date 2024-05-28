@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Entity\ShippingOption;
 
 class AnswerShippingQueryRequest implements RequestInterface

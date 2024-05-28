@@ -2,13 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object contains information about one answer option in a poll.
  * @link https://core.telegram.org/bots/api#polloption
  */
-class PollOption implements EntityInterface
+class PollOption extends AbstractEntity
 {
     /**
      * @param string $text Option text, 1-100 characters.
@@ -17,10 +18,11 @@ class PollOption implements EntityInterface
      * Currently, only custom emoji entities are allowed in poll option texts
      */
     public function __construct(
-        private string $text,
-        private int $voter_count,
-        private array|null $text_entities,
+        protected string $text,
+        protected int $voter_count,
+        #[ArrayType(MessageEntity::class)] protected array|null $text_entities = null,
     ) {
+        parent::__construct();
     }
 
     public function getText(): string

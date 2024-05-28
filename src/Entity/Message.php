@@ -2,10 +2,10 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use stdClass;
 
 /**
@@ -134,89 +134,105 @@ class Message extends AbstractMaybeInaccessibleMessage
      * Available only for outgoing messages sent on behalf of the connected business account.
      * @param bool|null $is_from_offline Optional. True, if the message was sent by an implicit action, for example,
      * as an away or a greeting business message, or as a scheduled message
+     * @param string|null $effect_id Optional. Unique identifier of the message effect added to the message
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
+     * @param RefundedPayment|null $refunded_payment Optional. Message is a service message about a refunded payment, information about the payment.
+     * @param GiftInfo|null $gift Optional. Service message: a regular gift was sent or received
+     * @param UniqueGiftInfo|null $unique_gift Optional. Service message: a unique gift was sent or received
+     * @param PaidMessagePriceChanged|null $paid_message_price_changed Optional. Service message: the price for paid messages has changed in the chat
+     * @param int|null $paid_star_count Optional. The number of Telegram Stars that were paid by the sender of the message to send it
      */
     public function __construct(
         protected int $message_id,
         protected int $date,
         protected Chat $chat,
-        private int|null $message_thread_id = null,
-        private User|null $from = null,
-        private Chat|null $sender_chat = null,
-        private int|null $sender_boost_count = null,
-        private AbstractMessageOrigin|null $forward_origin = null,
-        private bool|null $is_topic_message = null,
-        private bool|null $is_automatic_forward = null,
-        private Message|null $reply_to_message = null,
-        private ExternalReplyInfo|null $external_reply = null,
-        private TextQuote|null $quote = null,
-        private Story|null $reply_to_story = null,
-        private User|null $via_bot = null,
-        private int|null $edit_date = null,
-        private bool|null $has_protected_content = null,
-        private string|null $media_group_id = null,
-        private string|null $author_signature = null,
-        private string|null $text = null,
-        #[ArrayType(MessageEntity::class)] private array|null $entities = null,
-        private LinkPreviewOptions|null $link_preview_options = null,
-        private Animation|null $animation = null,
-        private Audio|null $audio = null,
-        private Document|null $document = null,
-        #[ArrayType(PhotoSize::class)] private array|null $photo = null,
-        private Sticker|null $sticker = null,
-        private Story|null $story = null,
-        private Video|null $video = null,
-        private VideoNote|null $video_note = null,
-        private Voice|null $voice = null,
-        private string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] private array|null $caption_entities = null,
-        private bool|null $has_media_spoiler = null,
-        private Contact|null $contact = null,
-        private Dice|null $dice = null,
-        private Game|null $game = null,
-        private Poll|null $poll = null,
-        private Venue|null $venue = null,
-        private Location|null $location = null,
-        #[ArrayType(User::class)] private array|null $new_chat_members = null,
-        private User|null $left_chat_member = null,
-        private string|null $new_chat_title = null,
-        #[ArrayType(PhotoSize::class)] private array|null $new_chat_photo = null,
-        private bool|null $delete_chat_photo = null,
-        private bool|null $group_chat_created = null,
-        private bool|null $supergroup_chat_created = null,
-        private bool|null $channel_chat_created = null,
-        private MessageAutoDeleteTimerChanged|null $message_auto_delete_timer_changed = null,
-        private int|null $migrate_to_chat_id = null,
-        private int|null $migrate_from_chat_id = null,
-        private Message|InaccessibleMessage|null $pinned_message = null,
-        private Invoice|null $invoice = null,
-        private SuccessfulPayment|null $successful_payment = null,
-        private UsersShared|null $users_shared = null,
-        private ChatShared|null $chat_shared = null,
-        private string|null $connected_website = null,
-        private WriteAccessAllowed|null $write_access_allowed = null,
-        private PassportData|null $passport_data = null,
-        private ProximityAlertTriggered|null $proximity_alert_triggered = null,
-        private ChatBoostAdded|null $boost_added = null,
-        private ForumTopicCreated|null $forum_topic_created = null,
-        private ForumTopicEdited|null $forum_topic_edited = null,
-        private ForumTopicClosed|null $forum_topic_closed = null,
-        private ForumTopicReopened|null $forum_topic_reopened = null,
-        private GeneralForumTopicHidden|null $general_forum_topic_hidden = null,
-        private GeneralForumTopicUnhidden|null $general_forum_topic_unhidden = null,
-        private GiveawayCreated|null $giveaway_created = null,
-        private Giveaway|null $giveaway = null,
-        private GiveawayWinners|null $giveaway_winners = null,
-        private GiveawayCompleted|null $giveaway_completed = null,
-        private VideoChatScheduled|null $video_chat_scheduled = null,
-        private VideoChatStarted|null $video_chat_started = null,
-        private VideoChatEnded|null $video_chat_ended = null,
-        private VideoChatParticipantsInvited|null $video_chat_participants_invited = null,
-        private WebAppData|null $web_app_data = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private ChatBackground|null $chat_background_set = null,
-        private string|null $business_connection_id = null,
-        private User|null $sender_business_bot = null,
-        private bool|null $is_from_offline = null,
+        protected int|null $message_thread_id = null,
+        protected User|null $from = null,
+        protected Chat|null $sender_chat = null,
+        protected int|null $sender_boost_count = null,
+        protected AbstractMessageOrigin|null $forward_origin = null,
+        protected bool|null $is_topic_message = null,
+        protected bool|null $is_automatic_forward = null,
+        protected Message|null $reply_to_message = null,
+        protected ExternalReplyInfo|null $external_reply = null,
+        protected TextQuote|null $quote = null,
+        protected Story|null $reply_to_story = null,
+        protected User|null $via_bot = null,
+        protected int|null $edit_date = null,
+        protected bool|null $has_protected_content = null,
+        protected string|null $media_group_id = null,
+        protected string|null $author_signature = null,
+        protected string|null $text = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $entities = null,
+        protected LinkPreviewOptions|null $link_preview_options = null,
+        protected Animation|null $animation = null,
+        protected Audio|null $audio = null,
+        protected Document|null $document = null,
+        #[ArrayType(PhotoSize::class)] protected array|null $photo = null,
+        protected Sticker|null $sticker = null,
+        protected Story|null $story = null,
+        protected Video|null $video = null,
+        protected VideoNote|null $video_note = null,
+        protected Voice|null $voice = null,
+        protected string|null $caption = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected bool|null $has_media_spoiler = null,
+        protected Contact|null $contact = null,
+        protected Dice|null $dice = null,
+        protected Game|null $game = null,
+        protected Poll|null $poll = null,
+        protected Venue|null $venue = null,
+        protected Location|null $location = null,
+        #[ArrayType(User::class)] protected array|null $new_chat_members = null,
+        protected User|null $left_chat_member = null,
+        protected string|null $new_chat_title = null,
+        #[ArrayType(PhotoSize::class)] protected array|null $new_chat_photo = null,
+        protected bool|null $delete_chat_photo = null,
+        protected bool|null $group_chat_created = null,
+        protected bool|null $supergroup_chat_created = null,
+        protected bool|null $channel_chat_created = null,
+        protected MessageAutoDeleteTimerChanged|null $message_auto_delete_timer_changed = null,
+        protected int|null $migrate_to_chat_id = null,
+        protected int|null $migrate_from_chat_id = null,
+        protected Message|InaccessibleMessage|null $pinned_message = null,
+        protected Invoice|null $invoice = null,
+        protected SuccessfulPayment|null $successful_payment = null,
+        protected UsersShared|null $users_shared = null,
+        protected ChatShared|null $chat_shared = null,
+        protected string|null $connected_website = null,
+        protected WriteAccessAllowed|null $write_access_allowed = null,
+        protected PassportData|null $passport_data = null,
+        protected ProximityAlertTriggered|null $proximity_alert_triggered = null,
+        protected ChatBoostAdded|null $boost_added = null,
+        protected ForumTopicCreated|null $forum_topic_created = null,
+        protected ForumTopicEdited|null $forum_topic_edited = null,
+        protected ForumTopicClosed|null $forum_topic_closed = null,
+        protected ForumTopicReopened|null $forum_topic_reopened = null,
+        protected GeneralForumTopicHidden|null $general_forum_topic_hidden = null,
+        protected GeneralForumTopicUnhidden|null $general_forum_topic_unhidden = null,
+        protected GiveawayCreated|null $giveaway_created = null,
+        protected Giveaway|null $giveaway = null,
+        protected GiveawayWinners|null $giveaway_winners = null,
+        protected GiveawayCompleted|null $giveaway_completed = null,
+        protected VideoChatScheduled|null $video_chat_scheduled = null,
+        protected VideoChatStarted|null $video_chat_started = null,
+        protected VideoChatEnded|null $video_chat_ended = null,
+        protected VideoChatParticipantsInvited|null $video_chat_participants_invited = null,
+        protected WebAppData|null $web_app_data = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected ChatBackground|null $chat_background_set = null,
+        protected string|null $business_connection_id = null,
+        protected User|null $sender_business_bot = null,
+        protected bool|null $is_from_offline = null,
+        protected string|null $effect_id = null,
+        protected bool|null $show_caption_above_media = null,
+        protected PaidMediaInfo|null $paid_media = null,
+        protected RefundedPayment|null $refunded_payment = null,
+        protected GiftInfo|null $gift = null,
+        protected UniqueGiftInfo|null $unique_gift = null,
+        protected PaidMessagePriceChanged|null $paid_message_price_changed = null,
+        protected int|null $paid_star_count = null,
     ) {
         parent::__construct($this->date);
     }
@@ -1112,6 +1128,89 @@ class Message extends AbstractMaybeInaccessibleMessage
         return $this;
     }
 
+    public function getEffectId(): string|null
+    {
+        return $this->effect_id;
+    }
+
+    public function setEffectId(string|null $effect_id): Message
+    {
+        $this->effect_id = $effect_id;
+        return $this;
+    }
+
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): Message
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
+    public function getPaidMedia(): PaidMediaInfo|null
+    {
+        return $this->paid_media;
+    }
+
+    public function setPaidMedia(PaidMediaInfo|null $paid_media): Message
+    {
+        $this->paid_media = $paid_media;
+        return $this;
+    }
+
+    public function getRefundedPayment(): ?RefundedPayment
+    {
+        return $this->refunded_payment;
+    }
+
+    public function setRefundedPayment(?RefundedPayment $refunded_payment): void
+    {
+        $this->refunded_payment = $refunded_payment;
+    }
+
+    public function getGift(): ?GiftInfo
+    {
+        return $this->gift;
+    }
+
+    public function setGift(?GiftInfo $gift): void
+    {
+        $this->gift = $gift;
+    }
+
+    public function getUniqueGift(): ?UniqueGiftInfo
+    {
+        return $this->unique_gift;
+    }
+
+    public function setUniqueGift(?UniqueGiftInfo $unique_gift): void
+    {
+        $this->unique_gift = $unique_gift;
+    }
+
+    public function getPaidMessagePriceChanged(): ?PaidMessagePriceChanged
+    {
+        return $this->paid_message_price_changed;
+    }
+
+    public function setPaidMessagePriceChanged(?PaidMessagePriceChanged $paid_message_price_changed): void
+    {
+        $this->paid_message_price_changed = $paid_message_price_changed;
+    }
+
+    public function getPaidStarCount(): ?int
+    {
+        return $this->paid_star_count;
+    }
+
+    public function setPaidStarCount(?int $paid_star_count): void
+    {
+        $this->paid_star_count = $paid_star_count;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -1221,6 +1320,14 @@ class Message extends AbstractMaybeInaccessibleMessage
             'business_connection_id' => $this->business_connection_id,
             'sender_business_bot' => $this->sender_business_bot?->toArray(),
             'is_from_offline' => $this->is_from_offline,
+            'effect_id' => $this->effect_id,
+            'show_caption_above_media' => $this->show_caption_above_media,
+            'paid_media' => $this->paid_media?->toArray(),
+            'refunded_payment' => $this->refunded_payment?->toArray(),
+            'gift' => $this->gift?->toArray(),
+            'unique_gift' => $this->unique_gift?->toArray(),
+            'paid_message_price_changed' => $this->paid_message_price_changed?->toArray(),
+            'paid_star_count' => $this->paid_star_count,
         ];
     }
 }

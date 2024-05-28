@@ -8,7 +8,7 @@ use stdClass;
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  * @link https://core.telegram.org/bots/api#animation
  */
-class Animation implements EntityInterface
+class Animation extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -25,16 +25,17 @@ class Animation implements EntityInterface
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $width,
-        private int $height,
-        private int $duration,
-        private PhotoSize|null $thumbnail = null,
-        private string|null $file_name = null,
-        private string|null $mime_type = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $width,
+        protected int $height,
+        protected int $duration,
+        protected PhotoSize|null $thumbnail = null,
+        protected string|null $file_name = null,
+        protected string|null $mime_type = null,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

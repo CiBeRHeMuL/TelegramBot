@@ -9,16 +9,17 @@ use stdClass;
  * This object represents an animated emoji that displays a random value.
  * @link https://core.telegram.org/bots/api#dice
  */
-class Dice implements EntityInterface
+class Dice extends AbstractEntity
 {
     /**
      * @param DiceEmojiEnum $emoji Emoji on which the dice throw animation is based
      * @param int $value Value of the dice, 1-6 for “🎲”, “🎯” and “🎳” base emoji, 1-5 for “🏀” and “⚽” base emoji, 1-64 for “🎰” base emoji
      */
     public function __construct(
-        private DiceEmojiEnum $emoji,
-        private int $value,
+        protected DiceEmojiEnum $emoji,
+        protected int $value,
     ) {
+        parent::__construct();
     }
 
     public function getEmoji(): DiceEmojiEnum

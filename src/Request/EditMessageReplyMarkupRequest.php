@@ -13,12 +13,15 @@ class EditMessageReplyMarkupRequest implements RequestInterface
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
+     * of which the message to be edited was sent
      */
     public function __construct(
         private ChatId|null $chat_id = null,
         private string|null $inline_message_id = null,
         private int|null $message_id = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -66,6 +69,17 @@ class EditMessageReplyMarkupRequest implements RequestInterface
         return $this;
     }
 
+    public function getBusinessConnectionId(): string|null
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageReplyMarkupRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -73,6 +87,7 @@ class EditMessageReplyMarkupRequest implements RequestInterface
             'inline_message_id' => $this->inline_message_id,
             'message_id' => $this->message_id,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

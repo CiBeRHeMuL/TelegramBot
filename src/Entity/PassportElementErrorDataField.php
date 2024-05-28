@@ -2,10 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorDataFieldTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
+use stdClass;
 
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's
@@ -23,10 +24,10 @@ class PassportElementErrorDataField extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private PassportElementErrorDataFieldTypeEnum $type,
-        private string $field_name,
-        private string $data_hash,
-        private string $message,
+        protected PassportElementErrorDataFieldTypeEnum $type,
+        protected string $field_name,
+        protected string $data_hash,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::Data);
     }
@@ -75,7 +76,7 @@ class PassportElementErrorDataField extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,
