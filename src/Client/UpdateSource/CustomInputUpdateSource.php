@@ -12,24 +12,20 @@ use Throwable;
  */
 class CustomInputUpdateSource implements UpdateSourceInterface
 {
-    /**
-     * @var false|resource|null $source
-     */
-    protected $source = null;
-
     public function __construct(
         protected string $sourcePath,
         protected ClassBuilderInterface $builder,
     ) {
-        $this->source = fopen($this->sourcePath, 'rb');
-        if ($this->source === false) {
+        $source = fopen($this->sourcePath, 'rb');
+        if ($source === false) {
             throw new InvalidArgumentException('Invalid source! Source could not be opened.');
         }
+        fclose($source);
     }
 
     public function getUpdates(): array
     {
-        $updatesJson = fread($this->source, filesize($this->sourcePath));
+        $updatesJson = file_get_contents($this->sourcePath);
         if ($updatesJson !== false) {
             $updates = json_decode($updatesJson, true);
             try {
