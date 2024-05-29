@@ -33,7 +33,7 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
         );
         $body = $hasResource
             ? new MultipartStream($multipart)
-            : new Stream(Utils::streamFor(json_encode($data)));
+            : Utils::streamFor(json_encode($data));
         return new HttpRequest(
             $httpMethod,
             new Uri(self::TELEGRAM_API_BASE_URL . "bot{$token->getToken()}/" . $method),
