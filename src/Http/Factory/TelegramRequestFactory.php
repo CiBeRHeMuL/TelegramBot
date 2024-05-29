@@ -21,16 +21,7 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
     {
         $multipart = [];
         $hasResource = false;
-        array_walk(
-            $data,
-            function ($v, $k) use (&$multipart, &$hasResource) {
-                $value = $v;
-                if (is_array($v)) {
-                    $value = json_encode($this->prepareArray($v, $multipart, $hasResource));
-                }
-                $multipart[] = ['name' => $k, 'contents' => $value];
-            },
-        );
+        $this->prepareArray($data, $multipart, $hasResource);
         $body = $hasResource
             ? new MultipartStream($multipart)
             : Utils::streamFor(json_encode($data));
