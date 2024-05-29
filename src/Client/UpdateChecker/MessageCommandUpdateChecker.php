@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 /**
  * Checks, that message starts with specified command
  */
-class MessageCommandUpdateChecker extends AbstractUpdateChecker
+class MessageCommandUpdateChecker implements UpdateCheckerInterface
 {
     public function __construct(
         private readonly string $expectedCommand,
@@ -17,7 +17,7 @@ class MessageCommandUpdateChecker extends AbstractUpdateChecker
 
     public function check(Update $update): bool
     {
-        return $this->getUpdateType($update) === UpdateTypeEnum::Message
+        return $update->getType() === UpdateTypeEnum::Message
             && str_starts_with($update->getMessage()->getText(), "/$this->expectedCommand");
     }
 }

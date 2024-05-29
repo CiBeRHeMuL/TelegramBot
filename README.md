@@ -166,22 +166,6 @@ class MyUpdateChecker implements \AndrewGos\TelegramBot\Client\UpdateChecker\Upd
 }
 ```
 
-Or you can use [AbstractUpdateProcessor](src/Client/UpdateProcessor/AbstractUpdateProcessor.php) to use some features
-
-```php
-<?php
-
-class MyUpdateChecker extends \AndrewGos\TelegramBot\Client\UpdateChecker\AbstractUpdateChecker
-{
-    // This method will be called before processor call
-    public function check(\AndrewGos\TelegramBot\Entity\Update $update): bool
-    {
-        return $this->getUpdateType($update) === \AndrewGos\TelegramBot\Enum\UpdateTypeEnum::BusinessConnection
-            && $update->getUpdateId() === 1;
-    }
-}
-```
-
 So, you can add your commands with your checkers to client stack
 ```php
 /** @var \AndrewGos\TelegramBot\Client\ClientInterface $client */

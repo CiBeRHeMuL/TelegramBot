@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
+
 /**
  * This object represents an incoming update.At most one of the optional parameters can be present in any given update.
  * @link https://core.telegram.org/bots/api#update
@@ -361,5 +363,34 @@ class Update implements EntityInterface
             'removed_chat_boost' => $this->removed_chat_boost?->toArray(),
             'shipping_query' => $this->shipping_query?->toArray(),
         ];
+    }
+
+    public function getType(): UpdateTypeEnum
+    {
+        return match (true) {
+            $this->getBusinessConnection() !== null => UpdateTypeEnum::BusinessConnection,
+            $this->getBusinessMessage() !== null => UpdateTypeEnum::BusinessMessage,
+            $this->getCallbackQuery() !== null => UpdateTypeEnum::CallbackQuery,
+            $this->getChannelPost() !== null => UpdateTypeEnum::ChannelPost,
+            $this->getChatBoost() !== null => UpdateTypeEnum::ChatBoost,
+            $this->getChatJoinRequest() !== null => UpdateTypeEnum::ChatJoinRequest,
+            $this->getChatMember() !== null => UpdateTypeEnum::ChatMember,
+            $this->getChosenInlineResult() !== null => UpdateTypeEnum::ChosenInlineResult,
+            $this->getDeletedBusinessMessages() !== null => UpdateTypeEnum::DeletedBusinessMessages,
+            $this->getEditedBusinessMessage() !== null => UpdateTypeEnum::EditedBusinessMessage,
+            $this->getEditedChannelPost() !== null => UpdateTypeEnum::EditedChannelPost,
+            $this->getEditedMessage() !== null => UpdateTypeEnum::EditedMessage,
+            $this->getInlineQuery() !== null => UpdateTypeEnum::InlineQuery,
+            $this->getMessage() !== null => UpdateTypeEnum::Message,
+            $this->getMessageReaction() !== null => UpdateTypeEnum::MessageReaction,
+            $this->getMessageReactionCount() !== null => UpdateTypeEnum::MessageReactionCount,
+            $this->getMyChatMember() !== null => UpdateTypeEnum::MyChatMember,
+            $this->getPoll() !== null => UpdateTypeEnum::Poll,
+            $this->getPollAnswer() !== null => UpdateTypeEnum::PollAnswer,
+            $this->getPreCheckoutQuery() !== null => UpdateTypeEnum::PreCheckoutQuery,
+            $this->getRemovedChatBoost() !== null => UpdateTypeEnum::RemovedChatBoost,
+            $this->getShippingQuery() !== null => UpdateTypeEnum::ShippingQuery,
+            default => null,
+        };
     }
 }

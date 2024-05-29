@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 /**
  * Checks that update have specified type
  */
-class UpdateTypeUpdateChecker extends AbstractUpdateChecker
+class UpdateTypeUpdateChecker implements UpdateCheckerInterface
 {
     public function __construct(
         private readonly UpdateTypeEnum $expectedType,
@@ -17,6 +17,6 @@ class UpdateTypeUpdateChecker extends AbstractUpdateChecker
 
     public function check(Update $update): bool
     {
-        return $this->getUpdateType($update) === $this->expectedType;
+        return $update->getType() === $this->expectedType;
     }
 }
