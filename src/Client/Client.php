@@ -478,7 +478,7 @@ class Client implements ClientInterface
             $processorClass = $checkableProcess->getProcessorClass();
             if ($checker->check($update)) {
                 try {
-                    $processor = new $processorClass($update, $this->api, ...$checkableProcess->getExtraParameters());
+                    $processor = new $processorClass($update, $this->api, $this->logger, ...$checkableProcess->getExtraParameters());
                     if ($processor->beforeProcess()) {
                         $processor->process();
                     }
