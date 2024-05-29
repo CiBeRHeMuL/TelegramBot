@@ -8,6 +8,7 @@ use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainer;
 use AndrewGos\TelegramBot\Http\Message\HttpRequest;
 use AndrewGos\TelegramBot\Http\Stream\MultipartStream;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
+use AndrewGos\TelegramBot\Http\Stream\Utils;
 use AndrewGos\TelegramBot\Http\Uri\Uri;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Http\Message\RequestInterface;
@@ -18,18 +19,21 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface
     {
-        $preparedData = [];
+        $multipart = [];
+        $hasResource = false;
         array_walk(
             $data,
-            function ($v, $k) use (&$preparedData) {
+            function ($v, $k) use (&$multipart, &$hasResource) {
                 $value = $v;
                 if (is_array($v)) {
-                    $value = json_encode($this->prepareArray($v, $preparedData));
+                    $value = json_encode($this->prepareArray($v, $multipart, $hasResource));
                 }
-                $preparedData[] = ['name' => $k, 'contents' => $value];
+                $multipart[] = ['name' => $k, 'contents' => $value];
             },
         );
-        $body = $preparedData ? new MultipartStream($preparedData) : new Stream(fopen('php://temp', 'r+'));
+        $body = $hasResource
+            ? new MultipartStream($multipart)
+            : new Stream(Utils::streamFor(json_encode($data)));
         return new HttpRequest(
             $httpMethod,
             new Uri(self::TELEGRAM_API_BASE_URL . "bot{$token->getToken()}/" . $method),
@@ -42,15 +46,16 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
         );
     }
 
-    private function prepareArray(array $array, array &$preparedData, string $prefix = 'b'): array
+    private function prepareArray(array $array, array &$multipart, bool &$hasResource, string $prefix = 'b'): array
     {
         foreach ($array as $key => &$value) {
             if (is_array($value)) {
-                $value = $this->prepareArray($value, $preparedData, "{$prefix}_$key");
+                $value = $this->prepareArray($value, $multipart, $hasResource, "{$prefix}_$key");
             } elseif ($value instanceof Stream) {
                 $uniqueKey = uniqid($prefix . '_', false);
-                $preparedData[] = ['name' => $uniqueKey, 'contents' => $value];
+                $multipart[] = ['name' => $uniqueKey, 'contents' => $value];
                 $value = "attach://$uniqueKey";
+                $hasResource = true;
             }
         }
         return $array;
