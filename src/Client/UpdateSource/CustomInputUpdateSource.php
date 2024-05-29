@@ -29,6 +29,9 @@ class CustomInputUpdateSource implements UpdateSourceInterface
         if ($updatesJson !== false) {
             $updates = json_decode($updatesJson, true);
             try {
+                if (!array_is_list($updates)) {
+                    $updates = [$updates];
+                }
                 return $this->builder->buildArray(Update::class, $updates);
             } catch (Throwable $e) {
                 return [];
