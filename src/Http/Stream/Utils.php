@@ -124,6 +124,8 @@ final class Utils
                 break;
             case 'NULL':
                 return new Stream(self::tryFopen('php://temp', 'r+'), $options);
+            case 'array':
+                return self::streamFor(json_encode($resource), $options);
         }
         throw new InvalidArgumentException('Invalid resource type: ' . gettype($resource));
     }
