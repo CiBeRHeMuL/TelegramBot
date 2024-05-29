@@ -18,6 +18,17 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface
     {
+        $preparedData = [];
+        array_walk(
+            $data,
+            function ($v, $k) use (&$preparedData) {
+                $value = $v;
+                if (is_array($v)) {
+                    $value = json_encode($this->prepareArray($v, $preparedData));
+                }
+                $preparedData[] = ['name' => $k, 'contents' => $value];
+            },
+        );
         array_walk(
             $data,
             fn(&$v, $k) => $v = ['name' => $k, 'contents' => $v],
@@ -33,5 +44,19 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
             ]),
             $body,
         );
+    }
+
+    private function prepareArray(array $array, array &$preparedData, string $prefix = 'b'): array
+    {
+        foreach ($array as $key => &$value) {
+            if (is_array($value)) {
+                $value = $this->prepareArray($value, $preparedData, "{$prefix}_$key");
+            } elseif ($value instanceof Stream) {
+                $uniqueKey = uniqid($prefix . '_', false);
+                $preparedData[] = ['name' => $uniqueKey, 'contents' => $value];
+                $value = "attach://$uniqueKey";
+            }
+        }
+        return $array;
     }
 }

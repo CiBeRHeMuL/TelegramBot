@@ -4,6 +4,7 @@ namespace AndrewGos\TelegramBot\Http\Stream;
 
 use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
+use Random\RandomException;
 use Throwable;
 
 class MultipartStream implements StreamInterface
@@ -21,10 +22,11 @@ class MultipartStream implements StreamInterface
      * string to send as the filename in the part.
      * @param string|null $boundary You can optionally provide a specific boundary
      *
+     * @throws RandomException
      */
     public function __construct(array $elements = [], string|null $boundary = null)
     {
-        $this->boundary = $boundary ?: sha1(uniqid('', true));
+        $this->boundary = $boundary ?: bin2hex(random_bytes(20));
         $this->stream = $this->createStream($elements);
     }
 
