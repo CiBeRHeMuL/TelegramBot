@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 use stdClass;
 
 /**
@@ -14,7 +15,7 @@ class Chat implements EntityInterface
      * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
      * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
      * or double-precision float type are safe for storing this identifier.
-     * @param string $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
+     * @param ChatTypeEnum $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
      * @param string|null $first_name Optional. First name of the other party in a private chat
      * @param bool|null $is_forum Optional. True, if the supergroup chat is a forum (has topics enabled)
      * @param string|null $last_name Optional. Last name of the other party in a private chat
@@ -23,7 +24,7 @@ class Chat implements EntityInterface
      */
     public function __construct(
         private int $id,
-        private string $type,
+        private ChatTypeEnum $type,
         private string|null $first_name = null,
         private bool|null $is_forum = null,
         private string|null $last_name = null,
@@ -43,12 +44,12 @@ class Chat implements EntityInterface
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ChatTypeEnum
     {
         return $this->type;
     }
 
-    public function setType(string $type): Chat
+    public function setType(ChatTypeEnum $type): Chat
     {
         $this->type = $type;
         return $this;
@@ -113,7 +114,7 @@ class Chat implements EntityInterface
     {
         return [
             'id' => $this->id,
-            'type' => $this->type,
+            'type' => $this->type->value,
             'first_name' => $this->first_name,
             'is_forum' => $this->is_forum,
             'last_name' => $this->last_name,

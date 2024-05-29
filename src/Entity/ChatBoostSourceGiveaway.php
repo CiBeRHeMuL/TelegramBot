@@ -65,7 +65,7 @@ class ChatBoostSourceGiveaway extends AbstractChatBoostSource
     public function toArray(): array|stdClass
     {
         return [
-            'source' => $this->source,
+            'source' => $this->source->value,
             'giveaway_message_id' => $this->giveaway_message_id,
             'is_unclaimed' => $this->is_unclaimed,
             'user' => $this->user?->toArray(),

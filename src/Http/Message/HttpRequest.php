@@ -3,7 +3,7 @@
 namespace AndrewGos\TelegramBot\Http\Message;
 
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
-use AndrewGos\TelegramBot\Enum\HttpVerionEnum;
+use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainerInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use InvalidArgumentException;
@@ -17,14 +17,14 @@ class HttpRequest implements RequestInterface
     private UriInterface $uri;
     private HttpHeadersContainerInterface $headers;
     private StreamInterface|null $body;
-    private HttpVerionEnum $protocolVersion;
+    private HttpVersionEnum $protocolVersion;
 
     public function __construct(
         HttpMethodEnum $method,
         UriInterface $uri,
         HttpHeadersContainerInterface $headers,
         StreamInterface|null $body = null,
-        HttpVerionEnum $protocolVersion = HttpVerionEnum::Http11,
+        HttpVersionEnum $protocolVersion = HttpVersionEnum::Http11,
     ) {
         $this->method = $method;
         $this->uri = $uri;
@@ -87,7 +87,7 @@ class HttpRequest implements RequestInterface
 
     public function withProtocolVersion(string $version): RequestInterface
     {
-        $this->protocolVersion = HttpVerionEnum::from($version);
+        $this->protocolVersion = HttpVersionEnum::from($version);
         return $this;
     }
 

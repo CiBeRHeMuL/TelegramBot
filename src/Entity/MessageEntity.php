@@ -112,7 +112,7 @@ class MessageEntity implements EntityInterface
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
+            'type' => $this->type->value,
             'offset' => $this->offset,
             'length' => $this->length,
             'url' => $this->url?->getUrl(),

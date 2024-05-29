@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 use stdClass;
 
 /**
@@ -15,7 +16,7 @@ class ChatFullInfo implements EntityInterface
      * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
      * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
      * or double-precision float type are safe for storing this identifier.
-     * @param string $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
+     * @param ChatTypeEnum $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
      * @param int $accent_color_id Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
      * and link preview. See accent colors for more details.
      * @param int $max_reaction_count The maximum number of reactions that can be set on a message in the chat
@@ -82,7 +83,7 @@ class ChatFullInfo implements EntityInterface
      */
     public function __construct(
         private int $id,
-        private string $type,
+        private ChatTypeEnum $type,
         private int $accent_color_id,
         private int $max_reaction_count,
         #[ArrayType('string')] private array|null $active_usernames = null,
@@ -138,12 +139,12 @@ class ChatFullInfo implements EntityInterface
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ChatTypeEnum
     {
         return $this->type;
     }
 
-    public function setType(string $type): ChatFullInfo
+    public function setType(ChatTypeEnum $type): ChatFullInfo
     {
         $this->type = $type;
         return $this;
@@ -604,7 +605,7 @@ class ChatFullInfo implements EntityInterface
     {
         return [
             'id' => $this->id,
-            'type' => $this->type,
+            'type' => $this->type->value,
             'accent_color_id' => $this->accent_color_id,
             'max_reaction_count' => $this->max_reaction_count,
             'active_usernames' => $this->active_usernames,

@@ -141,7 +141,7 @@ class InputMediaAudio extends AbstractInputMedia
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
+            'type' => $this->type->value,
             'media' => ($this->media instanceof Url)
                 ? $this->media->getUrl()
                 : $this->media,

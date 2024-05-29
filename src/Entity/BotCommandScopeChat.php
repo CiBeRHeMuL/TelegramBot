@@ -38,7 +38,7 @@ class BotCommandScopeChat extends AbstractBotCommandScope
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
+            'type' => $this->type->value,
             'chat_id' => $this->chat_id->getId(),
         ];
     }
