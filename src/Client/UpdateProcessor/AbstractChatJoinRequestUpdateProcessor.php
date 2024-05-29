@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\ChatJoinRequest;
 use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
+use Psr\Log\LoggerInterface;
 
 /**
  * Process chat join request
@@ -14,9 +15,9 @@ abstract class AbstractChatJoinRequestUpdateProcessor extends AbstractUpdateProc
 {
     protected ChatJoinRequest $chatJoinRequest;
 
-    public function __construct(Update $update, ApiInterface $api)
+    public function __construct(Update $update, ApiInterface $api, LoggerInterface $logger)
     {
-        parent::__construct($update, $api);
+        parent::__construct($update, $api, $logger);
         if (!$update->getChatJoinRequest()) {
             throw $this->invalidUpdateException(UpdateTypeEnum::ChatJoinRequest);
         }
