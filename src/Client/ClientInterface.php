@@ -54,218 +54,242 @@ interface ClientInterface
      *
      * @param string $command command without leading '/'
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addCommandMessageProcess(string $command, string $updateProcessor): void;
+    public function addCommandMessageProcess(string $command, string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for business connection update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addBusinessConnectionProcess(string $updateProcessor): void;
+    public function addBusinessConnectionProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for business message update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addBusinessMessageProcess(string $updateProcessor): void;
+    public function addBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for callback query update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addCallbackQueryProcess(string $updateProcessor): void;
+    public function addCallbackQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for channel post update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addChannelPostProcess(string $updateProcessor): void;
+    public function addChannelPostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for chat boost update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addChatBoostProcess(string $updateProcessor): void;
+    public function addChatBoostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for chat join request update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addChatJoinRequestProcess(string $updateProcessor): void;
+    public function addChatJoinRequestProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for chat member update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addChatMemberProcess(string $updateProcessor): void;
+    public function addChatMemberProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for chosen inline result update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addChosenInlineResultProcess(string $updateProcessor): void;
+    public function addChosenInlineResultProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for deleted business messages update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addDeletedBusinessMessagesProcess(string $updateProcessor): void;
+    public function addDeletedBusinessMessagesProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for edited business message update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addEditedBusinessMessageProcess(string $updateProcessor): void;
+    public function addEditedBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for edited channel post update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addEditedChannelPostProcess(string $updateProcessor): void;
+    public function addEditedChannelPostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for edited message update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addEditedMessageProcess(string $updateProcessor): void;
+    public function addEditedMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for inline query update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addInlineQueryProcess(string $updateProcessor): void;
+    public function addInlineQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for message update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addMessageProcess(string $updateProcessor): void;
+    public function addMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for message reaction update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addMessageReactionProcess(string $updateProcessor): void;
+    public function addMessageReactionProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for message reaction count update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addMessageReactionCountProcess(string $updateProcessor): void;
+    public function addMessageReactionCountProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for my chat member update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addMyChatMemberProcess(string $updateProcessor): void;
+    public function addMyChatMemberProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for poll update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addPollProcess(string $updateProcessor): void;
+    public function addPollProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for poll answer update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addPollAnswerProcess(string $updateProcessor): void;
+    public function addPollAnswerProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for pre checkout query update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addPreCheckoutQueryProcess(string $updateProcessor): void;
+    public function addPreCheckoutQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for removed chat boost update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addRemovedChatBoostProcess(string $updateProcessor): void;
+    public function addRemovedChatBoostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add process for shipping query update
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addShippingQueryProcess(string $updateProcessor): void;
+    public function addShippingQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add typed process (ex for message update or business connection update)
      *
      * @param UpdateTypeEnum $type
      * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
      *
      * @return void
      */
-    public function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor): void;
+    public function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void;
 
     /**
      * Add raw checkable process
