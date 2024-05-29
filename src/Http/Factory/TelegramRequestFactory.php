@@ -29,11 +29,7 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
                 $preparedData[] = ['name' => $k, 'contents' => $value];
             },
         );
-        array_walk(
-            $data,
-            fn(&$v, $k) => $v = ['name' => $k, 'contents' => $v],
-        );
-        $body = $data ? new MultipartStream($data) : new Stream(fopen('php://temp', 'r+'));
+        $body = $preparedData ? new MultipartStream($preparedData) : new Stream(fopen('php://temp', 'r+'));
         return new HttpRequest(
             $httpMethod,
             new Uri(self::TELEGRAM_API_BASE_URL . "bot{$token->getToken()}/" . $method),
