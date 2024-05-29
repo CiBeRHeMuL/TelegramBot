@@ -26,11 +26,6 @@ class Telegram
         if ($this->token->getToken() !== $this->api->getToken()->getToken()) {
             throw new InvalidArgumentException('Api and bot must have same tokens');
         }
-        try {
-            $this->me = $this->api->getMe()->getUser();
-        } catch (Throwable $e) {
-            throw new InvalidArgumentException('Invalid token! Bot not found');
-        }
     }
 
     public function getToken(): BotToken
@@ -50,6 +45,11 @@ class Telegram
 
     public function getMe(): User
     {
+        try {
+            $this->me ??= $this->api->getMe()->getUser();
+        } catch (Throwable $e) {
+            throw new InvalidArgumentException('Invalid token! Bot not found');
+        }
         return $this->me;
     }
 
