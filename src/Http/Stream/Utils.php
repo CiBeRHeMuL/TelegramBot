@@ -125,7 +125,11 @@ final class Utils
             case 'NULL':
                 return new Stream(self::tryFopen('php://temp', 'r+'), $options);
             case 'array':
-                return self::streamFor(json_encode($resource), $options);
+                $data = [];
+                foreach ($resource as $key => $value) {
+                    $data[] = ['name' => $key, 'contents' => $value];
+                }
+                return new MultipartStream($data);
         }
         throw new InvalidArgumentException('Invalid resource type: ' . gettype($resource));
     }
