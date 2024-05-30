@@ -365,7 +365,7 @@ class Update implements EntityInterface
         ];
     }
 
-    public function getType(): UpdateTypeEnum
+    public function getType(): UpdateTypeEnum|null
     {
         return match (true) {
             $this->getBusinessConnection() !== null => UpdateTypeEnum::BusinessConnection,
