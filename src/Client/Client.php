@@ -75,7 +75,8 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for command update (message update with message starting with '/') (ex. /start)
+     * Add process for command update (message update with message starting with '/' (ex. /start))
+     * Processor will be added to the beginning of processors array (to increase message command processor priority over message processor)
      *
      * @param string $command command without leading '/'
      * @param class-string<UpdateProcessorInterface> $updateProcessor
@@ -95,7 +96,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for business connection update
+     * Add process for business connection update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -108,7 +109,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for business message update
+     * Add process for business message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -121,7 +122,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for callback query update
+     * Add process for callback query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -134,7 +135,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for channel post update
+     * Add process for channel post update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -147,7 +148,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for chat boost update
+     * Add process for chat boost update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -160,7 +161,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for chat join request update
+     * Add process for chat join request update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -173,7 +174,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for chat member update
+     * Add process for chat member update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -186,7 +187,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for chosen inline result update
+     * Add process for chosen inline result update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -199,7 +200,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for deleted business messages update
+     * Add process for deleted business messages update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -212,7 +213,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for edited business message update
+     * Add process for edited business message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -225,7 +226,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for edited channel post update
+     * Add process for edited channel post update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -238,7 +239,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for edited message update
+     * Add process for edited message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -251,7 +252,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for inline query update
+     * Add process for inline query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -264,7 +265,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for message update
+     * Add process for message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -277,7 +278,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for message reaction update
+     * Add process for message reaction update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -290,7 +291,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for message reaction count update
+     * Add process for message reaction count update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -303,7 +304,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for my chat member update
+     * Add process for my chat member update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters
@@ -316,7 +317,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for poll update
+     * Add process for poll update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -329,7 +330,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for poll answer update
+     * Add process for poll answer update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -342,7 +343,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for pre checkout query update
+     * Add process for pre checkout query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -355,7 +356,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for removed chat boost update
+     * Add process for removed chat boost update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -368,7 +369,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * Add process for shipping query update
+     * Add process for shipping query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -389,7 +390,7 @@ class Client implements ClientInterface
      *
      * @return void
      */
-    public function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void
+    protected function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void
     {
         $this->addCheckableProcess(
             new CheckableProcess(
@@ -404,12 +405,13 @@ class Client implements ClientInterface
      * Add raw checkable process
      *
      * @param CheckableProcess $checkableProcess
+     * @param bool $prepend if true, checkable process will be added to the end of processors array
      *
      * @return void
      */
-    public function addCheckableProcess(CheckableProcess $checkableProcess): void
+    public function addCheckableProcess(CheckableProcess $checkableProcess, bool $prepend = false): void
     {
-        $this->processCollection->addProcess($checkableProcess);
+        $this->processCollection->addProcess($checkableProcess, $prepend);
     }
 
     /**

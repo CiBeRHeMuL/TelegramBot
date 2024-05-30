@@ -11,9 +11,13 @@ class CheckableProcessCollection implements Iterator
      */
     private array $checkableProcesses = [];
 
-    public function addProcess(CheckableProcess $checkableProcess): static
+    public function addProcess(CheckableProcess $checkableProcess, bool $prepend = false): static
     {
-        $this->checkableProcesses[] = $checkableProcess;
+        if ($prepend) {
+            array_unshift($this->checkableProcesses, $checkableProcess);
+        } else {
+            $this->checkableProcesses[] = $checkableProcess;
+        }
         return $this;
     }
 

@@ -50,7 +50,8 @@ interface ClientInterface
     public function setLogger(LoggerInterface $logger): static;
 
     /**
-     * Add process for command update (message update with message starting with '/') (ex. /start)
+     * Add process for command update (message update with message starting with '/' (ex. /start)).
+     * Processor will be added to the beginning of processors array (to increase message command processor priority over message processor)
      *
      * @param string $command command without leading '/'
      * @param class-string<UpdateProcessorInterface> $updateProcessor
@@ -61,7 +62,7 @@ interface ClientInterface
     public function addCommandMessageProcess(string $command, string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for business connection update
+     * Add process for business connection update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -71,7 +72,7 @@ interface ClientInterface
     public function addBusinessConnectionProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for business message update
+     * Add process for business message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -81,7 +82,7 @@ interface ClientInterface
     public function addBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for callback query update
+     * Add process for callback query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -91,7 +92,7 @@ interface ClientInterface
     public function addCallbackQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for channel post update
+     * Add process for channel post update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -101,7 +102,7 @@ interface ClientInterface
     public function addChannelPostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for chat boost update
+     * Add process for chat boost update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -111,7 +112,7 @@ interface ClientInterface
     public function addChatBoostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for chat join request update
+     * Add process for chat join request update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -121,7 +122,7 @@ interface ClientInterface
     public function addChatJoinRequestProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for chat member update
+     * Add process for chat member update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -131,7 +132,7 @@ interface ClientInterface
     public function addChatMemberProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for chosen inline result update
+     * Add process for chosen inline result update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -141,7 +142,7 @@ interface ClientInterface
     public function addChosenInlineResultProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for deleted business messages update
+     * Add process for deleted business messages update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -151,7 +152,7 @@ interface ClientInterface
     public function addDeletedBusinessMessagesProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for edited business message update
+     * Add process for edited business message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -161,7 +162,7 @@ interface ClientInterface
     public function addEditedBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for edited channel post update
+     * Add process for edited channel post update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -171,7 +172,7 @@ interface ClientInterface
     public function addEditedChannelPostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for edited message update
+     * Add process for edited message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -181,7 +182,7 @@ interface ClientInterface
     public function addEditedMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for inline query update
+     * Add process for inline query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -191,7 +192,7 @@ interface ClientInterface
     public function addInlineQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for message update
+     * Add process for message update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -201,7 +202,7 @@ interface ClientInterface
     public function addMessageProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for message reaction update
+     * Add process for message reaction update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -211,7 +212,7 @@ interface ClientInterface
     public function addMessageReactionProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for message reaction count update
+     * Add process for message reaction count update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -221,7 +222,7 @@ interface ClientInterface
     public function addMessageReactionCountProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for my chat member update
+     * Add process for my chat member update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -231,7 +232,7 @@ interface ClientInterface
     public function addMyChatMemberProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for poll update
+     * Add process for poll update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -241,7 +242,7 @@ interface ClientInterface
     public function addPollProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for poll answer update
+     * Add process for poll answer update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -251,7 +252,7 @@ interface ClientInterface
     public function addPollAnswerProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for pre checkout query update
+     * Add process for pre checkout query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -261,7 +262,7 @@ interface ClientInterface
     public function addPreCheckoutQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for removed chat boost update
+     * Add process for removed chat boost update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -271,7 +272,7 @@ interface ClientInterface
     public function addRemovedChatBoostProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add process for shipping query update
+     * Add process for shipping query update. Processor will be added to the end of processors array
      *
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
@@ -281,24 +282,14 @@ interface ClientInterface
     public function addShippingQueryProcess(string $updateProcessor, array $extraParameters = []): void;
 
     /**
-     * Add typed process (ex for message update or business connection update)
-     *
-     * @param UpdateTypeEnum $type
-     * @param class-string<UpdateProcessorInterface> $updateProcessor
-     * @param array $extraParameters extra parameters for update processor constructor
-     *
-     * @return void
-     */
-    public function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void;
-
-    /**
      * Add raw checkable process
      *
      * @param CheckableProcess $checkableProcess
+     * @param bool $prepend if true, checkable process will be added to the end of processors array
      *
      * @return void
      */
-    public function addCheckableProcess(CheckableProcess $checkableProcess): void;
+    public function addCheckableProcess(CheckableProcess $checkableProcess, bool $prepend = false): void;
 
     /**
      * Process incoming update one time.

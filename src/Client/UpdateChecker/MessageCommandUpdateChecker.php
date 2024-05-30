@@ -18,6 +18,10 @@ class MessageCommandUpdateChecker implements UpdateCheckerInterface
     public function check(Update $update): bool
     {
         return $update->getType() === UpdateTypeEnum::Message
-            && str_starts_with($update->getMessage()->getText(), "/$this->expectedCommand");
+            && substr(
+                $update->getMessage()->getText(),
+                0,
+                strpos($update->getMessage()->getText(), ' '),
+            ) === "/$this->expectedCommand";
     }
 }
