@@ -92,6 +92,7 @@ class Client implements ClientInterface
                 new MessageCommandUpdateChecker($command),
                 $extraParameters,
             ),
+            true,
         );
     }
 
