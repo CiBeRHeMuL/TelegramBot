@@ -25,7 +25,7 @@ abstract class AbstractCommandMessageUpdateProcessor extends AbstractMessageUpda
         parent::__construct($update, $api, $logger);
         $commandEnd = str_contains($update->getMessage()->getText(), ' ')
             ? strpos($update->getMessage()->getText(), ' ')
-            : strlen($update->getMessage()->getText()) - 1;
+            : strlen($update->getMessage()->getText());
         $this->command = substr($update->getMessage()->getText(), 0, $commandEnd);
         $this->textWithoutCommand = substr($update->getMessage()->getText(), $commandEnd + 1);
     }
