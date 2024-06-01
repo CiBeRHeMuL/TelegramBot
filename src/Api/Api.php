@@ -2005,7 +2005,7 @@ class Api implements ApiInterface
      *
      * @return Res\RawResponse
      */
-    public function send(string $method, array $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
+    private function send(string $method, array $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
         try {
             $data = HArray::filterRecursive($data, fn($v) => $v !== null);
