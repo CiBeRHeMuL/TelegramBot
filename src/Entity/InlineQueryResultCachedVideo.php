@@ -36,6 +36,7 @@ class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
      * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the video caption. See formatting options
      * for more details.
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string $id,
@@ -47,6 +48,7 @@ class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
         private AbstractInputMessageContent|null $input_message_content = null,
         private TelegramParseModeEnum|null $parse_mode = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Video);
     }
@@ -150,6 +152,17 @@ class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultCachedVideo
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -163,6 +176,7 @@ class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
             'input_message_content' => $this->input_message_content?->toArray(),
             'parse_mode' => $this->parse_mode?->value,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

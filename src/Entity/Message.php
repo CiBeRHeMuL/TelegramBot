@@ -134,6 +134,8 @@ class Message extends AbstractMaybeInaccessibleMessage
      * Available only for outgoing messages sent on behalf of the connected business account.
      * @param bool|null $is_from_offline Optional. True, if the message was sent by an implicit action, for example,
      * as an away or a greeting business message, or as a scheduled message
+     * @param string|null $effect_id Optional. Unique identifier of the message effect added to the message
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         protected int $message_id,
@@ -217,6 +219,8 @@ class Message extends AbstractMaybeInaccessibleMessage
         private string|null $business_connection_id = null,
         private User|null $sender_business_bot = null,
         private bool|null $is_from_offline = null,
+        private string|null $effect_id = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct($this->date);
     }
@@ -1112,6 +1116,28 @@ class Message extends AbstractMaybeInaccessibleMessage
         return $this;
     }
 
+    public function getEffectId(): string|null
+    {
+        return $this->effect_id;
+    }
+
+    public function setEffectId(string|null $effect_id): Message
+    {
+        $this->effect_id = $effect_id;
+        return $this;
+    }
+
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): Message
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -1221,6 +1247,8 @@ class Message extends AbstractMaybeInaccessibleMessage
             'business_connection_id' => $this->business_connection_id,
             'sender_business_bot' => $this->sender_business_bot?->toArray(),
             'is_from_offline' => $this->is_from_offline,
+            'effect_id' => $this->effect_id,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

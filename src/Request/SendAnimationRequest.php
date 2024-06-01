@@ -49,6 +49,8 @@ class SendAnimationRequest implements RequestInterface
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
      * to remove a reply keyboard or to force a reply from the user.
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private ChatId $chat_id,
@@ -67,7 +69,9 @@ class SendAnimationRequest implements RequestInterface
         private ?bool $disable_notification = null,
         private ?bool $protect_content = null,
         private ?ReplyParameters $reply_parameters = null,
-        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null
+        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
+        private string|null $message_effect_id = null,
+        private bool|null $show_caption_above_media = null,
     ) {
     }
 
@@ -258,6 +262,28 @@ class SendAnimationRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendAnimationRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): SendAnimationRequest
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -284,6 +310,8 @@ class SendAnimationRequest implements RequestInterface
             'protect_content' => $this->protect_content,
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'reply_markup' => $this->reply_markup?->toArray(),
+            'message_effect_id' => $this->message_effect_id,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

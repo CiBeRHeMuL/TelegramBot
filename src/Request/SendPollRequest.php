@@ -49,6 +49,7 @@ class SendPollRequest implements RequestInterface
      * a reply from the user
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
      * @param PollTypeEnum|null $type Poll type, “quiz” or “regular”, defaults to “regular”
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -72,6 +73,7 @@ class SendPollRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ReplyParameters|null $reply_parameters = null,
         private PollTypeEnum|null $type = null,
+        private string|null $message_effect_id = null,
     ) {
     }
 
@@ -306,6 +308,17 @@ class SendPollRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendPollRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -334,6 +347,7 @@ class SendPollRequest implements RequestInterface
             'reply_markup' => $this->reply_markup?->toArray(),
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'type' => $this->type?->value,
+            'message_effect_id' => $this->message_effect_id,
         ];
     }
 }

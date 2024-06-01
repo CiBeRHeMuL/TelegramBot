@@ -45,6 +45,7 @@ class SendDocumentRequest implements RequestInterface
      * @param $reply_markup InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
      * to remove a reply keyboard or to force a reply from the user. @channelusername).
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -59,7 +60,8 @@ class SendDocumentRequest implements RequestInterface
         private bool|null $disable_notification = null,
         private bool|null $protect_content = null,
         private ReplyParameters|null $reply_parameters = null,
-        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null
+        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
+        private string|null $message_effect_id = null,
     ) {
     }
 
@@ -206,6 +208,17 @@ class SendDocumentRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendDocumentRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -227,6 +240,7 @@ class SendDocumentRequest implements RequestInterface
             'protect_content' => $this->protect_content,
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'reply_markup' => $this->reply_markup?->toArray(),
+            'message_effect_id' => $this->message_effect_id,
         ];
     }
 }

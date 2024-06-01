@@ -22,7 +22,7 @@ use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '7.3';
+    private const TELEGRAM_BOT_API_VERSION = '7.4';
 
     public function __construct(
         private readonly BotToken $token,
@@ -1983,6 +1983,19 @@ class Api implements ApiInterface
         $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
         $gameHighScores = $this->buildClassArrayForResponse(Ent\GameHighScore::class, $rawResponse);
         return new Res\GetGameHighScoresResponse($rawResponse, $gameHighScores);
+    }
+
+    /**
+     * Refunds a successful payment in Telegram Stars. Returns True on success.
+     *
+     * @param Req\RefundStarPaymentRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#refundstarpayment
+     */
+    public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
     }
 
     /**

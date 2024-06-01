@@ -45,6 +45,7 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
      * @param int|null $video_duration Optional. Video duration in seconds
      * @param int|null $video_height Optional. Video height
      * @param int|null $video_width Optional. Video width
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string $id,
@@ -61,6 +62,7 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
         private int|null $video_duration = null,
         private int|null $video_height = null,
         private int|null $video_width = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Video);
     }
@@ -219,6 +221,17 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultVideo
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -239,6 +252,7 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
             'video_duration' => $this->video_duration,
             'video_height' => $this->video_height,
             'video_width' => $this->video_width,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

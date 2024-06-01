@@ -30,6 +30,7 @@ class CopyMessageRequest implements RequestInterface
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Optional
      * Additional interface options. A JSON-serialized object for an inline keyboard,
      * custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private ChatId $chat_id,
@@ -42,7 +43,8 @@ class CopyMessageRequest implements RequestInterface
         private bool|null $disable_notification = null,
         private bool|null $protect_content = null,
         private ReplyParameters|null $reply_parameters = null,
-        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null
+        private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
+        private bool|null $show_caption_above_media = null,
     ) {
     }
 
@@ -167,6 +169,17 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): CopyMessageRequest
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -183,6 +196,7 @@ class CopyMessageRequest implements RequestInterface
             'protect_content' => $this->protect_content,
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'reply_markup' => $this->reply_markup?->toArray(),
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

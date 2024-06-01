@@ -34,7 +34,8 @@ class SendVideoNoteRequest implements RequestInterface
      * is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height
      * should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be
      * only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-     * under <file_attach_name>. More information on Sending Files »
+     * under <file_attach_name>. More information on Sending Files
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -48,6 +49,7 @@ class SendVideoNoteRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ReplyParameters|null $reply_parameters = null,
         private Filename|Url|string|null $thumbnail = null,
+        private string|null $message_effect_id = null,
     ) {
     }
 
@@ -172,6 +174,17 @@ class SendVideoNoteRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendVideoNoteRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -190,6 +203,7 @@ class SendVideoNoteRequest implements RequestInterface
             'thumbnail' => ($this->thumbnail instanceof Url)
                 ? $this->thumbnail->getUrl()
                 : $this->thumbnail,
+            'message_effect_id' => $this->message_effect_id,
         ];
     }
 }

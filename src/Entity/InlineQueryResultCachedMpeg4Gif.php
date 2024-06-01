@@ -35,6 +35,7 @@ class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      * more details.
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      * @param string|null $title Optional. Title for the result
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string $id,
@@ -45,6 +46,7 @@ class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
         private TelegramParseModeEnum|null $parse_mode = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
         private string|null $title = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Mpeg4Gif);
     }
@@ -137,6 +139,17 @@ class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultCachedMpeg4Gif
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -151,6 +164,7 @@ class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
             'parse_mode' => $this->parse_mode?->value,
             'reply_markup' => $this->reply_markup?->toArray(),
             'title' => $this->title,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

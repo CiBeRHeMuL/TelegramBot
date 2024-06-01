@@ -22,6 +22,7 @@ class SendMediaGroupRequest implements RequestInterface
      * only
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -31,6 +32,7 @@ class SendMediaGroupRequest implements RequestInterface
         private int|null $message_thread_id = null,
         private bool|null $protect_content = null,
         private ReplyParameters|null $reply_parameters = null,
+        private string|null $message_effect_id = null,
     ) {
     }
 
@@ -111,6 +113,17 @@ class SendMediaGroupRequest implements RequestInterface
         return $this;
     }
 
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendMediaGroupRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -121,6 +134,7 @@ class SendMediaGroupRequest implements RequestInterface
             'message_thread_id' => $this->message_thread_id,
             'protect_content' => $this->protect_content,
             'reply_parameters' => $this->reply_parameters?->toArray(),
+            'message_effect_id' => $this->message_effect_id,
         ];
     }
 }

@@ -41,6 +41,7 @@ class InputMediaVideo extends AbstractInputMedia
      * @param int|null $duration Optional. Video duration in seconds
      * @param bool|null $supports_streaming Optional. Pass True if the uploaded video is suitable for streaming
      * @param bool|null $has_spoiler Optional. Pass True if the video needs to be covered with a spoiler animation
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private Filename|Url|string $media,
@@ -52,7 +53,8 @@ class InputMediaVideo extends AbstractInputMedia
         private ?int $height = null,
         private ?int $duration = null,
         private ?bool $supports_streaming = null,
-        private ?bool $has_spoiler = null
+        private ?bool $has_spoiler = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Video);
     }
@@ -167,6 +169,17 @@ class InputMediaVideo extends AbstractInputMedia
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaVideo
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -187,6 +200,7 @@ class InputMediaVideo extends AbstractInputMedia
             'duration' => $this->duration,
             'supports_streaming' => $this->supports_streaming,
             'has_spoiler' => $this->has_spoiler,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

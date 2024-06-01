@@ -38,6 +38,7 @@ class InlineQueryResultPhoto extends AbstractInlineQueryResult
      * @param int|null $photo_width Optional. Width of the photo
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      * @param string|null $title Optional. Title for the result
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string $id,
@@ -52,6 +53,7 @@ class InlineQueryResultPhoto extends AbstractInlineQueryResult
         private int|null $photo_width = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
         private string|null $title = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Photo);
     }
@@ -188,6 +190,17 @@ class InlineQueryResultPhoto extends AbstractInlineQueryResult
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultPhoto
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -206,6 +219,7 @@ class InlineQueryResultPhoto extends AbstractInlineQueryResult
             'photo_width' => $this->photo_width,
             'reply_markup' => $this->reply_markup?->toArray(),
             'title' => $this->title,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

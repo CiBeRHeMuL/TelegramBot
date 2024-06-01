@@ -20,6 +20,7 @@ class EditMessageCaptionRequest implements RequestInterface
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message caption. See formatting options for
      * more details.
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard.
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string|null $caption = null,
@@ -29,6 +30,7 @@ class EditMessageCaptionRequest implements RequestInterface
         private int|null $message_id = null,
         private TelegramParseModeEnum|null $parse_mode = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private bool|null $show_caption_above_media = null,
     ) {
     }
 
@@ -109,6 +111,17 @@ class EditMessageCaptionRequest implements RequestInterface
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): EditMessageCaptionRequest
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -121,6 +134,7 @@ class EditMessageCaptionRequest implements RequestInterface
             'message_id' => $this->message_id,
             'parse_mode' => $this->parse_mode?->value,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

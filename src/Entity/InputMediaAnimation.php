@@ -37,6 +37,7 @@ class InputMediaAnimation extends AbstractInputMedia
      * @param int|null $height Optional. Animation height
      * @param int|null $duration Optional. Animation duration in seconds
      * @param bool|null $has_spoiler Optional. Pass True if the animation needs to be covered with a spoiler animation
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private Filename|Url|string $media,
@@ -47,7 +48,8 @@ class InputMediaAnimation extends AbstractInputMedia
         private ?int $width = null,
         private ?int $height = null,
         private ?int $duration = null,
-        private ?bool $has_spoiler = null
+        private ?bool $has_spoiler = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Animation);
     }
@@ -151,6 +153,17 @@ class InputMediaAnimation extends AbstractInputMedia
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaAnimation
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -170,6 +183,7 @@ class InputMediaAnimation extends AbstractInputMedia
             'height' => $this->height,
             'duration' => $this->duration,
             'has_spoiler' => $this->has_spoiler,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }

@@ -1438,11 +1438,12 @@ interface ApiInterface
     public function getGameHighScores(Req\GetGameHighScoresRequest $request): Res\GetGameHighScoresResponse;
 
     /**
-     * @param string $method method (ex. getMe)
-     * @param array $data
-     * @param HttpMethodEnum $httpMethod
+     * Refunds a successful payment in Telegram Stars. Returns True on success.
+     *
+     * @param Req\RefundStarPaymentRequest $request
      *
      * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#refundstarpayment
      */
-    public function send(string $method, array $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse;
+    public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse;
 }

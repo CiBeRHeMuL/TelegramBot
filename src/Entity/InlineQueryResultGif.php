@@ -41,6 +41,7 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
      * @param InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”,
      * “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
      * @param string|null $title Optional. Title for the result
+     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         private string $id,
@@ -56,6 +57,7 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
         private InlineKeyboardMarkup|null $reply_markup = null,
         private InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type = null,
         private string|null $title = null,
+        private bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Gif);
     }
@@ -203,6 +205,17 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
         return $this;
     }
 
+    public function getShowCaptionAboveMedia(): bool|null
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultGif
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -222,6 +235,7 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
             'reply_markup' => $this->reply_markup?->toArray(),
             'thumbnail_mime_type' => $this->thumbnail_mime_type?->value,
             'title' => $this->title,
+            'show_caption_above_media' => $this->show_caption_above_media,
         ];
     }
 }
