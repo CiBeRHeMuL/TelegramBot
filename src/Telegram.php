@@ -3,7 +3,7 @@
 namespace AndrewGos\TelegramBot;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
-use AndrewGos\TelegramBot\Client\ClientInterface;
+use AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface;
 use AndrewGos\TelegramBot\Entity\User;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use InvalidArgumentException;
@@ -21,7 +21,7 @@ class Telegram
     public function __construct(
         private readonly BotToken $token,
         private readonly ApiInterface $api,
-        private readonly ClientInterface $client,
+        private readonly UpdateHandlerInterface $updateHandler,
     ) {
         if ($this->token->getToken() !== $this->api->getToken()->getToken()) {
             throw new InvalidArgumentException('Api and bot must have same tokens');
@@ -38,9 +38,9 @@ class Telegram
         return $this->api;
     }
 
-    public function getClient(): ClientInterface
+    public function getUpdateHandler(): UpdateHandlerInterface
     {
-        return $this->client;
+        return $this->updateHandler;
     }
 
     public function getMe(): User
