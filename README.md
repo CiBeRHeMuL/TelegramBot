@@ -7,7 +7,8 @@
 This library is designed to simplify the development of Telegram bots by leveraging strict typing and other improvements. \
 It allows developers to create highly modular and maintainable bots by defining handlers for various updates in a clear and structured manner.
 
-This library supported all available features of Telegram Bot Api and this library will make updates when new version of Telegram Bot Api 
+This library supported all available features of Telegram Bot Api (current version is **7.4**) \
+and this library will make updates when new version of Telegram Bot Api.
 
 ## Contacts
 
@@ -27,15 +28,19 @@ To install the library, use Composer:
 composer require andrew-gos/telegram-bot
 ```
 
-## Hello world usage
+## Usage
 
-You can learn how to handle '/start' command from telegram and send 'Hello world' to chat
-in [HELLO-WORLD.md](README/HELLO-WORLD.md)
+This library is so easy to use. \
+In next chapter you will learn about basics.
+
+I\`m sorry about too much information, \
+but to understand, how to use this library, \
+you need to read it. Good luck!
 
 ## Basic usage
 
-About basic usage you can learn in [BASIC-USAGE.md](README/BASIC-USAGE.md)
+About basic usage you can learn in [BASIC-USAGE.md](README/BASIC.md)
 
 ## Advanced usage
 
-About advanced usage you can learn in [ADVANCED-USAGE.md](README/ADVANCED-USAGE.md)
+About advanced usage you can learn in [ADVANCED.md](README/ADVANCED.md)

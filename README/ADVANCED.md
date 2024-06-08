@@ -15,10 +15,13 @@ then stop handling update.
 ```php
 <?php
 
-class MyUpdateChecker implements \AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\UpdateCheckerInterface
+use AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\UpdateCheckerInterface;
+use AndrewGos\TelegramBot\Entity\Update;
+
+class MyUpdateChecker implements UpdateCheckerInterface
 {
     // This method will be called before processor call
-    public function check(\AndrewGos\TelegramBot\Entity\Update $update): bool
+    public function check(Update $update): bool
     {
         return $update->getMessage()?->getIsFromOffline() === true;
     }
@@ -30,8 +33,13 @@ class MyUpdateChecker implements \AndrewGos\TelegramBot\UpdateHandler\UpdateChec
 So, you can add your commands with your checkers to handler stack
 
 ```php
-/** @var \AndrewGos\TelegramBot\Telegram $telegram */
-$telegram->getUpdateHandler()->addCheckableProcess(new \AndrewGos\TelegramBot\UpdateHandler\CheckableProcess(
+<?php
+
+use AndrewGos\TelegramBot\Telegram;
+use AndrewGos\TelegramBot\UpdateHandler\CheckableProcess;
+
+/** @var Telegram $telegram */
+$telegram->getUpdateHandler()->addCheckableProcess(new CheckableProcess(
     MyMessageProcessor::class,
     new MyUpdateChecker(),
 ));
@@ -42,7 +50,7 @@ After `handle` or `listen` call, handler will call checker with incoming update,
 ## Extra processor __constructor method parameters
 
 You can throw extra parameters into your custom update processor via `$extraParameters` parameter
-of [CheckableProcess](src/UpdateHandler/CheckableProcess.php) constructor.
+of [CheckableProcess](../src/UpdateHandler/CheckableProcess.php) constructor.
 
 !!! First three parameters of your update processor constructor MUST be `Update $update`, `ApiInterface $api` and `LoggerInterface $logger`. \
 After these parameters you can make another parameters if you want
@@ -50,18 +58,25 @@ After these parameters you can make another parameters if you want
 ```php
 <?php
 
-class MyUpdateProcessor implements \AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface
+use AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface;
+use AndrewGos\TelegramBot\Entity\Update;
+use AndrewGos\TelegramBot\Api\ApiInterface;
+use Psr\Log\LoggerInterface;
+use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
+use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
+
+class MyUpdateProcessor implements UpdateProcessorInterface
 {
     public function __construct(
-        \AndrewGos\TelegramBot\Entity\Update $update,
-        \AndrewGos\TelegramBot\Api\ApiInterface $api,
-        \Psr\Log\LoggerInterface $logger,
+        Update $update,
+        ApiInterface $api,
+        LoggerInterface $logger,
         string $extraParameter
     ) {}
 }
 
-/** @var \AndrewGos\TelegramBot\UpdateHandler\UpdateHandler $client */
-$client->addTypedProcess(\AndrewGos\TelegramBot\Enum\UpdateTypeEnum::Message, MyUpdateProcessor::class, ['extraParameter' => 'Extra Param']);
+/** @var UpdateHandler $client */
+$client->addTypedProcess(UpdateTypeEnum::Message, MyUpdateProcessor::class, ['extraParameter' => 'Extra Param']);
 ```
 
 ## Custom update sources
@@ -75,7 +90,9 @@ Update handler will fetch updates from source when you call `handle` and `listen
 ```php
 <?php
 
-class MyUpdateSource implements \AndrewGos\TelegramBot\UpdateHandler\UpdateSource\UpdateSourceInterface
+use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\UpdateSourceInterface;
+
+class MyUpdateSource implements UpdateSourceInterface
 {
     // This method must return updates to process
     public function getUpdates(): array
@@ -90,39 +107,48 @@ $client->setUpdateSource(new MyUpdateSource());
 ## Custom clients, request factories etc.
 
 If you want, you can create your own PSR-18 HTTP Client, PSR-17 HTTP Request factory, PSR-3 Logger and use it in telegram. \
-And also, you can build your own [Telegram](src/Telegram.php) object!
+And also, you can build your own [Telegram](../src/Telegram.php) object!
 
 ```php
 <?php
 
-class MyRequestFactory implements \AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactoryInterface
+use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactoryInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Log\LoggerInterface;
+use AndrewGos\TelegramBot\ValueObject\BotToken;
+use AndrewGos\TelegramBot\Api\Api;
+use AndrewGos\TelegramBot\Builder\ClassBuilder;
+use AndrewGos\TelegramBot\Telegram;
+use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
+
+class MyRequestFactory implements TelegramRequestFactoryInterface
 {
     // ...
 }
 
-class MyHttpClient implements \Psr\Http\Client\ClientInterface
+class MyHttpClient implements ClientInterface
 {
     // ...
 }
 
-class MyLogger implements \Psr\Log\LoggerInterface
+class MyLogger implements LoggerInterface
 {
     // ...
 }
 
-$token = new \AndrewGos\TelegramBot\ValueObject\BotToken('1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+$token = new BotToken('1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 $logger = new MyLogger();
-$api = new \AndrewGos\TelegramBot\Api\Api(
+$api = new Api(
     $token,
-    new \AndrewGos\TelegramBot\Builder\ClassBuilder(),
+    new ClassBuilder(),
     new MyRequestFactory(),
     new MyHttpClient(),
     $logger,
 );
-$telegram = new \AndrewGos\TelegramBot\Telegram(
+$telegram = new Telegram(
     $token,
     $api,
-    new \AndrewGos\TelegramBot\UpdateHandler\UpdateHandler(
+    new UpdateHandler(
         new MyUpdateSource(),
         $api,
         $logger,
@@ -137,18 +163,23 @@ Also, custom apis and update handlers!
 ```php
 <?php
 
-class MyUpdateHandler implements \AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface
+use AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface;
+use AndrewGos\TelegramBot\Api\ApiInterface;
+use AndrewGos\TelegramBot\ValueObject\BotToken;
+use AndrewGos\TelegramBot\Telegram;
+
+class MyUpdateHandler implements UpdateHandlerInterface
 {
     // ...
 }
 
-class MyApi implements \AndrewGos\TelegramBot\Api\ApiInterface
+class MyApi implements ApiInterface
 {
     // ...
 }
 
-$telegram = new \AndrewGos\TelegramBot\Telegram(
-    new \AndrewGos\TelegramBot\ValueObject\BotToken('1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
+$telegram = new Telegram(
+    new BotToken('1234567890:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'),
     new MyApi(),
     new MyUpdateHandler(),
 );
