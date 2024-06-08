@@ -2,6 +2,7 @@
     "name": "andrew-gos/telegram-bot",
     "description": "Telegram bot library",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "AndrewGos\\TelegramBot\\": "src/"
