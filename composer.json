@@ -1,6 +1,6 @@
 {
     "name": "andrew-gos/telegram-bot",
-    "description": "Telegram bot library",
+    "description": "Advanced strictly typed Telegram Bot Library",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -10,7 +10,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "AndrewGos\\TelegramBot\\Tests\\": "tests/"
         }
     },
     "authors": [
