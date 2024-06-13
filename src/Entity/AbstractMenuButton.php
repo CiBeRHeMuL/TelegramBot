@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
 
 /**
@@ -11,7 +11,7 @@ use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
  * Otherwise the default menu button is applied. By default, the menu button opens the list of bot commands.
  * @link https://core.telegram.org/bots/api#menubutton
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     MenuButtonCommands::class,
     MenuButtonWebApp::class,
     MenuButtonDefault::class,

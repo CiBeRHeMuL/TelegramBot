@@ -3,7 +3,7 @@
 namespace AndrewGos\TelegramBot\Builder;
 
 use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Exception\InvalidClassConfigException;
 use AndrewGos\TelegramBot\Exception\InvalidClassException;
@@ -24,10 +24,10 @@ class ClassBuilder implements ClassBuilderInterface
         if (class_exists($class)) {
             $reflection = new ReflectionClass($class);
             if ($reflection->isAbstract()) {
-                $extensions = $reflection->getAttributes(AvailableExtensions::class);
+                $extensions = $reflection->getAttributes(AvailableInheritors::class);
                 $extensionTypes = $extensions[0]?->newInstance()?->getExtensions();
                 if (!$extensions || !$extensionTypes) {
-                    throw new InvalidArgumentException("Cannot build abstract class '$class' without extensions");
+                    throw new InvalidArgumentException("Cannot build abstract class '$class' without inheritors");
                 } else {
                     return $this->buildParameter($class, $data);
                 }
@@ -145,14 +145,14 @@ class ClassBuilder implements ClassBuilderInterface
                 return $possibleType::$$data;
             } elseif (class_exists($possibleType)) {
                 $reflection = new ReflectionClass($possibleType);
-                $availableExtensionsAttributes = $reflection->getAttributes(AvailableExtensions::class);
+                $availableExtensionsAttributes = $reflection->getAttributes(AvailableInheritors::class);
                 if ($availableExtensionsAttributes) {
-                    /** @var AvailableExtensions $availableExtensionsAttribute */
+                    /** @var AvailableInheritors $availableExtensionsAttribute */
                     $availableExtensionsAttribute = $availableExtensionsAttributes[0]->newInstance();
-                    if ($availableExtensionsAttribute->getExtensions()) {
-                        return $this->buildParameter(implode('|', $availableExtensionsAttribute->getExtensions()), $data);
+                    if ($availableExtensionsAttribute->getInheritors()) {
+                        return $this->buildParameter(implode('|', $availableExtensionsAttribute->getInheritors()), $data);
                     } else {
-                        throw new InvalidArgumentException('Available extensions not set do not exist');
+                        throw new InvalidArgumentException('Available inheritors not set or not exist');
                     }
                 } else {
                     $attributes = $reflection->getAttributes(BuildIf::class);

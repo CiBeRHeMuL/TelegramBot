@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
 
 /**
  * This object describes the origin of a message
  * @link https://core.telegram.org/bots/api#messageorigin
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     MessageOriginChannel::class,
     MessageOriginChat::class,
     MessageOriginHiddenUser::class,

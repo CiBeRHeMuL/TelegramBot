@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 
 /**
  * This object represents the scope to which bot commands are applied.
  * @link https://core.telegram.org/bots/api#botcommandscope
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     BotCommandScopeDefault::class,
     BotCommandScopeAllPrivateChats::class,
     BotCommandScopeAllGroupChats::class,

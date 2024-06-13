@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
 /**
  * This object contains information about one member of a chat.
  * @link https://core.telegram.org/bots/api#chatmember
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     ChatMemberAdministrator::class,
     ChatMemberOwner::class,
     ChatMemberMember::class,

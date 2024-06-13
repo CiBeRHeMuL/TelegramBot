@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
 /**
  * This object describes the type of a background.
  * @link https://core.telegram.org/bots/api#backgroundtype
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     BackgroundTypeFill::class,
     BackgroundTypeWallpaper::class,
     BackgroundTypePattern::class,

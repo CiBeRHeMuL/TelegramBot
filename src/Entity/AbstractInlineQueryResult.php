@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 
 /**
@@ -11,7 +11,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
  * Note: All URLs passed in inline query results will be available to end users and therefore must be assumed to be public.
  * @link https://core.telegram.org/bots/api#inlinequeryresult
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     InlineQueryResultCachedAudio::class,
     InlineQueryResultCachedDocument::class,
     InlineQueryResultCachedGif::class,

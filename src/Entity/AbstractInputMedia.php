@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableExtensions;
+use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
 /**
  * This object represents the content of a media message to be sent.
  * @link https://core.telegram.org/bots/api#inputmedia
  */
-#[AvailableExtensions([
+#[AvailableInheritors([
     InputMediaAnimation::class,
     InputMediaDocument::class,
     InputMediaAudio::class,

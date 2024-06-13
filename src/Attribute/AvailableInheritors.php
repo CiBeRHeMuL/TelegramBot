@@ -5,15 +5,15 @@ namespace AndrewGos\TelegramBot\Attribute;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_CLASS)]
-readonly class AvailableExtensions
+readonly class AvailableInheritors
 {
     public function __construct(
-        private array $extensions = [],
+        private array $inheritors = [],
     ) {
     }
 
-    public function getExtensions(): array
+    public function getInheritors(): array
     {
-        return $this->extensions;
+        return $this->inheritors;
     }
 }
