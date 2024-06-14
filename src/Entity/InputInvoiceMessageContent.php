@@ -2,10 +2,10 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
@@ -63,27 +63,28 @@ class InputInvoiceMessageContent extends AbstractInputMessageContent
      * be positive, passed in a strictly increased order and must not exceed max_tip_amount.
      */
     public function __construct(
-        private string $title,
-        private string $description,
-        private string $payload,
-        private string $provider_token,
-        private CurrencyEnum $currency,
-        #[ArrayType(LabeledPrice::class)] private array $prices,
-        private bool|null $is_flexible = null,
-        private int|null $max_tip_amount = null,
-        private bool|null $need_email = null,
-        private bool|null $need_name = null,
-        private bool|null $need_phone_number = null,
-        private bool|null $need_shipping_address = null,
-        private int|null $photo_height = null,
-        private int|null $photo_size = null,
-        private Url|null $photo_url = null,
-        private int|null $photo_width = null,
-        private string|null $provider_data = null,
-        private bool|null $send_email_to_provider = null,
-        private bool|null $send_phone_number_to_provider = null,
-        #[ArrayType('int')] private array|null $suggested_tip_amounts = null,
+        protected string $title,
+        protected string $description,
+        protected string $payload,
+        protected string $provider_token,
+        protected CurrencyEnum $currency,
+        #[ArrayType(LabeledPrice::class)] protected array $prices,
+        protected bool|null $is_flexible = null,
+        protected int|null $max_tip_amount = null,
+        protected bool|null $need_email = null,
+        protected bool|null $need_name = null,
+        protected bool|null $need_phone_number = null,
+        protected bool|null $need_shipping_address = null,
+        protected int|null $photo_height = null,
+        protected int|null $photo_size = null,
+        protected Url|null $photo_url = null,
+        protected int|null $photo_width = null,
+        protected string|null $provider_data = null,
+        protected bool|null $send_email_to_provider = null,
+        protected bool|null $send_phone_number_to_provider = null,
+        #[ArrayType('int')] protected array|null $suggested_tip_amounts = null,
     ) {
+        parent::__construct();
     }
 
     public function getTitle(): string

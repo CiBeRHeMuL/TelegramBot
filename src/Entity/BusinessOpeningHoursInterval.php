@@ -8,7 +8,7 @@ use stdClass;
  * Describes the opening hours of a business.
  * @link https://core.telegram.org/bots/api#businessopeninghours
  */
-class BusinessOpeningHoursInterval implements EntityInterface
+class BusinessOpeningHoursInterval extends AbstractEntity
 {
     /**
      * @param int $opening_minute The minute's sequence number in a week, starting on Monday, marking the start of the time interval
@@ -17,9 +17,10 @@ class BusinessOpeningHoursInterval implements EntityInterface
      * during which the business is open; 0 - 8 * 24 * 60
      */
     public function __construct(
-        private int $opening_minute,
-        private int $closing_minute,
+        protected int $opening_minute,
+        protected int $closing_minute,
     ) {
+        parent::__construct();
     }
 
     public function getOpeningMinute(): int

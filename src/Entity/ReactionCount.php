@@ -6,16 +6,17 @@ namespace AndrewGos\TelegramBot\Entity;
  * Represents a reaction added to a message along with the number of times it was added.
  * @link https://core.telegram.org/bots/api#reactioncount
  */
-class ReactionCount implements EntityInterface
+class ReactionCount extends AbstractEntity
 {
     /**
      * @param AbstractReactionType $type Type of the reaction
      * @param int $total_count Number of times the reaction was added
      */
     public function __construct(
-        private AbstractReactionType $type,
-        private int $total_count,
+        protected AbstractReactionType $type,
+        protected int $total_count,
     ) {
+        parent::__construct();
     }
 
     public function getType(): AbstractReactionType

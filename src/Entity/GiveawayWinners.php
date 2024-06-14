@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
 use stdClass;
 
 /**
  * This object represents a message about the completion of a giveaway with public winners.
  * @link https://core.telegram.org/bots/api#giveawaywinners
  */
-class GiveawayWinners implements EntityInterface
+class GiveawayWinners extends AbstractEntity
 {
     /**
      * @param Chat $chat The chat that created the giveaway.
@@ -28,18 +28,19 @@ class GiveawayWinners implements EntityInterface
      * @param string|null $prize_description Optional. Description of additional giveaway prize.
      */
     public function __construct(
-        private Chat $chat,
-        private int $giveaway_message_id,
-        private int $winners_selection_date,
-        private int $winner_count,
-        #[ArrayType(User::class)] private array $winners,
-        private int|null $additional_chat_count = null,
-        private int|null $premium_subscription_month_count = null,
-        private int|null $unclaimed_prize_count = null,
-        private bool|null $only_new_members = null,
-        private bool|null $was_refunded = null,
-        private string|null $prize_description = null,
+        protected Chat $chat,
+        protected int $giveaway_message_id,
+        protected int $winners_selection_date,
+        protected int $winner_count,
+        #[ArrayType(User::class)] protected array $winners,
+        protected int|null $additional_chat_count = null,
+        protected int|null $premium_subscription_month_count = null,
+        protected int|null $unclaimed_prize_count = null,
+        protected bool|null $only_new_members = null,
+        protected bool|null $was_refunded = null,
+        protected string|null $prize_description = null,
     ) {
+        parent::__construct();
     }
 
     public function getChat(): Chat

@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 
 /**
@@ -31,15 +31,16 @@ class InputVenueMessageContent extends AbstractInputMessageContent
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
      */
     public function __construct(
-        private float $latitude,
-        private float $longitude,
-        private string $title,
-        private string $address,
-        private string|null $foursquare_id = null,
-        private string|null $foursquare_type = null,
-        private string|null $google_place_id = null,
-        private string|null $google_place_type = null,
+        protected float $latitude,
+        protected float $longitude,
+        protected string $title,
+        protected string $address,
+        protected string|null $foursquare_id = null,
+        protected string|null $foursquare_type = null,
+        protected string|null $google_place_id = null,
+        protected string|null $google_place_type = null,
     ) {
+        parent::__construct();
     }
 
     public function getLatitude(): float

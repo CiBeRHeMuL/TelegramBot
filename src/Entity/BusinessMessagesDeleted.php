@@ -2,13 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
 
 /**
  * This object is received when messages are deleted from a connected business account.
  * @link https://core.telegram.org/bots/api#businessmessagesdeleted
  */
-class BusinessMessagesDeleted implements EntityInterface
+class BusinessMessagesDeleted extends AbstractEntity
 {
     /**
      * @param string $business_connection_id Unique identifier of the business connection
@@ -17,10 +17,11 @@ class BusinessMessagesDeleted implements EntityInterface
      * @param int[] $message_ids The list of identifiers of deleted messages in the chat of the business account
      */
     public function __construct(
-        private string $business_connection_id,
-        private Chat $chat,
-        #[ArrayType('int')] private array $message_ids,
+        protected string $business_connection_id,
+        protected Chat $chat,
+        #[ArrayType('int')] protected array $message_ids,
     ) {
+        parent::__construct();
     }
 
     public function getBusinessConnectionId(): string

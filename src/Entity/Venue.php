@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a venue.
  * @link https://core.telegram.org/bots/api#venue
  */
-class Venue implements EntityInterface
+class Venue extends AbstractEntity
 {
     /**
      * @param Location $location Venue location. Can't be a live location.
@@ -23,14 +23,15 @@ class Venue implements EntityInterface
      * @link https://developers.google.com/places/web-service/supported_types
      */
     public function __construct(
-        private Location $location,
-        private string $title,
-        private string $address,
-        private string|null $foursquare_id = null,
-        private string|null $foursquare_type = null,
-        private string|null $google_place_id = null,
-        private string|null $google_place_type = null,
+        protected Location $location,
+        protected string $title,
+        protected string $address,
+        protected string|null $foursquare_id = null,
+        protected string|null $foursquare_type = null,
+        protected string|null $google_place_id = null,
+        protected string|null $google_place_type = null,
     ) {
+        parent::__construct();
     }
 
     public function getLocation(): Location

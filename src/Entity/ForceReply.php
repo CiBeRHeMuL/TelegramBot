@@ -9,7 +9,7 @@ namespace AndrewGos\TelegramBot\Entity;
  * Business account.
  * @link https://core.telegram.org/bots/api#forcereply
  */
-class ForceReply implements EntityInterface
+class ForceReply extends AbstractEntity
 {
     /**
      * @param bool $force_reply Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
@@ -20,10 +20,11 @@ class ForceReply implements EntityInterface
      * and forum topic, sender of the original message.
      */
     public function __construct(
-        private bool $force_reply,
-        private string|null $input_field_placeholder = null,
-        private bool|null $selective = null,
+        protected bool $force_reply,
+        protected string|null $input_field_placeholder = null,
+        protected bool|null $selective = null,
     ) {
+        parent::__construct();
     }
 
     public function getForceReply(): bool

@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 
 /**
@@ -18,11 +18,12 @@ use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
     BotCommandScopeChatAdministrators::class,
     BotCommandScopeChatMember::class,
 ])]
-abstract class AbstractBotCommandScope implements EntityInterface
+abstract class AbstractBotCommandScope extends AbstractEntity
 {
     public function __construct(
         protected readonly BotCommandScopeTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): BotCommandScopeTypeEnum

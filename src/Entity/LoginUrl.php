@@ -15,7 +15,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * Sample bot: https://t.me/discussbot
  * @link https://core.telegram.org/bots/api#loginurl
  */
-class LoginUrl implements EntityInterface
+class LoginUrl extends AbstractEntity
 {
     /**
      * @param Url $url An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed.
@@ -30,11 +30,12 @@ class LoginUrl implements EntityInterface
      * user.
      */
     public function __construct(
-        private Url $url,
-        private string|null $bot_username = null,
-        private string|null $forward_text = null,
-        private bool|null $request_write_access = null,
+        protected Url $url,
+        protected string|null $bot_username = null,
+        protected string|null $forward_text = null,
+        protected bool|null $request_write_access = null,
     ) {
+        parent::__construct();
     }
 
     public function getUrl(): Url

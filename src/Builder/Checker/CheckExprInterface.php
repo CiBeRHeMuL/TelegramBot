@@ -1,15 +1,15 @@
 <?php
 
-namespace AndrewGos\TelegramBot\EntityChecker;
+namespace AndrewGos\TelegramBot\Builder\Checker;
 
 interface CheckExprInterface
 {
     /**
      * Проверить данные на валидность
      *
-     * @param array $data
+     * @param mixed $data
      *
      * @return bool
      */
-    public function check(array $data): bool;
+    public function check(mixed $data): bool;
 }

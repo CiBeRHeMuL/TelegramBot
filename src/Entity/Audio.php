@@ -8,7 +8,7 @@ use stdClass;
  * This object represents an audio file to be treated as music by the Telegram clients.
  * @link https://core.telegram.org/bots/api#audio
  */
-class Audio implements EntityInterface
+class Audio extends AbstractEntity
 {
     /**
      * @param string $fileId Identifier for this file, which can be used to download or reuse the file.
@@ -23,16 +23,17 @@ class Audio implements EntityInterface
      * @param PhotoSize|null $thumbnail Thumbnail of the album cover to which the music file belongs.
      */
     public function __construct(
-        private string $fileId,
-        private string $fileUniqueId,
-        private int $duration,
-        private string|null $performer = null,
-        private string|null $title = null,
-        private string|null $fileName = null,
-        private string|null $mimeType = null,
-        private int|null $fileSize = null,
-        private PhotoSize|null $thumbnail = null,
+        protected string $fileId,
+        protected string $fileUniqueId,
+        protected int $duration,
+        protected string|null $performer = null,
+        protected string|null $title = null,
+        protected string|null $fileName = null,
+        protected string|null $mimeType = null,
+        protected int|null $fileSize = null,
+        protected PhotoSize|null $thumbnail = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

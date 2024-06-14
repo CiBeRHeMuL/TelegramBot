@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use stdClass;
 

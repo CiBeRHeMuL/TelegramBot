@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 use stdClass;
 
@@ -18,7 +18,7 @@ class ChatMemberMember extends AbstractChatMember
      * @param User $user Information about the user
      */
     public function __construct(
-        private User $user,
+        protected User $user,
     ) {
         parent::__construct(ChatMemberStatusEnum::Member);
     }

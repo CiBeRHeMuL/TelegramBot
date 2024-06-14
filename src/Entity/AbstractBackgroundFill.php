@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
 
 /**
@@ -14,11 +14,12 @@ use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
     BackgroundFillGradient::class,
     BackgroundFillFreeformGradient::class,
 ])]
-abstract class AbstractBackgroundFill implements EntityInterface
+abstract class AbstractBackgroundFill extends AbstractEntity
 {
     public function __construct(
         protected readonly BackgroundFillTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): BackgroundFillTypeEnum

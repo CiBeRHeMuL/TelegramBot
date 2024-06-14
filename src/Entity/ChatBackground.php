@@ -8,14 +8,15 @@ use stdClass;
  * This object represents a chat background.
  * @link https://core.telegram.org/bots/api#chatbackground
  */
-class ChatBackground implements EntityInterface
+class ChatBackground extends AbstractEntity
 {
     /**
      * @param AbstractBackgroundType $type Type of the background
      */
     public function __construct(
-        private AbstractBackgroundType $type,
+        protected AbstractBackgroundType $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): AbstractBackgroundType

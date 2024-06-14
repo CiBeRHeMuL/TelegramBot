@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Builder;
 
-use AndrewGos\TelegramBot\Exception\InvalidClassConfigException;
-use AndrewGos\TelegramBot\Exception\InvalidClassException;
+use AndrewGos\TelegramBot\Exception\ClassBuilder\InvalidClassException;
+use AndrewGos\TelegramBot\Exception\ClassBuilder\InvalidDataException;
 
 interface ClassBuilderInterface
 {
@@ -15,7 +15,7 @@ interface ClassBuilderInterface
      *
      * @return object
      * @throws InvalidClassException
-     * @throws InvalidClassConfigException
+     * @throws InvalidDataException
      */
     public function build(string $class, mixed $data): object;
 
@@ -26,8 +26,8 @@ interface ClassBuilderInterface
      * @param array $data
      *
      * @return array
-     * @throws InvalidClassConfigException
      * @throws InvalidClassException
+     * @throws InvalidDataException
      */
     public function buildArray(string $class, array $data): array;
 }

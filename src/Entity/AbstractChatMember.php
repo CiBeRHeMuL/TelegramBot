@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
 /**
@@ -17,11 +17,12 @@ use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
     ChatMemberBanned::class,
     ChatMemberLeft::class,
 ])]
-abstract class AbstractChatMember implements EntityInterface
+abstract class AbstractChatMember extends AbstractEntity
 {
     public function __construct(
         protected readonly ChatMemberStatusEnum $status
     ) {
+        parent::__construct();
     }
 
     public function getStatus(): ChatMemberStatusEnum

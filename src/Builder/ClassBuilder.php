@@ -2,15 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Builder;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\Exception\InvalidClassConfigException;
-use AndrewGos\TelegramBot\Exception\InvalidClassException;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Exception\ClassBuilder\InvalidClassException;
+use AndrewGos\TelegramBot\Exception\ClassBuilder\InvalidDataException;
 use BackedEnum;
 use InvalidArgumentException;
 use ReflectionClass;
-use ReflectionException;
 use Throwable;
 use UnitEnum;
 
@@ -19,9 +18,10 @@ class ClassBuilder implements ClassBuilderInterface
     /**
      * @inheritDoc
      */
-    public function build(string $class, mixed $data): object
+    public function build(string $class, mixed $data, string $parameterName = ''): object
     {
         if (class_exists($class)) {
+            $parameterName = $parameterName ?: $class;
             $reflection = new ReflectionClass($class);
             if ($reflection->isAbstract()) {
                 $extensions = $reflection->getAttributes(AvailableInheritors::class);
@@ -29,7 +29,7 @@ class ClassBuilder implements ClassBuilderInterface
                 if (!$extensions || !$extensionTypes) {
                     throw new InvalidArgumentException("Cannot build abstract class '$class' without inheritors");
                 } else {
-                    return $this->buildParameter($class, $data);
+                    return $this->buildParameter($parameterName, $class, $data);
                 }
             }
             $constructorParameters = $reflection->getConstructor()->getParameters();
@@ -65,22 +65,53 @@ class ClassBuilder implements ClassBuilderInterface
                             if ($attributes) {
                                 /** @var ArrayType $attribute */
                                 $attribute = $attributes[0]->newInstance();
-                                if ($allowDefaultValue && !array_key_exists($name, $data)) {
+                                if (
+                                    $allowDefaultValue
+                                    && (!array_key_exists($name, $data) || $data[$name] === $defaultValue)
+                                ) {
                                     $boundParameters[$name] = $defaultValue;
+                                } elseif (array_key_exists($name, $data) && is_array($data[$name])) {
+                                    $boundParameters[$name] = $this->buildArrayParameter(
+                                        "$parameterName::$name",
+                                        $attribute,
+                                        $data[$name],
+                                    );
                                 } else {
-                                    $boundParameters[$name] = $this->buildArrayParameter($attribute, $data[$name]);
+                                    throw $this->invalidData(
+                                        $this->cannotBuildFromData($type, get_debug_type($data[$name] ?? null)),
+                                        "$parameterName::$name",
+                                    );
                                 }
                             } else {
-                                $boundParameters[$name] = $this->buildParameter((string)$type, $data[$name] ?? $defaultValue);
+                                $boundParameters[$name] = $this->buildParameter(
+                                    "$parameterName::$name",
+                                    (string)$type,
+                                    $data[$name] ?? $defaultValue,
+                                );
                             }
                         } else {
-                            $boundParameters[$name] = $this->buildParameter((string)$type, $data[$name] ?? $defaultValue);
+                            $boundParameters[$name] = $this->buildParameter(
+                                "$parameterName::$name",
+                                (string)$type,
+                                $data[$name] ?? $defaultValue,
+                            );
                         }
                     }
                     return new $class(...$boundParameters);
                 } catch (Throwable $e) {
-                    throw new InvalidClassConfigException($class);
+                    if ($e instanceof InvalidDataException) {
+                        throw $e;
+                    }
+                    throw $this->invalidData(
+                        $e->getMessage(),
+                        $class,
+                    );
                 }
+            } else {
+                throw $this->invalidData(
+                    $this->cannotBuildFromData($class, get_debug_type($data)),
+                    $class,
+                );
             }
         }
         throw new InvalidClassException($class);
@@ -94,7 +125,7 @@ class ClassBuilder implements ClassBuilderInterface
         if (class_exists($class)) {
             $result = [];
             foreach ($data as $key => $value) {
-                $result[$key] = $this->build($class, $value);
+                $result[$key] = $this->build($class, $value, "[$key]");
             }
             return $result;
         }
@@ -102,47 +133,73 @@ class ClassBuilder implements ClassBuilderInterface
     }
 
     /**
+     * @param string $parameterName
      * @param ArrayType $type
      * @param array $data
      *
      * @return array
-     * @throws InvalidClassException
-     * @throws InvalidClassConfigException
-     * @throws ReflectionException
+     * @throws InvalidDataException
      */
-    private function buildArrayParameter(ArrayType $type, array $data): array
+    private function buildArrayParameter(string $parameterName, ArrayType $type, array $data): array
     {
         $result = [];
         $elementType = $type->getType();
         foreach ($data as $k => $row) {
             if ($elementType instanceof ArrayType) {
-                $result[$k] = $this->buildArrayParameter($elementType, $row);
+                $result[$k] = $this->buildArrayParameter(
+                    "{$parameterName}[$k]",
+                    $elementType,
+                    $row,
+                );
             } else {
-                $result[$k] = $this->buildParameter($elementType, $row);
+                $result[$k] = $this->buildParameter(
+                    "{$parameterName}[$k]",
+                    $elementType,
+                    $row,
+                );
             }
         }
         return $result;
     }
 
     /**
+     * @param string $parameterName
      * @param string $type
      * @param mixed $data
      *
      * @return mixed
+     * @throws InvalidDataException
      */
-    private function buildParameter(string $type, mixed $data): mixed
+    private function buildParameter(string $parameterName, string $type, mixed $data): mixed
     {
         if (str_starts_with($type, '?')) {
             $type = str_replace('?', '', $type);
             $type = $type . '|null';
         }
         $types = explode('|', $type);
-        $result = $data;
+        $notBuiltReason = 'invalid data';
+        $previouslyThrownInvalidData = false;
         foreach ($types as $possibleType) {
             if (is_subclass_of($possibleType, BackedEnum::class)) {
-                return $possibleType::tryFrom($data);
+                try {
+                    if (!is_string($data) && !is_int($data)) {
+                        $notBuiltReason = "cannot get value from enum '$possibleType' with non-string and non-int scalar equivalent";
+                        continue;
+                    }
+                    return $possibleType::from($data);
+                } catch (Throwable $e) {
+                    $notBuiltReason = "enum '$possibleType' does not have value with scalar equivalent '$data'";
+                }
             } elseif (is_subclass_of($possibleType, UnitEnum::class)) {
-                return $possibleType::$$data;
+                try {
+                    if (!is_string($data)) {
+                        $notBuiltReason = "cannot get value from enum '$possibleType' with non-string name";
+                        continue;
+                    }
+                    return $possibleType::$$data;
+                } catch (Throwable $e) {
+                    $notBuiltReason = "enum '$possibleType' does not have value '$data'";
+                }
             } elseif (class_exists($possibleType)) {
                 $reflection = new ReflectionClass($possibleType);
                 $availableExtensionsAttributes = $reflection->getAttributes(AvailableInheritors::class);
@@ -150,9 +207,20 @@ class ClassBuilder implements ClassBuilderInterface
                     /** @var AvailableInheritors $availableExtensionsAttribute */
                     $availableExtensionsAttribute = $availableExtensionsAttributes[0]->newInstance();
                     if ($availableExtensionsAttribute->getInheritors()) {
-                        return $this->buildParameter(implode('|', $availableExtensionsAttribute->getInheritors()), $data);
+                        try {
+                            return $this->buildParameter(
+                                $parameterName,
+                                implode('|', $availableExtensionsAttribute->getInheritors()),
+                                $data,
+                            );
+                        } catch (Throwable $e) {
+                            $notBuiltReason = $e->getMessage();
+                            $previouslyThrownInvalidData = $e instanceof InvalidDataException;
+                            continue;
+                        }
                     } else {
-                        throw new InvalidArgumentException('Available inheritors not set or not exist');
+                        $notBuiltReason = 'available inheritors not set or not exist';
+                        continue;
                     }
                 } else {
                     $attributes = $reflection->getAttributes(BuildIf::class);
@@ -160,14 +228,60 @@ class ClassBuilder implements ClassBuilderInterface
                     $buildIf = ($attributes[0] ?? null)?->newInstance();
                     try {
                         if ($buildIf === null || $buildIf->getChecker()->check($data)) {
-                            return $this->build($possibleType, $data);
+                            return $this->build($possibleType, $data, $parameterName);
+                        } else {
+                            $notBuiltReason = "cannot build value of type '$possibleType' because buildIf check failed";
                         }
-                    } catch (Throwable) {
+                    } catch (Throwable $e) {
+                        $notBuiltReason = $e->getMessage();
+                        $previouslyThrownInvalidData = $e instanceof InvalidDataException;
                         continue;
                     }
                 }
+            } elseif (
+                in_array(
+                    $possibleType,
+                    ['int', 'integer', 'float', 'double', 'string', 'bool', 'boolean', 'null', 'array'],
+                )
+            ) {
+                if (is_scalar($data) || is_null($data)) {
+                    if (
+                        (in_array($possibleType, ['int', 'integer']) && is_int($data))
+                        || (in_array($possibleType, ['float', 'double']) && is_float($data))
+                        || ($possibleType === 'string' && is_string($data))
+                        || (in_array($possibleType, ['bool', 'boolean']) && is_bool($data))
+                        || ($possibleType === 'null' && is_null($data))
+                        || ($possibleType === 'array' && is_array($data))
+                    ) {
+                        return $data;
+                    }
+                }
+                if ($possibleType !== 'null') {
+                    $notBuiltReason = $this->cannotBuildFromData($possibleType, get_debug_type($data));
+                }
+                continue;
+            } else {
+                $notBuiltReason = "cannot build unknown type '$possibleType'";
             }
         }
-        return $result;
+        throw $this->invalidData(
+            $notBuiltReason,
+            $parameterName,
+            $previouslyThrownInvalidData,
+        );
+    }
+
+    private function cannotBuildFromData(string $type, string $dataType): string
+    {
+        return "cannot build value of type '$type' from value of type '$dataType'";
+    }
+
+    private function invalidData(string $exception, string $parameterName = '', bool $previouslyThrown = false): InvalidDataException
+    {
+        return new InvalidDataException(
+            $previouslyThrown
+                ? $exception
+                : "Cannot build parameter '$parameterName' because of reason: $exception",
+        );
     }
 }

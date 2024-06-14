@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
 use stdClass;
 
@@ -20,8 +20,8 @@ class MenuButtonWebApp extends AbstractMenuButton
      * will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery.
      */
     public function __construct(
-        private string $text,
-        private WebAppInfo $web_app,
+        protected string $text,
+        protected WebAppInfo $web_app,
     ) {
         parent::__construct(MenuButtonTypeEnum::WebApp);
     }

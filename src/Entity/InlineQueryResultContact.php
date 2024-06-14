@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 use AndrewGos\TelegramBot\ValueObject\Url;
@@ -30,16 +30,16 @@ class InlineQueryResultContact extends AbstractInlineQueryResult
      * @param string|null $vcard Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      */
     public function __construct(
-        private string $id,
-        private Phone $phone_number,
-        private string $first_name,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private string|null $last_name = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $thumbnail_height = null,
-        private Url|null $thumbnail_url = null,
-        private int|null $thumbnail_width = null,
-        private string|null $vcard = null,
+        protected string $id,
+        protected Phone $phone_number,
+        protected string $first_name,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected string|null $last_name = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $thumbnail_height = null,
+        protected Url|null $thumbnail_url = null,
+        protected int|null $thumbnail_width = null,
+        protected string|null $vcard = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Contact);
     }

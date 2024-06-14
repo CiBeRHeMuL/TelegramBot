@@ -2,11 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
@@ -39,15 +39,15 @@ class InlineQueryResultVoice extends AbstractInlineQueryResult
      * @param int|null $voice_duration Optional. Recording duration in seconds
      */
     public function __construct(
-        private string $id,
-        private Url $voice_url,
-        private string $title,
-        private string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] private array|null $caption_entities = null,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $voice_duration = null,
+        protected string $id,
+        protected Url $voice_url,
+        protected string $title,
+        protected string|null $caption = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $voice_duration = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Voice);
     }

@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
@@ -27,16 +27,16 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
      * @param Url|null $url Optional. URL of the result
      */
     public function __construct(
-        private string $id,
-        private string $title,
-        private AbstractInputMessageContent $input_message_content,
-        private string|null $description = null,
-        private bool|null $hide_url = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private int|null $thumbnail_height = null,
-        private Url|null $thumbnail_url = null,
-        private int|null $thumbnail_width = null,
-        private Url|null $url = null,
+        protected string $id,
+        protected string $title,
+        protected AbstractInputMessageContent $input_message_content,
+        protected string|null $description = null,
+        protected bool|null $hide_url = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected int|null $thumbnail_height = null,
+        protected Url|null $thumbnail_url = null,
+        protected int|null $thumbnail_width = null,
+        protected Url|null $url = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Article);
     }

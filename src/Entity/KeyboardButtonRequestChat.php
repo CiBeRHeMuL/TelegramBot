@@ -11,7 +11,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  * @link https://core.telegram.org/bots/features#chat-and-user-selection More about requesting chats.
  */
-class KeyboardButtonRequestChat implements EntityInterface
+class KeyboardButtonRequestChat extends AbstractEntity
 {
     /**
      * @param RequestId $request_id Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
@@ -36,18 +36,19 @@ class KeyboardButtonRequestChat implements EntityInterface
      * restrictions are applied.
      */
     public function __construct(
-        private RequestId $request_id,
-        private bool $chat_is_channel,
-        private ChatAdministratorRights|null $bot_administrator_rights = null,
-        private bool|null $bot_is_member = null,
-        private bool|null $chat_has_username = null,
-        private bool|null $chat_is_created = null,
-        private bool|null $chat_is_forum = null,
-        private bool|null $request_photo = null,
-        private bool|null $request_title = null,
-        private bool|null $request_username = null,
-        private ChatAdministratorRights|null $user_administrator_rights = null,
+        protected RequestId $request_id,
+        protected bool $chat_is_channel,
+        protected ChatAdministratorRights|null $bot_administrator_rights = null,
+        protected bool|null $bot_is_member = null,
+        protected bool|null $chat_has_username = null,
+        protected bool|null $chat_is_created = null,
+        protected bool|null $chat_is_forum = null,
+        protected bool|null $request_photo = null,
+        protected bool|null $request_title = null,
+        protected bool|null $request_username = null,
+        protected ChatAdministratorRights|null $user_administrator_rights = null,
     ) {
+        parent::__construct();
     }
 
     public function getRequestId(): RequestId

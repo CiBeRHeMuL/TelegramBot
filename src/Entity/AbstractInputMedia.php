@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
 /**
@@ -16,11 +16,12 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
     InputMediaPhoto::class,
     InputMediaVideo::class,
 ])]
-abstract class AbstractInputMedia implements EntityInterface
+abstract class AbstractInputMedia extends AbstractEntity
 {
     public function __construct(
         protected readonly InputMediaTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): InputMediaTypeEnum

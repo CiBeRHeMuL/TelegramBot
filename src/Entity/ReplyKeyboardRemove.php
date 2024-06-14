@@ -12,7 +12,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#replykeyboardremove
  * @see ReplyKeyboardMarkup
  */
-class ReplyKeyboardRemove implements EntityInterface
+class ReplyKeyboardRemove extends AbstractEntity
 {
     /**
      * @param bool $remove_keyboard Requests clients to remove the custom keyboard (user will not be able to summon this keyboard;
@@ -25,9 +25,10 @@ class ReplyKeyboardRemove implements EntityInterface
      * haven't voted yet.
      */
     public function __construct(
-        private bool $remove_keyboard,
-        private bool|null $selective = null,
+        protected bool $remove_keyboard,
+        protected bool|null $selective = null,
     ) {
+        parent::__construct();
     }
 
     public function getRemoveKeyboard(): bool

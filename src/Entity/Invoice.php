@@ -9,7 +9,7 @@ use stdClass;
  * This object contains basic information about an invoice.
  * @link https://core.telegram.org/bots/api#invoice
  */
-class Invoice implements EntityInterface
+class Invoice extends AbstractEntity
 {
     /**
      * @param string $title Product name.
@@ -22,12 +22,13 @@ class Invoice implements EntityInterface
      * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
      */
     public function __construct(
-        private string $title,
-        private string $description,
-        private string $start_parameter,
-        private CurrencyEnum $currency,
-        private int $total_amount,
+        protected string $title,
+        protected string $description,
+        protected string $start_parameter,
+        protected CurrencyEnum $currency,
+        protected int $total_amount,
     ) {
+        parent::__construct();
     }
 
     public function getTitle(): string

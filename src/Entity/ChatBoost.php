@@ -8,7 +8,7 @@ use stdClass;
  * This object contains information about a chat boost.
  * @link https://core.telegram.org/bots/api#chatboost
  */
-class ChatBoost implements EntityInterface
+class ChatBoost extends AbstractEntity
 {
     /**
      * @param string $boost_id Unique identifier of the boost
@@ -18,11 +18,12 @@ class ChatBoost implements EntityInterface
      * @param AbstractChatBoostSource $source Source of the added boost
      */
     public function __construct(
-        private string $boost_id,
-        private int $add_date,
-        private int $expiration_date,
-        private AbstractChatBoostSource $source,
+        protected string $boost_id,
+        protected int $add_date,
+        protected int $expiration_date,
+        protected AbstractChatBoostSource $source,
     ) {
+        parent::__construct();
     }
 
     public function getBoostId(): string

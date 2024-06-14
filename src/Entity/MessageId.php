@@ -8,14 +8,15 @@ use stdClass;
  * This object represents a unique message identifier.
  * @link https://core.telegram.org/bots/api#messageid
  */
-class MessageId implements EntityInterface
+class MessageId extends AbstractEntity
 {
     /**
      * @param int $message_id Unique message identifier
      */
     public function __construct(
-        private int $message_id,
+        protected int $message_id,
     ) {
+        parent::__construct();
     }
 
     public function getMessageId(): int

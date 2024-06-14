@@ -9,7 +9,7 @@ use stdClass;
  * This object contains basic information about a successful payment.
  * @link https://core.telegram.org/bots/api#successfulpayment
  */
-class SuccessfulPayment implements EntityInterface
+class SuccessfulPayment extends AbstractEntity
 {
     /**
      * @param CurrencyEnum $currency Three-letter ISO 4217 currency code.
@@ -21,14 +21,15 @@ class SuccessfulPayment implements EntityInterface
      * @param OrderInfo|null $order_info Optional. Order information provided by the user.
      */
     public function __construct(
-        private CurrencyEnum $currency,
-        private int $total_amount,
-        private string $invoice_payload,
-        private string $telegram_payment_charge_id,
-        private string $provider_payment_charge_id,
-        private string|null $shipping_option_id = null,
-        private OrderInfo|null $order_info = null
+        protected CurrencyEnum $currency,
+        protected int $total_amount,
+        protected string $invoice_payload,
+        protected string $telegram_payment_charge_id,
+        protected string $provider_payment_charge_id,
+        protected string|null $shipping_option_id = null,
+        protected OrderInfo|null $order_info = null
     ) {
+        parent::__construct();
     }
 
     public function getCurrency(): CurrencyEnum

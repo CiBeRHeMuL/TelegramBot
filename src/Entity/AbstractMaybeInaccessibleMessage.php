@@ -2,18 +2,19 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 
 /**
  * This object describes a message that can be inaccessible to the bot
  * @link https://core.telegram.org/bots/api#maybeinaccessiblemessage
  */
 #[AvailableInheritors([Message::class, InaccessibleMessage::class])]
-abstract class AbstractMaybeInaccessibleMessage implements EntityInterface
+abstract class AbstractMaybeInaccessibleMessage extends AbstractEntity
 {
     public function __construct(
         protected int $date,
     ) {
+        parent::__construct();
     }
 
     public function getDate(): int

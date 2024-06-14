@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\EntityChecker;
+namespace AndrewGos\TelegramBot\Builder\Checker;
 
 readonly class FieldIsChecker implements CheckExprInterface
 {
@@ -11,7 +11,7 @@ readonly class FieldIsChecker implements CheckExprInterface
     ) {
     }
 
-    public function check(array $data): bool
+    public function check(mixed $data): bool
     {
         $value = $data[$this->field] ?? null;
         return $this->strict ? ($value === $this->equalTo) : ($value == $this->equalTo);

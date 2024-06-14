@@ -8,7 +8,7 @@ use stdClass;
  * Describes actions that a non-administrator user is allowed to take in a chat.
  * @link https://core.telegram.org/bots/api#chatpermissions
  */
-class ChatPermissions implements EntityInterface
+class ChatPermissions extends AbstractEntity
 {
     /**
      * ChatPermissions constructor.
@@ -31,21 +31,22 @@ class ChatPermissions implements EntityInterface
      * @param bool|null $can_manage_topics True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages
      */
     public function __construct(
-        private bool|null $can_send_messages = null,
-        private bool|null $can_send_audios = null,
-        private bool|null $can_send_documents = null,
-        private bool|null $can_send_photos = null,
-        private bool|null $can_send_videos = null,
-        private bool|null $can_send_video_notes = null,
-        private bool|null $can_send_voice_notes = null,
-        private bool|null $can_send_polls = null,
-        private bool|null $can_send_other_messages = null,
-        private bool|null $can_add_web_page_previews = null,
-        private bool|null $can_change_info = null,
-        private bool|null $can_invite_users = null,
-        private bool|null $can_pin_messages = null,
-        private bool|null $can_manage_topics = null,
+        protected bool|null $can_send_messages = null,
+        protected bool|null $can_send_audios = null,
+        protected bool|null $can_send_documents = null,
+        protected bool|null $can_send_photos = null,
+        protected bool|null $can_send_videos = null,
+        protected bool|null $can_send_video_notes = null,
+        protected bool|null $can_send_voice_notes = null,
+        protected bool|null $can_send_polls = null,
+        protected bool|null $can_send_other_messages = null,
+        protected bool|null $can_add_web_page_previews = null,
+        protected bool|null $can_change_info = null,
+        protected bool|null $can_invite_users = null,
+        protected bool|null $can_pin_messages = null,
+        protected bool|null $can_manage_topics = null,
     ) {
+        parent::__construct();
     }
 
     public function getCanSendMessages(): bool|null

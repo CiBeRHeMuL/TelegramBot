@@ -2,10 +2,10 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 
@@ -28,10 +28,10 @@ class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
      * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
      */
     public function __construct(
-        private string $id,
-        private string $sticker_file_id,
-        private AbstractInputMessageContent|null $input_message_content = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
+        protected string $id,
+        protected string $sticker_file_id,
+        protected AbstractInputMessageContent|null $input_message_content = null,
+        protected InlineKeyboardMarkup|null $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Sticker);
     }

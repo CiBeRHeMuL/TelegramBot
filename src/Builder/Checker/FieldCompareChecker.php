@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\EntityChecker;
+namespace AndrewGos\TelegramBot\Builder\Checker;
 
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 
@@ -13,7 +13,7 @@ readonly class FieldCompareChecker implements CheckExprInterface
     ) {
     }
 
-    public function check(array $data): bool
+    public function check(mixed $data): bool
     {
         $value = $data[$this->field] ?? null;
         return match ($this->operator) {

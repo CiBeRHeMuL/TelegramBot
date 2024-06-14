@@ -8,7 +8,7 @@ use stdClass;
  * This object represents one size of a photo or a file / sticker thumbnail.
  * @link https://core.telegram.org/bots/api#photosize
  */
-class PhotoSize implements EntityInterface
+class PhotoSize extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -19,12 +19,13 @@ class PhotoSize implements EntityInterface
      * @param int|null $file_size Optional. File size in bytes.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $width,
-        private int $height,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $width,
+        protected int $height,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

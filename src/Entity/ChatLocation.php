@@ -8,16 +8,17 @@ use stdClass;
  * Represents a location to which a chat is connected.
  * @link https://core.telegram.org/bots/api#chatlocation
  */
-class ChatLocation implements EntityInterface
+class ChatLocation extends AbstractEntity
 {
     /**
      * @param Location $location The location to which the supergroup is connected. Can't be a live location.
      * @param string $address
      */
     public function __construct(
-        private Location $location,
-        private string $address,
+        protected Location $location,
+        protected string $address,
     ) {
+        parent::__construct();
     }
 
     public function getLocation(): Location

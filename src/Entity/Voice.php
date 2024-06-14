@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a voice note.
  * @link https://core.telegram.org/bots/api#voice
  */
-class Voice implements EntityInterface
+class Voice extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -21,12 +21,13 @@ class Voice implements EntityInterface
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $duration,
-        private string|null $mime_type = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $duration,
+        protected string|null $mime_type = null,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

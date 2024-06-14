@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\Attribute;
+namespace AndrewGos\TelegramBot\Builder\Attribute;
 
 use Attribute;
 

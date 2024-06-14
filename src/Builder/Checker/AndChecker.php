@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\EntityChecker;
+namespace AndrewGos\TelegramBot\Builder\Checker;
 
 readonly class AndChecker implements CheckExprInterface
 {
@@ -12,7 +12,7 @@ readonly class AndChecker implements CheckExprInterface
     ) {
     }
 
-    public function check(array $data): bool
+    public function check(mixed $data): bool
     {
         foreach ($this->checkers as $checker) {
             if (!$checker->check($data)) {

@@ -10,7 +10,7 @@ use stdClass;
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  * @link https://core.telegram.org/bots/api#messageentity
  */
-class MessageEntity implements EntityInterface
+class MessageEntity extends AbstractEntity
 {
     /**
      * @param MessageEntityTypeEnum $type
@@ -22,14 +22,15 @@ class MessageEntity implements EntityInterface
      * @param string|null $custom_emoji_id
      */
     public function __construct(
-        private MessageEntityTypeEnum $type,
-        private int $offset,
-        private int $length,
-        private Url|null $url = null,
-        private User|null $user = null,
-        private string|null $language = null,
-        private string|null $custom_emoji_id = null,
+        protected MessageEntityTypeEnum $type,
+        protected int $offset,
+        protected int $length,
+        protected Url|null $url = null,
+        protected User|null $user = null,
+        protected string|null $language = null,
+        protected string|null $custom_emoji_id = null,
     ) {
+        parent::__construct();
     }
 
     public function getType(): MessageEntityTypeEnum

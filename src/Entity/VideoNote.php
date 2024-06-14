@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a video message (available in Telegram apps as of v.4.0).
  * @link https://core.telegram.org/bots/api#videonote
  */
-class VideoNote implements EntityInterface
+class VideoNote extends AbstractEntity
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
@@ -20,13 +20,14 @@ class VideoNote implements EntityInterface
      * @param int|null $file_size Optional. File size in bytes.
      */
     public function __construct(
-        private string $file_id,
-        private string $file_unique_id,
-        private int $length,
-        private int $duration,
-        private PhotoSize|null $thumbnail = null,
-        private int|null $file_size = null,
+        protected string $file_id,
+        protected string $file_unique_id,
+        protected int $length,
+        protected int $duration,
+        protected PhotoSize|null $thumbnail = null,
+        protected int|null $file_size = null,
     ) {
+        parent::__construct();
     }
 
     public function getFileId(): string

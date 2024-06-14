@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use stdClass;
@@ -20,8 +20,8 @@ class BotCommandScopeChatMember extends AbstractBotCommandScope
      * @param int $user_id Unique identifier of the target user
      */
     public function __construct(
-        private ChatId $chat_id,
-        private int $user_id,
+        protected ChatId $chat_id,
+        protected int $user_id,
     ) {
         parent::__construct(BotCommandScopeTypeEnum::ChatMember);
     }

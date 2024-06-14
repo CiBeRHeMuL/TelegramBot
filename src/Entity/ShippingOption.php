@@ -2,13 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
 
 /**
  * This object represents one shipping option.
  * @link https://core.telegram.org/bots/api#shippingoption
  */
-class ShippingOption implements EntityInterface
+class ShippingOption extends AbstractEntity
 {
     /**
      * @param string $id Shipping option identifier
@@ -16,10 +16,11 @@ class ShippingOption implements EntityInterface
      * @param LabeledPrice[] $prices List of price portions
      */
     public function __construct(
-        private string $id,
-        private string $title,
-        #[ArrayType(LabeledPrice::class)] private array $prices,
+        protected string $id,
+        protected string $title,
+        #[ArrayType(LabeledPrice::class)] protected array $prices,
     ) {
+        parent::__construct();
     }
 
     public function getId(): string

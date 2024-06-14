@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -32,12 +32,12 @@ class InputMediaPhoto extends AbstractInputMedia
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
-        private string|Filename|Url $media,
-        private ?string $caption = null,
-        private ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private ?array $caption_entities = null,
-        private ?bool $has_spoiler = null,
-        private bool|null $show_caption_above_media = null,
+        protected string|Filename|Url $media,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected ?array $caption_entities = null,
+        protected ?bool $has_spoiler = null,
+        protected bool|null $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Photo);
     }

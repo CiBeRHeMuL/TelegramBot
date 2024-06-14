@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\AndChecker;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
@@ -25,11 +25,12 @@ class InputContactMessageContent extends AbstractInputMessageContent
      * @param string|null $vcard Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      */
     public function __construct(
-        private Phone $phone_number,
-        private string $first_name,
-        private string|null $last_name = null,
-        private string|null $vcard = null,
+        protected Phone $phone_number,
+        protected string $first_name,
+        protected string|null $last_name = null,
+        protected string|null $vcard = null,
     ) {
+        parent::__construct();
     }
 
     public function getPhoneNumber(): Phone

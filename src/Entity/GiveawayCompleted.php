@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a service message about the completion of a giveaway without public winners.
  * @link https://core.telegram.org/bots/api#giveawaycompleted
  */
-class GiveawayCompleted implements EntityInterface
+class GiveawayCompleted extends AbstractEntity
 {
     /**
      * @param int $winner_count Number of winners in the giveaway
@@ -16,10 +16,11 @@ class GiveawayCompleted implements EntityInterface
      * @param Message|null $giveaway_message Optional. Message with the giveaway that was completed, if it wasn't deleted
      */
     public function __construct(
-        private int $winner_count,
-        private int|null $unclaimed_prize_count = null,
-        private Message|null $giveaway_message = null
+        protected int $winner_count,
+        protected int|null $unclaimed_prize_count = null,
+        protected Message|null $giveaway_message = null
     ) {
+        parent::__construct();
     }
 
     public function getWinnerCount(): int

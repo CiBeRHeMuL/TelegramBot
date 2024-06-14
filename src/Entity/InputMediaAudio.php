@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -38,14 +38,14 @@ class InputMediaAudio extends AbstractInputMedia
      * @param string|null $title Optional. Title of the audio
      */
     public function __construct(
-        private Filename|Url|string $media,
-        private Filename|Url|string|null $thumbnail = null,
-        private ?string $caption = null,
-        private ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] private ?array $caption_entities = null,
-        private ?int $duration = null,
-        private ?string $performer = null,
-        private ?string $title = null
+        protected Filename|Url|string $media,
+        protected Filename|Url|string|null $thumbnail = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected ?array $caption_entities = null,
+        protected ?int $duration = null,
+        protected ?string $performer = null,
+        protected ?string $title = null
     ) {
         parent::__construct(InputMediaTypeEnum::Audio);
     }

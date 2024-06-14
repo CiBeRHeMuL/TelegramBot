@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
 use stdClass;
 
@@ -22,9 +22,9 @@ class ChatBoostSourceGiveaway extends AbstractChatBoostSource
      * @param User|null $user Optional. User that won the prize in the giveaway if any
      */
     public function __construct(
-        private int $giveaway_message_id,
-        private bool|null $is_unclaimed = null,
-        private User|null $user = null,
+        protected int $giveaway_message_id,
+        protected bool|null $is_unclaimed = null,
+        protected User|null $user = null,
     ) {
         parent::__construct(ChatBoostSourceEnum::Giveaway);
     }

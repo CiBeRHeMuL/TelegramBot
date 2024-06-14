@@ -6,15 +6,16 @@ namespace AndrewGos\TelegramBot\Entity;
  * Describes an inline message sent by a Web App on behalf of a user.
  * @link https://core.telegram.org/bots/api#sentwebappmessage
  */
-class SentWebAppMessage implements EntityInterface
+class SentWebAppMessage extends AbstractEntity
 {
     /**
      * @param string|null $inline_message_id Optional. Identifier of the sent inline message. Available only if there is an inline
      * keyboard attached to the message.
      */
     public function __construct(
-        private string|null $inline_message_id = null,
+        protected string|null $inline_message_id = null,
     ) {
+        parent::__construct();
     }
 
     public function getInlineMessageId(): string|null

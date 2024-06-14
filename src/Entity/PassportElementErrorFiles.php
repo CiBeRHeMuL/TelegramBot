@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFilesTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
@@ -22,9 +22,9 @@ class PassportElementErrorFiles extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private PassportElementErrorFilesTypeEnum $type,
-        #[ArrayType('string')] private array $file_hashes,
-        private string $message,
+        protected PassportElementErrorFilesTypeEnum $type,
+        #[ArrayType('string')] protected array $file_hashes,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::Files);
     }

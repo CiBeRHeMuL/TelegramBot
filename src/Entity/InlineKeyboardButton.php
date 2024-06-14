@@ -10,7 +10,7 @@ use stdClass;
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  * @link https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-class InlineKeyboardButton implements EntityInterface
+class InlineKeyboardButton extends AbstractEntity
 {
     /**
      * @param string $text Label text on the button
@@ -36,20 +36,21 @@ class InlineKeyboardButton implements EntityInterface
      * can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
-     * only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * only in protected chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
      */
     public function __construct(
-        private string $text,
-        private CallbackData|null $callback_data = null,
-        private CallbackGame|null $callback_game = null,
-        private LoginUrl|null $login_url = null,
-        private bool|null $pay = null,
-        private string|null $switch_inline_query = null,
-        private SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat = null,
-        private string|null $switch_inline_query_current_chat = null,
-        private Url|null $url = null,
-        private WebAppInfo|null $web_app = null,
+        protected string $text,
+        protected CallbackData|null $callback_data = null,
+        protected CallbackGame|null $callback_game = null,
+        protected LoginUrl|null $login_url = null,
+        protected bool|null $pay = null,
+        protected string|null $switch_inline_query = null,
+        protected SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat = null,
+        protected string|null $switch_inline_query_current_chat = null,
+        protected Url|null $url = null,
+        protected WebAppInfo|null $web_app = null,
     ) {
+        parent::__construct();
     }
 
     public function getText(): string

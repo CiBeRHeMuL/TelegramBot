@@ -1,8 +1,8 @@
 <?php
 
-namespace AndrewGos\TelegramBot\Attribute;
+namespace AndrewGos\TelegramBot\Builder\Attribute;
 
-use AndrewGos\TelegramBot\EntityChecker\CheckExprInterface;
+use AndrewGos\TelegramBot\Builder\Checker\CheckExprInterface;
 use Attribute;
 
 #[Attribute(Attribute::TARGET_CLASS)]

@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 
 /**
@@ -33,11 +33,12 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
     InlineQueryResultVideo::class,
     InlineQueryResultVoice::class,
 ])]
-abstract class AbstractInlineQueryResult implements EntityInterface
+abstract class AbstractInlineQueryResult extends AbstractEntity
 {
     public function __construct(
         protected readonly InlineQueryResultTypeEnum $type,
     ) {
+        parent::__construct();
     }
 
     public function getType(): InlineQueryResultTypeEnum

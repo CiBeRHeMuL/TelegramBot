@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
 
 /**
@@ -15,11 +15,12 @@ use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
     MessageOriginHiddenUser::class,
     MessageOriginUser::class,
 ])]
-abstract class AbstractMessageOrigin implements EntityInterface
+abstract class AbstractMessageOrigin extends AbstractEntity
 {
     public function __construct(
         protected readonly MessageOriginTypeEnum $type
     ) {
+        parent::__construct();
     }
 
     public function getType(): MessageOriginTypeEnum

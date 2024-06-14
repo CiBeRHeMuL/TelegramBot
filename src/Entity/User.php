@@ -9,7 +9,7 @@ use stdClass;
  * This object represents a Telegram user or bot.
  * @link https://core.telegram.org/bots/api#user
  */
-class User implements EntityInterface
+class User extends AbstractEntity
 {
     /**
      * @param int $id Unique identifier for this user or bot.
@@ -33,19 +33,20 @@ class User implements EntityInterface
      * Returned only in getMe.
      */
     public function __construct(
-        private int $id,
-        private bool $is_bot,
-        private string $first_name,
-        private string|null $last_name = null,
-        private string|null $username = null,
-        private Language|null $language_code = null,
-        private bool|null $is_premium = null,
-        private bool|null $added_to_attachment_menu = null,
-        private bool|null $can_join_groups = null,
-        private bool|null $can_read_all_group_messages = null,
-        private bool|null $supports_inline_queries = null,
-        private bool|null $can_connect_to_business = null,
+        protected int $id,
+        protected bool $is_bot,
+        protected string $first_name,
+        protected string|null $last_name = null,
+        protected string|null $username = null,
+        protected Language|null $language_code = null,
+        protected bool|null $is_premium = null,
+        protected bool|null $added_to_attachment_menu = null,
+        protected bool|null $can_join_groups = null,
+        protected bool|null $can_read_all_group_messages = null,
+        protected bool|null $supports_inline_queries = null,
+        protected bool|null $can_connect_to_business = null,
     ) {
+        parent::__construct();
     }
 
     public function getId(): int

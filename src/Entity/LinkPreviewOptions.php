@@ -9,15 +9,16 @@ use stdClass;
  * Describes the options used for link preview generation.
  * @link https://core.telegram.org/bots/api#linkpreviewoptions
  */
-class LinkPreviewOptions implements EntityInterface
+class LinkPreviewOptions extends AbstractEntity
 {
     public function __construct(
-        private bool|null $is_disabled,
-        private Url|null $url,
-        private bool|null $prefer_small_media,
-        private bool|null $prefer_large_media,
-        private bool|null $show_above_text,
+        protected bool|null $is_disabled,
+        protected Url|null $url,
+        protected bool|null $prefer_small_media,
+        protected bool|null $prefer_large_media,
+        protected bool|null $show_above_text,
     ) {
+        parent::__construct();
     }
 
     public function getIsDisabled(): bool|null

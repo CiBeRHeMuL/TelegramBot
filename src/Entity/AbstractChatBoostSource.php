@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
 
 /**
@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
  * @link https://core.telegram.org/bots/api#chatboostsource
  */
 #[AvailableInheritors([ChatBoostSourceGiftCode::class, ChatBoostSourceGiveaway::class, ChatBoostSourcePremium::class])]
-abstract class AbstractChatBoostSource implements EntityInterface
+abstract class AbstractChatBoostSource extends AbstractEntity
 {
     /**
      * @param ChatBoostSourceEnum $source Source of the boost
@@ -18,6 +18,7 @@ abstract class AbstractChatBoostSource implements EntityInterface
     public function __construct(
         protected readonly ChatBoostSourceEnum $source
     ) {
+        parent::__construct();
     }
 
     public function getSource(): ChatBoostSourceEnum

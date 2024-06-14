@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\AvailableInheritors;
+use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
 /**
@@ -20,11 +20,12 @@ use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
     PassportElementErrorTranslationFiles::class,
     PassportElementErrorUnspecified::class,
 ])]
-abstract class AbstractPassportElementError implements EntityInterface
+abstract class AbstractPassportElementError extends AbstractEntity
 {
     public function __construct(
         protected readonly PassportElementErrorSourceEnum $source,
     ) {
+        parent::__construct();
     }
 
     public function getSource(): PassportElementErrorSourceEnum

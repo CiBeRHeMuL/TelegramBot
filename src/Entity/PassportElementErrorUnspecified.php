@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldIsChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
@@ -20,9 +20,9 @@ class PassportElementErrorUnspecified extends AbstractPassportElementError
      * @param string $message Error message
      */
     public function __construct(
-        private EncryptedPassportElementTypeEnum $type,
-        private string $element_hash,
-        private string $message,
+        protected EncryptedPassportElementTypeEnum $type,
+        protected string $element_hash,
+        protected string $message,
     ) {
         parent::__construct(PassportElementErrorSourceEnum::Unspecified);
     }

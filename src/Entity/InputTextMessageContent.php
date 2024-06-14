@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Attribute\BuildIf;
-use AndrewGos\TelegramBot\EntityChecker\FieldCompareChecker;
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
+use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
@@ -13,7 +13,7 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
  * @link https://core.telegram.org/bots/api#inputtextmessagecontent
  */
 #[BuildIf(new FieldCompareChecker('message_text', null, CompareOperatorEnum::StrictNotEqual))]
-class InputTextMessageContent implements EntityInterface
+class InputTextMessageContent extends AbstractEntity
 {
     /**
      * @param string $message_text Text of the message to be sent, 1-4096 characters
@@ -24,11 +24,12 @@ class InputTextMessageContent implements EntityInterface
      * for more details.
      */
     public function __construct(
-        private string $message_text,
-        #[ArrayType(MessageEntity::class)] private array|null $entities = null,
-        private LinkPreviewOptions|null $link_preview_options = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
+        protected string $message_text,
+        #[ArrayType(MessageEntity::class)] protected array|null $entities = null,
+        protected LinkPreviewOptions|null $link_preview_options = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
     ) {
+        parent::__construct();
     }
 
     public function getMessageText(): string

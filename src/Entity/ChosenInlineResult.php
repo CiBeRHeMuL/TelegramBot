@@ -8,7 +8,7 @@ namespace AndrewGos\TelegramBot\Entity;
  * Note: It is necessary to enable inline feedback via @BotFather in order to receive these objects in updates.
  * @link https://core.telegram.org/bots/api#choseninlineresult
  */
-class ChosenInlineResult implements EntityInterface
+class ChosenInlineResult extends AbstractEntity
 {
     /**
      * @param string $result_id The unique identifier for the result that was chosen
@@ -19,12 +19,13 @@ class ChosenInlineResult implements EntityInterface
      * @param Location|null $location Optional. Sender location, only for bots that require user location
      */
     public function __construct(
-        private string $result_id,
-        private User $from,
-        private string $query,
-        private string|null $inline_message_id = null,
-        private Location|null $location = null,
+        protected string $result_id,
+        protected User $from,
+        protected string $query,
+        protected string|null $inline_message_id = null,
+        protected Location|null $location = null,
     ) {
+        parent::__construct();
     }
 
     public function getResultId(): string
