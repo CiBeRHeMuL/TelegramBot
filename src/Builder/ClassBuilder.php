@@ -244,7 +244,7 @@ class ClassBuilder implements ClassBuilderInterface
                     ['int', 'integer', 'float', 'double', 'string', 'bool', 'boolean', 'null', 'array'],
                 )
             ) {
-                if (is_scalar($data) || is_null($data)) {
+                if (is_scalar($data) || is_null($data) || is_array($data)) {
                     if (
                         (in_array($possibleType, ['int', 'integer']) && is_int($data))
                         || (in_array($possibleType, ['float', 'double']) && is_float($data))
