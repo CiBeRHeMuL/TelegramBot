@@ -256,6 +256,37 @@ class ClassBuilderDataDataProvider
                     ],
                 ],
             ],
+            [
+                'class' => Message::class,
+                'data' => [
+                    'message_id' => 1,
+                    'message_thread_id' => null,
+                    'from' => [
+                        'id' => 1234,
+                        'is_bot' => false,
+                        'first_name' => 'Andrey',
+                        'last_name' => null,
+                        'username' => 'andrey',
+                        'language_code' => 'ru',
+                    ],
+                    'date' => 1,
+                    'chat' => [
+                        'id' => 1234,
+                        'first_name' => 'Andrey',
+                        'last_name' => null,
+                        'username' => 'andrey',
+                        'type' => 'private',
+                        'is_forum' => false,
+                        'title' => null,
+                    ],
+                    'forum_topic_created' => null,
+                    'forum_topic_edited' => null,
+                    'forum_topic_closed' => null,
+                    'forum_topic_reopened' => null,
+                    'general_forum_topic_hidden' => null,
+                    'general_forum_topic_unhidden' => null,
+                ],
+            ],
         ];
     }
 }

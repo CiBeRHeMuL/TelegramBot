@@ -33,7 +33,7 @@ class ClassBuilder implements ClassBuilderInterface
                 }
             }
             $constructorParameters = $reflection->getConstructor()->getParameters();
-            if ($constructorParameters === []) {
+            if ($constructorParameters === [] && is_array($data)) {
                 return new $class();
             } elseif (count($constructorParameters) === 1) {
                 if (is_array($data) && (count($data) > 1 || !isset($data[$constructorParameters[0]->getName()]))) {

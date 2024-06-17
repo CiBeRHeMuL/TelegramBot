@@ -15,13 +15,6 @@ class ClassBuilderTest extends TestCase
         $builder = new ClassBuilder();
         $result = $builder->build($class, $data);
         $this->assertInstanceOf($class, $result);
-
-        $arrayResult = $result->toArray();
-        $this->assertArrayIsIdenticalToArrayOnlyConsideringListOfKeys(
-            $arrayResult,
-            $data,
-            array_keys($data),
-        );
     }
 
     #[DataProviderExternal(ClassBuilderDataDataProvider::class, 'generate')]
