@@ -6,8 +6,9 @@ In this part you will learn:
 3. Basic update handling
 4. Register processors
 5. Telegram Bot Api
-6. Loggers
-7Basic example
+6. Download files
+7. Loggers
+8. Basic example
 
 ## 1. Telegram instance
 
@@ -266,7 +267,64 @@ Response object will have all information about telegram response (like in [docu
 If response contains objects, urls etc, you can get object from response with specific method like `getMessage` method in `SendMessageResponse`.
 If response contains just **bool** value, only RawResponse object will be returned.
 
-## 6. Loggers
+## 6. Download files
+
+You can download files using api.
+
+For example, you can download file by id:
+```php
+<?php
+
+use AndrewGos\TelegramBot\Telegram;
+use AndrewGos\TelegramBot\Filesystem\File;
+use AndrewGos\TelegramBot\Filesystem\Path;
+
+/** @var Telegram $telegram */
+$downloaded = $telegram->getApi()->downloadFileById(
+    'FILE_ID_FROM_getFile_REQUEST',
+    new File(new Path('PATH_TO_FILE_TO_SAVE')),
+);
+```
+
+Or, you can download file by [File](../src/Entity/File.php) object:
+```php
+<?php
+
+use AndrewGos\TelegramBot\Telegram;
+use AndrewGos\TelegramBot\Filesystem as Fs;
+use AndrewGos\TelegramBot\Entity as Ent;
+
+$yourFile = new Ent\File(...);
+
+/** @var Telegram $telegram */
+$downloaded = $telegram->getApi()->downloadFile(
+    $yourFile,
+    new Fs\File(new Fs\Path('PATH_TO_FILE_TO_SAVE')),
+);
+```
+
+Or, you can download file to dir (filename will be taken from [File](../src/Entity/File.php) object):
+```php
+<?php
+
+use AndrewGos\TelegramBot\Telegram;
+use AndrewGos\TelegramBot\Filesystem as Fs;
+use AndrewGos\TelegramBot\Entity as Ent;
+
+$yourFile = new Ent\File(...);
+
+/** @var Telegram $telegram */
+$downloaded = $telegram->getApi()->downloadFileToDirById(
+    'FILE_ID_FROM_getFile_REQUEST',
+    new Fs\Dir(new Fs\Path('PATH_TO_FILE_DIR_TO_SAVE')),
+);
+$downloaded = $telegram->getApi()->downloadFileToDir(
+    $yourFile,
+    new Fs\Dir(new Fs\Path('PATH_TO_FILE_DIR_TO_SAVE')),
+);
+```
+
+## 7. Loggers
 
 In processors, apis and other places you can use standard `PSR-3` loggers. \
 By default, this library use `PSR-3` `NullLogger`. \
@@ -296,7 +354,7 @@ class MyPollProcessor extends AbstractPollUpdateProcessor
 }
 ```
 
-## 7. Basic example
+## 8. Basic example
 
 So, there is basic example to use this library:
 
