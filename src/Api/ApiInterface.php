@@ -2,9 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Api;
 
-use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
+use AndrewGos\TelegramBot\Entity as Ent;
+use AndrewGos\TelegramBot\Filesystem as Fs;
 use AndrewGos\TelegramBot\Request as Req;
 use AndrewGos\TelegramBot\Response as Res;
+use AndrewGos\TelegramBot\Response\GetFileResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Log\LoggerInterface;
 
@@ -1446,4 +1448,61 @@ interface ApiInterface
      * @link https://core.telegram.org/bots/api#refundstarpayment
      */
     public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse;
+
+    /**
+     * Download file to specific dir
+     *
+     * @param Ent\File $file
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFileToDir(Ent\File $file, Fs\Dir $targetDir, bool $overwrite): bool;
+
+    /**
+     * Download file by id to specific dir
+     *
+     * @param string $fileId
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     *  you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileToDirById(
+        string $fileId,
+        Fs\Dir $targetDir,
+        bool $overwrite = false,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool;
+
+    /**
+     * Download file by id to specific path
+     *
+     * @param string $fileId
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     * you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileById(
+        string $fileId,
+        Fs\File $targetFile,
+        bool $overwrite,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool;
+    /**
+     * Download file to specific path
+     *
+     * @param Ent\File $file
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFile(Ent\File $file, Fs\File $targetFile, bool $overwrite): bool;
 }

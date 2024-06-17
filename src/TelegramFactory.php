@@ -4,6 +4,7 @@ namespace AndrewGos\TelegramBot;
 
 use AndrewGos\TelegramBot\Api\Api;
 use AndrewGos\TelegramBot\Builder\ClassBuilder;
+use AndrewGos\TelegramBot\Filesystem\Filesystem;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\GetUpdatesUpdateSource;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\PhpInputUpdateSource;
@@ -31,6 +32,7 @@ class TelegramFactory
             new TelegramRequestFactory(),
             new HttpClient(),
             $logger,
+            new Filesystem(),
         );
         return new Telegram(
             $token,
@@ -56,6 +58,7 @@ class TelegramFactory
             new TelegramRequestFactory(),
             new HttpClient(),
             $logger,
+            new Filesystem(),
         );
         return new Telegram(
             $token,

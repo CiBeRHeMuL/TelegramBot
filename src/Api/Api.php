@@ -5,13 +5,17 @@ namespace AndrewGos\TelegramBot\Api;
 use AndrewGos\TelegramBot\Builder\ClassBuilderInterface;
 use AndrewGos\TelegramBot\Entity as Ent;
 use AndrewGos\TelegramBot\Entity\EntityInterface;
+use AndrewGos\TelegramBot\Entity\File;
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
+use AndrewGos\TelegramBot\Filesystem\Dir;
+use AndrewGos\TelegramBot\Filesystem\FilesystemInterface;
 use AndrewGos\TelegramBot\Helper\HArray;
 use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactoryInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use AndrewGos\TelegramBot\Request as Req;
 use AndrewGos\TelegramBot\Response as Res;
+use AndrewGos\TelegramBot\Response\GetFileResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use AndrewGos\TelegramBot\ValueObject\EncodedJson;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -19,6 +23,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
+use AndrewGos\TelegramBot\Filesystem as Fs;
 
 class Api implements ApiInterface
 {
@@ -30,6 +35,7 @@ class Api implements ApiInterface
         private TelegramRequestFactoryInterface $telegramRequestFactory,
         private ClientInterface $client,
         private LoggerInterface $logger,
+        private FileSystemInterface $fileSystem,
     ) {
     }
 
@@ -63,6 +69,7 @@ class Api implements ApiInterface
 
     /**
      * Set current logger
+     *
      * @param LoggerInterface $logger
      *
      * @return $this
@@ -1996,6 +2003,94 @@ class Api implements ApiInterface
     public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Download file to specific dir
+     *
+     * @param Ent\File $file
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFileToDir(Ent\File $file, Fs\Dir $targetDir, bool $overwrite): bool
+    {
+        $filePath = $targetDir->getFile(new Fs\Path($file->getFilePath()));
+        return $this->downloadFile($file, $filePath, $overwrite);
+    }
+
+    /**
+     * Download file by id to specific dir
+     *
+     * @param string $fileId
+     * @param Fs\Dir $targetDir
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     *  you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileToDirById(
+        string $fileId,
+        Fs\Dir $targetDir,
+        bool $overwrite = false,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool {
+        $getFileResponse = $this->getFile(new Req\GetFileRequest($fileId));
+        if ($getFileResponse->getFile() !== null) {
+            return $this->downloadFileToDir($getFileResponse->getFile(), $targetDir, $overwrite);
+        }
+        return false;
+    }
+
+    /**
+     * Download file by id to specific path
+     *
+     * @param string $fileId
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
+     * you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *
+     * @return bool
+     */
+    public function downloadFileById(
+        string $fileId,
+        Fs\File $targetFile,
+        bool $overwrite,
+        Res\GetFileResponse|null &$getFileResponse = null,
+    ): bool {
+        $getFileResponse = $this->getFile(new Req\GetFileRequest($fileId));
+        if ($getFileResponse->getFile() !== null) {
+            return $this->downloadFile($getFileResponse->getFile(), $targetFile, $overwrite);
+        }
+        return false;
+    }
+
+    /**
+     * Download file to specific path
+     *
+     * @param Ent\File $file
+     * @param Fs\File $targetFile
+     * @param bool $overwrite
+     *
+     * @return bool
+     */
+    public function downloadFile(Ent\File $file, Fs\File $targetFile, bool $overwrite): bool
+    {
+        try {
+            $fileContentRequest = $this->telegramRequestFactory->createFileRequest(
+                $this->token,
+                $file->getFilePath(),
+            );
+            $response = $this->client->sendRequest($fileContentRequest);
+            $fileContent = $response->getBody()->getContents();
+            return $this->fileSystem->save($targetFile, $fileContent, $overwrite, 0755);
+        } catch (Throwable $e) {
+            $this->logger->error($e->getMessage());
+            return false;
+        }
     }
 
     /**

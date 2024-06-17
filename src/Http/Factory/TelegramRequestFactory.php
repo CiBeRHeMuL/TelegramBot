@@ -16,6 +16,7 @@ use Psr\Http\Message\RequestInterface;
 final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 {
     public const TELEGRAM_API_BASE_URL = 'https://api.telegram.org/';
+    public const TELEGRAM_API_BASE_FILE_URL = 'https://api.telegram.org/file/';
 
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface
     {
@@ -45,6 +46,15 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
                     : ContentTypeEnum::ApplicationJson->value,
             ]),
             $body,
+        );
+    }
+
+    public function createFileRequest(BotToken $token, string $filePath): RequestInterface
+    {
+        return new HttpRequest(
+            HttpMethodEnum::Get,
+            new Uri(self::TELEGRAM_API_BASE_FILE_URL . "bot{$token->getToken()}/" . trim($filePath, '/\\')),
+            new HttpHeadersContainer([]),
         );
     }
 
