@@ -24,7 +24,7 @@ class CopyMessagesRequest implements RequestInterface
         private bool|null $disable_notification = null,
         private bool|null $remove_caption = null,
         private int|null $message_thread_id = null,
-        private bool|null $protect_content = null
+        private bool|null $protect_content = null,
     ) {
     }
 

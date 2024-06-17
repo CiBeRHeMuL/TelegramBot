@@ -27,7 +27,7 @@ class SuccessfulPayment extends AbstractEntity
         protected string $telegram_payment_charge_id,
         protected string $provider_payment_charge_id,
         protected string|null $shipping_option_id = null,
-        protected OrderInfo|null $order_info = null
+        protected OrderInfo|null $order_info = null,
     ) {
         parent::__construct();
     }

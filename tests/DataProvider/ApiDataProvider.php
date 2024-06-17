@@ -39,7 +39,7 @@ class ApiDataProvider
                 'token' => new BotToken('5925977458:AAEiTMSI_sgZT5MZp73T8p-EiB_eeHjd6ys'),
                 'file' => '../files/1.jpg',
                 'chatId' => new ChatId(529534536),
-            ]
+            ],
         ];
     }
 }

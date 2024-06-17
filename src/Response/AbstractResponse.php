@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\ResponseParameters;
 abstract class AbstractResponse implements ResponseInterface
 {
     public function __construct(
-        readonly protected RawResponse $response
+        readonly protected RawResponse $response,
     ) {
     }
 

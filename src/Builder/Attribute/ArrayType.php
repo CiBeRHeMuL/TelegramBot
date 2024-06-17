@@ -8,7 +8,7 @@ use Attribute;
 readonly class ArrayType
 {
     public function __construct(
-        private string|array|ArrayType $type
+        private string|array|ArrayType $type,
     ) {
     }
 

@@ -15,7 +15,7 @@ class VideoChatParticipantsInvited extends AbstractEntity
      * @param User[] $users New members that were invited to the video chat
      */
     public function __construct(
-        #[ArrayType(User::class)] protected array $users
+        #[ArrayType(User::class)] protected array $users,
     ) {
         parent::__construct();
     }

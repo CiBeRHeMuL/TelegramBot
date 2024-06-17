@@ -42,7 +42,7 @@ class InputMediaDocument extends AbstractInputMedia
         protected ?string $caption = null,
         protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)] protected ?array $caption_entities = null,
-        protected ?bool $disable_content_type_detection = null
+        protected ?bool $disable_content_type_detection = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Document);
     }

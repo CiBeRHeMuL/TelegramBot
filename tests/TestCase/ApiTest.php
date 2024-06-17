@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Tests\TestCase;
 
 use AndrewGos\TelegramBot\Filesystem\Dir;
-use AndrewGos\TelegramBot\Filesystem\File;
 use AndrewGos\TelegramBot\Filesystem\Path;
 use AndrewGos\TelegramBot\Request\RequestInterface;
 use AndrewGos\TelegramBot\Request\SendDocumentRequest;
@@ -29,10 +28,12 @@ class ApiTest extends TestCase
     public function testFileDownload(BotToken $token, string $file, ChatId $chatId): void
     {
         $telegram = TelegramFactory::getDefaultTelegram($token);
-        $sendDocumentResponse = $telegram->getApi()->sendDocument(new SendDocumentRequest(
-            $chatId,
-            new Filename((new Path(__DIR__ . '/' . $file))->getPath()),
-        ));
+        $sendDocumentResponse = $telegram->getApi()->sendDocument(
+            new SendDocumentRequest(
+                $chatId,
+                new Filename((new Path(__DIR__ . '/' . $file))->getPath()),
+            ),
+        );
         $fileId = $sendDocumentResponse->getMessage()->getDocument()->getFileId();
         $downloaded = $telegram->getApi()->downloadFileToDirById(
             $fileId,

@@ -3,12 +3,10 @@
 namespace AndrewGos\TelegramBot\UpdateHandler;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
+use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\UpdateSourceInterface;
-use AndrewGos\TelegramBot\Entity\Update;
-use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use ErrorException;
-use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
@@ -43,6 +41,7 @@ interface UpdateHandlerInterface
 
     /**
      * Set current logger
+     *
      * @param LoggerInterface $logger
      *
      * @return $this

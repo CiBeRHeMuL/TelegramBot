@@ -12,7 +12,7 @@ readonly class Email
      * @throws InvalidValueObjectConfigException
      */
     public function __construct(
-        private string $email
+        private string $email,
     ) {
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidValueObjectConfigException(self::class, 'invalid email representation');

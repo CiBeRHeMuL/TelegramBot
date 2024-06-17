@@ -8,7 +8,7 @@ namespace AndrewGos\TelegramBot\Filesystem;
 final class Dir
 {
     public function __construct(
-        private Path $path
+        private Path $path,
     ) {
     }
 
@@ -29,7 +29,7 @@ final class Dir
     public function getFile(Path $path): File
     {
         return new File(
-            new Path($this->path->getPath() . DIRECTORY_SEPARATOR . $path->getPath())
+            new Path($this->path->getPath() . DIRECTORY_SEPARATOR . $path->getPath()),
         );
     }
 }

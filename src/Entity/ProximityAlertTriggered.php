@@ -18,7 +18,7 @@ class ProximityAlertTriggered extends AbstractEntity
     public function __construct(
         protected User $traveler,
         protected User $watcher,
-        protected int $distance
+        protected int $distance,
     ) {
         parent::__construct();
     }

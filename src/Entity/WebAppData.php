@@ -18,7 +18,7 @@ class WebAppData extends AbstractEntity
      */
     public function __construct(
         protected string $data,
-        protected string $button_text
+        protected string $button_text,
     ) {
         parent::__construct();
     }

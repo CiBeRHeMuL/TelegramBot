@@ -22,7 +22,7 @@ class PassportFile extends AbstractEntity
         protected string $file_id,
         protected string $file_unique_id,
         protected int $file_size,
-        protected int $file_date
+        protected int $file_date,
     ) {
         parent::__construct();
     }

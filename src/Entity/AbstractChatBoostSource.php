@@ -16,7 +16,7 @@ abstract class AbstractChatBoostSource extends AbstractEntity
      * @param ChatBoostSourceEnum $source Source of the boost
      */
     public function __construct(
-        protected readonly ChatBoostSourceEnum $source
+        protected readonly ChatBoostSourceEnum $source,
     ) {
         parent::__construct();
     }

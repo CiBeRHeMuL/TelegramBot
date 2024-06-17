@@ -14,7 +14,7 @@ class ChatBoostAdded extends AbstractEntity
      * @param int $boost_count Number of boosts added by the user
      */
     public function __construct(
-        protected int $boost_count
+        protected int $boost_count,
     ) {
         parent::__construct();
     }

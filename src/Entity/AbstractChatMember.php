@@ -20,7 +20,7 @@ use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 abstract class AbstractChatMember extends AbstractEntity
 {
     public function __construct(
-        protected readonly ChatMemberStatusEnum $status
+        protected readonly ChatMemberStatusEnum $status,
     ) {
         parent::__construct();
     }

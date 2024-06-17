@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 readonly class Filename
 {
     public function __construct(
-        private string $filename
+        private string $filename,
     ) {
         if (!file_exists($this->filename)) {
             throw new InvalidValueObjectConfigException(self::class, 'Invalid filename');

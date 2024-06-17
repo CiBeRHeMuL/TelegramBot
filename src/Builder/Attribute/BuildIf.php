@@ -9,7 +9,7 @@ use Attribute;
 readonly class BuildIf
 {
     public function __construct(
-        private CheckExprInterface $checker
+        private CheckExprInterface $checker,
     ) {
     }
 

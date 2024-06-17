@@ -8,7 +8,7 @@ readonly class AndChecker implements CheckExprInterface
      * @param CheckExprInterface[] $checkers
      */
     public function __construct(
-        private array $checkers
+        private array $checkers,
     ) {
     }
 

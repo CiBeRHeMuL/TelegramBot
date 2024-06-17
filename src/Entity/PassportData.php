@@ -17,7 +17,7 @@ class PassportData extends AbstractEntity
      */
     public function __construct(
         #[ArrayType(EncryptedPassportElement::class)] protected array $data,
-        protected EncryptedCredentials $credentials
+        protected EncryptedCredentials $credentials,
     ) {
         parent::__construct();
     }

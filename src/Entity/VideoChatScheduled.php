@@ -14,7 +14,7 @@ class VideoChatScheduled extends AbstractEntity
      * @param int $start_date Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
      */
     public function __construct(
-        protected int $start_date
+        protected int $start_date,
     ) {
         parent::__construct();
     }

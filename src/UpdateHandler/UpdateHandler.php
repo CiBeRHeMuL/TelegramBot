@@ -3,15 +3,14 @@
 namespace AndrewGos\TelegramBot\UpdateHandler;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
+use AndrewGos\TelegramBot\Entity\Update;
+use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\MessageCommandUpdateChecker;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\UpdateTypeUpdateChecker;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\UpdateSourceInterface;
-use AndrewGos\TelegramBot\Entity\Update;
-use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use ErrorException;
 use InvalidArgumentException;
-use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
@@ -383,26 +382,6 @@ class UpdateHandler implements UpdateHandlerInterface
     }
 
     /**
-     * Add typed process (ex for message update or business connection update)
-     *
-     * @param UpdateTypeEnum $type
-     * @param class-string<UpdateProcessorInterface> $updateProcessor
-     * @param array $extraParameters extra parameters for update processor constructor
-     *
-     * @return void
-     */
-    protected function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void
-    {
-        $this->addCheckableProcess(
-            new CheckableProcess(
-                $updateProcessor,
-                new UpdateTypeUpdateChecker($type),
-                $extraParameters,
-            ),
-        );
-    }
-
-    /**
      * Add raw checkable process
      *
      * @param CheckableProcess $checkableProcess
@@ -491,5 +470,25 @@ class UpdateHandler implements UpdateHandlerInterface
                 break;
             }
         }
+    }
+
+    /**
+     * Add typed process (ex for message update or business connection update)
+     *
+     * @param UpdateTypeEnum $type
+     * @param class-string<UpdateProcessorInterface> $updateProcessor
+     * @param array $extraParameters extra parameters for update processor constructor
+     *
+     * @return void
+     */
+    protected function addTypedProcess(UpdateTypeEnum $type, string $updateProcessor, array $extraParameters = []): void
+    {
+        $this->addCheckableProcess(
+            new CheckableProcess(
+                $updateProcessor,
+                new UpdateTypeUpdateChecker($type),
+                $extraParameters,
+            ),
+        );
     }
 }

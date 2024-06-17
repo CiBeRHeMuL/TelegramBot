@@ -20,7 +20,7 @@ class WriteAccessAllowed extends AbstractEntity
     public function __construct(
         protected bool|null $from_request = null,
         protected string|null $web_app_name = null,
-        protected bool|null $from_attachment_menu = null
+        protected bool|null $from_attachment_menu = null,
     ) {
         parent::__construct();
     }

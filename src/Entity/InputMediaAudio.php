@@ -45,7 +45,7 @@ class InputMediaAudio extends AbstractInputMedia
         #[ArrayType(MessageEntity::class)] protected ?array $caption_entities = null,
         protected ?int $duration = null,
         protected ?string $performer = null,
-        protected ?string $title = null
+        protected ?string $title = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Audio);
     }

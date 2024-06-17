@@ -58,6 +58,7 @@ final class Utils
 
     /**
      * Split path into its root directory and the remainder
+     *
      * @param string $path
      *
      * @return string[]

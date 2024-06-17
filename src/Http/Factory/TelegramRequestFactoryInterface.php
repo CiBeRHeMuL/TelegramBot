@@ -20,6 +20,7 @@ interface TelegramRequestFactoryInterface
 
     /**
      * Request to download file
+     *
      * @param BotToken $token
      * @param string $filePath file path without leading slash
      *

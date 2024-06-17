@@ -14,7 +14,7 @@ class VideoChatEnded extends AbstractEntity
      * @param int $duration Video chat duration in seconds
      */
     public function __construct(
-        protected int $duration
+        protected int $duration,
     ) {
         parent::__construct();
     }

@@ -18,7 +18,7 @@ class ForumTopicCreated extends AbstractEntity
     public function __construct(
         protected string $name,
         protected int $icon_color,
-        protected string|null $icon_custom_emoji_id = null
+        protected string|null $icon_custom_emoji_id = null,
     ) {
         parent::__construct();
     }

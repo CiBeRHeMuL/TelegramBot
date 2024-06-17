@@ -18,7 +18,7 @@ class UsersShared extends AbstractEntity
      */
     public function __construct(
         protected int $request_id,
-        #[ArrayType('int')] protected array $user_ids
+        #[ArrayType('int')] protected array $user_ids,
     ) {
         parent::__construct();
     }

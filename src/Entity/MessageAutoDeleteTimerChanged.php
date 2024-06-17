@@ -14,7 +14,7 @@ class MessageAutoDeleteTimerChanged extends AbstractEntity
      * @param int $message_auto_delete_time New auto-delete time for messages in the chat; in seconds.
      */
     public function __construct(
-        protected int $message_auto_delete_time
+        protected int $message_auto_delete_time,
     ) {
         parent::__construct();
     }

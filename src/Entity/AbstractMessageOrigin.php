@@ -18,7 +18,7 @@ use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
 abstract class AbstractMessageOrigin extends AbstractEntity
 {
     public function __construct(
-        protected readonly MessageOriginTypeEnum $type
+        protected readonly MessageOriginTypeEnum $type,
     ) {
         parent::__construct();
     }

@@ -18,7 +18,7 @@ class GiveawayCompleted extends AbstractEntity
     public function __construct(
         protected int $winner_count,
         protected int|null $unclaimed_prize_count = null,
-        protected Message|null $giveaway_message = null
+        protected Message|null $giveaway_message = null,
     ) {
         parent::__construct();
     }

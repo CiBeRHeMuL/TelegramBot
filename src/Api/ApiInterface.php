@@ -26,6 +26,7 @@ interface ApiInterface
 
     /**
      * Set current logger
+     *
      * @param LoggerInterface $logger
      *
      * @return $this
@@ -1495,6 +1496,7 @@ interface ApiInterface
         bool $overwrite,
         Res\GetFileResponse|null &$getFileResponse = null,
     ): bool;
+
     /**
      * Download file to specific path
      *

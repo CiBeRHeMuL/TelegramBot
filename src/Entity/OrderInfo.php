@@ -22,7 +22,7 @@ class OrderInfo extends AbstractEntity
         protected string|null $name = null,
         protected Phone|null $phone_number = null,
         protected Email|null $email = null,
-        protected ShippingAddress|null $shipping_address = null
+        protected ShippingAddress|null $shipping_address = null,
     ) {
         parent::__construct();
     }
