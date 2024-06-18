@@ -15,7 +15,6 @@ class InlineKeyboardButton extends AbstractEntity
     /**
      * @param string $text Label text on the button
      * @param CallbackData|null $callback_data Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
-     * Not supported for messages sent on behalf of a Telegram Business account.
      * @param CallbackGame|null $callback_game Optional. Description of the game that will be launched when the user presses the
      * button.NOTE: This type of button must always be the first button in the first row.
      * @param LoginUrl|null $login_url Optional. An HTTPS URL used to automatically authorize the user. Can be used as a replacement

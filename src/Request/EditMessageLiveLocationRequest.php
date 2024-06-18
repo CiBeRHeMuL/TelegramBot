@@ -23,6 +23,8 @@ class EditMessageLiveLocationRequest implements RequestInterface
      * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in
      * meters. Must be between 1 and 100000 if specified.
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
+     * of which the message to be edited was sent
      */
     public function __construct(
         private float $latitude,
@@ -35,6 +37,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
         private int|null $message_id = null,
         private int|null $proximity_alert_radius = null,
         private InlineKeyboardMarkup|null $reply_markup = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -148,6 +151,17 @@ class EditMessageLiveLocationRequest implements RequestInterface
         return $this;
     }
 
+    public function getBusinessConnectionId(): string|null
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageLiveLocationRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -161,6 +175,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
             'message_id' => $this->message_id,
             'proximity_alert_radius' => $this->proximity_alert_radius,
             'reply_markup' => $this->reply_markup?->toArray(),
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

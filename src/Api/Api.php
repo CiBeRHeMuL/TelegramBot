@@ -27,7 +27,7 @@ use AndrewGos\TelegramBot\Filesystem as Fs;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '7.4';
+    private const TELEGRAM_BOT_API_VERSION = '7.5';
 
     public function __construct(
         private readonly BotToken $token,
@@ -1431,6 +1431,8 @@ class Api implements ApiInterface
     /**
      * Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message
      * is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageTextRequest $request
      *
@@ -1452,6 +1454,8 @@ class Api implements ApiInterface
     /**
      * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message
      * is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageCaptionRequest $request
      *
@@ -1475,6 +1479,8 @@ class Api implements ApiInterface
      * it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise.
      * When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify
      * a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageMediaRequest $request
      *
@@ -1539,6 +1545,8 @@ class Api implements ApiInterface
     /**
      * Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the
      * edited Message is returned, otherwise True is returned.
+     * Note that business messages that were not sent by the bot and do not contain
+     * an inline keyboard can only be edited within 48 hours from the time they were sent.
      *
      * @param Req\EditMessageReplyMarkupRequest $request
      *
@@ -2003,6 +2011,21 @@ class Api implements ApiInterface
     public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
+     *
+     * @param Req\GetStarTransactionsRequest $request
+     *
+     * @return Res\GetStarTransactionsResponse
+     * @link https://core.telegram.org/bots/api#getstartransactions
+     */
+    public function getStarTransactions(Req\GetStarTransactionsRequest $request): Res\GetStarTransactionsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $starTransactions = $this->buildClassForResponse(Ent\StarTransactions::class, $rawResponse);
+        return new Res\GetStarTransactionsResponse($rawResponse, $starTransactions);
     }
 
     /**
