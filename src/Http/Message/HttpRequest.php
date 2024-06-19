@@ -7,6 +7,8 @@ use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainerInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use InvalidArgumentException;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -101,11 +103,25 @@ class HttpRequest implements RequestInterface
         return $this->headers->has($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return array|string[]
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeader(string $name): array
     {
         return $this->headers->get($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeaderLine(string $name): string
     {
         return implode(', ', $this->getHeader($name));

@@ -33,7 +33,7 @@ class CustomInputUpdateSource implements UpdateSourceInterface
                     $updates = [$updates];
                 }
                 return $this->builder->buildArray(Update::class, $updates);
-            } catch (Throwable $e) {
+            } catch (Throwable) {
                 return [];
             }
         }

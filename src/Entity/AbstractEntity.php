@@ -63,7 +63,7 @@ abstract class AbstractEntity implements EntityInterface
                     }
                     throw new UnexpectedValueException(
                         "Each element in '"
-                        . static::class . "::{$propertyName}' must be of type '$elementType'",
+                        . static::class . "::$propertyName' must be of type '$elementType'",
                     );
                 }
             }
@@ -72,7 +72,7 @@ abstract class AbstractEntity implements EntityInterface
                 throw $e;
             }
             throw new UnexpectedValueException(
-                "Failed to check element of '" . static::class . "::{$propertyName}'",
+                "Failed to check element of '" . static::class . "::$propertyName'",
             );
         }
     }

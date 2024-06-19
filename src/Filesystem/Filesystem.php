@@ -28,7 +28,7 @@ class Filesystem implements FilesystemInterface
                     fwrite($f, $content);
                     fclose($f);
                     return true;
-                } catch (Throwable $e) {
+                } catch (Throwable) {
                     return false;
                 }
             }

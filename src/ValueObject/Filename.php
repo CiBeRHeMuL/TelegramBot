@@ -6,6 +6,11 @@ use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
 readonly class Filename
 {
+    /**
+     * @param string $filename
+     *
+     * @throws InvalidValueObjectConfigException
+     */
     public function __construct(
         private string $filename,
     ) {

@@ -40,6 +40,10 @@ class MultipartStream implements StreamInterface
         return $this->boundary;
     }
 
+    /**
+     * @return string
+     * @throws Throwable
+     */
     public function __toString(): string
     {
         try {
@@ -52,7 +56,7 @@ class MultipartStream implements StreamInterface
             if (PHP_VERSION_ID >= 70400) {
                 throw $e;
             }
-            trigger_error(sprintf('%s::__toString exception: %s', self::class, (string)$e), E_USER_ERROR);
+            trigger_error(sprintf('%s::__toString exception: %s', self::class, $e), E_USER_ERROR);
         }
     }
 
@@ -130,7 +134,7 @@ class MultipartStream implements StreamInterface
         }
 
         // Add the trailing boundary with CRLF
-        $stream->addStream(Utils::streamFor("--{$this->boundary}--\r\n"));
+        $stream->addStream(Utils::streamFor("--$this->boundary--\r\n"));
 
         return $stream;
     }
@@ -139,17 +143,17 @@ class MultipartStream implements StreamInterface
     {
         $str = '';
         foreach ($headers as $key => $value) {
-            $str .= "{$key}: {$value}\r\n";
+            $str .= "$key: $value\r\n";
         }
 
-        return "--{$this->boundary}\r\n" . trim($str) . "\r\n\r\n";
+        return "--$this->boundary\r\n" . trim($str) . "\r\n\r\n";
     }
 
     private function addElement(AppendStream $stream, array $element): void
     {
         foreach (['contents', 'name'] as $key) {
             if (!array_key_exists($key, $element)) {
-                throw new InvalidArgumentException("A '{$key}' key is required");
+                throw new InvalidArgumentException("A '$key' key is required");
             }
         }
 
@@ -157,7 +161,7 @@ class MultipartStream implements StreamInterface
 
         if (empty($element['filename'])) {
             $uri = $element['contents']->getMetadata('uri');
-            if ($uri && is_string($uri) && substr($uri, 0, 6) !== 'php://' && substr($uri, 0, 7) !== 'data://') {
+            if ($uri && is_string($uri) && !str_starts_with($uri, 'php://') && !str_starts_with($uri, 'data://')) {
                 $element['filename'] = $uri;
             }
         }
@@ -185,7 +189,7 @@ class MultipartStream implements StreamInterface
                     $name,
                     basename($filename),
                 )
-                : "form-data; name=\"{$name}\"";
+                : "form-data; name=\"$name\"";
         }
 
         // Set a default content-length header if one was no provided

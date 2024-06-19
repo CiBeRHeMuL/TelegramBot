@@ -187,7 +187,7 @@ class ClassBuilder implements ClassBuilderInterface
                         continue;
                     }
                     return $possibleType::from($data);
-                } catch (Throwable $e) {
+                } catch (Throwable) {
                     $notBuiltReason = "enum '$possibleType' does not have value with scalar equivalent '$data'";
                 }
             } elseif (is_subclass_of($possibleType, UnitEnum::class)) {
@@ -197,7 +197,7 @@ class ClassBuilder implements ClassBuilderInterface
                         continue;
                     }
                     return $possibleType::$$data;
-                } catch (Throwable $e) {
+                } catch (Throwable) {
                     $notBuiltReason = "enum '$possibleType' does not have value '$data'";
                 }
             } elseif (class_exists($possibleType)) {

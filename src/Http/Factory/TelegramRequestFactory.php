@@ -12,12 +12,22 @@ use AndrewGos\TelegramBot\Http\Stream\Utils;
 use AndrewGos\TelegramBot\Http\Uri\Uri;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Http\Message\RequestInterface;
+use Random\RandomException;
 
 final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 {
     public const TELEGRAM_API_BASE_URL = 'https://api.telegram.org/';
     public const TELEGRAM_API_BASE_FILE_URL = 'https://api.telegram.org/file/';
 
+    /**
+     * @param BotToken $token
+     * @param string $method
+     * @param array $data
+     * @param HttpMethodEnum $httpMethod
+     *
+     * @return RequestInterface
+     * @throws RandomException
+     */
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface
     {
         $multipart = [];
@@ -64,7 +74,7 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
             if (is_array($value)) {
                 $value = $this->prepareArray($value, $multipart, $hasResource, "{$prefix}_$key");
             } elseif ($value instanceof Stream) {
-                $uniqueKey = uniqid($prefix . '_', false);
+                $uniqueKey = uniqid($prefix . '_');
                 $multipart[] = ['name' => $uniqueKey, 'contents' => $value];
                 $value = "attach://$uniqueKey";
                 $hasResource = true;

@@ -21,7 +21,7 @@ readonly class EncodedJson
         try {
             json_decode($json, flags: JSON_THROW_ON_ERROR);
             $this->json = $json;
-        } catch (JsonException $e) {
+        } catch (JsonException) {
             throw new InvalidValueObjectConfigException(self::class, 'invalid json representation');
         }
     }

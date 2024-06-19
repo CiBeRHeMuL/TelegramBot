@@ -432,7 +432,6 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param Update[] $updates
      *
      * @return void
-     * @throws ErrorException
      */
     public function processUpdates(array $updates): void
     {
@@ -450,7 +449,6 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param Update $update
      *
      * @return void
-     * @throws ErrorException
      */
     public function processUpdate(Update $update): void
     {

@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Exception\ClassBuilder;
 
-class InvalidDataException extends \Exception
+use Exception;
+
+class InvalidDataException extends Exception
 {
 }

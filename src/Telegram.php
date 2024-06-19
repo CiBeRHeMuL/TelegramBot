@@ -47,7 +47,7 @@ class Telegram
     {
         try {
             $this->me ??= $this->api->getMe()->getUser();
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             throw new InvalidArgumentException('Invalid token! Bot not found');
         }
         return $this->me;

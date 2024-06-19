@@ -4,6 +4,8 @@ namespace AndrewGos\TelegramBot\Http\Message;
 
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainer;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
@@ -65,11 +67,25 @@ class HttpResponse implements ResponseInterface
         return $this->headers->has($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return array|string[]
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeader(string $name): array
     {
         return $this->headers->get($name);
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function getHeaderLine(string $name): string
     {
         return implode(', ', $this->getHeader($name));
