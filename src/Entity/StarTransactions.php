@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+
 /**
  * Contains a list of Telegram Star transactions.
  * @link https://core.telegram.org/bots/api#startransactions
@@ -12,7 +14,7 @@ class StarTransactions extends AbstractEntity
      * @param StarTransaction[] $transactions The list of transactions
      */
     public function __construct(
-        protected array $transactions,
+        #[ArrayType(StarTransaction::class)] protected array $transactions,
     ) {
         parent::__construct();
     }

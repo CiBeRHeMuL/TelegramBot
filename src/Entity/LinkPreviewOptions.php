@@ -23,11 +23,11 @@ class LinkPreviewOptions extends AbstractEntity
      * otherwise, the link preview will be shown below the message text
      */
     public function __construct(
-        protected bool|null $is_disabled,
-        protected Url|null $url,
-        protected bool|null $prefer_small_media,
-        protected bool|null $prefer_large_media,
-        protected bool|null $show_above_text,
+        protected bool|null $is_disabled = null,
+        protected Url|null $url = null,
+        protected bool|null $prefer_small_media = null,
+        protected bool|null $prefer_large_media = null,
+        protected bool|null $show_above_text = null,
     ) {
         parent::__construct();
     }

@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
@@ -33,7 +34,7 @@ class WebhookInfo extends AbstractEntity
         protected Url $url,
         protected bool $has_custom_certificate,
         protected int $pending_update_count,
-        protected array|null $allowed_updates = null,
+        #[ArrayType(UpdateTypeEnum::class)] protected array|null $allowed_updates = null,
         protected IpV4|IpV6|null $ip_address = null,
         protected int|null $last_error_date = null,
         protected string|null $last_error_message = null,

@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -19,7 +20,7 @@ class PollOption extends AbstractEntity
     public function __construct(
         protected string $text,
         protected int $voter_count,
-        protected array|null $text_entities,
+        #[ArrayType(MessageEntity::class)] protected array|null $text_entities = null,
     ) {
         parent::__construct();
     }
