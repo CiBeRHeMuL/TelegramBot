@@ -7,6 +7,7 @@ use AndrewGos\TelegramBot\Entity\User;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 use Throwable;
 
 class Telegram
@@ -56,5 +57,12 @@ class Telegram
     public function getVersion(): string
     {
         return static::VERSION;
+    }
+
+    public function setLogger(LoggerInterface $logger): static
+    {
+        $this->api->setLogger($logger);
+        $this->updateHandler->setLogger($logger);
+        return $this;
     }
 }
