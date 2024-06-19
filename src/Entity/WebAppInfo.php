@@ -12,6 +12,9 @@ use stdClass;
  */
 class WebAppInfo extends AbstractEntity
 {
+    /**
+     * @param Url $url An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
+     */
     public function __construct(
         protected Url $url,
     ) {
