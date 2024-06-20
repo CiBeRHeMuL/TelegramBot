@@ -81,9 +81,9 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addCommandMessageProcess(string $command, string $updateProcessor, array $extraParameters = []): void
+    public function addCommandMessageProcess(string $command, string $updateProcessor, array $extraParameters = []): static
     {
         $this->processCollection->addProcess(
             new CheckableProcess(
@@ -93,6 +93,7 @@ class UpdateHandler implements UpdateHandlerInterface
             ),
             true,
         );
+        return $this;
     }
 
     /**
@@ -101,11 +102,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addBusinessConnectionProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addBusinessConnectionProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::BusinessConnection, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -114,11 +116,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::BusinessMessage, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -127,11 +130,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addCallbackQueryProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addCallbackQueryProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::CallbackQuery, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -140,11 +144,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addChannelPostProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addChannelPostProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ChannelPost, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -153,11 +158,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addChatBoostProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addChatBoostProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ChatBoost, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -166,11 +172,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addChatJoinRequestProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addChatJoinRequestProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ChatJoinRequest, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -179,11 +186,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addChatMemberProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addChatMemberProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ChatMember, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -192,11 +200,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addChosenInlineResultProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addChosenInlineResultProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ChosenInlineResult, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -205,11 +214,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addDeletedBusinessMessagesProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addDeletedBusinessMessagesProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::DeletedBusinessMessages, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -218,11 +228,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addEditedBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addEditedBusinessMessageProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::EditedBusinessMessage, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -231,11 +242,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addEditedChannelPostProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addEditedChannelPostProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::EditedChannelPost, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -244,11 +256,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addEditedMessageProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addEditedMessageProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::EditedMessage, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -257,11 +270,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addInlineQueryProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addInlineQueryProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::InlineQuery, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -270,11 +284,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addMessageProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addMessageProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::Message, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -283,11 +298,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addMessageReactionProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addMessageReactionProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::MessageReaction, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -296,11 +312,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addMessageReactionCountProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addMessageReactionCountProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::MessageReactionCount, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -309,11 +326,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters
      *
-     * @return void
+     * @return static
      */
-    public function addMyChatMemberProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addMyChatMemberProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::MyChatMember, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -322,11 +340,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addPollProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addPollProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::Poll, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -335,11 +354,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addPollAnswerProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addPollAnswerProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::PollAnswer, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -348,11 +368,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addPreCheckoutQueryProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addPreCheckoutQueryProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::PreCheckoutQuery, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -361,11 +382,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addRemovedChatBoostProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addRemovedChatBoostProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::RemovedChatBoost, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -374,11 +396,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param class-string<UpdateProcessorInterface> $updateProcessor
      * @param array $extraParameters extra parameters for update processor constructor
      *
-     * @return void
+     * @return static
      */
-    public function addShippingQueryProcess(string $updateProcessor, array $extraParameters = []): void
+    public function addShippingQueryProcess(string $updateProcessor, array $extraParameters = []): static
     {
         $this->addTypedProcess(UpdateTypeEnum::ShippingQuery, $updateProcessor, $extraParameters);
+        return $this;
     }
 
     /**
@@ -387,11 +410,12 @@ class UpdateHandler implements UpdateHandlerInterface
      * @param CheckableProcess $checkableProcess
      * @param bool $prepend if true, checkable process will be added to the end of processors array
      *
-     * @return void
+     * @return static
      */
-    public function addCheckableProcess(CheckableProcess $checkableProcess, bool $prepend = false): void
+    public function addCheckableProcess(CheckableProcess $checkableProcess, bool $prepend = false): static
     {
         $this->processCollection->addProcess($checkableProcess, $prepend);
+        return $this;
     }
 
     /**
