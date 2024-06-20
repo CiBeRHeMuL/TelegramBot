@@ -38,7 +38,7 @@ class ClassBuilder implements ClassBuilderInterface
             } elseif (count($constructorParameters) === 1) {
                 if (is_array($data) && (count($data) > 1 || !isset($data[$constructorParameters[0]->getName()]))) {
                     $data = [$constructorParameters[0]->getName() => $data];
-                } else {
+                } elseif (!is_array($data)) {
                     return new $class($data);
                 }
             }
