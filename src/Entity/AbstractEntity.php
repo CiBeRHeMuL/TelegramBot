@@ -56,7 +56,7 @@ abstract class AbstractEntity implements EntityInterface
                             || (in_array($possibleType, ['bool', 'boolean']) && is_bool($item))
                             || ($possibleType === 'null' && is_null($item))
                             || ($possibleType === 'array' && is_array($item))
-                            || is_a($item, $possibleType)
+                            || is_a($item, $possibleType, true)
                         ) {
                             break 2;
                         }
