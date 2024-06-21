@@ -28,6 +28,13 @@ interface UpdateHandlerInterface
     public function setUpdateSource(UpdateSourceInterface $updateSource): static;
 
     /**
+     * Returns updates, which are currently processing
+     *
+     * @return Update[]
+     */
+    public function getCurrentProcessableUpdates(): array;
+
+    /**
      * Current api
      * @return ApiInterface
      */

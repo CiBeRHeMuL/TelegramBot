@@ -9,7 +9,6 @@ use AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\MessageCommandUpdateChecke
 use AndrewGos\TelegramBot\UpdateHandler\UpdateChecker\UpdateTypeUpdateChecker;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\UpdateSourceInterface;
-use ErrorException;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -17,6 +16,8 @@ use Throwable;
 class UpdateHandler implements UpdateHandlerInterface
 {
     private CheckableProcessCollection $processCollection;
+    /** @var Update[] $currentUpdates */
+    private array $currentUpdates = [];
 
     /**
      * @param UpdateSourceInterface $updateSource
@@ -51,6 +52,16 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         $this->updateSource = $updateSource;
         return $this;
+    }
+
+    /**
+     * Returns updates, which are currently processing
+     *
+     * @return Update[]
+     */
+    public function getCurrentProcessableUpdates(): array
+    {
+        return $this->currentUpdates;
     }
 
     /**
@@ -422,11 +433,11 @@ class UpdateHandler implements UpdateHandlerInterface
      * Process incoming update one time.
      * Only FIRST verified processor will be called
      * @return void
-     * @throws ErrorException
      */
     public function handle(): void
     {
-        $this->processUpdates($this->updateSource->getUpdates());
+        $this->currentUpdates = $this->updateSource->getUpdates();
+        $this->processUpdates($this->currentUpdates);
     }
 
     /**
@@ -440,11 +451,11 @@ class UpdateHandler implements UpdateHandlerInterface
      */
     public function listen(int $timeout = 1): void
     {
-        if ($timeout <= 0) {
-            throw new InvalidArgumentException('Timeout must be a positive integer.');
+        if ($timeout < 0) {
+            throw new InvalidArgumentException('Timeout must be a positive integer or zero.');
         }
         while (true) {
-            $this->processUpdates($this->updateSource->getUpdates());
+            $this->handle();
             sleep($timeout);
         }
     }
