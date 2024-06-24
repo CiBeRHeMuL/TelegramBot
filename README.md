@@ -1,6 +1,6 @@
 # Telegram Bot API Library
 
-**Version 1.1.1**
+**Version 1.1.0**
 
 ## Overview
 
@@ -40,6 +40,12 @@ you need to read it. Good luck!
 ## Basic usage
 
 About basic usage you can learn in [BASIC-USAGE.md](README/BASIC.md)
+
+## Usage in Symfony/Yii2 frameworks (DI)
+
+About how to use this library like service in Symfony read [SYMFONY.md](README/SYMFONY.md)
+
+About Yii2 read [YII2.md](README/YII2.md)
 
 ## Advanced usage
 
