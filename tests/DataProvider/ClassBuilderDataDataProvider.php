@@ -4,6 +4,7 @@ namespace AndrewGos\TelegramBot\Tests\DataProvider;
 
 use AndrewGos\TelegramBot\Entity\Message;
 use AndrewGos\TelegramBot\Entity\Update;
+use AndrewGos\TelegramBot\Entity\User;
 use AndrewGos\TelegramBot\Entity\UserProfilePhotos;
 
 class ClassBuilderDataDataProvider
@@ -285,6 +286,17 @@ class ClassBuilderDataDataProvider
                     'forum_topic_reopened' => null,
                     'general_forum_topic_hidden' => null,
                     'general_forum_topic_unhidden' => null,
+                ],
+            ],
+            [
+                'class' => User::class,
+                'data' => [
+                    'id' => 1234,
+                    'is_bot' => false,
+                    'first_name' => 'Andrey',
+                    'last_name' => null,
+                    'username' => 'andrey',
+                    'language_code' => null,
                 ],
             ],
         ];

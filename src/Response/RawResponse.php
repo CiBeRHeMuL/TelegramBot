@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Response;
 
+use AndrewGos\TelegramBot\Entity\ResponseParameters;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
-use AndrewGos\TelegramBot\ValueObject\ResponseParameters;
 
 class RawResponse
 {
