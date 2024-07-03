@@ -2,9 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
-use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -39,10 +39,10 @@ class InputMediaDocument extends AbstractInputMedia
     public function __construct(
         protected Filename|Url|string $media,
         protected Filename|Url|string|null $thumbnail = null,
-        protected ?string $caption = null,
-        protected ?TelegramParseModeEnum $parse_mode = null,
-        #[ArrayType(MessageEntity::class)] protected ?array $caption_entities = null,
-        protected ?bool $disable_content_type_detection = null,
+        protected string|null $caption = null,
+        protected TelegramParseModeEnum|null $parse_mode = null,
+        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
+        protected bool|null $disable_content_type_detection = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Document);
     }

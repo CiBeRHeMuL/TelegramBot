@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
-use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\AbstractInputMedia;
+use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
 class EditMessageMediaRequest implements RequestInterface

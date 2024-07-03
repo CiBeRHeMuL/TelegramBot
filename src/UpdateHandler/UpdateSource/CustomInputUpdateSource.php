@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\UpdateHandler\UpdateSource;
 
-use AndrewGos\TelegramBot\Builder\ClassBuilderInterface;
+use AndrewGos\ClassBuilder\ClassBuilderInterface;
 use AndrewGos\TelegramBot\Entity\Update;
 use InvalidArgumentException;
 use Throwable;

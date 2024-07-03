@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\ValueObject;
 
+use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
 /**
  * Описывает код языка в соответствии со спецификацией IETF
  */
+#[CanBeBuiltFromScalar]
 readonly class Language
 {
     /**

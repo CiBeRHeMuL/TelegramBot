@@ -117,7 +117,7 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use AndrewGos\TelegramBot\Api\Api;
-use AndrewGos\TelegramBot\Builder\ClassBuilder;
+use AndrewGos\ClassBuilder\ClassBuilder;
 use AndrewGos\TelegramBot\Telegram;
 use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
 

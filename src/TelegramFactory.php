@@ -2,8 +2,8 @@
 
 namespace AndrewGos\TelegramBot;
 
+use AndrewGos\ClassBuilder\ClassBuilder;
 use AndrewGos\TelegramBot\Api\Api;
-use AndrewGos\TelegramBot\Builder\ClassBuilder;
 use AndrewGos\TelegramBot\Filesystem\Filesystem;
 use AndrewGos\TelegramBot\Http\Client\HttpClient;
 use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactory;

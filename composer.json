@@ -3,7 +3,7 @@
     "description": "Advanced strictly typed Telegram Bot Library",
     "type": "library",
     "license": "MIT",
-    "version": "1.2",
+    "version": "1.3",
     "autoload": {
         "psr-4": {
             "AndrewGos\\TelegramBot\\": "src/"
@@ -31,7 +31,8 @@
         "psr/http-server-middleware": ">=1.0.2",
         "psr/container": ">=2.0.2",
         "ext-ctype": "*",
-        "psr/log": ">=3.0"
+        "psr/log": ">=3.0",
+        "andrew-gos/class-builder": ">=1.0"
     },
     "require-dev": {
         "phpunit/phpunit": ">=11.2",

@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Builder\Attribute\AvailableInheritors;
+use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 
 /**
  * This object describes a message that can be inaccessible to the bot

@@ -3,15 +3,14 @@
 namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AbstractInputPaidMedia;
-use AndrewGos\TelegramBot\ValueObject\ChatId;
-use AndrewGos\TelegramBot\Entity\InputPaidMedia;
-use AndrewGos\TelegramBot\Entity\MessageEntity;
-use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
+use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
+use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardRemove;
-use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
+use AndrewGos\TelegramBot\ValueObject\ChatId;
 
 class SendPaidMediaRequest implements RequestInterface
 {

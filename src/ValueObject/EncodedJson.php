@@ -2,12 +2,14 @@
 
 namespace AndrewGos\TelegramBot\ValueObject;
 
+use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 use JsonException;
 
 /**
  * Закодированный json
  */
+#[CanBeBuiltFromScalar]
 readonly class EncodedJson
 {
     private string $json;

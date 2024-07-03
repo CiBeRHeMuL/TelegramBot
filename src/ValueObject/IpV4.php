@@ -2,8 +2,10 @@
 
 namespace AndrewGos\TelegramBot\ValueObject;
 
+use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
+#[CanBeBuiltFromScalar]
 readonly class IpV4
 {
     private const IPV4_PART_REGEX = '(25[0-5]|2[0-4]\d|1?\d{1,2})';

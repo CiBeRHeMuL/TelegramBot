@@ -2,10 +2,10 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
-use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
-use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
-use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use stdClass;
 
 /**
@@ -222,7 +222,7 @@ class Message extends AbstractMaybeInaccessibleMessage
         protected bool|null $is_from_offline = null,
         protected string|null $effect_id = null,
         protected bool|null $show_caption_above_media = null,
-        protected PaidMediaInfo|null $paid_media,
+        protected PaidMediaInfo|null $paid_media = null,
     ) {
         parent::__construct($this->date);
     }

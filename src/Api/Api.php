@@ -2,7 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Api;
 
-use AndrewGos\TelegramBot\Builder\ClassBuilderInterface;
+use AndrewGos\ClassBuilder\ClassBuilderInterface;
 use AndrewGos\TelegramBot\Entity as Ent;
 use AndrewGos\TelegramBot\Entity\EntityInterface;
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
