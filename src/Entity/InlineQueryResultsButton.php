@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
  * @link https://core.telegram.org/bots/api#inlinequeryresultsbutton
@@ -61,7 +63,7 @@ class InlineQueryResultsButton extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'text' => $this->text,

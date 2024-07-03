@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RevenueWithdrawalStateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * The withdrawal succeeded.
@@ -47,7 +48,7 @@ class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

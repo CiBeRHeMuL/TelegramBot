@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Describes why a request was unsuccessful.
  * @link https://core.telegram.org/bots/api#responseparameters
@@ -45,7 +47,7 @@ class ResponseParameters extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'migrate_to_chat_id' => $this->migrate_to_chat_id,

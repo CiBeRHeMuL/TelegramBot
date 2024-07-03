@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorTranslationFileTypeEnum;
+use stdClass;
 
 /**
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
@@ -62,7 +63,7 @@ class PassportElementErrorTranslationFile extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

@@ -7,6 +7,7 @@ use AndrewGos\TelegramBot\Entity as Ent;
 use AndrewGos\TelegramBot\Entity\EntityInterface;
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
+use AndrewGos\TelegramBot\Filesystem as Fs;
 use AndrewGos\TelegramBot\Filesystem\FilesystemInterface;
 use AndrewGos\TelegramBot\Helper\HArray;
 use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactoryInterface;
@@ -21,11 +22,10 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
-use AndrewGos\TelegramBot\Filesystem as Fs;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '7.5';
+    private const TELEGRAM_BOT_API_VERSION = '7.6';
 
     public function __construct(
         private readonly BotToken $token,
@@ -249,7 +249,7 @@ class Api implements ApiInterface
 
     /**
      * Use this method to copy messages of any kind.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message.
      * Returns the MessageId of the sent message on success.
@@ -270,7 +270,7 @@ class Api implements ApiInterface
     /**
      * Use this method to copy messages of any kind.
      * If some of the specified messages can't be found or copied, they are skipped.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message.
      * Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
@@ -2024,6 +2024,21 @@ class Api implements ApiInterface
         $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
         $starTransactions = $this->buildClassForResponse(Ent\StarTransactions::class, $rawResponse);
         return new Res\GetStarTransactionsResponse($rawResponse, $starTransactions);
+    }
+
+    /**
+     * Use this method to send paid media to channel chats. On success, the sent Message is returned.
+     *
+     * @param Req\SendPaidMediaRequest $request
+     *
+     * @return Res\SendPaidMediaResponse
+     * @link https://core.telegram.org/bots/api#sendpaidmedia
+     */
+    public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        return new Res\SendPaidMediaResponse($rawResponse, $message);
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents changes in the status of a chat member.
  * @link https://core.telegram.org/bots/api#chatmemberupdated
@@ -121,7 +123,7 @@ class ChatMemberUpdated extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

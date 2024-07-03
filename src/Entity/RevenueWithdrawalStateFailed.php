@@ -5,6 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RevenueWithdrawalStateTypeEnum;
+use stdClass;
 
 /**
  * The withdrawal failed and the transaction was refunded.
@@ -18,7 +19,7 @@ class RevenueWithdrawalStateFailed extends AbstractRevenueWithdrawalState
         parent::__construct(RevenueWithdrawalStateTypeEnum::Failed);
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

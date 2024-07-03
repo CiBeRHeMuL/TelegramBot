@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use stdClass;
 
 /**
  * This object represents one shipping option.
@@ -56,7 +57,7 @@ class ShippingOption extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

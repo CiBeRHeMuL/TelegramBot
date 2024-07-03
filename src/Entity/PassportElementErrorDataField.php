@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorDataFieldTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
+use stdClass;
 
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's
@@ -75,7 +76,7 @@ class PassportElementErrorDataField extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

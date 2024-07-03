@@ -12,6 +12,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultVideoMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent
@@ -232,7 +233,7 @@ class InlineQueryResultVideo extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

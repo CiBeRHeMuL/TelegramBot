@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user
  * has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step
@@ -60,7 +62,7 @@ class ForceReply extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'force_reply' => $this->force_reply,

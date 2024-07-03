@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to an article or web page.
@@ -151,7 +152,7 @@ class InlineQueryResultArticle extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

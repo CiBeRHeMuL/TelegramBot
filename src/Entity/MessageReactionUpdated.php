@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use stdClass;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.
@@ -108,7 +109,7 @@ class MessageReactionUpdated extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

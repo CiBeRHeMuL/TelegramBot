@@ -80,6 +80,8 @@ class ChatFullInfo extends AbstractEntity
      * @param int|null $unrestrict_boost_count Optional. For supergroups, the minimum number of boosts that a non-administrator user
      * needs to add in order to ignore slow mode and chat permissions
      * @param string|null $username Optional. Username, for protected chats, supergroups and channels if available
+     * @param bool|null $can_send_paid_media Optional. True, if paid media messages can be sent or forwarded to the channel chat.
+     * The field is available only for channel chats.
      */
     public function __construct(
         protected int $id,
@@ -125,6 +127,7 @@ class ChatFullInfo extends AbstractEntity
         protected string|null $title = null,
         protected int|null $unrestrict_boost_count = null,
         protected string|null $username = null,
+        protected bool|null $can_send_paid_media = null,
     ) {
         parent::__construct();
     }
@@ -602,6 +605,28 @@ class ChatFullInfo extends AbstractEntity
         return $this;
     }
 
+    public function getHasProtectedForwards(): bool|null
+    {
+        return $this->has_protected_forwards;
+    }
+
+    public function setHasProtectedForwards(bool|null $has_protected_forwards): ChatFullInfo
+    {
+        $this->has_protected_forwards = $has_protected_forwards;
+        return $this;
+    }
+
+    public function getCanSendPaidMedia(): bool|null
+    {
+        return $this->can_send_paid_media;
+    }
+
+    public function setCanSendPaidMedia(bool|null $can_send_paid_media): ChatFullInfo
+    {
+        $this->can_send_paid_media = $can_send_paid_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -650,6 +675,7 @@ class ChatFullInfo extends AbstractEntity
             'title' => $this->title,
             'unrestrict_boost_count' => $this->unrestrict_boost_count,
             'username' => $this->username,
+            'can_send_paid_media' => $this->can_send_paid_media,
         ];
     }
 }

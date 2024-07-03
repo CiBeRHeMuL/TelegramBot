@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content
@@ -195,7 +196,7 @@ class InlineQueryResultLocation extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

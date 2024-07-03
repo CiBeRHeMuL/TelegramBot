@@ -6,6 +6,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorReverseSideTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
+use stdClass;
 
 /**
  * Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side
@@ -62,7 +63,7 @@ class PassportElementErrorReverseSide extends AbstractPassportElementError
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'source' => $this->source->value,

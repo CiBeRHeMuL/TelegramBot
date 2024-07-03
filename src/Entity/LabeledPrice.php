@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents a portion of the price for goods or services.
  * @link https://core.telegram.org/bots/api#labeledprice
@@ -43,7 +45,7 @@ class LabeledPrice extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'label' => $this->label,

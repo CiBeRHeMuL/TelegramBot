@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
+use stdClass;
 
 /**
  * This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or
@@ -99,7 +100,7 @@ class InlineQuery extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object contains information about an incoming shipping query.
  * @link https://core.telegram.org/bots/api#shippingquery
@@ -67,7 +69,7 @@ class ShippingQuery extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

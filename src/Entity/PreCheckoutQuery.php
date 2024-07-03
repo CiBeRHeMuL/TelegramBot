@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
+use stdClass;
 
 /**
  * This object contains information about an incoming pre-checkout query.
@@ -110,7 +111,7 @@ class PreCheckoutQuery extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

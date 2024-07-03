@@ -7,6 +7,7 @@ use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
+use stdClass;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
@@ -76,7 +77,7 @@ class InputTextMessageContent extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'message_text' => $this->message_text,

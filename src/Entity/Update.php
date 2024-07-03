@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
+use stdClass;
 
 /**
  * This object represents an incoming update.At most one of the optional parameters can be present in any given update.
@@ -337,7 +338,7 @@ class Update extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'update_id' => $this->update_id,

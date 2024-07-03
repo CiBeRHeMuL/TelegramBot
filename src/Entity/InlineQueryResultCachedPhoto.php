@@ -10,6 +10,7 @@ use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
+use stdClass;
 
 /**
  * Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional
@@ -162,7 +163,7 @@ class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

@@ -12,6 +12,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultThumbnailMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption.
@@ -216,7 +217,7 @@ class InlineQueryResultGif extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

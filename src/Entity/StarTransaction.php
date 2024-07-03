@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Describes a Telegram Star transaction.
  * @link https://core.telegram.org/bots/api#startransaction
@@ -83,7 +85,7 @@ class StarTransaction extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'id' => $this->id,

@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Describes an inline message sent by a Web App on behalf of a user.
  * @link https://core.telegram.org/bots/api#sentwebappmessage
@@ -29,7 +31,7 @@ class SentWebAppMessage extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'inline_message_id' => $this->inline_message_id,

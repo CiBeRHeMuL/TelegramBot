@@ -9,6 +9,7 @@ use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
@@ -307,7 +308,7 @@ class InputInvoiceMessageContent extends AbstractInputMessageContent
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'title' => $this->title,

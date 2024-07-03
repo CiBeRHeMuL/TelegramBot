@@ -12,6 +12,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultDocumentMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can
@@ -204,7 +205,7 @@ class InlineQueryResultDocument extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,

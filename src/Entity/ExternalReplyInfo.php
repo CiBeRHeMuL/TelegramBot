@@ -38,6 +38,7 @@ class ExternalReplyInfo extends AbstractEntity
      * @param Location|null $location Message is a shared location, information about the location
      * @param Poll|null $poll Message is a native poll, information about the poll
      * @param Venue|null $venue Message is a venue, information about the venue
+     * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
      */
     public function __construct(
         protected AbstractMessageOrigin $origin,
@@ -63,6 +64,7 @@ class ExternalReplyInfo extends AbstractEntity
         protected Location|null $location = null,
         protected Poll|null $poll = null,
         protected Venue|null $venue = null,
+        protected PaidMediaInfo|null $paid_media = null,
     ) {
         parent::__construct();
     }
@@ -320,6 +322,17 @@ class ExternalReplyInfo extends AbstractEntity
         return $this;
     }
 
+    public function getPaidMedia(): PaidMediaInfo|null
+    {
+        return $this->paid_media;
+    }
+
+    public function setPaidMedia(PaidMediaInfo|null $paid_media): ExternalReplyInfo
+    {
+        $this->paid_media = $paid_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -348,6 +361,7 @@ class ExternalReplyInfo extends AbstractEntity
             'location' => $this->location?->toArray(),
             'poll' => $this->poll?->toArray(),
             'venue' => $this->venue?->toArray(),
+            'paid_media' => $this->paid_media?->toArray(),
         ];
     }
 }

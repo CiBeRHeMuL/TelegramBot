@@ -7,6 +7,7 @@ use AndrewGos\TelegramBot\Builder\Checker\AndChecker;
 use AndrewGos\TelegramBot\Builder\Checker\FieldCompareChecker;
 use AndrewGos\TelegramBot\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
+use stdClass;
 
 /**
  * Represents the content of a contact message to be sent as the result of an inline query.
@@ -77,7 +78,7 @@ class InputContactMessageContent extends AbstractInputMessageContent
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'phone_number' => $this->phone_number->getPhone(),

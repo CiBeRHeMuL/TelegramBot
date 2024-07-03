@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
+use stdClass;
 
 /**
  * Represents a join request sent to a chat.
@@ -99,7 +100,7 @@ class ChatJoinRequest extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'chat' => $this->chat->toArray(),

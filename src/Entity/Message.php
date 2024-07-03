@@ -136,6 +136,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * as an away or a greeting business message, or as a scheduled message
      * @param string|null $effect_id Optional. Unique identifier of the message effect added to the message
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
      */
     public function __construct(
         protected int $message_id,
@@ -221,6 +222,7 @@ class Message extends AbstractMaybeInaccessibleMessage
         protected bool|null $is_from_offline = null,
         protected string|null $effect_id = null,
         protected bool|null $show_caption_above_media = null,
+        protected PaidMediaInfo|null $paid_media,
     ) {
         parent::__construct($this->date);
     }
@@ -1138,6 +1140,17 @@ class Message extends AbstractMaybeInaccessibleMessage
         return $this;
     }
 
+    public function getPaidMedia(): PaidMediaInfo|null
+    {
+        return $this->paid_media;
+    }
+
+    public function setPaidMedia(PaidMediaInfo|null $paid_media): Message
+    {
+        $this->paid_media = $paid_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -1249,6 +1262,7 @@ class Message extends AbstractMaybeInaccessibleMessage
             'is_from_offline' => $this->is_from_offline,
             'effect_id' => $this->effect_id,
             'show_caption_above_media' => $this->show_caption_above_media,
+            'paid_media' => $this->paid_media?->toArray(),
         ];
     }
 }

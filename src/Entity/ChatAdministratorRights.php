@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Represents the rights of an administrator in a chat.
  * @link https://core.telegram.org/bots/api#chatadministratorrights
@@ -218,7 +220,7 @@ class ChatAdministratorRights extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'is_anonymous' => $this->is_anonymous,

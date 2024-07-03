@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  *
@@ -83,7 +85,7 @@ class ChosenInlineResult extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'result_id' => $this->result_id,

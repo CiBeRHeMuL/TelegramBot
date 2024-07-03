@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use stdClass;
+
 /**
  * This object represents one row of the high scores table for a game.
  * @link https://core.telegram.org/bots/api#gamehighscore
@@ -54,7 +56,7 @@ class GameHighScore extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'position' => $this->position,

@@ -170,7 +170,7 @@ interface ApiInterface
 
     /**
      * Use this method to copy messages of any kind.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message.
      * Returns the MessageId of the sent message on success.
@@ -186,7 +186,7 @@ interface ApiInterface
     /**
      * Use this method to copy messages of any kind.
      * If some of the specified messages can't be found or copied, they are skipped.
-     * Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
+     * Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied.
      * A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
      * The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message.
      * Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
@@ -1467,6 +1467,16 @@ interface ApiInterface
      * @link https://core.telegram.org/bots/api#getstartransactions
      */
     public function getStarTransactions(Req\GetStarTransactionsRequest $request): Res\GetStarTransactionsResponse;
+
+    /**
+     * Use this method to send paid media to channel chats. On success, the sent Message is returned.
+     *
+     * @param Req\SendPaidMediaRequest $request
+     *
+     * @return Res\SendPaidMediaResponse
+     * @link https://core.telegram.org/bots/api#sendpaidmedia
+     */
+    public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse;
 
     /**
      * Download file to specific dir

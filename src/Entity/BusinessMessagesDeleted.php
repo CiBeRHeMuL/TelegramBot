@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Builder\Attribute\ArrayType;
+use stdClass;
 
 /**
  * This object is received when messages are deleted from a connected business account.
@@ -57,7 +58,7 @@ class BusinessMessagesDeleted extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'business_connection_id' => $this->business_connection_id,

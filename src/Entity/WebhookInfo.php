@@ -7,6 +7,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use stdClass;
 
 /**
  * Describes the current status of a webhook.
@@ -143,7 +144,7 @@ class WebhookInfo extends AbstractEntity
         return $this;
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'url' => $this->url->getUrl(),

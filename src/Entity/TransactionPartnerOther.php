@@ -5,6 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Builder\Attribute\BuildIf;
 use AndrewGos\TelegramBot\Builder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
+use stdClass;
 
 /**
  * Describes a transaction with an unknown source or recipient.
@@ -18,7 +19,7 @@ class TransactionPartnerOther extends AbstractTransactionPartner
         parent::__construct(TransactionPartnerTypeEnum::Other);
     }
 
-    public function toArray(): array
+    public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,
