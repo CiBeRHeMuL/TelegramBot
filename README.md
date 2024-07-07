@@ -1,6 +1,6 @@
 # Telegram Bot API Library
 
-**Version 1.3**
+**Version 1.4**
 
 ## Overview
 
@@ -12,7 +12,7 @@ and this library will make updates when new version of Telegram Bot Api.
 
 ## Contacts
 
-If you received a bug or have an idea, please, write to [Gostev71@outlook.com](Gostev71@outlook.com)
+If you received a bug or have an idea, please, write to [Gostev71@outlook.com](mailto:Gostev71@outlook.com)
 and type `Telegram Library Bug` or `Telegram Library Idea` in email header.
 
 ## Features

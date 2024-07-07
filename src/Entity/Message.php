@@ -137,6 +137,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @param string|null $effect_id Optional. Unique identifier of the message effect added to the message
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
+     * @param RefundedPayment|null $refunded_payment Optional. Message is a service message about a refunded payment, information about the payment.
      */
     public function __construct(
         protected int $message_id,
@@ -223,6 +224,7 @@ class Message extends AbstractMaybeInaccessibleMessage
         protected string|null $effect_id = null,
         protected bool|null $show_caption_above_media = null,
         protected PaidMediaInfo|null $paid_media = null,
+        protected RefundedPayment|null $refunded_payment = null,
     ) {
         parent::__construct($this->date);
     }
@@ -1263,6 +1265,7 @@ class Message extends AbstractMaybeInaccessibleMessage
             'effect_id' => $this->effect_id,
             'show_caption_above_media' => $this->show_caption_above_media,
             'paid_media' => $this->paid_media?->toArray(),
+            'refunded_payment' => $this->refunded_payment?->toArray(),
         ];
     }
 }
