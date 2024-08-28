@@ -31,6 +31,7 @@ class User extends AbstractEntity
      * True, if the bot supports inline queries. Returned only in getMe.
      * @param bool|null $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive its messages.
      * Returned only in getMe.
+     * @param bool|null $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
      */
     public function __construct(
         protected int $id,
@@ -45,6 +46,7 @@ class User extends AbstractEntity
         protected bool|null $can_read_all_group_messages = null,
         protected bool|null $supports_inline_queries = null,
         protected bool|null $can_connect_to_business = null,
+        protected bool|null $has_main_web_app = null,
     ) {
         parent::__construct();
     }
@@ -181,6 +183,17 @@ class User extends AbstractEntity
         return $this;
     }
 
+    public function getHasMainWebApp(): bool|null
+    {
+        return $this->has_main_web_app;
+    }
+
+    public function setHasMainWebApp(bool|null $has_main_web_app): User
+    {
+        $this->has_main_web_app = $has_main_web_app;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -196,6 +209,7 @@ class User extends AbstractEntity
             'can_read_all_group_messages' => $this->can_read_all_group_messages,
             'supports_inline_queries' => $this->supports_inline_queries,
             'can_connect_to_business' => $this->can_connect_to_business,
+            'has_main_web_app' => $this->has_main_web_app,
         ];
     }
 }
