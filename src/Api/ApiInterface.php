@@ -1479,6 +1479,31 @@ interface ApiInterface
     public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse;
 
     /**
+     * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator
+     * rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink.
+     * Returns the new invite link as a ChatInviteLink object.
+     *
+     * @param Req\CreateChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\CreateChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
+     */
+    public function createChatSubscriptionInviteLink(
+        Req\CreateChatSubscriptionInviteLinkRequest $request,
+    ): Res\CreateChatSubscriptionInviteLinkResponse;
+
+    /**
+     * Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator
+     * rights. Returns the edited invite link as a ChatInviteLink object.
+     *
+     * @param Req\EditChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\EditChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
+     */
+    public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

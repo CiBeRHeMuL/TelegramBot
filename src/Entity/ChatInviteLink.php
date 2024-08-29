@@ -23,6 +23,9 @@ class ChatInviteLink extends AbstractEntity
      * the chat via this invite link; 1-99999
      * @param string|null $name Optional. Invite link name
      * @param int|null $pending_join_request_count Optional. Number of pending join requests created using this link
+     * @param int|null $subscription_period Optional. The number of seconds the subscription will be active for before the next payment
+     * @param int|null $subscription_price Optional. The amount of Telegram Stars a user must pay initially and after each subsequent
+     * subscription period to be a member of the chat using the link
      */
     public function __construct(
         protected Url $invite_link,
@@ -34,6 +37,8 @@ class ChatInviteLink extends AbstractEntity
         protected int|null $member_limit = null,
         protected string|null $name = null,
         protected int|null $pending_join_request_count = null,
+        protected int|null $subscription_period = null,
+        protected int|null $subscription_price = null,
     ) {
         parent::__construct();
     }
@@ -137,6 +142,28 @@ class ChatInviteLink extends AbstractEntity
         return $this;
     }
 
+    public function getSubscriptionPeriod(): int|null
+    {
+        return $this->subscription_period;
+    }
+
+    public function setSubscriptionPeriod(int|null $subscription_period): ChatInviteLink
+    {
+        $this->subscription_period = $subscription_period;
+        return $this;
+    }
+
+    public function getSubscriptionPrice(): int|null
+    {
+        return $this->subscription_price;
+    }
+
+    public function setSubscriptionPrice(int|null $subscription_price): ChatInviteLink
+    {
+        $this->subscription_price = $subscription_price;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -149,6 +176,8 @@ class ChatInviteLink extends AbstractEntity
             'member_limit' => $this->member_limit,
             'name' => $this->name,
             'pending_join_request_count' => $this->pending_join_request_count,
+            'subscription_period' => $this->subscription_period,
+            'subscription_price' => $this->subscription_price,
         ];
     }
 }

@@ -30,6 +30,7 @@ class SendPaidMediaRequest implements RequestInterface
      * a reply from the user
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      */
     public function __construct(
         private ChatId $chat_id,
@@ -43,6 +44,7 @@ class SendPaidMediaRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ReplyParameters|null $reply_parameters = null,
         private bool|null $show_caption_above_media = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -167,6 +169,17 @@ class SendPaidMediaRequest implements RequestInterface
         return $this;
     }
 
+    public function getBusinessConnectionId(): string|null
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string|null $business_connection_id): SendPaidMediaRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -183,6 +196,7 @@ class SendPaidMediaRequest implements RequestInterface
             'reply_markup' => $this->reply_markup?->toArray(),
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'show_caption_above_media' => $this->show_caption_above_media,
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

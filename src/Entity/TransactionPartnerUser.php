@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
@@ -17,10 +18,12 @@ class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @param User $user Information about the user
      * @param string|null $invoice_payload Optional. Bot-specified invoice payload
+     * @param AbstractPaidMedia[]|null $paid_media Optional. Information about the paid media bought by the user
      */
     public function __construct(
         protected User $user,
         protected string|null $invoice_payload = null,
+        #[ArrayType(AbstractPaidMedia::class)] protected array|null $paid_media = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::User);
     }
@@ -47,12 +50,26 @@ class TransactionPartnerUser extends AbstractTransactionPartner
         return $this;
     }
 
+    public function getPaidMedia(): array|null
+    {
+        return $this->paid_media;
+    }
+
+    public function setPaidMedia(array|null $paid_media): TransactionPartnerUser
+    {
+        $this->paid_media = $paid_media;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
             'type' => $this->type->value,
             'user' => $this->user->toArray(),
             'invoice_payload' => $this->invoice_payload,
+            'paid_media' => $this->paid_media !== null
+                ? array_map(fn(AbstractPaidMedia $e) => $e->toArray(), $this->paid_media)
+                : null,
         ];
     }
 }

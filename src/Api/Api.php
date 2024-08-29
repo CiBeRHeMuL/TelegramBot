@@ -25,7 +25,7 @@ use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '7.8';
+    private const TELEGRAM_BOT_API_VERSION = '7.9';
 
     public function __construct(
         private readonly BotToken $token,
@@ -2039,6 +2039,40 @@ class Api implements ApiInterface
         $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendPaidMediaResponse($rawResponse, $message);
+    }
+
+    /**
+     * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator
+     * rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink.
+     * Returns the new invite link as a ChatInviteLink object.
+     *
+     * @param Req\CreateChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\CreateChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
+     */
+    public function createChatSubscriptionInviteLink(
+        Req\CreateChatSubscriptionInviteLinkRequest $request,
+    ): Res\CreateChatSubscriptionInviteLinkResponse {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
+        return new Res\CreateChatSubscriptionInviteLinkResponse($rawResponse, $chatInviteLink);
+    }
+
+    /**
+     * Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator
+     * rights. Returns the edited invite link as a ChatInviteLink object.
+     *
+     * @param Req\EditChatSubscriptionInviteLinkRequest $request
+     *
+     * @return Res\EditChatSubscriptionInviteLinkResponse
+     * @link https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
+     */
+    public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
+        return new Res\EditChatSubscriptionInviteLinkResponse($rawResponse, $chatInviteLink);
     }
 
     /**
