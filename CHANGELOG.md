@@ -1,5 +1,18 @@
 # Change log of Telegram Bot Library
 
+## Version 1.4.3
+
+### General
++ Add Bot Api 7.10 (September 6, 2024) functionality
+
+### Other
++ Allow IpV4 to be used with mask (like 127.0.0.1/32)
+
+## Version 1.4.3
+
+### General
++ Add Bot Api 7.9 (August 14, 2024) functionality
+
 ## Version 1.4.2
 
 ### General

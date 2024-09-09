@@ -19,11 +19,13 @@ class TransactionPartnerUser extends AbstractTransactionPartner
      * @param User $user Information about the user
      * @param string|null $invoice_payload Optional. Bot-specified invoice payload
      * @param AbstractPaidMedia[]|null $paid_media Optional. Information about the paid media bought by the user
+     * @param string|null $paid_media_payload Optional. Bot-specified paid media payload
      */
     public function __construct(
         protected User $user,
         protected string|null $invoice_payload = null,
         #[ArrayType(AbstractPaidMedia::class)] protected array|null $paid_media = null,
+        protected string|null $paid_media_payload = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::User);
     }
@@ -61,6 +63,17 @@ class TransactionPartnerUser extends AbstractTransactionPartner
         return $this;
     }
 
+    public function getPaidMediaPayload(): string|null
+    {
+        return $this->paid_media_payload;
+    }
+
+    public function setPaidMediaPayload(string|null $paid_media_payload): TransactionPartnerUser
+    {
+        $this->paid_media_payload = $paid_media_payload;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -70,6 +83,7 @@ class TransactionPartnerUser extends AbstractTransactionPartner
             'paid_media' => $this->paid_media !== null
                 ? array_map(fn(AbstractPaidMedia $e) => $e->toArray(), $this->paid_media)
                 : null,
+            'paid_media_payload' => $this->paid_media_payload,
         ];
     }
 }

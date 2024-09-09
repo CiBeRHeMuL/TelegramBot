@@ -26,6 +26,8 @@ class Giveaway extends AbstractEntity
      * Users with a phone number that was bought on Fragment can always participate in giveaways.
      * @param int|null $premium_subscription_month_count Optional.
      * The number of months the Telegram Premium subscription won from the giveaway will be active for.
+     * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners;
+     * for Telegram Star giveaways only
      */
     public function __construct(
         #[ArrayType(Chat::class)] protected array $chats,
@@ -36,6 +38,7 @@ class Giveaway extends AbstractEntity
         protected string|null $prize_description = null,
         #[ArrayType(CountryCodeEnum::class)] protected array|null $country_codes = null,
         protected int|null $premium_subscription_month_count = null,
+        protected int|null $prize_star_count = null,
     ) {
         parent::__construct();
     }
@@ -128,6 +131,17 @@ class Giveaway extends AbstractEntity
         return $this;
     }
 
+    public function getPrizeStarCount(): int|null
+    {
+        return $this->prize_star_count;
+    }
+
+    public function setPrizeStarCount(int|null $prize_star_count): Giveaway
+    {
+        $this->prize_star_count = $prize_star_count;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -141,6 +155,7 @@ class Giveaway extends AbstractEntity
                 ? array_map(fn(CountryCodeEnum $c) => $c->value, $this->country_codes)
                 : null,
             'premium_subscription_month_count' => $this->premium_subscription_month_count,
+            'prize_star_count' => $this->prize_star_count,
         ];
     }
 }

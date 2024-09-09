@@ -56,6 +56,8 @@ class Update extends AbstractEntity
      * @param ChatBoostRemoved|null $removed_chat_boost Optional. A boost was removed from a chat. The bot must be an administrator
      * in the chat to receive these updates.
      * @param ShippingQuery|null $shipping_query Optional. New incoming shipping query. Only for invoices with flexible price
+     * @param PaidMediaPurchased|null $purchased_paid_media Optional. A user purchased paid media with a non-empty payload
+     * sent by the bot in a non-channel chat
      */
     public function __construct(
         protected int $update_id,
@@ -81,6 +83,7 @@ class Update extends AbstractEntity
         protected PreCheckoutQuery|null $pre_checkout_query = null,
         protected ChatBoostRemoved|null $removed_chat_boost = null,
         protected ShippingQuery|null $shipping_query = null,
+        protected PaidMediaPurchased|null $paid_media_purchased = null,
     ) {
         parent::__construct();
     }
@@ -338,6 +341,17 @@ class Update extends AbstractEntity
         return $this;
     }
 
+    public function getPaidMediaPurchased(): PaidMediaPurchased|null
+    {
+        return $this->paid_media_purchased;
+    }
+
+    public function setPaidMediaPurchased(PaidMediaPurchased|null $paid_media_purchased): Update
+    {
+        $this->paid_media_purchased = $paid_media_purchased;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -364,6 +378,7 @@ class Update extends AbstractEntity
             'pre_checkout_query' => $this->pre_checkout_query?->toArray(),
             'removed_chat_boost' => $this->removed_chat_boost?->toArray(),
             'shipping_query' => $this->shipping_query?->toArray(),
+            'purchased_paid_media' => $this->paid_media_purchased?->toArray(),
         ];
     }
 
@@ -392,6 +407,7 @@ class Update extends AbstractEntity
             $this->getPreCheckoutQuery() !== null => UpdateTypeEnum::PreCheckoutQuery,
             $this->getRemovedChatBoost() !== null => UpdateTypeEnum::RemovedChatBoost,
             $this->getShippingQuery() !== null => UpdateTypeEnum::ShippingQuery,
+            $this->getPaidMediaPurchased() !== null => UpdateTypeEnum::PurchasedPaidMedia,
             default => null,
         };
     }
