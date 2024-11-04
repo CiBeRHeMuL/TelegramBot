@@ -31,6 +31,10 @@ class CopyMessageRequest implements RequestInterface
      * Additional interface options. A JSON-serialized object for an inline keyboard,
      * custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
+     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *
+     * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
     public function __construct(
         private ChatId $chat_id,
@@ -45,6 +49,7 @@ class CopyMessageRequest implements RequestInterface
         private ReplyParameters|null $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private bool|null $show_caption_above_media = null,
+        private bool|null $allow_paid_broadcast = null,
     ) {
     }
 
@@ -180,6 +185,17 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
+    public function getAllowPaidBroadcast(): bool|null
+    {
+        return $this->allow_paid_broadcast;
+    }
+
+    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): CopyMessageRequest
+    {
+        $this->allow_paid_broadcast = $allow_paid_broadcast;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -197,6 +213,7 @@ class CopyMessageRequest implements RequestInterface
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'reply_markup' => $this->reply_markup?->toArray(),
             'show_caption_above_media' => $this->show_caption_above_media,
+            'allow_paid_broadcast' => $this->allow_paid_broadcast,
         ];
     }
 }

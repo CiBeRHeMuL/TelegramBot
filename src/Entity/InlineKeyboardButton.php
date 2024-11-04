@@ -36,6 +36,7 @@ class InlineKeyboardButton extends AbstractEntity
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
      * only in protected chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * @param CopyTextButton|null $copy_text Optional. Description of the button that copies the specified text to the clipboard.
      */
     public function __construct(
         protected string $text,
@@ -48,6 +49,7 @@ class InlineKeyboardButton extends AbstractEntity
         protected string|null $switch_inline_query_current_chat = null,
         protected Url|null $url = null,
         protected WebAppInfo|null $web_app = null,
+        protected CopyTextButton|null $copy_text = null,
     ) {
         parent::__construct();
     }
@@ -162,6 +164,17 @@ class InlineKeyboardButton extends AbstractEntity
         return $this;
     }
 
+    public function getCopyText(): CopyTextButton|null
+    {
+        return $this->copy_text;
+    }
+
+    public function setCopyText(CopyTextButton|null $copy_text): InlineKeyboardButton
+    {
+        $this->copy_text = $copy_text;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -175,6 +188,7 @@ class InlineKeyboardButton extends AbstractEntity
             'switch_inline_query_current_chat' => $this->switch_inline_query_current_chat,
             'url' => $this->url?->getUrl(),
             'web_app' => $this->web_app?->toArray(),
+            'copy_text' => $this->copy_text?->toArray(),
         ];
     }
 }

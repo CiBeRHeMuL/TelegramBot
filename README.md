@@ -1,13 +1,13 @@
 # Telegram Bot API Library
 
-**Version 1.4.4**
+**Version 1.4.5**
 
 ## Overview
 
 This library is designed to simplify the development of Telegram bots by leveraging strict typing and other improvements. \
 It allows developers to create highly modular and maintainable bots by defining handlers for various updates in a clear and structured manner.
 
-This library supported all available features of Telegram Bot Api (current version is **7.10**) \
+This library supported all available features of Telegram Bot Api (current version is **7.11**) \
 and this library will make updates when new version of Telegram Bot Api.
 
 ## Contacts

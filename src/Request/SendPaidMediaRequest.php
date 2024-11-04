@@ -33,6 +33,10 @@ class SendPaidMediaRequest implements RequestInterface
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
      * @param string|null $payload Bot-defined paid media payload, 0-128 bytes.
      * This will not be displayed to the user, use it for your internal processes.
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
+     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     *
+     * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
     public function __construct(
         private ChatId $chat_id,
@@ -48,6 +52,7 @@ class SendPaidMediaRequest implements RequestInterface
         private bool|null $show_caption_above_media = null,
         private string|null $business_connection_id = null,
         private string|null $payload = null,
+        private bool|null $allow_paid_broadcast = null,
     ) {
     }
 
@@ -194,6 +199,17 @@ class SendPaidMediaRequest implements RequestInterface
         return $this;
     }
 
+    public function getAllowPaidBroadcast(): bool|null
+    {
+        return $this->allow_paid_broadcast;
+    }
+
+    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendPaidMediaRequest
+    {
+        $this->allow_paid_broadcast = $allow_paid_broadcast;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
@@ -212,6 +228,7 @@ class SendPaidMediaRequest implements RequestInterface
             'show_caption_above_media' => $this->show_caption_above_media,
             'business_connection_id' => $this->business_connection_id,
             'payload' => $this->payload,
+            'allow_paid_broadcast' => $this->allow_paid_broadcast,
         ];
     }
 }
