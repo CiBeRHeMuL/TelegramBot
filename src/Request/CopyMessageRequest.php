@@ -33,6 +33,7 @@ class CopyMessageRequest implements RequestInterface
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
      * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
      *
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
@@ -50,6 +51,7 @@ class CopyMessageRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private bool|null $show_caption_above_media = null,
         private bool|null $allow_paid_broadcast = null,
+        private int|null $video_start_timestamp = null,
     ) {
     }
 
@@ -196,6 +198,16 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
+    public function getVideoStartTimestamp(): ?int
+    {
+        return $this->video_start_timestamp;
+    }
+
+    public function setVideoStartTimestamp(?int $video_start_timestamp): void
+    {
+        $this->video_start_timestamp = $video_start_timestamp;
+    }
+
     public function toArray(): array
     {
         return [
@@ -214,6 +226,7 @@ class CopyMessageRequest implements RequestInterface
             'reply_markup' => $this->reply_markup?->toArray(),
             'show_caption_above_media' => $this->show_caption_above_media,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
+            'video_start_timestamp' => $this->video_start_timestamp,
         ];
     }
 }

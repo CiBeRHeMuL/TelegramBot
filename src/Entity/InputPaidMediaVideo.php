@@ -29,6 +29,11 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
      * and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using
      * multipart/form-data under <file_attach_name>. More information on Sending Files »
      * @param int|null $width Optional. Video width
+     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message.
+     *  Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     *  pass an HTTP URL for Telegram to get a file from the Internet,
+     *  or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name.
+     * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
      */
     public function __construct(
         protected Filename|Url|string $media,
@@ -37,6 +42,8 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
         protected bool|null $supports_streaming = null,
         protected Filename|Url|string|null $thumbnail = null,
         protected int|null $width = null,
+        protected Filename|Url|string|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
         parent::__construct(InputPaidMediaTypeEnum::Video);
     }
@@ -107,6 +114,26 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
         return $this;
     }
 
+    public function getCover(): Filename|string|Url|null
+    {
+        return $this->cover;
+    }
+
+    public function setCover(Filename|string|Url|null $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    public function getStartTimestamp(): ?int
+    {
+        return $this->start_timestamp;
+    }
+
+    public function setStartTimestamp(?int $start_timestamp): void
+    {
+        $this->start_timestamp = $start_timestamp;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -121,6 +148,10 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
                 ? $this->thumbnail->getUrl()
                 : $this->thumbnail,
             'width' => $this->width,
+            'cover' => $this->cover
+                ? (($this->cover instanceof Url) ? $this->cover->getUrl() : $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

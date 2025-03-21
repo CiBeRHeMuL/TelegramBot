@@ -17,7 +17,6 @@ class SendVideoRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     * @channelusername).
      * @param string|Filename|Url $video Video to send. Pass a file_id as String to send a video that exists on the Telegram
      * servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new
      * video using multipart/form-data. More information on Sending Files.
@@ -32,7 +31,7 @@ class SendVideoRequest implements RequestInterface
      * file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
      * width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails
      * can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
-     * thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files.
+     * thumbnail was uploaded using multipart/form-data under <file_attach_name>.
      * @param string|null $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters
      * after entities parsing.
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the video caption. See formatting options for more
@@ -51,7 +50,12 @@ class SendVideoRequest implements RequestInterface
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param string|Filename|Url|null $cover Cover for the video in the message.
+     * Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet,
+     * or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name.
+     * @param int|null $start_timestamp Start timestamp for the video in the message
      *
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
@@ -76,6 +80,8 @@ class SendVideoRequest implements RequestInterface
         private string|null $message_effect_id = null,
         private bool|null $show_caption_above_media = null,
         private bool|null $allow_paid_broadcast = null,
+        protected string|Filename|Url|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
     }
 
@@ -299,6 +305,16 @@ class SendVideoRequest implements RequestInterface
         return $this;
     }
 
+    public function getCover(): Filename|string|Url|null
+    {
+        return $this->cover;
+    }
+
+    public function setCover(Filename|string|Url|null $cover): void
+    {
+        $this->cover = $cover;
+    }
+
     public function toArray(): array
     {
         return [
@@ -328,6 +344,10 @@ class SendVideoRequest implements RequestInterface
             'message_effect_id' => $this->message_effect_id,
             'show_caption_above_media' => $this->show_caption_above_media,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
+            'cover' => $this->cover
+                ? (($this->cover instanceof Url) ? $this->cover->getUrl() : $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

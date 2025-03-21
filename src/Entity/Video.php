@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -23,6 +24,8 @@ class Video extends AbstractEntity
      * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31,
      * and some programming languages may have difficulty/silent defects in interpreting it.
      * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
+     * @param PhotoSize[]|null $cover Optional. Available sizes of the cover of the video in the message
+     * @param int|null $start_timestamp Optional. Timestamp in seconds from which the video will play in the message
      */
     public function __construct(
         protected string $file_id,
@@ -34,6 +37,9 @@ class Video extends AbstractEntity
         protected string|null $file_name = null,
         protected string|null $mime_type = null,
         protected int|null $file_size = null,
+        #[ArrayType(PhotoSize::class)]
+        protected array|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
         parent::__construct();
     }
@@ -137,6 +143,26 @@ class Video extends AbstractEntity
         return $this;
     }
 
+    public function getCover(): ?array
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?array $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    public function getStartTimestamp(): ?int
+    {
+        return $this->start_timestamp;
+    }
+
+    public function setStartTimestamp(?int $start_timestamp): void
+    {
+        $this->start_timestamp = $start_timestamp;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -149,6 +175,10 @@ class Video extends AbstractEntity
             'file_name' => $this->file_name,
             'mime_type' => $this->mime_type,
             'file_size' => $this->file_size,
+            'cover' => $this->cover !== null
+                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

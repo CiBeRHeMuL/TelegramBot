@@ -42,6 +42,11 @@ class InputMediaVideo extends AbstractInputMedia
      * @param bool|null $supports_streaming Optional. Pass True if the uploaded video is suitable for streaming
      * @param bool|null $has_spoiler Optional. Pass True if the video needs to be covered with a spoiler animation
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message.
+     * Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet,
+     * or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name.
+     * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
      */
     public function __construct(
         protected Filename|Url|string $media,
@@ -55,6 +60,8 @@ class InputMediaVideo extends AbstractInputMedia
         protected bool|null $supports_streaming = null,
         protected bool|null $has_spoiler = null,
         protected bool|null $show_caption_above_media = null,
+        protected Filename|Url|string|null $cover = null,
+        protected int|null $start_timestamp = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Video);
     }
@@ -180,6 +187,26 @@ class InputMediaVideo extends AbstractInputMedia
         return $this;
     }
 
+    public function getCover(): Filename|string|Url|null
+    {
+        return $this->cover;
+    }
+
+    public function setCover(Filename|string|Url|null $cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    public function getStartTimestamp(): ?int
+    {
+        return $this->start_timestamp;
+    }
+
+    public function setStartTimestamp(?int $start_timestamp): void
+    {
+        $this->start_timestamp = $start_timestamp;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -201,6 +228,10 @@ class InputMediaVideo extends AbstractInputMedia
             'supports_streaming' => $this->supports_streaming,
             'has_spoiler' => $this->has_spoiler,
             'show_caption_above_media' => $this->show_caption_above_media,
+            'cover' => $this->cover
+                ? (($this->cover instanceof Url) ? $this->cover->getUrl() : $this->cover)
+                : null,
+            'start_timestamp' => $this->start_timestamp,
         ];
     }
 }

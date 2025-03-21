@@ -12,6 +12,7 @@ use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 #[AvailableInheritors([
     TransactionPartnerFragment::class,
     TransactionPartnerUser::class,
+    TransactionPartnerChat::class,
     TransactionPartnerOther::class,
     TransactionPartnerTelegramApi::class,
     TransactionPartnerTelegramAds::class,

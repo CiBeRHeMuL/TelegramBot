@@ -82,6 +82,7 @@ class ChatFullInfo extends AbstractEntity
      * @param string|null $username Optional. Username, for protected chats, supergroups and channels if available
      * @param bool|null $can_send_paid_media Optional. True, if paid media messages can be sent or forwarded to the channel chat.
      * The field is available only for channel chats.
+     * @param bool|null $can_send_gift Optional. True, if gifts can be sent to the chat
      */
     public function __construct(
         protected int $id,
@@ -128,6 +129,7 @@ class ChatFullInfo extends AbstractEntity
         protected int|null $unrestrict_boost_count = null,
         protected string|null $username = null,
         protected bool|null $can_send_paid_media = null,
+        protected bool|null $can_send_gift = null,
     ) {
         parent::__construct();
     }
@@ -627,6 +629,16 @@ class ChatFullInfo extends AbstractEntity
         return $this;
     }
 
+    public function getCanSendGift(): ?bool
+    {
+        return $this->can_send_gift;
+    }
+
+    public function setCanSendGift(?bool $can_send_gift): void
+    {
+        $this->can_send_gift = $can_send_gift;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -676,6 +688,7 @@ class ChatFullInfo extends AbstractEntity
             'unrestrict_boost_count' => $this->unrestrict_boost_count,
             'username' => $this->username,
             'can_send_paid_media' => $this->can_send_paid_media,
+            'can_send_gift' => $this->can_send_gift,
         ];
     }
 }

@@ -15,7 +15,7 @@ class Telegram
     /**
      * Library version
      */
-    private const VERSION = '1.4.8';
+    private const VERSION = '1.4.9';
 
     private User $me;
 
