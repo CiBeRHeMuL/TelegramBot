@@ -1555,6 +1555,48 @@ interface ApiInterface
     public function sendGift(Req\SendGiftRequest $request): Res\RawResponse;
 
     /**
+     * Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
+     *
+     * @param Req\VerifyUserRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#verifyuser
+     */
+    public function verifyUser(Req\VerifyUserRequest $request): Res\RawResponse;
+
+    /**
+     * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success.
+     *
+     * @param Req\VerifyChatRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#verifychat
+     */
+    public function verifyChat(Req\VerifyChatRequest $request): Res\RawResponse;
+
+    /**
+     * Removes verification from a user who is currently verified on behalf of the organization represented by the bot. Returns True
+     * on success.
+     *
+     * @param Req\RemoveUserVerificationRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removeuserverification
+     */
+    public function removeUserVerification(Req\RemoveUserVerificationRequest $request): Res\RawResponse;
+
+    /**
+     * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns
+     * True on success.
+     *
+     * @param Req\RemoveChatVerificationRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removechatverification
+     */
+    public function removeChatVerification(Req\RemoveChatVerificationRequest $request): Res\RawResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file
