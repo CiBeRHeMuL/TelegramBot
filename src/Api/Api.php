@@ -21,11 +21,12 @@ use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
+use stdClass;
 use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '7.11';
+    private const TELEGRAM_BOT_API_VERSION = '8.0';
 
     public function __construct(
         private readonly BotToken $token,
@@ -2076,6 +2077,76 @@ class Api implements ApiInterface
     }
 
     /**
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success.
+     *
+     * @param Req\EditUserStarSubscriptionRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     */
+    public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method
+     * requestEmojiStatusAccess. Returns True on success.
+     *
+     * @param Req\SetUserEmojiStatusRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setuseremojistatus
+     */
+    public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+     *
+     * @param Req\SavePreparedInlineMessageRequest $request
+     *
+     * @return Res\SavePreparedInlineMessageResponse
+     * @link https://core.telegram.org/bots/api#savepreparedinlinemessage
+     */
+    public function savePreparedInlineMessage(Req\SavePreparedInlineMessageRequest $request): Res\SavePreparedInlineMessageResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $preparedInlineMessage = $this->buildClassForResponse(Ent\PreparedInlineMessage::class, $rawResponse);
+        return new Res\SavePreparedInlineMessageResponse($rawResponse, $preparedInlineMessage);
+    }
+
+    /**
+     * Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts
+     * object.
+     *
+     * @return Res\GetAvailableGiftsResponse
+     * @link https://core.telegram.org/bots/api#getavailablegifts
+     */
+    public function getAvailableGifts(): Res\GetAvailableGiftsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, [], HttpMethodEnum::Post);
+        $gifts = $this->buildClassForResponse(Ent\Gifts::class, $rawResponse);
+        return new Res\GetAvailableGiftsResponse($rawResponse, $gifts);
+    }
+
+    /**
+     * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True
+     * on success.
+     *
+     * @param Req\SendGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#sendgift
+     */
+    public function sendGift(Req\SendGiftRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file
@@ -2170,9 +2241,12 @@ class Api implements ApiInterface
      *
      * @return Res\RawResponse
      */
-    private function send(string $method, array $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
+    private function send(string $method, array|stdClass $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
         try {
+            if ($data instanceof stdClass) {
+                $data = json_decode(json_encode($data), true);
+            }
             $data = HArray::filterRecursive($data, fn($v) => $v !== null);
             array_walk_recursive(
                 $data,

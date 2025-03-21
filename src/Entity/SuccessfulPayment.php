@@ -19,6 +19,10 @@ class SuccessfulPayment extends AbstractEntity
      * @param string $provider_payment_charge_id Provider payment identifier.
      * @param string|null $shipping_option_id Optional. Identifier of the shipping option chosen by the user.
      * @param OrderInfo|null $order_info Optional. Order information provided by the user.
+     * @param int|null $subscription_expiration_date Optional. Expiration date of the subscription, in Unix time;
+     * for recurring payments only
+     * @param bool|null $is_recurring Optional. True, if the payment is a recurring payment for a subscription
+     * @param bool|null $is_first_recurring Optional. True, if the payment is the first payment for a subscription
      */
     public function __construct(
         protected CurrencyEnum $currency,
@@ -28,6 +32,9 @@ class SuccessfulPayment extends AbstractEntity
         protected string $provider_payment_charge_id,
         protected string|null $shipping_option_id = null,
         protected OrderInfo|null $order_info = null,
+        protected int|null $subscription_expiration_date = null,
+        protected bool|null $is_recurring = null,
+        protected bool|null $is_first_recurring = null,
     ) {
         parent::__construct();
     }
@@ -109,6 +116,36 @@ class SuccessfulPayment extends AbstractEntity
         return $this;
     }
 
+    public function getSubscriptionExpirationDate(): ?int
+    {
+        return $this->subscription_expiration_date;
+    }
+
+    public function setSubscriptionExpirationDate(?int $subscription_expiration_date): void
+    {
+        $this->subscription_expiration_date = $subscription_expiration_date;
+    }
+
+    public function getIsRecurring(): ?bool
+    {
+        return $this->is_recurring;
+    }
+
+    public function setIsRecurring(?bool $is_recurring): void
+    {
+        $this->is_recurring = $is_recurring;
+    }
+
+    public function getIsFirstRecurring(): ?bool
+    {
+        return $this->is_first_recurring;
+    }
+
+    public function setIsFirstRecurring(?bool $is_first_recurring): void
+    {
+        $this->is_first_recurring = $is_first_recurring;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -119,6 +156,9 @@ class SuccessfulPayment extends AbstractEntity
             'order_info' => $this->order_info?->toArray(),
             'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
             'provider_payment_charge_id' => $this->provider_payment_charge_id,
+            'subscription_expiration_date' => $this->subscription_expiration_date,
+            'is_recurring' => $this->is_recurring,
+            'is_first_recurring' => $this->is_first_recurring,
         ];
     }
 }

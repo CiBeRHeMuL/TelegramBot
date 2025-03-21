@@ -43,6 +43,14 @@ class CreateInvoiceLinkRequest implements RequestInterface
      * @param int[]|null $suggested_tip_amounts A JSON-serialized array of suggested amounts of tips in the smallest units of the
      * currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be
      * positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     * @param int|null $subscription_period The number of seconds the subscription will be active for before the next payment.
+     * The currency must be set to “XTR” (Telegram Stars) if the parameter is used.
+     * Currently, it must always be 2592000 (30 days) if specified.
+     * Any number of subscriptions can be active for a given bot at the same time,
+     * including multiple concurrent subscriptions from the same user.
+     * Subscription price must no exceed 2500 Telegram Stars.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be created.
+     * For payments in Telegram Stars only.
      */
     public function __construct(
         private CurrencyEnum $currency,
@@ -65,6 +73,8 @@ class CreateInvoiceLinkRequest implements RequestInterface
         private bool|null $send_email_to_provider = null,
         private bool|null $send_phone_number_to_provider = null,
         private array|null $suggested_tip_amounts = null,
+        private int|null $subscription_period = null,
+        private string|null $business_connection_id = null,
     ) {
     }
 
@@ -288,6 +298,26 @@ class CreateInvoiceLinkRequest implements RequestInterface
         return $this;
     }
 
+    public function getSubscriptionPeriod(): ?int
+    {
+        return $this->subscription_period;
+    }
+
+    public function setSubscriptionPeriod(?int $subscription_period): void
+    {
+        $this->subscription_period = $subscription_period;
+    }
+
+    public function getBusinessConnectionId(): ?string
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(?string $business_connection_id): void
+    {
+        $this->business_connection_id = $business_connection_id;
+    }
+
     public function toArray(): array
     {
         return [
@@ -311,6 +341,8 @@ class CreateInvoiceLinkRequest implements RequestInterface
             'send_email_to_provider' => $this->send_email_to_provider,
             'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
             'suggested_tip_amounts' => $this->suggested_tip_amounts,
+            'subscription_period' => $this->subscription_period,
+            'business_connection_id' => $this->business_connection_id,
         ];
     }
 }

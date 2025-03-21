@@ -1504,6 +1504,57 @@ interface ApiInterface
     public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse;
 
     /**
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars. Returns True on success.
+     *
+     * @param Req\EditUserStarSubscriptionRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     */
+    public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse;
+
+    /**
+     * Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method
+     * requestEmojiStatusAccess. Returns True on success.
+     *
+     * @param Req\SetUserEmojiStatusRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setuseremojistatus
+     */
+    public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse;
+
+    /**
+     * Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+     *
+     * @param Req\SavePreparedInlineMessageRequest $request
+     *
+     * @return Res\SavePreparedInlineMessageResponse
+     * @link https://core.telegram.org/bots/api#savepreparedinlinemessage
+     */
+    public function savePreparedInlineMessage(Req\SavePreparedInlineMessageRequest $request): Res\SavePreparedInlineMessageResponse;
+
+    /**
+     * Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts
+     * object.
+     *
+     * @return Res\GetAvailableGiftsResponse
+     * @link https://core.telegram.org/bots/api#getavailablegifts
+     */
+    public function getAvailableGifts(): Res\GetAvailableGiftsResponse;
+
+    /**
+     * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True
+     * on success.
+     *
+     * @param Req\SendGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#sendgift
+     */
+    public function sendGift(Req\SendGiftRequest $request): Res\RawResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

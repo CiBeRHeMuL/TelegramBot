@@ -20,12 +20,16 @@ class TransactionPartnerUser extends AbstractTransactionPartner
      * @param string|null $invoice_payload Optional. Bot-specified invoice payload
      * @param AbstractPaidMedia[]|null $paid_media Optional. Information about the paid media bought by the user
      * @param string|null $paid_media_payload Optional. Bot-specified paid media payload
+     * @param int|null $subscription_period Optional. The duration of the paid subscription
+     * @param Gift|null $gift Optional. The gift sent to the user by the bot
      */
     public function __construct(
         protected User $user,
         protected string|null $invoice_payload = null,
         #[ArrayType(AbstractPaidMedia::class)] protected array|null $paid_media = null,
         protected string|null $paid_media_payload = null,
+        protected int|null $subscription_period = null,
+        protected Gift|null $gift = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::User);
     }
@@ -74,6 +78,26 @@ class TransactionPartnerUser extends AbstractTransactionPartner
         return $this;
     }
 
+    public function getSubscriptionPeriod(): ?int
+    {
+        return $this->subscription_period;
+    }
+
+    public function setSubscriptionPeriod(?int $subscription_period): void
+    {
+        $this->subscription_period = $subscription_period;
+    }
+
+    public function getGift(): ?Gift
+    {
+        return $this->gift;
+    }
+
+    public function setGift(?Gift $gift): void
+    {
+        $this->gift = $gift;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -84,6 +108,8 @@ class TransactionPartnerUser extends AbstractTransactionPartner
                 ? array_map(fn(AbstractPaidMedia $e) => $e->toArray(), $this->paid_media)
                 : null,
             'paid_media_payload' => $this->paid_media_payload,
+            'subscription_period' => $this->subscription_period,
+            'gift' => $this->gift?->toArray(),
         ];
     }
 }
