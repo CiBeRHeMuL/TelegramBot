@@ -22,6 +22,7 @@ class TransactionPartnerUser extends AbstractTransactionPartner
      * @param string|null $paid_media_payload Optional. Bot-specified paid media payload
      * @param int|null $subscription_period Optional. The duration of the paid subscription
      * @param Gift|null $gift Optional. The gift sent to the user by the bot
+     * @param AffiliateInfo|null $affiliate Optional. Information about the affiliate that received a commission via this transaction
      */
     public function __construct(
         protected User $user,
@@ -30,6 +31,7 @@ class TransactionPartnerUser extends AbstractTransactionPartner
         protected string|null $paid_media_payload = null,
         protected int|null $subscription_period = null,
         protected Gift|null $gift = null,
+        protected AffiliateInfo|null $affiliate = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::User);
     }
@@ -98,6 +100,16 @@ class TransactionPartnerUser extends AbstractTransactionPartner
         $this->gift = $gift;
     }
 
+    public function getAffiliate(): ?AffiliateInfo
+    {
+        return $this->affiliate;
+    }
+
+    public function setAffiliate(?AffiliateInfo $affiliate): void
+    {
+        $this->affiliate = $affiliate;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -110,6 +122,7 @@ class TransactionPartnerUser extends AbstractTransactionPartner
             'paid_media_payload' => $this->paid_media_payload,
             'subscription_period' => $this->subscription_period,
             'gift' => $this->gift?->toArray(),
+            'affiliate' => $this->affiliate?->toArray(),
         ];
     }
 }

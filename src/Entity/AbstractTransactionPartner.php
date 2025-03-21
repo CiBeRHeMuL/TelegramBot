@@ -15,6 +15,7 @@ use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
     TransactionPartnerOther::class,
     TransactionPartnerTelegramApi::class,
     TransactionPartnerTelegramAds::class,
+    TransactionPartnerAffiliateProgram::class,
 ])]
 abstract class AbstractTransactionPartner extends AbstractEntity
 {

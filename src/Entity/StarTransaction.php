@@ -19,6 +19,8 @@ class StarTransaction extends AbstractEntity
      * Fragment for a withdrawal). Only for outgoing transactions
      * @param AbstractTransactionPartner|null $source Optional. Source of an incoming transaction (e.g., a user purchasing goods or services,
      * Fragment refunding a failed withdrawal). Only for incoming transactions
+     * @param int|null $nanostar_amount Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction;
+     * from 0 to 999999999
      */
     public function __construct(
         protected string $id,
@@ -26,6 +28,7 @@ class StarTransaction extends AbstractEntity
         protected int $date,
         protected AbstractTransactionPartner|null $receiver = null,
         protected AbstractTransactionPartner|null $source = null,
+        protected int|null $nanostar_amount = null,
     ) {
         parent::__construct();
     }
@@ -85,6 +88,16 @@ class StarTransaction extends AbstractEntity
         return $this;
     }
 
+    public function getNanostarAmount(): ?int
+    {
+        return $this->nanostar_amount;
+    }
+
+    public function setNanostarAmount(?int $nanostar_amount): void
+    {
+        $this->nanostar_amount = $nanostar_amount;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -93,6 +106,7 @@ class StarTransaction extends AbstractEntity
             'date' => $this->date,
             'receiver' => $this->receiver?->toArray(),
             'source' => $this->source?->toArray(),
+            'nanostar_amount' => $this->nanostar_amount,
         ];
     }
 }

@@ -1,5 +1,10 @@
 # Change log of Telegram Bot Library
 
+## Version 1.4.7
+
+### General
++ Add Bot Api 8.1 (December 4, 2024) functionality
+
 ## Version 1.4.6
 
 ### General

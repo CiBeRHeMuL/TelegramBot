@@ -7,7 +7,7 @@
 This library is designed to simplify the development of Telegram bots by leveraging strict typing and other improvements. \
 It allows developers to create highly modular and maintainable bots by defining handlers for various updates in a clear and structured manner.
 
-This library supported all available features of Telegram Bot Api (current version is **8.0**) \
+This library supported all available features of Telegram Bot Api (current version is **8.1**) \
 and this library will make updates when new version of Telegram Bot Api.
 
 ## Contacts

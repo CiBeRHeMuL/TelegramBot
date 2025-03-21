@@ -9,4 +9,5 @@ enum TransactionPartnerTypeEnum: string
     case TelegramAds = 'telegram_ads';
     case Other = 'other';
     case TelegramApi = 'telegram_api';
+    case AffiliateProgram = 'affiliate_program';
 }
