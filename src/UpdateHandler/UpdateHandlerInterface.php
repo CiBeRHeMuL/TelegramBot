@@ -41,6 +41,13 @@ interface UpdateHandlerInterface
     public function getApi(): ApiInterface;
 
     /**
+     * @param ApiInterface $api
+     *
+     * @return $this
+     */
+    public function setApi(ApiInterface $api): static;
+
+    /**
      * Current logger
      * @return LoggerInterface
      */

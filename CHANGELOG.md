@@ -1,5 +1,11 @@
 # Change log of Telegram Bot Library
 
+## Version 2.1
+
+### General
++ Add setters for api and update handler for Telegram class
++ Add setter for api for UpdateHandler class
+
 ## Version 2.0
 
 ### General

@@ -15,18 +15,16 @@ class Telegram
     /**
      * Library version
      */
-    private const VERSION = '2.0';
+    private const VERSION = '2.1';
 
     private User $me;
 
     public function __construct(
         private readonly BotToken $token,
-        private readonly ApiInterface $api,
-        private readonly UpdateHandlerInterface $updateHandler,
+        private ApiInterface $api,
+        private UpdateHandlerInterface $updateHandler,
     ) {
-        if ($this->token->getToken() !== $this->api->getToken()->getToken()) {
-            throw new InvalidArgumentException('Api and bot must have same tokens');
-        }
+        $this->setApi($this->api);
     }
 
     public function getToken(): BotToken
@@ -42,6 +40,20 @@ class Telegram
     public function getUpdateHandler(): UpdateHandlerInterface
     {
         return $this->updateHandler;
+    }
+
+    public function setApi(ApiInterface $api): void
+    {
+        if ($this->token->getToken() !== $this->api->getToken()->getToken()) {
+            throw new InvalidArgumentException('Api and bot must have same tokens');
+        }
+        $this->api = $api;
+        $this->updateHandler->setApi($this->api);
+    }
+
+    public function setUpdateHandler(UpdateHandlerInterface $updateHandler): void
+    {
+        $this->updateHandler = $updateHandler;
     }
 
     public function getMe(): User

@@ -73,6 +73,12 @@ class UpdateHandler implements UpdateHandlerInterface
         return $this->api;
     }
 
+    public function setApi(ApiInterface $api): static
+    {
+        $this->api = $api;
+        return $this;
+    }
+
     public function getLogger(): LoggerInterface
     {
         return $this->logger;
