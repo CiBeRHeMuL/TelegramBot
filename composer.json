@@ -3,7 +3,7 @@
     "description": "Advanced strictly typed Telegram Bot Library",
     "type": "library",
     "license": "MIT",
-    "version": "2.1",
+    "version": "2.1.0.1",
     "autoload": {
         "psr-4": {
             "AndrewGos\\TelegramBot\\": "src/"

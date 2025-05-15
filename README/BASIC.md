@@ -194,7 +194,7 @@ use AndrewGos\TelegramBot\Telegram;
 
 /** @var Telegram $telegram */
 $updateHandler = $telegram->getUpdateHandler();
-$updateHandler->addMessageProcess(MyMessageProcessor::class);
+$updateHandler->addMessageProcess(new MyMessageProcessor());
 ```
 
 Or, to add Command Message processor (for messages starts with '/'. ex. '/start'), type:
@@ -207,7 +207,7 @@ use AndrewGos\TelegramBot\Telegram;
 $updateHandler = $telegram->getUpdateHandler();
 $updateHandler->addCommandMessageProcess(
     'start',
-    MyCommandMessageProcessor::class,
+    new MyCommandMessageProcessor(),
 );
 ```
 
@@ -369,7 +369,7 @@ $telegram = TelegramFactory::getDefaultTelegram(
 );
 $telegram->getUpdateHandler()->addCommandMessageProcess(
     'start',
-    MyCommandMessageProcessor::class,
+    new MyCommandMessageProcessor(),
 );
 $telegram->getUpdateHandler()->handle();
 ```

@@ -40,44 +40,12 @@ use AndrewGos\TelegramBot\UpdateHandler\CheckableProcess;
 
 /** @var Telegram $telegram */
 $telegram->getUpdateHandler()->addCheckableProcess(new CheckableProcess(
-    MyMessageProcessor::class,
+    new MyMessageProcessor(),
     new MyUpdateChecker(),
 ));
 ```
 
 After `handle` or `listen` call, handler will call checker with incoming update, and, if checker return **true**, call processor.
-
-## Extra processor __constructor method parameters
-
-You can throw extra parameters into your custom update processor via `$extraParameters` parameter
-of [CheckableProcess](../src/UpdateHandler/CheckableProcess.php) constructor.
-
-!!! First three parameters of your update processor constructor MUST be `Update $update`, `ApiInterface $api` and `LoggerInterface $logger`. \
-After these parameters you can make another parameters if you want
-
-```php
-<?php
-
-use AndrewGos\TelegramBot\UpdateHandler\UpdateProcessor\UpdateProcessorInterface;
-use AndrewGos\TelegramBot\Entity\Update;
-use AndrewGos\TelegramBot\Api\ApiInterface;
-use Psr\Log\LoggerInterface;
-use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
-use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
-
-class MyUpdateProcessor implements UpdateProcessorInterface
-{
-    public function __construct(
-        Update $update,
-        ApiInterface $api,
-        LoggerInterface $logger,
-        string $extraParameter
-    ) {}
-}
-
-/** @var UpdateHandler $client */
-$client->addTypedProcess(UpdateTypeEnum::Message, MyUpdateProcessor::class, ['extraParameter' => 'Extra Param']);
-```
 
 ## Custom update sources
 

@@ -1,5 +1,10 @@
 # Change log of Telegram Bot Library
 
+## Version 2.1.0.1
+
+### General
++ Fix documentation
+
 ## Version 2.1
 
 ### General
