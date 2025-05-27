@@ -19,11 +19,12 @@ class TelegramFactory
      * Create telegram instance with default webhook client (client with PhpInputUpdateSource)
      *
      * @param BotToken $token
+     * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      *
      * @return Telegram
      * @see PhpInputUpdateSource
      */
-    public static function getDefaultTelegram(BotToken $token): Telegram
+    public static function getDefaultTelegram(BotToken $token, bool $throwOnErrorResponse = false): Telegram
     {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
@@ -34,6 +35,7 @@ class TelegramFactory
             new HttpClient(),
             $logger,
             new Filesystem(),
+            $throwOnErrorResponse,
         );
         return new Telegram(
             $token,
@@ -46,11 +48,12 @@ class TelegramFactory
      * Create telegram instance with listening client (client with GetUpdatesUpdateSource)
      *
      * @param BotToken $token
+     * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      *
      * @return Telegram
      * @see GetUpdatesUpdateSource
      */
-    public static function getGetUpdatesTelegram(BotToken $token): Telegram
+    public static function getGetUpdatesTelegram(BotToken $token, bool $throwOnErrorResponse = false): Telegram
     {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
@@ -61,6 +64,7 @@ class TelegramFactory
             new HttpClient(),
             $logger,
             new Filesystem(),
+            $throwOnErrorResponse,
         );
         return new Telegram(
             $token,

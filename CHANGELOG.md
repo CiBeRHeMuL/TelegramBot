@@ -1,5 +1,10 @@
 # Change log of Telegram Bot Library
 
+## Version 2.1.1
+
+### General
++ Add error throw on non 2xx responses
+
 ## Version 2.1.0.1
 
 ### General

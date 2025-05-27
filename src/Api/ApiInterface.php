@@ -13,6 +13,12 @@ use Psr\Log\LoggerInterface;
 interface ApiInterface
 {
     /**
+     * Will the api throw an exception if the request does not return 2xx response
+     * @return bool
+     */
+    public function isThrowOnErrorResponse(): bool;
+
+    /**
      * Current token used in requests
      * @return BotToken
      */

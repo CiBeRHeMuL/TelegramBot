@@ -6,6 +6,7 @@ use AndrewGos\ClassBuilder\ClassBuilderInterface;
 use AndrewGos\TelegramBot\Entity as Ent;
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
+use AndrewGos\TelegramBot\Exception\ErrorResponseException;
 use AndrewGos\TelegramBot\Filesystem as Fs;
 use AndrewGos\TelegramBot\Filesystem\FilesystemInterface;
 use AndrewGos\TelegramBot\Helper\HArray;
@@ -34,7 +35,16 @@ class Api implements ApiInterface
         private ClientInterface $client,
         private LoggerInterface $logger,
         private FileSystemInterface $fileSystem,
+        private bool $throwOnErrorResponse = true,
     ) {
+    }
+    /**
+     * Will the api throw an exception if the request does not return 2xx response
+     * @return bool
+     */
+    public function isThrowOnErrorResponse(): bool
+    {
+        return $this->throwOnErrorResponse;
     }
 
     /**
@@ -2553,6 +2563,8 @@ class Api implements ApiInterface
      */
     private function send(string $method, array|stdClass $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
+        $code = 200;
+        $prevException = null;
         try {
             if ($data instanceof stdClass) {
                 $data = json_decode(json_encode($data), true);
@@ -2565,12 +2577,15 @@ class Api implements ApiInterface
             $request = $this->telegramRequestFactory
                 ->createRequest($this->token, $method, $data, $httpMethod);
             $response = $this->client->sendRequest($request);
+            $code = $response->getStatusCode();
             $result = new EncodedJson($response->getBody()->getContents());
             $result = json_decode($result->getJson(), true);
-            return $this->classBuilder->build(Res\RawResponse::class, $result);
+            $rawResponse = $this->classBuilder->build(Res\RawResponse::class, $result);
         } catch (Throwable $e) {
+            $code = 500;
+            $prevException = $e;
             $this->logger->error($e->getMessage());
-            return new Res\RawResponse(
+            $rawResponse = new Res\RawResponse(
                 false,
                 'Invalid response',
                 null,
@@ -2578,6 +2593,18 @@ class Api implements ApiInterface
                 null,
             );
         }
+        if ($this->throwOnErrorResponse && $rawResponse->isOk() === false) {
+            throw new ErrorResponseException(
+                $method,
+                $httpMethod,
+                $data,
+                $rawResponse,
+                "Code $code was received when executing the request.",
+                $code,
+                $prevException,
+            );
+        }
+        return $rawResponse;
     }
 
     /**

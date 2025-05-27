@@ -1,6 +1,6 @@
 # Telegram Bot API Library
 
-**Version 2.1.0.1**
+**Version 2.1.1**
 
 ## Overview
 
