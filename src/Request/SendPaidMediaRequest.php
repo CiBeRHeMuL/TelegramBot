@@ -15,7 +15,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendPaidMediaRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param AbstractInputPaidMedia[] $media A JSON-serialized array describing the media to be sent; up to 10 items
      * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media
      * @param string|null $caption Media caption, 0-1024 characters after entities parsing

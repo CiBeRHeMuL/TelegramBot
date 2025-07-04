@@ -885,7 +885,7 @@ interface ApiInterface
      * a notification at the top of the chat screen or as an alert. On success, True is returned.
      *
      * Alternatively, the user can be redirected to the specified Game URL.
-     * For this option to work, you must first create a game for your bot via @BotFather and accept the terms.
+     * For this option to work, you must first create a game for your bot via \@BotFather and accept the terms.
      * Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
      *
      * @param Req\AnswerCallbackQueryRequest $request
@@ -1786,6 +1786,36 @@ interface ApiInterface
      * @link https://core.telegram.org/bots/api#deletestory
      */
     public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.
+     *
+     * @param Req\SendChecklistRequest $request
+     *
+     * @return Res\SendChecklistResponse
+     * @link https://core.telegram.org/bots/api#sendchecklist
+     */
+    public function sendChecklist(Req\SendChecklistRequest $request): Res\SendChecklistResponse;
+
+    /**
+     * Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
+     *
+     * @param Req\EditMessageChecklistRequest $request
+     *
+     * @return Res\EditMessageChecklistResponse
+     * @link https://core.telegram.org/bots/api#editmessagechecklist
+     */
+    public function editMessageChecklist(Req\EditMessageChecklistRequest $request): Res\EditMessageChecklistResponse;
+
+    /**
+     * A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object.
+     *
+     * @param Req\GetMyStarBalanceRequest $request
+     *
+     * @return Res\GetMyStarBalanceResponse
+     * @link https://core.telegram.org/bots/api#getmystarbalance
+     */
+    public function getMyStarBalance(Req\GetMyStarBalanceRequest $request): Res\GetMyStarBalanceResponse;
 
     /**
      * Gifts a Telegram Premium subscription to the given user. Returns True on success.

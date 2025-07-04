@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SetChatAdministratorCustomTitleRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param string $custom_title New custom title for the administrator; 0-16 characters, emoji are not allowed
      * @param int $user_id Unique identifier of the target user
      */

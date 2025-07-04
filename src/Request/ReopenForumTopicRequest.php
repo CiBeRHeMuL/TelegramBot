@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class ReopenForumTopicRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      */
     public function __construct(

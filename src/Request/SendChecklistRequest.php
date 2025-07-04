@@ -1,0 +1,136 @@
+<?php
+
+namespace AndrewGos\TelegramBot\Request;
+
+use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
+use AndrewGos\TelegramBot\Entity\InputChecklist;
+use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\ValueObject\ChatId;
+
+class SendChecklistRequest implements RequestInterface
+{
+    /**
+     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be
+     * sent
+     * @param ChatId $chat_id Unique identifier for the target chat
+     * @param InputChecklist $checklist A JSON-serialized object for the checklist to send
+     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard
+     * @param ReplyParameters|null $reply_parameters A JSON-serialized object for description of the message to reply to
+     */
+    public function __construct(
+        private string $business_connection_id,
+        private ChatId $chat_id,
+        private InputChecklist $checklist,
+        private bool|null $disable_notification = null,
+        private string|null $message_effect_id = null,
+        private bool|null $protect_content = null,
+        private InlineKeyboardMarkup|null $reply_markup = null,
+        private ReplyParameters|null $reply_parameters = null,
+    ) {
+    }
+
+    public function getBusinessConnectionId(): string
+    {
+        return $this->business_connection_id;
+    }
+
+    public function setBusinessConnectionId(string $business_connection_id): SendChecklistRequest
+    {
+        $this->business_connection_id = $business_connection_id;
+        return $this;
+    }
+
+    public function getChatId(): ChatId
+    {
+        return $this->chat_id;
+    }
+
+    public function setChatId(ChatId $chat_id): SendChecklistRequest
+    {
+        $this->chat_id = $chat_id;
+        return $this;
+    }
+
+    public function getChecklist(): InputChecklist
+    {
+        return $this->checklist;
+    }
+
+    public function setChecklist(InputChecklist $checklist): SendChecklistRequest
+    {
+        $this->checklist = $checklist;
+        return $this;
+    }
+
+    public function getDisableNotification(): bool|null
+    {
+        return $this->disable_notification;
+    }
+
+    public function setDisableNotification(bool|null $disable_notification): SendChecklistRequest
+    {
+        $this->disable_notification = $disable_notification;
+        return $this;
+    }
+
+    public function getMessageEffectId(): string|null
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(string|null $message_effect_id): SendChecklistRequest
+    {
+        $this->message_effect_id = $message_effect_id;
+        return $this;
+    }
+
+    public function getProtectContent(): bool|null
+    {
+        return $this->protect_content;
+    }
+
+    public function setProtectContent(bool|null $protect_content): SendChecklistRequest
+    {
+        $this->protect_content = $protect_content;
+        return $this;
+    }
+
+    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    {
+        return $this->reply_markup;
+    }
+
+    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): SendChecklistRequest
+    {
+        $this->reply_markup = $reply_markup;
+        return $this;
+    }
+
+    public function getReplyParameters(): ReplyParameters|null
+    {
+        return $this->reply_parameters;
+    }
+
+    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendChecklistRequest
+    {
+        $this->reply_parameters = $reply_parameters;
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'business_connection_id' => $this->business_connection_id,
+            'chat_id' => $this->chat_id->getId(),
+            'checklist' => $this->checklist->toArray(),
+            'disable_notification' => $this->disable_notification,
+            'message_effect_id' => $this->message_effect_id,
+            'protect_content' => $this->protect_content,
+            'reply_markup' => $this->reply_markup?->toArray(),
+            'reply_parameters' => $this->reply_parameters?->toArray(),
+        ];
+    }
+}

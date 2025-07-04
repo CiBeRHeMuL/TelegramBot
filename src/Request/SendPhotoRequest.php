@@ -42,7 +42,7 @@ class SendPhotoRequest implements RequestInterface
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
      * to remove a reply keyboard or to force a reply from the user. Not supported for messages sent on behalf of a
      * business account.
-     * @channelusername).
+     * \@channelusername).
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,

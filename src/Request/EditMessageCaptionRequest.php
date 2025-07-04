@@ -14,7 +14,7 @@ class EditMessageCaptionRequest implements RequestInterface
      * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which
      * can be specified instead of parse_mode
      * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username
-     * of the target channel (in the format @channelusername)
+     * of the target channel (in the format \@channelusername)
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message caption. See formatting options for

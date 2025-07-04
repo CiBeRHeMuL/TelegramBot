@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class EditForumTopicRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
      * @param string|null $icon_custom_emoji_id New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers
      * to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will

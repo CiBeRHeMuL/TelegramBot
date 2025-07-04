@@ -14,9 +14,9 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class CopyMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername).
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
      * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent
-     * (or channel username in the format @channelusername).
+     * (or channel username in the format \@channelusername).
      * @param int $message_id Message identifier in the chat specified in from_chat_id.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only.
      * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept.

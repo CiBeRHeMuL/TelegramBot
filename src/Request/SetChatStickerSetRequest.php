@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SetChatStickerSetRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param string $sticker_set_name Name of the sticker set to be set as the group sticker set
      */
     public function __construct(

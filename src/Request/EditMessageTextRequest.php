@@ -13,7 +13,7 @@ class EditMessageTextRequest implements RequestInterface
     /**
      * @param string $text New text of the message, 1-4096 characters after entities parsing
      * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username
-     * of the target channel (in the format @channelusername)
+     * of the target channel (in the format \@channelusername)
      * @param MessageEntity[]|null $entities A JSON-serialized list of special entities that appear in message text, which can be
      * specified instead of parse_mode
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message

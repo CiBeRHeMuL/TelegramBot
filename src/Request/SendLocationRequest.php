@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendLocationRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param float $latitude Latitude of the location
      * @param float $longitude Longitude of the location
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will

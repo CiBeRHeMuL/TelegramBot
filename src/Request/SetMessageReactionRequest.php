@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SetMessageReactionRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param int $message_id Identifier of the target message. If the message belongs to a media group, the reaction is set to the
      * first non-deleted message in the group instead.
      * @param bool|null $is_big Pass True to set the reaction with a big animation

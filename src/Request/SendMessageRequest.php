@@ -15,7 +15,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent

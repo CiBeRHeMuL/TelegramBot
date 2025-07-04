@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class StopPollRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param int $message_id Identifier of the original message with the poll
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new message inline keyboard.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf

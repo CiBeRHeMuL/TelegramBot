@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class EditGeneralForumTopicRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param string $name New topic name, 1-128 characters
      */
     public function __construct(

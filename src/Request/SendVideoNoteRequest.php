@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class SendVideoNoteRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Filename|Url|string $video_note Video note to send. Pass a file_id as String to send a video note that exists on the
      * Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending
      * video notes by a URL is currently unsupported

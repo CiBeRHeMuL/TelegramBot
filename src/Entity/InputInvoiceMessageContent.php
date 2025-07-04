@@ -30,7 +30,7 @@ class InputInvoiceMessageContent extends AbstractInputMessageContent
      * @param string $description Product description, 1-255 characters
      * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal
      * processes.
-     * @param string $provider_token Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
+     * @param string $provider_token Payment provider token, obtained via \@BotFather. Pass an empty string for payments in Telegram Stars.
      * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
      * @param LabeledPrice[] $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
      * cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.

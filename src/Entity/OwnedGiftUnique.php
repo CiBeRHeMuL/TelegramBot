@@ -27,6 +27,8 @@ class OwnedGiftUnique extends AbstractOwnedGift
      * @param User|null $sender_user Optional. Sender of the gift if it is a known user
      * @param int|null $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
      * the bot cannot transfer the gift
+     * @param int|null $next_transfer_date Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
+     * the past, then the gift can be transferred now
      *
      * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
      * @see https://core.telegram.org/bots/api#user User
@@ -39,84 +41,160 @@ class OwnedGiftUnique extends AbstractOwnedGift
         protected string|null $owned_gift_id = null,
         protected User|null $sender_user = null,
         protected int|null $transfer_star_count = null,
+        protected int|null $next_transfer_date = null,
     ) {
         parent::__construct(OwnedGiftTypeEnum::Unique);
     }
 
+    /**
+     * @return UniqueGift
+     */
     public function getGift(): UniqueGift
     {
         return $this->gift;
     }
 
+    /**
+     * @param UniqueGift $gift
+     *
+     * @return OwnedGiftUnique
+     */
     public function setGift(UniqueGift $gift): OwnedGiftUnique
     {
         $this->gift = $gift;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getSendDate(): int
     {
         return $this->send_date;
     }
 
+    /**
+     * @param int $send_date
+     *
+     * @return OwnedGiftUnique
+     */
     public function setSendDate(int $send_date): OwnedGiftUnique
     {
         $this->send_date = $send_date;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanBeTransferred(): bool|null
     {
         return $this->can_be_transferred;
     }
 
+    /**
+     * @param bool|null $can_be_transferred
+     *
+     * @return OwnedGiftUnique
+     */
     public function setCanBeTransferred(bool|null $can_be_transferred): OwnedGiftUnique
     {
         $this->can_be_transferred = $can_be_transferred;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsSaved(): bool|null
     {
         return $this->is_saved;
     }
 
+    /**
+     * @param bool|null $is_saved
+     *
+     * @return OwnedGiftUnique
+     */
     public function setIsSaved(bool|null $is_saved): OwnedGiftUnique
     {
         $this->is_saved = $is_saved;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getOwnedGiftId(): string|null
     {
         return $this->owned_gift_id;
     }
 
+    /**
+     * @param string|null $owned_gift_id
+     *
+     * @return OwnedGiftUnique
+     */
     public function setOwnedGiftId(string|null $owned_gift_id): OwnedGiftUnique
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getSenderUser(): User|null
     {
         return $this->sender_user;
     }
 
+    /**
+     * @param User|null $sender_user
+     *
+     * @return OwnedGiftUnique
+     */
     public function setSenderUser(User|null $sender_user): OwnedGiftUnique
     {
         $this->sender_user = $sender_user;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getTransferStarCount(): int|null
     {
         return $this->transfer_star_count;
     }
 
+    /**
+     * @param int|null $transfer_star_count
+     *
+     * @return OwnedGiftUnique
+     */
     public function setTransferStarCount(int|null $transfer_star_count): OwnedGiftUnique
     {
         $this->transfer_star_count = $transfer_star_count;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNextTransferDate(): int|null
+    {
+        return $this->next_transfer_date;
+    }
+
+    /**
+     * @param int|null $next_transfer_date
+     *
+     * @return OwnedGiftUnique
+     */
+    public function setNextTransferDate(int|null $next_transfer_date): OwnedGiftUnique
+    {
+        $this->next_transfer_date = $next_transfer_date;
         return $this;
     }
 
@@ -131,6 +209,7 @@ class OwnedGiftUnique extends AbstractOwnedGift
             'owned_gift_id' => $this->owned_gift_id,
             'sender_user' => $this->sender_user?->toArray(),
             'transfer_star_count' => $this->transfer_star_count,
+            'next_transfer_date' => $this->next_transfer_date,
         ];
     }
 }

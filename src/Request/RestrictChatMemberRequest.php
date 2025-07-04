@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class RestrictChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
      * @param ChatPermissions $permissions A JSON-serialized object for new user permissions
      * @param int $user_id Unique identifier of the target user
      * @param int|null $until_date Date when restrictions will be lifted for the user; Unix time. If user is restricted for more

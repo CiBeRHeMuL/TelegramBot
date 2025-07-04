@@ -7,9 +7,9 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class CopyMessagesRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername).
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
      * @param ChatId $from_chat_id Unique identifier for the chat where the original messages were sent
-     * (or channel username in the format @channelusername).
+     * (or channel username in the format \@channelusername).
      * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy.
      * The identifiers must be specified in a strictly increasing order.
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.

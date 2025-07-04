@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendMediaGroupRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param (InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized array describing
      * messages to be sent, must include 2-10 items
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will

@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class SendStickerRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Filename|Url|string $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP,
      * .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't

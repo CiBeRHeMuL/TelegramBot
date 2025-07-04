@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendPollRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param InputPollOption[] $options A JSON-serialized list of 2-10 answer options
      * @param string $question Poll question, 1-300 characters
      * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults

@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class EditChatSubscriptionInviteLinkRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Url $invite_link The invite link to edit
      * @param string|null $name Invite link name; 0-32 characters
      */

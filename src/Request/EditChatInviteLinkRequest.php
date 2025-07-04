@@ -8,7 +8,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class EditChatInviteLinkRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Url $invite_link The invite link to edit
      * @param bool|null $creates_join_request True, if users joining the chat via the link need to be approved by chat administrators.
      * If True, member_limit can't be specified

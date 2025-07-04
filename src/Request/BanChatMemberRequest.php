@@ -8,7 +8,7 @@ class BanChatMemberRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target group or username of the target supergroup or channel (in the format
-     * @channelusername)
+     * \@channelusername)
      * @param int $user_id Unique identifier of the target user
      * @param bool|null $revoke_messages Pass True to delete all messages from the chat for the user that is being removed. If False,
      * the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups

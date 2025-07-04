@@ -26,7 +26,7 @@ use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '9.0';
+    private const TELEGRAM_BOT_API_VERSION = '9.1';
 
     public function __construct(
         private readonly BotToken $token,
@@ -1201,7 +1201,7 @@ class Api implements ApiInterface
      * a notification at the top of the chat screen or as an alert. On success, True is returned.
      *
      * Alternatively, the user can be redirected to the specified Game URL.
-     * For this option to work, you must first create a game for your bot via @BotFather and accept the terms.
+     * For this option to work, you must first create a game for your bot via \@BotFather and accept the terms.
      * Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
      *
      * @param Req\AnswerCallbackQueryRequest $request
@@ -2451,6 +2451,51 @@ class Api implements ApiInterface
     public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.
+     *
+     * @param Req\SendChecklistRequest $request
+     *
+     * @return Res\SendChecklistResponse
+     * @link https://core.telegram.org/bots/api#sendchecklist
+     */
+    public function sendChecklist(Req\SendChecklistRequest $request): Res\SendChecklistResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        return new Res\SendChecklistResponse($rawResponse, $message);
+    }
+
+    /**
+     * Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
+     *
+     * @param Req\EditMessageChecklistRequest $request
+     *
+     * @return Res\EditMessageChecklistResponse
+     * @link https://core.telegram.org/bots/api#editmessagechecklist
+     */
+    public function editMessageChecklist(Req\EditMessageChecklistRequest $request): Res\EditMessageChecklistResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        return new Res\EditMessageChecklistResponse($rawResponse, $message);
+    }
+
+    /**
+     * A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object.
+     *
+     * @param Req\GetMyStarBalanceRequest $request
+     *
+     * @return Res\GetMyStarBalanceResponse
+     * @link https://core.telegram.org/bots/api#getmystarbalance
+     */
+    public function getMyStarBalance(Req\GetMyStarBalanceRequest $request): Res\GetMyStarBalanceResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $starAmount = $this->buildClassForResponse(Ent\StarAmount::class, $rawResponse);
+        return new Res\GetMyStarBalanceResponse($rawResponse, $starAmount);
     }
 
     /**

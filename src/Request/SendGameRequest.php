@@ -12,7 +12,7 @@ class SendGameRequest implements RequestInterface
      * @param ChatId $chat_id Unique identifier for the target chat
      * @param string $game_short_name Short name of the game, serves as the unique identifier for the game. Set up your games via
      *
-     * @BotFather.
+     * \@BotFather.
      *
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent

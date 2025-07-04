@@ -11,7 +11,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
      * @param float $latitude Latitude of new location
      * @param float $longitude Longitude of new location
      * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username
-     * of the target channel (in the format @channelusername)
+     * of the target channel (in the format \@channelusername)
      * @param int|null $heading Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message

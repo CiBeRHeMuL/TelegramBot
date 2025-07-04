@@ -7,7 +7,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class CreateChatSubscriptionInviteLinkRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target channel chat or username of the target channel (in the format @channelusername)
+     * @param ChatId $chat_id Unique identifier for the target channel chat or username of the target channel (in the format \@channelusername)
      * @param int $subscription_period The number of seconds the subscription will be active for before the next payment. Currently,
      * it must always be 2592000 (30 days).
      * @param int $subscription_price The amount of Telegram Stars a user must pay initially and after each subsequent subscription

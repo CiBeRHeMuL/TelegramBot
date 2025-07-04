@@ -44,7 +44,7 @@ class SendAudioRequest implements RequestInterface
      * @param $reply_markup InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      * Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
      * to remove a reply keyboard or to force a reply from the user.
-     * @channelusername).
+     * \@channelusername).
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
      * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance

@@ -17,7 +17,7 @@ class SendAnimationRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format
-     * @channelusername).
+     * \@channelusername).
      * @param string|Filename|Url $animation Video to send. Pass a file_id as String to send a video that exists on the Telegram
      * servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new
      * video using multipart/form-data. More information on Sending Files.
