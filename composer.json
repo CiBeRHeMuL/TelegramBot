@@ -3,7 +3,8 @@
     "description": "Advanced strictly typed Telegram Bot Library",
     "type": "library",
     "license": "MIT",
-    "version": "2.2",
+    "keywords": ["telegram", "api", "andrew-gos", "php", "bot", "telegram-bot"],
+    "homepage": "https://github.com/CiBeRHeMuL/TelegramBot",
     "autoload": {
         "psr-4": {
             "AndrewGos\\TelegramBot\\": "src/"
