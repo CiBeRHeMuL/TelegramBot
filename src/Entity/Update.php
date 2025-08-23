@@ -45,7 +45,7 @@ class Update extends AbstractEntity
      * @param MessageReactionCountUpdated|null $message_reaction_count Optional. Reactions to a message with anonymous reactions
      * were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list
      * of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
-     * @param ChatMemberUpdated|null $my_chat_member Optional. The bot's chat member status was updated in a chat. For protected chats,
+     * @param ChatMemberUpdated|null $my_chat_member Optional. The bot's chat member status was updated in a chat. For private chats,
      * this update is received only when the bot is blocked or unblocked by the user.
      * @param Poll|null $poll Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are
      * sent by the bot

@@ -35,7 +35,7 @@ class InlineKeyboardButton extends AbstractEntity
      * can be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
-     * only in protected chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
      * @param CopyTextButton|null $copy_text Optional. Description of the button that copies the specified text to the clipboard.
      */
     public function __construct(

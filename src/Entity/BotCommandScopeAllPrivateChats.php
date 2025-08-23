@@ -9,8 +9,8 @@ use stdClass;
 
 /**
  *
- * Represents the scope of bot commands, covering all protected chats.
- * @link https://core.telegram.org/bots/api#botcommandscopeallprotectedchats
+ * Represents the scope of bot commands, covering all provate chats.
+ * @link https://core.telegram.org/bots/api#botcommandscopeallprivatechats
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::AllPrivateChats))]
 class BotCommandScopeAllPrivateChats extends AbstractBotCommandScope

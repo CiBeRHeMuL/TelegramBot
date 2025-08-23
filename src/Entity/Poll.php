@@ -24,7 +24,7 @@ class Poll extends AbstractEntity
      * @param array|null $question_entities Optional. Special entities that appear in the question.
      * Currently, only custom emoji entities are allowed in poll questions
      * @param int|null $correct_option_id Optional. 0-based identifier of the correct answer option.
-     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the protected chat with the bot.
+     * Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
      * @param string|null $explanation Optional.
      * Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters.
      * @param MessageEntity[]|null $explanation_entities Optional.
