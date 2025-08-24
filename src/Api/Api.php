@@ -2512,6 +2512,34 @@ class Api implements ApiInterface
     }
 
     /**
+     * Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can_post_messages' administrator
+     * right in the corresponding channel chat. Returns True on success.
+     *
+     * @param Req\ApproveSuggestedPostRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#approvesuggestedpost
+     */
+    public function approveSuggestedPost(Req\ApproveSuggestedPostRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can_manage_direct_messages'
+     * administrator right in the corresponding channel chat. Returns True on success.
+     *
+     * @param Req\DeclineSuggestedPostRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#declinesuggestedpost
+     */
+    public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+    }
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file
