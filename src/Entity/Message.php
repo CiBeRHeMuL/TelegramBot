@@ -158,12 +158,28 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @param ChecklistTasksAdded|null $checklist_tasks_added Optional. Service message: tasks were added to a checklist
      * @param DirectMessagePriceChanged|null $direct_message_price_changed Optional. Service message: the price for paid messages
      * in the corresponding direct messages chat of a channel has changed
+     * @param DirectMessagesTopic|null $direct_messages_topic Optional. Information about the direct messages chat topic that contains
+     * the message
+     * @param int|null $reply_to_checklist_task_id Optional. Identifier of the specific checklist task that is being replied to
+     * @param bool|null $is_paid_post Optional. True, if the message is a paid post. Note that such posts must not be deleted for
+     * 24 hours to receive the payment and can't be edited.
+     * @param SuggestedPostInfo|null $suggested_post_info Optional. Information about suggested post parameters if the message is
+     * a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't
+     * be edited.
+     * @param SuggestedPostApproved|null $suggested_post_approved Optional. Service message: a suggested post was approved
+     * @param SuggestedPostApprovalFailed|null $suggested_post_approval_failed Optional. Service message: approval of a suggested
+     * post has failed
+     * @param SuggestedPostDeclined|null $suggested_post_declined Optional. Service message: a suggested post was declined
+     * @param SuggestedPostPaid|null $suggested_post_paid Optional. Service message: payment for a suggested post was received
+     * @param SuggestedPostRefunded|null $suggested_post_refunded Optional. Service message: payment for a suggested post was refunded
      *
+     * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
+     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#externalreplyinfo ExternalReplyInfo
      * @see https://core.telegram.org/bots/api#textquote TextQuote
@@ -171,6 +187,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#linkpreviewoptions LinkPreviewOptions
+     * @see https://core.telegram.org/bots/api#suggestedpostinfo SuggestedPostInfo
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#document Document
@@ -196,6 +213,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      * @see https://core.telegram.org/bots/api#messageautodeletetimerchanged MessageAutoDeleteTimerChanged
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
+     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#invoice Invoice
      * @see https://core.telegram.org/bots/api#payments payment
      * @see https://core.telegram.org/bots/api#payments More about payments Â»
@@ -228,6 +246,11 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#giveawaywinners GiveawayWinners
      * @see https://core.telegram.org/bots/api#giveawaycompleted GiveawayCompleted
      * @see https://core.telegram.org/bots/api#paidmessagepricechanged PaidMessagePriceChanged
+     * @see https://core.telegram.org/bots/api#suggestedpostapproved SuggestedPostApproved
+     * @see https://core.telegram.org/bots/api#suggestedpostapprovalfailed SuggestedPostApprovalFailed
+     * @see https://core.telegram.org/bots/api#suggestedpostdeclined SuggestedPostDeclined
+     * @see https://core.telegram.org/bots/api#suggestedpostpaid SuggestedPostPaid
+     * @see https://core.telegram.org/bots/api#suggestedpostrefunded SuggestedPostRefunded
      * @see https://core.telegram.org/bots/api#videochatscheduled VideoChatScheduled
      * @see https://core.telegram.org/bots/api#videochatstarted VideoChatStarted
      * @see https://core.telegram.org/bots/api#videochatended VideoChatEnded
@@ -334,6 +357,15 @@ class Message extends AbstractMaybeInaccessibleMessage
         protected ChecklistTasksDone|null $checklist_tasks_done = null,
         protected ChecklistTasksAdded|null $checklist_tasks_added = null,
         protected DirectMessagePriceChanged|null $direct_message_price_changed = null,
+        protected DirectMessagesTopic|null $direct_messages_topic = null,
+        protected int|null $reply_to_checklist_task_id = null,
+        protected bool|null $is_paid_post = null,
+        protected SuggestedPostInfo|null $suggested_post_info = null,
+        protected SuggestedPostApproved|null $suggested_post_approved = null,
+        protected SuggestedPostApprovalFailed|null $suggested_post_approval_failed = null,
+        protected SuggestedPostDeclined|null $suggested_post_declined = null,
+        protected SuggestedPostPaid|null $suggested_post_paid = null,
+        protected SuggestedPostRefunded|null $suggested_post_refunded = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2105,6 +2137,177 @@ class Message extends AbstractMaybeInaccessibleMessage
         return $this;
     }
 
+    /**
+     * @return DirectMessagesTopic|null
+     */
+    public function getDirectMessagesTopic(): DirectMessagesTopic|null
+    {
+        return $this->direct_messages_topic;
+    }
+
+    /**
+     * @param DirectMessagesTopic|null $direct_messages_topic
+     *
+     * @return Message
+     */
+    public function setDirectMessagesTopic(DirectMessagesTopic|null $direct_messages_topic): Message
+    {
+        $this->direct_messages_topic = $direct_messages_topic;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getReplyToChecklistTaskId(): int|null
+    {
+        return $this->reply_to_checklist_task_id;
+    }
+
+    /**
+     * @param int|null $reply_to_checklist_task_id
+     *
+     * @return Message
+     */
+    public function setReplyToChecklistTaskId(int|null $reply_to_checklist_task_id): Message
+    {
+        $this->reply_to_checklist_task_id = $reply_to_checklist_task_id;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsPaidPost(): bool|null
+    {
+        return $this->is_paid_post;
+    }
+
+    /**
+     * @param bool|null $is_paid_post
+     *
+     * @return Message
+     */
+    public function setIsPaidPost(bool|null $is_paid_post): Message
+    {
+        $this->is_paid_post = $is_paid_post;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostInfo|null
+     */
+    public function getSuggestedPostInfo(): SuggestedPostInfo|null
+    {
+        return $this->suggested_post_info;
+    }
+
+    /**
+     * @param SuggestedPostInfo|null $suggested_post_info
+     *
+     * @return Message
+     */
+    public function setSuggestedPostInfo(SuggestedPostInfo|null $suggested_post_info): Message
+    {
+        $this->suggested_post_info = $suggested_post_info;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostApproved|null
+     */
+    public function getSuggestedPostApproved(): SuggestedPostApproved|null
+    {
+        return $this->suggested_post_approved;
+    }
+
+    /**
+     * @param SuggestedPostApproved|null $suggested_post_approved
+     *
+     * @return Message
+     */
+    public function setSuggestedPostApproved(SuggestedPostApproved|null $suggested_post_approved): Message
+    {
+        $this->suggested_post_approved = $suggested_post_approved;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostApprovalFailed|null
+     */
+    public function getSuggestedPostApprovalFailed(): SuggestedPostApprovalFailed|null
+    {
+        return $this->suggested_post_approval_failed;
+    }
+
+    /**
+     * @param SuggestedPostApprovalFailed|null $suggested_post_approval_failed
+     *
+     * @return Message
+     */
+    public function setSuggestedPostApprovalFailed(SuggestedPostApprovalFailed|null $suggested_post_approval_failed): Message
+    {
+        $this->suggested_post_approval_failed = $suggested_post_approval_failed;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostDeclined|null
+     */
+    public function getSuggestedPostDeclined(): SuggestedPostDeclined|null
+    {
+        return $this->suggested_post_declined;
+    }
+
+    /**
+     * @param SuggestedPostDeclined|null $suggested_post_declined
+     *
+     * @return Message
+     */
+    public function setSuggestedPostDeclined(SuggestedPostDeclined|null $suggested_post_declined): Message
+    {
+        $this->suggested_post_declined = $suggested_post_declined;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostPaid|null
+     */
+    public function getSuggestedPostPaid(): SuggestedPostPaid|null
+    {
+        return $this->suggested_post_paid;
+    }
+
+    /**
+     * @param SuggestedPostPaid|null $suggested_post_paid
+     *
+     * @return Message
+     */
+    public function setSuggestedPostPaid(SuggestedPostPaid|null $suggested_post_paid): Message
+    {
+        $this->suggested_post_paid = $suggested_post_paid;
+        return $this;
+    }
+
+    /**
+     * @return SuggestedPostRefunded|null
+     */
+    public function getSuggestedPostRefunded(): SuggestedPostRefunded|null
+    {
+        return $this->suggested_post_refunded;
+    }
+
+    /**
+     * @param SuggestedPostRefunded|null $suggested_post_refunded
+     *
+     * @return Message
+     */
+    public function setSuggestedPostRefunded(SuggestedPostRefunded|null $suggested_post_refunded): Message
+    {
+        $this->suggested_post_refunded = $suggested_post_refunded;
+        return $this;
+    }
+
     public function toArray(): array|stdClass
     {
         return [
@@ -2211,6 +2414,15 @@ class Message extends AbstractMaybeInaccessibleMessage
             'checklist_tasks_done' => $this->checklist_tasks_done?->toArray(),
             'checklist_tasks_added' => $this->checklist_tasks_added?->toArray(),
             'direct_message_price_changed' => $this->direct_message_price_changed?->toArray(),
+            'direct_messages_topic' => $this->direct_messages_topic?->toArray(),
+            'reply_to_checklist_task_id' => $this->reply_to_checklist_task_id,
+            'is_paid_post' => $this->is_paid_post,
+            'suggested_post_info' => $this->suggested_post_info?->toArray(),
+            'suggested_post_approved' => $this->suggested_post_approved?->toArray(),
+            'suggested_post_approval_failed' => $this->suggested_post_approval_failed?->toArray(),
+            'suggested_post_declined' => $this->suggested_post_declined?->toArray(),
+            'suggested_post_paid' => $this->suggested_post_paid?->toArray(),
+            'suggested_post_refunded' => $this->suggested_post_refunded?->toArray(),
         ];
     }
 }

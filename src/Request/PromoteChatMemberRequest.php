@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#promotechatmember
+ */
 class PromoteChatMemberRequest implements RequestInterface
 {
     /**
@@ -18,13 +21,14 @@ class PromoteChatMemberRequest implements RequestInterface
      * the chat page, pin chat stories, and access the chat's story archive
      * @param bool|null $can_invite_users Pass True if the administrator can invite new users to the chat
      * @param bool|null $can_manage_chat Pass True if the administrator can access the chat event log, get boost list, see hidden
-     * supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+     * supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram
+     * Stars. Implied by any other administrator privilege.
      * @param bool|null $can_manage_topics Pass True if the user is allowed to create, rename, close, and reopen forum topics; for
      * supergroups only
      * @param bool|null $can_manage_video_chats Pass True if the administrator can manage video chats
      * @param bool|null $can_pin_messages Pass True if the administrator can pin messages; for supergroups only
-     * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, or access channel statistics;
-     * for channels only
+     * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, approve suggested posts,
+     * or access channel statistics; for channels only
      * @param bool|null $can_post_stories Pass True if the administrator can post stories to the chat
      * @param bool|null $can_promote_members Pass True if the administrator can add new administrators with a subset of their own
      * privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were
@@ -32,6 +36,8 @@ class PromoteChatMemberRequest implements RequestInterface
      * @param bool|null $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
      * statistics
      * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
+     * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel
+     * and decline suggested posts; for channels only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -51,6 +57,7 @@ class PromoteChatMemberRequest implements RequestInterface
         private bool|null $can_promote_members = null,
         private bool|null $can_restrict_members = null,
         private bool|null $is_anonymous = null,
+        private bool|null $can_manage_direct_messages = null,
     ) {
     }
 
@@ -241,6 +248,18 @@ class PromoteChatMemberRequest implements RequestInterface
         return $this;
     }
 
+    public function getCanManageDirectMessages(): bool|null
+    {
+        return $this->can_manage_direct_messages;
+    }
+
+    public function setCanManageDirectMessages(bool|null $can_manage_direct_messages): PromoteChatMemberRequest
+    {
+        $this->can_manage_direct_messages = $can_manage_direct_messages;
+        return $this;
+    }
+
+
     public function toArray(): array
     {
         return [
@@ -261,6 +280,7 @@ class PromoteChatMemberRequest implements RequestInterface
             'can_promote_members' => $this->can_promote_members,
             'can_restrict_members' => $this->can_restrict_members,
             'is_anonymous' => $this->is_anonymous,
+            'can_manage_direct_messages' => $this->can_manage_direct_messages,
         ];
     }
 }

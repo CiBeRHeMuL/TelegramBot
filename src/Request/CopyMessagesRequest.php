@@ -4,18 +4,26 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#copymessages
+ */
 class CopyMessagesRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original messages were sent
-     * (or channel username in the format \@channelusername).
-     * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy.
-     * The identifiers must be specified in a strictly increasing order.
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $from_chat_id Unique identifier for the chat where the original messages were sent (or channel username in the
+     * format \@channelusername)
+     * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The identifiers
+     * must be specified in a strictly increasing order.
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.
-     * @param bool|null $remove_caption Pass True to copy the messages without their captions.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only.
-     * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving.
+     * @param bool|null $remove_caption Pass True to copy the messages without their captions
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
+     * only
+     * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
+     * if the messages are sent to a direct messages chat
+     *
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      */
     public function __construct(
         private ChatId $chat_id,
@@ -25,6 +33,7 @@ class CopyMessagesRequest implements RequestInterface
         private bool|null $remove_caption = null,
         private int|null $message_thread_id = null,
         private bool|null $protect_content = null,
+        private int|null $direct_messages_topic_id = null,
     ) {
     }
 
@@ -61,60 +70,73 @@ class CopyMessagesRequest implements RequestInterface
         return $this;
     }
 
-    public function getDisableNotification(): ?bool
+    public function getDisableNotification(): bool|null
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(?bool $disable_notification): CopyMessagesRequest
+    public function setDisableNotification(bool|null $disable_notification): CopyMessagesRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getRemoveCaption(): ?bool
+    public function getRemoveCaption(): bool|null
     {
         return $this->remove_caption;
     }
 
-    public function setRemoveCaption(?bool $remove_caption): CopyMessagesRequest
+    public function setRemoveCaption(bool|null $remove_caption): CopyMessagesRequest
     {
         $this->remove_caption = $remove_caption;
         return $this;
     }
 
-    public function getMessageThreadId(): ?int
+    public function getMessageThreadId(): int|null
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(?int $message_thread_id): CopyMessagesRequest
+    public function setMessageThreadId(int|null $message_thread_id): CopyMessagesRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getProtectContent(): ?bool
+    public function getProtectContent(): bool|null
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(?bool $protect_content): CopyMessagesRequest
+    public function setProtectContent(bool|null $protect_content): CopyMessagesRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
+    public function getDirectMessagesTopicId(): int|null
+    {
+        return $this->direct_messages_topic_id;
+    }
+
+    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): CopyMessagesRequest
+    {
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
+        return $this;
+    }
+
+
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->getId(),
-            'message_ids' => $this->message_ids,
+            'from_chat_id' => $this->from_chat_id->toArray(),
+            'message_ids' => array_map(fn(int $e) => $e->toArray(), $this->message_ids),
             'disable_notification' => $this->disable_notification,
             'remove_caption' => $this->remove_caption,
             'message_thread_id' => $this->message_thread_id,
             'protect_content' => $this->protect_content,
+            'direct_messages_topic_id' => $this->direct_messages_topic_id,
         ];
     }
 }

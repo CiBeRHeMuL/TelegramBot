@@ -9,6 +9,9 @@ use AndrewGos\TelegramBot\Entity\InputMediaVideo;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendmediagroup
+ */
 class SendMediaGroupRequest implements RequestInterface
 {
     /**
@@ -22,11 +25,20 @@ class SendMediaGroupRequest implements RequestInterface
      * only
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
+     * only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
+     * if the messages are sent to a direct messages chat
      *
+     * @see https://core.telegram.org/bots/api#inputmediaaudio InputMediaAudio
+     * @see https://core.telegram.org/bots/api#inputmediadocument InputMediaDocument
+     * @see https://core.telegram.org/bots/api#inputmediaphoto InputMediaPhoto
+     * @see https://core.telegram.org/bots/api#inputmediavideo InputMediaVideo
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
      */
     public function __construct(
         private ChatId $chat_id,
@@ -38,6 +50,7 @@ class SendMediaGroupRequest implements RequestInterface
         private ReplyParameters|null $reply_parameters = null,
         private string|null $message_effect_id = null,
         private bool|null $allow_paid_broadcast = null,
+        private int|null $direct_messages_topic_id = null,
     ) {
     }
 
@@ -140,6 +153,18 @@ class SendMediaGroupRequest implements RequestInterface
         return $this;
     }
 
+    public function getDirectMessagesTopicId(): int|null
+    {
+        return $this->direct_messages_topic_id;
+    }
+
+    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendMediaGroupRequest
+    {
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
+        return $this;
+    }
+
+
     public function toArray(): array
     {
         return [
@@ -152,6 +177,7 @@ class SendMediaGroupRequest implements RequestInterface
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'message_effect_id' => $this->message_effect_id,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
+            'direct_messages_topic_id' => $this->direct_messages_topic_id,
         ];
     }
 }

@@ -7,17 +7,21 @@ use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardRemove;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendsticker
+ */
 class SendStickerRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Filename|Url|string $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP,
-     * .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't
+     * .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files Â». Video and animated stickers can't
      * be sent via an HTTP URL.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
@@ -30,11 +34,28 @@ class SendStickerRequest implements RequestInterface
      * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
      * a reply from the user
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
+     * only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
+     * if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     * post is automatically declined.
      *
+     * @see https://core.telegram.org/bots/api#inputfile InputFile
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files Â»
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
+     * @see https://core.telegram.org/bots/api#forcereply ForceReply
+     * @see /bots/features#inline-keyboards inline keyboard
+     * @see /bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -48,6 +69,8 @@ class SendStickerRequest implements RequestInterface
         private ReplyParameters|null $reply_parameters = null,
         private string|null $message_effect_id = null,
         private bool|null $allow_paid_broadcast = null,
+        private int|null $direct_messages_topic_id = null,
+        private SuggestedPostParameters|null $suggested_post_parameters = null,
     ) {
     }
 
@@ -172,6 +195,29 @@ class SendStickerRequest implements RequestInterface
         return $this;
     }
 
+    public function getDirectMessagesTopicId(): int|null
+    {
+        return $this->direct_messages_topic_id;
+    }
+
+    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendStickerRequest
+    {
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
+        return $this;
+    }
+
+    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    {
+        return $this->suggested_post_parameters;
+    }
+
+    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendStickerRequest
+    {
+        $this->suggested_post_parameters = $suggested_post_parameters;
+        return $this;
+    }
+
+
     public function toArray(): array
     {
         return [
@@ -188,6 +234,8 @@ class SendStickerRequest implements RequestInterface
             'reply_parameters' => $this->reply_parameters?->toArray(),
             'message_effect_id' => $this->message_effect_id,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
+            'direct_messages_topic_id' => $this->direct_messages_topic_id,
+            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
         ];
     }
 }

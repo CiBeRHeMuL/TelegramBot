@@ -91,6 +91,7 @@ enum CurrencyEnum: string
     case YER = 'YER';
     case XTR = 'XTR';
     case ZAR = 'ZAR';
+    case TON = 'TON';
 
     public function getSymbol(): string
     {
@@ -276,6 +277,7 @@ enum CurrencyEnum: string
             self::YER => 'Yemeni Rial',
             self::XTR => 'Telegram XTR',
             self::ZAR => 'South African Rand',
+            self::TON => 'TON',
             default => $this->value,
         };
     }

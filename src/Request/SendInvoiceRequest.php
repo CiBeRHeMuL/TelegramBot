@@ -5,37 +5,45 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\LabeledPrice;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendinvoice
+ */
 class SendInvoiceRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in Telegram Stars.
+     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in
+     * Telegram Stars.
      * @param string $description Product description, 1-255 characters
-     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal
+     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal
      * processes.
      * @param LabeledPrice[] $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
      * cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
-     * @param string $provider_token Payment provider token, obtained via \@BotFather.
-     * Pass an empty string for payments in Telegram Stars.
      * @param string $title Product name, 1-32 characters
+     * @param string|null $provider_token Payment provider token, obtained via \@BotFather. Pass an empty string for payments in
+     * Telegram Stars.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars.
+     * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram
+     * Stars.
      * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
      * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the
-     * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0.
-     * Not supported for payments in Telegram Stars.
+     * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported
+     * for payments in Telegram Stars.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
      * only
-     * @param bool|null $need_email Pass True if you require the user's email address to complete the order. Ignored for payments in Telegram Stars.
-     * @param bool|null $need_name Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram Stars.
-     * @param bool|null $need_phone_number Pass True if you require the user's phone number to complete the order.
-     * Ignored for payments in Telegram Stars.
-     * @param bool|null $need_shipping_address Pass True if you require the user's shipping address to complete the order.
-     * Ignored for payments in Telegram Stars.
+     * @param bool|null $need_email Pass True if you require the user's email address to complete the order. Ignored for payments
+     * in Telegram Stars.
+     * @param bool|null $need_name Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram
+     * Stars.
+     * @param bool|null $need_phone_number Pass True if you require the user's phone number to complete the order. Ignored for payments
+     * in Telegram Stars.
+     * @param bool|null $need_shipping_address Pass True if you require the user's shipping address to complete the order. Ignored
+     * for payments in Telegram Stars.
      * @param int|null $photo_height Photo height
      * @param int|null $photo_size Photo size in bytes
      * @param Url|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for
@@ -47,10 +55,10 @@ class SendInvoiceRequest implements RequestInterface
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price'
      * button will be shown. If not empty, the first button must be a Pay button.
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to provider.
-     * Ignored for payments in Telegram Stars.
-     * @param bool|null $send_phone_number_to_provider Pass True if the user's phone number should be sent to provider.
-     * Ignored for payments in Telegram Stars.
+     * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider. Ignored for
+     * payments in Telegram Stars.
+     * @param bool|null $send_phone_number_to_provider Pass True if the user's phone number should be sent to the provider. Ignored
+     * for payments in Telegram Stars.
      * @param string|null $start_parameter Unique deep-linking parameter. If left empty, forwarded copies of the sent message will
      * have a Pay button, allowing multiple users to pay directly from the forwarded message, using the same invoice. If non-empty,
      * forwarded copies of the sent message will have a URL button with a deep link to the bot (instead of a Pay button), with the
@@ -58,11 +66,37 @@ class SendInvoiceRequest implements RequestInterface
      * @param int[]|null $suggested_tip_amounts A JSON-serialized array of suggested amounts of tips in the smallest units of the
      * currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be
      * positive, passed in a strictly increased order and must not exceed max_tip_amount.
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
+     * only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
+     * if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     * post is automatically declined.
      *
+     * @see https://t.me/botfather @BotFather
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see /bots/payments#supported-currencies more on currencies
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://core.telegram.org/bots/api#labeledprice LabeledPrice
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see /bots/payments/currencies.json currencies.json
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see /bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -70,8 +104,8 @@ class SendInvoiceRequest implements RequestInterface
         private string $description,
         private string $payload,
         private array $prices,
-        private string $provider_token,
         private string $title,
+        private string|null $provider_token = null,
         private bool|null $disable_notification = null,
         private bool|null $is_flexible = null,
         private int|null $max_tip_amount = null,
@@ -94,6 +128,8 @@ class SendInvoiceRequest implements RequestInterface
         private array|null $suggested_tip_amounts = null,
         private string|null $message_effect_id = null,
         private bool|null $allow_paid_broadcast = null,
+        private int|null $direct_messages_topic_id = null,
+        private SuggestedPostParameters|null $suggested_post_parameters = null,
     ) {
     }
 
@@ -152,17 +188,6 @@ class SendInvoiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getProviderToken(): string
-    {
-        return $this->provider_token;
-    }
-
-    public function setProviderToken(string $provider_token): SendInvoiceRequest
-    {
-        $this->provider_token = $provider_token;
-        return $this;
-    }
-
     public function getTitle(): string
     {
         return $this->title;
@@ -171,6 +196,17 @@ class SendInvoiceRequest implements RequestInterface
     public function setTitle(string $title): SendInvoiceRequest
     {
         $this->title = $title;
+        return $this;
+    }
+
+    public function getProviderToken(): string|null
+    {
+        return $this->provider_token;
+    }
+
+    public function setProviderToken(string|null $provider_token): SendInvoiceRequest
+    {
+        $this->provider_token = $provider_token;
         return $this;
     }
 
@@ -416,6 +452,29 @@ class SendInvoiceRequest implements RequestInterface
         return $this;
     }
 
+    public function getDirectMessagesTopicId(): int|null
+    {
+        return $this->direct_messages_topic_id;
+    }
+
+    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendInvoiceRequest
+    {
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
+        return $this;
+    }
+
+    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    {
+        return $this->suggested_post_parameters;
+    }
+
+    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendInvoiceRequest
+    {
+        $this->suggested_post_parameters = $suggested_post_parameters;
+        return $this;
+    }
+
+
     public function toArray(): array
     {
         return [
@@ -424,8 +483,8 @@ class SendInvoiceRequest implements RequestInterface
             'description' => $this->description,
             'payload' => $this->payload,
             'prices' => array_map(fn(LabeledPrice $e) => $e->toArray(), $this->prices),
-            'provider_token' => $this->provider_token,
             'title' => $this->title,
+            'provider_token' => $this->provider_token,
             'disable_notification' => $this->disable_notification,
             'is_flexible' => $this->is_flexible,
             'max_tip_amount' => $this->max_tip_amount,
@@ -445,9 +504,13 @@ class SendInvoiceRequest implements RequestInterface
             'send_email_to_provider' => $this->send_email_to_provider,
             'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
             'start_parameter' => $this->start_parameter,
-            'suggested_tip_amounts' => $this->suggested_tip_amounts,
+            'suggested_tip_amounts' => $this->suggested_tip_amounts
+                ? array_map(fn(int $e) => $e->toArray(), $this->suggested_tip_amounts)
+                : null,
             'message_effect_id' => $this->message_effect_id,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
+            'direct_messages_topic_id' => $this->direct_messages_topic_id,
+            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
         ];
     }
 }

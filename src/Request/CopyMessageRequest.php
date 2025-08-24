@@ -8,34 +8,57 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardRemove;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#copymessage
+ */
 class CopyMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent
-     * (or channel username in the format \@channelusername).
-     * @param int $message_id Message identifier in the chat specified in from_chat_id.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only.
-     * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept.
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the new caption.
-     * See formatting options for more details.
-     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the new caption,
-     * which can be specified instead of parse_mode.
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
+     * format \@channelusername)
+     * @param int $message_id Message identifier in the chat specified in from_chat_id
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
+     * only
+     * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
+     * caption is kept
+     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more
+     * details.
+     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the new caption, which
+     * can be specified instead of parse_mode
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving.
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to.
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Optional
-     * Additional interface options. A JSON-serialized object for an inline keyboard,
-     * custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
-     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
+     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
+     * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     * a reply from the user
+     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Ignored if a new
+     * caption isn't specified.
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
      * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
+     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
+     * if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     * post is automatically declined.
      *
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
+     * @see https://core.telegram.org/bots/api#forcereply ForceReply
+     * @see /bots/features#inline-keyboards inline keyboard
+     * @see /bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -52,6 +75,8 @@ class CopyMessageRequest implements RequestInterface
         private bool|null $show_caption_above_media = null,
         private bool|null $allow_paid_broadcast = null,
         private int|null $video_start_timestamp = null,
+        private int|null $direct_messages_topic_id = null,
+        private SuggestedPostParameters|null $suggested_post_parameters = null,
     ) {
     }
 
@@ -165,12 +190,12 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyMarkup(): ForceReply|ReplyKeyboardRemove|InlineKeyboardMarkup|ReplyKeyboardMarkup|null
+    public function getReplyMarkup(): InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(ForceReply|InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|null $reply_markup): CopyMessageRequest
+    public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): CopyMessageRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -198,27 +223,51 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getVideoStartTimestamp(): ?int
+    public function getVideoStartTimestamp(): int|null
     {
         return $this->video_start_timestamp;
     }
 
-    public function setVideoStartTimestamp(?int $video_start_timestamp): void
+    public function setVideoStartTimestamp(int|null $video_start_timestamp): CopyMessageRequest
     {
         $this->video_start_timestamp = $video_start_timestamp;
+        return $this;
     }
+
+    public function getDirectMessagesTopicId(): int|null
+    {
+        return $this->direct_messages_topic_id;
+    }
+
+    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): CopyMessageRequest
+    {
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
+        return $this;
+    }
+
+    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    {
+        return $this->suggested_post_parameters;
+    }
+
+    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): CopyMessageRequest
+    {
+        $this->suggested_post_parameters = $suggested_post_parameters;
+        return $this;
+    }
+
 
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'message_thread_id' => $this->message_thread_id,
-            'from_chat_id' => $this->from_chat_id->getId(),
+            'from_chat_id' => $this->from_chat_id->toArray(),
             'message_id' => $this->message_id,
+            'message_thread_id' => $this->message_thread_id,
             'caption' => $this->caption,
             'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(fn(MessageEntity $me) => $me->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities
+                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
                 : null,
             'disable_notification' => $this->disable_notification,
             'protect_content' => $this->protect_content,
@@ -227,6 +276,8 @@ class CopyMessageRequest implements RequestInterface
             'show_caption_above_media' => $this->show_caption_above_media,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
             'video_start_timestamp' => $this->video_start_timestamp,
+            'direct_messages_topic_id' => $this->direct_messages_topic_id,
+            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
         ];
     }
 }
