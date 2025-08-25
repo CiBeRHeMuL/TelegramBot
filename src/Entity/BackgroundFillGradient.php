@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The background is a gradient fill.
+ *
  * @link https://core.telegram.org/bots/api#backgroundfillgradient
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundFillTypeEnum::Gradient->value))]
@@ -27,33 +28,57 @@ class BackgroundFillGradient extends AbstractBackgroundFill
         parent::__construct(BackgroundFillTypeEnum::Gradient);
     }
 
+    /**
+     * @return int
+     */
     public function getTopColor(): int
     {
         return $this->top_color;
     }
 
+    /**
+     * @param int $top_color
+     *
+     * @return BackgroundFillGradient
+     */
     public function setTopColor(int $top_color): BackgroundFillGradient
     {
         $this->top_color = $top_color;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getBottomColor(): int
     {
         return $this->bottom_color;
     }
 
+    /**
+     * @param int $bottom_color
+     *
+     * @return BackgroundFillGradient
+     */
     public function setBottomColor(int $bottom_color): BackgroundFillGradient
     {
         $this->bottom_color = $bottom_color;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getRotationAngle(): int
     {
         return $this->rotation_angle;
     }
 
+    /**
+     * @param int $rotation_angle
+     *
+     * @return BackgroundFillGradient
+     */
     public function setRotationAngle(int $rotation_angle): BackgroundFillGradient
     {
         $this->rotation_angle = $rotation_angle;
@@ -63,10 +88,10 @@ class BackgroundFillGradient extends AbstractBackgroundFill
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'top_color' => $this->top_color,
             'bottom_color' => $this->bottom_color,
             'rotation_angle' => $this->rotation_angle,
+            'type' => $this->type->value,
         ];
     }
 }

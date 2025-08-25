@@ -10,6 +10,8 @@ use stdClass;
 
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
+ *
+ * @see https://core.telegram.org/bots/api#inputmessagecontent content
  * @link https://core.telegram.org/bots/api#inputvenuemessagecontent
  */
 #[BuildIf(new AndChecker([
@@ -30,6 +32,8 @@ class InputVenueMessageContent extends AbstractInputMessageContent
      * “arts_entertainment/aquarium” or “food/icecream”.)
      * @param string|null $google_place_id Optional. Google Places identifier of the venue
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
+     *
+     * @see https://developers.google.com/places/web-service/supported_types supported types
      */
     public function __construct(
         protected float $latitude,
@@ -44,88 +48,152 @@ class InputVenueMessageContent extends AbstractInputMessageContent
         parent::__construct();
     }
 
+    /**
+     * @return float
+     */
     public function getLatitude(): float
     {
         return $this->latitude;
     }
 
+    /**
+     * @param float $latitude
+     *
+     * @return InputVenueMessageContent
+     */
     public function setLatitude(float $latitude): InputVenueMessageContent
     {
         $this->latitude = $latitude;
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getLongitude(): float
     {
         return $this->longitude;
     }
 
+    /**
+     * @param float $longitude
+     *
+     * @return InputVenueMessageContent
+     */
     public function setLongitude(float $longitude): InputVenueMessageContent
     {
         $this->longitude = $longitude;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     *
+     * @return InputVenueMessageContent
+     */
     public function setTitle(string $title): InputVenueMessageContent
     {
         $this->title = $title;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getAddress(): string
     {
         return $this->address;
     }
 
+    /**
+     * @param string $address
+     *
+     * @return InputVenueMessageContent
+     */
     public function setAddress(string $address): InputVenueMessageContent
     {
         $this->address = $address;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFoursquareId(): string|null
     {
         return $this->foursquare_id;
     }
 
+    /**
+     * @param string|null $foursquare_id
+     *
+     * @return InputVenueMessageContent
+     */
     public function setFoursquareId(string|null $foursquare_id): InputVenueMessageContent
     {
         $this->foursquare_id = $foursquare_id;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFoursquareType(): string|null
     {
         return $this->foursquare_type;
     }
 
+    /**
+     * @param string|null $foursquare_type
+     *
+     * @return InputVenueMessageContent
+     */
     public function setFoursquareType(string|null $foursquare_type): InputVenueMessageContent
     {
         $this->foursquare_type = $foursquare_type;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getGooglePlaceId(): string|null
     {
         return $this->google_place_id;
     }
 
+    /**
+     * @param string|null $google_place_id
+     *
+     * @return InputVenueMessageContent
+     */
     public function setGooglePlaceId(string|null $google_place_id): InputVenueMessageContent
     {
         $this->google_place_id = $google_place_id;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getGooglePlaceType(): string|null
     {
         return $this->google_place_type;
     }
 
+    /**
+     * @param string|null $google_place_type
+     *
+     * @return InputVenueMessageContent
+     */
     public function setGooglePlaceType(string|null $google_place_type): InputVenueMessageContent
     {
         $this->google_place_type = $google_place_type;

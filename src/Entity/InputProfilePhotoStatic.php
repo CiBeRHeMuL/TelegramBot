@@ -18,11 +18,11 @@ use stdClass;
 class InputProfilePhotoStatic extends AbstractInputProfilePhoto
 {
     /**
-     * @param Filename|Url $photo The static profile photo. Profile photos can't be reused and can only be uploaded as a new file, so you
-     * can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>. More
-     * information on Sending Files »
+     * @param Filename|Url $photo The static profile photo. Profile photos can't be reused and can only be uploaded as a new file,
+     * so you can pass “attach://<file_attach_name>” if the photo was uploaded using multipart/form-data under <file_attach_name>.
+     * More information on Sending Files »
      *
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
     public function __construct(
         protected Filename|Url $photo,
@@ -30,11 +30,19 @@ class InputProfilePhotoStatic extends AbstractInputProfilePhoto
         parent::__construct(InputProfilePhotoTypeEnum::Static);
     }
 
+    /**
+     * @return Filename|Url
+     */
     public function getPhoto(): Filename|Url
     {
         return $this->photo;
     }
 
+    /**
+     * @param Filename|Url $photo
+     *
+     * @return InputProfilePhotoStatic
+     */
     public function setPhoto(Filename|Url $photo): InputProfilePhotoStatic
     {
         $this->photo = $photo;
@@ -44,8 +52,10 @@ class InputProfilePhotoStatic extends AbstractInputProfilePhoto
     public function toArray(): array|stdClass
     {
         return [
+            'photo' => ($this->photo instanceof Url)
+                ? $this->photo->getUrl()
+                : $this->photo,
             'type' => $this->type->value,
-            'photo' => $this->photo instanceof Url ? $this->photo->getUrl() : $this->photo,
         ];
     }
 }

@@ -11,15 +11,16 @@ use stdClass;
 
 /**
  * The paid media to send is a video.
+ *
  * @link https://core.telegram.org/bots/api#inputpaidmediavideo
  */
 #[BuildIf(new FieldIsChecker('type', InputPaidMediaTypeEnum::Video->value))]
 class InputPaidMediaVideo extends AbstractInputPaidMedia
 {
     /**
-     * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an
-     * HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using
-     * multipart/form-data under <file_attach_name> name. More information on Sending Files »
+     * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
+     * using multipart/form-data under <file_attach_name> name. More information on Sending Files »
      * @param int|null $duration Optional. Video duration in seconds
      * @param int|null $height Optional. Video height
      * @param bool|null $supports_streaming Optional. Pass True if the uploaded video is suitable for streaming
@@ -29,11 +30,14 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
      * and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using
      * multipart/form-data under <file_attach_name>. More information on Sending Files »
      * @param int|null $width Optional. Video width
-     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message.
-     *  Pass a file_id to send a file that exists on the Telegram servers (recommended),
-     *  pass an HTTP URL for Telegram to get a file from the Internet,
-     *  or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name.
+     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message. Pass a file_id to send a file that exists
+     * on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+     * to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
      * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
+     *
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
     public function __construct(
         protected Filename|Url|string $media,
@@ -48,96 +52,161 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
         parent::__construct(InputPaidMediaTypeEnum::Video);
     }
 
+    /**
+     * @return Filename|Url|string
+     */
     public function getMedia(): Filename|Url|string
     {
         return $this->media;
     }
 
+    /**
+     * @param Filename|Url|string $media
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setMedia(Filename|Url|string $media): InputPaidMediaVideo
     {
         $this->media = $media;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getDuration(): int|null
     {
         return $this->duration;
     }
 
+    /**
+     * @param int|null $duration
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setDuration(int|null $duration): InputPaidMediaVideo
     {
         $this->duration = $duration;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getHeight(): int|null
     {
         return $this->height;
     }
 
+    /**
+     * @param int|null $height
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setHeight(int|null $height): InputPaidMediaVideo
     {
         $this->height = $height;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getSupportsStreaming(): bool|null
     {
         return $this->supports_streaming;
     }
 
+    /**
+     * @param bool|null $supports_streaming
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setSupportsStreaming(bool|null $supports_streaming): InputPaidMediaVideo
     {
         $this->supports_streaming = $supports_streaming;
         return $this;
     }
 
+    /**
+     * @return Filename|Url|string|null
+     */
     public function getThumbnail(): Filename|Url|string|null
     {
         return $this->thumbnail;
     }
 
+    /**
+     * @param Filename|Url|string|null $thumbnail
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setThumbnail(Filename|Url|string|null $thumbnail): InputPaidMediaVideo
     {
         $this->thumbnail = $thumbnail;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getWidth(): int|null
     {
         return $this->width;
     }
 
+    /**
+     * @param int|null $width
+     *
+     * @return InputPaidMediaVideo
+     */
     public function setWidth(int|null $width): InputPaidMediaVideo
     {
         $this->width = $width;
         return $this;
     }
 
-    public function getCover(): Filename|string|Url|null
+    /**
+     * @return Filename|Url|string|null
+     */
+    public function getCover(): Filename|Url|string|null
     {
         return $this->cover;
     }
 
-    public function setCover(Filename|string|Url|null $cover): void
+    /**
+     * @param Filename|Url|string|null $cover
+     *
+     * @return InputPaidMediaVideo
+     */
+    public function setCover(Filename|Url|string|null $cover): InputPaidMediaVideo
     {
         $this->cover = $cover;
+        return $this;
     }
 
-    public function getStartTimestamp(): ?int
+    /**
+     * @return int|null
+     */
+    public function getStartTimestamp(): int|null
     {
         return $this->start_timestamp;
     }
 
-    public function setStartTimestamp(?int $start_timestamp): void
+    /**
+     * @param int|null $start_timestamp
+     *
+     * @return InputPaidMediaVideo
+     */
+    public function setStartTimestamp(int|null $start_timestamp): InputPaidMediaVideo
     {
         $this->start_timestamp = $start_timestamp;
+        return $this;
     }
 
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type,
             'media' => ($this->media instanceof Url)
                 ? $this->media->getUrl()
                 : $this->media,
@@ -148,10 +217,11 @@ class InputPaidMediaVideo extends AbstractInputPaidMedia
                 ? $this->thumbnail->getUrl()
                 : $this->thumbnail,
             'width' => $this->width,
-            'cover' => $this->cover
-                ? (($this->cover instanceof Url) ? $this->cover->getUrl() : $this->cover)
-                : null,
+            'cover' => ($this->cover instanceof Url)
+                ? $this->cover->getUrl()
+                : $this->cover,
             'start_timestamp' => $this->start_timestamp,
+            'type' => $this->type->value,
         ];
     }
 }

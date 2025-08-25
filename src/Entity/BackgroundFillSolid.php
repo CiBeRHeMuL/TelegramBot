@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The background is filled using the selected color.
+ *
  * @link https://core.telegram.org/bots/api#backgroundfillsolid
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundFillTypeEnum::Solid->value))]
@@ -23,11 +24,19 @@ class BackgroundFillSolid extends AbstractBackgroundFill
         parent::__construct(BackgroundFillTypeEnum::Solid);
     }
 
+    /**
+     * @return int
+     */
     public function getColor(): int
     {
         return $this->color;
     }
 
+    /**
+     * @param int $color
+     *
+     * @return BackgroundFillSolid
+     */
     public function setColor(int $color): BackgroundFillSolid
     {
         $this->color = $color;
@@ -37,8 +46,8 @@ class BackgroundFillSolid extends AbstractBackgroundFill
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'color' => $this->color,
+            'type' => $this->type->value,
         ];
     }
 }

@@ -2,19 +2,20 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\ValueObject\RequestId;
 use stdClass;
 
 /**
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with
- * the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate.
+ * the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More
+ * about requesting chats Â».
+ *
+ * @see /bots/features#chat-and-user-selection More about requesting chats Â»
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestchat
- * @link https://core.telegram.org/bots/features#chat-and-user-selection More about requesting chats.
  */
 class KeyboardButtonRequestChat extends AbstractEntity
 {
     /**
-     * @param RequestId $request_id Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
+     * @param int $request_id Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
      * be unique within the message
      * @param bool $chat_is_channel Pass True to request a channel chat, pass False to request a group or a supergroup chat.
      * @param ChatAdministratorRights|null $bot_administrator_rights Optional. A JSON-serialized object listing the required administrator
@@ -34,9 +35,13 @@ class KeyboardButtonRequestChat extends AbstractEntity
      * @param ChatAdministratorRights|null $user_administrator_rights Optional. A JSON-serialized object listing the required administrator
      * rights of the user in the chat. The rights must be a superset of bot_administrator_rights. If not specified, no additional
      * restrictions are applied.
+     *
+     * @see https://core.telegram.org/bots/api#chatshared ChatShared
+     * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
+     * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
      */
     public function __construct(
-        protected RequestId $request_id,
+        protected int $request_id,
         protected bool $chat_is_channel,
         protected ChatAdministratorRights|null $bot_administrator_rights = null,
         protected bool|null $bot_is_member = null,
@@ -51,121 +56,209 @@ class KeyboardButtonRequestChat extends AbstractEntity
         parent::__construct();
     }
 
-    public function getRequestId(): RequestId
+    /**
+     * @return int
+     */
+    public function getRequestId(): int
     {
         return $this->request_id;
     }
 
-    public function setRequestId(RequestId $request_id): KeyboardButtonRequestChat
+    /**
+     * @param int $request_id
+     *
+     * @return KeyboardButtonRequestChat
+     */
+    public function setRequestId(int $request_id): KeyboardButtonRequestChat
     {
         $this->request_id = $request_id;
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getChatIsChannel(): bool
     {
         return $this->chat_is_channel;
     }
 
+    /**
+     * @param bool $chat_is_channel
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setChatIsChannel(bool $chat_is_channel): KeyboardButtonRequestChat
     {
         $this->chat_is_channel = $chat_is_channel;
         return $this;
     }
 
+    /**
+     * @return ChatAdministratorRights|null
+     */
     public function getBotAdministratorRights(): ChatAdministratorRights|null
     {
         return $this->bot_administrator_rights;
     }
 
+    /**
+     * @param ChatAdministratorRights|null $bot_administrator_rights
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setBotAdministratorRights(ChatAdministratorRights|null $bot_administrator_rights): KeyboardButtonRequestChat
     {
         $this->bot_administrator_rights = $bot_administrator_rights;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getBotIsMember(): bool|null
     {
         return $this->bot_is_member;
     }
 
+    /**
+     * @param bool|null $bot_is_member
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setBotIsMember(bool|null $bot_is_member): KeyboardButtonRequestChat
     {
         $this->bot_is_member = $bot_is_member;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getChatHasUsername(): bool|null
     {
         return $this->chat_has_username;
     }
 
+    /**
+     * @param bool|null $chat_has_username
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setChatHasUsername(bool|null $chat_has_username): KeyboardButtonRequestChat
     {
         $this->chat_has_username = $chat_has_username;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getChatIsCreated(): bool|null
     {
         return $this->chat_is_created;
     }
 
+    /**
+     * @param bool|null $chat_is_created
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setChatIsCreated(bool|null $chat_is_created): KeyboardButtonRequestChat
     {
         $this->chat_is_created = $chat_is_created;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getChatIsForum(): bool|null
     {
         return $this->chat_is_forum;
     }
 
+    /**
+     * @param bool|null $chat_is_forum
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setChatIsForum(bool|null $chat_is_forum): KeyboardButtonRequestChat
     {
         $this->chat_is_forum = $chat_is_forum;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestPhoto(): bool|null
     {
         return $this->request_photo;
     }
 
+    /**
+     * @param bool|null $request_photo
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setRequestPhoto(bool|null $request_photo): KeyboardButtonRequestChat
     {
         $this->request_photo = $request_photo;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestTitle(): bool|null
     {
         return $this->request_title;
     }
 
+    /**
+     * @param bool|null $request_title
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setRequestTitle(bool|null $request_title): KeyboardButtonRequestChat
     {
         $this->request_title = $request_title;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestUsername(): bool|null
     {
         return $this->request_username;
     }
 
+    /**
+     * @param bool|null $request_username
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setRequestUsername(bool|null $request_username): KeyboardButtonRequestChat
     {
         $this->request_username = $request_username;
         return $this;
     }
 
+    /**
+     * @return ChatAdministratorRights|null
+     */
     public function getUserAdministratorRights(): ChatAdministratorRights|null
     {
         return $this->user_administrator_rights;
     }
 
+    /**
+     * @param ChatAdministratorRights|null $user_administrator_rights
+     *
+     * @return KeyboardButtonRequestChat
+     */
     public function setUserAdministratorRights(ChatAdministratorRights|null $user_administrator_rights): KeyboardButtonRequestChat
     {
         $this->user_administrator_rights = $user_administrator_rights;
@@ -175,7 +268,7 @@ class KeyboardButtonRequestChat extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'request_id' => $this->request_id->getId(),
+            'request_id' => $this->request_id,
             'chat_is_channel' => $this->chat_is_channel,
             'bot_administrator_rights' => $this->bot_administrator_rights?->toArray(),
             'bot_is_member' => $this->bot_is_member,

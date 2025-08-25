@@ -28,33 +28,57 @@ class StoryAreaTypeWeather extends AbstractStoryAreaType
         parent::__construct(StoryAreaTypeTypeEnum::Weather);
     }
 
+    /**
+     * @return float
+     */
     public function getTemperature(): float
     {
         return $this->temperature;
     }
 
+    /**
+     * @param float $temperature
+     *
+     * @return StoryAreaTypeWeather
+     */
     public function setTemperature(float $temperature): StoryAreaTypeWeather
     {
         $this->temperature = $temperature;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getEmoji(): string
     {
         return $this->emoji;
     }
 
+    /**
+     * @param string $emoji
+     *
+     * @return StoryAreaTypeWeather
+     */
     public function setEmoji(string $emoji): StoryAreaTypeWeather
     {
         $this->emoji = $emoji;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getBackgroundColor(): int
     {
         return $this->background_color;
     }
 
+    /**
+     * @param int $background_color
+     *
+     * @return StoryAreaTypeWeather
+     */
     public function setBackgroundColor(int $background_color): StoryAreaTypeWeather
     {
         $this->background_color = $background_color;
@@ -64,10 +88,10 @@ class StoryAreaTypeWeather extends AbstractStoryAreaType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'temperature' => $this->temperature,
             'emoji' => $this->emoji,
             'background_color' => $this->background_color,
+            'type' => $this->type->value,
         ];
     }
 }

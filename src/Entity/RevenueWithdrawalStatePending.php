@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The withdrawal is in progress.
+ *
  * @link https://core.telegram.org/bots/api#revenuewithdrawalstatepending
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Pending->value))]

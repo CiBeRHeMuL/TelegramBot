@@ -25,11 +25,19 @@ class TransactionPartnerTelegramApi extends AbstractTransactionPartner
         parent::__construct(TransactionPartnerTypeEnum::TelegramApi);
     }
 
+    /**
+     * @return int
+     */
     public function getRequestCount(): int
     {
         return $this->request_count;
     }
 
+    /**
+     * @param int $request_count
+     *
+     * @return TransactionPartnerTelegramApi
+     */
     public function setRequestCount(int $request_count): TransactionPartnerTelegramApi
     {
         $this->request_count = $request_count;
@@ -39,8 +47,8 @@ class TransactionPartnerTelegramApi extends AbstractTransactionPartner
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'request_count' => $this->request_count,
+            'type' => $this->type->value,
         ];
     }
 }

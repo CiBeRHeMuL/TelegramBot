@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The background is automatically filled based on the selected colors.
+ *
  * @link https://core.telegram.org/bots/api#backgroundtypefill
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Fill->value))]
@@ -17,6 +18,8 @@ class BackgroundTypeFill extends AbstractBackgroundType
     /**
      * @param AbstractBackgroundFill $fill The background fill
      * @param int $dark_theme_dimming Dimming of the background in dark themes, as a percentage; 0-100
+     *
+     * @see https://core.telegram.org/bots/api#backgroundfill BackgroundFill
      */
     public function __construct(
         protected AbstractBackgroundFill $fill,
@@ -25,22 +28,38 @@ class BackgroundTypeFill extends AbstractBackgroundType
         parent::__construct(BackgroundTypeTypeEnum::Fill);
     }
 
+    /**
+     * @return AbstractBackgroundFill
+     */
     public function getFill(): AbstractBackgroundFill
     {
         return $this->fill;
     }
 
+    /**
+     * @param AbstractBackgroundFill $fill
+     *
+     * @return BackgroundTypeFill
+     */
     public function setFill(AbstractBackgroundFill $fill): BackgroundTypeFill
     {
         $this->fill = $fill;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getDarkThemeDimming(): int
     {
         return $this->dark_theme_dimming;
     }
 
+    /**
+     * @param int $dark_theme_dimming
+     *
+     * @return BackgroundTypeFill
+     */
     public function setDarkThemeDimming(int $dark_theme_dimming): BackgroundTypeFill
     {
         $this->dark_theme_dimming = $dark_theme_dimming;
@@ -50,9 +69,9 @@ class BackgroundTypeFill extends AbstractBackgroundType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'fill' => $this->fill->toArray(),
             'dark_theme_dimming' => $this->dark_theme_dimming,
+            'type' => $this->type->value,
         ];
     }
 }

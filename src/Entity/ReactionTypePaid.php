@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The reaction is paid.
+ *
  * @link https://core.telegram.org/bots/api#reactiontypepaid
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::Paid->value))]

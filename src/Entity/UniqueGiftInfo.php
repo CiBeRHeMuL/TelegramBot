@@ -14,8 +14,8 @@ class UniqueGiftInfo extends AbstractEntity
 {
     /**
      * @param UniqueGift $gift Information about the gift
-     * @param UniqueGiftInfoOriginEnum $origin Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer”
-     * for gifts transferred from other users or channels, or “resale” for gifts bought from other users
+     * @param UniqueGiftInfoOriginEnum $origin Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular
+     * gifts, “transfer” for gifts transferred from other users or channels, or “resale” for gifts bought from other users
      * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received
      * on behalf of business accounts
      * @param int|null $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if

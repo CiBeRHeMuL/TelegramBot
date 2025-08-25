@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -17,16 +18,18 @@ class Checklist extends AbstractEntity
      * @param bool|null $others_can_add_tasks Optional. True, if users other than the creator of the list can add tasks to the list
      * @param bool|null $others_can_mark_tasks_as_done Optional. True, if users other than the creator of the list can mark tasks
      * as done or not done
-     * @param MessageEntity[]|null $title_entities Optional. Special entities that appear in the checklist title \@mentioned
+     * @param MessageEntity[]|null $title_entities Optional. Special entities that appear in the checklist title
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#checklisttask ChecklistTask
      */
     public function __construct(
         protected string $title,
+        #[ArrayType(ChecklistTask::class)]
         protected array $tasks,
         protected bool|null $others_can_add_tasks = null,
         protected bool|null $others_can_mark_tasks_as_done = null,
+        #[ArrayType(MessageEntity::class)]
         protected array|null $title_entities = null,
     ) {
         parent::__construct();

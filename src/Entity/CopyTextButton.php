@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents an inline keyboard button that copies specified text to the clipboard.
+ *
  * @link https://core.telegram.org/bots/api#copytextbutton
  */
 class CopyTextButton extends AbstractEntity
@@ -19,11 +20,19 @@ class CopyTextButton extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getText(): string
     {
         return $this->text;
     }
 
+    /**
+     * @param string $text
+     *
+     * @return CopyTextButton
+     */
     public function setText(string $text): CopyTextButton
     {
         $this->text = $text;

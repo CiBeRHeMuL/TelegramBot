@@ -437,7 +437,6 @@ class ChatMemberAdministrator extends AbstractChatMember
     public function toArray(): array|stdClass
     {
         return [
-            'status' => $this->status->value,
             'user' => $this->user->toArray(),
             'can_be_edited' => $this->can_be_edited,
             'is_anonymous' => $this->is_anonymous,
@@ -457,6 +456,7 @@ class ChatMemberAdministrator extends AbstractChatMember
             'can_post_messages' => $this->can_post_messages,
             'custom_title' => $this->custom_title,
             'can_manage_direct_messages' => $this->can_manage_direct_messages,
+            'status' => $this->status->value,
         ];
     }
 }

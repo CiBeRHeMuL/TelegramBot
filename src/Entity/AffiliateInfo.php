@@ -35,55 +35,95 @@ class AffiliateInfo extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getCommissionPerMille(): int
     {
         return $this->commission_per_mille;
     }
 
+    /**
+     * @param int $commission_per_mille
+     *
+     * @return AffiliateInfo
+     */
     public function setCommissionPerMille(int $commission_per_mille): AffiliateInfo
     {
         $this->commission_per_mille = $commission_per_mille;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getAmount(): int
     {
         return $this->amount;
     }
 
+    /**
+     * @param int $amount
+     *
+     * @return AffiliateInfo
+     */
     public function setAmount(int $amount): AffiliateInfo
     {
         $this->amount = $amount;
         return $this;
     }
 
+    /**
+     * @return Chat|null
+     */
     public function getAffiliateChat(): Chat|null
     {
         return $this->affiliate_chat;
     }
 
+    /**
+     * @param Chat|null $affiliate_chat
+     *
+     * @return AffiliateInfo
+     */
     public function setAffiliateChat(Chat|null $affiliate_chat): AffiliateInfo
     {
         $this->affiliate_chat = $affiliate_chat;
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getAffiliateUser(): User|null
     {
         return $this->affiliate_user;
     }
 
+    /**
+     * @param User|null $affiliate_user
+     *
+     * @return AffiliateInfo
+     */
     public function setAffiliateUser(User|null $affiliate_user): AffiliateInfo
     {
         $this->affiliate_user = $affiliate_user;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNanostarAmount(): int|null
     {
         return $this->nanostar_amount;
     }
 
+    /**
+     * @param int|null $nanostar_amount
+     *
+     * @return AffiliateInfo
+     */
     public function setNanostarAmount(int|null $nanostar_amount): AffiliateInfo
     {
         $this->nanostar_amount = $nanostar_amount;

@@ -48,6 +48,8 @@ class ChatFullInfo extends AbstractEntity
      * The field is only available to chat administrators.
      * @param bool|null $has_hidden_members Optional. True, if non-administrators can only get the list of bots and administrators
      * in the chat
+     * @param bool|null $has_private_forwards Optional. True, if privacy settings of the other party in the private chat allows to
+     * use tg://user?id=<user_id> links only in chats with the user
      * @param bool|null $has_protected_content Optional. True, if messages from the chat can't be forwarded to other chats
      * @param bool|null $has_restricted_voice_and_video_messages Optional. True, if the privacy settings of the other party restrict
      * sending voice and video note messages in the private chat
@@ -85,8 +87,6 @@ class ChatFullInfo extends AbstractEntity
      * The field is available only for channel chats.
      * @param bool|null $is_direct_messages Optional. True, if the chat is the direct messages chat of a channel
      * @param Chat|null $parent_chat Optional. Information about the corresponding channel chat; for direct messages chats only
-     * @param bool|null $has_private_forwards Optional. True, if privacy settings of the other party in the private chat allows to
-     * use tg://user?id=<user_id> links only in chats with the user
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -562,6 +562,25 @@ class ChatFullInfo extends AbstractEntity
     /**
      * @return bool|null
      */
+    public function getHasPrivateForwards(): bool|null
+    {
+        return $this->has_private_forwards;
+    }
+
+    /**
+     * @param bool|null $has_private_forwards
+     *
+     * @return ChatFullInfo
+     */
+    public function setHasPrivateForwards(bool|null $has_private_forwards): ChatFullInfo
+    {
+        $this->has_private_forwards = $has_private_forwards;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
     public function getHasProtectedContent(): bool|null
     {
         return $this->has_protected_content;
@@ -1031,25 +1050,6 @@ class ChatFullInfo extends AbstractEntity
     public function setParentChat(Chat|null $parent_chat): ChatFullInfo
     {
         $this->parent_chat = $parent_chat;
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getHasPrivateForwards(): bool|null
-    {
-        return $this->has_private_forwards;
-    }
-
-    /**
-     * @param bool|null $has_private_forwards
-     *
-     * @return ChatFullInfo
-     */
-    public function setHasPrivateForwards(bool|null $has_private_forwards): ChatFullInfo
-    {
-        $this->has_private_forwards = $has_private_forwards;
         return $this;
     }
 

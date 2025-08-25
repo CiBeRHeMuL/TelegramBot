@@ -21,11 +21,19 @@ class PaidMessagePriceChanged extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getPaidMessageStarCount(): int
     {
         return $this->paid_message_star_count;
     }
 
+    /**
+     * @param int $paid_message_star_count
+     *
+     * @return PaidMessagePriceChanged
+     */
     public function setPaidMessageStarCount(int $paid_message_star_count): PaidMessagePriceChanged
     {
         $this->paid_message_star_count = $paid_message_star_count;

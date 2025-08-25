@@ -18,11 +18,11 @@ use stdClass;
 class InputStoryContentPhoto extends AbstractInputStoryContent
 {
     /**
-     * @param Filename|Url $photo The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB. The
-     * photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the photo
-     * was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files
+     * @param Filename|Url $photo The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB.
+     * The photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
+     * photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
      *
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
     public function __construct(
         protected Filename|Url $photo,
@@ -30,11 +30,19 @@ class InputStoryContentPhoto extends AbstractInputStoryContent
         parent::__construct(InputStoryContentTypeEnum::Photo);
     }
 
+    /**
+     * @return Filename|Url
+     */
     public function getPhoto(): Filename|Url
     {
         return $this->photo;
     }
 
+    /**
+     * @param Filename|Url $photo
+     *
+     * @return InputStoryContentPhoto
+     */
     public function setPhoto(Filename|Url $photo): InputStoryContentPhoto
     {
         $this->photo = $photo;
@@ -44,8 +52,10 @@ class InputStoryContentPhoto extends AbstractInputStoryContent
     public function toArray(): array|stdClass
     {
         return [
+            'photo' => ($this->photo instanceof Url)
+                ? $this->photo->getUrl()
+                : $this->photo,
             'type' => $this->type->value,
-            'photo' => $this->photo instanceof Url ? $this->photo->getUrl() : $this->photo,
         ];
     }
 }

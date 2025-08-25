@@ -29,22 +29,38 @@ class TransactionPartnerChat extends AbstractTransactionPartner
         parent::__construct(TransactionPartnerTypeEnum::Chat);
     }
 
+    /**
+     * @return Chat
+     */
     public function getChat(): Chat
     {
         return $this->chat;
     }
 
+    /**
+     * @param Chat $chat
+     *
+     * @return TransactionPartnerChat
+     */
     public function setChat(Chat $chat): TransactionPartnerChat
     {
         $this->chat = $chat;
         return $this;
     }
 
+    /**
+     * @return Gift|null
+     */
     public function getGift(): Gift|null
     {
         return $this->gift;
     }
 
+    /**
+     * @param Gift|null $gift
+     *
+     * @return TransactionPartnerChat
+     */
     public function setGift(Gift|null $gift): TransactionPartnerChat
     {
         $this->gift = $gift;
@@ -54,9 +70,9 @@ class TransactionPartnerChat extends AbstractTransactionPartner
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'chat' => $this->chat->toArray(),
             'gift' => $this->gift?->toArray(),
+            'type' => $this->type->value,
         ];
     }
 }

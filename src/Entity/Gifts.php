@@ -24,11 +24,19 @@ class Gifts extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return Gift[]
+     */
     public function getGifts(): array
     {
         return $this->gifts;
     }
 
+    /**
+     * @param Gift[] $gifts
+     *
+     * @return Gifts
+     */
     public function setGifts(array $gifts): Gifts
     {
         $this->gifts = $gifts;

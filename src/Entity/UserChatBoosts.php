@@ -7,24 +7,36 @@ use stdClass;
 
 /**
  * This object represents a list of boosts added to a chat by a user.
+ *
  * @link https://core.telegram.org/bots/api#userchatboosts
  */
 class UserChatBoosts extends AbstractEntity
 {
     /**
      * @param ChatBoost[] $boosts The list of boosts added to the chat by the user
+     *
+     * @see https://core.telegram.org/bots/api#chatboost ChatBoost
      */
     public function __construct(
-        #[ArrayType(UserChatBoosts::class)] protected array $boosts,
+        #[ArrayType(ChatBoost::class)]
+        protected array $boosts,
     ) {
         parent::__construct();
     }
 
+    /**
+     * @return ChatBoost[]
+     */
     public function getBoosts(): array
     {
         return $this->boosts;
     }
 
+    /**
+     * @param ChatBoost[] $boosts
+     *
+     * @return UserChatBoosts
+     */
     public function setBoosts(array $boosts): UserChatBoosts
     {
         $this->boosts = $boosts;

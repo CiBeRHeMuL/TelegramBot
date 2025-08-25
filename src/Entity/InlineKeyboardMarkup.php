@@ -7,24 +7,39 @@ use stdClass;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
+ *
+ * @see /bots/features#inline-keyboards inline keyboard
  * @link https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */
 class InlineKeyboardMarkup extends AbstractEntity
 {
     /**
-     * @param InlineKeyboardButton[][] $inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton objects
+     * @param InlineKeyboardButton[][] $inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton
+     * objects
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardbutton InlineKeyboardButton
+     * @see https://core.telegram.org/bots/api#inlinekeyboardbutton InlineKeyboardButton
      */
     public function __construct(
-        #[ArrayType(new ArrayType(InlineKeyboardButton::class))] protected array $inline_keyboard,
+        #[ArrayType(new ArrayType(InlineKeyboardButton::class))]
+        protected array $inline_keyboard,
     ) {
         parent::__construct();
     }
 
+    /**
+     * @return InlineKeyboardButton[][]
+     */
     public function getInlineKeyboard(): array
     {
         return $this->inline_keyboard;
     }
 
+    /**
+     * @param InlineKeyboardButton[][] $inline_keyboard
+     *
+     * @return InlineKeyboardMarkup
+     */
     public function setInlineKeyboard(array $inline_keyboard): InlineKeyboardMarkup
     {
         $this->inline_keyboard = $inline_keyboard;
@@ -35,9 +50,9 @@ class InlineKeyboardMarkup extends AbstractEntity
     {
         return [
             'inline_keyboard' => array_map(
-                fn(array $row) => array_map(
-                    fn(InlineKeyboardButton $button) => $button->toArray(),
-                    $row,
+                fn(array $e) => array_map(
+                    fn(InlineKeyboardButton $e) => $e->toArray(),
+                    $e,
                 ),
                 $this->inline_keyboard,
             ),

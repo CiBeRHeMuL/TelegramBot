@@ -58,132 +58,228 @@ class OwnedGiftRegular extends AbstractOwnedGift
         parent::__construct(OwnedGiftTypeEnum::Regular);
     }
 
+    /**
+     * @return Gift
+     */
     public function getGift(): Gift
     {
         return $this->gift;
     }
 
+    /**
+     * @param Gift $gift
+     *
+     * @return OwnedGiftRegular
+     */
     public function setGift(Gift $gift): OwnedGiftRegular
     {
         $this->gift = $gift;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getSendDate(): int
     {
         return $this->send_date;
     }
 
+    /**
+     * @param int $send_date
+     *
+     * @return OwnedGiftRegular
+     */
     public function setSendDate(int $send_date): OwnedGiftRegular
     {
         $this->send_date = $send_date;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanBeUpgraded(): bool|null
     {
         return $this->can_be_upgraded;
     }
 
+    /**
+     * @param bool|null $can_be_upgraded
+     *
+     * @return OwnedGiftRegular
+     */
     public function setCanBeUpgraded(bool|null $can_be_upgraded): OwnedGiftRegular
     {
         $this->can_be_upgraded = $can_be_upgraded;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getConvertStarCount(): int|null
     {
         return $this->convert_star_count;
     }
 
+    /**
+     * @param int|null $convert_star_count
+     *
+     * @return OwnedGiftRegular
+     */
     public function setConvertStarCount(int|null $convert_star_count): OwnedGiftRegular
     {
         $this->convert_star_count = $convert_star_count;
         return $this;
     }
 
+    /**
+     * @return MessageEntity[]|null
+     */
     public function getEntities(): array|null
     {
         return $this->entities;
     }
 
+    /**
+     * @param MessageEntity[]|null $entities
+     *
+     * @return OwnedGiftRegular
+     */
     public function setEntities(array|null $entities): OwnedGiftRegular
     {
         $this->entities = $entities;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsPrivate(): bool|null
     {
         return $this->is_private;
     }
 
+    /**
+     * @param bool|null $is_private
+     *
+     * @return OwnedGiftRegular
+     */
     public function setIsPrivate(bool|null $is_private): OwnedGiftRegular
     {
         $this->is_private = $is_private;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsSaved(): bool|null
     {
         return $this->is_saved;
     }
 
+    /**
+     * @param bool|null $is_saved
+     *
+     * @return OwnedGiftRegular
+     */
     public function setIsSaved(bool|null $is_saved): OwnedGiftRegular
     {
         $this->is_saved = $is_saved;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getOwnedGiftId(): string|null
     {
         return $this->owned_gift_id;
     }
 
+    /**
+     * @param string|null $owned_gift_id
+     *
+     * @return OwnedGiftRegular
+     */
     public function setOwnedGiftId(string|null $owned_gift_id): OwnedGiftRegular
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getPrepaidUpgradeStarCount(): int|null
     {
         return $this->prepaid_upgrade_star_count;
     }
 
+    /**
+     * @param int|null $prepaid_upgrade_star_count
+     *
+     * @return OwnedGiftRegular
+     */
     public function setPrepaidUpgradeStarCount(int|null $prepaid_upgrade_star_count): OwnedGiftRegular
     {
         $this->prepaid_upgrade_star_count = $prepaid_upgrade_star_count;
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getSenderUser(): User|null
     {
         return $this->sender_user;
     }
 
+    /**
+     * @param User|null $sender_user
+     *
+     * @return OwnedGiftRegular
+     */
     public function setSenderUser(User|null $sender_user): OwnedGiftRegular
     {
         $this->sender_user = $sender_user;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getText(): string|null
     {
         return $this->text;
     }
 
+    /**
+     * @param string|null $text
+     *
+     * @return OwnedGiftRegular
+     */
     public function setText(string|null $text): OwnedGiftRegular
     {
         $this->text = $text;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getWasRefunded(): bool|null
     {
         return $this->was_refunded;
     }
 
+    /**
+     * @param bool|null $was_refunded
+     *
+     * @return OwnedGiftRegular
+     */
     public function setWasRefunded(bool|null $was_refunded): OwnedGiftRegular
     {
         $this->was_refunded = $was_refunded;
@@ -193,7 +289,6 @@ class OwnedGiftRegular extends AbstractOwnedGift
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'gift' => $this->gift->toArray(),
             'send_date' => $this->send_date,
             'can_be_upgraded' => $this->can_be_upgraded,
@@ -208,6 +303,7 @@ class OwnedGiftRegular extends AbstractOwnedGift
             'sender_user' => $this->sender_user?->toArray(),
             'text' => $this->text,
             'was_refunded' => $this->was_refunded,
+            'type' => $this->type->value,
         ];
     }
 }

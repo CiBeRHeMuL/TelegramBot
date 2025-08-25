@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents changes in the status of a chat member.
+ *
  * @link https://core.telegram.org/bots/api#chatmemberupdated
  */
 class ChatMemberUpdated extends AbstractEntity
@@ -21,6 +22,12 @@ class ChatMemberUpdated extends AbstractEntity
      * @param bool|null $via_chat_folder_invite_link Optional. True, if the user joined the chat via a chat folder invite link
      * @param bool|null $via_join_request Optional. True, if the user joined the chat after sending a direct join request without
      * using an invite link and being approved by an administrator
+     *
+     * @see https://core.telegram.org/bots/api#chat Chat
+     * @see https://core.telegram.org/bots/api#user User
+     * @see https://core.telegram.org/bots/api#chatmember ChatMember
+     * @see https://core.telegram.org/bots/api#chatmember ChatMember
+     * @see https://core.telegram.org/bots/api#chatinvitelink ChatInviteLink
      */
     public function __construct(
         protected Chat $chat,
@@ -35,88 +42,152 @@ class ChatMemberUpdated extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return Chat
+     */
     public function getChat(): Chat
     {
         return $this->chat;
     }
 
+    /**
+     * @param Chat $chat
+     *
+     * @return ChatMemberUpdated
+     */
     public function setChat(Chat $chat): ChatMemberUpdated
     {
         $this->chat = $chat;
         return $this;
     }
 
+    /**
+     * @return User
+     */
     public function getFrom(): User
     {
         return $this->from;
     }
 
+    /**
+     * @param User $from
+     *
+     * @return ChatMemberUpdated
+     */
     public function setFrom(User $from): ChatMemberUpdated
     {
         $this->from = $from;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getDate(): int
     {
         return $this->date;
     }
 
+    /**
+     * @param int $date
+     *
+     * @return ChatMemberUpdated
+     */
     public function setDate(int $date): ChatMemberUpdated
     {
         $this->date = $date;
         return $this;
     }
 
+    /**
+     * @return AbstractChatMember
+     */
     public function getOldChatMember(): AbstractChatMember
     {
         return $this->old_chat_member;
     }
 
+    /**
+     * @param AbstractChatMember $old_chat_member
+     *
+     * @return ChatMemberUpdated
+     */
     public function setOldChatMember(AbstractChatMember $old_chat_member): ChatMemberUpdated
     {
         $this->old_chat_member = $old_chat_member;
         return $this;
     }
 
+    /**
+     * @return AbstractChatMember
+     */
     public function getNewChatMember(): AbstractChatMember
     {
         return $this->new_chat_member;
     }
 
+    /**
+     * @param AbstractChatMember $new_chat_member
+     *
+     * @return ChatMemberUpdated
+     */
     public function setNewChatMember(AbstractChatMember $new_chat_member): ChatMemberUpdated
     {
         $this->new_chat_member = $new_chat_member;
         return $this;
     }
 
+    /**
+     * @return ChatInviteLink|null
+     */
     public function getInviteLink(): ChatInviteLink|null
     {
         return $this->invite_link;
     }
 
+    /**
+     * @param ChatInviteLink|null $invite_link
+     *
+     * @return ChatMemberUpdated
+     */
     public function setInviteLink(ChatInviteLink|null $invite_link): ChatMemberUpdated
     {
         $this->invite_link = $invite_link;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getViaChatFolderInviteLink(): bool|null
     {
         return $this->via_chat_folder_invite_link;
     }
 
+    /**
+     * @param bool|null $via_chat_folder_invite_link
+     *
+     * @return ChatMemberUpdated
+     */
     public function setViaChatFolderInviteLink(bool|null $via_chat_folder_invite_link): ChatMemberUpdated
     {
         $this->via_chat_folder_invite_link = $via_chat_folder_invite_link;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getViaJoinRequest(): bool|null
     {
         return $this->via_join_request;
     }
 
+    /**
+     * @param bool|null $via_join_request
+     *
+     * @return ChatMemberUpdated
+     */
     public function setViaJoinRequest(bool|null $via_join_request): ChatMemberUpdated
     {
         $this->via_join_request = $via_join_request;

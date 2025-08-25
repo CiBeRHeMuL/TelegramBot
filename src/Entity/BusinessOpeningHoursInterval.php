@@ -5,8 +5,9 @@ namespace AndrewGos\TelegramBot\Entity;
 use stdClass;
 
 /**
- * Describes the opening hours of a business.
- * @link https://core.telegram.org/bots/api#businessopeninghours
+ * Describes an interval of time during which a business is open.
+ *
+ * @link https://core.telegram.org/bots/api#businessopeninghoursinterval
  */
 class BusinessOpeningHoursInterval extends AbstractEntity
 {
@@ -23,22 +24,38 @@ class BusinessOpeningHoursInterval extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getOpeningMinute(): int
     {
         return $this->opening_minute;
     }
 
+    /**
+     * @param int $opening_minute
+     *
+     * @return BusinessOpeningHoursInterval
+     */
     public function setOpeningMinute(int $opening_minute): BusinessOpeningHoursInterval
     {
         $this->opening_minute = $opening_minute;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getClosingMinute(): int
     {
         return $this->closing_minute;
     }
 
+    /**
+     * @param int $closing_minute
+     *
+     * @return BusinessOpeningHoursInterval
+     */
     public function setClosingMinute(int $closing_minute): BusinessOpeningHoursInterval
     {
         $this->closing_minute = $closing_minute;

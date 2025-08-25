@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * Describes a withdrawal transaction to the Telegram Ads platform.
+ *
  * @link https://core.telegram.org/bots/api#transactionpartnertelegramads
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::TelegramAds->value))]

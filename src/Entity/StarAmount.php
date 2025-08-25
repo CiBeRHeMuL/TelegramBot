@@ -23,22 +23,38 @@ class StarAmount extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getAmount(): int
     {
         return $this->amount;
     }
 
+    /**
+     * @param int $amount
+     *
+     * @return StarAmount
+     */
     public function setAmount(int $amount): StarAmount
     {
         $this->amount = $amount;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getNanostarAmount(): int|null
     {
         return $this->nanostar_amount;
     }
 
+    /**
+     * @param int|null $nanostar_amount
+     *
+     * @return StarAmount
+     */
     public function setNanostarAmount(int|null $nanostar_amount): StarAmount
     {
         $this->nanostar_amount = $nanostar_amount;

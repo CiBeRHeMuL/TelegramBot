@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * Describes a transaction with an unknown source or recipient.
+ *
  * @link https://core.telegram.org/bots/api#transactionpartnerother
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::Other->value))]

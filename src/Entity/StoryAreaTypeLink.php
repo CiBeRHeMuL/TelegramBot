@@ -25,11 +25,19 @@ class StoryAreaTypeLink extends AbstractStoryAreaType
         parent::__construct(StoryAreaTypeTypeEnum::Link);
     }
 
+    /**
+     * @return Url
+     */
     public function getUrl(): Url
     {
         return $this->url;
     }
 
+    /**
+     * @param Url $url
+     *
+     * @return StoryAreaTypeLink
+     */
     public function setUrl(Url $url): StoryAreaTypeLink
     {
         $this->url = $url;
@@ -39,8 +47,8 @@ class StoryAreaTypeLink extends AbstractStoryAreaType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'url' => $this->url->getUrl(),
+            'type' => $this->type->value,
         ];
     }
 }

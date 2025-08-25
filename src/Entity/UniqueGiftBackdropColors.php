@@ -26,44 +26,76 @@ class UniqueGiftBackdropColors extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getCenterColor(): int
     {
         return $this->center_color;
     }
 
+    /**
+     * @param int $center_color
+     *
+     * @return UniqueGiftBackdropColors
+     */
     public function setCenterColor(int $center_color): UniqueGiftBackdropColors
     {
         $this->center_color = $center_color;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getEdgeColor(): int
     {
         return $this->edge_color;
     }
 
+    /**
+     * @param int $edge_color
+     *
+     * @return UniqueGiftBackdropColors
+     */
     public function setEdgeColor(int $edge_color): UniqueGiftBackdropColors
     {
         $this->edge_color = $edge_color;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getSymbolColor(): int
     {
         return $this->symbol_color;
     }
 
+    /**
+     * @param int $symbol_color
+     *
+     * @return UniqueGiftBackdropColors
+     */
     public function setSymbolColor(int $symbol_color): UniqueGiftBackdropColors
     {
         $this->symbol_color = $symbol_color;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getTextColor(): int
     {
         return $this->text_color;
     }
 
+    /**
+     * @param int $text_color
+     *
+     * @return UniqueGiftBackdropColors
+     */
     public function setTextColor(int $text_color): UniqueGiftBackdropColors
     {
         $this->text_color = $text_color;

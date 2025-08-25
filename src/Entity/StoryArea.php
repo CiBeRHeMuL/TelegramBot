@@ -16,7 +16,7 @@ class StoryArea extends AbstractEntity
      * @param AbstractStoryAreaType $type Type of the area
      *
      * @see https://core.telegram.org/bots/api#storyareaposition StoryAreaPosition
-     * @see https://core.telegram.org/bots/api#storyareatype AbstractStoryAreaType
+     * @see https://core.telegram.org/bots/api#storyareatype StoryAreaType
      */
     public function __construct(
         protected StoryAreaPosition $position,
@@ -25,22 +25,38 @@ class StoryArea extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return StoryAreaPosition
+     */
     public function getPosition(): StoryAreaPosition
     {
         return $this->position;
     }
 
+    /**
+     * @param StoryAreaPosition $position
+     *
+     * @return StoryArea
+     */
     public function setPosition(StoryAreaPosition $position): StoryArea
     {
         $this->position = $position;
         return $this;
     }
 
+    /**
+     * @return AbstractStoryAreaType
+     */
     public function getType(): AbstractStoryAreaType
     {
         return $this->type;
     }
 
+    /**
+     * @param AbstractStoryAreaType $type
+     *
+     * @return StoryArea
+     */
     public function setType(AbstractStoryAreaType $type): StoryArea
     {
         $this->type = $type;

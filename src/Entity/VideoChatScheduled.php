@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents a service message about a video chat scheduled in the chat.
+ *
  * @link https://core.telegram.org/bots/api#videochatscheduled
  */
 class VideoChatScheduled extends AbstractEntity
@@ -19,11 +20,19 @@ class VideoChatScheduled extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getStartDate(): int
     {
         return $this->start_date;
     }
 
+    /**
+     * @param int $start_date
+     *
+     * @return VideoChatScheduled
+     */
     public function setStartDate(int $start_date): VideoChatScheduled
     {
         $this->start_date = $start_date;

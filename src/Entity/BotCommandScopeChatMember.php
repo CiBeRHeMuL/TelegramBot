@@ -10,13 +10,16 @@ use stdClass;
 
 /**
  * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
- * @link https://core.telegram.org/bots/api#botcommandscopechatmemvre
+ *
+ * @see https://core.telegram.org/bots/api#botcommandscope scope
+ * @link https://core.telegram.org/bots/api#botcommandscopechatmember
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::ChatMember))]
 class BotCommandScopeChatMember extends AbstractBotCommandScope
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername).
+     * Channel direct messages chats and channel chats aren't supported.
      * @param int $user_id Unique identifier of the target user
      */
     public function __construct(
@@ -26,22 +29,38 @@ class BotCommandScopeChatMember extends AbstractBotCommandScope
         parent::__construct(BotCommandScopeTypeEnum::ChatMember);
     }
 
+    /**
+     * @return ChatId
+     */
     public function getChatId(): ChatId
     {
         return $this->chat_id;
     }
 
+    /**
+     * @param ChatId $chat_id
+     *
+     * @return BotCommandScopeChatMember
+     */
     public function setChatId(ChatId $chat_id): BotCommandScopeChatMember
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getUserId(): int
     {
         return $this->user_id;
     }
 
+    /**
+     * @param int $user_id
+     *
+     * @return BotCommandScopeChatMember
+     */
     public function setUserId(int $user_id): BotCommandScopeChatMember
     {
         $this->user_id = $user_id;
@@ -51,8 +70,9 @@ class BotCommandScopeChatMember extends AbstractBotCommandScope
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'chat_id' => $this->chat_id->getId(),
+            'user_id' => $this->user_id,
+            'type' => $this->type->value,
         ];
     }
 }

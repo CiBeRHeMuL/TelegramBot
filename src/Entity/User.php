@@ -7,16 +7,15 @@ use stdClass;
 
 /**
  * This object represents a Telegram user or bot.
+ *
  * @link https://core.telegram.org/bots/api#user
  */
 class User extends AbstractEntity
 {
     /**
-     * @param int $id Unique identifier for this user or bot.
-     * This number may have more than 32 significant bits and some programming
-     * languages may have difficulty/silent defects in interpreting it.
-     * But it has at most 52 significant bits, so a 64-bit integer or double-precision
-     * float type are safe for storing this identifier.
+     * @param int $id Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming
+     * languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer
+     * or double-precision float type are safe for storing this identifier.
      * @param bool $is_bot True, if this user is a bot
      * @param string $first_name User's or bot's first name
      * @param string|null $last_name Optional. User's or bot's last name
@@ -25,13 +24,19 @@ class User extends AbstractEntity
      * @param bool|null $is_premium Optional. True, if this user is a Telegram Premium user
      * @param bool|null $added_to_attachment_menu Optional. True, if this user added the bot to the attachment menu
      * @param bool|null $can_join_groups Optional. True, if the bot can be invited to groups. Returned only in getMe.
-     * @param bool|null $can_read_all_group_messages Optional.
-     * True, if privacy mode is disabled for the bot. Returned only in getMe.
-     * @param bool|null $supports_inline_queries Optional.
-     * True, if the bot supports inline queries. Returned only in getMe.
-     * @param bool|null $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive its messages.
-     * Returned only in getMe.
+     * @param bool|null $can_read_all_group_messages Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
+     * @param bool|null $supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
+     * @param bool|null $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive
+     * its messages. Returned only in getMe.
      * @param bool|null $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
+     *
+     * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
+     * @see https://core.telegram.org/bots/api#getme getMe
+     * @see /bots/features#privacy-mode privacy mode
+     * @see https://core.telegram.org/bots/api#getme getMe
+     * @see https://core.telegram.org/bots/api#getme getMe
+     * @see https://core.telegram.org/bots/api#getme getMe
+     * @see https://core.telegram.org/bots/api#getme getMe
      */
     public function __construct(
         protected int $id,
@@ -51,143 +56,247 @@ class User extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
+    /**
+     * @param int $id
+     *
+     * @return User
+     */
     public function setId(int $id): User
     {
         $this->id = $id;
         return $this;
     }
 
-    public function isIsBot(): bool
+    /**
+     * @return bool
+     */
+    public function getIsBot(): bool
     {
         return $this->is_bot;
     }
 
+    /**
+     * @param bool $is_bot
+     *
+     * @return User
+     */
     public function setIsBot(bool $is_bot): User
     {
         $this->is_bot = $is_bot;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getFirstName(): string
     {
         return $this->first_name;
     }
 
+    /**
+     * @param string $first_name
+     *
+     * @return User
+     */
     public function setFirstName(string $first_name): User
     {
         $this->first_name = $first_name;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastName(): string|null
     {
         return $this->last_name;
     }
 
+    /**
+     * @param string|null $last_name
+     *
+     * @return User
+     */
     public function setLastName(string|null $last_name): User
     {
         $this->last_name = $last_name;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getUsername(): string|null
     {
         return $this->username;
     }
 
+    /**
+     * @param string|null $username
+     *
+     * @return User
+     */
     public function setUsername(string|null $username): User
     {
         $this->username = $username;
         return $this;
     }
 
+    /**
+     * @return Language|null
+     */
     public function getLanguageCode(): Language|null
     {
         return $this->language_code;
     }
 
+    /**
+     * @param Language|null $language_code
+     *
+     * @return User
+     */
     public function setLanguageCode(Language|null $language_code): User
     {
         $this->language_code = $language_code;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsPremium(): bool|null
     {
         return $this->is_premium;
     }
 
+    /**
+     * @param bool|null $is_premium
+     *
+     * @return User
+     */
     public function setIsPremium(bool|null $is_premium): User
     {
         $this->is_premium = $is_premium;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getAddedToAttachmentMenu(): bool|null
     {
         return $this->added_to_attachment_menu;
     }
 
+    /**
+     * @param bool|null $added_to_attachment_menu
+     *
+     * @return User
+     */
     public function setAddedToAttachmentMenu(bool|null $added_to_attachment_menu): User
     {
         $this->added_to_attachment_menu = $added_to_attachment_menu;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanJoinGroups(): bool|null
     {
         return $this->can_join_groups;
     }
 
+    /**
+     * @param bool|null $can_join_groups
+     *
+     * @return User
+     */
     public function setCanJoinGroups(bool|null $can_join_groups): User
     {
         $this->can_join_groups = $can_join_groups;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanReadAllGroupMessages(): bool|null
     {
         return $this->can_read_all_group_messages;
     }
 
+    /**
+     * @param bool|null $can_read_all_group_messages
+     *
+     * @return User
+     */
     public function setCanReadAllGroupMessages(bool|null $can_read_all_group_messages): User
     {
         $this->can_read_all_group_messages = $can_read_all_group_messages;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getSupportsInlineQueries(): bool|null
     {
         return $this->supports_inline_queries;
     }
 
+    /**
+     * @param bool|null $supports_inline_queries
+     *
+     * @return User
+     */
     public function setSupportsInlineQueries(bool|null $supports_inline_queries): User
     {
         $this->supports_inline_queries = $supports_inline_queries;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanConnectToBusiness(): bool|null
     {
         return $this->can_connect_to_business;
     }
 
+    /**
+     * @param bool|null $can_connect_to_business
+     *
+     * @return User
+     */
     public function setCanConnectToBusiness(bool|null $can_connect_to_business): User
     {
         $this->can_connect_to_business = $can_connect_to_business;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getHasMainWebApp(): bool|null
     {
         return $this->has_main_web_app;
     }
 
+    /**
+     * @param bool|null $has_main_web_app
+     *
+     * @return User
+     */
     public function setHasMainWebApp(bool|null $has_main_web_app): User
     {
         $this->has_main_web_app = $has_main_web_app;

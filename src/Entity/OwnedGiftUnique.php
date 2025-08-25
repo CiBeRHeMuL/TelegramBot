@@ -201,7 +201,6 @@ class OwnedGiftUnique extends AbstractOwnedGift
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'gift' => $this->gift->toArray(),
             'send_date' => $this->send_date,
             'can_be_transferred' => $this->can_be_transferred,
@@ -210,6 +209,7 @@ class OwnedGiftUnique extends AbstractOwnedGift
             'sender_user' => $this->sender_user?->toArray(),
             'transfer_star_count' => $this->transfer_star_count,
             'next_transfer_date' => $this->next_transfer_date,
+            'type' => $this->type->value,
         ];
     }
 }

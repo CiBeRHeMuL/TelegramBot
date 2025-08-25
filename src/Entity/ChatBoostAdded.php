@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents a service message about a user boosting a chat.
+ *
  * @link https://core.telegram.org/bots/api#chatboostadded
  */
 class ChatBoostAdded extends AbstractEntity
@@ -19,11 +20,19 @@ class ChatBoostAdded extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getBoostCount(): int
     {
         return $this->boost_count;
     }
 
+    /**
+     * @param int $boost_count
+     *
+     * @return ChatBoostAdded
+     */
     public function setBoostCount(int $boost_count): ChatBoostAdded
     {
         $this->boost_count = $boost_count;

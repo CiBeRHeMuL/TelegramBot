@@ -24,11 +24,19 @@ class StoryAreaTypeUniqueGift extends AbstractStoryAreaType
         parent::__construct(StoryAreaTypeTypeEnum::UniqueGift);
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return StoryAreaTypeUniqueGift
+     */
     public function setName(string $name): StoryAreaTypeUniqueGift
     {
         $this->name = $name;
@@ -38,8 +46,8 @@ class StoryAreaTypeUniqueGift extends AbstractStoryAreaType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'name' => $this->name,
+            'type' => $this->type->value,
         ];
     }
 }

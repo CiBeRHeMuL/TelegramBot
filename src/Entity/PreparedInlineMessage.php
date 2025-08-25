@@ -23,22 +23,38 @@ class PreparedInlineMessage extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->id;
     }
 
+    /**
+     * @param string $id
+     *
+     * @return PreparedInlineMessage
+     */
     public function setId(string $id): PreparedInlineMessage
     {
         $this->id = $id;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getExpirationDate(): int
     {
         return $this->expiration_date;
     }
 
+    /**
+     * @param int $expiration_date
+     *
+     * @return PreparedInlineMessage
+     */
     public function setExpirationDate(int $expiration_date): PreparedInlineMessage
     {
         $this->expiration_date = $expiration_date;

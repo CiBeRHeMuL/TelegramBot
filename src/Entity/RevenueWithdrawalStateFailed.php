@@ -9,7 +9,8 @@ use stdClass;
 
 /**
  * The withdrawal failed and the transaction was refunded.
- * @link https://core.telegram.org/bots/api#revenuewithdrawalstatepending
+ *
+ * @link https://core.telegram.org/bots/api#revenuewithdrawalstatefailed
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Failed->value))]
 class RevenueWithdrawalStateFailed extends AbstractRevenueWithdrawalState

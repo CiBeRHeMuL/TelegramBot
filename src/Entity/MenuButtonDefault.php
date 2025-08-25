@@ -8,7 +8,8 @@ use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
 use stdClass;
 
 /**
- * Represents a menu button, which opens the bot's list of commands.
+ * Describes that no specific value for the menu button was set.
+ *
  * @link https://core.telegram.org/bots/api#menubuttondefault
  */
 #[BuildIf(new FieldIsChecker('type', MenuButtonTypeEnum::Default->value))]

@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents the bot's name.
+ *
  * @link https://core.telegram.org/bots/api#botname
  */
 class BotName extends AbstractEntity
@@ -19,11 +20,19 @@ class BotName extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return BotName
+     */
     public function setName(string $name): BotName
     {
         $this->name = $name;

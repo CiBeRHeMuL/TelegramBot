@@ -18,9 +18,9 @@ use stdClass;
 class InputStoryContentVideo extends AbstractInputStoryContent
 {
     /**
-     * @param Filename|Url $video The video to post as a story. The video must be of the size 720x1280, streamable, encoded with H.265
-     * codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and can
-     * only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data
+     * @param Filename|Url $video The video to post as a story. The video must be of the size 720x1280, streamable, encoded with
+     * H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and
+     * can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data
      * under <file_attach_name>. More information on Sending Files »
      * @param float|null $cover_frame_timestamp Optional. Timestamp in seconds of the frame that will be used as the static cover
      * for the story. Defaults to 0.0.
@@ -38,44 +38,76 @@ class InputStoryContentVideo extends AbstractInputStoryContent
         parent::__construct(InputStoryContentTypeEnum::Video);
     }
 
+    /**
+     * @return Filename|Url
+     */
     public function getVideo(): Filename|Url
     {
         return $this->video;
     }
 
+    /**
+     * @param Filename|Url $video
+     *
+     * @return InputStoryContentVideo
+     */
     public function setVideo(Filename|Url $video): InputStoryContentVideo
     {
         $this->video = $video;
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getCoverFrameTimestamp(): float|null
     {
         return $this->cover_frame_timestamp;
     }
 
+    /**
+     * @param float|null $cover_frame_timestamp
+     *
+     * @return InputStoryContentVideo
+     */
     public function setCoverFrameTimestamp(float|null $cover_frame_timestamp): InputStoryContentVideo
     {
         $this->cover_frame_timestamp = $cover_frame_timestamp;
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getDuration(): float|null
     {
         return $this->duration;
     }
 
+    /**
+     * @param float|null $duration
+     *
+     * @return InputStoryContentVideo
+     */
     public function setDuration(float|null $duration): InputStoryContentVideo
     {
         $this->duration = $duration;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsAnimation(): bool|null
     {
         return $this->is_animation;
     }
 
+    /**
+     * @param bool|null $is_animation
+     *
+     * @return InputStoryContentVideo
+     */
     public function setIsAnimation(bool|null $is_animation): InputStoryContentVideo
     {
         $this->is_animation = $is_animation;
@@ -85,11 +117,13 @@ class InputStoryContentVideo extends AbstractInputStoryContent
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
-            'video' => $this->video instanceof Url ? $this->video->getUrl() : $this->video,
+            'video' => ($this->video instanceof Url)
+                ? $this->video->getUrl()
+                : $this->video,
             'cover_frame_timestamp' => $this->cover_frame_timestamp,
             'duration' => $this->duration,
             'is_animation' => $this->is_animation,
+            'type' => $this->type->value,
         ];
     }
 }

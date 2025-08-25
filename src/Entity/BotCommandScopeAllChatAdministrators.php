@@ -9,6 +9,8 @@ use stdClass;
 
 /**
  * Represents the scope of bot commands, covering all group and supergroup chat administrators.
+ *
+ * @see https://core.telegram.org/bots/api#botcommandscope scope
  * @link https://core.telegram.org/bots/api#botcommandscopeallchatadministrators
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::AllChatAdministrators))]

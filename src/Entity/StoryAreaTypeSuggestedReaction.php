@@ -30,33 +30,57 @@ class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
         parent::__construct(StoryAreaTypeTypeEnum::SuggestedReaction);
     }
 
+    /**
+     * @return AbstractReactionType
+     */
     public function getReactionType(): AbstractReactionType
     {
         return $this->reaction_type;
     }
 
+    /**
+     * @param AbstractReactionType $reaction_type
+     *
+     * @return StoryAreaTypeSuggestedReaction
+     */
     public function setReactionType(AbstractReactionType $reaction_type): StoryAreaTypeSuggestedReaction
     {
         $this->reaction_type = $reaction_type;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsDark(): bool|null
     {
         return $this->is_dark;
     }
 
+    /**
+     * @param bool|null $is_dark
+     *
+     * @return StoryAreaTypeSuggestedReaction
+     */
     public function setIsDark(bool|null $is_dark): StoryAreaTypeSuggestedReaction
     {
         $this->is_dark = $is_dark;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsFlipped(): bool|null
     {
         return $this->is_flipped;
     }
 
+    /**
+     * @param bool|null $is_flipped
+     *
+     * @return StoryAreaTypeSuggestedReaction
+     */
     public function setIsFlipped(bool|null $is_flipped): StoryAreaTypeSuggestedReaction
     {
         $this->is_flipped = $is_flipped;
@@ -66,10 +90,10 @@ class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'reaction_type' => $this->reaction_type->toArray(),
             'is_dark' => $this->is_dark,
             'is_flipped' => $this->is_flipped,
+            'type' => $this->type->value,
         ];
     }
 }

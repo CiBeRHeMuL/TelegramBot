@@ -10,6 +10,7 @@ use stdClass;
 
 /**
  * The withdrawal succeeded.
+ *
  * @link https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Succeeded->value))]
@@ -26,22 +27,38 @@ class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
         parent::__construct(RevenueWithdrawalStateTypeEnum::Succeeded);
     }
 
+    /**
+     * @return int
+     */
     public function getDate(): int
     {
         return $this->date;
     }
 
+    /**
+     * @param int $date
+     *
+     * @return RevenueWithdrawalStateSucceeded
+     */
     public function setDate(int $date): RevenueWithdrawalStateSucceeded
     {
         $this->date = $date;
         return $this;
     }
 
+    /**
+     * @return Url
+     */
     public function getUrl(): Url
     {
         return $this->url;
     }
 
+    /**
+     * @param Url $url
+     *
+     * @return RevenueWithdrawalStateSucceeded
+     */
     public function setUrl(Url $url): RevenueWithdrawalStateSucceeded
     {
         $this->url = $url;
@@ -51,9 +68,9 @@ class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'date' => $this->date,
             'url' => $this->url->getUrl(),
+            'type' => $this->type->value,
         ];
     }
 }

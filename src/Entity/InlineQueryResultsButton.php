@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
+ *
  * @link https://core.telegram.org/bots/api#inlinequeryresultsbutton
  */
 class InlineQueryResultsButton extends AbstractEntity
@@ -21,6 +22,12 @@ class InlineQueryResultsButton extends AbstractEntity
      * capabilities.
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to switch back to the inline mode using the method switchInlineQuery inside the Web App.
+     *
+     * @see https://core.telegram.org/bots/api#webappinfo WebAppInfo
+     * @see https://core.telegram.org/bots/webapps Web App
+     * @see https://core.telegram.org/bots/webapps#initializing-mini-apps switchInlineQuery
+     * @see https://core.telegram.org/bots/features#deep-linking Deep-linking
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup switch_inline
      */
     public function __construct(
         protected string $text,
@@ -30,33 +37,57 @@ class InlineQueryResultsButton extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getText(): string
     {
         return $this->text;
     }
 
+    /**
+     * @param string $text
+     *
+     * @return InlineQueryResultsButton
+     */
     public function setText(string $text): InlineQueryResultsButton
     {
         $this->text = $text;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getStartParameter(): string|null
     {
         return $this->start_parameter;
     }
 
+    /**
+     * @param string|null $start_parameter
+     *
+     * @return InlineQueryResultsButton
+     */
     public function setStartParameter(string|null $start_parameter): InlineQueryResultsButton
     {
         $this->start_parameter = $start_parameter;
         return $this;
     }
 
+    /**
+     * @return WebAppInfo|null
+     */
     public function getWebApp(): WebAppInfo|null
     {
         return $this->web_app;
     }
 
+    /**
+     * @param WebAppInfo|null $web_app
+     *
+     * @return InlineQueryResultsButton
+     */
     public function setWebApp(WebAppInfo|null $web_app): InlineQueryResultsButton
     {
         $this->web_app = $web_app;

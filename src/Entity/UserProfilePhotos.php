@@ -7,37 +7,57 @@ use stdClass;
 
 /**
  * This object represent a user's profile pictures.
+ *
  * @link https://core.telegram.org/bots/api#userprofilephotos
  */
 class UserProfilePhotos extends AbstractEntity
 {
     /**
-     * @param int $total_count
-     * @param PhotoSize[][] $photos
+     * @param int $total_count Total number of profile pictures the target user has
+     * @param PhotoSize[][] $photos Requested profile pictures (in up to 4 sizes each)
+     *
+     * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
     public function __construct(
         protected int $total_count,
-        #[ArrayType(new ArrayType(PhotoSize::class))] protected array $photos,
+        #[ArrayType(new ArrayType(PhotoSize::class))]
+        protected array $photos,
     ) {
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getTotalCount(): int
     {
         return $this->total_count;
     }
 
+    /**
+     * @param int $total_count
+     *
+     * @return UserProfilePhotos
+     */
     public function setTotalCount(int $total_count): UserProfilePhotos
     {
         $this->total_count = $total_count;
         return $this;
     }
 
+    /**
+     * @return PhotoSize[][]
+     */
     public function getPhotos(): array
     {
         return $this->photos;
     }
 
+    /**
+     * @param PhotoSize[][] $photos
+     *
+     * @return UserProfilePhotos
+     */
     public function setPhotos(array $photos): UserProfilePhotos
     {
         $this->photos = $photos;
@@ -48,7 +68,13 @@ class UserProfilePhotos extends AbstractEntity
     {
         return [
             'total_count' => $this->total_count,
-            'photos' => array_map(fn(array $ps) => array_map(fn(PhotoSize $p) => $p->toArray(), $ps), $this->photos),
+            'photos' => array_map(
+                fn(array $e) => array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $e,
+                ),
+                $this->photos,
+            ),
         ];
     }
 }

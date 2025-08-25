@@ -9,7 +9,9 @@ use AndrewGos\TelegramBot\Enum\PassportElementErrorTranslationFileTypeEnum;
 use stdClass;
 
 /**
- * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
+ * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved
+ * when the file changes.
+ *
  * @link https://core.telegram.org/bots/api#passportelementerrortranslationfile
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::TranslationFile->value))]
@@ -30,33 +32,57 @@ class PassportElementErrorTranslationFile extends AbstractPassportElementError
         parent::__construct(PassportElementErrorSourceEnum::TranslationFile);
     }
 
+    /**
+     * @return PassportElementErrorTranslationFileTypeEnum
+     */
     public function getType(): PassportElementErrorTranslationFileTypeEnum
     {
         return $this->type;
     }
 
+    /**
+     * @param PassportElementErrorTranslationFileTypeEnum $type
+     *
+     * @return PassportElementErrorTranslationFile
+     */
     public function setType(PassportElementErrorTranslationFileTypeEnum $type): PassportElementErrorTranslationFile
     {
         $this->type = $type;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getFileHash(): string
     {
         return $this->file_hash;
     }
 
+    /**
+     * @param string $file_hash
+     *
+     * @return PassportElementErrorTranslationFile
+     */
     public function setFileHash(string $file_hash): PassportElementErrorTranslationFile
     {
         $this->file_hash = $file_hash;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getMessage(): string
     {
         return $this->message;
     }
 
+    /**
+     * @param string $message
+     *
+     * @return PassportElementErrorTranslationFile
+     */
     public function setMessage(string $message): PassportElementErrorTranslationFile
     {
         $this->message = $message;
@@ -66,10 +92,10 @@ class PassportElementErrorTranslationFile extends AbstractPassportElementError
     public function toArray(): array|stdClass
     {
         return [
-            'source' => $this->source->value,
             'type' => $this->type->value,
             'file_hash' => $this->file_hash,
             'message' => $this->message,
+            'source' => $this->source->value,
         ];
     }
 }

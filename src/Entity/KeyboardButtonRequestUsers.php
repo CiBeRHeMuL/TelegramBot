@@ -2,19 +2,19 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use AndrewGos\TelegramBot\ValueObject\RequestId;
 use stdClass;
 
 /**
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with
- * the bot when the corresponding button is pressed.
- * @link https://core.telegram.org/bots/features#chat-and-user-selection More about requesting users
+ * the bot when the corresponding button is pressed. More about requesting users Â»
+ *
+ * @see /bots/features#chat-and-user-selection More about requesting users Â»
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  */
 class KeyboardButtonRequestUsers extends AbstractEntity
 {
     /**
-     * @param RequestId $request_id Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must
+     * @param int $request_id Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must
      * be unique within the message
      * @param int|null $max_quantity Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
      * @param bool|null $request_name Optional. Pass True to request the users' first and last names
@@ -24,9 +24,11 @@ class KeyboardButtonRequestUsers extends AbstractEntity
      * no additional restrictions are applied.
      * @param bool|null $user_is_premium Optional. Pass True to request premium users, pass False to request non-premium users. If
      * not specified, no additional restrictions are applied.
+     *
+     * @see https://core.telegram.org/bots/api#usersshared UsersShared
      */
     public function __construct(
-        protected RequestId $request_id,
+        protected int $request_id,
         protected int|null $max_quantity = null,
         protected bool|null $request_name = null,
         protected bool|null $request_photo = null,
@@ -37,77 +39,133 @@ class KeyboardButtonRequestUsers extends AbstractEntity
         parent::__construct();
     }
 
-    public function getRequestId(): RequestId
+    /**
+     * @return int
+     */
+    public function getRequestId(): int
     {
         return $this->request_id;
     }
 
-    public function setRequestId(RequestId $request_id): KeyboardButtonRequestUsers
+    /**
+     * @param int $request_id
+     *
+     * @return KeyboardButtonRequestUsers
+     */
+    public function setRequestId(int $request_id): KeyboardButtonRequestUsers
     {
         $this->request_id = $request_id;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getMaxQuantity(): int|null
     {
         return $this->max_quantity;
     }
 
+    /**
+     * @param int|null $max_quantity
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setMaxQuantity(int|null $max_quantity): KeyboardButtonRequestUsers
     {
         $this->max_quantity = $max_quantity;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestName(): bool|null
     {
         return $this->request_name;
     }
 
+    /**
+     * @param bool|null $request_name
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setRequestName(bool|null $request_name): KeyboardButtonRequestUsers
     {
         $this->request_name = $request_name;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestPhoto(): bool|null
     {
         return $this->request_photo;
     }
 
+    /**
+     * @param bool|null $request_photo
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setRequestPhoto(bool|null $request_photo): KeyboardButtonRequestUsers
     {
         $this->request_photo = $request_photo;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getRequestUsername(): bool|null
     {
         return $this->request_username;
     }
 
+    /**
+     * @param bool|null $request_username
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setRequestUsername(bool|null $request_username): KeyboardButtonRequestUsers
     {
         $this->request_username = $request_username;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getUserIsBot(): bool|null
     {
         return $this->user_is_bot;
     }
 
+    /**
+     * @param bool|null $user_is_bot
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setUserIsBot(bool|null $user_is_bot): KeyboardButtonRequestUsers
     {
         $this->user_is_bot = $user_is_bot;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getUserIsPremium(): bool|null
     {
         return $this->user_is_premium;
     }
 
+    /**
+     * @param bool|null $user_is_premium
+     *
+     * @return KeyboardButtonRequestUsers
+     */
     public function setUserIsPremium(bool|null $user_is_premium): KeyboardButtonRequestUsers
     {
         $this->user_is_premium = $user_is_premium;
@@ -117,7 +175,7 @@ class KeyboardButtonRequestUsers extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'request_id' => $this->request_id->getId(),
+            'request_id' => $this->request_id,
             'max_quantity' => $this->max_quantity,
             'request_name' => $this->request_name,
             'request_photo' => $this->request_photo,

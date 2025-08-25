@@ -26,33 +26,57 @@ class UniqueGiftBackdrop extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return UniqueGiftBackdrop
+     */
     public function setName(string $name): UniqueGiftBackdrop
     {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * @return UniqueGiftBackdropColors
+     */
     public function getColors(): UniqueGiftBackdropColors
     {
         return $this->colors;
     }
 
+    /**
+     * @param UniqueGiftBackdropColors $colors
+     *
+     * @return UniqueGiftBackdrop
+     */
     public function setColors(UniqueGiftBackdropColors $colors): UniqueGiftBackdrop
     {
         $this->colors = $colors;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getRarityPerMille(): int
     {
         return $this->rarity_per_mille;
     }
 
+    /**
+     * @param int $rarity_per_mille
+     *
+     * @return UniqueGiftBackdrop
+     */
     public function setRarityPerMille(int $rarity_per_mille): UniqueGiftBackdrop
     {
         $this->rarity_per_mille = $rarity_per_mille;

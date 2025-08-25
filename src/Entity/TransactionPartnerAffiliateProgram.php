@@ -29,22 +29,38 @@ class TransactionPartnerAffiliateProgram extends AbstractTransactionPartner
         parent::__construct(TransactionPartnerTypeEnum::AffiliateProgram);
     }
 
+    /**
+     * @return int
+     */
     public function getCommissionPerMille(): int
     {
         return $this->commission_per_mille;
     }
 
+    /**
+     * @param int $commission_per_mille
+     *
+     * @return TransactionPartnerAffiliateProgram
+     */
     public function setCommissionPerMille(int $commission_per_mille): TransactionPartnerAffiliateProgram
     {
         $this->commission_per_mille = $commission_per_mille;
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getSponsorUser(): User|null
     {
         return $this->sponsor_user;
     }
 
+    /**
+     * @param User|null $sponsor_user
+     *
+     * @return TransactionPartnerAffiliateProgram
+     */
     public function setSponsorUser(User|null $sponsor_user): TransactionPartnerAffiliateProgram
     {
         $this->sponsor_user = $sponsor_user;
@@ -54,9 +70,9 @@ class TransactionPartnerAffiliateProgram extends AbstractTransactionPartner
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'commission_per_mille' => $this->commission_per_mille,
             'sponsor_user' => $this->sponsor_user?->toArray(),
+            'type' => $this->type->value,
         ];
     }
 }

@@ -53,154 +53,266 @@ class BusinessBotRights extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanChangeGiftSettings(): bool|null
     {
         return $this->can_change_gift_settings;
     }
 
+    /**
+     * @param bool|null $can_change_gift_settings
+     *
+     * @return BusinessBotRights
+     */
     public function setCanChangeGiftSettings(bool|null $can_change_gift_settings): BusinessBotRights
     {
         $this->can_change_gift_settings = $can_change_gift_settings;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanConvertGiftsToStars(): bool|null
     {
         return $this->can_convert_gifts_to_stars;
     }
 
+    /**
+     * @param bool|null $can_convert_gifts_to_stars
+     *
+     * @return BusinessBotRights
+     */
     public function setCanConvertGiftsToStars(bool|null $can_convert_gifts_to_stars): BusinessBotRights
     {
         $this->can_convert_gifts_to_stars = $can_convert_gifts_to_stars;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanDeleteAllMessages(): bool|null
     {
         return $this->can_delete_all_messages;
     }
 
+    /**
+     * @param bool|null $can_delete_all_messages
+     *
+     * @return BusinessBotRights
+     */
     public function setCanDeleteAllMessages(bool|null $can_delete_all_messages): BusinessBotRights
     {
         $this->can_delete_all_messages = $can_delete_all_messages;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanDeleteSentMessages(): bool|null
     {
         return $this->can_delete_sent_messages;
     }
 
+    /**
+     * @param bool|null $can_delete_sent_messages
+     *
+     * @return BusinessBotRights
+     */
     public function setCanDeleteSentMessages(bool|null $can_delete_sent_messages): BusinessBotRights
     {
         $this->can_delete_sent_messages = $can_delete_sent_messages;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanEditBio(): bool|null
     {
         return $this->can_edit_bio;
     }
 
+    /**
+     * @param bool|null $can_edit_bio
+     *
+     * @return BusinessBotRights
+     */
     public function setCanEditBio(bool|null $can_edit_bio): BusinessBotRights
     {
         $this->can_edit_bio = $can_edit_bio;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanEditName(): bool|null
     {
         return $this->can_edit_name;
     }
 
+    /**
+     * @param bool|null $can_edit_name
+     *
+     * @return BusinessBotRights
+     */
     public function setCanEditName(bool|null $can_edit_name): BusinessBotRights
     {
         $this->can_edit_name = $can_edit_name;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanEditProfilePhoto(): bool|null
     {
         return $this->can_edit_profile_photo;
     }
 
+    /**
+     * @param bool|null $can_edit_profile_photo
+     *
+     * @return BusinessBotRights
+     */
     public function setCanEditProfilePhoto(bool|null $can_edit_profile_photo): BusinessBotRights
     {
         $this->can_edit_profile_photo = $can_edit_profile_photo;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanEditUsername(): bool|null
     {
         return $this->can_edit_username;
     }
 
+    /**
+     * @param bool|null $can_edit_username
+     *
+     * @return BusinessBotRights
+     */
     public function setCanEditUsername(bool|null $can_edit_username): BusinessBotRights
     {
         $this->can_edit_username = $can_edit_username;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanManageStories(): bool|null
     {
         return $this->can_manage_stories;
     }
 
+    /**
+     * @param bool|null $can_manage_stories
+     *
+     * @return BusinessBotRights
+     */
     public function setCanManageStories(bool|null $can_manage_stories): BusinessBotRights
     {
         $this->can_manage_stories = $can_manage_stories;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanReadMessages(): bool|null
     {
         return $this->can_read_messages;
     }
 
+    /**
+     * @param bool|null $can_read_messages
+     *
+     * @return BusinessBotRights
+     */
     public function setCanReadMessages(bool|null $can_read_messages): BusinessBotRights
     {
         $this->can_read_messages = $can_read_messages;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanReply(): bool|null
     {
         return $this->can_reply;
     }
 
+    /**
+     * @param bool|null $can_reply
+     *
+     * @return BusinessBotRights
+     */
     public function setCanReply(bool|null $can_reply): BusinessBotRights
     {
         $this->can_reply = $can_reply;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanTransferAndUpgradeGifts(): bool|null
     {
         return $this->can_transfer_and_upgrade_gifts;
     }
 
+    /**
+     * @param bool|null $can_transfer_and_upgrade_gifts
+     *
+     * @return BusinessBotRights
+     */
     public function setCanTransferAndUpgradeGifts(bool|null $can_transfer_and_upgrade_gifts): BusinessBotRights
     {
         $this->can_transfer_and_upgrade_gifts = $can_transfer_and_upgrade_gifts;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanTransferStars(): bool|null
     {
         return $this->can_transfer_stars;
     }
 
+    /**
+     * @param bool|null $can_transfer_stars
+     *
+     * @return BusinessBotRights
+     */
     public function setCanTransferStars(bool|null $can_transfer_stars): BusinessBotRights
     {
         $this->can_transfer_stars = $can_transfer_stars;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getCanViewGiftsAndStars(): bool|null
     {
         return $this->can_view_gifts_and_stars;
     }
 
+    /**
+     * @param bool|null $can_view_gifts_and_stars
+     *
+     * @return BusinessBotRights
+     */
     public function setCanViewGiftsAndStars(bool|null $can_view_gifts_and_stars): BusinessBotRights
     {
         $this->can_view_gifts_and_stars = $can_view_gifts_and_stars;

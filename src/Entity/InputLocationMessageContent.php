@@ -10,6 +10,8 @@ use stdClass;
 
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
+ *
+ * @see https://core.telegram.org/bots/api#inputmessagecontent content
  * @link https://core.telegram.org/bots/api#inputlocationmessagecontent
  */
 #[BuildIf(new AndChecker([
@@ -41,66 +43,114 @@ class InputLocationMessageContent extends AbstractInputMessageContent
         parent::__construct();
     }
 
+    /**
+     * @return float
+     */
     public function getLatitude(): float
     {
         return $this->latitude;
     }
 
+    /**
+     * @param float $latitude
+     *
+     * @return InputLocationMessageContent
+     */
     public function setLatitude(float $latitude): InputLocationMessageContent
     {
         $this->latitude = $latitude;
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getLongitude(): float
     {
         return $this->longitude;
     }
 
+    /**
+     * @param float $longitude
+     *
+     * @return InputLocationMessageContent
+     */
     public function setLongitude(float $longitude): InputLocationMessageContent
     {
         $this->longitude = $longitude;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getHeading(): int|null
     {
         return $this->heading;
     }
 
+    /**
+     * @param int|null $heading
+     *
+     * @return InputLocationMessageContent
+     */
     public function setHeading(int|null $heading): InputLocationMessageContent
     {
         $this->heading = $heading;
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getHorizontalAccuracy(): float|null
     {
         return $this->horizontal_accuracy;
     }
 
+    /**
+     * @param float|null $horizontal_accuracy
+     *
+     * @return InputLocationMessageContent
+     */
     public function setHorizontalAccuracy(float|null $horizontal_accuracy): InputLocationMessageContent
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getLivePeriod(): int|null
     {
         return $this->live_period;
     }
 
+    /**
+     * @param int|null $live_period
+     *
+     * @return InputLocationMessageContent
+     */
     public function setLivePeriod(int|null $live_period): InputLocationMessageContent
     {
         $this->live_period = $live_period;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getProximityAlertRadius(): int|null
     {
         return $this->proximity_alert_radius;
     }
 
+    /**
+     * @param int|null $proximity_alert_radius
+     *
+     * @return InputLocationMessageContent
+     */
     public function setProximityAlertRadius(int|null $proximity_alert_radius): InputLocationMessageContent
     {
         $this->proximity_alert_radius = $proximity_alert_radius;

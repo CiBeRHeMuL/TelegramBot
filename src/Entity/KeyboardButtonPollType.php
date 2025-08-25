@@ -7,6 +7,7 @@ use stdClass;
 
 /**
  * This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
+ *
  * @link https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
 class KeyboardButtonPollType extends AbstractEntity
@@ -21,11 +22,19 @@ class KeyboardButtonPollType extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return PollTypeEnum|null
+     */
     public function getType(): PollTypeEnum|null
     {
         return $this->type;
     }
 
+    /**
+     * @param PollTypeEnum|null $type
+     *
+     * @return KeyboardButtonPollType
+     */
     public function setType(PollTypeEnum|null $type): KeyboardButtonPollType
     {
         $this->type = $type;

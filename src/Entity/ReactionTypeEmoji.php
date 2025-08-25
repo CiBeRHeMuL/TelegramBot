@@ -10,13 +10,19 @@ use stdClass;
 
 /**
  * The reaction is based on an emoji.
+ *
  * @link https://core.telegram.org/bots/api#reactiontypeemoji
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::Emoji->value))]
 class ReactionTypeEmoji extends AbstractReactionType
 {
     /**
-     * @param EmojiEnum $emoji Reaction emoji
+     * @param EmojiEnum $emoji Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁",
+     * "🤔", "🤯", "😱", "🤬", "😢", "🎉", "🤩", "🤮", "💩", "🙏", "👌", "🕊", "🤡", "🥱", "🥴", "😍",
+     * "🐳", "❤‍🔥", "🌚", "🌭", "💯", "🤣", "⚡", "🍌", "🏆", "💔", "🤨", "😐", "🍓", "🍾", "💋",
+     * "🖕", "😈", "😴", "😭", "🤓", "👻", "👨‍💻", "👀", "🎃", "🙈", "😇", "😨", "🤝", "✍", "🤗",
+     * "🫡", "🎅", "🎄", "☃", "💅", "🤪", "🗿", "🆒", "💘", "🙉", "🦄", "😘", "💊", "🙊", "😎", "👾",
+     * "🤷‍♂", "🤷", "🤷‍♀", "😡"
      */
     public function __construct(
         protected EmojiEnum $emoji,
@@ -24,11 +30,19 @@ class ReactionTypeEmoji extends AbstractReactionType
         parent::__construct(ReactionTypeEnum::Emoji);
     }
 
+    /**
+     * @return EmojiEnum
+     */
     public function getEmoji(): EmojiEnum
     {
         return $this->emoji;
     }
 
+    /**
+     * @param EmojiEnum $emoji
+     *
+     * @return ReactionTypeEmoji
+     */
     public function setEmoji(EmojiEnum $emoji): ReactionTypeEmoji
     {
         $this->emoji = $emoji;
@@ -38,8 +52,8 @@ class ReactionTypeEmoji extends AbstractReactionType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'emoji' => $this->emoji->value,
+            'type' => $this->type->value,
         ];
     }
 }

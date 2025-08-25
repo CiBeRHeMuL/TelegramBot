@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use stdClass;
 
@@ -28,6 +29,7 @@ class InputChecklistTask extends AbstractEntity
         protected int $id,
         protected string $text,
         protected TelegramParseModeEnum|null $parse_mode = null,
+        #[ArrayType(MessageEntity::class)]
         protected array|null $text_entities = null,
     ) {
         parent::__construct();

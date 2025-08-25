@@ -28,33 +28,57 @@ class OwnedGifts extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function getTotalCount(): int
     {
         return $this->total_count;
     }
 
+    /**
+     * @param int $total_count
+     *
+     * @return OwnedGifts
+     */
     public function setTotalCount(int $total_count): OwnedGifts
     {
         $this->total_count = $total_count;
         return $this;
     }
 
+    /**
+     * @return AbstractOwnedGift[]
+     */
     public function getGifts(): array
     {
         return $this->gifts;
     }
 
+    /**
+     * @param AbstractOwnedGift[] $gifts
+     *
+     * @return OwnedGifts
+     */
     public function setGifts(array $gifts): OwnedGifts
     {
         $this->gifts = $gifts;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNextOffset(): string|null
     {
         return $this->next_offset;
     }
 
+    /**
+     * @param string|null $next_offset
+     *
+     * @return OwnedGifts
+     */
     public function setNextOffset(string|null $next_offset): OwnedGifts
     {
         $this->next_offset = $next_offset;

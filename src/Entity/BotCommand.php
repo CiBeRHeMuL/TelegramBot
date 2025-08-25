@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * This object represents a bot command.
+ *
  * @link https://core.telegram.org/bots/api#botcommand
  */
 class BotCommand extends AbstractEntity
@@ -21,22 +22,38 @@ class BotCommand extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return string
+     */
     public function getCommand(): string
     {
         return $this->command;
     }
 
+    /**
+     * @param string $command
+     *
+     * @return BotCommand
+     */
     public function setCommand(string $command): BotCommand
     {
         $this->command = $command;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
+    /**
+     * @param string $description
+     *
+     * @return BotCommand
+     */
     public function setDescription(string $description): BotCommand
     {
         $this->description = $description;

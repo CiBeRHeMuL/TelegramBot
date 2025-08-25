@@ -9,6 +9,8 @@ use stdClass;
 
 /**
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+ *
+ * @see https://core.telegram.org/bots/api#chatmember chat member
  * @link https://core.telegram.org/bots/api#chatmemberleft
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Left->value))]
@@ -16,6 +18,8 @@ class ChatMemberLeft extends AbstractChatMember
 {
     /**
      * @param User $user Information about the user
+     *
+     * @see https://core.telegram.org/bots/api#user User
      */
     public function __construct(
         protected User $user,
@@ -23,11 +27,19 @@ class ChatMemberLeft extends AbstractChatMember
         parent::__construct(ChatMemberStatusEnum::Left);
     }
 
+    /**
+     * @return User
+     */
     public function getUser(): User
     {
         return $this->user;
     }
 
+    /**
+     * @param User $user
+     *
+     * @return ChatMemberLeft
+     */
     public function setUser(User $user): ChatMemberLeft
     {
         $this->user = $user;
@@ -37,8 +49,8 @@ class ChatMemberLeft extends AbstractChatMember
     public function toArray(): array|stdClass
     {
         return [
-            'status' => $this->status,
             'user' => $this->user->toArray(),
+            'status' => $this->status->value,
         ];
     }
 }

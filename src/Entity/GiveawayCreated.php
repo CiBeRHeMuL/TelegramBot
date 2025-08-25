@@ -6,13 +6,14 @@ use stdClass;
 
 /**
  * This object represents a service message about the creation of a scheduled giveaway.
+ *
  * @link https://core.telegram.org/bots/api#giveawaycreated
  */
 class GiveawayCreated extends AbstractEntity
 {
     /**
-     * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners;
-     * for Telegram Star giveaways only
+     * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram
+     * Star giveaways only
      */
     public function __construct(
         protected int|null $prize_star_count = null,
@@ -20,11 +21,19 @@ class GiveawayCreated extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int|null
+     */
     public function getPrizeStarCount(): int|null
     {
         return $this->prize_star_count;
     }
 
+    /**
+     * @param int|null $prize_star_count
+     *
+     * @return GiveawayCreated
+     */
     public function setPrizeStarCount(int|null $prize_star_count): GiveawayCreated
     {
         $this->prize_star_count = $prize_star_count;

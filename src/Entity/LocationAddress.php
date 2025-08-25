@@ -27,44 +27,76 @@ class LocationAddress extends AbstractEntity
         parent::__construct();
     }
 
-    public function getCountryCode(): string
+    /**
+     * @return CountryCodeEnum
+     */
+    public function getCountryCode(): CountryCodeEnum
     {
         return $this->country_code;
     }
 
-    public function setCountryCode(string $country_code): LocationAddress
+    /**
+     * @param CountryCodeEnum $country_code
+     *
+     * @return LocationAddress
+     */
+    public function setCountryCode(CountryCodeEnum $country_code): LocationAddress
     {
         $this->country_code = $country_code;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getCity(): string|null
     {
         return $this->city;
     }
 
+    /**
+     * @param string|null $city
+     *
+     * @return LocationAddress
+     */
     public function setCity(string|null $city): LocationAddress
     {
         $this->city = $city;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getState(): string|null
     {
         return $this->state;
     }
 
+    /**
+     * @param string|null $state
+     *
+     * @return LocationAddress
+     */
     public function setState(string|null $state): LocationAddress
     {
         $this->state = $state;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getStreet(): string|null
     {
         return $this->street;
     }
 
+    /**
+     * @param string|null $street
+     *
+     * @return LocationAddress
+     */
     public function setStreet(string|null $street): LocationAddress
     {
         $this->street = $street;

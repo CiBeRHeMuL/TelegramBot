@@ -11,6 +11,7 @@ use stdClass;
 
 /**
  * Describes the current status of a webhook.
+ *
  * @link https://core.telegram.org/bots/api#webhookinfo
  */
 class WebhookInfo extends AbstractEntity
@@ -19,8 +20,8 @@ class WebhookInfo extends AbstractEntity
      * @param Url $url Webhook URL, may be empty if webhook is not set up
      * @param bool $has_custom_certificate True, if a custom certificate was provided for webhook certificate checks
      * @param int $pending_update_count Number of updates awaiting delivery
-     * @param UpdateTypeEnum[]|null $allowed_updates Optional. A list of update types the bot is subscribed to. Defaults to all update types
-     * except chat_member
+     * @param UpdateTypeEnum[]|null $allowed_updates Optional. A list of update types the bot is subscribed to. Defaults to all update
+     * types except chat_member
      * @param IpV4|IpV6|null $ip_address Optional. Currently used webhook IP address
      * @param int|null $last_error_date Optional. Unix time for the most recent error that happened when trying to deliver an update
      * via webhook
@@ -35,7 +36,8 @@ class WebhookInfo extends AbstractEntity
         protected Url $url,
         protected bool $has_custom_certificate,
         protected int $pending_update_count,
-        #[ArrayType(UpdateTypeEnum::class)] protected array|null $allowed_updates = null,
+        #[ArrayType(UpdateTypeEnum::class)]
+        protected array|null $allowed_updates = null,
         protected IpV4|IpV6|null $ip_address = null,
         protected int|null $last_error_date = null,
         protected string|null $last_error_message = null,
@@ -45,99 +47,171 @@ class WebhookInfo extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return Url
+     */
     public function getUrl(): Url
     {
         return $this->url;
     }
 
+    /**
+     * @param Url $url
+     *
+     * @return WebhookInfo
+     */
     public function setUrl(Url $url): WebhookInfo
     {
         $this->url = $url;
         return $this;
     }
 
+    /**
+     * @return bool
+     */
     public function getHasCustomCertificate(): bool
     {
         return $this->has_custom_certificate;
     }
 
+    /**
+     * @param bool $has_custom_certificate
+     *
+     * @return WebhookInfo
+     */
     public function setHasCustomCertificate(bool $has_custom_certificate): WebhookInfo
     {
         $this->has_custom_certificate = $has_custom_certificate;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getPendingUpdateCount(): int
     {
         return $this->pending_update_count;
     }
 
+    /**
+     * @param int $pending_update_count
+     *
+     * @return WebhookInfo
+     */
     public function setPendingUpdateCount(int $pending_update_count): WebhookInfo
     {
         $this->pending_update_count = $pending_update_count;
         return $this;
     }
 
+    /**
+     * @return UpdateTypeEnum[]|null
+     */
     public function getAllowedUpdates(): array|null
     {
         return $this->allowed_updates;
     }
 
+    /**
+     * @param UpdateTypeEnum[]|null $allowed_updates
+     *
+     * @return WebhookInfo
+     */
     public function setAllowedUpdates(array|null $allowed_updates): WebhookInfo
     {
         $this->allowed_updates = $allowed_updates;
         return $this;
     }
 
+    /**
+     * @return IpV4|IpV6|null
+     */
     public function getIpAddress(): IpV4|IpV6|null
     {
         return $this->ip_address;
     }
 
+    /**
+     * @param IpV4|IpV6|null $ip_address
+     *
+     * @return WebhookInfo
+     */
     public function setIpAddress(IpV4|IpV6|null $ip_address): WebhookInfo
     {
         $this->ip_address = $ip_address;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getLastErrorDate(): int|null
     {
         return $this->last_error_date;
     }
 
+    /**
+     * @param int|null $last_error_date
+     *
+     * @return WebhookInfo
+     */
     public function setLastErrorDate(int|null $last_error_date): WebhookInfo
     {
         $this->last_error_date = $last_error_date;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastErrorMessage(): string|null
     {
         return $this->last_error_message;
     }
 
+    /**
+     * @param string|null $last_error_message
+     *
+     * @return WebhookInfo
+     */
     public function setLastErrorMessage(string|null $last_error_message): WebhookInfo
     {
         $this->last_error_message = $last_error_message;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getLastSynchronizationErrorDate(): int|null
     {
         return $this->last_synchronization_error_date;
     }
 
+    /**
+     * @param int|null $last_synchronization_error_date
+     *
+     * @return WebhookInfo
+     */
     public function setLastSynchronizationErrorDate(int|null $last_synchronization_error_date): WebhookInfo
     {
         $this->last_synchronization_error_date = $last_synchronization_error_date;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getMaxConnections(): int|null
     {
         return $this->max_connections;
     }
 
+    /**
+     * @param int|null $max_connections
+     *
+     * @return WebhookInfo
+     */
     public function setMaxConnections(int|null $max_connections): WebhookInfo
     {
         $this->max_connections = $max_connections;
@@ -150,8 +224,11 @@ class WebhookInfo extends AbstractEntity
             'url' => $this->url->getUrl(),
             'has_custom_certificate' => $this->has_custom_certificate,
             'pending_update_count' => $this->pending_update_count,
-            'allowed_updates' => $this->allowed_updates
-                ? array_map(fn(UpdateTypeEnum $e) => $e->value, $this->allowed_updates)
+            'allowed_updates' => $this->allowed_updates !== null
+                ? array_map(
+                    fn(UpdateTypeEnum $e) => $e->value,
+                    $this->allowed_updates,
+                )
                 : null,
             'ip_address' => $this->ip_address?->getAddress(),
             'last_error_date' => $this->last_error_date,

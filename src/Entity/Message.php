@@ -69,7 +69,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @param bool|null $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
      * @param Contact|null $contact Optional. Message is a shared contact, information about the contact
      * @param Dice|null $dice Optional. Message is a dice with random value
-     * @param Game|null $game Optional. Message is a game, information about the game. More about games Â»
+     * @param Game|null $game Optional. Message is a game, information about the game. More about games »
      * @param Poll|null $poll Optional. Message is a native poll, information about the poll
      * @param Venue|null $venue Optional. Message is a venue, information about the venue. For backward compatibility, when this
      * field is set, the location field will also be set
@@ -101,13 +101,13 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @param AbstractMaybeInaccessibleMessage|null $pinned_message Optional. Specified message was pinned. Note that the Message
      * object in this field will not contain further reply_to_message fields even if it itself is a reply.
      * @param Invoice|null $invoice Optional. Message is an invoice for a payment, information about the invoice. More about payments
-     * Â»
+     * »
      * @param SuccessfulPayment|null $successful_payment Optional. Message is a service message about a successful payment, information
-     * about the payment. More about payments Â»
+     * about the payment. More about payments »
      * @param UsersShared|null $users_shared Optional. Service message: users were shared with the bot
      * @param ChatShared|null $chat_shared Optional. Service message: a chat was shared with the bot
      * @param string|null $connected_website Optional. The domain name of the website on which the user has logged in. More about
-     * Telegram Login Â»
+     * Telegram Login »
      * @param WriteAccessAllowed|null $write_access_allowed Optional. Service message: the user allowed the bot to write messages
      * after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web
      * App sent by the method requestWriteAccess
@@ -145,7 +145,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
      * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
      * @param RefundedPayment|null $refunded_payment Optional. Message is a service message about a refunded payment, information
-     * about the payment. More about payments Â»
+     * about the payment. More about payments »
      * @param GiftInfo|null $gift Optional. Service message: a regular gift was sent or received
      * @param UniqueGiftInfo|null $unique_gift Optional. Service message: a unique gift was sent or received
      * @param PaidMessagePriceChanged|null $paid_message_price_changed Optional. Service message: the price for paid messages has
@@ -204,7 +204,7 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#contact Contact
      * @see https://core.telegram.org/bots/api#dice Dice
      * @see https://core.telegram.org/bots/api#game Game
-     * @see https://core.telegram.org/bots/api#games More about games Â»
+     * @see https://core.telegram.org/bots/api#games More about games »
      * @see https://core.telegram.org/bots/api#poll Poll
      * @see https://core.telegram.org/bots/api#venue Venue
      * @see https://core.telegram.org/bots/api#location Location
@@ -216,18 +216,18 @@ class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#invoice Invoice
      * @see https://core.telegram.org/bots/api#payments payment
-     * @see https://core.telegram.org/bots/api#payments More about payments Â»
+     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#successfulpayment SuccessfulPayment
-     * @see https://core.telegram.org/bots/api#payments More about payments Â»
+     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#refundedpayment RefundedPayment
-     * @see https://core.telegram.org/bots/api#payments More about payments Â»
+     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#usersshared UsersShared
      * @see https://core.telegram.org/bots/api#chatshared ChatShared
      * @see https://core.telegram.org/bots/api#giftinfo GiftInfo
      * @see https://core.telegram.org/bots/api#uniquegiftinfo UniqueGiftInfo
-     * @see /widgets/login More about Telegram Login Â»
+     * @see https://core.telegram.org/widgets/login More about Telegram Login »
      * @see https://core.telegram.org/bots/api#writeaccessallowed WriteAccessAllowed
-     * @see /bots/webapps#initializing-mini-apps requestWriteAccess
+     * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
      * @see https://core.telegram.org/bots/api#passportdata PassportData
      * @see https://core.telegram.org/bots/api#proximityalerttriggered ProximityAlertTriggered
      * @see https://core.telegram.org/bots/api#chatboostadded ChatBoostAdded
@@ -2331,15 +2331,21 @@ class Message extends AbstractMaybeInaccessibleMessage
             'media_group_id' => $this->media_group_id,
             'author_signature' => $this->author_signature,
             'text' => $this->text,
-            'entities' => $this->entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+            'entities' => $this->entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'link_preview_options' => $this->link_preview_options?->toArray(),
             'animation' => $this->animation?->toArray(),
             'audio' => $this->audio?->toArray(),
             'document' => $this->document?->toArray(),
-            'photo' => $this->photo
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo)
+            'photo' => $this->photo !== null
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->photo,
+                )
                 : null,
             'sticker' => $this->sticker?->toArray(),
             'story' => $this->story?->toArray(),
@@ -2347,8 +2353,11 @@ class Message extends AbstractMaybeInaccessibleMessage
             'video_note' => $this->video_note?->toArray(),
             'voice' => $this->voice?->toArray(),
             'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'has_media_spoiler' => $this->has_media_spoiler,
             'contact' => $this->contact?->toArray(),
@@ -2357,13 +2366,19 @@ class Message extends AbstractMaybeInaccessibleMessage
             'poll' => $this->poll?->toArray(),
             'venue' => $this->venue?->toArray(),
             'location' => $this->location?->toArray(),
-            'new_chat_members' => $this->new_chat_members
-                ? array_map(fn(User $e) => $e->toArray(), $this->new_chat_members)
+            'new_chat_members' => $this->new_chat_members !== null
+                ? array_map(
+                    fn(User $e) => $e->toArray(),
+                    $this->new_chat_members,
+                )
                 : null,
             'left_chat_member' => $this->left_chat_member?->toArray(),
             'new_chat_title' => $this->new_chat_title,
-            'new_chat_photo' => $this->new_chat_photo
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->new_chat_photo)
+            'new_chat_photo' => $this->new_chat_photo !== null
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->new_chat_photo,
+                )
                 : null,
             'delete_chat_photo' => $this->delete_chat_photo,
             'group_chat_created' => $this->group_chat_created,
@@ -2423,6 +2438,7 @@ class Message extends AbstractMaybeInaccessibleMessage
             'suggested_post_declined' => $this->suggested_post_declined?->toArray(),
             'suggested_post_paid' => $this->suggested_post_paid?->toArray(),
             'suggested_post_refunded' => $this->suggested_post_refunded?->toArray(),
+            'date' => $this->date,
         ];
     }
 }

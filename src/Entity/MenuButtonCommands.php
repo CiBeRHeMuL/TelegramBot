@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * Represents a menu button, which opens the bot's list of commands.
+ *
  * @link https://core.telegram.org/bots/api#menubuttoncommands
  */
 #[BuildIf(new FieldIsChecker('type', MenuButtonTypeEnum::Commands->value))]

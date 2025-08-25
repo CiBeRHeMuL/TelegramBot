@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The reaction is based on a custom emoji.
+ *
  * @link https://core.telegram.org/bots/api#reactiontypecustomemoji
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::CustomEmoji->value))]
@@ -23,11 +24,19 @@ class ReactionTypeCustomEmoji extends AbstractReactionType
         parent::__construct(ReactionTypeEnum::CustomEmoji);
     }
 
+    /**
+     * @return string
+     */
     public function getCustomEmojiId(): string
     {
         return $this->custom_emoji_id;
     }
 
+    /**
+     * @param string $custom_emoji_id
+     *
+     * @return ReactionTypeCustomEmoji
+     */
     public function setCustomEmojiId(string $custom_emoji_id): ReactionTypeCustomEmoji
     {
         $this->custom_emoji_id = $custom_emoji_id;
@@ -37,8 +46,8 @@ class ReactionTypeCustomEmoji extends AbstractReactionType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'custom_emoji_id' => $this->custom_emoji_id,
+            'type' => $this->type->value,
         ];
     }
 }

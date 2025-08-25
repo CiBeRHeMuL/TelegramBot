@@ -8,8 +8,9 @@ use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use stdClass;
 
 /**
+ * Represents the scope of bot commands, covering all private chats.
  *
- * Represents the scope of bot commands, covering all provate chats.
+ * @see https://core.telegram.org/bots/api#botcommandscope scope
  * @link https://core.telegram.org/bots/api#botcommandscopeallprivatechats
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::AllPrivateChats))]

@@ -11,6 +11,7 @@ use stdClass;
 /**
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the location.
+ *
  * @link https://core.telegram.org/bots/api#inlinequeryresultlocation
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Location))]
@@ -34,6 +35,10 @@ class InlineQueryResultLocation extends AbstractInlineQueryResult
      * @param int|null $thumbnail_height Optional. Thumbnail height
      * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
      * @param int|null $thumbnail_width Optional. Thumbnail width
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
+     * @see https://core.telegram.org/bots/api#inputmessagecontent InputMessageContent
      */
     public function __construct(
         protected string $id,
@@ -53,143 +58,247 @@ class InlineQueryResultLocation extends AbstractInlineQueryResult
         parent::__construct(InlineQueryResultTypeEnum::Location);
     }
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->id;
     }
 
+    /**
+     * @param string $id
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setId(string $id): InlineQueryResultLocation
     {
         $this->id = $id;
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getLatitude(): float
     {
         return $this->latitude;
     }
 
+    /**
+     * @param float $latitude
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setLatitude(float $latitude): InlineQueryResultLocation
     {
         $this->latitude = $latitude;
         return $this;
     }
 
+    /**
+     * @return float
+     */
     public function getLongitude(): float
     {
         return $this->longitude;
     }
 
+    /**
+     * @param float $longitude
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setLongitude(float $longitude): InlineQueryResultLocation
     {
         $this->longitude = $longitude;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setTitle(string $title): InlineQueryResultLocation
     {
         $this->title = $title;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getHeading(): int|null
     {
         return $this->heading;
     }
 
+    /**
+     * @param int|null $heading
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setHeading(int|null $heading): InlineQueryResultLocation
     {
         $this->heading = $heading;
         return $this;
     }
 
+    /**
+     * @return float|null
+     */
     public function getHorizontalAccuracy(): float|null
     {
         return $this->horizontal_accuracy;
     }
 
+    /**
+     * @param float|null $horizontal_accuracy
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setHorizontalAccuracy(float|null $horizontal_accuracy): InlineQueryResultLocation
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
     }
 
+    /**
+     * @return AbstractInputMessageContent|null
+     */
     public function getInputMessageContent(): AbstractInputMessageContent|null
     {
         return $this->input_message_content;
     }
 
+    /**
+     * @param AbstractInputMessageContent|null $input_message_content
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultLocation
     {
         $this->input_message_content = $input_message_content;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getLivePeriod(): int|null
     {
         return $this->live_period;
     }
 
+    /**
+     * @param int|null $live_period
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setLivePeriod(int|null $live_period): InlineQueryResultLocation
     {
         $this->live_period = $live_period;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getProximityAlertRadius(): int|null
     {
         return $this->proximity_alert_radius;
     }
 
+    /**
+     * @param int|null $proximity_alert_radius
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setProximityAlertRadius(int|null $proximity_alert_radius): InlineQueryResultLocation
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
     }
 
+    /**
+     * @return InlineKeyboardMarkup|null
+     */
     public function getReplyMarkup(): InlineKeyboardMarkup|null
     {
         return $this->reply_markup;
     }
 
+    /**
+     * @param InlineKeyboardMarkup|null $reply_markup
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultLocation
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getThumbnailHeight(): int|null
     {
         return $this->thumbnail_height;
     }
 
+    /**
+     * @param int|null $thumbnail_height
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultLocation
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
     }
 
+    /**
+     * @return Url|null
+     */
     public function getThumbnailUrl(): Url|null
     {
         return $this->thumbnail_url;
     }
 
+    /**
+     * @param Url|null $thumbnail_url
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultLocation
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getThumbnailWidth(): int|null
     {
         return $this->thumbnail_width;
     }
 
+    /**
+     * @param int|null $thumbnail_width
+     *
+     * @return InlineQueryResultLocation
+     */
     public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultLocation
     {
         $this->thumbnail_width = $thumbnail_width;
@@ -199,7 +308,6 @@ class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'id' => $this->id,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
@@ -213,6 +321,7 @@ class InlineQueryResultLocation extends AbstractInlineQueryResult
             'thumbnail_height' => $this->thumbnail_height,
             'thumbnail_url' => $this->thumbnail_url?->getUrl(),
             'thumbnail_width' => $this->thumbnail_width,
+            'type' => $this->type->value,
         ];
     }
 }

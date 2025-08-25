@@ -10,6 +10,9 @@ use stdClass;
 /**
  * Represents the default scope of bot commands. Default commands are used if no commands with a narrower scope are specified
  * for the user.
+ *
+ * @see https://core.telegram.org/bots/api#botcommandscope scope
+ * @see https://core.telegram.org/bots/api#determining-list-of-commands narrower scope
  * @link https://core.telegram.org/bots/api#botcommandscopedefault
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::Default))]

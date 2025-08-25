@@ -6,6 +6,7 @@ use stdClass;
 
 /**
  * Describes why a request was unsuccessful.
+ *
  * @link https://core.telegram.org/bots/api#responseparameters
  */
 class ResponseParameters extends AbstractEntity
@@ -25,22 +26,38 @@ class ResponseParameters extends AbstractEntity
         parent::__construct();
     }
 
+    /**
+     * @return int|null
+     */
     public function getMigrateToChatId(): int|null
     {
         return $this->migrate_to_chat_id;
     }
 
+    /**
+     * @param int|null $migrate_to_chat_id
+     *
+     * @return ResponseParameters
+     */
     public function setMigrateToChatId(int|null $migrate_to_chat_id): ResponseParameters
     {
         $this->migrate_to_chat_id = $migrate_to_chat_id;
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getRetryAfter(): int|null
     {
         return $this->retry_after;
     }
 
+    /**
+     * @param int|null $retry_after
+     *
+     * @return ResponseParameters
+     */
     public function setRetryAfter(int|null $retry_after): ResponseParameters
     {
         $this->retry_after = $retry_after;

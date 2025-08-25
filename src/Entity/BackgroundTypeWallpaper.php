@@ -9,6 +9,7 @@ use stdClass;
 
 /**
  * The background is a wallpaper in the JPEG format.
+ *
  * @link https://core.telegram.org/bots/api#backgroundtypewallpaper
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Wallpaper->value))]
@@ -20,6 +21,8 @@ class BackgroundTypeWallpaper extends AbstractBackgroundType
      * @param bool|null $is_blurred Optional. True, if the wallpaper is downscaled to fit in a 450x450 square and then box-blurred
      * with radius 12
      * @param bool|null $is_moving Optional. True, if the background moves slightly when the device is tilted
+     *
+     * @see https://core.telegram.org/bots/api#document Document
      */
     public function __construct(
         protected Document $document,
@@ -30,44 +33,76 @@ class BackgroundTypeWallpaper extends AbstractBackgroundType
         parent::__construct(BackgroundTypeTypeEnum::Wallpaper);
     }
 
+    /**
+     * @return Document
+     */
     public function getDocument(): Document
     {
         return $this->document;
     }
 
+    /**
+     * @param Document $document
+     *
+     * @return BackgroundTypeWallpaper
+     */
     public function setDocument(Document $document): BackgroundTypeWallpaper
     {
         $this->document = $document;
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function getDarkThemeDimming(): int
     {
         return $this->dark_theme_dimming;
     }
 
+    /**
+     * @param int $dark_theme_dimming
+     *
+     * @return BackgroundTypeWallpaper
+     */
     public function setDarkThemeDimming(int $dark_theme_dimming): BackgroundTypeWallpaper
     {
         $this->dark_theme_dimming = $dark_theme_dimming;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsBlurred(): bool|null
     {
         return $this->is_blurred;
     }
 
+    /**
+     * @param bool|null $is_blurred
+     *
+     * @return BackgroundTypeWallpaper
+     */
     public function setIsBlurred(bool|null $is_blurred): BackgroundTypeWallpaper
     {
         $this->is_blurred = $is_blurred;
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getIsMoving(): bool|null
     {
         return $this->is_moving;
     }
 
+    /**
+     * @param bool|null $is_moving
+     *
+     * @return BackgroundTypeWallpaper
+     */
     public function setIsMoving(bool|null $is_moving): BackgroundTypeWallpaper
     {
         $this->is_moving = $is_moving;
@@ -77,11 +112,11 @@ class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function toArray(): array|stdClass
     {
         return [
-            'type' => $this->type->value,
             'document' => $this->document->toArray(),
             'dark_theme_dimming' => $this->dark_theme_dimming,
             'is_blurred' => $this->is_blurred,
             'is_moving' => $this->is_moving,
+            'type' => $this->type->value,
         ];
     }
 }

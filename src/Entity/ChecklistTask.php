@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use stdClass;
 
 /**
@@ -27,6 +28,7 @@ class ChecklistTask extends AbstractEntity
         protected string $text,
         protected User|null $completed_by_user = null,
         protected int|null $completion_date = null,
+        #[ArrayType(MessageEntity::class)]
         protected array|null $text_entities = null,
     ) {
         parent::__construct();

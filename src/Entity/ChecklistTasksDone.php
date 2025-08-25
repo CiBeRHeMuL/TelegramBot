@@ -19,6 +19,7 @@ class ChecklistTasksDone extends AbstractEntity
      * @param int[]|null $marked_as_not_done_task_ids Optional. Identifiers of the tasks that were marked as not done
      *
      * @see https://core.telegram.org/bots/api#message Message
+     * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
         protected Message|null $checklist_message = null,
@@ -91,12 +92,8 @@ class ChecklistTasksDone extends AbstractEntity
     {
         return [
             'checklist_message' => $this->checklist_message?->toArray(),
-            'marked_as_done_task_ids' => $this->marked_as_done_task_ids
-                ? array_map(fn(int $e) => $e->toArray(), $this->marked_as_done_task_ids)
-                : null,
-            'marked_as_not_done_task_ids' => $this->marked_as_not_done_task_ids
-                ? array_map(fn(int $e) => $e->toArray(), $this->marked_as_not_done_task_ids)
-                : null,
+            'marked_as_done_task_ids' => $this->marked_as_done_task_ids,
+            'marked_as_not_done_task_ids' => $this->marked_as_not_done_task_ids,
         ];
     }
 }
