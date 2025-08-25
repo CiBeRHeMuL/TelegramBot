@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#deleteforumtopic
+ */
 class DeleteForumTopicRequest implements RequestInterface
 {
     /**

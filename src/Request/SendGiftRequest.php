@@ -2,11 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
-use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendgift
+ */
 class SendGiftRequest implements RequestInterface
 {
     /**
@@ -23,13 +25,15 @@ class SendGiftRequest implements RequestInterface
      * details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji”
      * are ignored.
      * @param int|null $user_id Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
+     *
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
     public function __construct(
         private string $gift_id,
         private ChatId|null $chat_id = null,
         private bool|null $pay_for_upgrade = null,
         private string|null $text = null,
-        #[ArrayType(MessageEntity::class)]
         private array|null $text_entities = null,
         private TelegramParseModeEnum|null $text_parse_mode = null,
         private int|null $user_id = null,
@@ -120,7 +124,7 @@ class SendGiftRequest implements RequestInterface
             'chat_id' => $this->chat_id?->getId(),
             'pay_for_upgrade' => $this->pay_for_upgrade,
             'text' => $this->text,
-            'text_entities' => $this->text_entities !== null
+            'text_entities' => $this->text_entities
                 ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
                 : null,
             'text_parse_mode' => $this->text_parse_mode?->value,

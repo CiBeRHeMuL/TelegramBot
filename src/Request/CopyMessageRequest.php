@@ -57,8 +57,8 @@ class CopyMessageRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -256,12 +256,11 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->toArray(),
+            'from_chat_id' => $this->from_chat_id->getId(),
             'message_id' => $this->message_id,
             'message_thread_id' => $this->message_thread_id,
             'caption' => $this->caption,

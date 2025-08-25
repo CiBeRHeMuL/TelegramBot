@@ -2,6 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+/**
+ * @link https://core.telegram.org/bots/api#refundstarpayment
+ */
 class RefundStarPaymentRequest implements RequestInterface
 {
     /**
@@ -35,7 +38,6 @@ class RefundStarPaymentRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
 
     public function toArray(): array
     {

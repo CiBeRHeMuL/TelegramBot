@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#editforumtopic
+ */
 class EditForumTopicRequest implements RequestInterface
 {
     /**
@@ -14,6 +17,8 @@ class EditForumTopicRequest implements RequestInterface
      * be kept
      * @param string|null $name New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be
      * kept
+     *
+     * @see https://core.telegram.org/bots/api#getforumtopiciconstickers getForumTopicIconStickers
      */
     public function __construct(
         private ChatId $chat_id,

@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AbstractInlineQueryResult;
 
+/**
+ * @link https://core.telegram.org/bots/api#savepreparedinlinemessage
+ */
 class SavePreparedInlineMessageRequest implements RequestInterface
 {
     /**
@@ -13,6 +16,8 @@ class SavePreparedInlineMessageRequest implements RequestInterface
      * @param bool|null $allow_channel_chats Pass True if the message can be sent to channel chats
      * @param bool|null $allow_group_chats Pass True if the message can be sent to group and supergroup chats
      * @param bool|null $allow_user_chats Pass True if the message can be sent to private chats with users
+     *
+     * @see https://core.telegram.org/bots/api#inlinequeryresult InlineQueryResult
      */
     public function __construct(
         private AbstractInlineQueryResult $result,

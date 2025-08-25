@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#editmessagelivelocation
+ */
 class EditMessageLiveLocationRequest implements RequestInterface
 {
     /**
@@ -23,8 +26,11 @@ class EditMessageLiveLocationRequest implements RequestInterface
      * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in
      * meters. Must be between 1 and 100000 if specified.
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
-     * of which the message to be edited was sent
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     * be edited was sent
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private float $latitude,

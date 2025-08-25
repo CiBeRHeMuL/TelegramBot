@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractInlineQueryResult;
 use AndrewGos\TelegramBot\Entity\InlineQueryResultsButton;
 
+/**
+ * @link https://core.telegram.org/bots/api#answerinlinequery
+ */
 class AnswerInlineQueryRequest implements RequestInterface
 {
     /**
@@ -18,6 +21,9 @@ class AnswerInlineQueryRequest implements RequestInterface
      * @param string|null $next_offset Pass the offset that a client should send in the next query with the same text to receive
      * more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed
      * 64 bytes.
+     *
+     * @see https://core.telegram.org/bots/api#inlinequeryresult InlineQueryResult
+     * @see https://core.telegram.org/bots/api#inlinequeryresultsbutton InlineQueryResultsButton
      */
     public function __construct(
         private string $inline_query_id,

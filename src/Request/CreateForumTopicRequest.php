@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#createforumtopic
+ */
 class CreateForumTopicRequest implements RequestInterface
 {
     /**
@@ -13,6 +16,8 @@ class CreateForumTopicRequest implements RequestInterface
      * (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
      * @param string|null $icon_custom_emoji_id Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers
      * to get all allowed custom emoji identifiers.
+     *
+     * @see https://core.telegram.org/bots/api#getforumtopiciconstickers getForumTopicIconStickers
      */
     public function __construct(
         private ChatId $chat_id,

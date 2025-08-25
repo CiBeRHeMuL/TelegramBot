@@ -78,25 +78,15 @@ class SendInvoiceRequest implements RequestInterface
      *
      * @see https://t.me/botfather @BotFather
      * @see https://t.me/BotNews/90 Telegram Stars
-     * @see /bots/payments#supported-currencies more on currencies
-     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://core.telegram.org/bots/payments#supported-currencies more on currencies
      * @see https://core.telegram.org/bots/api#labeledprice LabeledPrice
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see /bots/payments/currencies.json currencies.json
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
+     * @see https://core.telegram.org/bots/payments/currencies.json currencies.json
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
      * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
-     * @see /bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -474,7 +464,6 @@ class SendInvoiceRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
@@ -504,9 +493,7 @@ class SendInvoiceRequest implements RequestInterface
             'send_email_to_provider' => $this->send_email_to_provider,
             'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
             'start_parameter' => $this->start_parameter,
-            'suggested_tip_amounts' => $this->suggested_tip_amounts
-                ? array_map(fn(int $e) => $e->toArray(), $this->suggested_tip_amounts)
-                : null,
+            'suggested_tip_amounts' => $this->suggested_tip_amounts,
             'message_effect_id' => $this->message_effect_id,
             'allow_paid_broadcast' => $this->allow_paid_broadcast,
             'direct_messages_topic_id' => $this->direct_messages_topic_id,

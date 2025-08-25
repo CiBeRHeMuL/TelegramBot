@@ -7,6 +7,9 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#editmessagecaption
+ */
 class EditMessageCaptionRequest implements RequestInterface
 {
     /**
@@ -20,9 +23,15 @@ class EditMessageCaptionRequest implements RequestInterface
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message caption. See formatting options for
      * more details.
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard.
-     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
-     * of which the message to be edited was sent
+     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Supported only
+     * for animation, photo and video messages.
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     * be edited was sent
+     *
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private string|null $caption = null,

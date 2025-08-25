@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#stopmessagelivelocation
+ */
 class StopMessageLiveLocationRequest implements RequestInterface
 {
     /**
@@ -14,8 +17,11 @@ class StopMessageLiveLocationRequest implements RequestInterface
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message with live location to
      * stop
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
-     * of which the message to be edited was sent
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     * be edited was sent
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId|null $chat_id = null,

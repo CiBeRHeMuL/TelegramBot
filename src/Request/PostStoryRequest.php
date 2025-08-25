@@ -7,6 +7,9 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\StoryArea;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+/**
+ * @link https://core.telegram.org/bots/api#poststory
+ */
 class PostStoryRequest implements RequestInterface
 {
     /**
@@ -22,6 +25,11 @@ class PostStoryRequest implements RequestInterface
      * details.
      * @param bool|null $post_to_chat_page Pass True to keep the story accessible after it expires
      * @param bool|null $protect_content Pass True if the content of the story must be protected from forwarding and screenshotting
+     *
+     * @see https://core.telegram.org/bots/api#inputstorycontent InputStoryContent
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#storyarea StoryArea
      */
     public function __construct(
         private int $active_period,

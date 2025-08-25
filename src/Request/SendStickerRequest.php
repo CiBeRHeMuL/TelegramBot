@@ -21,7 +21,7 @@ class SendStickerRequest implements RequestInterface
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Filename|Url|string $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP,
-     * .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files Â». Video and animated stickers can't
+     * .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't
      * be sent via an HTTP URL.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
@@ -45,7 +45,7 @@ class SendStickerRequest implements RequestInterface
      * post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files Â»
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
@@ -54,8 +54,8 @@ class SendStickerRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -216,7 +216,6 @@ class SendStickerRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
 
     public function toArray(): array
     {

@@ -57,8 +57,8 @@ class SendMessageRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -243,7 +243,6 @@ class SendMessageRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
 
     public function toArray(): array
     {

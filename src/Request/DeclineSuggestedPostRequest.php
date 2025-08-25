@@ -54,7 +54,6 @@ class DeclineSuggestedPostRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [

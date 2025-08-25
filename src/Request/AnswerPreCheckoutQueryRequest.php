@@ -2,6 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+/**
+ * @link https://core.telegram.org/bots/api#answerprecheckoutquery
+ */
 class AnswerPreCheckoutQueryRequest implements RequestInterface
 {
     /**

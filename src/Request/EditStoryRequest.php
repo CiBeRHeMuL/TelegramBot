@@ -7,6 +7,9 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\StoryArea;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+/**
+ * @link https://core.telegram.org/bots/api#editstory
+ */
 class EditStoryRequest implements RequestInterface
 {
     /**
@@ -19,6 +22,11 @@ class EditStoryRequest implements RequestInterface
      * can be specified instead of parse_mode
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the story caption. See formatting options for more
      * details.
+     *
+     * @see https://core.telegram.org/bots/api#inputstorycontent InputStoryContent
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#storyarea StoryArea
      */
     public function __construct(
         private string $business_connection_id,

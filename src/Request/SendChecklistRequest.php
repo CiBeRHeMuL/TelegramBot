@@ -7,6 +7,9 @@ use AndrewGos\TelegramBot\Entity\InputChecklist;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendchecklist
+ */
 class SendChecklistRequest implements RequestInterface
 {
     /**
@@ -19,6 +22,10 @@ class SendChecklistRequest implements RequestInterface
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard
      * @param ReplyParameters|null $reply_parameters A JSON-serialized object for description of the message to reply to
+     *
+     * @see https://core.telegram.org/bots/api#inputchecklist InputChecklist
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      */
     public function __construct(
         private string $business_connection_id,

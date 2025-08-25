@@ -5,11 +5,17 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractBotCommandScope;
 use AndrewGos\TelegramBot\ValueObject\Language;
 
+/**
+ * @link https://core.telegram.org/bots/api#getmycommands
+ */
 class GetMyCommandsRequest implements RequestInterface
 {
     /**
      * @param Language|null $language_code A two-letter ISO 639-1 language code or an empty string
      * @param AbstractBotCommandScope|null $scope A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault.
+     *
+     * @see https://core.telegram.org/bots/api#botcommandscope BotCommandScope
+     * @see https://core.telegram.org/bots/api#botcommandscopedefault BotCommandScopeDefault
      */
     public function __construct(
         private Language|null $language_code = null,

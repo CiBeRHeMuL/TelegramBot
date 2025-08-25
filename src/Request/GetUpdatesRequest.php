@@ -4,14 +4,17 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
+/**
+ * @link https://core.telegram.org/bots/api#getupdates
+ */
 class GetUpdatesRequest implements RequestInterface
 {
     /**
-     * @param UpdateTypeEnum[]|null $allowed_updates A JSON-serialized list of the update types you want your bot to receive. For example,
-     * specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See Update for a complete
-     * list of available update types. Specify an empty list to receive all update types except chat_member, message_reaction, and
-     * message_reaction_count (default). If not specified, the previous setting will be used.Please note that this parameter doesn't
-     * affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.
+     * @param UpdateTypeEnum[]|null $allowed_updates A JSON-serialized list of the update types you want your bot to receive. For
+     * example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See Update for
+     * a complete list of available update types. Specify an empty list to receive all update types except chat_member, message_reaction,
+     * and message_reaction_count (default). If not specified, the previous setting will be used.Please note that this parameter
+     * doesn't affect updates created before the call to getUpdates, so unwanted updates may be received for a short period of time.
      * @param int|null $limit Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
      * @param int|null $offset Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers
      * of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update
@@ -20,6 +23,9 @@ class GetUpdatesRequest implements RequestInterface
      * be forgotten.
      * @param int|null $timeout Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive,
      * short polling should be used for testing purposes only.
+     *
+     * @see https://core.telegram.org/bots/api#getupdates getUpdates
+     * @see https://core.telegram.org/bots/api#update Update
      */
     public function __construct(
         private array|null $allowed_updates = null,
@@ -76,8 +82,11 @@ class GetUpdatesRequest implements RequestInterface
     public function toArray(): array
     {
         return [
-            'allowed_updates' => $this->allowed_updates
-                ? array_map(fn(UpdateTypeEnum $e) => $e->value, $this->allowed_updates)
+            'allowed_updates' => $this->allowed_updates !== null
+                ? array_map(
+                    fn(UpdateTypeEnum $e) => $e->value,
+                    $this->allowed_updates,
+                )
                 : null,
             'limit' => $this->limit,
             'offset' => $this->offset,

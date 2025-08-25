@@ -6,6 +6,9 @@ use AndrewGos\TelegramBot\Enum\StickerFormatEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+/**
+ * @link https://core.telegram.org/bots/api#uploadstickerfile
+ */
 class UploadStickerFileRequest implements RequestInterface
 {
     /**
@@ -13,6 +16,10 @@ class UploadStickerFileRequest implements RequestInterface
      * for technical requirements. More information on Sending Files »
      * @param StickerFormatEnum $sticker_format Format of the sticker, must be one of “static”, “animated”, “video”
      * @param int $user_id User identifier of sticker file owner
+     *
+     * @see https://core.telegram.org/bots/api#inputfile InputFile
+     * @see https://core.telegram.org/stickers https://core.telegram.org/stickers
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
     public function __construct(
         private Filename|Url $sticker,

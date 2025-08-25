@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
 
+/**
+ * @link https://core.telegram.org/bots/api#getmyshortdescription
+ */
 class GetMyShortDescriptionRequest implements RequestInterface
 {
     /**

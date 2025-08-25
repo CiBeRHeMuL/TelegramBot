@@ -61,8 +61,8 @@ class SendPaidMediaRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -272,12 +272,11 @@ class SendPaidMediaRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'media' => array_map(fn(InputPaidMedia $e) => $e->toArray(), $this->media),
+            'media' => array_map(fn(AbstractInputPaidMedia $e) => $e->toArray(), $this->media),
             'star_count' => $this->star_count,
             'caption' => $this->caption,
             'caption_entities' => $this->caption_entities

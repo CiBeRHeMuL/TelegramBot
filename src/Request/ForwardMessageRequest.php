@@ -140,12 +140,11 @@ class ForwardMessageRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->toArray(),
+            'from_chat_id' => $this->from_chat_id->getId(),
             'message_id' => $this->message_id,
             'message_thread_id' => $this->message_thread_id,
             'disable_notification' => $this->disable_notification,

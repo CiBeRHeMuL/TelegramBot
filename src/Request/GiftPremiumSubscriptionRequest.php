@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+/**
+ * @link https://core.telegram.org/bots/api#giftpremiumsubscription
+ */
 class GiftPremiumSubscriptionRequest implements RequestInterface
 {
     /**
@@ -20,6 +23,9 @@ class GiftPremiumSubscriptionRequest implements RequestInterface
      * @param TelegramParseModeEnum|null $text_parse_mode Mode for parsing entities in the text. See formatting options for more
      * details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji”
      * are ignored.
+     *
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
     public function __construct(
         private int $month_count,

@@ -16,8 +16,8 @@ class SendMediaGroupRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param (InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized array describing
-     * messages to be sent, must include 2-10 items
+     * @param (InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized array describing messages
+     * to be sent, must include 2-10 items
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
@@ -164,12 +164,14 @@ class SendMediaGroupRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'media' => array_map(fn(InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo $e) => $e->toArray(), $this->media),
+            'media' => array_map(
+                fn(InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo $e) => $e->toArray(),
+                $this->media,
+            ),
             'business_connection_id' => $this->business_connection_id,
             'disable_notification' => $this->disable_notification,
             'message_thread_id' => $this->message_thread_id,

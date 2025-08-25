@@ -6,14 +6,16 @@ use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendgame
+ */
 class SendGameRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat
+     * @param ChatId $chat_id Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel
+     * chats.
      * @param string $game_short_name Short name of the game, serves as the unique identifier for the game. Set up your games via
-     *
      * \@BotFather.
-     *
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -23,11 +25,17 @@ class SendGameRequest implements RequestInterface
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title'
      * button will be shown. If not empty, the first button must launch the game.
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
+     * only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
      *
+     * @see https://t.me/botfather @BotFather
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId $chat_id,

@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\ChatAdministratorRights;
 
+/**
+ * @link https://core.telegram.org/bots/api#setmydefaultadministratorrights
+ */
 class SetMyDefaultAdministratorRightsRequest implements RequestInterface
 {
     /**
@@ -11,6 +14,8 @@ class SetMyDefaultAdministratorRightsRequest implements RequestInterface
      * default administrator rights of the bot for groups and supergroups will be changed.
      * @param ChatAdministratorRights|null $rights A JSON-serialized object describing new default administrator rights. If not specified,
      * the default administrator rights will be cleared.
+     *
+     * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
      */
     public function __construct(
         private bool|null $for_channels = null,

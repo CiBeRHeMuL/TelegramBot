@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#exportchatinvitelink
+ */
 class ExportChatInviteLinkRequest implements RequestInterface
 {
     /**

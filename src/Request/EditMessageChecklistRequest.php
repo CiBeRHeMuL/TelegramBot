@@ -6,6 +6,9 @@ use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\InputChecklist;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#editmessagechecklist
+ */
 class EditMessageChecklistRequest implements RequestInterface
 {
     /**
@@ -15,6 +18,9 @@ class EditMessageChecklistRequest implements RequestInterface
      * @param InputChecklist $checklist A JSON-serialized object for the new checklist
      * @param int $message_id Unique identifier for the target message
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for the new inline keyboard for the message
+     *
+     * @see https://core.telegram.org/bots/api#inputchecklist InputChecklist
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      */
     public function __construct(
         private string $business_connection_id,

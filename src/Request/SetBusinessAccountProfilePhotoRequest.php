@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AbstractInputProfilePhoto;
 
+/**
+ * @link https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
+ */
 class SetBusinessAccountProfilePhotoRequest implements RequestInterface
 {
     /**
@@ -11,6 +14,8 @@ class SetBusinessAccountProfilePhotoRequest implements RequestInterface
      * @param AbstractInputProfilePhoto $photo The new profile photo to set
      * @param bool|null $is_public Pass True to set the public photo, which will be visible even if the main photo is hidden by the
      * business account's privacy settings. An account can have only one public photo.
+     *
+     * @see https://core.telegram.org/bots/api#inputprofilephoto InputProfilePhoto
      */
     public function __construct(
         private string $business_connection_id,

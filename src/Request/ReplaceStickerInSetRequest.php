@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\InputSticker;
 
+/**
+ * @link https://core.telegram.org/bots/api#replacestickerinset
+ */
 class ReplaceStickerInSetRequest implements RequestInterface
 {
     /**
@@ -12,6 +15,8 @@ class ReplaceStickerInSetRequest implements RequestInterface
      * @param InputSticker $sticker A JSON-serialized object with information about the added sticker. If exactly the same sticker
      * had already been added to the set, then the set remains unchanged.
      * @param int $user_id User identifier of the sticker set owner
+     *
+     * @see https://core.telegram.org/bots/api#inputsticker InputSticker
      */
     public function __construct(
         private string $name,

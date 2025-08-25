@@ -5,12 +5,18 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractMenuButton;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#setchatmenubutton
+ */
 class SetChatMenuButtonRequest implements RequestInterface
 {
     /**
      * @param ChatId|null $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will
      * be changed
      * @param AbstractMenuButton|null $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
+     *
+     * @see https://core.telegram.org/bots/api#menubutton MenuButton
+     * @see https://core.telegram.org/bots/api#menubuttondefault MenuButtonDefault
      */
     public function __construct(
         private ChatId|null $chat_id = null,

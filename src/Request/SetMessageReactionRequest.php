@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractReactionType;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#setmessagereaction
+ */
 class SetMessageReactionRequest implements RequestInterface
 {
     /**
@@ -12,10 +15,11 @@ class SetMessageReactionRequest implements RequestInterface
      * @param int $message_id Identifier of the target message. If the message belongs to a media group, the reaction is set to the
      * first non-deleted message in the group instead.
      * @param bool|null $is_big Pass True to set the reaction with a big animation
-     * @param AbstractReactionType[]|null $reaction A JSON-serialized list of reaction types to set on the message.
-     * Currently, as non-premium
-     * users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on
-     * the message or explicitly allowed by chat administrators.
+     * @param AbstractReactionType[]|null $reaction A JSON-serialized list of reaction types to set on the message. Currently, as
+     * non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already
+     * present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
+     *
+     * @see https://core.telegram.org/bots/api#reactiontype ReactionType
      */
     public function __construct(
         private ChatId $chat_id,
@@ -75,8 +79,11 @@ class SetMessageReactionRequest implements RequestInterface
             'chat_id' => $this->chat_id->getId(),
             'message_id' => $this->message_id,
             'is_big' => $this->is_big,
-            'reaction' => $this->reaction
-                ? array_map(fn(AbstractReactionType $e) => $e->toArray(), $this->reaction)
+            'reaction' => $this->reaction !== null
+                ? array_map(
+                    fn(AbstractReactionType $e) => $e->toArray(),
+                    $this->reaction,
+                )
                 : null,
         ];
     }

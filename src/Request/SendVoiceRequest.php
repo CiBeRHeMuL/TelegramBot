@@ -23,7 +23,7 @@ class SendVoiceRequest implements RequestInterface
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param Filename|Url|string $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram
      * servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using
-     * multipart/form-data. More information on Sending Files Â»
+     * multipart/form-data. More information on Sending Files »
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param string|null $caption Voice message caption, 0-1024 characters after entities parsing
@@ -51,7 +51,7 @@ class SendVoiceRequest implements RequestInterface
      * post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files Â»
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -62,8 +62,8 @@ class SendVoiceRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -260,7 +260,6 @@ class SendVoiceRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
 
     public function toArray(): array
     {

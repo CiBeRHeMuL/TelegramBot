@@ -5,14 +5,20 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#stoppoll
+ */
 class StopPollRequest implements RequestInterface
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
      * @param int $message_id Identifier of the original message with the poll
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new message inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
-     * of which the message to be edited was sent
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     * be edited was sent
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId $chat_id,

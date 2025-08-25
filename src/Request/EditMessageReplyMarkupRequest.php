@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#editmessagereplymarkup
+ */
 class EditMessageReplyMarkupRequest implements RequestInterface
 {
     /**
@@ -13,8 +16,11 @@ class EditMessageReplyMarkupRequest implements RequestInterface
      * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
      * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf
-     * of which the message to be edited was sent
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     * be edited was sent
+     *
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private ChatId|null $chat_id = null,

@@ -24,7 +24,7 @@ class SendPhotoRequest implements RequestInterface
      * @param Filename|Url|string $photo Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data.
      * The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio
-     * must be at most 20. More information on Sending Files Â»
+     * must be at most 20. More information on Sending Files »
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
      * only
      * @param bool|null $has_spoiler Pass True if the photo needs to be covered with a spoiler animation
@@ -54,7 +54,7 @@ class SendPhotoRequest implements RequestInterface
      * post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files Â»
+     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -65,8 +65,8 @@ class SendPhotoRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -275,7 +275,6 @@ class SendPhotoRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
 
     public function toArray(): array
     {

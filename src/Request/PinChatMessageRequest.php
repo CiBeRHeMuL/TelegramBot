@@ -4,6 +4,9 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#pinchatmessage
+ */
 class PinChatMessageRequest implements RequestInterface
 {
     /**
@@ -11,7 +14,8 @@ class PinChatMessageRequest implements RequestInterface
      * @param int $message_id Identifier of a message to pin
      * @param bool|null $disable_notification Pass True if it is not necessary to send a notification to all chat members about the
      * new pinned message. Notifications are always disabled in channels and private chats.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will be pinned
+     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
+     * be pinned
      */
     public function __construct(
         private ChatId $chat_id,

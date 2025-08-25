@@ -125,13 +125,12 @@ class CopyMessagesRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->toArray(),
-            'message_ids' => array_map(fn(int $e) => $e->toArray(), $this->message_ids),
+            'from_chat_id' => $this->from_chat_id->getId(),
+            'message_ids' => $this->message_ids,
             'disable_notification' => $this->disable_notification,
             'remove_caption' => $this->remove_caption,
             'message_thread_id' => $this->message_thread_id,

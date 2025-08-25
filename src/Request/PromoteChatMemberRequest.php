@@ -259,7 +259,6 @@ class PromoteChatMemberRequest implements RequestInterface
         return $this;
     }
 
-
     public function toArray(): array
     {
         return [

@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+/**
+ * @link https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
+ */
 class EditChatSubscriptionInviteLinkRequest implements RequestInterface
 {
     /**

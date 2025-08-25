@@ -21,9 +21,9 @@ class SendDiceRequest implements RequestInterface
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param DiceEmojiEnum|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “”, “”,
-     * “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”,
-     * and values 1-64 for “”. Defaults to “”
+     * @param DiceEmojiEnum|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”,
+     * “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values
+     * 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
      * only
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
@@ -49,8 +49,8 @@ class SendDiceRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
      * @see https://core.telegram.org/bots/api#forcereply ForceReply
-     * @see /bots/features#inline-keyboards inline keyboard
-     * @see /bots/features#keyboards custom reply keyboard
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -199,7 +199,6 @@ class SendDiceRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
 
     public function toArray(): array
     {

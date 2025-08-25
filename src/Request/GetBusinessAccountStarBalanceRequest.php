@@ -2,6 +2,9 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+/**
+ * @link https://core.telegram.org/bots/api#getbusinessaccountstarbalance
+ */
 class GetBusinessAccountStarBalanceRequest implements RequestInterface
 {
     /**

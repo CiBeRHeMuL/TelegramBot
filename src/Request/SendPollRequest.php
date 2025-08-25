@@ -13,11 +13,15 @@ use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+/**
+ * @link https://core.telegram.org/bots/api#sendpoll
+ */
 class SendPollRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param InputPollOption[] $options A JSON-serialized list of 2-10 answer options
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
+     * Polls can't be sent to channel direct messages chats.
+     * @param InputPollOption[] $options A JSON-serialized list of 2-12 answer options
      * @param string $question Poll question, 1-300 characters
      * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults
      * to False
@@ -31,8 +35,8 @@ class SendPollRequest implements RequestInterface
      * poll, 0-200 characters with at most 2 line feeds after entities parsing
      * @param MessageEntity[]|null $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation.
      * It can be specified instead of explanation_parse_mode
-     * @param TelegramParseModeEnum|null $explanation_parse_mode Mode for parsing entities in the explanation.
-     * See formatting options for more details.
+     * @param TelegramParseModeEnum|null $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options
+     * for more details.
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param bool|null $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
@@ -42,18 +46,30 @@ class SendPollRequest implements RequestInterface
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param MessageEntity[]|null $question_entities A JSON-serialized list of special entities that appear in the poll question.
      * It can be specified instead of question_parse_mode
-     * @param TelegramParseModeEnum|null $question_parse_mode Mode for parsing entities in the question. See formatting options for more details.
-     * Currently, only custom emoji entities are allowed
+     * @param TelegramParseModeEnum|null $question_parse_mode Mode for parsing entities in the question. See formatting options for
+     * more details. Currently, only custom emoji entities are allowed
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
      * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
      * a reply from the user
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
      * @param PollTypeEnum|null $type Poll type, “quiz” or “regular”, defaults to “regular”
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second,
-     * ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
+     * only
+     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
      *
+     * @see https://core.telegram.org/bots/api#formatting-options formatting options
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#inputpolloption InputPollOption
+     * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
+     * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
+     * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
+     * @see https://core.telegram.org/bots/api#replykeyboardremove ReplyKeyboardRemove
+     * @see https://core.telegram.org/bots/api#forcereply ForceReply
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
+     * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
         private ChatId $chat_id,
@@ -280,12 +296,12 @@ class SendPollRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyMarkup(): ForceReply|ReplyKeyboardRemove|InlineKeyboardMarkup|ReplyKeyboardMarkup|null
+    public function getReplyMarkup(): InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(ForceReply|InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|null $reply_markup): SendPollRequest
+    public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): SendPollRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -339,7 +355,10 @@ class SendPollRequest implements RequestInterface
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'options' => array_map(fn(InputPollOption $e) => $e->toArray(), $this->options),
+            'options' => array_map(
+                fn(InputPollOption $e) => $e->toArray(),
+                $this->options,
+            ),
             'question' => $this->question,
             'allows_multiple_answers' => $this->allows_multiple_answers,
             'business_connection_id' => $this->business_connection_id,
@@ -347,8 +366,11 @@ class SendPollRequest implements RequestInterface
             'correct_option_id' => $this->correct_option_id,
             'disable_notification' => $this->disable_notification,
             'explanation' => $this->explanation,
-            'explanation_entities' => $this->explanation_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->explanation_entities)
+            'explanation_entities' => $this->explanation_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->explanation_entities,
+                )
                 : null,
             'explanation_parse_mode' => $this->explanation_parse_mode?->value,
             'is_anonymous' => $this->is_anonymous,
@@ -356,8 +378,11 @@ class SendPollRequest implements RequestInterface
             'message_thread_id' => $this->message_thread_id,
             'open_period' => $this->open_period,
             'protect_content' => $this->protect_content,
-            'question_entities' => $this->question_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->question_entities)
+            'question_entities' => $this->question_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->question_entities,
+                )
                 : null,
             'question_parse_mode' => $this->question_parse_mode?->value,
             'reply_markup' => $this->reply_markup?->toArray(),

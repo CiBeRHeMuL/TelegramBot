@@ -5,6 +5,9 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InputSticker;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 
+/**
+ * @link https://core.telegram.org/bots/api#createnewstickerset
+ */
 class CreateNewStickerSetRequest implements RequestInterface
 {
     /**
@@ -17,8 +20,10 @@ class CreateNewStickerSetRequest implements RequestInterface
      * @param bool|null $needs_repainting Pass True if stickers in the sticker set must be repainted to the color of text when used
      * in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context;
      * for custom emoji sticker sets only
-     * @param StickerTypeEnum|null $sticker_type Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default,
-     * a regular sticker set is created.
+     * @param StickerTypeEnum|null $sticker_type Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
+     * By default, a regular sticker set is created.
+     *
+     * @see https://core.telegram.org/bots/api#inputsticker InputSticker
      */
     public function __construct(
         private string $name,

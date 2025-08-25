@@ -2,22 +2,27 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\ValueObject\Language;
+
+/**
+ * @link https://core.telegram.org/bots/api#getmyname
+ */
 class GetMyNameRequest implements RequestInterface
 {
     /**
-     * @param string|null $language_code A two-letter ISO 639-1 language code or an empty string
+     * @param Language|null $language_code A two-letter ISO 639-1 language code or an empty string
      */
     public function __construct(
-        private string|null $language_code = null,
+        private Language|null $language_code = null,
     ) {
     }
 
-    public function getLanguageCode(): string|null
+    public function getLanguageCode(): Language|null
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(string|null $language_code): GetMyNameRequest
+    public function setLanguageCode(Language|null $language_code): GetMyNameRequest
     {
         $this->language_code = $language_code;
         return $this;
@@ -26,7 +31,7 @@ class GetMyNameRequest implements RequestInterface
     public function toArray(): array
     {
         return [
-            'language_code' => $this->language_code,
+            'language_code' => $this->language_code?->getLanguage(),
         ];
     }
 }

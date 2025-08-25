@@ -2,9 +2,11 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
-use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Entity\ShippingOption;
 
+/**
+ * @link https://core.telegram.org/bots/api#answershippingquery
+ */
 class AnswerShippingQueryRequest implements RequestInterface
 {
     /**
@@ -12,15 +14,17 @@ class AnswerShippingQueryRequest implements RequestInterface
      * if delivery to the specified address is not possible)
      * @param string $shipping_query_id Unique identifier for the query to be answered
      * @param string|null $error_message Required if ok is False. Error message in human readable form that explains why it is impossible
-     * to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message
+     * to complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram will display this message
      * to the user.
      * @param ShippingOption[]|null $shipping_options Required if ok is True. A JSON-serialized array of available shipping options.
+     *
+     * @see https://core.telegram.org/bots/api#shippingoption ShippingOption
      */
     public function __construct(
         private bool $ok,
         private string $shipping_query_id,
         private string|null $error_message = null,
-        #[ArrayType(ShippingOption::class)] private array|null $shipping_options = null,
+        private array|null $shipping_options = null,
     ) {
     }
 

@@ -2,12 +2,17 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+/**
+ * @link https://core.telegram.org/bots/api#deletebusinessmessages
+ */
 class DeleteBusinessMessagesRequest implements RequestInterface
 {
     /**
      * @param string $business_connection_id Unique identifier of the business connection on behalf of which to delete the messages
      * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the
      * same chat. See deleteMessage for limitations on which messages can be deleted
+     *
+     * @see https://core.telegram.org/bots/api#deletemessage deleteMessage
      */
     public function __construct(
         private string $business_connection_id,
@@ -41,7 +46,7 @@ class DeleteBusinessMessagesRequest implements RequestInterface
     {
         return [
             'business_connection_id' => $this->business_connection_id,
-            'message_ids' => array_map(fn(int $e) => $e->toArray(), $this->message_ids),
+            'message_ids' => $this->message_ids,
         ];
     }
 }
