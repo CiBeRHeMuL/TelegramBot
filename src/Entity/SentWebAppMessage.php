@@ -7,7 +7,7 @@ use stdClass;
 /**
  * Describes an inline message sent by a Web App on behalf of a user.
  *
- * @see /bots/webapps Web App
+ * @see https://core.telegram.org/bots/webapps Web App
  * @link https://core.telegram.org/bots/api#sentwebappmessage
  */
 class SentWebAppMessage extends AbstractEntity

@@ -210,8 +210,11 @@ class ReplyParameters extends AbstractEntity
             'allow_sending_without_reply' => $this->allow_sending_without_reply,
             'quote' => $this->quote,
             'quote_parse_mode' => $this->quote_parse_mode?->value,
-            'quote_entities' => $this->quote_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->quote_entities)
+            'quote_entities' => $this->quote_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->quote_entities,
+                )
                 : null,
             'quote_position' => $this->quote_position,
             'checklist_task_id' => $this->checklist_task_id,

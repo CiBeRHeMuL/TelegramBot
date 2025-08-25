@@ -1062,8 +1062,11 @@ class ChatFullInfo extends AbstractEntity
             'max_reaction_count' => $this->max_reaction_count,
             'accepted_gift_types' => $this->accepted_gift_types->toArray(),
             'active_usernames' => $this->active_usernames,
-            'available_reactions' => $this->available_reactions
-                ? array_map(fn(AbstractReactionType $e) => $e->toArray(), $this->available_reactions)
+            'available_reactions' => $this->available_reactions !== null
+                ? array_map(
+                    fn(AbstractReactionType $e) => $e->toArray(),
+                    $this->available_reactions,
+                )
                 : null,
             'background_custom_emoji_id' => $this->background_custom_emoji_id,
             'bio' => $this->bio,

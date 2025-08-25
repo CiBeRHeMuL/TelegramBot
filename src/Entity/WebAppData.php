@@ -7,7 +7,7 @@ use stdClass;
 /**
  * Describes data sent from a Web App to the bot.
  *
- * @see /bots/webapps Web App
+ * @see https://core.telegram.org/bots/webapps Web App
  * @link https://core.telegram.org/bots/api#webappdata
  */
 class WebAppData extends AbstractEntity

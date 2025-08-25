@@ -68,7 +68,10 @@ class BusinessOpeningHours extends AbstractEntity
     {
         return [
             'time_zone_name' => $this->time_zone_name,
-            'opening_hours' => array_map(fn(BusinessOpeningHoursInterval $e) => $e->toArray(), $this->opening_hours),
+            'opening_hours' => array_map(
+                fn(BusinessOpeningHoursInterval $e) => $e->toArray(),
+                $this->opening_hours,
+            ),
         ];
     }
 }

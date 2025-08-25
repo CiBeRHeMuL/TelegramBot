@@ -90,7 +90,10 @@ class ShippingOption extends AbstractEntity
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'prices' => array_map(fn(LabeledPrice $e) => $e->toArray(), $this->prices),
+            'prices' => array_map(
+                fn(LabeledPrice $e) => $e->toArray(),
+                $this->prices,
+            ),
         ];
     }
 }

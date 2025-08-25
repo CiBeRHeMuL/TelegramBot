@@ -75,7 +75,7 @@ class Update extends AbstractEntity
      * @see https://core.telegram.org/bots/api#inline-mode inline
      * @see https://core.telegram.org/bots/api#choseninlineresult ChosenInlineResult
      * @see https://core.telegram.org/bots/api#inline-mode inline
-     * @see /bots/inline#collecting-feedback feedback collecting
+     * @see https://core.telegram.org/bots/inline#collecting-feedback feedback collecting
      * @see https://core.telegram.org/bots/api#callbackquery CallbackQuery
      * @see https://core.telegram.org/bots/api#shippingquery ShippingQuery
      * @see https://core.telegram.org/bots/api#precheckoutquery PreCheckoutQuery

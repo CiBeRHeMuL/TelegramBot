@@ -69,7 +69,10 @@ class PassportData extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'data' => array_map(fn(EncryptedPassportElement $e) => $e->toArray(), $this->data),
+            'data' => array_map(
+                fn(EncryptedPassportElement $e) => $e->toArray(),
+                $this->data,
+            ),
             'credentials' => $this->credentials->toArray(),
         ];
     }

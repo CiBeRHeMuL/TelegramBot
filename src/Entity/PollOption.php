@@ -91,8 +91,11 @@ class PollOption extends AbstractEntity
         return [
             'text' => $this->text,
             'voter_count' => $this->voter_count,
-            'text_entities' => $this->text_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+            'text_entities' => $this->text_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
         ];
     }

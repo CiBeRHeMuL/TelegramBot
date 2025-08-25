@@ -202,7 +202,10 @@ class GiftInfo extends AbstractEntity
             'can_be_upgraded' => $this->can_be_upgraded,
             'convert_star_count' => $this->convert_star_count,
             'entities' => $this->entities !== null
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'is_private' => $this->is_private,
             'owned_gift_id' => $this->owned_gift_id,

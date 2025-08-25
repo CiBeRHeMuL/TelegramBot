@@ -50,7 +50,10 @@ class PaidMediaPhoto extends AbstractPaidMedia
     public function toArray(): array|stdClass
     {
         return [
-            'photo' => array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo),
+            'photo' => array_map(
+                fn(PhotoSize $e) => $e->toArray(),
+                $this->photo,
+            ),
             'type' => $this->type->value,
         ];
     }

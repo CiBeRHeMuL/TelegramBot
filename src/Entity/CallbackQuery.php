@@ -11,7 +11,7 @@ use stdClass;
  * sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name
  * will be present.
  *
- * @see /bots/features#inline-keyboards inline keyboard
+ * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
  * @see https://core.telegram.org/bots/api#inline-mode inline mode
  * @link https://core.telegram.org/bots/api#callbackquery
  */

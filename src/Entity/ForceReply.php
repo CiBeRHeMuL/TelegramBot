@@ -10,7 +10,7 @@ use stdClass;
  * interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a Telegram
  * Business account.
  *
- * @see /bots/features#privacy-mode privacy mode
+ * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
  * @link https://core.telegram.org/bots/api#forcereply
  */
 class ForceReply extends AbstractEntity

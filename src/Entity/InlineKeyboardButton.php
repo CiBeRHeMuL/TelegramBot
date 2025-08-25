@@ -47,10 +47,10 @@ class InlineKeyboardButton extends AbstractEntity
      *
      * @see https://core.telegram.org/bots/api#callbackquery callback query
      * @see https://core.telegram.org/bots/api#webappinfo WebAppInfo
-     * @see /bots/webapps Web App
+     * @see https://core.telegram.org/bots/webapps Web App
      * @see https://core.telegram.org/bots/api#answerwebappquery answerWebAppQuery
      * @see https://core.telegram.org/bots/api#loginurl LoginUrl
-     * @see /widgets/login Telegram Login Widget
+     * @see https://core.telegram.org/widgets/login Telegram Login Widget
      * @see https://core.telegram.org/bots/api#switchinlinequerychosenchat SwitchInlineQueryChosenChat
      * @see https://core.telegram.org/bots/api#copytextbutton CopyTextButton
      * @see https://core.telegram.org/bots/api#callbackgame CallbackGame

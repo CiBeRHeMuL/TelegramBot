@@ -294,7 +294,10 @@ class OwnedGiftRegular extends AbstractOwnedGift
             'can_be_upgraded' => $this->can_be_upgraded,
             'convert_star_count' => $this->convert_star_count,
             'entities' => $this->entities !== null
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'is_private' => $this->is_private,
             'is_saved' => $this->is_saved,

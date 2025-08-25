@@ -46,7 +46,10 @@ class StarTransactions extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'transactions' => array_map(fn(StarTransaction $e) => $e->toArray(), $this->transactions),
+            'transactions' => array_map(
+                fn(StarTransaction $e) => $e->toArray(),
+                $this->transactions,
+            ),
         ];
     }
 }

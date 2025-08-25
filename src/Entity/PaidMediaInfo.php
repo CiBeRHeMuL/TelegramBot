@@ -68,7 +68,10 @@ class PaidMediaInfo extends AbstractEntity
     {
         return [
             'star_count' => $this->star_count,
-            'paid_media' => array_map(fn(AbstractPaidMedia $e) => $e->toArray(), $this->paid_media),
+            'paid_media' => array_map(
+                fn(AbstractPaidMedia $e) => $e->toArray(),
+                $this->paid_media,
+            ),
         ];
     }
 }

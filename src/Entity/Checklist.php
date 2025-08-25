@@ -134,11 +134,17 @@ class Checklist extends AbstractEntity
     {
         return [
             'title' => $this->title,
-            'tasks' => array_map(fn(ChecklistTask $e) => $e->toArray(), $this->tasks),
+            'tasks' => array_map(
+                fn(ChecklistTask $e) => $e->toArray(),
+                $this->tasks,
+            ),
             'others_can_add_tasks' => $this->others_can_add_tasks,
             'others_can_mark_tasks_as_done' => $this->others_can_mark_tasks_as_done,
-            'title_entities' => $this->title_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->title_entities)
+            'title_entities' => $this->title_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->title_entities,
+                )
                 : null,
         ];
     }

@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu,
  * launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
  *
- * @see /bots/webapps#initializing-mini-apps requestWriteAccess
+ * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
  * @link https://core.telegram.org/bots/api#writeaccessallowed
  */
 class WriteAccessAllowed extends AbstractEntity
@@ -21,7 +21,7 @@ class WriteAccessAllowed extends AbstractEntity
      * @param bool|null $from_attachment_menu Optional. True, if the access was granted when the bot was added to the attachment
      * or side menu
      *
-     * @see /bots/webapps#initializing-mini-apps requestWriteAccess
+     * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
      */
     public function __construct(
         protected bool|null $from_request = null,

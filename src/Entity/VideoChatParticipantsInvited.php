@@ -46,7 +46,10 @@ class VideoChatParticipantsInvited extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'users' => array_map(fn(User $e) => $e->toArray(), $this->users),
+            'users' => array_map(
+                fn(User $e) => $e->toArray(),
+                $this->users,
+            ),
         ];
     }
 }

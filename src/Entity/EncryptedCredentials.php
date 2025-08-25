@@ -9,7 +9,7 @@ use stdClass;
  * for a complete description of the data decryption and authentication processes.
  *
  * @see https://core.telegram.org/bots/api#encryptedpassportelement EncryptedPassportElement
- * @see /passport#receiving-information Telegram Passport Documentation
+ * @see https://core.telegram.org/passport#receiving-information Telegram Passport Documentation
  * @link https://core.telegram.org/bots/api#encryptedcredentials
  */
 class EncryptedCredentials extends AbstractEntity

@@ -117,8 +117,11 @@ class InputChecklistTask extends AbstractEntity
             'id' => $this->id,
             'text' => $this->text,
             'parse_mode' => $this->parse_mode?->value,
-            'text_entities' => $this->text_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+            'text_entities' => $this->text_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
         ];
     }

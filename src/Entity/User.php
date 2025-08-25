@@ -32,7 +32,7 @@ class User extends AbstractEntity
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
      * @see https://core.telegram.org/bots/api#getme getMe
-     * @see /bots/features#privacy-mode privacy mode
+     * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
      * @see https://core.telegram.org/bots/api#getme getMe
      * @see https://core.telegram.org/bots/api#getme getMe
      * @see https://core.telegram.org/bots/api#getme getMe

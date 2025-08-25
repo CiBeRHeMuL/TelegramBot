@@ -46,7 +46,10 @@ class Gifts extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'gifts' => array_map(fn(Gift $e) => $e->toArray(), $this->gifts),
+            'gifts' => array_map(
+                fn(Gift $e) => $e->toArray(),
+                $this->gifts,
+            ),
         ];
     }
 }

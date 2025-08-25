@@ -271,13 +271,19 @@ class EncryptedPassportElement extends AbstractEntity
             'phone_number' => $this->phone_number?->getPhone(),
             'email' => $this->email?->getEmail(),
             'files' => $this->files !== null
-                ? array_map(fn(PassportFile $e) => $e->toArray(), $this->files)
+                ? array_map(
+                    fn(PassportFile $e) => $e->toArray(),
+                    $this->files,
+                )
                 : null,
             'front_side' => $this->front_side?->toArray(),
             'reverse_side' => $this->reverse_side?->toArray(),
             'selfie' => $this->selfie?->toArray(),
             'translation' => $this->translation !== null
-                ? array_map(fn(PassportFile $e) => $e->toArray(), $this->translation)
+                ? array_map(
+                    fn(PassportFile $e) => $e->toArray(),
+                    $this->translation,
+                )
                 : null,
         ];
     }

@@ -113,7 +113,10 @@ class MessageReactionCountUpdated extends AbstractEntity
             'chat' => $this->chat->toArray(),
             'message_id' => $this->message_id,
             'date' => $this->date,
-            'reactions' => array_map(fn(ReactionCount $e) => $e->toArray(), $this->reactions),
+            'reactions' => array_map(
+                fn(ReactionCount $e) => $e->toArray(),
+                $this->reactions,
+            ),
         ];
     }
 }

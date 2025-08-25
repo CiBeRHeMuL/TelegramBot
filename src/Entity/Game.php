@@ -162,10 +162,16 @@ class Game extends AbstractEntity
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'photo' => array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo),
+            'photo' => array_map(
+                fn(PhotoSize $e) => $e->toArray(),
+                $this->photo,
+            ),
             'text' => $this->text,
-            'text_entities' => $this->text_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+            'text_entities' => $this->text_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
             'animation' => $this->animation?->toArray(),
         ];

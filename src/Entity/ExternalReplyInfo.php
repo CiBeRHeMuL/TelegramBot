@@ -31,11 +31,11 @@ class ExternalReplyInfo extends AbstractEntity
      * @param bool|null $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
      * @param Contact|null $contact Optional. Message is a shared contact, information about the contact
      * @param Dice|null $dice Optional. Message is a dice with random value
-     * @param Game|null $game Optional. Message is a game, information about the game. More about games Â»
+     * @param Game|null $game Optional. Message is a game, information about the game. More about games »
      * @param Giveaway|null $giveaway Optional. Message is a scheduled giveaway, information about the giveaway
      * @param GiveawayWinners|null $giveaway_winners Optional. A giveaway with public winners was completed
      * @param Invoice|null $invoice Optional. Message is an invoice for a payment, information about the invoice. More about payments
-     * Â»
+     * »
      * @param Location|null $location Optional. Message is a shared location, information about the location
      * @param Poll|null $poll Optional. Message is a native poll, information about the poll
      * @param Venue|null $venue Optional. Message is a venue, information about the venue
@@ -60,12 +60,12 @@ class ExternalReplyInfo extends AbstractEntity
      * @see https://core.telegram.org/bots/api#contact Contact
      * @see https://core.telegram.org/bots/api#dice Dice
      * @see https://core.telegram.org/bots/api#game Game
-     * @see https://core.telegram.org/bots/api#games More about games Â»
+     * @see https://core.telegram.org/bots/api#games More about games »
      * @see https://core.telegram.org/bots/api#giveaway Giveaway
      * @see https://core.telegram.org/bots/api#giveawaywinners GiveawayWinners
      * @see https://core.telegram.org/bots/api#invoice Invoice
      * @see https://core.telegram.org/bots/api#payments payment
-     * @see https://core.telegram.org/bots/api#payments More about payments Â»
+     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#location Location
      * @see https://core.telegram.org/bots/api#poll Poll
      * @see https://core.telegram.org/bots/api#venue Venue
@@ -586,8 +586,11 @@ class ExternalReplyInfo extends AbstractEntity
             'animation' => $this->animation?->toArray(),
             'audio' => $this->audio?->toArray(),
             'document' => $this->document?->toArray(),
-            'photo' => $this->photo
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo)
+            'photo' => $this->photo !== null
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->photo,
+                )
                 : null,
             'sticker' => $this->sticker?->toArray(),
             'story' => $this->story?->toArray(),

@@ -89,7 +89,10 @@ class OwnedGifts extends AbstractEntity
     {
         return [
             'total_count' => $this->total_count,
-            'gifts' => array_map(fn(AbstractOwnedGift $e) => $e->toArray(), $this->gifts),
+            'gifts' => array_map(
+                fn(AbstractOwnedGift $e) => $e->toArray(),
+                $this->gifts,
+            ),
             'next_offset' => $this->next_offset,
         ];
     }

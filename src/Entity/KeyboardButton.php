@@ -34,7 +34,7 @@ class KeyboardButton extends AbstractEntity
      * @see https://core.telegram.org/bots/api#keyboardbuttonrequestchat KeyboardButtonRequestChat
      * @see https://core.telegram.org/bots/api#keyboardbuttonpolltype KeyboardButtonPollType
      * @see https://core.telegram.org/bots/api#webappinfo WebAppInfo
-     * @see /bots/webapps Web App
+     * @see https://core.telegram.org/bots/webapps Web App
      */
     public function __construct(
         protected string $text,

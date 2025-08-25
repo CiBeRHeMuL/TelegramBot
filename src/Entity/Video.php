@@ -270,7 +270,10 @@ class Video extends AbstractEntity
             'mime_type' => $this->mime_type,
             'file_size' => $this->file_size,
             'cover' => $this->cover !== null
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->cover)
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->cover,
+                )
                 : null,
             'start_timestamp' => $this->start_timestamp,
         ];

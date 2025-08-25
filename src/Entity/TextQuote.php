@@ -113,8 +113,11 @@ class TextQuote extends AbstractEntity
         return [
             'text' => $this->text,
             'position' => $this->position,
-            'entities' => $this->entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+            'entities' => $this->entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'is_manual' => $this->is_manual,
         ];

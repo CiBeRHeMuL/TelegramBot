@@ -95,7 +95,10 @@ class InputPollOption extends AbstractEntity
             'text' => $this->text,
             'text_parse_mode' => $this->text_parse_mode?->value,
             'text_entities' => $this->text_entities !== null
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
         ];
     }

@@ -17,8 +17,8 @@ class LabeledPrice extends AbstractEntity
      * a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal
      * point for each currency (2 for the majority of currencies).
      *
-     * @see /bots/payments#supported-currencies currency
-     * @see /bots/payments/currencies.json currencies.json
+     * @see https://core.telegram.org/bots/payments#supported-currencies currency
+     * @see https://core.telegram.org/bots/payments/currencies.json currencies.json
      */
     public function __construct(
         protected string $label,

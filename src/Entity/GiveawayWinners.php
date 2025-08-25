@@ -286,7 +286,10 @@ class GiveawayWinners extends AbstractEntity
             'giveaway_message_id' => $this->giveaway_message_id,
             'winners_selection_date' => $this->winners_selection_date,
             'winner_count' => $this->winner_count,
-            'winners' => array_map(fn(User $e) => $e->toArray(), $this->winners),
+            'winners' => array_map(
+                fn(User $e) => $e->toArray(),
+                $this->winners,
+            ),
             'additional_chat_count' => $this->additional_chat_count,
             'premium_subscription_month_count' => $this->premium_subscription_month_count,
             'unclaimed_prize_count' => $this->unclaimed_prize_count,

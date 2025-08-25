@@ -137,8 +137,11 @@ class ChatShared extends AbstractEntity
         return [
             'request_id' => $this->request_id,
             'chat_id' => $this->chat_id->getId(),
-            'photo' => $this->photo
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo)
+            'photo' => $this->photo !== null
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->photo,
+                )
                 : null,
             'title' => $this->title,
             'username' => $this->username,

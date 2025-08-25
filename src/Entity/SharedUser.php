@@ -137,8 +137,11 @@ class SharedUser extends AbstractEntity
             'user_id' => $this->user_id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'photo' => $this->photo
-                ? array_map(fn(PhotoSize $e) => $e->toArray(), $this->photo)
+            'photo' => $this->photo !== null
+                ? array_map(
+                    fn(PhotoSize $e) => $e->toArray(),
+                    $this->photo,
+                )
                 : null,
             'username' => $this->username,
         ];

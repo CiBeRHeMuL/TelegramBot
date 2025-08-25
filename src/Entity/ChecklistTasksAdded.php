@@ -70,7 +70,10 @@ class ChecklistTasksAdded extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'tasks' => array_map(fn(ChecklistTask $e) => $e->toArray(), $this->tasks),
+            'tasks' => array_map(
+                fn(ChecklistTask $e) => $e->toArray(),
+                $this->tasks,
+            ),
             'checklist_message' => $this->checklist_message?->toArray(),
         ];
     }

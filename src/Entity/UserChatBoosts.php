@@ -46,7 +46,10 @@ class UserChatBoosts extends AbstractEntity
     public function toArray(): array|stdClass
     {
         return [
-            'boosts' => array_map(fn(ChatBoost $e) => $e->toArray(), $this->boosts),
+            'boosts' => array_map(
+                fn(ChatBoost $e) => $e->toArray(),
+                $this->boosts,
+            ),
         ];
     }
 }

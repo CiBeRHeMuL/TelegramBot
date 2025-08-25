@@ -120,8 +120,11 @@ class InputTextMessageContent extends AbstractEntity
     {
         return [
             'message_text' => $this->message_text,
-            'entities' => $this->entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+            'entities' => $this->entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'link_preview_options' => $this->link_preview_options?->toArray(),
             'parse_mode' => $this->parse_mode?->value,

@@ -136,8 +136,11 @@ class ChecklistTask extends AbstractEntity
             'text' => $this->text,
             'completed_by_user' => $this->completed_by_user?->toArray(),
             'completion_date' => $this->completion_date,
-            'text_entities' => $this->text_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+            'text_entities' => $this->text_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
         ];
     }

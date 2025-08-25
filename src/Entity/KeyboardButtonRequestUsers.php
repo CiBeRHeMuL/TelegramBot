@@ -6,9 +6,9 @@ use stdClass;
 
 /**
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with
- * the bot when the corresponding button is pressed. More about requesting users Â»
+ * the bot when the corresponding button is pressed. More about requesting users »
  *
- * @see /bots/features#chat-and-user-selection More about requesting users Â»
+ * @see https://core.telegram.org/bots/features#chat-and-user-selection More about requesting users »
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  */
 class KeyboardButtonRequestUsers extends AbstractEntity
