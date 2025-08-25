@@ -105,7 +105,10 @@ class AnswerInlineQueryRequest implements RequestInterface
     {
         return [
             'inline_query_id' => $this->inline_query_id,
-            'results' => array_map(fn(AbstractInlineQueryResult $e) => $e->toArray(), $this->results),
+            'results' => array_map(
+                fn(AbstractInlineQueryResult $e) => $e->toArray(),
+                $this->results,
+            ),
             'button' => $this->button?->toArray(),
             'cache_time' => $this->cache_time,
             'is_personal' => $this->is_personal,

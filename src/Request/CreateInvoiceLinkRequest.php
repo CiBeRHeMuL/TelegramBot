@@ -337,7 +337,10 @@ class CreateInvoiceLinkRequest implements RequestInterface
             'currency' => $this->currency->value,
             'description' => $this->description,
             'payload' => $this->payload,
-            'prices' => array_map(fn(LabeledPrice $e) => $e->toArray(), $this->prices),
+            'prices' => array_map(
+                fn(LabeledPrice $e) => $e->toArray(),
+                $this->prices,
+            ),
             'title' => $this->title,
             'provider_token' => $this->provider_token,
             'is_flexible' => $this->is_flexible,

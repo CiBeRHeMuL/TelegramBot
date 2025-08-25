@@ -110,8 +110,11 @@ class GiftPremiumSubscriptionRequest implements RequestInterface
             'star_count' => $this->star_count,
             'user_id' => $this->user_id,
             'text' => $this->text,
-            'text_entities' => $this->text_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->text_entities)
+            'text_entities' => $this->text_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->text_entities,
+                )
                 : null,
             'text_parse_mode' => $this->text_parse_mode?->value,
         ];

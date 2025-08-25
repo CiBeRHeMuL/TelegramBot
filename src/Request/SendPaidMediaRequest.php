@@ -276,11 +276,17 @@ class SendPaidMediaRequest implements RequestInterface
     {
         return [
             'chat_id' => $this->chat_id->getId(),
-            'media' => array_map(fn(AbstractInputPaidMedia $e) => $e->toArray(), $this->media),
+            'media' => array_map(
+                fn(AbstractInputPaidMedia $e) => $e->toArray(),
+                $this->media,
+            ),
             'star_count' => $this->star_count,
             'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'disable_notification' => $this->disable_notification,
             'parse_mode' => $this->parse_mode?->value,

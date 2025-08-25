@@ -149,8 +149,11 @@ class EditMessageCaptionRequest implements RequestInterface
     {
         return [
             'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'chat_id' => $this->chat_id?->getId(),
             'inline_message_id' => $this->inline_message_id,

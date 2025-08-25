@@ -251,8 +251,11 @@ class SendMessageRequest implements RequestInterface
             'text' => $this->text,
             'business_connection_id' => $this->business_connection_id,
             'disable_notification' => $this->disable_notification,
-            'entities' => $this->entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+            'entities' => $this->entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'link_preview_options' => $this->link_preview_options?->toArray(),
             'message_thread_id' => $this->message_thread_id,

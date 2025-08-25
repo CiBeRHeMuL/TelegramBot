@@ -291,8 +291,11 @@ class SendDocumentRequest implements RequestInterface
             'message_thread_id' => $this->message_thread_id,
             'caption' => $this->caption,
             'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'thumbnail' => ($this->thumbnail instanceof Url)
                 ? $this->thumbnail->getUrl()

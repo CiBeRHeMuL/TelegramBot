@@ -389,8 +389,11 @@ class SendVideoRequest implements RequestInterface
                 : $this->thumbnail,
             'caption' => $this->caption,
             'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'has_spoiler' => $this->has_spoiler,
             'supports_streaming' => $this->supports_streaming,

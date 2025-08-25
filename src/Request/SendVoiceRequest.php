@@ -270,8 +270,11 @@ class SendVoiceRequest implements RequestInterface
                 : $this->voice,
             'business_connection_id' => $this->business_connection_id,
             'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
+            'caption_entities' => $this->caption_entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->caption_entities,
+                )
                 : null,
             'disable_notification' => $this->disable_notification,
             'duration' => $this->duration,

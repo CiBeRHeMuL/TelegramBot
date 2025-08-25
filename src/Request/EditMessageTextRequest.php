@@ -151,8 +151,11 @@ class EditMessageTextRequest implements RequestInterface
         return [
             'text' => $this->text,
             'chat_id' => $this->chat_id?->getId(),
-            'entities' => $this->entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->entities)
+            'entities' => $this->entities !== null
+                ? array_map(
+                    fn(MessageEntity $e) => $e->toArray(),
+                    $this->entities,
+                )
                 : null,
             'inline_message_id' => $this->inline_message_id,
             'link_preview_options' => $this->link_preview_options?->toArray(),

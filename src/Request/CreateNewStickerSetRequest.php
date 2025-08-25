@@ -105,7 +105,10 @@ class CreateNewStickerSetRequest implements RequestInterface
     {
         return [
             'name' => $this->name,
-            'stickers' => array_map(fn(InputSticker $e) => $e->toArray(), $this->stickers),
+            'stickers' => array_map(
+                fn(InputSticker $e) => $e->toArray(),
+                $this->stickers,
+            ),
             'title' => $this->title,
             'user_id' => $this->user_id,
             'needs_repainting' => $this->needs_repainting,
