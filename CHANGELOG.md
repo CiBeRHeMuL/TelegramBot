@@ -1,5 +1,15 @@
 # Change log of Telegram Bot Library
 
+## Version 3.0
+
+### General
++ Add Bot Api 9.2 (August 15, 2025) functionality
++ Fix descriptions of classes and their parameters
++ Drop AndrewGos\TelegramBot\ValueObject\RequestId class
++ Rename has_protected_forwards property of ChatFullInfo to has_private_forwards
++ Sync all models with documentation
++ Add null as default value for all responses constructors
+
 ## Version 2.2
 
 ### General
