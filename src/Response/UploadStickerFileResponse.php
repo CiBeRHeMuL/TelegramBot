@@ -8,7 +8,7 @@ class UploadStickerFileResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly File|null $file,
+        private readonly File|null $file = null,
     ) {
         parent::__construct($rawResponse);
     }

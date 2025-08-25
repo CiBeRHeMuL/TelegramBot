@@ -12,7 +12,7 @@ class RevokeChatInviteLinkResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ChatInviteLink|null $chatInviteLink,
+        private readonly ChatInviteLink|null $chatInviteLink = null,
     ) {
         parent::__construct($rawResponse);
     }

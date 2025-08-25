@@ -8,12 +8,12 @@ class EditStoryResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Story|null $story,
+        private readonly Story|null $story = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getStory(): ?Story
+    public function getStory(): Story|null
     {
         return $this->story;
     }

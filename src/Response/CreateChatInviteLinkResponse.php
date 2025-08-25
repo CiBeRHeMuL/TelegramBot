@@ -8,7 +8,7 @@ class CreateChatInviteLinkResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly ChatInviteLink|null $chatInviteLink,
+        private readonly ChatInviteLink|null $chatInviteLink = null,
     ) {
         parent::__construct($response);
     }

@@ -8,7 +8,7 @@ class SavePreparedInlineMessageResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly PreparedInlineMessage|null $preparedInlineMessage,
+        private readonly PreparedInlineMessage|null $preparedInlineMessage = null,
     ) {
         parent::__construct($rawResponse);
     }

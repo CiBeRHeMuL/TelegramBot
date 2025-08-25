@@ -8,7 +8,7 @@ class GetChatMenuButtonResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly AbstractMenuButton|null $menuButton,
+        private readonly AbstractMenuButton|null $menuButton = null,
     ) {
         parent::__construct($rawResponse);
     }

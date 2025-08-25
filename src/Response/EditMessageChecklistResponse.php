@@ -13,7 +13,7 @@ class EditMessageChecklistResponse extends AbstractResponse
         parent::__construct($rawResponse);
     }
 
-    public function getMessage(): ?Message
+    public function getMessage(): Message|null
     {
         return $this->message;
     }

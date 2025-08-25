@@ -8,7 +8,7 @@ class GetUserProfilePhotosResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly UserProfilePhotos|null $userProfilePhotos,
+        private readonly UserProfilePhotos|null $userProfilePhotos = null,
     ) {
         parent::__construct($response);
     }

@@ -8,7 +8,7 @@ class GetChatResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ChatFullInfo|null $chatFullInfo,
+        private readonly ChatFullInfo|null $chatFullInfo = null,
     ) {
         parent::__construct($rawResponse);
     }

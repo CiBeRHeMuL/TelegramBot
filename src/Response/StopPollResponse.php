@@ -8,7 +8,7 @@ class StopPollResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Poll|null $poll,
+        private readonly Poll|null $poll = null,
     ) {
         parent::__construct($rawResponse);
     }

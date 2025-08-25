@@ -12,7 +12,7 @@ class GetMyCommandsResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $commands,
+        private readonly array|null $commands = null,
     ) {
         parent::__construct($rawResponse);
     }

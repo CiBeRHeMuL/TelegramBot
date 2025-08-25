@@ -12,7 +12,7 @@ class GetForumTopicIconStickers extends AbstractResponse
      */
     public function __construct(
         RawResponse $response,
-        private readonly array|null $stickers,
+        private readonly array|null $stickers = null,
     ) {
         parent::__construct($response);
     }

@@ -12,7 +12,7 @@ class CopyMessagesResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $messageIds,
+        private readonly array|null $messageIds = null,
     ) {
         parent::__construct($rawResponse);
     }

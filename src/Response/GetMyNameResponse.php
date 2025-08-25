@@ -8,7 +8,7 @@ class GetMyNameResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly BotName|null $name,
+        private readonly BotName|null $name = null,
     ) {
         parent::__construct($rawResponse);
     }

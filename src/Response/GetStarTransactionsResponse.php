@@ -8,7 +8,7 @@ class GetStarTransactionsResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly StarTransactions|null $starTransactions,
+        private readonly StarTransactions|null $starTransactions = null,
     ) {
         parent::__construct($rawResponse);
     }

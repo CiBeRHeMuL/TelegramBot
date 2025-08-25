@@ -8,7 +8,7 @@ class GetStickerSetResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly StickerSet|null $stickerSet,
+        private readonly StickerSet|null $stickerSet = null,
     ) {
         parent::__construct($rawResponse);
     }

@@ -12,7 +12,7 @@ class GetChatAdministratorsResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $chatMembers,
+        private readonly array|null $chatMembers = null,
     ) {
         parent::__construct($rawResponse);
     }

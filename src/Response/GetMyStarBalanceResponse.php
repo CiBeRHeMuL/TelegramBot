@@ -8,12 +8,12 @@ class GetMyStarBalanceResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly StarAmount|null $starAmount,
+        private readonly StarAmount|null $starAmount = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getStarAmount(): ?StarAmount
+    public function getStarAmount(): StarAmount|null
     {
         return $this->starAmount;
     }

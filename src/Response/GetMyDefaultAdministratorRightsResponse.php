@@ -8,7 +8,7 @@ class GetMyDefaultAdministratorRightsResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ChatAdministratorRights|null $chatAdministratorRights,
+        private readonly ChatAdministratorRights|null $chatAdministratorRights = null,
     ) {
         parent::__construct($rawResponse);
     }

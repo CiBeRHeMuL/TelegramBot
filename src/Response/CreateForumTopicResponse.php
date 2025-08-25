@@ -8,7 +8,7 @@ class CreateForumTopicResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ForumTopic|null $forumTopic,
+        private readonly ForumTopic|null $forumTopic = null,
     ) {
         parent::__construct($rawResponse);
     }

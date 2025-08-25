@@ -8,7 +8,7 @@ class SendVideoResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly Message|null $message,
+        private readonly Message|null $message = null,
     ) {
         parent::__construct($response);
     }

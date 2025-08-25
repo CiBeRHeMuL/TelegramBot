@@ -12,7 +12,7 @@ class GetGameHighScoresResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $gameHighScores,
+        private readonly array|null $gameHighScores = null,
     ) {
         parent::__construct($rawResponse);
     }

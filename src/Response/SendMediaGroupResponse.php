@@ -12,7 +12,7 @@ class SendMediaGroupResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $response,
-        private readonly array|null $messages,
+        private readonly array|null $messages = null,
     ) {
         parent::__construct($response);
     }

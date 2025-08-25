@@ -6,7 +6,7 @@ class GetChatMemberCountResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly int|null $count,
+        private readonly int|null $count = null,
     ) {
         parent::__construct($rawResponse);
     }

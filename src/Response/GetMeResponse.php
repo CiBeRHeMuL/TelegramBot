@@ -8,7 +8,7 @@ class GetMeResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly User|null $user,
+        private readonly User|null $user = null,
     ) {
         parent::__construct($response);
     }

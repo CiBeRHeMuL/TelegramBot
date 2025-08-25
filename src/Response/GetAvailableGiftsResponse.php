@@ -13,7 +13,7 @@ class GetAvailableGiftsResponse extends AbstractResponse
         parent::__construct($rawResponse);
     }
 
-    public function getGifts(): ?Gifts
+    public function getGifts(): Gifts|null
     {
         return $this->gifts;
     }

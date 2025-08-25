@@ -8,7 +8,7 @@ class AnswerWebAppQueryResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly SentWebAppMessage|null $sentWebAppMessage,
+        private readonly SentWebAppMessage|null $sentWebAppMessage = null,
     ) {
         parent::__construct($rawResponse);
     }

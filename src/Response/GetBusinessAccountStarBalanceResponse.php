@@ -8,7 +8,7 @@ class GetBusinessAccountStarBalanceResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly StarAmount|null $amount,
+        private readonly StarAmount|null $amount = null,
     ) {
         parent::__construct($rawResponse);
     }

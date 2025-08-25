@@ -8,7 +8,7 @@ class StopMessageLiveLocationResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Message|bool|null $message,
+        private readonly Message|bool|null $message = null,
     ) {
         parent::__construct($rawResponse);
     }

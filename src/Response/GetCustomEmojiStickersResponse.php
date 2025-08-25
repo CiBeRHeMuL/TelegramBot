@@ -12,7 +12,7 @@ class GetCustomEmojiStickersResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $emojiStickers,
+        private readonly array|null $emojiStickers = null,
     ) {
         parent::__construct($rawResponse);
     }

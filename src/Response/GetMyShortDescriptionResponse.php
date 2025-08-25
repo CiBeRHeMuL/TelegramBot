@@ -8,7 +8,7 @@ class GetMyShortDescriptionResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly BotShortDescription|null $shortDescription,
+        private readonly BotShortDescription|null $shortDescription = null,
     ) {
         parent::__construct($rawResponse);
     }
