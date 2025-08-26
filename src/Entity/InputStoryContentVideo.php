@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputstorycontentvideo
  */
 #[BuildIf(new FieldIsChecker('type', InputStoryContentTypeEnum::Photo->value))]
-class InputStoryContentVideo extends AbstractInputStoryContent
+final class InputStoryContentVideo extends AbstractInputStoryContent
 {
     /**
      * @param Filename|Url $video The video to post as a story. The video must be of the size 720x1280, streamable, encoded with

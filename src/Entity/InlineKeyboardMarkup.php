@@ -11,7 +11,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
  * @link https://core.telegram.org/bots/api#inlinekeyboardmarkup
  */
-class InlineKeyboardMarkup extends AbstractEntity
+final class InlineKeyboardMarkup implements EntityInterface
 {
     /**
      * @param InlineKeyboardButton[][] $inline_keyboard Array of button rows, each represented by an Array of InlineKeyboardButton
@@ -24,7 +24,6 @@ class InlineKeyboardMarkup extends AbstractEntity
         #[ArrayType(new ArrayType(InlineKeyboardButton::class))]
         protected array $inline_keyboard,
     ) {
-        parent::__construct();
     }
 
     /**

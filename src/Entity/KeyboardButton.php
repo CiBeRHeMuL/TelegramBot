@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#keyboardbutton
  */
-class KeyboardButton extends AbstractEntity
+final class KeyboardButton implements EntityInterface
 {
     /**
      * @param string $text Text of the button. If none of the optional fields are used, it will be sent as a message when the button
@@ -45,7 +45,6 @@ class KeyboardButton extends AbstractEntity
         protected KeyboardButtonPollType|null $request_poll = null,
         protected WebAppInfo|null $web_app = null,
     ) {
-        parent::__construct();
     }
 
     /**

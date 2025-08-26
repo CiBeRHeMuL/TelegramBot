@@ -12,7 +12,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#successfulpayment
  */
-class SuccessfulPayment extends AbstractEntity
+final class SuccessfulPayment implements EntityInterface
 {
     /**
      * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars
@@ -46,7 +46,6 @@ class SuccessfulPayment extends AbstractEntity
         protected bool|null $is_recurring = null,
         protected bool|null $is_first_recurring = null,
     ) {
-        parent::__construct();
     }
 
     /**

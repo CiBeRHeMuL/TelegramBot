@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#reactioncount
  */
-class ReactionCount extends AbstractEntity
+final class ReactionCount implements EntityInterface
 {
     /**
      * @param AbstractReactionType $type Type of the reaction
@@ -21,7 +21,6 @@ class ReactionCount extends AbstractEntity
         protected AbstractReactionType $type,
         protected int $total_count,
     ) {
-        parent::__construct();
     }
 
     /**

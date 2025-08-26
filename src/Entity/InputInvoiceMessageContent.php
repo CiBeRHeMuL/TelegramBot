@@ -25,7 +25,7 @@ use stdClass;
     new FieldCompareChecker('currency', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('prices', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InputInvoiceMessageContent extends AbstractInputMessageContent
+final class InputInvoiceMessageContent extends AbstractInputMessageContent
 {
     /**
      * @param string $title Product name, 1-32 characters
@@ -107,7 +107,6 @@ class InputInvoiceMessageContent extends AbstractInputMessageContent
         #[ArrayType('int')]
         protected array|null $suggested_tip_amounts = null,
     ) {
-        parent::__construct();
     }
 
     /**

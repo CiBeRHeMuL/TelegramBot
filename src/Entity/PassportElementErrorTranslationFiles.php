@@ -16,7 +16,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#passportelementerrortranslationfiles
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::TranslationFiles->value))]
-class PassportElementErrorTranslationFiles extends AbstractPassportElementError
+final class PassportElementErrorTranslationFiles extends AbstractPassportElementError
 {
     /**
      * @param PassportElementErrorTranslationFilesTypeEnum $type Type of element of the user's Telegram Passport which has the issue,

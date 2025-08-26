@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatlocation
  */
-class ChatLocation extends AbstractEntity
+final class ChatLocation implements EntityInterface
 {
     /**
      * @param Location $location The location to which the supergroup is connected. Can't be a live location.
@@ -21,7 +21,6 @@ class ChatLocation extends AbstractEntity
         protected Location $location,
         protected string $address,
     ) {
-        parent::__construct();
     }
 
     /**

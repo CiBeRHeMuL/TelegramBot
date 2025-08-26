@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostdeclined
  */
-class SuggestedPostDeclined extends AbstractEntity
+final class SuggestedPostDeclined implements EntityInterface
 {
     /**
      * @param string|null $comment Optional. Comment with which the post was declined
@@ -23,7 +23,6 @@ class SuggestedPostDeclined extends AbstractEntity
         protected string|null $comment = null,
         protected Message|null $suggested_post_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

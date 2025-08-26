@@ -22,7 +22,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Voice->value),
     new FieldCompareChecker('voice_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
+final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

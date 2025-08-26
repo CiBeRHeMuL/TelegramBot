@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#paidmessagepricechanged
  */
-class PaidMessagePriceChanged extends AbstractEntity
+final class PaidMessagePriceChanged implements EntityInterface
 {
     /**
      * @param int $paid_message_star_count The new number of Telegram Stars that must be paid by non-administrator users of the supergroup
@@ -18,7 +18,6 @@ class PaidMessagePriceChanged extends AbstractEntity
     public function __construct(
         protected int $paid_message_star_count,
     ) {
-        parent::__construct();
     }
 
     /**

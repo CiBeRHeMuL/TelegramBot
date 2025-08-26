@@ -13,12 +13,11 @@ use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
     InputStoryContentPhoto::class,
     InputStoryContentVideo::class,
 ])]
-abstract class AbstractInputStoryContent extends AbstractEntity
+abstract class AbstractInputStoryContent implements EntityInterface
 {
     public function __construct(
         protected readonly InputStoryContentTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): InputStoryContentTypeEnum

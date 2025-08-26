@@ -33,12 +33,11 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
     InlineQueryResultVideo::class,
     InlineQueryResultVoice::class,
 ])]
-abstract class AbstractInlineQueryResult extends AbstractEntity
+abstract class AbstractInlineQueryResult implements EntityInterface
 {
     public function __construct(
         protected readonly InlineQueryResultTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): InlineQueryResultTypeEnum

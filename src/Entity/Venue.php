@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#venue
  */
-class Venue extends AbstractEntity
+final class Venue implements EntityInterface
 {
     /**
      * @param Location $location Venue location. Can't be a live location
@@ -33,7 +33,6 @@ class Venue extends AbstractEntity
         protected string|null $google_place_id = null,
         protected string|null $google_place_type = null,
     ) {
-        parent::__construct();
     }
 
     /**

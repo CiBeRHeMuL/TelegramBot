@@ -20,7 +20,7 @@ use stdClass;
     new FieldCompareChecker('title', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('address', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InputVenueMessageContent extends AbstractInputMessageContent
+final class InputVenueMessageContent extends AbstractInputMessageContent
 {
     /**
      * @param float $latitude Latitude of the venue in degrees
@@ -45,7 +45,6 @@ class InputVenueMessageContent extends AbstractInputMessageContent
         protected string|null $google_place_id = null,
         protected string|null $google_place_type = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#storyareatypesuggestedreaction
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::SuggestedReaction->value))]
-class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
+final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
 {
     /**
      * @param AbstractReactionType $reaction_type Type of the reaction

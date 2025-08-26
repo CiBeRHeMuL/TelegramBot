@@ -16,7 +16,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputtextmessagecontent
  */
 #[BuildIf(new FieldCompareChecker('message_text', null, CompareOperatorEnum::StrictNotEqual))]
-class InputTextMessageContent extends AbstractEntity
+final class InputTextMessageContent implements EntityInterface
 {
     /**
      * @param string $message_text Text of the message to be sent, 1-4096 characters
@@ -37,7 +37,6 @@ class InputTextMessageContent extends AbstractEntity
         protected LinkPreviewOptions|null $link_preview_options = null,
         protected TelegramParseModeEnum|null $parse_mode = null,
     ) {
-        parent::__construct();
     }
 
     /**

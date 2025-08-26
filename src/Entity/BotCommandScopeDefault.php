@@ -16,7 +16,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#botcommandscopedefault
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::Default))]
-class BotCommandScopeDefault extends AbstractBotCommandScope
+final class BotCommandScopeDefault extends AbstractBotCommandScope
 {
     public function __construct()
     {

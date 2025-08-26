@@ -13,7 +13,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inputsticker
  */
-class InputSticker extends AbstractEntity
+final class InputSticker implements EntityInterface
 {
     /**
      * @param Filename|Url|string $sticker The added sticker. Pass a file_id as a String to send a file that already exists on the
@@ -40,7 +40,6 @@ class InputSticker extends AbstractEntity
         protected array|null $keywords = null,
         protected MaskPosition|null $mask_position = null,
     ) {
-        parent::__construct();
     }
 
     /**

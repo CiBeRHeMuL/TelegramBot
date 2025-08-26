@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#audio
  */
-class Audio extends AbstractEntity
+final class Audio implements EntityInterface
 {
     /**
      * @param int $duration Duration of the audio in seconds as defined by the sender
@@ -38,7 +38,6 @@ class Audio extends AbstractEntity
         protected string|null $mime_type = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -16,7 +16,7 @@ use stdClass;
  * Sample bot: https://t.me/discussbot
  * @link https://core.telegram.org/bots/api#loginurl
  */
-class LoginUrl extends AbstractEntity
+final class LoginUrl implements EntityInterface
 {
     /**
      * @param Url $url An HTTPS URL to be opened with user authorization data added to the query string when the button is pressed.
@@ -36,7 +36,6 @@ class LoginUrl extends AbstractEntity
         protected string|null $forward_text = null,
         protected bool|null $request_write_access = null,
     ) {
-        parent::__construct();
     }
 
     public function getUrl(): Url

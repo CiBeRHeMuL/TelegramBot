@@ -11,7 +11,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/features#chat-and-user-selection More about requesting users »
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  */
-class KeyboardButtonRequestUsers extends AbstractEntity
+final class KeyboardButtonRequestUsers implements EntityInterface
 {
     /**
      * @param int $request_id Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must
@@ -36,7 +36,6 @@ class KeyboardButtonRequestUsers extends AbstractEntity
         protected bool|null $user_is_bot = null,
         protected bool|null $user_is_premium = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#invoice
  */
-class Invoice extends AbstractEntity
+final class Invoice implements EntityInterface
 {
     /**
      * @param string $title Product name
@@ -32,7 +32,6 @@ class Invoice extends AbstractEntity
         protected CurrencyEnum $currency,
         protected int $total_amount,
     ) {
-        parent::__construct();
     }
 
     /**

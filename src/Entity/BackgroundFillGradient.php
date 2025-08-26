@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundfillgradient
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundFillTypeEnum::Gradient->value))]
-class BackgroundFillGradient extends AbstractBackgroundFill
+final class BackgroundFillGradient extends AbstractBackgroundFill
 {
     /**
      * @param int $top_color Top color of the gradient in the RGB24 format

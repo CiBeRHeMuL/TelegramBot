@@ -22,7 +22,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Photo),
     new FieldCompareChecker('photo_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
+final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

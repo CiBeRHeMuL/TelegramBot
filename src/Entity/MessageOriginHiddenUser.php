@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#messageoriginhiddenuser
  */
 #[BuildIf(new FieldIsChecker('type', MessageOriginTypeEnum::HiddenUser->value))]
-class MessageOriginHiddenUser extends AbstractMessageOrigin
+final class MessageOriginHiddenUser extends AbstractMessageOrigin
 {
     /**
      * @param int $date Date the message was sent originally in Unix time

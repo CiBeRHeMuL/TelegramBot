@@ -13,7 +13,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
  * @link https://core.telegram.org/bots/api#forcereply
  */
-class ForceReply extends AbstractEntity
+final class ForceReply implements EntityInterface
 {
     /**
      * @param bool $force_reply Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
@@ -30,7 +30,6 @@ class ForceReply extends AbstractEntity
         protected string|null $input_field_placeholder = null,
         protected bool|null $selective = null,
     ) {
-        parent::__construct();
     }
 
     /**

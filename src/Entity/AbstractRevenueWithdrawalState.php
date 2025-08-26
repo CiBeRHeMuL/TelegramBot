@@ -14,12 +14,11 @@ use AndrewGos\TelegramBot\Enum\RevenueWithdrawalStateTypeEnum;
     RevenueWithdrawalStateSucceeded::class,
     RevenueWithdrawalStateFailed::class,
 ])]
-abstract class AbstractRevenueWithdrawalState extends AbstractEntity
+abstract class AbstractRevenueWithdrawalState implements EntityInterface
 {
     public function __construct(
         protected readonly RevenueWithdrawalStateTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): RevenueWithdrawalStateTypeEnum

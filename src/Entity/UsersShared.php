@@ -12,7 +12,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers KeyboardButtonRequestUsers
  * @link https://core.telegram.org/bots/api#usersshared
  */
-class UsersShared extends AbstractEntity
+final class UsersShared implements EntityInterface
 {
     /**
      * @param int $request_id Identifier of the request
@@ -25,7 +25,6 @@ class UsersShared extends AbstractEntity
         #[ArrayType(SharedUser::class)]
         protected array $users,
     ) {
-        parent::__construct();
     }
 
     /**

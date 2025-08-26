@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#storyareatypeweather
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::Weather->value))]
-class StoryAreaTypeWeather extends AbstractStoryAreaType
+final class StoryAreaTypeWeather extends AbstractStoryAreaType
 {
     /**
      * @param float $temperature Temperature, in degree Celsius

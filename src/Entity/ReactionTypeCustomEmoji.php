@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#reactiontypecustomemoji
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::CustomEmoji->value))]
-class ReactionTypeCustomEmoji extends AbstractReactionType
+final class ReactionTypeCustomEmoji extends AbstractReactionType
 {
     /**
      * @param string $custom_emoji_id Custom emoji identifier

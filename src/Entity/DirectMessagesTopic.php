@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#directmessagestopic
  */
-class DirectMessagesTopic extends AbstractEntity
+final class DirectMessagesTopic implements EntityInterface
 {
     /**
      * @param int $topic_id Unique identifier of the topic
@@ -21,7 +21,6 @@ class DirectMessagesTopic extends AbstractEntity
         protected int $topic_id,
         protected User|null $user = null,
     ) {
-        parent::__construct();
     }
 
     /**

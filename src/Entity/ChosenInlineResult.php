@@ -10,7 +10,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#inlinequeryresult result
  * @link https://core.telegram.org/bots/api#choseninlineresult
  */
-class ChosenInlineResult extends AbstractEntity
+final class ChosenInlineResult implements EntityInterface
 {
     /**
      * @param string $result_id The unique identifier for the result that was chosen
@@ -33,7 +33,6 @@ class ChosenInlineResult extends AbstractEntity
         protected string|null $inline_message_id = null,
         protected Location|null $location = null,
     ) {
-        parent::__construct();
     }
 
     /**

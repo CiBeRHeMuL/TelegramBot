@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#preparedinlinemessage
  */
-class PreparedInlineMessage extends AbstractEntity
+final class PreparedInlineMessage implements EntityInterface
 {
     /**
      * @param string $id Unique identifier of the prepared message
@@ -20,7 +20,6 @@ class PreparedInlineMessage extends AbstractEntity
         protected string $id,
         protected int $expiration_date,
     ) {
-        parent::__construct();
     }
 
     /**

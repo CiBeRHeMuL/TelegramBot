@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostrefunded
  */
-class SuggestedPostRefunded extends AbstractEntity
+final class SuggestedPostRefunded implements EntityInterface
 {
     /**
      * @param SuggestedPostRefundedReasonEnum $reason Reason for the refund. Currently, one of “post_deleted” if the post was
@@ -26,7 +26,6 @@ class SuggestedPostRefunded extends AbstractEntity
         protected SuggestedPostRefundedReasonEnum $reason,
         protected Message|null $suggested_post_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#passportfile
  */
-class PassportFile extends AbstractEntity
+final class PassportFile implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -25,7 +25,6 @@ class PassportFile extends AbstractEntity
         protected int $file_size,
         protected int $file_date,
     ) {
-        parent::__construct();
     }
 
     /**

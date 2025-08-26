@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatbackground
  */
-class ChatBackground extends AbstractEntity
+final class ChatBackground implements EntityInterface
 {
     /**
      * @param AbstractBackgroundType $type Type of the background
@@ -19,7 +19,6 @@ class ChatBackground extends AbstractEntity
     public function __construct(
         protected AbstractBackgroundType $type,
     ) {
-        parent::__construct();
     }
 
     /**

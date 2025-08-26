@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#giveawaycreated
  */
-class GiveawayCreated extends AbstractEntity
+final class GiveawayCreated implements EntityInterface
 {
     /**
      * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram
@@ -18,7 +18,6 @@ class GiveawayCreated extends AbstractEntity
     public function __construct(
         protected int|null $prize_star_count = null,
     ) {
-        parent::__construct();
     }
 
     /**

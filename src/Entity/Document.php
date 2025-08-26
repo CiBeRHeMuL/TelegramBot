@@ -12,7 +12,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#audio audio files
  * @link https://core.telegram.org/bots/api#document
  */
-class Document extends AbstractEntity
+final class Document implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -35,7 +35,6 @@ class Document extends AbstractEntity
         protected string|null $mime_type = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

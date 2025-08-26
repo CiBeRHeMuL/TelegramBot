@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#botcommandscopeallgroupchats
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::AllGroupChats))]
-class BotCommandScopeAllGroupChats extends AbstractBotCommandScope
+final class BotCommandScopeAllGroupChats extends AbstractBotCommandScope
 {
     public function __construct()
     {

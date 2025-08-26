@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatadministratorrights
  */
-class ChatAdministratorRights extends AbstractEntity
+final class ChatAdministratorRights implements EntityInterface
 {
     /**
      * @param bool $is_anonymous True, if the user's presence in the chat is hidden
@@ -57,7 +57,6 @@ class ChatAdministratorRights extends AbstractEntity
         protected bool|null $can_post_messages = null,
         protected bool|null $can_manage_direct_messages = null,
     ) {
-        parent::__construct();
     }
 
     /**

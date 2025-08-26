@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#checklisttasksadded
  */
-class ChecklistTasksAdded extends AbstractEntity
+final class ChecklistTasksAdded implements EntityInterface
 {
     /**
      * @param ChecklistTask[] $tasks List of tasks added to the checklist
@@ -26,7 +26,6 @@ class ChecklistTasksAdded extends AbstractEntity
         protected array $tasks,
         protected Message|null $checklist_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

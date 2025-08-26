@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#labeledprice
  */
-class LabeledPrice extends AbstractEntity
+final class LabeledPrice implements EntityInterface
 {
     /**
      * @param string $label Portion label
@@ -24,7 +24,6 @@ class LabeledPrice extends AbstractEntity
         protected string $label,
         protected int $amount,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#passportelementerrorfiles
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Files->value))]
-class PassportElementErrorFiles extends AbstractPassportElementError
+final class PassportElementErrorFiles extends AbstractPassportElementError
 {
     /**
      * @param PassportElementErrorFilesTypeEnum $type The section of the user's Telegram Passport which has the issue, one of “utility_bill”,

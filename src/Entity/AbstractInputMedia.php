@@ -16,12 +16,11 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
     InputMediaPhoto::class,
     InputMediaVideo::class,
 ])]
-abstract class AbstractInputMedia extends AbstractEntity
+abstract class AbstractInputMedia implements EntityInterface
 {
     public function __construct(
         protected readonly InputMediaTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): InputMediaTypeEnum

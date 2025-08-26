@@ -12,7 +12,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inaccessiblemessage
  */
 #[BuildIf(new FieldIsChecker('date', 0))]
-class InaccessibleMessage extends AbstractMaybeInaccessibleMessage
+final class InaccessibleMessage extends AbstractMaybeInaccessibleMessage
 {
     /**
      * @param Chat $chat Chat the message belonged to

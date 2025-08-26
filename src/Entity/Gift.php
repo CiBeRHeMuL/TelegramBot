@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#gift
  */
-class Gift extends AbstractEntity
+final class Gift implements EntityInterface
 {
     /**
      * @param string $id Unique identifier of the gift
@@ -34,7 +34,6 @@ class Gift extends AbstractEntity
         protected int|null $upgrade_star_count = null,
         protected Chat|null $publisher_chat = null,
     ) {
-        parent::__construct();
     }
 
     /**

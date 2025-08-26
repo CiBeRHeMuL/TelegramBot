@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#copytextbutton
  */
-class CopyTextButton extends AbstractEntity
+final class CopyTextButton implements EntityInterface
 {
     /**
      * @param string $text The text to be copied to the clipboard; 1-256 characters
@@ -17,7 +17,6 @@ class CopyTextButton extends AbstractEntity
     public function __construct(
         protected string $text,
     ) {
-        parent::__construct();
     }
 
     /**

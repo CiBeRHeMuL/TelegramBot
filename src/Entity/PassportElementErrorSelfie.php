@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#passportelementerrorselfie
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Selfie->value))]
-class PassportElementErrorSelfie extends AbstractPassportElementError
+final class PassportElementErrorSelfie extends AbstractPassportElementError
 {
     /**
      * @param PassportElementErrorSelfieTypeEnum $type The section of the user's Telegram Passport which has the issue, one of “passport”,

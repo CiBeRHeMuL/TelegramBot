@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#messageid
  */
-class MessageId extends AbstractEntity
+final class MessageId implements EntityInterface
 {
     /**
      * @param int $message_id Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat),
@@ -19,7 +19,6 @@ class MessageId extends AbstractEntity
     public function __construct(
         protected int $message_id,
     ) {
-        parent::__construct();
     }
 
     /**

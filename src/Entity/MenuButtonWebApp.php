@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#menubuttonwebapp
  */
 #[BuildIf(new FieldIsChecker('type', MenuButtonTypeEnum::WebApp->value))]
-class MenuButtonWebApp extends AbstractMenuButton
+final class MenuButtonWebApp extends AbstractMenuButton
 {
     /**
      * @param string $text Text on the button

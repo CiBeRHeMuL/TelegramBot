@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
  * @link https://core.telegram.org/bots/api#chatboostsource
  */
 #[AvailableInheritors([ChatBoostSourceGiftCode::class, ChatBoostSourceGiveaway::class, ChatBoostSourcePremium::class])]
-abstract class AbstractChatBoostSource extends AbstractEntity
+abstract class AbstractChatBoostSource implements EntityInterface
 {
     /**
      * @param ChatBoostSourceEnum $source Source of the boost
@@ -18,7 +18,6 @@ abstract class AbstractChatBoostSource extends AbstractEntity
     public function __construct(
         protected readonly ChatBoostSourceEnum $source,
     ) {
-        parent::__construct();
     }
 
     public function getSource(): ChatBoostSourceEnum

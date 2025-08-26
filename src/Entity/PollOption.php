@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#polloption
  */
-class PollOption extends AbstractEntity
+final class PollOption implements EntityInterface
 {
     /**
      * @param string $text Option text, 1-100 characters
@@ -26,7 +26,6 @@ class PollOption extends AbstractEntity
         #[ArrayType(MessageEntity::class)]
         protected array|null $text_entities = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -16,12 +16,11 @@ use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
     StoryAreaTypeWeather::class,
     StoryAreaTypeUniqueGift::class,
 ])]
-abstract class AbstractStoryAreaType extends AbstractEntity
+abstract class AbstractStoryAreaType implements EntityInterface
 {
     public function __construct(
         protected readonly StoryAreaTypeTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): StoryAreaTypeTypeEnum

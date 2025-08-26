@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatmemberrestricted
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Restricted->value))]
-class ChatMemberRestricted extends AbstractChatMember
+final class ChatMemberRestricted extends AbstractChatMember
 {
     /**
      * @param User $user Information about the user

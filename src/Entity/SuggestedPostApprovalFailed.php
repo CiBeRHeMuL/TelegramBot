@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostapprovalfailed
  */
-class SuggestedPostApprovalFailed extends AbstractEntity
+final class SuggestedPostApprovalFailed implements EntityInterface
 {
     /**
      * @param SuggestedPostPrice $price Expected price of the post
@@ -25,7 +25,6 @@ class SuggestedPostApprovalFailed extends AbstractEntity
         protected SuggestedPostPrice $price,
         protected Message|null $suggested_post_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundtypepattern
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Pattern->value))]
-class BackgroundTypePattern extends AbstractBackgroundType
+final class BackgroundTypePattern extends AbstractBackgroundType
 {
     /**
      * @param Document $document Document with the pattern

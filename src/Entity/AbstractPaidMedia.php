@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
     PaidMediaPhoto::class,
     PaidMediaVideo::class,
 ])]
-abstract class AbstractPaidMedia extends AbstractEntity
+abstract class AbstractPaidMedia implements EntityInterface
 {
     /**
      * @var PaidMediaTypeEnum $type
@@ -22,7 +22,6 @@ abstract class AbstractPaidMedia extends AbstractEntity
     public function __construct(
         protected readonly PaidMediaTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): PaidMediaTypeEnum

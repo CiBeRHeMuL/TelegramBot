@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#paidmediavideo
  */
 #[BuildIf(new FieldIsChecker('type', PaidMediaTypeEnum::Video->value))]
-class PaidMediaVideo extends AbstractPaidMedia
+final class PaidMediaVideo extends AbstractPaidMedia
 {
     /**
      * @param Video $video The video

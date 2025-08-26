@@ -11,7 +11,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#sticker sticker
  * @link https://core.telegram.org/bots/api#photosize
  */
-class PhotoSize extends AbstractEntity
+final class PhotoSize implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -28,7 +28,6 @@ class PhotoSize extends AbstractEntity
         protected int $height,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

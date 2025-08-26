@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#shippingaddress
  */
-class ShippingAddress extends AbstractEntity
+final class ShippingAddress implements EntityInterface
 {
     /**
      * @param CountryCodeEnum $country_code Two-letter ISO 3166-1 alpha-2 country code
@@ -30,7 +30,6 @@ class ShippingAddress extends AbstractEntity
         protected string $street_line2,
         protected string $post_code,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostparameters
  */
-class SuggestedPostParameters extends AbstractEntity
+final class SuggestedPostParameters implements EntityInterface
 {
     /**
      * @param SuggestedPostPrice|null $price Optional. Proposed price for the post. If the field is omitted, then the post is unpaid.
@@ -23,7 +23,6 @@ class SuggestedPostParameters extends AbstractEntity
         protected SuggestedPostPrice|null $price = null,
         protected int|null $send_date = null,
     ) {
-        parent::__construct();
     }
 
     /**

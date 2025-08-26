@@ -12,12 +12,11 @@ use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
 #[AvailableInheritors([
     OwnedGiftRegular::class,
 ])]
-abstract class AbstractOwnedGift extends AbstractEntity
+abstract class AbstractOwnedGift implements EntityInterface
 {
     public function __construct(
         protected readonly OwnedGiftTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): OwnedGiftTypeEnum

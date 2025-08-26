@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#paidmediaphoto
  */
 #[BuildIf(new FieldIsChecker('type', PaidMediaTypeEnum::Photo->value))]
-class PaidMediaPhoto extends AbstractPaidMedia
+final class PaidMediaPhoto extends AbstractPaidMedia
 {
     /**
      * @param PhotoSize[] $photo The photo

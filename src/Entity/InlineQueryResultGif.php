@@ -24,7 +24,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Gif->value),
     new FieldCompareChecker('gif_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultGif extends AbstractInlineQueryResult
+final class InlineQueryResultGif extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

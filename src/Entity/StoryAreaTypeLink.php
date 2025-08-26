@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#storyareatypelink
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::Link->value))]
-class StoryAreaTypeLink extends AbstractStoryAreaType
+final class StoryAreaTypeLink extends AbstractStoryAreaType
 {
     /**
      * @param Url $url HTTP or tg:// URL to be opened when the area is clicked

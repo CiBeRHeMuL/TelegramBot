@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#menubuttondefault
  */
 #[BuildIf(new FieldIsChecker('type', MenuButtonTypeEnum::Default->value))]
-class MenuButtonDefault extends AbstractMenuButton
+final class MenuButtonDefault extends AbstractMenuButton
 {
     public function __construct()
     {

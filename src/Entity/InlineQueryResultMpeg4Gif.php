@@ -25,7 +25,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Mpeg4Gif->value),
     new FieldCompareChecker('mpeg4_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
+final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

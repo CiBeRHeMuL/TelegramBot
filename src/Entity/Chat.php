@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chat
  */
-class Chat extends AbstractEntity
+final class Chat implements EntityInterface
 {
     /**
      * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
@@ -36,7 +36,6 @@ class Chat extends AbstractEntity
         protected string|null $username = null,
         protected bool|null $is_direct_messages = null,
     ) {
-        parent::__construct();
     }
 
     /**

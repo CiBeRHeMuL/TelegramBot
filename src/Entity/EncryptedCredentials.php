@@ -12,7 +12,7 @@ use stdClass;
  * @see https://core.telegram.org/passport#receiving-information Telegram Passport Documentation
  * @link https://core.telegram.org/bots/api#encryptedcredentials
  */
-class EncryptedCredentials extends AbstractEntity
+final class EncryptedCredentials implements EntityInterface
 {
     /**
      * @param string $data Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required
@@ -27,7 +27,6 @@ class EncryptedCredentials extends AbstractEntity
         protected string $hash,
         protected string $secret,
     ) {
-        parent::__construct();
     }
 
     /**

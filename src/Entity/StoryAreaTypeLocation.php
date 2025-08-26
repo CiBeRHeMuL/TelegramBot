@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#storyareatypelocation
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::Location->value))]
-class StoryAreaTypeLocation extends AbstractStoryAreaType
+final class StoryAreaTypeLocation extends AbstractStoryAreaType
 {
     /**
      * @param float $latitude Location latitude in degrees

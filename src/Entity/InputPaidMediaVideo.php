@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputpaidmediavideo
  */
 #[BuildIf(new FieldIsChecker('type', InputPaidMediaTypeEnum::Video->value))]
-class InputPaidMediaVideo extends AbstractInputPaidMedia
+final class InputPaidMediaVideo extends AbstractInputPaidMedia
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#botcommandscopechatmember
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::ChatMember))]
-class BotCommandScopeChatMember extends AbstractBotCommandScope
+final class BotCommandScopeChatMember extends AbstractBotCommandScope
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername).

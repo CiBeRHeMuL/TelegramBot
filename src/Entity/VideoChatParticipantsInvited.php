@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#videochatparticipantsinvited
  */
-class VideoChatParticipantsInvited extends AbstractEntity
+final class VideoChatParticipantsInvited implements EntityInterface
 {
     /**
      * @param User[] $users New members that were invited to the video chat
@@ -21,7 +21,6 @@ class VideoChatParticipantsInvited extends AbstractEntity
         #[ArrayType(User::class)]
         protected array $users,
     ) {
-        parent::__construct();
     }
 
     /**

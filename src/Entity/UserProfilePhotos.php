@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#userprofilephotos
  */
-class UserProfilePhotos extends AbstractEntity
+final class UserProfilePhotos implements EntityInterface
 {
     /**
      * @param int $total_count Total number of profile pictures the target user has
@@ -23,7 +23,6 @@ class UserProfilePhotos extends AbstractEntity
         #[ArrayType(new ArrayType(PhotoSize::class))]
         protected array $photos,
     ) {
-        parent::__construct();
     }
 
     /**

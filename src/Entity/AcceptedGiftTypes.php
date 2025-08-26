@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#acceptedgifttypes
  */
-class AcceptedGiftTypes extends AbstractEntity
+final class AcceptedGiftTypes implements EntityInterface
 {
     /**
      * @param bool $unlimited_gifts True, if unlimited regular gifts are accepted
@@ -23,7 +23,6 @@ class AcceptedGiftTypes extends AbstractEntity
         protected bool $unique_gifts,
         protected bool $premium_subscription,
     ) {
-        parent::__construct();
     }
 
     /**

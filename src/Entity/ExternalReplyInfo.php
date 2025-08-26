@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#externalreplyinfo
  */
-class ExternalReplyInfo extends AbstractEntity
+final class ExternalReplyInfo implements EntityInterface
 {
     /**
      * @param AbstractMessageOrigin $origin Origin of the message replied to by the given message
@@ -98,7 +98,6 @@ class ExternalReplyInfo extends AbstractEntity
         protected PaidMediaInfo|null $paid_media = null,
         protected Checklist|null $checklist = null,
     ) {
-        parent::__construct();
     }
 
     /**

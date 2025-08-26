@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#linkpreviewoptions
  */
-class LinkPreviewOptions extends AbstractEntity
+final class LinkPreviewOptions implements EntityInterface
 {
     /**
      * @param bool|null $is_disabled Optional. True, if the link preview is disabled
@@ -30,7 +30,6 @@ class LinkPreviewOptions extends AbstractEntity
         protected bool|null $prefer_large_media = null,
         protected bool|null $show_above_text = null,
     ) {
-        parent::__construct();
     }
 
     /**

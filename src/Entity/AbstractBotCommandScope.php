@@ -18,12 +18,11 @@ use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
     BotCommandScopeChatAdministrators::class,
     BotCommandScopeChatMember::class,
 ])]
-abstract class AbstractBotCommandScope extends AbstractEntity
+abstract class AbstractBotCommandScope implements EntityInterface
 {
     public function __construct(
         protected readonly BotCommandScopeTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): BotCommandScopeTypeEnum

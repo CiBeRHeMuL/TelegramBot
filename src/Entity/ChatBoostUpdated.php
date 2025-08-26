@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatboostupdated
  */
-class ChatBoostUpdated extends AbstractEntity
+final class ChatBoostUpdated implements EntityInterface
 {
     /**
      * @param Chat $chat Chat which was boosted
@@ -22,7 +22,6 @@ class ChatBoostUpdated extends AbstractEntity
         protected Chat $chat,
         protected ChatBoost $boost,
     ) {
-        parent::__construct();
     }
 
     /**

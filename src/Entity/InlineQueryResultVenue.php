@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inlinequeryresultvenue
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Venue))]
-class InlineQueryResultVenue extends AbstractInlineQueryResult
+final class InlineQueryResultVenue extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 Bytes

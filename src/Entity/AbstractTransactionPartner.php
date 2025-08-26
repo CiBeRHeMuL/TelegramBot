@@ -18,12 +18,11 @@ use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
     TransactionPartnerTelegramAds::class,
     TransactionPartnerAffiliateProgram::class,
 ])]
-abstract class AbstractTransactionPartner extends AbstractEntity
+abstract class AbstractTransactionPartner implements EntityInterface
 {
     public function __construct(
         protected readonly TransactionPartnerTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): TransactionPartnerTypeEnum

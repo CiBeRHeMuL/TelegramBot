@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#storyarea
  */
-class StoryArea extends AbstractEntity
+final class StoryArea implements EntityInterface
 {
     /**
      * @param StoryAreaPosition $position Position of the area
@@ -22,7 +22,6 @@ class StoryArea extends AbstractEntity
         protected StoryAreaPosition $position,
         protected AbstractStoryAreaType $type,
     ) {
-        parent::__construct();
     }
 
     /**

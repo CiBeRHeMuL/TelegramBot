@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inlinequeryresultgame
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Game))]
-class InlineQueryResultGame extends AbstractInlineQueryResult
+final class InlineQueryResultGame extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

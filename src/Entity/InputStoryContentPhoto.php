@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputstorycontentphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputStoryContentTypeEnum::Photo->value))]
-class InputStoryContentPhoto extends AbstractInputStoryContent
+final class InputStoryContentPhoto extends AbstractInputStoryContent
 {
     /**
      * @param Filename|Url $photo The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB.

@@ -15,12 +15,11 @@ use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
     MessageOriginHiddenUser::class,
     MessageOriginUser::class,
 ])]
-abstract class AbstractMessageOrigin extends AbstractEntity
+abstract class AbstractMessageOrigin implements EntityInterface
 {
     public function __construct(
         protected readonly MessageOriginTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): MessageOriginTypeEnum

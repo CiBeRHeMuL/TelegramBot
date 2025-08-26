@@ -13,12 +13,11 @@ use AndrewGos\TelegramBot\Enum\InputProfilePhotoTypeEnum;
     InputProfilePhotoStatic::class,
     InputProfilePhotoAnimated::class,
 ])]
-abstract class AbstractInputProfilePhoto extends AbstractEntity
+abstract class AbstractInputProfilePhoto implements EntityInterface
 {
     public function __construct(
         protected readonly InputProfilePhotoTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): InputProfilePhotoTypeEnum

@@ -16,12 +16,11 @@ use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
     MenuButtonWebApp::class,
     MenuButtonDefault::class,
 ])]
-abstract class AbstractMenuButton extends AbstractEntity
+abstract class AbstractMenuButton implements EntityInterface
 {
     public function __construct(
         protected readonly MenuButtonTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): MenuButtonTypeEnum

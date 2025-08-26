@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#poll
  */
-class Poll extends AbstractEntity
+final class Poll implements EntityInterface
 {
     /**
      * @param string $id Unique poll identifier
@@ -56,7 +56,6 @@ class Poll extends AbstractEntity
         protected int|null $open_period = null,
         protected int|null $close_date = null,
     ) {
-        parent::__construct();
     }
 
     /**

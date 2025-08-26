@@ -20,12 +20,11 @@ use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
     PassportElementErrorTranslationFiles::class,
     PassportElementErrorUnspecified::class,
 ])]
-abstract class AbstractPassportElementError extends AbstractEntity
+abstract class AbstractPassportElementError implements EntityInterface
 {
     public function __construct(
         protected readonly PassportElementErrorSourceEnum $source,
     ) {
-        parent::__construct();
     }
 
     public function getSource(): PassportElementErrorSourceEnum

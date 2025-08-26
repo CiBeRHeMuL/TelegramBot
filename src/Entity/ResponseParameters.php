@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#responseparameters
  */
-class ResponseParameters extends AbstractEntity
+final class ResponseParameters implements EntityInterface
 {
     /**
      * @param int|null $migrate_to_chat_id Optional. The group has been migrated to a supergroup with the specified identifier. This
@@ -23,7 +23,6 @@ class ResponseParameters extends AbstractEntity
         protected int|null $migrate_to_chat_id = null,
         protected int|null $retry_after = null,
     ) {
-        parent::__construct();
     }
 
     /**

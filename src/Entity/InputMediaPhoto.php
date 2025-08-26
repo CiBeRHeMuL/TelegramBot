@@ -17,7 +17,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputmediaphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Photo->value))]
-class InputMediaPhoto extends AbstractInputMedia
+final class InputMediaPhoto extends AbstractInputMedia
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

@@ -10,7 +10,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#available-types object
  * @link https://core.telegram.org/bots/api#update
  */
-class Update extends AbstractEntity
+final class Update implements EntityInterface
 {
     /**
      * @param int $update_id The update's unique identifier. Update identifiers start from a certain positive number and increase
@@ -114,7 +114,6 @@ class Update extends AbstractEntity
         protected ShippingQuery|null $shipping_query = null,
         protected PaidMediaPurchased|null $purchased_paid_media = null,
     ) {
-        parent::__construct();
     }
 
     /**

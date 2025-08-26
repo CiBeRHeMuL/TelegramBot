@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatinvitelink
  */
-class ChatInviteLink extends AbstractEntity
+final class ChatInviteLink implements EntityInterface
 {
     /**
      * @param Url $invite_link The invite link. If the link was created by another chat administrator, then the second part of the
@@ -43,7 +43,6 @@ class ChatInviteLink extends AbstractEntity
         protected int|null $subscription_period = null,
         protected int|null $subscription_price = null,
     ) {
-        parent::__construct();
     }
 
     /**

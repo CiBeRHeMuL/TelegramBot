@@ -19,7 +19,7 @@ use stdClass;
     new FieldCompareChecker('phone_number', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('first_name', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InputContactMessageContent extends AbstractInputMessageContent
+final class InputContactMessageContent extends AbstractInputMessageContent
 {
     /**
      * @param Phone $phone_number Contact's phone number
@@ -35,7 +35,6 @@ class InputContactMessageContent extends AbstractInputMessageContent
         protected string|null $last_name = null,
         protected string|null $vcard = null,
     ) {
-        parent::__construct();
     }
 
     /**

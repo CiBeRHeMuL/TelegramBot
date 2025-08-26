@@ -8,7 +8,7 @@ use stdClass;
  * This object represents a service message about a video chat started in the chat. Currently holds no information.
  * @link https://core.telegram.org/bots/api#videochatstarted
  */
-class VideoChatStarted extends AbstractEntity
+final class VideoChatStarted implements EntityInterface
 {
     public function toArray(): array|stdClass
     {

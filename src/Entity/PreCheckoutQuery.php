@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#precheckoutquery
  */
-class PreCheckoutQuery extends AbstractEntity
+final class PreCheckoutQuery implements EntityInterface
 {
     /**
      * @param string $id Unique query identifier
@@ -38,7 +38,6 @@ class PreCheckoutQuery extends AbstractEntity
         protected OrderInfo|null $order_info = null,
         protected string|null $shipping_option_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

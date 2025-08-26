@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#uniquegiftmodel
  */
-class UniqueGiftModel extends AbstractEntity
+final class UniqueGiftModel implements EntityInterface
 {
     /**
      * @param string $name Name of the model
@@ -23,7 +23,6 @@ class UniqueGiftModel extends AbstractEntity
         protected Sticker $sticker,
         protected int $rarity_per_mille,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#videochatended
  */
-class VideoChatEnded extends AbstractEntity
+final class VideoChatEnded implements EntityInterface
 {
     /**
      * @param int $duration Video chat duration in seconds
@@ -17,7 +17,6 @@ class VideoChatEnded extends AbstractEntity
     public function __construct(
         protected int $duration,
     ) {
-        parent::__construct();
     }
 
     /**

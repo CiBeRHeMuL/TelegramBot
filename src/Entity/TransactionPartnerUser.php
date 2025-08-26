@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartneruser
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::User->value))]
-class TransactionPartnerUser extends AbstractTransactionPartner
+final class TransactionPartnerUser extends AbstractTransactionPartner
 {
     /**
      * @param User $user Information about the user

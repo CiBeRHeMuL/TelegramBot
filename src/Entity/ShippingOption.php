@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#shippingoption
  */
-class ShippingOption extends AbstractEntity
+final class ShippingOption implements EntityInterface
 {
     /**
      * @param string $id Shipping option identifier
@@ -25,7 +25,6 @@ class ShippingOption extends AbstractEntity
         #[ArrayType(LabeledPrice::class)]
         protected array $prices,
     ) {
-        parent::__construct();
     }
 
     /**

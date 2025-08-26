@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#location
  */
-class Location extends AbstractEntity
+final class Location implements EntityInterface
 {
     /**
      * @param float $latitude Latitude as defined by the sender
@@ -29,7 +29,6 @@ class Location extends AbstractEntity
         protected int|null $heading = null,
         protected int|null $proximity_alert_radius = null,
     ) {
-        parent::__construct();
     }
 
     /**

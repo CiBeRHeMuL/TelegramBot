@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatmemberbanned
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Kicked->value))]
-class ChatMemberBanned extends AbstractChatMember
+final class ChatMemberBanned extends AbstractChatMember
 {
     /**
      * @param User $user Information about the user

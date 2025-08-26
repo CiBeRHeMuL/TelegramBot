@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundtypewallpaper
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Wallpaper->value))]
-class BackgroundTypeWallpaper extends AbstractBackgroundType
+final class BackgroundTypeWallpaper extends AbstractBackgroundType
 {
     /**
      * @param Document $document Document with the wallpaper

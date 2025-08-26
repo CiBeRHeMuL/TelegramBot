@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundfillsolid
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundFillTypeEnum::Solid->value))]
-class BackgroundFillSolid extends AbstractBackgroundFill
+final class BackgroundFillSolid extends AbstractBackgroundFill
 {
     /**
      * @param int $color The color of the background fill in the RGB24 format

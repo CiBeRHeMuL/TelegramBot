@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#staramount
  */
-class StarAmount extends AbstractEntity
+final class StarAmount implements EntityInterface
 {
     /**
      * @param int $amount Integer amount of Telegram Stars, rounded to 0; can be negative
@@ -20,7 +20,6 @@ class StarAmount extends AbstractEntity
         protected int $amount,
         protected int|null $nanostar_amount = null,
     ) {
-        parent::__construct();
     }
 
     /**

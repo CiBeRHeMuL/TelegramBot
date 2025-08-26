@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#ownedgifts
  */
-class OwnedGifts extends AbstractEntity
+final class OwnedGifts implements EntityInterface
 {
     /**
      * @param int $total_count The total number of gifts owned by the user or the chat
@@ -25,7 +25,6 @@ class OwnedGifts extends AbstractEntity
         protected array $gifts,
         protected string|null $next_offset = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessbotrights
  */
-class BusinessBotRights extends AbstractEntity
+final class BusinessBotRights implements EntityInterface
 {
     /**
      * @param bool|null $can_change_gift_settings Optional. True, if the bot can change the privacy settings pertaining to gifts
@@ -50,7 +50,6 @@ class BusinessBotRights extends AbstractEntity
         protected bool|null $can_transfer_stars = null,
         protected bool|null $can_view_gifts_and_stars = null,
     ) {
-        parent::__construct();
     }
 
     /**

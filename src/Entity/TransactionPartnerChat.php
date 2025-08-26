@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartnerchat
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::Chat->value))]
-class TransactionPartnerChat extends AbstractTransactionPartner
+final class TransactionPartnerChat extends AbstractTransactionPartner
 {
     /**
      * @param Chat $chat Information about the chat

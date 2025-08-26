@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#gifts
  */
-class Gifts extends AbstractEntity
+final class Gifts implements EntityInterface
 {
     /**
      * @param Gift[] $gifts The list of gifts
@@ -21,7 +21,6 @@ class Gifts extends AbstractEntity
         #[ArrayType(Gift::class)]
         protected array $gifts,
     ) {
-        parent::__construct();
     }
 
     /**

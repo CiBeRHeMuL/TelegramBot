@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businesslocation
  */
-class BusinessLocation extends AbstractEntity
+final class BusinessLocation implements EntityInterface
 {
     /**
      * @param string $address Address of the business
@@ -21,7 +21,6 @@ class BusinessLocation extends AbstractEntity
         protected string $address,
         protected Location|null $location = null,
     ) {
-        parent::__construct();
     }
 
     /**

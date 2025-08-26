@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#animation
  */
-class Animation extends AbstractEntity
+final class Animation implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -38,7 +38,6 @@ class Animation extends AbstractEntity
         protected string|null $mime_type = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

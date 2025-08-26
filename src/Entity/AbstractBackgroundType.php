@@ -15,12 +15,11 @@ use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
     BackgroundTypePattern::class,
     BackgroundTypeChatTheme::class,
 ])]
-abstract class AbstractBackgroundType extends AbstractEntity
+abstract class AbstractBackgroundType implements EntityInterface
 {
     public function __construct(
         protected readonly BackgroundTypeTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): BackgroundTypeTypeEnum

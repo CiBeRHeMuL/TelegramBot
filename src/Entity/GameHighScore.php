@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#gamehighscore
  */
-class GameHighScore extends AbstractEntity
+final class GameHighScore implements EntityInterface
 {
     /**
      * @param int $position Position in high score table for the game
@@ -23,7 +23,6 @@ class GameHighScore extends AbstractEntity
         protected User $user,
         protected int $score,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,12 +10,11 @@ use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
  * @link https://core.telegram.org/bots/api#reactiontype
  */
 #[AvailableInheritors([ReactionTypeEmoji::class, ReactionTypeCustomEmoji::class])]
-abstract class AbstractReactionType extends AbstractEntity
+abstract class AbstractReactionType implements EntityInterface
 {
     public function __construct(
         protected readonly ReactionTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): ReactionTypeEnum

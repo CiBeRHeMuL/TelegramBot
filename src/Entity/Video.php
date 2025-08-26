@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#video
  */
-class Video extends AbstractEntity
+final class Video implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -45,7 +45,6 @@ class Video extends AbstractEntity
         protected array|null $cover = null,
         protected int|null $start_timestamp = null,
     ) {
-        parent::__construct();
     }
 
     /**

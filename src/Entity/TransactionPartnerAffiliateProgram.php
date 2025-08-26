@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartneraffiliateprogram
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::AffiliateProgram->value))]
-class TransactionPartnerAffiliateProgram extends AbstractTransactionPartner
+final class TransactionPartnerAffiliateProgram extends AbstractTransactionPartner
 {
     /**
      * @param int $commission_per_mille The number of Telegram Stars received by the bot for each 1000 Telegram Stars received by

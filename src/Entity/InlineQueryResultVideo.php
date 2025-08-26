@@ -26,7 +26,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Video->value),
     new FieldCompareChecker('video_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultVideo extends AbstractInlineQueryResult
+final class InlineQueryResultVideo extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

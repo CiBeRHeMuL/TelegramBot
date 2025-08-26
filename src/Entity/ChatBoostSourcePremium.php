@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatboostsourcepremium
  */
 #[BuildIf(new FieldIsChecker('source', ChatBoostSourceEnum::Premium->value))]
-class ChatBoostSourcePremium extends AbstractChatBoostSource
+final class ChatBoostSourcePremium extends AbstractChatBoostSource
 {
     /**
      * @param User $user User that boosted the chat

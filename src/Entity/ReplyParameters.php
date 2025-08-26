@@ -12,7 +12,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#replyparameters
  */
-class ReplyParameters extends AbstractEntity
+final class ReplyParameters implements EntityInterface
 {
     /**
      * @param int $message_id Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it
@@ -47,7 +47,6 @@ class ReplyParameters extends AbstractEntity
         protected int|null $quote_position = null,
         protected int|null $checklist_task_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

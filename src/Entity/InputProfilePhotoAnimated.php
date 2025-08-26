@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputprofilephotoanimated
  */
 #[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Animated->value,))]
-class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
+final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
 {
     /**
      * @param Filename|Url $animation The animated profile photo. Profile photos can't be reused and can only be uploaded as a new

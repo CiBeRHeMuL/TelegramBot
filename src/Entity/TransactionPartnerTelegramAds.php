@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartnertelegramads
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::TelegramAds->value))]
-class TransactionPartnerTelegramAds extends AbstractTransactionPartner
+final class TransactionPartnerTelegramAds extends AbstractTransactionPartner
 {
     public function __construct()
     {

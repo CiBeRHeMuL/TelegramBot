@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#contact
  */
-class Contact extends AbstractEntity
+final class Contact implements EntityInterface
 {
     /**
      * @param Phone $phone_number Contact's phone number
@@ -30,7 +30,6 @@ class Contact extends AbstractEntity
         protected int|null $user_id = null,
         protected string|null $vcard = null,
     ) {
-        parent::__construct();
     }
 
     /**

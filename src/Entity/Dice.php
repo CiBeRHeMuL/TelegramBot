@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#dice
  */
-class Dice extends AbstractEntity
+final class Dice implements EntityInterface
 {
     /**
      * @param DiceEmojiEnum $emoji Emoji on which the dice throw animation is based
@@ -21,7 +21,6 @@ class Dice extends AbstractEntity
         protected DiceEmojiEnum $emoji,
         protected int $value,
     ) {
-        parent::__construct();
     }
 
     /**

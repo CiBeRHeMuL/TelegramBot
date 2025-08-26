@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#affiliateinfo
  */
-class AffiliateInfo extends AbstractEntity
+final class AffiliateInfo implements EntityInterface
 {
     /**
      * @param int $commission_per_mille The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received
@@ -32,7 +32,6 @@ class AffiliateInfo extends AbstractEntity
         protected User|null $affiliate_user = null,
         protected int|null $nanostar_amount = null,
     ) {
-        parent::__construct();
     }
 
     /**

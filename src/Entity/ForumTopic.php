@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#forumtopic
  */
-class ForumTopic extends AbstractEntity
+final class ForumTopic implements EntityInterface
 {
     /**
      * @param int $message_thread_id Unique identifier of the forum topic
@@ -23,7 +23,6 @@ class ForumTopic extends AbstractEntity
         protected int $icon_color,
         protected string|null $icon_custom_emoji_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

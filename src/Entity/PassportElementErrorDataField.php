@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#passportelementerrordatafield
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Data->value))]
-class PassportElementErrorDataField extends AbstractPassportElementError
+final class PassportElementErrorDataField extends AbstractPassportElementError
 {
     /**
      * @param PassportElementErrorDataFieldTypeEnum $type The section of the user's Telegram Passport which has the error, one of

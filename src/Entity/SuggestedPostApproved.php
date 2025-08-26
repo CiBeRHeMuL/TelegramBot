@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostapproved
  */
-class SuggestedPostApproved extends AbstractEntity
+final class SuggestedPostApproved implements EntityInterface
 {
     /**
      * @param int $send_date Date when the post will be published
@@ -26,7 +26,6 @@ class SuggestedPostApproved extends AbstractEntity
         protected SuggestedPostPrice|null $price = null,
         protected Message|null $suggested_post_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

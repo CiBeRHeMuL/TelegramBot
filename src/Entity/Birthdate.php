@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#birthdate
  */
-class Birthdate extends AbstractEntity
+final class Birthdate implements EntityInterface
 {
     /**
      * @param int $day Day of the user's birth; 1-31
@@ -21,7 +21,6 @@ class Birthdate extends AbstractEntity
         protected int $month,
         protected int|null $year = null,
     ) {
-        parent::__construct();
     }
 
     /**

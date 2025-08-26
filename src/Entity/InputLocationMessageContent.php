@@ -19,7 +19,7 @@ use stdClass;
     new FieldCompareChecker('longitude', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('horizontal_accuracy', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InputLocationMessageContent extends AbstractInputMessageContent
+final class InputLocationMessageContent extends AbstractInputMessageContent
 {
     /**
      * @param float $latitude Latitude of the location in degrees
@@ -40,7 +40,6 @@ class InputLocationMessageContent extends AbstractInputMessageContent
         protected int|null $live_period = null,
         protected int|null $proximity_alert_radius = null,
     ) {
-        parent::__construct();
     }
 
     /**

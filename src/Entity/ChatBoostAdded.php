@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatboostadded
  */
-class ChatBoostAdded extends AbstractEntity
+final class ChatBoostAdded implements EntityInterface
 {
     /**
      * @param int $boost_count Number of boosts added by the user
@@ -17,7 +17,6 @@ class ChatBoostAdded extends AbstractEntity
     public function __construct(
         protected int $boost_count,
     ) {
-        parent::__construct();
     }
 
     /**

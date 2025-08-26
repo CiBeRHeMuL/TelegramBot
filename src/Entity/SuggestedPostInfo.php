@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostinfo
  */
-class SuggestedPostInfo extends AbstractEntity
+final class SuggestedPostInfo implements EntityInterface
 {
     /**
      * @param SuggestedPostInfoStateEnum $state State of the suggested post. Currently, it can be one of “pending”, “approved”,
@@ -26,7 +26,6 @@ class SuggestedPostInfo extends AbstractEntity
         protected SuggestedPostPrice|null $price = null,
         protected int|null $send_date = null,
     ) {
-        parent::__construct();
     }
 
     /**

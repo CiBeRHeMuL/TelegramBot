@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#refundedpayment
  */
-class RefundedPayment extends AbstractEntity
+final class RefundedPayment implements EntityInterface
 {
     /**
      * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars. Currently,
@@ -33,7 +33,6 @@ class RefundedPayment extends AbstractEntity
         protected string $telegram_payment_charge_id,
         protected string|null $provider_payment_charge_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

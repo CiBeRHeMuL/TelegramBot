@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#suggestedpostpaid
  */
-class SuggestedPostPaid extends AbstractEntity
+final class SuggestedPostPaid implements EntityInterface
 {
     /**
      * @param CurrencyEnum $currency Currency in which the payment was made. Currently, one of “XTR” for Telegram Stars or “TON”
@@ -32,7 +32,6 @@ class SuggestedPostPaid extends AbstractEntity
         protected StarAmount|null $star_amount = null,
         protected Message|null $suggested_post_message = null,
     ) {
-        parent::__construct();
     }
 
     /**

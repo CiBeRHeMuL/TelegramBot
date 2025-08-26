@@ -12,7 +12,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/features#chat-and-user-selection More about requesting chats »
  * @link https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  */
-class KeyboardButtonRequestChat extends AbstractEntity
+final class KeyboardButtonRequestChat implements EntityInterface
 {
     /**
      * @param int $request_id Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
@@ -53,7 +53,6 @@ class KeyboardButtonRequestChat extends AbstractEntity
         protected bool|null $request_username = null,
         protected ChatAdministratorRights|null $user_administrator_rights = null,
     ) {
-        parent::__construct();
     }
 
     /**

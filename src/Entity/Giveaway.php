@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#giveaway
  */
-class Giveaway extends AbstractEntity
+final class Giveaway implements EntityInterface
 {
     /**
      * @param Chat[] $chats The list of chats which the user must join to participate in the giveaway
@@ -45,7 +45,6 @@ class Giveaway extends AbstractEntity
         protected int|null $premium_subscription_month_count = null,
         protected int|null $prize_star_count = null,
     ) {
-        parent::__construct();
     }
 
     /**

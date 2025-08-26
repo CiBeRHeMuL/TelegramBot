@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#uniquegiftbackdrop
  */
-class UniqueGiftBackdrop extends AbstractEntity
+final class UniqueGiftBackdrop implements EntityInterface
 {
     /**
      * @param string $name Name of the backdrop
@@ -23,7 +23,6 @@ class UniqueGiftBackdrop extends AbstractEntity
         protected UniqueGiftBackdropColors $colors,
         protected int $rarity_per_mille,
     ) {
-        parent::__construct();
     }
 
     /**

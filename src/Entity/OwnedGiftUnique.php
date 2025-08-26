@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#ownedgiftunique
  */
 #[BuildIf(new FieldIsChecker('type', OwnedGiftTypeEnum::Unique->value))]
-class OwnedGiftUnique extends AbstractOwnedGift
+final class OwnedGiftUnique extends AbstractOwnedGift
 {
     /**
      * @param UniqueGift $gift Information about the unique gift

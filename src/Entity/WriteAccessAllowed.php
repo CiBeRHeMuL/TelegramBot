@@ -11,7 +11,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
  * @link https://core.telegram.org/bots/api#writeaccessallowed
  */
-class WriteAccessAllowed extends AbstractEntity
+final class WriteAccessAllowed implements EntityInterface
 {
     /**
      * @param bool|null $from_request Optional. True, if the access was granted after the user accepted an explicit request from
@@ -28,7 +28,6 @@ class WriteAccessAllowed extends AbstractEntity
         protected string|null $web_app_name = null,
         protected bool|null $from_attachment_menu = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/webapps Web App
  * @link https://core.telegram.org/bots/api#webappdata
  */
-class WebAppData extends AbstractEntity
+final class WebAppData implements EntityInterface
 {
     /**
      * @param string $data The data. Be aware that a bad client can send arbitrary data in this field.
@@ -21,7 +21,6 @@ class WebAppData extends AbstractEntity
         protected string $data,
         protected string $button_text,
     ) {
-        parent::__construct();
     }
 
     /**

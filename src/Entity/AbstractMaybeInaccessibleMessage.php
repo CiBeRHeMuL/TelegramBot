@@ -9,12 +9,11 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
  * @link https://core.telegram.org/bots/api#maybeinaccessiblemessage
  */
 #[AvailableInheritors([Message::class, InaccessibleMessage::class])]
-abstract class AbstractMaybeInaccessibleMessage extends AbstractEntity
+abstract class AbstractMaybeInaccessibleMessage implements EntityInterface
 {
     public function __construct(
         protected int $date,
     ) {
-        parent::__construct();
     }
 
     public function getDate(): int

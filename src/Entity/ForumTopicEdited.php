@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#forumtopicedited
  */
-class ForumTopicEdited extends AbstractEntity
+final class ForumTopicEdited implements EntityInterface
 {
     /**
      * @param string|null $name Optional. New name of the topic, if it was edited
@@ -20,7 +20,6 @@ class ForumTopicEdited extends AbstractEntity
         protected string|null $name = null,
         protected string|null $icon_custom_emoji_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

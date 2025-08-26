@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inlinequeryresultsbutton
  */
-class InlineQueryResultsButton extends AbstractEntity
+final class InlineQueryResultsButton implements EntityInterface
 {
     /**
      * @param string $text Label text on the button
@@ -34,7 +34,6 @@ class InlineQueryResultsButton extends AbstractEntity
         protected string|null $start_parameter = null,
         protected WebAppInfo|null $web_app = null,
     ) {
-        parent::__construct();
     }
 
     /**

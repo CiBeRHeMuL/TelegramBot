@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#keyboardbuttonpolltype
  */
-class KeyboardButtonPollType extends AbstractEntity
+final class KeyboardButtonPollType implements EntityInterface
 {
     /**
      * @param PollTypeEnum|null $type Optional. If quiz is passed, the user will be allowed to create only polls in the quiz mode.
@@ -19,7 +19,6 @@ class KeyboardButtonPollType extends AbstractEntity
     public function __construct(
         protected PollTypeEnum|null $type = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#user
  */
-class User extends AbstractEntity
+final class User implements EntityInterface
 {
     /**
      * @param int $id Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming
@@ -53,7 +53,6 @@ class User extends AbstractEntity
         protected bool|null $can_connect_to_business = null,
         protected bool|null $has_main_web_app = null,
     ) {
-        parent::__construct();
     }
 
     /**

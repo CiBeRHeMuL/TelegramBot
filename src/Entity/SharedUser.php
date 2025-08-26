@@ -11,7 +11,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers KeyboardButtonRequestUsers
  * @link https://core.telegram.org/bots/api#shareduser
  */
-class SharedUser extends AbstractEntity
+final class SharedUser implements EntityInterface
 {
     /**
      * @param int $user_id Identifier of the shared user. This number may have more than 32 significant bits and some programming
@@ -33,7 +33,6 @@ class SharedUser extends AbstractEntity
         protected array|null $photo = null,
         protected string|null $username = null,
     ) {
-        parent::__construct();
     }
 
     /**

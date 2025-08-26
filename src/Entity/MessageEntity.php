@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#messageentity
  */
-class MessageEntity extends AbstractEntity
+final class MessageEntity implements EntityInterface
 {
     /**
      * @param MessageEntityTypeEnum $type Type of the entity. Currently, can be “mention” (\@username), “hashtag” (#hashtag
@@ -44,7 +44,6 @@ class MessageEntity extends AbstractEntity
         protected string|null $language = null,
         protected string|null $custom_emoji_id = null,
     ) {
-        parent::__construct();
     }
 
     /**

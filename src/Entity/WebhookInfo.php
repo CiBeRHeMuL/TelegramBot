@@ -14,7 +14,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#webhookinfo
  */
-class WebhookInfo extends AbstractEntity
+final class WebhookInfo implements EntityInterface
 {
     /**
      * @param Url $url Webhook URL, may be empty if webhook is not set up
@@ -44,7 +44,6 @@ class WebhookInfo extends AbstractEntity
         protected int|null $last_synchronization_error_date = null,
         protected int|null $max_connections = null,
     ) {
-        parent::__construct();
     }
 
     /**

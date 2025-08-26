@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatphoto
  */
-class ChatPhoto extends AbstractEntity
+final class ChatPhoto implements EntityInterface
 {
     /**
      * @param string $small_file_id File identifier of small (160x160) chat photo. This file_id can be used only for photo download
@@ -27,7 +27,6 @@ class ChatPhoto extends AbstractEntity
         protected string $big_file_id,
         protected string $big_file_unique_id,
     ) {
-        parent::__construct();
     }
 
     /**

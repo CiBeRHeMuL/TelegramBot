@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#userchatboosts
  */
-class UserChatBoosts extends AbstractEntity
+final class UserChatBoosts implements EntityInterface
 {
     /**
      * @param ChatBoost[] $boosts The list of boosts added to the chat by the user
@@ -21,7 +21,6 @@ class UserChatBoosts extends AbstractEntity
         #[ArrayType(ChatBoost::class)]
         protected array $boosts,
     ) {
-        parent::__construct();
     }
 
     /**

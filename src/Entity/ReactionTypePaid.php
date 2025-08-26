@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#reactiontypepaid
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::Paid->value))]
-class ReactionTypePaid extends AbstractReactionType
+final class ReactionTypePaid extends AbstractReactionType
 {
     public function __construct()
     {

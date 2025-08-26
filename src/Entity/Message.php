@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#message
  */
 #[BuildIf(new FieldCompareChecker('date', 0, CompareOperatorEnum::NotEqual))]
-class Message extends AbstractMaybeInaccessibleMessage
+final class Message extends AbstractMaybeInaccessibleMessage
 {
     /**
      * @param int $message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video

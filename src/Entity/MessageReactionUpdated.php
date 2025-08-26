@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#messagereactionupdated
  */
-class MessageReactionUpdated extends AbstractEntity
+final class MessageReactionUpdated implements EntityInterface
 {
     /**
      * @param Chat $chat The chat containing the message the user reacted to
@@ -38,7 +38,6 @@ class MessageReactionUpdated extends AbstractEntity
         protected Chat|null $actor_chat = null,
         protected User|null $user = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#proximityalerttriggered
  */
-class ProximityAlertTriggered extends AbstractEntity
+final class ProximityAlertTriggered implements EntityInterface
 {
     /**
      * @param User $traveler User that triggered the alert
@@ -25,7 +25,6 @@ class ProximityAlertTriggered extends AbstractEntity
         protected User $watcher,
         protected int $distance,
     ) {
-        parent::__construct();
     }
 
     /**

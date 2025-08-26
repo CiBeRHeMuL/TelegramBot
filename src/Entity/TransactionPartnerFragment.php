@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartnerfragment
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::Fragment->value))]
-class TransactionPartnerFragment extends AbstractTransactionPartner
+final class TransactionPartnerFragment extends AbstractTransactionPartner
 {
     /**
      * @param AbstractRevenueWithdrawalState|null $withdrawal_state Optional. State of the transaction if the transaction is outgoing

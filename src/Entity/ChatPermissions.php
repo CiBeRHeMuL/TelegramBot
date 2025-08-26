@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatpermissions
  */
-class ChatPermissions extends AbstractEntity
+final class ChatPermissions implements EntityInterface
 {
     /**
      * @param bool|null $can_send_messages Optional. True, if the user is allowed to send text messages, contacts, giveaways, giveaway
@@ -47,7 +47,6 @@ class ChatPermissions extends AbstractEntity
         protected bool|null $can_pin_messages = null,
         protected bool|null $can_manage_topics = null,
     ) {
-        parent::__construct();
     }
 
     /**

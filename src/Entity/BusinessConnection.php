@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessconnection
  */
-class BusinessConnection extends AbstractEntity
+final class BusinessConnection implements EntityInterface
 {
     /**
      * @param string $id Unique identifier of the business connection
@@ -32,7 +32,6 @@ class BusinessConnection extends AbstractEntity
         protected bool $is_enabled,
         protected BusinessBotRights|null $rights = null,
     ) {
-        parent::__construct();
     }
 
     /**

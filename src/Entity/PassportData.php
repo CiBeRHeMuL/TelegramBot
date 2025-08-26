@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#passportdata
  */
-class PassportData extends AbstractEntity
+final class PassportData implements EntityInterface
 {
     /**
      * @param EncryptedPassportElement[] $data Array with information about documents and other Telegram Passport elements that was
@@ -25,7 +25,6 @@ class PassportData extends AbstractEntity
         protected array $data,
         protected EncryptedCredentials $credentials,
     ) {
-        parent::__construct();
     }
 
     /**

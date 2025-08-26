@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#botcommand
  */
-class BotCommand extends AbstractEntity
+final class BotCommand implements EntityInterface
 {
     /**
      * @param string $command Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
@@ -19,7 +19,6 @@ class BotCommand extends AbstractEntity
         protected string $command,
         protected string $description,
     ) {
-        parent::__construct();
     }
 
     /**

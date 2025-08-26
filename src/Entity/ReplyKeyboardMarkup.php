@@ -13,7 +13,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/features#keyboards Introduction to bots
  * @link https://core.telegram.org/bots/api#replykeyboardmarkup
  */
-class ReplyKeyboardMarkup extends AbstractEntity
+final class ReplyKeyboardMarkup implements EntityInterface
 {
     /**
      * @param KeyboardButton[][] $keyboard Array of button rows, each represented by an Array of KeyboardButton objects
@@ -45,7 +45,6 @@ class ReplyKeyboardMarkup extends AbstractEntity
         protected string|null $input_field_placeholder = null,
         protected bool|null $selective = null,
     ) {
-        parent::__construct();
     }
 
     /**

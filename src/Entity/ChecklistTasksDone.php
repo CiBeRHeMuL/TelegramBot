@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#checklisttasksdone
  */
-class ChecklistTasksDone extends AbstractEntity
+final class ChecklistTasksDone implements EntityInterface
 {
     /**
      * @param Message|null $checklist_message Optional. Message containing the checklist whose tasks were marked as done or not done.
@@ -28,7 +28,6 @@ class ChecklistTasksDone extends AbstractEntity
         #[ArrayType('int')]
         protected array|null $marked_as_not_done_task_ids = null,
     ) {
-        parent::__construct();
     }
 
     /**

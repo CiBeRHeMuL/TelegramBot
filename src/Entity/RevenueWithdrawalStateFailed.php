@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#revenuewithdrawalstatefailed
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Failed->value))]
-class RevenueWithdrawalStateFailed extends AbstractRevenueWithdrawalState
+final class RevenueWithdrawalStateFailed extends AbstractRevenueWithdrawalState
 {
     public function __construct()
     {

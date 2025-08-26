@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#transactionpartnertelegramapi
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::TelegramApi->value))]
-class TransactionPartnerTelegramApi extends AbstractTransactionPartner
+final class TransactionPartnerTelegramApi extends AbstractTransactionPartner
 {
     /**
      * @param int $request_count The number of successful requests that exceeded regular limits and were therefore billed

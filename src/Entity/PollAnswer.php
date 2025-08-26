@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#pollanswer
  */
-class PollAnswer extends AbstractEntity
+final class PollAnswer implements EntityInterface
 {
     /**
      * @param string $poll_id Unique poll identifier
@@ -28,7 +28,6 @@ class PollAnswer extends AbstractEntity
         protected User|null $user = null,
         protected Chat|null $voter_chat = null,
     ) {
-        parent::__construct();
     }
 
     /**

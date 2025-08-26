@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessopeninghours
  */
-class BusinessOpeningHours extends AbstractEntity
+final class BusinessOpeningHours implements EntityInterface
 {
     /**
      * @param string $time_zone_name Unique name of the time zone for which the opening hours are defined
@@ -23,7 +23,6 @@ class BusinessOpeningHours extends AbstractEntity
         #[ArrayType(BusinessOpeningHoursInterval::class)]
         protected array $opening_hours,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#stickerset
  */
-class StickerSet extends AbstractEntity
+final class StickerSet implements EntityInterface
 {
     /**
      * @param string $name Sticker set name
@@ -31,7 +31,6 @@ class StickerSet extends AbstractEntity
         protected array $stickers,
         protected PhotoSize|null $thumbnail = null,
     ) {
-        parent::__construct();
     }
 
     /**

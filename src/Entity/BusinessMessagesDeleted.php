@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessmessagesdeleted
  */
-class BusinessMessagesDeleted extends AbstractEntity
+final class BusinessMessagesDeleted implements EntityInterface
 {
     /**
      * @param string $business_connection_id Unique identifier of the business connection
@@ -26,7 +26,6 @@ class BusinessMessagesDeleted extends AbstractEntity
         #[ArrayType('int')]
         protected array $message_ids,
     ) {
-        parent::__construct();
     }
 
     /**

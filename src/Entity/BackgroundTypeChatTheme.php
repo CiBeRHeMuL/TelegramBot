@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundtypechattheme
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::ChatTheme->value))]
-class BackgroundTypeChatTheme extends AbstractBackgroundType
+final class BackgroundTypeChatTheme extends AbstractBackgroundType
 {
     /**
      * @param string $theme_name Name of the chat theme, which is usually an emoji

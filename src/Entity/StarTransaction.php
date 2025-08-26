@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#startransaction
  */
-class StarTransaction extends AbstractEntity
+final class StarTransaction implements EntityInterface
 {
     /**
      * @param string $id Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund
@@ -36,7 +36,6 @@ class StarTransaction extends AbstractEntity
         protected AbstractTransactionPartner|null $source = null,
         protected int|null $nanostar_amount = null,
     ) {
-        parent::__construct();
     }
 
     /**

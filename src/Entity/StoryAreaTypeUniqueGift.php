@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#storyareatypeuniquegift
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::UniqueGift->value))]
-class StoryAreaTypeUniqueGift extends AbstractStoryAreaType
+final class StoryAreaTypeUniqueGift extends AbstractStoryAreaType
 {
     /**
      * @param string $name Unique name of the gift

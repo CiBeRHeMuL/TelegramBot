@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#paidmediainfo
  */
-class PaidMediaInfo extends AbstractEntity
+final class PaidMediaInfo implements EntityInterface
 {
     /**
      * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media
@@ -23,7 +23,6 @@ class PaidMediaInfo extends AbstractEntity
         #[ArrayType(AbstractPaidMedia::class)]
         protected array $paid_media,
     ) {
-        parent::__construct();
     }
 
     /**

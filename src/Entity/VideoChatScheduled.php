@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#videochatscheduled
  */
-class VideoChatScheduled extends AbstractEntity
+final class VideoChatScheduled implements EntityInterface
 {
     /**
      * @param int $start_date Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
@@ -17,7 +17,6 @@ class VideoChatScheduled extends AbstractEntity
     public function __construct(
         protected int $start_date,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inputchecklisttask
  */
-class InputChecklistTask extends AbstractEntity
+final class InputChecklistTask implements EntityInterface
 {
     /**
      * @param int $id Unique identifier of the task; must be positive and unique among all task identifiers currently present in
@@ -32,7 +32,6 @@ class InputChecklistTask extends AbstractEntity
         #[ArrayType(MessageEntity::class)]
         protected array|null $text_entities = null,
     ) {
-        parent::__construct();
     }
 
     /**

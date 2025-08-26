@@ -14,12 +14,11 @@ use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
     BackgroundFillGradient::class,
     BackgroundFillFreeformGradient::class,
 ])]
-abstract class AbstractBackgroundFill extends AbstractEntity
+abstract class AbstractBackgroundFill implements EntityInterface
 {
     public function __construct(
         protected readonly BackgroundFillTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): BackgroundFillTypeEnum

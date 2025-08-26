@@ -12,7 +12,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
-class InlineKeyboardButton extends AbstractEntity
+final class InlineKeyboardButton implements EntityInterface
 {
     /**
      * @param string $text Label text on the button
@@ -69,7 +69,6 @@ class InlineKeyboardButton extends AbstractEntity
         protected WebAppInfo|null $web_app = null,
         protected CopyTextButton|null $copy_text = null,
     ) {
-        parent::__construct();
     }
 
     /**

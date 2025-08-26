@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#startransactions
  */
-class StarTransactions extends AbstractEntity
+final class StarTransactions implements EntityInterface
 {
     /**
      * @param StarTransaction[] $transactions The list of transactions
@@ -21,7 +21,6 @@ class StarTransactions extends AbstractEntity
         #[ArrayType(StarTransaction::class)]
         protected array $transactions,
     ) {
-        parent::__construct();
     }
 
     /**

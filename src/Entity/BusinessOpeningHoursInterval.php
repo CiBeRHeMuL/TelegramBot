@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessopeninghoursinterval
  */
-class BusinessOpeningHoursInterval extends AbstractEntity
+final class BusinessOpeningHoursInterval implements EntityInterface
 {
     /**
      * @param int $opening_minute The minute's sequence number in a week, starting on Monday, marking the start of the time interval
@@ -21,7 +21,6 @@ class BusinessOpeningHoursInterval extends AbstractEntity
         protected int $opening_minute,
         protected int $closing_minute,
     ) {
-        parent::__construct();
     }
 
     /**

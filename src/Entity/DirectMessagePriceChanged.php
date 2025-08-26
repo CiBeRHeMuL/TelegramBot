@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#directmessagepricechanged
  */
-class DirectMessagePriceChanged extends AbstractEntity
+final class DirectMessagePriceChanged implements EntityInterface
 {
     /**
      * @param bool $are_direct_messages_enabled True, if direct messages are enabled for the channel chat; false otherwise
@@ -20,7 +20,6 @@ class DirectMessagePriceChanged extends AbstractEntity
         protected bool $are_direct_messages_enabled,
         protected int|null $direct_message_star_count = null,
     ) {
-        parent::__construct();
     }
 
     /**

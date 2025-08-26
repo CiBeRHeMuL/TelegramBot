@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatmemberleft
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Left->value))]
-class ChatMemberLeft extends AbstractChatMember
+final class ChatMemberLeft extends AbstractChatMember
 {
     /**
      * @param User $user Information about the user

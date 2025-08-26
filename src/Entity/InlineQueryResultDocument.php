@@ -25,7 +25,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Document->value),
     new FieldCompareChecker('document_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultDocument extends AbstractInlineQueryResult
+final class InlineQueryResultDocument extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#reactiontypeemoji
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::Emoji->value))]
-class ReactionTypeEmoji extends AbstractReactionType
+final class ReactionTypeEmoji extends AbstractReactionType
 {
     /**
      * @param EmojiEnum $emoji Reaction emoji. Currently, it can be one of "❤", "👍", "👎", "🔥", "🥰", "👏", "😁",

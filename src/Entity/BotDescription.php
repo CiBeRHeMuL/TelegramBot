@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#botdescription
  */
-class BotDescription extends AbstractEntity
+final class BotDescription implements EntityInterface
 {
     /**
      * @param string $description The bot's description
@@ -17,7 +17,6 @@ class BotDescription extends AbstractEntity
     public function __construct(
         protected string $description,
     ) {
-        parent::__construct();
     }
 
     /**

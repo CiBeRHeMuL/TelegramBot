@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#orderinfo
  */
-class OrderInfo extends AbstractEntity
+final class OrderInfo implements EntityInterface
 {
     /**
      * @param string|null $name Optional. User name
@@ -27,7 +27,6 @@ class OrderInfo extends AbstractEntity
         protected Email|null $email = null,
         protected ShippingAddress|null $shipping_address = null,
     ) {
-        parent::__construct();
     }
 
     /**

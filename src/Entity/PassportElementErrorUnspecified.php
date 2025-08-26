@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#passportelementerrorunspecified
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Unspecified->value))]
-class PassportElementErrorUnspecified extends AbstractPassportElementError
+final class PassportElementErrorUnspecified extends AbstractPassportElementError
 {
     /**
      * @param EncryptedPassportElementTypeEnum $type Type of element of the user's Telegram Passport which has the issue

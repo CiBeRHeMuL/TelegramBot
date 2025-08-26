@@ -17,12 +17,11 @@ use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
     ChatMemberBanned::class,
     ChatMemberLeft::class,
 ])]
-abstract class AbstractChatMember extends AbstractEntity
+abstract class AbstractChatMember implements EntityInterface
 {
     public function __construct(
         protected readonly ChatMemberStatusEnum $status,
     ) {
-        parent::__construct();
     }
 
     public function getStatus(): ChatMemberStatusEnum

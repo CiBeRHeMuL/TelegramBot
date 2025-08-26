@@ -17,7 +17,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputmediaanimation
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Animation->value))]
-class InputMediaAnimation extends AbstractInputMedia
+final class InputMediaAnimation extends AbstractInputMedia
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

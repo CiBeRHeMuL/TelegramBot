@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#maskposition
  */
-class MaskPosition extends AbstractEntity
+final class MaskPosition implements EntityInterface
 {
     /**
      * @param MaskPositionEnum $point The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”,
@@ -27,7 +27,6 @@ class MaskPosition extends AbstractEntity
         protected float $y_shift,
         protected float $scale,
     ) {
-        parent::__construct();
     }
 
     /**

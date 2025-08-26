@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatmemberupdated
  */
-class ChatMemberUpdated extends AbstractEntity
+final class ChatMemberUpdated implements EntityInterface
 {
     /**
      * @param Chat $chat Chat the user belongs to
@@ -39,7 +39,6 @@ class ChatMemberUpdated extends AbstractEntity
         protected bool|null $via_chat_folder_invite_link = null,
         protected bool|null $via_join_request = null,
     ) {
-        parent::__construct();
     }
 
     /**

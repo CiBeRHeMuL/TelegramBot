@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#chatjoinrequest
  */
-class ChatJoinRequest extends AbstractEntity
+final class ChatJoinRequest implements EntityInterface
 {
     /**
      * @param Chat $chat Chat to which the request was sent
@@ -35,7 +35,6 @@ class ChatJoinRequest extends AbstractEntity
         protected string|null $bio = null,
         protected ChatInviteLink|null $invite_link = null,
     ) {
-        parent::__construct();
     }
 
     /**

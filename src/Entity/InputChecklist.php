@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inputchecklist
  */
-class InputChecklist extends AbstractEntity
+final class InputChecklist implements EntityInterface
 {
     /**
      * @param string $title Title of the checklist; 1-255 characters after entities parsing
@@ -38,7 +38,6 @@ class InputChecklist extends AbstractEntity
         #[ArrayType(MessageEntity::class)]
         protected array|null $title_entities = null,
     ) {
-        parent::__construct();
     }
 
     /**

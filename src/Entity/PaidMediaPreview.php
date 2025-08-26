@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#paidmediapreview
  */
 #[BuildIf(new FieldIsChecker('type', PaidMediaTypeEnum::Preview->value))]
-class PaidMediaPreview extends AbstractPaidMedia
+final class PaidMediaPreview extends AbstractPaidMedia
 {
     /**
      * @param int|null $duration Optional. Duration of the media in seconds as defined by the sender

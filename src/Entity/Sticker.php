@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#sticker
  */
-class Sticker extends AbstractEntity
+final class Sticker implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -55,7 +55,6 @@ class Sticker extends AbstractEntity
         protected bool|null $needs_repainting = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -11,7 +11,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#inlinequery
  */
-class InlineQuery extends AbstractEntity
+final class InlineQuery implements EntityInterface
 {
     /**
      * @param string $id Unique identifier for this query
@@ -35,7 +35,6 @@ class InlineQuery extends AbstractEntity
         protected ChatTypeEnum|null $chat_type = null,
         protected Location|null $location = null,
     ) {
-        parent::__construct();
     }
 
     /**

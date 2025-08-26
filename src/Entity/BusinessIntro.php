@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#businessintro
  */
-class BusinessIntro extends AbstractEntity
+final class BusinessIntro implements EntityInterface
 {
     /**
      * @param string|null $message Optional. Message text of the business intro
@@ -23,7 +23,6 @@ class BusinessIntro extends AbstractEntity
         protected Sticker|null $sticker = null,
         protected string|null $title = null,
     ) {
-        parent::__construct();
     }
 
     /**

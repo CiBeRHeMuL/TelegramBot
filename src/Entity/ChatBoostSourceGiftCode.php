@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatboostsourcegiftcode
  */
 #[BuildIf(new FieldIsChecker('source', ChatBoostSourceEnum::GiftCode->value))]
-class ChatBoostSourceGiftCode extends AbstractChatBoostSource
+final class ChatBoostSourceGiftCode extends AbstractChatBoostSource
 {
     /**
      * @param User $user User for which the gift code was created

@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#checklisttask
  */
-class ChecklistTask extends AbstractEntity
+final class ChecklistTask implements EntityInterface
 {
     /**
      * @param int $id Unique identifier of the task
@@ -31,7 +31,6 @@ class ChecklistTask extends AbstractEntity
         #[ArrayType(MessageEntity::class)]
         protected array|null $text_entities = null,
     ) {
-        parent::__construct();
     }
 
     /**

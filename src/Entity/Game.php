@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#game
  */
-class Game extends AbstractEntity
+final class Game implements EntityInterface
 {
     /**
      * @param string $title Title of the game
@@ -40,7 +40,6 @@ class Game extends AbstractEntity
         protected array|null $text_entities = null,
         protected Animation|null $animation = null,
     ) {
-        parent::__construct();
     }
 
     /**

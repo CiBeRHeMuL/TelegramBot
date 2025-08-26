@@ -15,7 +15,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#inline-mode inline mode
  * @link https://core.telegram.org/bots/api#callbackquery
  */
-class CallbackQuery extends AbstractEntity
+final class CallbackQuery implements EntityInterface
 {
     /**
      * @param string $id Unique identifier for this query
@@ -45,7 +45,6 @@ class CallbackQuery extends AbstractEntity
         protected string|null $inline_message_id = null,
         protected AbstractMaybeInaccessibleMessage|null $message = null,
     ) {
-        parent::__construct();
     }
 
     /**

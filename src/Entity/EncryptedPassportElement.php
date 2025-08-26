@@ -13,7 +13,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#encryptedpassportelement
  */
-class EncryptedPassportElement extends AbstractEntity
+final class EncryptedPassportElement implements EntityInterface
 {
     /**
      * @param EncryptedPassportElementTypeEnum $type Element type. One of “personal_details”, “passport”, “driver_license”,
@@ -69,7 +69,6 @@ class EncryptedPassportElement extends AbstractEntity
         #[ArrayType(PassportFile::class)]
         protected array|null $translation = null,
     ) {
-        parent::__construct();
     }
 
     /**

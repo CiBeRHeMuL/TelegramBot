@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#voice
  */
-class Voice extends AbstractEntity
+final class Voice implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -28,7 +28,6 @@ class Voice extends AbstractEntity
         protected string|null $mime_type = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

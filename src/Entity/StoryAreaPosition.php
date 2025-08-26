@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#storyareaposition
  */
-class StoryAreaPosition extends AbstractEntity
+final class StoryAreaPosition implements EntityInterface
 {
     /**
      * @param float $x_percentage The abscissa of the area's center, as a percentage of the media width
@@ -27,7 +27,6 @@ class StoryAreaPosition extends AbstractEntity
         protected float $rotation_angle,
         protected float $corner_radius_percentage,
     ) {
-        parent::__construct();
     }
 
     /**

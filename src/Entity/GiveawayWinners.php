@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#giveawaywinners
  */
-class GiveawayWinners extends AbstractEntity
+final class GiveawayWinners implements EntityInterface
 {
     /**
      * @param Chat $chat The chat that created the giveaway
@@ -48,7 +48,6 @@ class GiveawayWinners extends AbstractEntity
         protected string|null $prize_description = null,
         protected int|null $prize_star_count = null,
     ) {
-        parent::__construct();
     }
 
     /**

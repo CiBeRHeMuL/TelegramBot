@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#paidmediapurchased
  */
-class PaidMediaPurchased extends AbstractEntity
+final class PaidMediaPurchased implements EntityInterface
 {
     /**
      * @param User $from User who purchased the media
@@ -21,7 +21,6 @@ class PaidMediaPurchased extends AbstractEntity
         protected User $from,
         protected string $paid_media_payload,
     ) {
-        parent::__construct();
     }
 
     /**

@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#ownedgiftregular
  */
 #[BuildIf(new FieldIsChecker('type', OwnedGiftTypeEnum::Regular->value))]
-class OwnedGiftRegular extends AbstractOwnedGift
+final class OwnedGiftRegular extends AbstractOwnedGift
 {
     /**
      * @param Gift $gift Information about the regular gift

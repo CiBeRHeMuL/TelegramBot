@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#switchinlinequerychosenchat
  */
-class SwitchInlineQueryChosenChat extends AbstractEntity
+final class SwitchInlineQueryChosenChat implements EntityInterface
 {
     /**
      * @param bool|null $allow_bot_chats Optional. True, if private chats with bots can be chosen
@@ -27,7 +27,6 @@ class SwitchInlineQueryChosenChat extends AbstractEntity
         protected bool|null $allow_user_chats = null,
         protected string|null $query = null,
     ) {
-        parent::__construct();
     }
 
     /**

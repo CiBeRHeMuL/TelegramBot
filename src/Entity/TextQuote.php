@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#textquote
  */
-class TextQuote extends AbstractEntity
+final class TextQuote implements EntityInterface
 {
     /**
      * @param string $text Text of the quoted part of a message that is replied to by the given message
@@ -29,7 +29,6 @@ class TextQuote extends AbstractEntity
         protected array|null $entities = null,
         protected bool|null $is_manual = null,
     ) {
-        parent::__construct();
     }
 
     /**

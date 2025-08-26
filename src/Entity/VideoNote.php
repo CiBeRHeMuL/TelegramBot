@@ -11,7 +11,7 @@ use stdClass;
  * @see https://telegram.org/blog/video-messages-and-telescope v.4.0
  * @link https://core.telegram.org/bots/api#videonote
  */
-class VideoNote extends AbstractEntity
+final class VideoNote implements EntityInterface
 {
     /**
      * @param string $file_id Identifier for this file, which can be used to download or reuse the file
@@ -32,7 +32,6 @@ class VideoNote extends AbstractEntity
         protected PhotoSize|null $thumbnail = null,
         protected int|null $file_size = null,
     ) {
-        parent::__construct();
     }
 
     /**

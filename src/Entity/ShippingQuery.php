@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#shippingquery
  */
-class ShippingQuery extends AbstractEntity
+final class ShippingQuery implements EntityInterface
 {
     /**
      * @param string $id Unique query identifier
@@ -26,7 +26,6 @@ class ShippingQuery extends AbstractEntity
         protected string $invoice_payload,
         protected ShippingAddress $shipping_address,
     ) {
-        parent::__construct();
     }
 
     /**

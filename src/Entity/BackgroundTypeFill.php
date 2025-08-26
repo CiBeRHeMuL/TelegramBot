@@ -13,7 +13,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#backgroundtypefill
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Fill->value))]
-class BackgroundTypeFill extends AbstractBackgroundType
+final class BackgroundTypeFill extends AbstractBackgroundType
 {
     /**
      * @param AbstractBackgroundFill $fill The background fill

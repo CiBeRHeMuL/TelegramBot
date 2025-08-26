@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#chatboostsourcegiveaway
  */
 #[BuildIf(new FieldIsChecker('source', ChatBoostSourceEnum::Giveaway->value))]
-class ChatBoostSourceGiveaway extends AbstractChatBoostSource
+final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
 {
     /**
      * @param int $giveaway_message_id Identifier of a message in the chat with the giveaway; the message could have been deleted

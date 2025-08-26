@@ -14,7 +14,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Succeeded->value))]
-class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
+final class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
 {
     /**
      * @param int $date Date the withdrawal was completed in Unix time

@@ -23,7 +23,7 @@ use stdClass;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Audio->value),
     new FieldCompareChecker('audio_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-class InlineQueryResultAudio extends AbstractInlineQueryResult
+final class InlineQueryResultAudio extends AbstractInlineQueryResult
 {
     /**
      * @param string $id Unique identifier for this result, 1-64 bytes

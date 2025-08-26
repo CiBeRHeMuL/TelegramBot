@@ -10,7 +10,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#locationaddress
  */
-class LocationAddress extends AbstractEntity
+final class LocationAddress implements EntityInterface
 {
     /**
      * @param CountryCodeEnum $country_code The two-letter ISO 3166-1 alpha-2 country code of the country where the location is located
@@ -24,7 +24,6 @@ class LocationAddress extends AbstractEntity
         protected string|null $state = null,
         protected string|null $street = null,
     ) {
-        parent::__construct();
     }
 
     /**

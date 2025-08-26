@@ -9,7 +9,7 @@ use stdClass;
  *
  * @link https://core.telegram.org/bots/api#story
  */
-class Story extends AbstractEntity
+final class Story implements EntityInterface
 {
     /**
      * @param Chat $chat Chat that posted the story
@@ -21,7 +21,6 @@ class Story extends AbstractEntity
         protected Chat $chat,
         protected int $id,
     ) {
-        parent::__construct();
     }
 
     /**

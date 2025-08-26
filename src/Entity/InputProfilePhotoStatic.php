@@ -15,7 +15,7 @@ use stdClass;
  * @link https://core.telegram.org/bots/api#inputprofilephotostatic
  */
 #[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Static->value,))]
-class InputProfilePhotoStatic extends AbstractInputProfilePhoto
+final class InputProfilePhotoStatic extends AbstractInputProfilePhoto
 {
     /**
      * @param Filename|Url $photo The static profile photo. Profile photos can't be reused and can only be uploaded as a new file,

@@ -12,7 +12,7 @@ use stdClass;
  * @see https://core.telegram.org/bots/api#keyboardbuttonrequestchat KeyboardButtonRequestChat
  * @link https://core.telegram.org/bots/api#chatshared
  */
-class ChatShared extends AbstractEntity
+final class ChatShared implements EntityInterface
 {
     /**
      * @param int $request_id Identifier of the request
@@ -34,7 +34,6 @@ class ChatShared extends AbstractEntity
         protected string|null $title = null,
         protected string|null $username = null,
     ) {
-        parent::__construct();
     }
 
     /**

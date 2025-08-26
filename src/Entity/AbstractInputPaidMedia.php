@@ -9,7 +9,7 @@ use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
     InputPaidMediaPhoto::class,
     InputPaidMediaVideo::class,
 ])]
-abstract class AbstractInputPaidMedia extends AbstractEntity
+abstract class AbstractInputPaidMedia implements EntityInterface
 {
     /**
      * @param InputPaidMediaTypeEnum $type
@@ -17,7 +17,6 @@ abstract class AbstractInputPaidMedia extends AbstractEntity
     public function __construct(
         protected readonly InputPaidMediaTypeEnum $type,
     ) {
-        parent::__construct();
     }
 
     public function getType(): InputPaidMediaTypeEnum
