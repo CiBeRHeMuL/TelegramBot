@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Contains a list of Telegram Star transactions.
@@ -40,15 +39,5 @@ final class StarTransactions implements EntityInterface
     {
         $this->transactions = $transactions;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'transactions' => array_map(
-                fn(StarTransaction $e) => $e->toArray(),
-                $this->transactions,
-            ),
-        ];
     }
 }

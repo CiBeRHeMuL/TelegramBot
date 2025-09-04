@@ -12,7 +12,6 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultDocumentMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can
@@ -315,30 +314,5 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'document_url' => $this->document_url->getUrl(),
-            'mime_type' => $this->mime_type->value,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'description' => $this->description,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_height' => $this->thumbnail_height,
-            'thumbnail_url' => $this->thumbnail_url?->getUrl(),
-            'thumbnail_width' => $this->thumbnail_width,
-            'type' => $this->type->value,
-        ];
     }
 }

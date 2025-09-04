@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
-use stdClass;
 
 /**
  * Describes the affiliate program that issued the affiliate commission received via this transaction.
@@ -65,14 +64,5 @@ final class TransactionPartnerAffiliateProgram extends AbstractTransactionPartne
     {
         $this->sponsor_user = $sponsor_user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'commission_per_mille' => $this->commission_per_mille,
-            'sponsor_user' => $this->sponsor_user?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

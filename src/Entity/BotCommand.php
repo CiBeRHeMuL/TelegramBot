@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a bot command.
  *
@@ -57,13 +55,5 @@ final class BotCommand implements EntityInterface
     {
         $this->description = $description;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'command' => $this->command,
-            'description' => $this->description,
-        ];
     }
 }

@@ -46,12 +46,4 @@ class DeleteMyCommandsRequest implements RequestInterface
         $this->scope = $scope;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'language_code' => $this->language_code?->getLanguage(),
-            'scope' => $this->scope?->toArray(),
-        ];
-    }
 }

@@ -26,11 +26,4 @@ class GetMyDefaultAdministratorRightsRequest implements RequestInterface
         $this->for_channels = $for_channels;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'for_channels' => $this->for_channels,
-        ];
-    }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a gift that can be sent by the bot.
  *
@@ -167,18 +165,5 @@ final class Gift implements EntityInterface
     {
         $this->publisher_chat = $publisher_chat;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'sticker' => $this->sticker->toArray(),
-            'star_count' => $this->star_count,
-            'remaining_count' => $this->remaining_count,
-            'total_count' => $this->total_count,
-            'upgrade_star_count' => $this->upgrade_star_count,
-            'publisher_chat' => $this->publisher_chat?->toArray(),
-        ];
     }
 }

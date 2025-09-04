@@ -43,12 +43,4 @@ class SetStickerMaskPositionRequest implements RequestInterface
         $this->mask_position = $mask_position;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'sticker' => $this->sticker,
-            'mask_position' => $this->mask_position?->toArray(),
-        ];
-    }
 }

@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send
@@ -323,26 +322,5 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'title' => $this->title,
-            'address' => $this->address,
-            'foursquare_id' => $this->foursquare_id,
-            'foursquare_type' => $this->foursquare_type,
-            'google_place_id' => $this->google_place_id,
-            'google_place_type' => $this->google_place_type,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_height' => $this->thumbnail_height,
-            'thumbnail_url' => $this->thumbnail_url?->getUrl(),
-            'thumbnail_width' => $this->thumbnail_width,
-            'type' => $this->type->value,
-        ];
     }
 }

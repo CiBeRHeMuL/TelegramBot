@@ -85,15 +85,4 @@ class EditMessageChecklistRequest implements RequestInterface
         $this->reply_markup = $reply_markup;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'chat_id' => $this->chat_id->getId(),
-            'checklist' => $this->checklist->toArray(),
-            'message_id' => $this->message_id,
-            'reply_markup' => $this->reply_markup?->toArray(),
-        ];
-    }
 }

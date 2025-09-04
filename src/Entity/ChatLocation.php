@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Represents a location to which a chat is connected.
  *
@@ -59,13 +57,5 @@ final class ChatLocation implements EntityInterface
     {
         $this->address = $address;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'location' => $this->location->toArray(),
-            'address' => $this->address,
-        ];
     }
 }

@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents an invite link for a chat.
@@ -252,22 +251,5 @@ final class ChatInviteLink implements EntityInterface
     {
         $this->subscription_price = $subscription_price;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'invite_link' => $this->invite_link->getUrl(),
-            'creator' => $this->creator->toArray(),
-            'creates_join_request' => $this->creates_join_request,
-            'is_primary' => $this->is_primary,
-            'is_revoked' => $this->is_revoked,
-            'expire_date' => $this->expire_date,
-            'member_limit' => $this->member_limit,
-            'name' => $this->name,
-            'pending_join_request_count' => $this->pending_join_request_count,
-            'subscription_period' => $this->subscription_period,
-            'subscription_price' => $this->subscription_price,
-        ];
     }
 }

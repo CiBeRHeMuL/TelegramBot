@@ -163,23 +163,4 @@ class SendMediaGroupRequest implements RequestInterface
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'media' => array_map(
-                fn(InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo $e) => $e->toArray(),
-                $this->media,
-            ),
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-        ];
-    }
 }

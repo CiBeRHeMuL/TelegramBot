@@ -40,12 +40,4 @@ class CloseForumTopicRequest implements RequestInterface
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_thread_id' => $this->message_thread_id,
-        ];
-    }
 }

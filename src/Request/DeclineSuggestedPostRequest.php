@@ -53,13 +53,4 @@ class DeclineSuggestedPostRequest implements RequestInterface
         $this->comment = $comment;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_id' => $this->message_id,
-            'comment' => $this->comment,
-        ];
-    }
 }

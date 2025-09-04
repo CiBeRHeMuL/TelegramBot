@@ -38,12 +38,4 @@ class SetStickerEmojiListRequest implements RequestInterface
         $this->sticker = $sticker;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'emoji_list' => $this->emoji_list,
-            'sticker' => $this->sticker,
-        ];
-    }
 }

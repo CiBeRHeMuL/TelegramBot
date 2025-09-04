@@ -28,11 +28,4 @@ class GetChatAdministratorsRequest implements RequestInterface
         $this->chat_id = $chat_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-        ];
-    }
 }

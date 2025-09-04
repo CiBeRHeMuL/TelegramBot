@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
-use stdClass;
 
 /**
  * This object represents a sticker.
@@ -340,26 +339,5 @@ final class Sticker implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'type' => $this->type->value,
-            'width' => $this->width,
-            'height' => $this->height,
-            'is_animated' => $this->is_animated,
-            'is_video' => $this->is_video,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'emoji' => $this->emoji,
-            'set_name' => $this->set_name,
-            'premium_animation' => $this->premium_animation?->toArray(),
-            'mask_position' => $this->mask_position?->toArray(),
-            'custom_emoji_id' => $this->custom_emoji_id,
-            'needs_repainting' => $this->needs_repainting,
-            'file_size' => $this->file_size,
-        ];
     }
 }

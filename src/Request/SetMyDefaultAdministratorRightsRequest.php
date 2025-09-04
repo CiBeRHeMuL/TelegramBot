@@ -44,12 +44,4 @@ class SetMyDefaultAdministratorRightsRequest implements RequestInterface
         $this->rights = $rights;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'for_channels' => $this->for_channels,
-            'rights' => $this->rights?->toArray(),
-        ];
-    }
 }

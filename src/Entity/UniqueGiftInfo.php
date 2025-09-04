@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\UniqueGiftInfoOriginEnum;
-use stdClass;
 
 /**
  * Describes a service message about a unique gift that was sent or received.
@@ -148,17 +147,5 @@ final class UniqueGiftInfo implements EntityInterface
     {
         $this->next_transfer_date = $next_transfer_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'gift' => $this->gift->toArray(),
-            'origin' => $this->origin->value,
-            'owned_gift_id' => $this->owned_gift_id,
-            'transfer_star_count' => $this->transfer_star_count,
-            'last_resale_star_count' => $this->last_resale_star_count,
-            'next_transfer_date' => $this->next_transfer_date,
-        ];
     }
 }

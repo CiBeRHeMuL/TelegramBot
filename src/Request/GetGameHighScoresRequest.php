@@ -63,14 +63,4 @@ class GetGameHighScoresRequest implements RequestInterface
         $this->message_id = $message_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'user_id' => $this->user_id,
-            'chat_id' => $this->chat_id?->getId(),
-            'inline_message_id' => $this->inline_message_id,
-            'message_id' => $this->message_id,
-        ];
-    }
 }

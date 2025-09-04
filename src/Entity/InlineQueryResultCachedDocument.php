@@ -10,7 +10,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
-use stdClass;
 
 /**
  * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional
@@ -228,26 +227,5 @@ final class InlineQueryResultCachedDocument extends AbstractInlineQueryResult
     {
         $this->reply_markup = $reply_markup;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'document_file_id' => $this->document_file_id,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'description' => $this->description,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  *
@@ -149,17 +147,5 @@ final class Document implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'file_name' => $this->file_name,
-            'mime_type' => $this->mime_type,
-            'file_size' => $this->file_size,
-        ];
     }
 }

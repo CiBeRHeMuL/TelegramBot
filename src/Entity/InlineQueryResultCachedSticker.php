@@ -8,7 +8,6 @@ use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
-use stdClass;
 
 /**
  * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively,
@@ -116,16 +115,5 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     {
         $this->reply_markup = $reply_markup;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'sticker_file_id' => $this->sticker_file_id,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

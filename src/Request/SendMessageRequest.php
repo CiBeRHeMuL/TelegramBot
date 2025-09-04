@@ -243,30 +243,4 @@ class SendMessageRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'text' => $this->text,
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'link_preview_options' => $this->link_preview_options?->toArray(),
-            'message_thread_id' => $this->message_thread_id,
-            'parse_mode' => $this->parse_mode?->value,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

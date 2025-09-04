@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputProfilePhotoTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * An animated profile photo in the MPEG4 format.
@@ -69,16 +68,5 @@ final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
     {
         $this->main_frame_timestamp = $main_frame_timestamp;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'animation' => ($this->animation instanceof Url)
-                ? $this->animation->getUrl()
-                : $this->animation,
-            'main_frame_timestamp' => $this->main_frame_timestamp,
-            'type' => $this->type->value,
-        ];
     }
 }

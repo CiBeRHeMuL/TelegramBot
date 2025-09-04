@@ -25,11 +25,4 @@ class DeleteStickerSetRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'name' => $this->name,
-        ];
-    }
 }

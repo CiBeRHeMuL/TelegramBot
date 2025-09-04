@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object contains information about an incoming shipping query.
  *
@@ -102,15 +100,5 @@ final class ShippingQuery implements EntityInterface
     {
         $this->shipping_address = $shipping_address;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'from' => $this->from->toArray(),
-            'invoice_payload' => $this->invoice_payload,
-            'shipping_address' => $this->shipping_address->toArray(),
-        ];
     }
 }

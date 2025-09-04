@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
@@ -573,41 +572,5 @@ final class ExternalReplyInfo implements EntityInterface
     {
         $this->checklist = $checklist;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'origin' => $this->origin->toArray(),
-            'chat' => $this->chat?->toArray(),
-            'message_id' => $this->message_id,
-            'link_preview_options' => $this->link_preview_options?->toArray(),
-            'animation' => $this->animation?->toArray(),
-            'audio' => $this->audio?->toArray(),
-            'document' => $this->document?->toArray(),
-            'photo' => $this->photo !== null
-                ? array_map(
-                    fn(PhotoSize $e) => $e->toArray(),
-                    $this->photo,
-                )
-                : null,
-            'sticker' => $this->sticker?->toArray(),
-            'story' => $this->story?->toArray(),
-            'video' => $this->video?->toArray(),
-            'video_note' => $this->video_note?->toArray(),
-            'voice' => $this->voice?->toArray(),
-            'has_media_spoiler' => $this->has_media_spoiler,
-            'contact' => $this->contact?->toArray(),
-            'dice' => $this->dice?->toArray(),
-            'game' => $this->game?->toArray(),
-            'giveaway' => $this->giveaway?->toArray(),
-            'giveaway_winners' => $this->giveaway_winners?->toArray(),
-            'invoice' => $this->invoice?->toArray(),
-            'location' => $this->location?->toArray(),
-            'poll' => $this->poll?->toArray(),
-            'venue' => $this->venue?->toArray(),
-            'paid_media' => $this->paid_media?->toArray(),
-            'checklist' => $this->checklist?->toArray(),
-        ];
     }
 }

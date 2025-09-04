@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\AndChecker;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
-use stdClass;
 
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
@@ -154,17 +153,5 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'heading' => $this->heading,
-            'horizontal_accuracy' => $this->horizontal_accuracy,
-            'live_period' => $this->live_period,
-            'proximity_alert_radius' => $this->proximity_alert_radius,
-        ];
     }
 }

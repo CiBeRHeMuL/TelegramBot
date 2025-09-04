@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes an interval of time during which a business is open.
  *
@@ -59,13 +57,5 @@ final class BusinessOpeningHoursInterval implements EntityInterface
     {
         $this->closing_minute = $closing_minute;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'opening_minute' => $this->opening_minute,
-            'closing_minute' => $this->closing_minute,
-        ];
     }
 }

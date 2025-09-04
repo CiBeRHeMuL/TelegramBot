@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a service message about the approval of a suggested post.
  *
@@ -83,14 +81,5 @@ final class SuggestedPostApproved implements EntityInterface
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'send_date' => $this->send_date,
-            'price' => $this->price?->toArray(),
-            'suggested_post_message' => $this->suggested_post_message?->toArray(),
-        ];
     }
 }

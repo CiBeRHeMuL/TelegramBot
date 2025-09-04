@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Contains information about the affiliate that received a commission via this transaction.
  *
@@ -127,16 +125,5 @@ final class AffiliateInfo implements EntityInterface
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'commission_per_mille' => $this->commission_per_mille,
-            'amount' => $this->amount,
-            'affiliate_chat' => $this->affiliate_chat?->toArray(),
-            'affiliate_user' => $this->affiliate_user?->toArray(),
-            'nanostar_amount' => $this->nanostar_amount,
-        ];
     }
 }

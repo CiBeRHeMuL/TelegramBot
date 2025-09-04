@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
-use stdClass;
 
 /**
  * This object represents information about an order.
@@ -103,15 +102,5 @@ final class OrderInfo implements EntityInterface
     {
         $this->shipping_address = $shipping_address;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'name' => $this->name,
-            'phone_number' => $this->phone_number?->getPhone(),
-            'email' => $this->email?->getEmail(),
-            'shipping_address' => $this->shipping_address?->toArray(),
-        ];
     }
 }

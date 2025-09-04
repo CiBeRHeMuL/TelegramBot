@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a message about the completion of a giveaway with public winners.
@@ -276,26 +275,5 @@ final class GiveawayWinners implements EntityInterface
     {
         $this->prize_star_count = $prize_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'giveaway_message_id' => $this->giveaway_message_id,
-            'winners_selection_date' => $this->winners_selection_date,
-            'winner_count' => $this->winner_count,
-            'winners' => array_map(
-                fn(User $e) => $e->toArray(),
-                $this->winners,
-            ),
-            'additional_chat_count' => $this->additional_chat_count,
-            'premium_subscription_month_count' => $this->premium_subscription_month_count,
-            'unclaimed_prize_count' => $this->unclaimed_prize_count,
-            'only_new_members' => $this->only_new_members,
-            'was_refunded' => $this->was_refunded,
-            'prize_description' => $this->prize_description,
-            'prize_star_count' => $this->prize_star_count,
-        ];
     }
 }

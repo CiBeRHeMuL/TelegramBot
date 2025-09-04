@@ -463,44 +463,4 @@ class SendInvoiceRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'currency' => $this->currency->value,
-            'description' => $this->description,
-            'payload' => $this->payload,
-            'prices' => array_map(
-                fn(LabeledPrice $e) => $e->toArray(),
-                $this->prices,
-            ),
-            'title' => $this->title,
-            'provider_token' => $this->provider_token,
-            'disable_notification' => $this->disable_notification,
-            'is_flexible' => $this->is_flexible,
-            'max_tip_amount' => $this->max_tip_amount,
-            'message_thread_id' => $this->message_thread_id,
-            'need_email' => $this->need_email,
-            'need_name' => $this->need_name,
-            'need_phone_number' => $this->need_phone_number,
-            'need_shipping_address' => $this->need_shipping_address,
-            'photo_height' => $this->photo_height,
-            'photo_size' => $this->photo_size,
-            'photo_url' => $this->photo_url?->getUrl(),
-            'photo_width' => $this->photo_width,
-            'protect_content' => $this->protect_content,
-            'provider_data' => $this->provider_data,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'send_email_to_provider' => $this->send_email_to_provider,
-            'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
-            'start_parameter' => $this->start_parameter,
-            'suggested_tip_amounts' => $this->suggested_tip_amounts,
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

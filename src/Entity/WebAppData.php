@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes data sent from a Web App to the bot.
  *
@@ -59,13 +57,5 @@ final class WebAppData implements EntityInterface
     {
         $this->button_text = $button_text;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'data' => $this->data,
-            'button_text' => $this->button_text,
-        ];
     }
 }

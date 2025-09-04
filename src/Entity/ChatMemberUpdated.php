@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents changes in the status of a chat member.
  *
@@ -191,19 +189,5 @@ final class ChatMemberUpdated implements EntityInterface
     {
         $this->via_join_request = $via_join_request;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'from' => $this->from->toArray(),
-            'date' => $this->date,
-            'old_chat_member' => $this->old_chat_member->toArray(),
-            'new_chat_member' => $this->new_chat_member->toArray(),
-            'invite_link' => $this->invite_link?->toArray(),
-            'via_chat_folder_invite_link' => $this->via_chat_folder_invite_link,
-            'via_join_request' => $this->via_join_request,
-        ];
     }
 }

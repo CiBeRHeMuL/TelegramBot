@@ -72,19 +72,4 @@ class SetMessageReactionRequest implements RequestInterface
         $this->reaction = $reaction;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_id' => $this->message_id,
-            'is_big' => $this->is_big,
-            'reaction' => $this->reaction !== null
-                ? array_map(
-                    fn(AbstractReactionType $e) => $e->toArray(),
-                    $this->reaction,
-                )
-                : null,
-        ];
-    }
 }

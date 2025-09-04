@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
-use stdClass;
 
 /**
  * Represents a Game.
@@ -87,15 +86,5 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     {
         $this->reply_markup = $reply_markup;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'game_short_name' => $this->game_short_name,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

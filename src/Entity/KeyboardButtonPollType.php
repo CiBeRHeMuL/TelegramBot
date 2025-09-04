@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
-use stdClass;
 
 /**
  * This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.
@@ -38,12 +37,5 @@ final class KeyboardButtonPollType implements EntityInterface
     {
         $this->type = $type;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type?->value,
-        ];
     }
 }

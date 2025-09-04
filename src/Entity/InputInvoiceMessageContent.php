@@ -9,7 +9,6 @@ use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
@@ -487,34 +486,5 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'payload' => $this->payload,
-            'currency' => $this->currency->value,
-            'prices' => array_map(
-                fn(LabeledPrice $e) => $e->toArray(),
-                $this->prices,
-            ),
-            'provider_token' => $this->provider_token,
-            'is_flexible' => $this->is_flexible,
-            'max_tip_amount' => $this->max_tip_amount,
-            'need_email' => $this->need_email,
-            'need_name' => $this->need_name,
-            'need_phone_number' => $this->need_phone_number,
-            'need_shipping_address' => $this->need_shipping_address,
-            'photo_height' => $this->photo_height,
-            'photo_size' => $this->photo_size,
-            'photo_url' => $this->photo_url?->getUrl(),
-            'photo_width' => $this->photo_width,
-            'provider_data' => $this->provider_data,
-            'send_email_to_provider' => $this->send_email_to_provider,
-            'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
-            'suggested_tip_amounts' => $this->suggested_tip_amounts,
-        ];
     }
 }

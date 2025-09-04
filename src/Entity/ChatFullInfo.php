@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
-use stdClass;
 
 /**
  * This object contains full information about a chat.
@@ -1050,63 +1049,5 @@ final class ChatFullInfo implements EntityInterface
     {
         $this->parent_chat = $parent_chat;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'type' => $this->type->value,
-            'accent_color_id' => $this->accent_color_id,
-            'max_reaction_count' => $this->max_reaction_count,
-            'accepted_gift_types' => $this->accepted_gift_types->toArray(),
-            'active_usernames' => $this->active_usernames,
-            'available_reactions' => $this->available_reactions !== null
-                ? array_map(
-                    fn(AbstractReactionType $e) => $e->toArray(),
-                    $this->available_reactions,
-                )
-                : null,
-            'background_custom_emoji_id' => $this->background_custom_emoji_id,
-            'bio' => $this->bio,
-            'birthdate' => $this->birthdate?->toArray(),
-            'business_intro' => $this->business_intro?->toArray(),
-            'business_location' => $this->business_location?->toArray(),
-            'business_opening_hours' => $this->business_opening_hours?->toArray(),
-            'can_set_sticker_set' => $this->can_set_sticker_set,
-            'custom_emoji_sticker_set_name' => $this->custom_emoji_sticker_set_name,
-            'description' => $this->description,
-            'emoji_status_custom_emoji_id' => $this->emoji_status_custom_emoji_id,
-            'emoji_status_expiration_date' => $this->emoji_status_expiration_date,
-            'first_name' => $this->first_name,
-            'has_aggressive_anti_spam_enabled' => $this->has_aggressive_anti_spam_enabled,
-            'has_hidden_members' => $this->has_hidden_members,
-            'has_private_forwards' => $this->has_private_forwards,
-            'has_protected_content' => $this->has_protected_content,
-            'has_restricted_voice_and_video_messages' => $this->has_restricted_voice_and_video_messages,
-            'has_visible_history' => $this->has_visible_history,
-            'invite_link' => $this->invite_link,
-            'is_forum' => $this->is_forum,
-            'join_by_request' => $this->join_by_request,
-            'join_to_send_messages' => $this->join_to_send_messages,
-            'last_name' => $this->last_name,
-            'linked_chat_id' => $this->linked_chat_id,
-            'location' => $this->location?->toArray(),
-            'message_auto_delete_time' => $this->message_auto_delete_time,
-            'permissions' => $this->permissions?->toArray(),
-            'personal_chat' => $this->personal_chat?->toArray(),
-            'photo' => $this->photo?->toArray(),
-            'pinned_message' => $this->pinned_message?->toArray(),
-            'profile_accent_color_id' => $this->profile_accent_color_id,
-            'profile_background_custom_emoji_id' => $this->profile_background_custom_emoji_id,
-            'slow_mode_delay' => $this->slow_mode_delay,
-            'sticker_set_name' => $this->sticker_set_name,
-            'title' => $this->title,
-            'unrestrict_boost_count' => $this->unrestrict_boost_count,
-            'username' => $this->username,
-            'can_send_paid_media' => $this->can_send_paid_media,
-            'is_direct_messages' => $this->is_direct_messages,
-            'parent_chat' => $this->parent_chat?->toArray(),
-        ];
     }
 }

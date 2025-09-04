@@ -51,13 +51,4 @@ class GetUserProfilePhotosRequest implements RequestInterface
         $this->offset = $offset;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'user_id' => $this->user_id,
-            'limit' => $this->limit,
-            'offset' => $this->offset,
-        ];
-    }
 }

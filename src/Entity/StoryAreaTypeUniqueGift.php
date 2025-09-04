@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
-use stdClass;
 
 /**
  * Describes a story area pointing to a unique gift. Currently, a story can have at most 1 unique gift area.
@@ -41,13 +40,5 @@ final class StoryAreaTypeUniqueGift extends AbstractStoryAreaType
     {
         $this->name = $name;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'name' => $this->name,
-            'type' => $this->type->value,
-        ];
     }
 }

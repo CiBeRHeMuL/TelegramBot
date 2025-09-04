@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with
  * the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More
@@ -262,22 +260,5 @@ final class KeyboardButtonRequestChat implements EntityInterface
     {
         $this->user_administrator_rights = $user_administrator_rights;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'request_id' => $this->request_id,
-            'chat_is_channel' => $this->chat_is_channel,
-            'bot_administrator_rights' => $this->bot_administrator_rights?->toArray(),
-            'bot_is_member' => $this->bot_is_member,
-            'chat_has_username' => $this->chat_has_username,
-            'chat_is_created' => $this->chat_is_created,
-            'chat_is_forum' => $this->chat_is_forum,
-            'request_photo' => $this->request_photo,
-            'request_title' => $this->request_title,
-            'request_username' => $this->request_username,
-            'user_administrator_rights' => $this->user_administrator_rights?->toArray(),
-        ];
     }
 }

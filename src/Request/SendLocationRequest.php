@@ -265,27 +265,4 @@ class SendLocationRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'heading' => $this->heading,
-            'horizontal_accuracy' => $this->horizontal_accuracy,
-            'live_period' => $this->live_period,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'proximity_alert_radius' => $this->proximity_alert_radius,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

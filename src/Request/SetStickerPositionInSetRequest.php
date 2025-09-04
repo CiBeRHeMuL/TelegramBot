@@ -38,12 +38,4 @@ class SetStickerPositionInSetRequest implements RequestInterface
         $this->sticker = $sticker;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'position' => $this->position,
-            'sticker' => $this->sticker,
-        ];
-    }
 }

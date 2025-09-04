@@ -39,12 +39,4 @@ class SetStickerKeywordsRequest implements RequestInterface
         $this->keywords = $keywords;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'sticker' => $this->sticker,
-            'keywords' => $this->keywords,
-        ];
-    }
 }

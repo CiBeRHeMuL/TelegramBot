@@ -258,33 +258,4 @@ class SendAudioRequest implements RequestInterface
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'audio' => ($this->audio instanceof Url)
-                ? $this->audio->getUrl()
-                : $this->audio,
-            'business_connection_id' => $this->business_connection_id,
-            'message_thread_id' => $this->message_thread_id,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(fn(MessageEntity $me) => $me->toArray(), $this->caption_entities)
-                : null,
-            'duration' => $this->duration,
-            'performer' => $this->performer,
-            'title' => $this->title,
-            'thumbnail' => $this->thumbnail
-                ? (($this->thumbnail instanceof Url) ? $this->thumbnail->getUrl() : $this->thumbnail)
-                : null,
-            'disable_notification' => $this->disable_notification,
-            'protect_content' => $this->protect_content,
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-        ];
-    }
 }

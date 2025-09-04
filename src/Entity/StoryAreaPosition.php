@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes the position of a clickable area within a story.
  *
@@ -141,17 +139,5 @@ final class StoryAreaPosition implements EntityInterface
     {
         $this->corner_radius_percentage = $corner_radius_percentage;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'x_percentage' => $this->x_percentage,
-            'y_percentage' => $this->y_percentage,
-            'width_percentage' => $this->width_percentage,
-            'height_percentage' => $this->height_percentage,
-            'rotation_angle' => $this->rotation_angle,
-            'corner_radius_percentage' => $this->corner_radius_percentage,
-        ];
     }
 }

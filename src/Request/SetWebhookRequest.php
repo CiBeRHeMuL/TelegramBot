@@ -115,21 +115,4 @@ class SetWebhookRequest implements RequestInterface
         $this->secret_token = $secret_token;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'url' => $this->url->getUrl(),
-            'allowed_updates' => $this->allowed_updates
-                ? array_map(fn(UpdateTypeEnum $e) => $e->value, $this->allowed_updates)
-                : null,
-            'certificate' => ($this->certificate instanceof Url)
-                ? $this->certificate->getUrl()
-                : $this->certificate,
-            'drop_pending_updates' => $this->drop_pending_updates,
-            'ip_address' => $this->ip_address?->getAddress(),
-            'max_connections' => $this->max_connections,
-            'secret_token' => $this->secret_token,
-        ];
-    }
 }

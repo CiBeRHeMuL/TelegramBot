@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EmojiEnum;
 use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
-use stdClass;
 
 /**
  * The reaction is based on an emoji.
@@ -47,13 +46,5 @@ final class ReactionTypeEmoji extends AbstractReactionType
     {
         $this->emoji = $emoji;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'emoji' => $this->emoji->value,
-            'type' => $this->type->value,
-        ];
     }
 }

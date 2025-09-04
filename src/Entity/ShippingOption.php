@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents one shipping option.
@@ -82,17 +81,5 @@ final class ShippingOption implements EntityInterface
     {
         $this->prices = $prices;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'prices' => array_map(
-                fn(LabeledPrice $e) => $e->toArray(),
-                $this->prices,
-            ),
-        ];
     }
 }

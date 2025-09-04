@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes a service message about checklist tasks marked as done or not done.
@@ -85,14 +84,5 @@ final class ChecklistTasksDone implements EntityInterface
     {
         $this->marked_as_not_done_task_ids = $marked_as_not_done_task_ids;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'checklist_message' => $this->checklist_message?->toArray(),
-            'marked_as_done_task_ids' => $this->marked_as_done_task_ids,
-            'marked_as_not_done_task_ids' => $this->marked_as_not_done_task_ids,
-        ];
     }
 }

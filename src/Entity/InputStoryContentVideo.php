@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes a video to post as a story.
@@ -112,18 +111,5 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     {
         $this->is_animation = $is_animation;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'video' => ($this->video instanceof Url)
-                ? $this->video->getUrl()
-                : $this->video,
-            'cover_frame_timestamp' => $this->cover_frame_timestamp,
-            'duration' => $this->duration,
-            'is_animation' => $this->is_animation,
-            'type' => $this->type->value,
-        ];
     }
 }

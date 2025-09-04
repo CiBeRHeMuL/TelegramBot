@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes an inline message to be sent by a user of a Mini App.
  *
@@ -58,13 +56,5 @@ final class PreparedInlineMessage implements EntityInterface
     {
         $this->expiration_date = $expiration_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'expiration_date' => $this->expiration_date,
-        ];
     }
 }

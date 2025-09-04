@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
-use stdClass;
 
 /**
  * The message was originally sent on behalf of a chat to a group chat.
@@ -86,15 +85,5 @@ final class MessageOriginChat extends AbstractMessageOrigin
     {
         $this->author_signature = $author_signature;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'date' => $this->date,
-            'sender_chat' => $this->sender_chat->toArray(),
-            'author_signature' => $this->author_signature,
-            'type' => $this->type->value,
-        ];
     }
 }

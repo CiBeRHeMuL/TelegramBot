@@ -142,29 +142,4 @@ class PostStoryRequest implements RequestInterface
         $this->protect_content = $protect_content;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'active_period' => $this->active_period,
-            'business_connection_id' => $this->business_connection_id,
-            'content' => $this->content->toArray(),
-            'areas' => $this->areas !== null
-                ? array_map(
-                    fn(StoryArea $e) => $e->toArray(),
-                    $this->areas,
-                )
-                : null,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'parse_mode' => $this->parse_mode?->value,
-            'post_to_chat_page' => $this->post_to_chat_page,
-            'protect_content' => $this->protect_content,
-        ];
-    }
 }

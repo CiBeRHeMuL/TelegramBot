@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Phone;
-use stdClass;
 
 /**
  * This object represents a phone contact.
@@ -125,16 +124,5 @@ final class Contact implements EntityInterface
     {
         $this->vcard = $vcard;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'phone_number' => $this->phone_number->getPhone(),
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'user_id' => $this->user_id,
-            'vcard' => $this->vcard,
-        ];
     }
 }

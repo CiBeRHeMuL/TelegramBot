@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
-use stdClass;
 
 /**
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
@@ -44,13 +43,5 @@ final class ChatMemberLeft extends AbstractChatMember
     {
         $this->user = $user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user' => $this->user->toArray(),
-            'status' => $this->status->value,
-        ];
     }
 }

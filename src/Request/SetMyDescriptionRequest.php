@@ -42,12 +42,4 @@ class SetMyDescriptionRequest implements RequestInterface
         $this->language_code = $language_code;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'description' => $this->description,
-            'language_code' => $this->language_code?->getLanguage(),
-        ];
-    }
 }

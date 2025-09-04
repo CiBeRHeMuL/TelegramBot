@@ -54,13 +54,4 @@ class UnbanChatMemberRequest implements RequestInterface
         $this->only_if_banned = $only_if_banned;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'user_id' => $this->user_id,
-            'only_if_banned' => $this->only_if_banned,
-        ];
-    }
 }

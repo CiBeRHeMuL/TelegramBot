@@ -45,12 +45,4 @@ class SetChatMenuButtonRequest implements RequestInterface
         $this->menu_button = $menu_button;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id?->getId(),
-            'menu_button' => $this->menu_button?->toArray(),
-        ];
-    }
 }

@@ -160,20 +160,4 @@ class SendGameRequest implements RequestInterface
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'game_short_name' => $this->game_short_name,
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-        ];
-    }
 }

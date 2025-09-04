@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a chat background.
  *
@@ -38,12 +36,5 @@ final class ChatBackground implements EntityInterface
     {
         $this->type = $type;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->toArray(),
-        ];
     }
 }

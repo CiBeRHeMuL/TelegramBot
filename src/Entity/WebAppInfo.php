@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes a Web App.
@@ -40,12 +39,5 @@ final class WebAppInfo implements EntityInterface
     {
         $this->url = $url;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'url' => $this->url->getUrl(),
-        ];
     }
 }

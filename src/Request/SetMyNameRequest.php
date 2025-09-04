@@ -41,12 +41,4 @@ class SetMyNameRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'language_code' => $this->language_code?->getLanguage(),
-            'name' => $this->name,
-        ];
-    }
 }

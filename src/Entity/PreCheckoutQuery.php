@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * This object contains information about an incoming pre-checkout query.
@@ -171,18 +170,5 @@ final class PreCheckoutQuery implements EntityInterface
     {
         $this->shipping_option_id = $shipping_option_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'from' => $this->from->toArray(),
-            'currency' => $this->currency->value,
-            'total_amount' => $this->total_amount,
-            'invoice_payload' => $this->invoice_payload,
-            'order_info' => $this->order_info?->toArray(),
-            'shipping_option_id' => $this->shipping_option_id,
-        ];
     }
 }

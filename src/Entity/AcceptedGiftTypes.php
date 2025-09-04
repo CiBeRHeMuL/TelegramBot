@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object describes the types of gifts that can be gifted to a user or a chat.
  *
@@ -99,15 +97,5 @@ final class AcceptedGiftTypes implements EntityInterface
     {
         $this->premium_subscription = $premium_subscription;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'unlimited_gifts' => $this->unlimited_gifts,
-            'limited_gifts' => $this->limited_gifts,
-            'unique_gifts' => $this->unique_gifts,
-            'premium_subscription' => $this->premium_subscription,
-        ];
     }
 }

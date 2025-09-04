@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
-use stdClass;
 
 /**
  * This object describes a message that was deleted or is otherwise inaccessible to the bot.
@@ -63,14 +62,5 @@ final class InaccessibleMessage extends AbstractMaybeInaccessibleMessage
     {
         $this->message_id = $message_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'message_id' => $this->message_id,
-            'date' => $this->date,
-        ];
     }
 }

@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported
@@ -159,23 +158,5 @@ final class ReplyKeyboardMarkup implements EntityInterface
     {
         $this->selective = $selective;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'keyboard' => array_map(
-                fn(array $e) => array_map(
-                    fn(KeyboardButton $e) => $e->toArray(),
-                    $e,
-                ),
-                $this->keyboard,
-            ),
-            'is_persistent' => $this->is_persistent,
-            'resize_keyboard' => $this->resize_keyboard,
-            'one_time_keyboard' => $this->one_time_keyboard,
-            'input_field_placeholder' => $this->input_field_placeholder,
-            'selective' => $this->selective,
-        ];
     }
 }

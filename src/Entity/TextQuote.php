@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object contains information about the quoted part of a message that is replied to by the given message.
@@ -105,20 +104,5 @@ final class TextQuote implements EntityInterface
     {
         $this->is_manual = $is_manual;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'position' => $this->position,
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'is_manual' => $this->is_manual,
-        ];
     }
 }

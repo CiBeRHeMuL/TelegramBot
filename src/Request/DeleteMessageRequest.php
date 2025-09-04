@@ -40,12 +40,4 @@ class DeleteMessageRequest implements RequestInterface
         $this->message_id = $message_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_id' => $this->message_id,
-        ];
-    }
 }

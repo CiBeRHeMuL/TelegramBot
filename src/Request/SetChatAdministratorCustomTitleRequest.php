@@ -53,13 +53,4 @@ class SetChatAdministratorCustomTitleRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'custom_title' => $this->custom_title,
-            'user_id' => $this->user_id,
-        ];
-    }
 }

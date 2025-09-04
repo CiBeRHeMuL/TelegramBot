@@ -9,7 +9,6 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a photo to be sent.
@@ -159,25 +158,5 @@ final class InputMediaPhoto extends AbstractInputMedia
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'media' => ($this->media instanceof Url)
-                ? $this->media->getUrl()
-                : $this->media,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'has_spoiler' => $this->has_spoiler,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

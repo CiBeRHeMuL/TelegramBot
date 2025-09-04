@@ -42,12 +42,4 @@ class SetMyShortDescriptionRequest implements RequestInterface
         $this->short_description = $short_description;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'language_code' => $this->language_code?->getLanguage(),
-            'short_description' => $this->short_description,
-        ];
-    }
 }

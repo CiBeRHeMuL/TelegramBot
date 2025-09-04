@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  *
@@ -313,25 +311,5 @@ final class ChatPermissions implements EntityInterface
     {
         $this->can_manage_topics = $can_manage_topics;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'can_send_messages' => $this->can_send_messages,
-            'can_send_audios' => $this->can_send_audios,
-            'can_send_documents' => $this->can_send_documents,
-            'can_send_photos' => $this->can_send_photos,
-            'can_send_videos' => $this->can_send_videos,
-            'can_send_video_notes' => $this->can_send_video_notes,
-            'can_send_voice_notes' => $this->can_send_voice_notes,
-            'can_send_polls' => $this->can_send_polls,
-            'can_send_other_messages' => $this->can_send_other_messages,
-            'can_add_web_page_previews' => $this->can_add_web_page_previews,
-            'can_change_info' => $this->can_change_info,
-            'can_invite_users' => $this->can_invite_users,
-            'can_pin_messages' => $this->can_pin_messages,
-            'can_manage_topics' => $this->can_manage_topics,
-        ];
     }
 }

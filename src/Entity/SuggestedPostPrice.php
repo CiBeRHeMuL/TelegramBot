@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * Describes the price of a suggested post.
@@ -61,13 +60,5 @@ final class SuggestedPostPrice implements EntityInterface
     {
         $this->amount = $amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'currency' => $this->currency->value,
-            'amount' => $this->amount,
-        ];
     }
 }

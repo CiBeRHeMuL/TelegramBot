@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes a service message about a regular gift that was sent or received.
@@ -192,24 +191,5 @@ final class GiftInfo implements EntityInterface
     {
         $this->text = $text;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'gift' => $this->gift->toArray(),
-            'can_be_upgraded' => $this->can_be_upgraded,
-            'convert_star_count' => $this->convert_star_count,
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'is_private' => $this->is_private,
-            'owned_gift_id' => $this->owned_gift_id,
-            'prepaid_upgrade_star_count' => $this->prepaid_upgrade_star_count,
-            'text' => $this->text,
-        ];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  *
@@ -209,20 +207,5 @@ final class Audio implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'duration' => $this->duration,
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'performer' => $this->performer,
-            'title' => $this->title,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'file_name' => $this->file_name,
-            'mime_type' => $this->mime_type,
-            'file_size' => $this->file_size,
-        ];
     }
 }

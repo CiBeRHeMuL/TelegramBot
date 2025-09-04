@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a boost added to a chat or changed.
  *
@@ -60,13 +58,5 @@ final class ChatBoostUpdated implements EntityInterface
     {
         $this->boost = $boost;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'boost' => $this->boost->toArray(),
-        ];
     }
 }

@@ -10,7 +10,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
-use stdClass;
 
 /**
  * Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent
@@ -229,26 +228,5 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'gif_file_id' => $this->gif_file_id,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'title' => $this->title,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

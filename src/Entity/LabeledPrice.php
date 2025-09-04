@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a portion of the price for goods or services.
  *
@@ -62,13 +60,5 @@ final class LabeledPrice implements EntityInterface
     {
         $this->amount = $amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'label' => $this->label,
-            'amount' => $this->amount,
-        ];
     }
 }

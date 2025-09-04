@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Contains information about the location of a Telegram Business account.
  *
@@ -59,13 +57,5 @@ final class BusinessLocation implements EntityInterface
     {
         $this->location = $location;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'address' => $this->address,
-            'location' => $this->location?->toArray(),
-        ];
     }
 }

@@ -25,11 +25,4 @@ class GetBusinessConnectionRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

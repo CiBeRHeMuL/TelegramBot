@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
-use stdClass;
 
 /**
  * Describes a withdrawal transaction with Fragment.
@@ -43,13 +42,5 @@ final class TransactionPartnerFragment extends AbstractTransactionPartner
     {
         $this->withdrawal_state = $withdrawal_state;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'withdrawal_state' => $this->withdrawal_state?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

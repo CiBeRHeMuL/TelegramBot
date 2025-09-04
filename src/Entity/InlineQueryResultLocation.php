@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content
@@ -303,25 +302,5 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'title' => $this->title,
-            'heading' => $this->heading,
-            'horizontal_accuracy' => $this->horizontal_accuracy,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'live_period' => $this->live_period,
-            'proximity_alert_radius' => $this->proximity_alert_radius,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_height' => $this->thumbnail_height,
-            'thumbnail_url' => $this->thumbnail_url?->getUrl(),
-            'thumbnail_width' => $this->thumbnail_width,
-            'type' => $this->type->value,
-        ];
     }
 }

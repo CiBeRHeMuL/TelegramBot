@@ -70,14 +70,4 @@ class BanChatMemberRequest implements RequestInterface
         $this->until_date = $until_date;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'user_id' => $this->user_id,
-            'revoke_messages' => $this->revoke_messages,
-            'until_date' => $this->until_date,
-        ];
-    }
 }

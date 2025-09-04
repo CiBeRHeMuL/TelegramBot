@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
-use stdClass;
 
 /**
  * The background is a freeform gradient that rotates after every message in the chat.
@@ -43,13 +42,5 @@ final class BackgroundFillFreeformGradient extends AbstractBackgroundFill
     {
         $this->colors = $colors;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'colors' => $this->colors,
-            'type' => $this->type->value,
-        ];
     }
 }

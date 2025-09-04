@@ -124,18 +124,4 @@ class CopyMessagesRequest implements RequestInterface
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->getId(),
-            'message_ids' => $this->message_ids,
-            'disable_notification' => $this->disable_notification,
-            'remove_caption' => $this->remove_caption,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-        ];
-    }
 }

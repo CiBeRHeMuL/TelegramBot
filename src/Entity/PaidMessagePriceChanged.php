@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a service message about a change in the price of paid messages within a chat.
  *
@@ -37,12 +35,5 @@ final class PaidMessagePriceChanged implements EntityInterface
     {
         $this->paid_message_star_count = $paid_message_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'paid_message_star_count' => $this->paid_message_star_count,
-        ];
     }
 }

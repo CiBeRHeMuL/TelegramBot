@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes the connection of the bot with a business account.
  *
@@ -146,17 +144,5 @@ final class BusinessConnection implements EntityInterface
     {
         $this->rights = $rights;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'user' => $this->user->toArray(),
-            'user_chat_id' => $this->user_chat_id,
-            'date' => $this->date,
-            'is_enabled' => $this->is_enabled,
-            'rights' => $this->rights?->toArray(),
-        ];
     }
 }

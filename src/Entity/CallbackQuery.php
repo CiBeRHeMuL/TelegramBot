@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
-use stdClass;
 
 /**
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated
@@ -178,18 +177,5 @@ final class CallbackQuery implements EntityInterface
     {
         $this->message = $message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'from' => $this->from->toArray(),
-            'chat_instance' => $this->chat_instance,
-            'data' => $this->data?->getData(),
-            'game_short_name' => $this->game_short_name,
-            'inline_message_id' => $this->inline_message_id,
-            'message' => $this->message?->toArray(),
-        ];
     }
 }

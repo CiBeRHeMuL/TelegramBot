@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes the birthdate of a user.
  *
@@ -78,14 +76,5 @@ final class Birthdate implements EntityInterface
     {
         $this->year = $year;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'day' => $this->day,
-            'month' => $this->month,
-            'year' => $this->year,
-        ];
     }
 }

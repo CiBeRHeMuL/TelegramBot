@@ -237,25 +237,4 @@ class SendContactRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'first_name' => $this->first_name,
-            'phone_number' => $this->phone_number->getPhone(),
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'last_name' => $this->last_name,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'vcard' => $this->vcard,
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

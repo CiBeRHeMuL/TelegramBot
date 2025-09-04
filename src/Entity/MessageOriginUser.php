@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MessageOriginTypeEnum;
-use stdClass;
 
 /**
  * The message was originally sent by a known user.
@@ -64,14 +63,5 @@ final class MessageOriginUser extends AbstractMessageOrigin
     {
         $this->sender_user = $sender_user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'date' => $this->date,
-            'sender_user' => $this->sender_user->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

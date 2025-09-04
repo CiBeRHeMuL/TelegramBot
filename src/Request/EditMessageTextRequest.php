@@ -145,24 +145,4 @@ class EditMessageTextRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'text' => $this->text,
-            'chat_id' => $this->chat_id?->getId(),
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'inline_message_id' => $this->inline_message_id,
-            'link_preview_options' => $this->link_preview_options?->toArray(),
-            'message_id' => $this->message_id,
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

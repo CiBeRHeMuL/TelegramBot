@@ -12,7 +12,6 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultThumbnailMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will
@@ -337,31 +336,5 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'mpeg4_url' => $this->mpeg4_url->getUrl(),
-            'thumbnail_url' => $this->thumbnail_url->getUrl(),
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'mpeg4_duration' => $this->mpeg4_duration,
-            'mpeg4_height' => $this->mpeg4_height,
-            'mpeg4_width' => $this->mpeg4_width,
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_mime_type' => $this->thumbnail_mime_type?->value,
-            'title' => $this->title,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

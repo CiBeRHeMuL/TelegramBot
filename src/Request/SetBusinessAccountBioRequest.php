@@ -38,12 +38,4 @@ class SetBusinessAccountBioRequest implements RequestInterface
         $this->bio = $bio;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'bio' => $this->bio,
-        ];
-    }
 }

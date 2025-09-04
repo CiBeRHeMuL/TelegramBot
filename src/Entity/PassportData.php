@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes Telegram Passport data shared with the bot by the user.
@@ -63,16 +62,5 @@ final class PassportData implements EntityInterface
     {
         $this->credentials = $credentials;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'data' => array_map(
-                fn(EncryptedPassportElement $e) => $e->toArray(),
-                $this->data,
-            ),
-            'credentials' => $this->credentials->toArray(),
-        ];
     }
 }

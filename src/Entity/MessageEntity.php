@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\MessageEntityTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
@@ -177,18 +176,5 @@ final class MessageEntity implements EntityInterface
     {
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'offset' => $this->offset,
-            'length' => $this->length,
-            'url' => $this->url?->getUrl(),
-            'user' => $this->user?->toArray(),
-            'language' => $this->language,
-            'custom_emoji_id' => $this->custom_emoji_id,
-        ];
     }
 }

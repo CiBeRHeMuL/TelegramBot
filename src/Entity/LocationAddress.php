@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
-use stdClass;
 
 /**
  * Describes the physical address of a location.
@@ -100,15 +99,5 @@ final class LocationAddress implements EntityInterface
     {
         $this->street = $street;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'country_code' => $this->country_code->value,
-            'city' => $this->city,
-            'state' => $this->state,
-            'street' => $this->street,
-        ];
     }
 }

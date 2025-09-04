@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes the paid media added to a message.
@@ -61,16 +60,5 @@ final class PaidMediaInfo implements EntityInterface
     {
         $this->paid_media = $paid_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'star_count' => $this->star_count,
-            'paid_media' => array_map(
-                fn(AbstractPaidMedia $e) => $e->toArray(),
-                $this->paid_media,
-            ),
-        ];
     }
 }

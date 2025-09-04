@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a forum topic.
  *
@@ -99,15 +97,5 @@ final class ForumTopic implements EntityInterface
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message_thread_id' => $this->message_thread_id,
-            'name' => $this->name,
-            'icon_color' => $this->icon_color,
-            'icon_custom_emoji_id' => $this->icon_custom_emoji_id,
-        ];
     }
 }

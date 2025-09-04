@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
-use stdClass;
 
 /**
  * This object represents a sticker set.
@@ -126,19 +125,5 @@ final class StickerSet implements EntityInterface
     {
         $this->thumbnail = $thumbnail;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'name' => $this->name,
-            'title' => $this->title,
-            'sticker_type' => $this->sticker_type->value,
-            'stickers' => array_map(
-                fn(Sticker $e) => $e->toArray(),
-                $this->stickers,
-            ),
-            'thumbnail' => $this->thumbnail?->toArray(),
-        ];
     }
 }

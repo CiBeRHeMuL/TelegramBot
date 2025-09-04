@@ -44,14 +44,4 @@ class SetChatPhotoRequest implements RequestInterface
         $this->photo = $photo;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'photo' => ($this->photo instanceof Url)
-                ? $this->photo->getUrl()
-                : $this->photo,
-        ];
-    }
 }

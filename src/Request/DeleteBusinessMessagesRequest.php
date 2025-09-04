@@ -41,12 +41,4 @@ class DeleteBusinessMessagesRequest implements RequestInterface
         $this->message_ids = $message_ids;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'message_ids' => $this->message_ids,
-        ];
-    }
 }

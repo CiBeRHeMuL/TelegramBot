@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  *
@@ -209,20 +207,5 @@ final class Animation implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'width' => $this->width,
-            'height' => $this->height,
-            'duration' => $this->duration,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'file_name' => $this->file_name,
-            'mime_type' => $this->mime_type,
-            'file_size' => $this->file_size,
-        ];
     }
 }

@@ -12,7 +12,6 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultVideoMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent
@@ -231,29 +230,5 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'id' => $this->id,
-            'video_url' => $this->video_url->getUrl(),
-            'mime_type' => $this->mime_type->value,
-            'thumbnail_url' => $this->thumbnail_url->getUrl(),
-            'title' => $this->title,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities
-                ? array_map(fn(MessageEntity $e) => $e->toArray(), $this->caption_entities)
-                : null,
-            'description' => $this->description,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'video_duration' => $this->video_duration,
-            'video_height' => $this->video_height,
-            'video_width' => $this->video_width,
-            'show_caption_above_media' => $this->show_caption_above_media,
-        ];
     }
 }

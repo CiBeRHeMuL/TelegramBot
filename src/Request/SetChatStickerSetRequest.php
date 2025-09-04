@@ -40,12 +40,4 @@ class SetChatStickerSetRequest implements RequestInterface
         $this->sticker_set_name = $sticker_set_name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'sticker_set_name' => $this->sticker_set_name,
-        ];
-    }
 }

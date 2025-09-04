@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Contains parameters of a post that is being suggested by the bot.
  *
@@ -61,13 +59,5 @@ final class SuggestedPostParameters implements EntityInterface
     {
         $this->send_date = $send_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'price' => $this->price?->toArray(),
-            'send_date' => $this->send_date,
-        ];
     }
 }

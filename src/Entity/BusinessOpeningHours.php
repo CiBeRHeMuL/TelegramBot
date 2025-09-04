@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes the opening hours of a business.
@@ -61,16 +60,5 @@ final class BusinessOpeningHours implements EntityInterface
     {
         $this->opening_hours = $opening_hours;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'time_zone_name' => $this->time_zone_name,
-            'opening_hours' => array_map(
-                fn(BusinessOpeningHoursInterval $e) => $e->toArray(),
-                $this->opening_hours,
-            ),
-        ];
     }
 }

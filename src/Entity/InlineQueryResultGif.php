@@ -12,7 +12,6 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultThumbnailMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption.
@@ -336,31 +335,5 @@ final class InlineQueryResultGif extends AbstractInlineQueryResult
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'gif_url' => $this->gif_url->getUrl(),
-            'thumbnail_url' => $this->thumbnail_url->getUrl(),
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'gif_duration' => $this->gif_duration,
-            'gif_height' => $this->gif_height,
-            'gif_width' => $this->gif_width,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_mime_type' => $this->thumbnail_mime_type?->value,
-            'title' => $this->title,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

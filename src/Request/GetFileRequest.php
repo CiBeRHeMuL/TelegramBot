@@ -25,11 +25,4 @@ class GetFileRequest implements RequestInterface
         $this->file_id = $file_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'file_id' => $this->file_id,
-        ];
-    }
 }

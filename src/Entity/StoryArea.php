@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a clickable area on a story media.
  *
@@ -60,13 +58,5 @@ final class StoryArea implements EntityInterface
     {
         $this->type = $type;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'position' => $this->position->toArray(),
-            'type' => $this->type->toArray(),
-        ];
     }
 }

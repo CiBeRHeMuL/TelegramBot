@@ -38,12 +38,4 @@ class TransferBusinessAccountStarsRequest implements RequestInterface
         $this->star_count = $star_count;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'star_count' => $this->star_count,
-        ];
-    }
 }

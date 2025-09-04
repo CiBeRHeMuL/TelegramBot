@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about the completion of a giveaway without public winners.
  *
@@ -102,15 +100,5 @@ final class GiveawayCompleted implements EntityInterface
     {
         $this->is_star_giveaway = $is_star_giveaway;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'winner_count' => $this->winner_count,
-            'unclaimed_prize_count' => $this->unclaimed_prize_count,
-            'giveaway_message' => $this->giveaway_message?->toArray(),
-            'is_star_giveaway' => $this->is_star_giveaway,
-        ];
     }
 }

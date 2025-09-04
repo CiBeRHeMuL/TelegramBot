@@ -40,12 +40,4 @@ class SetChatTitleRequest implements RequestInterface
         $this->title = $title;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'title' => $this->title,
-        ];
-    }
 }

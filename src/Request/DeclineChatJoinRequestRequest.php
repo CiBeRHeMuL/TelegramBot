@@ -40,12 +40,4 @@ class DeclineChatJoinRequestRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'user_id' => $this->user_id,
-        ];
-    }
 }

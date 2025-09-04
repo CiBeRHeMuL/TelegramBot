@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default
  * letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for
@@ -69,13 +67,5 @@ final class ReplyKeyboardRemove implements EntityInterface
     {
         $this->selective = $selective;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'remove_keyboard' => $this->remove_keyboard,
-            'selective' => $this->selective,
-        ];
     }
 }

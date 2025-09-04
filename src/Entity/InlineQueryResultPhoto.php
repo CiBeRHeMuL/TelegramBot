@@ -11,7 +11,6 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can
@@ -313,30 +312,5 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'photo_url' => $this->photo_url->getUrl(),
-            'thumbnail_url' => $this->thumbnail_url->getUrl(),
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'description' => $this->description,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'photo_height' => $this->photo_height,
-            'photo_width' => $this->photo_width,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'title' => $this->title,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

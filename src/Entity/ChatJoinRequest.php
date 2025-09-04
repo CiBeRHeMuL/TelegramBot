@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Represents a join request sent to a chat.
  *
@@ -149,17 +147,5 @@ final class ChatJoinRequest implements EntityInterface
     {
         $this->invite_link = $invite_link;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'from' => $this->from->toArray(),
-            'user_chat_id' => $this->user_chat_id,
-            'date' => $this->date,
-            'bio' => $this->bio,
-            'invite_link' => $this->invite_link?->toArray(),
-        ];
     }
 }

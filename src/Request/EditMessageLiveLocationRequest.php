@@ -167,21 +167,4 @@ class EditMessageLiveLocationRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'chat_id' => $this->chat_id?->getId(),
-            'heading' => $this->heading,
-            'horizontal_accuracy' => $this->horizontal_accuracy,
-            'inline_message_id' => $this->inline_message_id,
-            'live_period' => $this->live_period,
-            'message_id' => $this->message_id,
-            'proximity_alert_radius' => $this->proximity_alert_radius,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
-use stdClass;
 
 /**
  * This object represents a chat.
@@ -188,19 +187,5 @@ final class Chat implements EntityInterface
     {
         $this->is_direct_messages = $is_direct_messages;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'type' => $this->type->value,
-            'first_name' => $this->first_name,
-            'is_forum' => $this->is_forum,
-            'last_name' => $this->last_name,
-            'title' => $this->title,
-            'username' => $this->username,
-            'is_direct_messages' => $this->is_direct_messages,
-        ];
     }
 }

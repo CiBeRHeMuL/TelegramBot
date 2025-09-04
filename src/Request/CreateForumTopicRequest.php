@@ -70,14 +70,4 @@ class CreateForumTopicRequest implements RequestInterface
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'name' => $this->name,
-            'icon_color' => $this->icon_color,
-            'icon_custom_emoji_id' => $this->icon_custom_emoji_id,
-        ];
-    }
 }

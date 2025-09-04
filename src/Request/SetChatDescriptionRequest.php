@@ -40,12 +40,4 @@ class SetChatDescriptionRequest implements RequestInterface
         $this->description = $description;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'description' => $this->description,
-        ];
-    }
 }

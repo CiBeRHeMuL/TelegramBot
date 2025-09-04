@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents the bot's name.
  *
@@ -36,12 +34,5 @@ final class BotName implements EntityInterface
     {
         $this->name = $name;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'name' => $this->name,
-        ];
     }
 }

@@ -330,35 +330,4 @@ class CreateInvoiceLinkRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'currency' => $this->currency->value,
-            'description' => $this->description,
-            'payload' => $this->payload,
-            'prices' => array_map(
-                fn(LabeledPrice $e) => $e->toArray(),
-                $this->prices,
-            ),
-            'title' => $this->title,
-            'provider_token' => $this->provider_token,
-            'is_flexible' => $this->is_flexible,
-            'max_tip_amount' => $this->max_tip_amount,
-            'need_email' => $this->need_email,
-            'need_name' => $this->need_name,
-            'need_phone_number' => $this->need_phone_number,
-            'need_shipping_address' => $this->need_shipping_address,
-            'photo_height' => $this->photo_height,
-            'photo_size' => $this->photo_size,
-            'photo_url' => $this->photo_url?->getUrl(),
-            'photo_width' => $this->photo_width,
-            'provider_data' => $this->provider_data,
-            'send_email_to_provider' => $this->send_email_to_provider,
-            'send_phone_number_to_provider' => $this->send_phone_number_to_provider,
-            'suggested_tip_amounts' => $this->suggested_tip_amounts,
-            'subscription_period' => $this->subscription_period,
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

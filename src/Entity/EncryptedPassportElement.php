@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
-use stdClass;
 
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
@@ -259,31 +258,5 @@ final class EncryptedPassportElement implements EntityInterface
     {
         $this->translation = $translation;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'hash' => $this->hash,
-            'data' => $this->data,
-            'phone_number' => $this->phone_number?->getPhone(),
-            'email' => $this->email?->getEmail(),
-            'files' => $this->files !== null
-                ? array_map(
-                    fn(PassportFile $e) => $e->toArray(),
-                    $this->files,
-                )
-                : null,
-            'front_side' => $this->front_side?->toArray(),
-            'reverse_side' => $this->reverse_side?->toArray(),
-            'selfie' => $this->selfie?->toArray(),
-            'translation' => $this->translation !== null
-                ? array_map(
-                    fn(PassportFile $e) => $e->toArray(),
-                    $this->translation,
-                )
-                : null,
-        ];
     }
 }

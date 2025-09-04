@@ -66,14 +66,4 @@ class UpgradeGiftRequest implements RequestInterface
         $this->star_count = $star_count;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'owned_gift_id' => $this->owned_gift_id,
-            'keep_original_details' => $this->keep_original_details,
-            'star_count' => $this->star_count,
-        ];
-    }
 }

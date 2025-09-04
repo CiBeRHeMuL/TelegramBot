@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
-use stdClass;
 
 /**
  * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for
@@ -110,16 +109,5 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
     {
         $this->prize_star_count = $prize_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'giveaway_message_id' => $this->giveaway_message_id,
-            'is_unclaimed' => $this->is_unclaimed,
-            'user' => $this->user?->toArray(),
-            'prize_star_count' => $this->prize_star_count,
-            'source' => $this->source->value,
-        ];
     }
 }

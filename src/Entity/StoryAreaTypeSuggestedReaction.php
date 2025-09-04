@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
-use stdClass;
 
 /**
  * Describes a story area pointing to a suggested reaction. Currently, a story can have up to 5 suggested reaction areas.
@@ -85,15 +84,5 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
     {
         $this->is_flipped = $is_flipped;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'reaction_type' => $this->reaction_type->toArray(),
-            'is_dark' => $this->is_dark,
-            'is_flipped' => $this->is_flipped,
-            'type' => $this->type->value,
-        ];
     }
 }

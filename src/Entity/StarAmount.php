@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes an amount of Telegram Stars.
  *
@@ -58,13 +56,5 @@ final class StarAmount implements EntityInterface
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'amount' => $this->amount,
-            'nanostar_amount' => $this->nanostar_amount,
-        ];
     }
 }

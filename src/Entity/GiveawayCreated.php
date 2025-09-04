@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about the creation of a scheduled giveaway.
  *
@@ -37,12 +35,5 @@ final class GiveawayCreated implements EntityInterface
     {
         $this->prize_star_count = $prize_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'prize_star_count' => $this->prize_star_count,
-        ];
     }
 }

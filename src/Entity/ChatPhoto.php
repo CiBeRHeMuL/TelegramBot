@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a chat photo.
  *
@@ -103,15 +101,5 @@ final class ChatPhoto implements EntityInterface
     {
         $this->big_file_unique_id = $big_file_unique_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'small_file_id' => $this->small_file_id,
-            'small_file_unique_id' => $this->small_file_unique_id,
-            'big_file_id' => $this->big_file_id,
-            'big_file_unique_id' => $this->big_file_unique_id,
-        ];
     }
 }

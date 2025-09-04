@@ -40,12 +40,4 @@ class EditGeneralForumTopicRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'name' => $this->name,
-        ];
-    }
 }

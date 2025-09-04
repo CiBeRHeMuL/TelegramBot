@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
-use stdClass;
 
 /**
  * Represents a menu button, which launches a Web App.
@@ -69,14 +68,5 @@ final class MenuButtonWebApp extends AbstractMenuButton
     {
         $this->web_app = $web_app;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'web_app' => $this->web_app->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

@@ -71,14 +71,4 @@ class StopPollRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_id' => $this->message_id,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

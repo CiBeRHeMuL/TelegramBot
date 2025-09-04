@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a service message about the rejection of a suggested post.
  *
@@ -61,13 +59,5 @@ final class SuggestedPostDeclined implements EntityInterface
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'comment' => $this->comment,
-            'suggested_post_message' => $this->suggested_post_message?->toArray(),
-        ];
     }
 }

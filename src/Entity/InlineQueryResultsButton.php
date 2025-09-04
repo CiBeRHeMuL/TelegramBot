@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a button to be shown above inline query results. You must use exactly one of the optional fields.
  *
@@ -91,14 +89,5 @@ final class InlineQueryResultsButton implements EntityInterface
     {
         $this->web_app = $web_app;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'start_parameter' => $this->start_parameter,
-            'web_app' => $this->web_app?->toArray(),
-        ];
     }
 }

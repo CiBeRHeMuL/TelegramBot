@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a voice note.
  *
@@ -123,16 +121,5 @@ final class Voice implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'duration' => $this->duration,
-            'mime_type' => $this->mime_type,
-            'file_size' => $this->file_size,
-        ];
     }
 }

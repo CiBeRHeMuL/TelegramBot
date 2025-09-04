@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
-use stdClass;
 
 /**
  * The reaction is based on a custom emoji.
@@ -41,13 +40,5 @@ final class ReactionTypeCustomEmoji extends AbstractReactionType
     {
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'custom_emoji_id' => $this->custom_emoji_id,
-            'type' => $this->type->value,
-        ];
     }
 }

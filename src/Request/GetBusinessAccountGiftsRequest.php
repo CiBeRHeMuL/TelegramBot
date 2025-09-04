@@ -130,19 +130,4 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
         $this->sort_by_price = $sort_by_price;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'exclude_limited' => $this->exclude_limited,
-            'exclude_saved' => $this->exclude_saved,
-            'exclude_unique' => $this->exclude_unique,
-            'exclude_unlimited' => $this->exclude_unlimited,
-            'exclude_unsaved' => $this->exclude_unsaved,
-            'limit' => $this->limit,
-            'offset' => $this->offset,
-            'sort_by_price' => $this->sort_by_price,
-        ];
-    }
 }

@@ -245,29 +245,4 @@ class SendVideoNoteRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'video_note' => ($this->video_note instanceof Url)
-                ? $this->video_note->getUrl()
-                : $this->video_note,
-            'business_connection_id' => $this->business_connection_id,
-            'disable_notification' => $this->disable_notification,
-            'duration' => $this->duration,
-            'length' => $this->length,
-            'message_thread_id' => $this->message_thread_id,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'thumbnail' => ($this->thumbnail instanceof Url)
-                ? $this->thumbnail->getUrl()
-                : $this->thumbnail,
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

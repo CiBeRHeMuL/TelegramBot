@@ -42,12 +42,4 @@ class AnswerWebAppQueryRequest implements RequestInterface
         $this->web_app_query_id = $web_app_query_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'result' => $this->result->toArray(),
-            'web_app_query_id' => $this->web_app_query_id,
-        ];
-    }
 }

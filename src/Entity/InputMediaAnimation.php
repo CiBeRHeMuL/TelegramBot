@@ -9,7 +9,6 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
@@ -248,31 +247,5 @@ final class InputMediaAnimation extends AbstractInputMedia
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'media' => ($this->media instanceof Url)
-                ? $this->media->getUrl()
-                : $this->media,
-            'thumbnail' => ($this->thumbnail instanceof Url)
-                ? $this->thumbnail->getUrl()
-                : $this->thumbnail,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'width' => $this->width,
-            'height' => $this->height,
-            'duration' => $this->duration,
-            'has_spoiler' => $this->has_spoiler,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'type' => $this->type->value,
-        ];
     }
 }

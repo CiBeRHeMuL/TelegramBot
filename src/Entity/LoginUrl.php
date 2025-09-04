@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great
@@ -80,15 +79,5 @@ final class LoginUrl implements EntityInterface
     {
         $this->request_write_access = $request_write_access;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'url' => $this->url->getUrl(),
-            'bot_username' => $this->bot_username,
-            'forward_text' => $this->forward_text,
-            'request_write_access' => $this->request_write_access,
-        ];
     }
 }

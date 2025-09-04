@@ -53,13 +53,4 @@ class EditUserStarSubscriptionRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'is_canceled' => $this->is_canceled,
-            'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
-            'user_id' => $this->user_id,
-        ];
-    }
 }

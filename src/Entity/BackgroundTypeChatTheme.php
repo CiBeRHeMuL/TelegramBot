@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
-use stdClass;
 
 /**
  * The background is taken directly from a built-in chat theme.
@@ -41,13 +40,5 @@ final class BackgroundTypeChatTheme extends AbstractBackgroundType
     {
         $this->theme_name = $theme_name;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'theme_name' => $this->theme_name,
-            'type' => $this->type->value,
-        ];
     }
 }

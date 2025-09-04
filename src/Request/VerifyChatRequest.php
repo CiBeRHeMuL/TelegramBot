@@ -42,12 +42,4 @@ class VerifyChatRequest implements RequestInterface
         $this->custom_description = $custom_description;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'custom_description' => $this->custom_description,
-        ];
-    }
 }

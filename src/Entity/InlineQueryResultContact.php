@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content
@@ -239,22 +238,5 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     {
         $this->vcard = $vcard;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'phone_number' => $this->phone_number->getPhone(),
-            'first_name' => $this->first_name,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'last_name' => $this->last_name,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'thumbnail_height' => $this->thumbnail_height,
-            'thumbnail_url' => $this->thumbnail_url?->getUrl(),
-            'thumbnail_width' => $this->thumbnail_width,
-            'vcard' => $this->vcard,
-            'type' => $this->type->value,
-        ];
     }
 }

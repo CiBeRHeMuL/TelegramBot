@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a story.
  *
@@ -59,13 +57,5 @@ final class Story implements EntityInterface
     {
         $this->id = $id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'id' => $this->id,
-        ];
     }
 }

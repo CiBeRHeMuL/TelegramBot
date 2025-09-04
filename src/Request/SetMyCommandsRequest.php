@@ -62,16 +62,4 @@ class SetMyCommandsRequest implements RequestInterface
         $this->scope = $scope;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'commands' => array_map(
-                fn(BotCommand $e) => $e->toArray(),
-                $this->commands,
-            ),
-            'language_code' => $this->language_code?->getLanguage(),
-            'scope' => $this->scope?->toArray(),
-        ];
-    }
 }

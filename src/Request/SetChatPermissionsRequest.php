@@ -59,13 +59,4 @@ class SetChatPermissionsRequest implements RequestInterface
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'permissions' => $this->permissions->toArray(),
-            'use_independent_chat_permissions' => $this->use_independent_chat_permissions,
-        ];
-    }
 }

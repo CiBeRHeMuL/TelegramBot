@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by
  * another user.
@@ -82,14 +80,5 @@ final class ProximityAlertTriggered implements EntityInterface
     {
         $this->distance = $distance;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'traveler' => $this->traveler->toArray(),
-            'watcher' => $this->watcher->toArray(),
-            'distance' => $this->distance,
-        ];
     }
 }

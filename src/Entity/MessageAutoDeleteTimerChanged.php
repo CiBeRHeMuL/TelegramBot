@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about a change in auto-delete timer settings.
  *
@@ -36,12 +34,5 @@ final class MessageAutoDeleteTimerChanged implements EntityInterface
     {
         $this->message_auto_delete_time = $message_auto_delete_time;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message_auto_delete_time' => $this->message_auto_delete_time,
-        ];
     }
 }

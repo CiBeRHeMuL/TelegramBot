@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * The paid media to send is a photo.
@@ -47,15 +46,5 @@ final class InputPaidMediaPhoto extends AbstractInputPaidMedia
     {
         $this->media = $media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'media' => ($this->media instanceof Url)
-                ? $this->media->getUrl()
-                : $this->media,
-            'type' => $this->type->value,
-        ];
     }
 }

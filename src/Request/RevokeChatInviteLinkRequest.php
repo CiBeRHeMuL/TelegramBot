@@ -41,12 +41,4 @@ class RevokeChatInviteLinkRequest implements RequestInterface
         $this->invite_link = $invite_link;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'invite_link' => $this->invite_link->getUrl(),
-        ];
-    }
 }

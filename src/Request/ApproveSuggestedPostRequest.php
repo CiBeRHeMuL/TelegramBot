@@ -55,13 +55,4 @@ class ApproveSuggestedPostRequest implements RequestInterface
         $this->send_date = $send_date;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_id' => $this->message_id,
-            'send_date' => $this->send_date,
-        ];
-    }
 }

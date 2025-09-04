@@ -60,15 +60,4 @@ class UploadStickerFileRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'sticker' => ($this->sticker instanceof Url)
-                ? $this->sticker->getUrl()
-                : $this->sticker,
-            'sticker_format' => $this->sticker_format->value,
-            'user_id' => $this->user_id,
-        ];
-    }
 }

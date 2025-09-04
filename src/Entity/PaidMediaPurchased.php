@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object contains information about a paid media purchase.
  *
@@ -59,13 +57,5 @@ final class PaidMediaPurchased implements EntityInterface
     {
         $this->paid_media_payload = $paid_media_payload;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'from' => $this->from->toArray(),
-            'paid_media_payload' => $this->paid_media_payload,
-        ];
     }
 }

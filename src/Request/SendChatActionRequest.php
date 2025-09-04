@@ -68,14 +68,4 @@ class SendChatActionRequest implements RequestInterface
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'action' => $this->action->value,
-            'chat_id' => $this->chat_id->getId(),
-            'business_connection_id' => $this->business_connection_id,
-            'message_thread_id' => $this->message_thread_id,
-        ];
-    }
 }

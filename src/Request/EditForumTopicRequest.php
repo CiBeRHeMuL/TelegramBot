@@ -71,14 +71,4 @@ class EditForumTopicRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'message_thread_id' => $this->message_thread_id,
-            'icon_custom_emoji_id' => $this->icon_custom_emoji_id,
-            'name' => $this->name,
-        ];
-    }
 }

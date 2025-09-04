@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  *
@@ -146,17 +144,5 @@ final class VideoNote implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'length' => $this->length,
-            'duration' => $this->duration,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'file_size' => $this->file_size,
-        ];
     }
 }

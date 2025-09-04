@@ -56,13 +56,4 @@ class SetBusinessAccountGiftSettingsRequest implements RequestInterface
         $this->show_gift_button = $show_gift_button;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'accepted_gift_types' => $this->accepted_gift_types->toArray(),
-            'business_connection_id' => $this->business_connection_id,
-            'show_gift_button' => $this->show_gift_button,
-        ];
-    }
 }

@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
-use stdClass;
 
 /**
  * Describes a story area pointing to a location. Currently, a story can have up to 10 location areas.
@@ -85,15 +84,5 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     {
         $this->address = $address;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'address' => $this->address?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

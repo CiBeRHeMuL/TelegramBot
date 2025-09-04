@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
-use stdClass;
 
 /**
  * Describes a story area containing weather information. Currently, a story can have up to 3 weather areas.
@@ -83,15 +82,5 @@ final class StoryAreaTypeWeather extends AbstractStoryAreaType
     {
         $this->background_color = $background_color;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'temperature' => $this->temperature,
-            'emoji' => $this->emoji,
-            'background_color' => $this->background_color,
-            'type' => $this->type->value,
-        ];
     }
 }

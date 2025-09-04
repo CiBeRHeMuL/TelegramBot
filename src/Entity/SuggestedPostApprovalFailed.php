@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a service message about the failed approval of a suggested post. Currently, only caused by insufficient user funds
  * at the time of approval.
@@ -63,13 +61,5 @@ final class SuggestedPostApprovalFailed implements EntityInterface
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'price' => $this->price->toArray(),
-            'suggested_post_message' => $this->suggested_post_message?->toArray(),
-        ];
     }
 }

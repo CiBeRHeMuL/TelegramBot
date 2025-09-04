@@ -350,46 +350,4 @@ class SendPollRequest implements RequestInterface
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'options' => array_map(
-                fn(InputPollOption $e) => $e->toArray(),
-                $this->options,
-            ),
-            'question' => $this->question,
-            'allows_multiple_answers' => $this->allows_multiple_answers,
-            'business_connection_id' => $this->business_connection_id,
-            'close_date' => $this->close_date,
-            'correct_option_id' => $this->correct_option_id,
-            'disable_notification' => $this->disable_notification,
-            'explanation' => $this->explanation,
-            'explanation_entities' => $this->explanation_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->explanation_entities,
-                )
-                : null,
-            'explanation_parse_mode' => $this->explanation_parse_mode?->value,
-            'is_anonymous' => $this->is_anonymous,
-            'is_closed' => $this->is_closed,
-            'message_thread_id' => $this->message_thread_id,
-            'open_period' => $this->open_period,
-            'protect_content' => $this->protect_content,
-            'question_entities' => $this->question_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->question_entities,
-                )
-                : null,
-            'question_parse_mode' => $this->question_parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'type' => $this->type?->value,
-            'message_effect_id' => $this->message_effect_id,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-        ];
-    }
 }

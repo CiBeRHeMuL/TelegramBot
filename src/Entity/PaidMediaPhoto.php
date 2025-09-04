@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
-use stdClass;
 
 /**
  * The paid media is a photo.
@@ -45,16 +44,5 @@ final class PaidMediaPhoto extends AbstractPaidMedia
     {
         $this->photo = $photo;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'photo' => array_map(
-                fn(PhotoSize $e) => $e->toArray(),
-                $this->photo,
-            ),
-            'type' => $this->type->value,
-        ];
     }
 }

@@ -38,12 +38,4 @@ class SetBusinessAccountUsernameRequest implements RequestInterface
         $this->username = $username;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'username' => $this->username,
-        ];
-    }
 }

@@ -39,12 +39,4 @@ class SetCustomEmojiStickerSetThumbnailRequest implements RequestInterface
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'name' => $this->name,
-            'custom_emoji_id' => $this->custom_emoji_id,
-        ];
-    }
 }

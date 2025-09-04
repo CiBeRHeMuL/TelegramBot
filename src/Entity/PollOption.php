@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object contains information about one answer option in a poll.
@@ -83,19 +82,5 @@ final class PollOption implements EntityInterface
     {
         $this->text_entities = $text_entities;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'voter_count' => $this->voter_count,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-        ];
     }
 }

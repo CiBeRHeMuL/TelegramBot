@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a point on the map.
  *
@@ -143,17 +141,5 @@ final class Location implements EntityInterface
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'horizontal_accuracy' => $this->horizontal_accuracy,
-            'live_period' => $this->live_period,
-            'heading' => $this->heading,
-            'proximity_alert_radius' => $this->proximity_alert_radius,
-        ];
     }
 }

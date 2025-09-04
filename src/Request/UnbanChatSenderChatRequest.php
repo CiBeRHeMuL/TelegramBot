@@ -40,12 +40,4 @@ class UnbanChatSenderChatRequest implements RequestInterface
         $this->sender_chat_id = $sender_chat_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'sender_chat_id' => $this->sender_chat_id,
-        ];
-    }
 }

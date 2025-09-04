@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a topic of a direct messages chat.
  *
@@ -59,13 +57,5 @@ final class DirectMessagesTopic implements EntityInterface
     {
         $this->user = $user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'topic_id' => $this->topic_id,
-            'user' => $this->user?->toArray(),
-        ];
     }
 }

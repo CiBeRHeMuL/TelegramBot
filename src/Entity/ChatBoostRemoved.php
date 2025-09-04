@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a boost removed from a chat.
  *
@@ -102,15 +100,5 @@ final class ChatBoostRemoved implements EntityInterface
     {
         $this->source = $source;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'boost_id' => $this->boost_id,
-            'remove_date' => $this->remove_date,
-            'source' => $this->source->toArray(),
-        ];
     }
 }

@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\AndChecker;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
-use stdClass;
 
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
@@ -197,19 +196,5 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     {
         $this->google_place_type = $google_place_type;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'latitude' => $this->latitude,
-            'longitude' => $this->longitude,
-            'title' => $this->title,
-            'address' => $this->address,
-            'foursquare_id' => $this->foursquare_id,
-            'foursquare_type' => $this->foursquare_type,
-            'google_place_id' => $this->google_place_id,
-            'google_place_type' => $this->google_place_type,
-        ];
     }
 }

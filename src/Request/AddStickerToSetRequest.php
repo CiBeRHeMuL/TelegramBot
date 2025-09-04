@@ -56,13 +56,4 @@ class AddStickerToSetRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'name' => $this->name,
-            'sticker' => $this->sticker->toArray(),
-            'user_id' => $this->user_id,
-        ];
-    }
 }

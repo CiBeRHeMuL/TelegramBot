@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
-use stdClass;
 
 /**
  * This object contains information about a poll.
@@ -322,38 +321,5 @@ final class Poll implements EntityInterface
     {
         $this->close_date = $close_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'question' => $this->question,
-            'options' => array_map(
-                fn(PollOption $e) => $e->toArray(),
-                $this->options,
-            ),
-            'total_voter_count' => $this->total_voter_count,
-            'is_closed' => $this->is_closed,
-            'is_anonymous' => $this->is_anonymous,
-            'type' => $this->type->value,
-            'allows_multiple_answers' => $this->allows_multiple_answers,
-            'question_entities' => $this->question_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->question_entities,
-                )
-                : null,
-            'correct_option_id' => $this->correct_option_id,
-            'explanation' => $this->explanation,
-            'explanation_entities' => $this->explanation_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->explanation_entities,
-                )
-                : null,
-            'open_period' => $this->open_period,
-            'close_date' => $this->close_date,
-        ];
     }
 }

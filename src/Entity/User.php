@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
-use stdClass;
 
 /**
  * This object represents a Telegram user or bot.
@@ -300,24 +299,5 @@ final class User implements EntityInterface
     {
         $this->has_main_web_app = $has_main_web_app;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'is_bot' => $this->is_bot,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'username' => $this->username,
-            'language_code' => $this->language_code?->getLanguage(),
-            'is_premium' => $this->is_premium,
-            'added_to_attachment_menu' => $this->added_to_attachment_menu,
-            'can_join_groups' => $this->can_join_groups,
-            'can_read_all_group_messages' => $this->can_read_all_group_messages,
-            'supports_inline_queries' => $this->supports_inline_queries,
-            'can_connect_to_business' => $this->can_connect_to_business,
-            'has_main_web_app' => $this->has_main_web_app,
-        ];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object describes the colors of the backdrop of a unique gift.
  *
@@ -99,15 +97,5 @@ final class UniqueGiftBackdropColors implements EntityInterface
     {
         $this->text_color = $text_color;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'center_color' => $this->center_color,
-            'edge_color' => $this->edge_color,
-            'symbol_color' => $this->symbol_color,
-            'text_color' => $this->text_color,
-        ];
     }
 }

@@ -51,13 +51,4 @@ class SetBusinessAccountNameRequest implements RequestInterface
         $this->last_name = $last_name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-        ];
-    }
 }

@@ -55,13 +55,4 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
         $this->error_message = $error_message;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'ok' => $this->ok,
-            'pre_checkout_query_id' => $this->pre_checkout_query_id,
-            'error_message' => $this->error_message,
-        ];
-    }
 }

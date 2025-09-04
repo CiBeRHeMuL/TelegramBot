@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
-use stdClass;
 
 /**
  * The background is filled using the selected color.
@@ -41,13 +40,5 @@ final class BackgroundFillSolid extends AbstractBackgroundFill
     {
         $this->color = $color;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'color' => $this->color,
-            'type' => $this->type->value,
-        ];
     }
 }

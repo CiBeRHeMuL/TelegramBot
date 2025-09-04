@@ -38,12 +38,4 @@ class ConvertGiftToStarsRequest implements RequestInterface
         $this->owned_gift_id = $owned_gift_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'owned_gift_id' => $this->owned_gift_id,
-        ];
-    }
 }

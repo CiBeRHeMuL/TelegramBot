@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * This object contains basic information about a refunded payment.
@@ -128,16 +127,5 @@ final class RefundedPayment implements EntityInterface
     {
         $this->provider_payment_charge_id = $provider_payment_charge_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'currency' => $this->currency->value,
-            'total_amount' => $this->total_amount,
-            'invoice_payload' => $this->invoice_payload,
-            'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
-            'provider_payment_charge_id' => $this->provider_payment_charge_id,
-        ];
     }
 }

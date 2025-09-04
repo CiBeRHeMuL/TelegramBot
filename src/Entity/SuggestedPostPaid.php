@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * Describes a service message about a successful payment for a suggested post.
@@ -108,15 +107,5 @@ final class SuggestedPostPaid implements EntityInterface
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'currency' => $this->currency->value,
-            'amount' => $this->amount,
-            'star_amount' => $this->star_amount?->toArray(),
-            'suggested_post_message' => $this->suggested_post_message?->toArray(),
-        ];
     }
 }

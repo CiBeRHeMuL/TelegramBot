@@ -52,13 +52,4 @@ class SetUserEmojiStatusRequest implements RequestInterface
         $this->emoji_status_expiration_date = $emoji_status_expiration_date;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'user_id' => $this->user_id,
-            'emoji_status_custom_emoji_id' => $this->emoji_status_custom_emoji_id,
-            'emoji_status_expiration_date' => $this->emoji_status_expiration_date,
-        ];
-    }
 }

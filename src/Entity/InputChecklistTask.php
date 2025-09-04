@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
-use stdClass;
 
 /**
  * Describes a task to add to a checklist.
@@ -108,20 +107,5 @@ final class InputChecklistTask implements EntityInterface
     {
         $this->text_entities = $text_entities;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'text' => $this->text,
-            'parse_mode' => $this->parse_mode?->value,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-        ];
     }
 }

@@ -115,27 +115,4 @@ class EditStoryRequest implements RequestInterface
         $this->parse_mode = $parse_mode;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'content' => $this->content->toArray(),
-            'story_id' => $this->story_id,
-            'areas' => $this->areas !== null
-                ? array_map(
-                    fn(StoryArea $e) => $e->toArray(),
-                    $this->areas,
-                )
-                : null,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'parse_mode' => $this->parse_mode?->value,
-        ];
-    }
 }

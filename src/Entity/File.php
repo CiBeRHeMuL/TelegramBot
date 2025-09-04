@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a file ready to be downloaded.
  * The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>.
@@ -74,15 +72,5 @@ final class File implements EntityInterface
     {
         $this->file_path = $file_path;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'file_size' => $this->file_size,
-            'file_path' => $this->file_path,
-        ];
     }
 }

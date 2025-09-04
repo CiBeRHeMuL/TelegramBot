@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes the options used for link preview generation.
@@ -125,16 +124,5 @@ final class LinkPreviewOptions implements EntityInterface
     {
         $this->show_above_text = $show_above_text;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'is_disabled' => $this->is_disabled,
-            'url' => $this->url?->getUrl(),
-            'prefer_small_media' => $this->prefer_small_media,
-            'prefer_large_media' => $this->prefer_large_media,
-            'show_above_text' => $this->show_above_text,
-        ];
     }
 }

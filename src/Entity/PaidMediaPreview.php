@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
-use stdClass;
 
 /**
  * The paid media isn't available before the payment.
@@ -83,15 +82,5 @@ final class PaidMediaPreview extends AbstractPaidMedia
     {
         $this->width = $width;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'duration' => $this->duration,
-            'height' => $this->height,
-            'width' => $this->width,
-            'type' => $this->type->value,
-        ];
     }
 }

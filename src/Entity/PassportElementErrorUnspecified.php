@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
-use stdClass;
 
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
@@ -84,15 +83,5 @@ final class PassportElementErrorUnspecified extends AbstractPassportElementError
     {
         $this->message = $message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'element_hash' => $this->element_hash,
-            'message' => $this->message,
-            'source' => $this->source->value,
-        ];
     }
 }

@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
-use stdClass;
 
 /**
  * This object contains information about one answer option in a poll to be sent.
@@ -86,19 +85,5 @@ final class InputPollOption implements EntityInterface
     {
         $this->text_entities = $text_entities;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'text_parse_mode' => $this->text_parse_mode?->value,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-        ];
     }
 }

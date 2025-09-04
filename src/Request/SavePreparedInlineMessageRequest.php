@@ -94,16 +94,4 @@ class SavePreparedInlineMessageRequest implements RequestInterface
         $this->allow_user_chats = $allow_user_chats;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'result' => $this->result->toArray(),
-            'user_id' => $this->user_id,
-            'allow_bot_chats' => $this->allow_bot_chats,
-            'allow_channel_chats' => $this->allow_channel_chats,
-            'allow_group_chats' => $this->allow_group_chats,
-            'allow_user_chats' => $this->allow_user_chats,
-        ];
-    }
 }

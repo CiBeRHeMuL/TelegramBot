@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * This object contains basic information about an invoice.
@@ -127,16 +126,5 @@ final class Invoice implements EntityInterface
     {
         $this->total_amount = $total_amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'start_parameter' => $this->start_parameter,
-            'currency' => $this->currency->value,
-            'total_amount' => $this->total_amount,
-        ];
     }
 }

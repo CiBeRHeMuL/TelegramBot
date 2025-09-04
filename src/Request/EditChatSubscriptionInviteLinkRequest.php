@@ -54,13 +54,4 @@ class EditChatSubscriptionInviteLinkRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'invite_link' => $this->invite_link->getUrl(),
-            'name' => $this->name,
-        ];
-    }
 }

@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
-use stdClass;
 
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
@@ -113,20 +112,5 @@ final class InputTextMessageContent implements EntityInterface
     {
         $this->parse_mode = $parse_mode;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message_text' => $this->message_text,
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'link_preview_options' => $this->link_preview_options?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-        ];
     }
 }

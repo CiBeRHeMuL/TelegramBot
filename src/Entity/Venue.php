@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a venue.
  *
@@ -166,18 +164,5 @@ final class Venue implements EntityInterface
     {
         $this->google_place_type = $google_place_type;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'location' => $this->location->toArray(),
-            'title' => $this->title,
-            'address' => $this->address,
-            'foursquare_id' => $this->foursquare_id,
-            'foursquare_type' => $this->foursquare_type,
-            'google_place_id' => $this->google_place_id,
-            'google_place_type' => $this->google_place_type,
-        ];
     }
 }

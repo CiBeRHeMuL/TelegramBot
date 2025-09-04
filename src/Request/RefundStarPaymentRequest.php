@@ -38,12 +38,4 @@ class RefundStarPaymentRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
-            'user_id' => $this->user_id,
-        ];
-    }
 }

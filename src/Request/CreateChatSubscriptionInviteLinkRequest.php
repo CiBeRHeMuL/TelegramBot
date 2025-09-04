@@ -68,14 +68,4 @@ class CreateChatSubscriptionInviteLinkRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'subscription_period' => $this->subscription_period,
-            'subscription_price' => $this->subscription_price,
-            'name' => $this->name,
-        ];
-    }
 }

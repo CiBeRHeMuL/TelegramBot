@@ -27,11 +27,4 @@ class GetMyShortDescriptionRequest implements RequestInterface
         $this->language_code = $language_code;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'language_code' => $this->language_code?->getLanguage(),
-        ];
-    }
 }

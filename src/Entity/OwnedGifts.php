@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Contains the list of gifts received and owned by a user or a chat.
@@ -82,17 +81,5 @@ final class OwnedGifts implements EntityInterface
     {
         $this->next_offset = $next_offset;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'total_count' => $this->total_count,
-            'gifts' => array_map(
-                fn(AbstractOwnedGift $e) => $e->toArray(),
-                $this->gifts,
-            ),
-            'next_offset' => $this->next_offset,
-        ];
     }
 }

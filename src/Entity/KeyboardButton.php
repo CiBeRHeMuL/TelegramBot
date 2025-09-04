@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents one button of the reply keyboard. At most one of the optional fields must be used to specify type of
  * the button. For simple text buttons, String can be used instead of this object to specify the button text.
@@ -178,18 +176,5 @@ final class KeyboardButton implements EntityInterface
     {
         $this->web_app = $web_app;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'request_users' => $this->request_users?->toArray(),
-            'request_chat' => $this->request_chat?->toArray(),
-            'request_contact' => $this->request_contact,
-            'request_location' => $this->request_location,
-            'request_poll' => $this->request_poll?->toArray(),
-            'web_app' => $this->web_app?->toArray(),
-        ];
     }
 }

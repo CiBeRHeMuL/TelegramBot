@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
-use stdClass;
 
 /**
  * Represents the scope of bot commands, covering a specific chat.
@@ -44,13 +43,5 @@ final class BotCommandScopeChat extends AbstractBotCommandScope
     {
         $this->chat_id = $chat_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'type' => $this->type->value,
-        ];
     }
 }

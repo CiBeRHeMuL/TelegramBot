@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
-use stdClass;
 
 /**
  * The background is a gradient fill.
@@ -83,15 +82,5 @@ final class BackgroundFillGradient extends AbstractBackgroundFill
     {
         $this->rotation_angle = $rotation_angle;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'top_color' => $this->top_color,
-            'bottom_color' => $this->bottom_color,
-            'rotation_angle' => $this->rotation_angle,
-            'type' => $this->type->value,
-        ];
     }
 }

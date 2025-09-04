@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
-use stdClass;
 
 /**
  * This object represents a shipping address.
@@ -144,17 +143,5 @@ final class ShippingAddress implements EntityInterface
     {
         $this->post_code = $post_code;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'country_code' => $this->country_code->value,
-            'state' => $this->state,
-            'city' => $this->city,
-            'street_line1' => $this->street_line1,
-            'street_line2' => $this->street_line2,
-            'post_code' => $this->post_code,
-        ];
     }
 }

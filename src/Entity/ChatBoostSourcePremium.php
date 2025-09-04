@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
-use stdClass;
 
 /**
  * The boost was obtained by subscribing to Telegram Premium or by gifting a Telegram Premium subscription to another user.
@@ -43,13 +42,5 @@ final class ChatBoostSourcePremium extends AbstractChatBoostSource
     {
         $this->user = $user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user' => $this->user->toArray(),
-            'source' => $this->source->value,
-        ];
     }
 }

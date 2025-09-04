@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
-use stdClass;
 
 /**
  * Describes a transaction with a chat.
@@ -65,14 +64,5 @@ final class TransactionPartnerChat extends AbstractTransactionPartner
     {
         $this->gift = $gift;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'gift' => $this->gift?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

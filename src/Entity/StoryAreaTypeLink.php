@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes a story area pointing to an HTTP or tg:// link. Currently, a story can have up to 3 link areas.
@@ -42,13 +41,5 @@ final class StoryAreaTypeLink extends AbstractStoryAreaType
     {
         $this->url = $url;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'url' => $this->url->getUrl(),
-            'type' => $this->type->value,
-        ];
     }
 }

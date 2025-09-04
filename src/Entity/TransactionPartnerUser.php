@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 use AndrewGos\TelegramBot\Enum\TransactionTypeEnum;
-use stdClass;
 
 /**
  * Describes a transaction with a user.
@@ -226,26 +225,5 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     {
         $this->premium_subscription_duration = $premium_subscription_duration;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user' => $this->user->toArray(),
-            'transaction_type' => $this->transaction_type->value,
-            'invoice_payload' => $this->invoice_payload,
-            'paid_media' => $this->paid_media !== null
-                ? array_map(
-                    fn(AbstractPaidMedia $e) => $e->toArray(),
-                    $this->paid_media,
-                )
-                : null,
-            'paid_media_payload' => $this->paid_media_payload,
-            'subscription_period' => $this->subscription_period,
-            'gift' => $this->gift?->toArray(),
-            'affiliate' => $this->affiliate?->toArray(),
-            'premium_subscription_duration' => $this->premium_subscription_duration,
-            'type' => $this->type->value,
-        ];
     }
 }

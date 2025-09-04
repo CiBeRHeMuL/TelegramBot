@@ -9,7 +9,6 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents an audio file to be treated as music to be sent.
@@ -206,29 +205,5 @@ final class InputMediaAudio extends AbstractInputMedia
     {
         $this->title = $title;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'media' => ($this->media instanceof Url)
-                ? $this->media->getUrl()
-                : $this->media,
-            'thumbnail' => ($this->thumbnail instanceof Url)
-                ? $this->thumbnail->getUrl()
-                : $this->thumbnail,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'duration' => $this->duration,
-            'performer' => $this->performer,
-            'title' => $this->title,
-            'type' => $this->type->value,
-        ];
     }
 }

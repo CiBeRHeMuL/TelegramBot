@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a unique message identifier.
  *
@@ -38,12 +36,5 @@ final class MessageId implements EntityInterface
     {
         $this->message_id = $message_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message_id' => $this->message_id,
-        ];
     }
 }

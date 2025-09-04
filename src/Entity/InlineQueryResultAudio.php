@@ -11,7 +11,6 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content
@@ -250,27 +249,5 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     {
         $this->reply_markup = $reply_markup;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'audio_url' => $this->audio_url->getUrl(),
-            'title' => $this->title,
-            'audio_duration' => $this->audio_duration,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'input_message_content' => $this->input_message_content?->toArray(),
-            'parse_mode' => $this->parse_mode?->value,
-            'performer' => $this->performer,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

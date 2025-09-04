@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents an inline keyboard button that copies specified text to the clipboard.
  *
@@ -36,12 +34,5 @@ final class CopyTextButton implements EntityInterface
     {
         $this->text = $text;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-        ];
     }
 }

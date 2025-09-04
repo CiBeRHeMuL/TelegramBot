@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
-use stdClass;
 
 /**
  * The background is automatically filled based on the selected colors.
@@ -64,14 +63,5 @@ final class BackgroundTypeFill extends AbstractBackgroundType
     {
         $this->dark_theme_dimming = $dark_theme_dimming;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'fill' => $this->fill->toArray(),
-            'dark_theme_dimming' => $this->dark_theme_dimming,
-            'type' => $this->type->value,
-        ];
     }
 }

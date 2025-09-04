@@ -126,18 +126,4 @@ class SendChecklistRequest implements RequestInterface
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'business_connection_id' => $this->business_connection_id,
-            'chat_id' => $this->chat_id->getId(),
-            'checklist' => $this->checklist->toArray(),
-            'disable_notification' => $this->disable_notification,
-            'message_effect_id' => $this->message_effect_id,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-        ];
-    }
 }

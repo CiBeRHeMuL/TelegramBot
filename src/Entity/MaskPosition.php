@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\MaskPositionEnum;
-use stdClass;
 
 /**
  * This object describes the position on faces where a mask should be placed by default.
@@ -103,15 +102,5 @@ final class MaskPosition implements EntityInterface
     {
         $this->scale = $scale;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'point' => $this->point->value,
-            'x_shift' => $this->x_shift,
-            'y_shift' => $this->y_shift,
-            'scale' => $this->scale,
-        ];
     }
 }

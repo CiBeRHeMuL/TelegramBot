@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes why a request was unsuccessful.
  *
@@ -61,13 +59,5 @@ final class ResponseParameters implements EntityInterface
     {
         $this->retry_after = $retry_after;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'migrate_to_chat_id' => $this->migrate_to_chat_id,
-            'retry_after' => $this->retry_after,
-        ];
     }
 }

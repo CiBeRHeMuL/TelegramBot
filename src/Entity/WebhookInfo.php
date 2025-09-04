@@ -7,7 +7,6 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes the current status of a webhook.
@@ -215,25 +214,5 @@ final class WebhookInfo implements EntityInterface
     {
         $this->max_connections = $max_connections;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'url' => $this->url->getUrl(),
-            'has_custom_certificate' => $this->has_custom_certificate,
-            'pending_update_count' => $this->pending_update_count,
-            'allowed_updates' => $this->allowed_updates !== null
-                ? array_map(
-                    fn(UpdateTypeEnum $e) => $e->value,
-                    $this->allowed_updates,
-                )
-                : null,
-            'ip_address' => $this->ip_address?->getAddress(),
-            'last_error_date' => $this->last_error_date,
-            'last_error_message' => $this->last_error_message,
-            'last_synchronization_error_date' => $this->last_synchronization_error_date,
-            'max_connections' => $this->max_connections,
-        ];
     }
 }

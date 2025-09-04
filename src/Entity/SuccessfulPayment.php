@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
-use stdClass;
 
 /**
  * This object contains basic information about a successful payment. Note that if the buyer initiates a chargeback with the
@@ -236,21 +235,5 @@ final class SuccessfulPayment implements EntityInterface
     {
         $this->is_first_recurring = $is_first_recurring;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'currency' => $this->currency->value,
-            'total_amount' => $this->total_amount,
-            'invoice_payload' => $this->invoice_payload,
-            'telegram_payment_charge_id' => $this->telegram_payment_charge_id,
-            'provider_payment_charge_id' => $this->provider_payment_charge_id,
-            'shipping_option_id' => $this->shipping_option_id,
-            'order_info' => $this->order_info?->toArray(),
-            'subscription_expiration_date' => $this->subscription_expiration_date,
-            'is_recurring' => $this->is_recurring,
-            'is_first_recurring' => $this->is_first_recurring,
-        ];
     }
 }

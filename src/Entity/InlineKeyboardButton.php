@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of
@@ -278,22 +277,5 @@ final class InlineKeyboardButton implements EntityInterface
     {
         $this->copy_text = $copy_text;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'text' => $this->text,
-            'callback_data' => $this->callback_data?->getData(),
-            'callback_game' => $this->callback_game?->toArray(),
-            'login_url' => $this->login_url?->getUrl(),
-            'pay' => $this->pay,
-            'switch_inline_query' => $this->switch_inline_query,
-            'switch_inline_query_chosen_chat' => $this->switch_inline_query_chosen_chat?->toArray(),
-            'switch_inline_query_current_chat' => $this->switch_inline_query_current_chat,
-            'url' => $this->url?->getUrl(),
-            'web_app' => $this->web_app?->toArray(),
-            'copy_text' => $this->copy_text?->toArray(),
-        ];
     }
 }

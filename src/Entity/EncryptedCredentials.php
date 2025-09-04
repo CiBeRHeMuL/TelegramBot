@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation
  * for a complete description of the data decryption and authentication processes.
@@ -84,14 +82,5 @@ final class EncryptedCredentials implements EntityInterface
     {
         $this->secret = $secret;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'data' => $this->data,
-            'hash' => $this->hash,
-            'secret' => $this->secret,
-        ];
     }
 }

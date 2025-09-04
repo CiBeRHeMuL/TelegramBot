@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object describes a unique gift that was upgraded from a regular gift.
  *
@@ -167,18 +165,5 @@ final class UniqueGift implements EntityInterface
     {
         $this->publisher_chat = $publisher_chat;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'base_name' => $this->base_name,
-            'name' => $this->name,
-            'number' => $this->number,
-            'model' => $this->model->toArray(),
-            'symbol' => $this->symbol->toArray(),
-            'backdrop' => $this->backdrop->toArray(),
-            'publisher_chat' => $this->publisher_chat?->toArray(),
-        ];
     }
 }

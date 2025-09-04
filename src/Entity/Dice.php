@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\DiceEmojiEnum;
-use stdClass;
 
 /**
  * This object represents an animated emoji that displays a random value.
@@ -59,13 +58,5 @@ final class Dice implements EntityInterface
     {
         $this->value = $value;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'emoji' => $this->emoji->value,
-            'value' => $this->value,
-        ];
     }
 }

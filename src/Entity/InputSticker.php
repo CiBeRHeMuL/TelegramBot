@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerFormatEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * This object describes a sticker to be added to a sticker set.
@@ -135,18 +134,5 @@ final class InputSticker implements EntityInterface
     {
         $this->mask_position = $mask_position;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'sticker' => ($this->sticker instanceof Url)
-                ? $this->sticker->getUrl()
-                : $this->sticker,
-            'format' => $this->format->value,
-            'emoji_list' => $this->emoji_list,
-            'keywords' => $this->keywords,
-            'mask_position' => $this->mask_position?->toArray(),
-        ];
     }
 }

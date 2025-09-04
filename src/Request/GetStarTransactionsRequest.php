@@ -39,12 +39,4 @@ class GetStarTransactionsRequest implements RequestInterface
         $this->offset = $offset;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'limit' => $this->limit,
-            'offset' => $this->offset,
-        ];
-    }
 }

@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
-use stdClass;
 
 /**
  * Describes a regular gift owned by a user or a chat.
@@ -284,29 +283,5 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     {
         $this->was_refunded = $was_refunded;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'gift' => $this->gift->toArray(),
-            'send_date' => $this->send_date,
-            'can_be_upgraded' => $this->can_be_upgraded,
-            'convert_star_count' => $this->convert_star_count,
-            'entities' => $this->entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->entities,
-                )
-                : null,
-            'is_private' => $this->is_private,
-            'is_saved' => $this->is_saved,
-            'owned_gift_id' => $this->owned_gift_id,
-            'prepaid_upgrade_star_count' => $this->prepaid_upgrade_star_count,
-            'sender_user' => $this->sender_user?->toArray(),
-            'text' => $this->text,
-            'was_refunded' => $this->was_refunded,
-            'type' => $this->type->value,
-        ];
     }
 }

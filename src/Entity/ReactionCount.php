@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Represents a reaction added to a message along with the number of times it was added.
  *
@@ -59,13 +57,5 @@ final class ReactionCount implements EntityInterface
     {
         $this->total_count = $total_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->toArray(),
-            'total_count' => $this->total_count,
-        ];
     }
 }

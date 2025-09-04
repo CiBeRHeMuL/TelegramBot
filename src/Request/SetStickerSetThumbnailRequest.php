@@ -80,16 +80,4 @@ class SetStickerSetThumbnailRequest implements RequestInterface
         $this->thumbnail = $thumbnail;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'format' => $this->format->value,
-            'name' => $this->name,
-            'user_id' => $this->user_id,
-            'thumbnail' => ($this->thumbnail instanceof Url)
-                ? $this->thumbnail->getUrl()
-                : $this->thumbnail,
-        ];
-    }
 }

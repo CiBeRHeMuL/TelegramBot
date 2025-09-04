@@ -330,40 +330,4 @@ class SendAnimationRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'animation' => ($this->animation instanceof Url)
-                ? $this->animation->getUrl()
-                : $this->animation,
-            'business_connection_id' => $this->business_connection_id,
-            'message_thread_id' => $this->message_thread_id,
-            'duration' => $this->duration,
-            'width' => $this->width,
-            'height' => $this->height,
-            'thumbnail' => ($this->thumbnail instanceof Url)
-                ? $this->thumbnail->getUrl()
-                : $this->thumbnail,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'has_spoiler' => $this->has_spoiler,
-            'disable_notification' => $this->disable_notification,
-            'protect_content' => $this->protect_content,
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'message_effect_id' => $this->message_effect_id,
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

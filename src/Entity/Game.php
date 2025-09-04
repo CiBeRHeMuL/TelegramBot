@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
@@ -154,25 +153,5 @@ final class Game implements EntityInterface
     {
         $this->animation = $animation;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'photo' => array_map(
-                fn(PhotoSize $e) => $e->toArray(),
-                $this->photo,
-            ),
-            'text' => $this->text,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-            'animation' => $this->animation?->toArray(),
-        ];
     }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about a video chat ended in the chat.
  *
@@ -36,12 +34,5 @@ final class VideoChatEnded implements EntityInterface
     {
         $this->duration = $duration;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'duration' => $this->duration,
-        ];
     }
 }

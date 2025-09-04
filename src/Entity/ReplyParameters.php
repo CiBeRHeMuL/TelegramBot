@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
-use stdClass;
 
 /**
  * Describes reply parameters for the message that is being sent.
@@ -199,24 +198,5 @@ final class ReplyParameters implements EntityInterface
     {
         $this->checklist_task_id = $checklist_task_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message_id' => $this->message_id,
-            'chat_id' => $this->chat_id?->getId(),
-            'allow_sending_without_reply' => $this->allow_sending_without_reply,
-            'quote' => $this->quote,
-            'quote_parse_mode' => $this->quote_parse_mode?->value,
-            'quote_entities' => $this->quote_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->quote_entities,
-                )
-                : null,
-            'quote_position' => $this->quote_position,
-            'checklist_task_id' => $this->checklist_task_id,
-        ];
     }
 }

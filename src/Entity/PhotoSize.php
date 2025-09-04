@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents one size of a photo or a file / sticker thumbnail.
  *
@@ -123,16 +121,5 @@ final class PhotoSize implements EntityInterface
     {
         $this->file_size = $file_size;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'width' => $this->width,
-            'height' => $this->height,
-            'file_size' => $this->file_size,
-        ];
     }
 }

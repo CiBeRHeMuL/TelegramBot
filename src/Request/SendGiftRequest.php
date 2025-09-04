@@ -116,22 +116,4 @@ class SendGiftRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'gift_id' => $this->gift_id,
-            'chat_id' => $this->chat_id?->getId(),
-            'pay_for_upgrade' => $this->pay_for_upgrade,
-            'text' => $this->text,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-            'text_parse_mode' => $this->text_parse_mode?->value,
-            'user_id' => $this->user_id,
-        ];
-    }
 }

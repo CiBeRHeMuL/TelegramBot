@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents an incoming update.At most one of the optional parameters can be present in any given update.
  *
@@ -570,35 +568,5 @@ final class Update implements EntityInterface
     {
         $this->purchased_paid_media = $purchased_paid_media;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'update_id' => $this->update_id,
-            'business_connection' => $this->business_connection?->toArray(),
-            'business_message' => $this->business_message?->toArray(),
-            'callback_query' => $this->callback_query?->toArray(),
-            'channel_post' => $this->channel_post?->toArray(),
-            'chat_boost' => $this->chat_boost?->toArray(),
-            'chat_join_request' => $this->chat_join_request?->toArray(),
-            'chat_member' => $this->chat_member?->toArray(),
-            'chosen_inline_result' => $this->chosen_inline_result?->toArray(),
-            'deleted_business_messages' => $this->deleted_business_messages?->toArray(),
-            'edited_business_message' => $this->edited_business_message?->toArray(),
-            'edited_channel_post' => $this->edited_channel_post?->toArray(),
-            'edited_message' => $this->edited_message?->toArray(),
-            'inline_query' => $this->inline_query?->toArray(),
-            'message' => $this->message?->toArray(),
-            'message_reaction' => $this->message_reaction?->toArray(),
-            'message_reaction_count' => $this->message_reaction_count?->toArray(),
-            'my_chat_member' => $this->my_chat_member?->toArray(),
-            'poll' => $this->poll?->toArray(),
-            'poll_answer' => $this->poll_answer?->toArray(),
-            'pre_checkout_query' => $this->pre_checkout_query?->toArray(),
-            'removed_chat_boost' => $this->removed_chat_boost?->toArray(),
-            'shipping_query' => $this->shipping_query?->toArray(),
-            'purchased_paid_media' => $this->purchased_paid_media?->toArray(),
-        ];
     }
 }

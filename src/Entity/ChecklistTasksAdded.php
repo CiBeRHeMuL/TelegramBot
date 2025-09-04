@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * Describes a service message about tasks added to a checklist.
@@ -64,16 +63,5 @@ final class ChecklistTasksAdded implements EntityInterface
     {
         $this->checklist_message = $checklist_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'tasks' => array_map(
-                fn(ChecklistTask $e) => $e->toArray(),
-                $this->tasks,
-            ),
-            'checklist_message' => $this->checklist_message?->toArray(),
-        ];
     }
 }

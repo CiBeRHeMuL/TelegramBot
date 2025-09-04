@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Represents the rights of a business bot.
  *
@@ -316,25 +314,5 @@ final class BusinessBotRights implements EntityInterface
     {
         $this->can_view_gifts_and_stars = $can_view_gifts_and_stars;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'can_change_gift_settings' => $this->can_change_gift_settings,
-            'can_convert_gifts_to_stars' => $this->can_convert_gifts_to_stars,
-            'can_delete_all_messages' => $this->can_delete_all_messages,
-            'can_delete_sent_messages' => $this->can_delete_sent_messages,
-            'can_edit_bio' => $this->can_edit_bio,
-            'can_edit_name' => $this->can_edit_name,
-            'can_edit_profile_photo' => $this->can_edit_profile_photo,
-            'can_edit_username' => $this->can_edit_username,
-            'can_manage_stories' => $this->can_manage_stories,
-            'can_read_messages' => $this->can_read_messages,
-            'can_reply' => $this->can_reply,
-            'can_transfer_and_upgrade_gifts' => $this->can_transfer_and_upgrade_gifts,
-            'can_transfer_stars' => $this->can_transfer_stars,
-            'can_view_gifts_and_stars' => $this->can_view_gifts_and_stars,
-        ];
     }
 }

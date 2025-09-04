@@ -37,12 +37,4 @@ class SetPassportDataErrorsRequest implements RequestInterface
         $this->user_id = $user_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'errors' => array_map(fn(AbstractPassportElementError $e) => $e->toArray(), $this->errors),
-            'user_id' => $this->user_id,
-        ];
-    }
 }

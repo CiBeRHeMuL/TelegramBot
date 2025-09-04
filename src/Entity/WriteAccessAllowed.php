@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu,
  * launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
@@ -85,14 +83,5 @@ final class WriteAccessAllowed implements EntityInterface
     {
         $this->from_attachment_menu = $from_attachment_menu;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'from_request' => $this->from_request,
-            'web_app_name' => $this->web_app_name,
-            'from_attachment_menu' => $this->from_attachment_menu,
-        ];
     }
 }

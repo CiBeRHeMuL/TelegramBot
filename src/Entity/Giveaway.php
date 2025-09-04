@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
-use stdClass;
 
 /**
  * This object represents a message about a scheduled giveaway.
@@ -216,28 +215,5 @@ final class Giveaway implements EntityInterface
     {
         $this->prize_star_count = $prize_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chats' => array_map(
-                fn(Chat $e) => $e->toArray(),
-                $this->chats,
-            ),
-            'winners_selection_date' => $this->winners_selection_date,
-            'winner_count' => $this->winner_count,
-            'only_new_members' => $this->only_new_members,
-            'has_public_winners' => $this->has_public_winners,
-            'prize_description' => $this->prize_description,
-            'country_codes' => $this->country_codes !== null
-                ? array_map(
-                    fn(CountryCodeEnum $e) => $e->value,
-                    $this->country_codes,
-                )
-                : null,
-            'premium_subscription_month_count' => $this->premium_subscription_month_count,
-            'prize_star_count' => $this->prize_star_count,
-        ];
     }
 }

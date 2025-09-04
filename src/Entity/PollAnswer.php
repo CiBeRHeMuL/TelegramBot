@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.
@@ -104,15 +103,5 @@ final class PollAnswer implements EntityInterface
     {
         $this->voter_chat = $voter_chat;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'poll_id' => $this->poll_id,
-            'option_ids' => $this->option_ids,
-            'user' => $this->user?->toArray(),
-            'voter_chat' => $this->voter_chat?->toArray(),
-        ];
     }
 }

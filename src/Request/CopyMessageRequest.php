@@ -255,31 +255,4 @@ class CopyMessageRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'from_chat_id' => $this->from_chat_id->getId(),
-            'message_id' => $this->message_id,
-            'message_thread_id' => $this->message_thread_id,
-            'caption' => $this->caption,
-            'parse_mode' => $this->parse_mode?->value,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'disable_notification' => $this->disable_notification,
-            'protect_content' => $this->protect_content,
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'video_start_timestamp' => $this->video_start_timestamp,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

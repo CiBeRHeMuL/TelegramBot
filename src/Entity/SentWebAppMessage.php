@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes an inline message sent by a Web App on behalf of a user.
  *
@@ -40,12 +38,5 @@ final class SentWebAppMessage implements EntityInterface
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'inline_message_id' => $this->inline_message_id,
-        ];
     }
 }

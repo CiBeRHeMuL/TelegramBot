@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represent a user's profile pictures.
@@ -61,19 +60,5 @@ final class UserProfilePhotos implements EntityInterface
     {
         $this->photos = $photos;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'total_count' => $this->total_count,
-            'photos' => array_map(
-                fn(array $e) => array_map(
-                    fn(PhotoSize $e) => $e->toArray(),
-                    $e,
-                ),
-                $this->photos,
-            ),
-        ];
     }
 }

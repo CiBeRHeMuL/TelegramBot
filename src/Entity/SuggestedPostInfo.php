@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\SuggestedPostInfoStateEnum;
-use stdClass;
 
 /**
  * Contains information about a suggested post.
@@ -83,14 +82,5 @@ final class SuggestedPostInfo implements EntityInterface
     {
         $this->send_date = $send_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'state' => $this->state->value,
-            'price' => $this->price?->toArray(),
-            'send_date' => $this->send_date,
-        ];
     }
 }

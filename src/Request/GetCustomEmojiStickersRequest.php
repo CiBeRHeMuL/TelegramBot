@@ -26,11 +26,4 @@ class GetCustomEmojiStickersRequest implements RequestInterface
         $this->custom_emoji_ids = $custom_emoji_ids;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'custom_emoji_ids' => $this->custom_emoji_ids,
-        ];
-    }
 }

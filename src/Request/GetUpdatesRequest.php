@@ -78,19 +78,4 @@ class GetUpdatesRequest implements RequestInterface
         $this->timeout = $timeout;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'allowed_updates' => $this->allowed_updates !== null
-                ? array_map(
-                    fn(UpdateTypeEnum $e) => $e->value,
-                    $this->allowed_updates,
-                )
-                : null,
-            'limit' => $this->limit,
-            'offset' => $this->offset,
-            'timeout' => $this->timeout,
-        ];
-    }
 }

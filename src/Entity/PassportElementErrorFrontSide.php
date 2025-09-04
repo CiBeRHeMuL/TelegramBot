@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFrontSideTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
-use stdClass;
 
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side
@@ -86,15 +85,5 @@ final class PassportElementErrorFrontSide extends AbstractPassportElementError
     {
         $this->message = $message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'file_hash' => $this->file_hash,
-            'message' => $this->message,
-            'source' => $this->source->value,
-        ];
     }
 }

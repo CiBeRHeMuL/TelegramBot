@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputProfilePhotoTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * A static profile photo in the .JPG format.
@@ -47,15 +46,5 @@ final class InputProfilePhotoStatic extends AbstractInputProfilePhoto
     {
         $this->photo = $photo;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'photo' => ($this->photo instanceof Url)
-                ? $this->photo->getUrl()
-                : $this->photo,
-            'type' => $this->type->value,
-        ];
     }
 }

@@ -25,11 +25,4 @@ class DeleteWebhookRequest implements RequestInterface
         $this->drop_pending_updates = $drop_pending_updates;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'drop_pending_updates' => $this->drop_pending_updates,
-        ];
-    }
 }

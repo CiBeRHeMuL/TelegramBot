@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUsers button.
@@ -128,21 +127,5 @@ final class SharedUser implements EntityInterface
     {
         $this->username = $username;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user_id' => $this->user_id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'photo' => $this->photo !== null
-                ? array_map(
-                    fn(PhotoSize $e) => $e->toArray(),
-                    $this->photo,
-                )
-                : null,
-            'username' => $this->username,
-        ];
     }
 }

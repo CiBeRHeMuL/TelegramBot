@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a Telegram Star transaction. Note that if the buyer initiates a chargeback with the payment provider from whom they
  * acquired Stars (e.g., Apple, Google) following this transaction, the refunded Stars will be deducted from the bot's balance.
@@ -150,17 +148,5 @@ final class StarTransaction implements EntityInterface
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'id' => $this->id,
-            'amount' => $this->amount,
-            'date' => $this->date,
-            'receiver' => $this->receiver?->toArray(),
-            'source' => $this->source?->toArray(),
-            'nanostar_amount' => $this->nanostar_amount,
-        ];
     }
 }

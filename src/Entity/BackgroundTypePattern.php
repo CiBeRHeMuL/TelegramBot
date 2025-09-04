@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
-use stdClass;
 
 /**
  * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined
@@ -130,17 +129,5 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     {
         $this->is_moving = $is_moving;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'document' => $this->document->toArray(),
-            'fill' => $this->fill->toArray(),
-            'intensity' => $this->intensity,
-            'is_inverted' => $this->is_inverted,
-            'is_moving' => $this->is_moving,
-            'type' => $this->type->value,
-        ];
     }
 }

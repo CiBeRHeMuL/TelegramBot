@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
-use stdClass;
 
 /**
  * Represents a chat member that has no additional privileges or restrictions.
@@ -65,14 +64,5 @@ final class ChatMemberMember extends AbstractChatMember
     {
         $this->until_date = $until_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user' => $this->user->toArray(),
-            'until_date' => $this->until_date,
-            'status' => $this->status->value,
-        ];
     }
 }

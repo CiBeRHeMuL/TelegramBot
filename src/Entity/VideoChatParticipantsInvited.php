@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a service message about new members invited to a video chat.
@@ -40,15 +39,5 @@ final class VideoChatParticipantsInvited implements EntityInterface
     {
         $this->users = $users;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'users' => array_map(
-                fn(User $e) => $e->toArray(),
-                $this->users,
-            ),
-        ];
     }
 }

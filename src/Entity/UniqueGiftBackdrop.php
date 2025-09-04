@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object describes the backdrop of a unique gift.
  *
@@ -80,14 +78,5 @@ final class UniqueGiftBackdrop implements EntityInterface
     {
         $this->rarity_per_mille = $rarity_per_mille;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'name' => $this->name,
-            'colors' => $this->colors->toArray(),
-            'rarity_per_mille' => $this->rarity_per_mille,
-        ];
     }
 }

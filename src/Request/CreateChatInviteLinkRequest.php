@@ -81,15 +81,4 @@ class CreateChatInviteLinkRequest implements RequestInterface
         $this->name = $name;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'creates_join_request' => $this->creates_join_request,
-            'expire_date' => $this->expire_date,
-            'member_limit' => $this->member_limit,
-            'name' => $this->name,
-        ];
-    }
 }

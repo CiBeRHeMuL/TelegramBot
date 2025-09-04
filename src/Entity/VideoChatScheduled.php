@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents a service message about a video chat scheduled in the chat.
  *
@@ -36,12 +34,5 @@ final class VideoChatScheduled implements EntityInterface
     {
         $this->start_date = $start_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'start_date' => $this->start_date,
-        ];
     }
 }

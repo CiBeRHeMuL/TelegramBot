@@ -102,21 +102,4 @@ class GiftPremiumSubscriptionRequest implements RequestInterface
         $this->text_parse_mode = $text_parse_mode;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'month_count' => $this->month_count,
-            'star_count' => $this->star_count,
-            'user_id' => $this->user_id,
-            'text' => $this->text,
-            'text_entities' => $this->text_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->text_entities,
-                )
-                : null,
-            'text_parse_mode' => $this->text_parse_mode?->value,
-        ];
-    }
 }

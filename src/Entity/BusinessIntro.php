@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Contains information about the start page settings of a Telegram Business account.
  *
@@ -80,14 +78,5 @@ final class BusinessIntro implements EntityInterface
     {
         $this->title = $title;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'message' => $this->message,
-            'sticker' => $this->sticker?->toArray(),
-            'title' => $this->title,
-        ];
     }
 }

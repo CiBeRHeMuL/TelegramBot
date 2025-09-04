@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
-use stdClass;
 
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
@@ -86,15 +85,5 @@ final class ChatMemberOwner extends AbstractChatMember
     {
         $this->custom_title = $custom_title;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'user' => $this->user->toArray(),
-            'is_anonymous' => $this->is_anonymous,
-            'custom_title' => $this->custom_title,
-            'status' => $this->status->value,
-        ];
     }
 }

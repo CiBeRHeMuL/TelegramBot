@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
-use stdClass;
 
 /**
  * Describes a transaction with payment for paid broadcasting.
@@ -42,13 +41,5 @@ final class TransactionPartnerTelegramApi extends AbstractTransactionPartner
     {
         $this->request_count = $request_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'request_count' => $this->request_count,
-            'type' => $this->type->value,
-        ];
     }
 }

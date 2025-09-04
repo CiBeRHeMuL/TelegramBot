@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represent a list of gifts.
@@ -40,15 +39,5 @@ final class Gifts implements EntityInterface
     {
         $this->gifts = $gifts;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'gifts' => array_map(
-                fn(Gift $e) => $e->toArray(),
-                $this->gifts,
-            ),
-        ];
     }
 }

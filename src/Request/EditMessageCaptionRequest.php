@@ -144,24 +144,4 @@ class EditMessageCaptionRequest implements RequestInterface
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'chat_id' => $this->chat_id?->getId(),
-            'inline_message_id' => $this->inline_message_id,
-            'message_id' => $this->message_id,
-            'parse_mode' => $this->parse_mode?->value,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'business_connection_id' => $this->business_connection_id,
-        ];
-    }
 }

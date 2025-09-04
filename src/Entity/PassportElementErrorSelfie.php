@@ -6,7 +6,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSelfieTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
-use stdClass;
 
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
@@ -85,15 +84,5 @@ final class PassportElementErrorSelfie extends AbstractPassportElementError
     {
         $this->message = $message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'type' => $this->type->value,
-            'file_hash' => $this->file_hash,
-            'message' => $this->message,
-            'source' => $this->source->value,
-        ];
     }
 }

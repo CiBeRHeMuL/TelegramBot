@@ -7,7 +7,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use stdClass;
 
 /**
  * Describes a photo to post as a story.
@@ -47,15 +46,5 @@ final class InputStoryContentPhoto extends AbstractInputStoryContent
     {
         $this->photo = $photo;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'photo' => ($this->photo instanceof Url)
-                ? $this->photo->getUrl()
-                : $this->photo,
-            'type' => $this->type->value,
-        ];
     }
 }

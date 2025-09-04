@@ -258,28 +258,4 @@ class PromoteChatMemberRequest implements RequestInterface
         $this->can_manage_direct_messages = $can_manage_direct_messages;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'user_id' => $this->user_id,
-            'can_change_info' => $this->can_change_info,
-            'can_delete_messages' => $this->can_delete_messages,
-            'can_delete_stories' => $this->can_delete_stories,
-            'can_edit_messages' => $this->can_edit_messages,
-            'can_edit_stories' => $this->can_edit_stories,
-            'can_invite_users' => $this->can_invite_users,
-            'can_manage_chat' => $this->can_manage_chat,
-            'can_manage_topics' => $this->can_manage_topics,
-            'can_manage_video_chats' => $this->can_manage_video_chats,
-            'can_pin_messages' => $this->can_pin_messages,
-            'can_post_messages' => $this->can_post_messages,
-            'can_post_stories' => $this->can_post_stories,
-            'can_promote_members' => $this->can_promote_members,
-            'can_restrict_members' => $this->can_restrict_members,
-            'is_anonymous' => $this->is_anonymous,
-            'can_manage_direct_messages' => $this->can_manage_direct_messages,
-        ];
-    }
 }

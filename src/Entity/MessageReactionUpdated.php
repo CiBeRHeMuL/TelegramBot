@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.
@@ -171,24 +170,5 @@ final class MessageReactionUpdated implements EntityInterface
     {
         $this->user = $user;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'chat' => $this->chat->toArray(),
-            'message_id' => $this->message_id,
-            'date' => $this->date,
-            'old_reaction' => array_map(
-                fn(AbstractReactionType $e) => $e->toArray(),
-                $this->old_reaction,
-            ),
-            'new_reaction' => array_map(
-                fn(AbstractReactionType $e) => $e->toArray(),
-                $this->new_reaction,
-            ),
-            'actor_chat' => $this->actor_chat?->toArray(),
-            'user' => $this->user?->toArray(),
-        ];
     }
 }

@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a video file.
@@ -254,27 +253,5 @@ final class Video implements EntityInterface
     {
         $this->start_timestamp = $start_timestamp;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'file_id' => $this->file_id,
-            'file_unique_id' => $this->file_unique_id,
-            'width' => $this->width,
-            'height' => $this->height,
-            'duration' => $this->duration,
-            'thumbnail' => $this->thumbnail?->toArray(),
-            'file_name' => $this->file_name,
-            'mime_type' => $this->mime_type,
-            'file_size' => $this->file_size,
-            'cover' => $this->cover !== null
-                ? array_map(
-                    fn(PhotoSize $e) => $e->toArray(),
-                    $this->cover,
-                )
-                : null,
-            'start_timestamp' => $this->start_timestamp,
-        ];
     }
 }

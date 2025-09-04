@@ -71,19 +71,4 @@ class AnswerShippingQueryRequest implements RequestInterface
         $this->shipping_options = $shipping_options;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'ok' => $this->ok,
-            'shipping_query_id' => $this->shipping_query_id,
-            'error_message' => $this->error_message,
-            'shipping_options' => $this->shipping_options !== null
-                ? array_map(
-                    fn(ShippingOption $e) => $e->toArray(),
-                    $this->shipping_options,
-                )
-                : null,
-        ];
-    }
 }

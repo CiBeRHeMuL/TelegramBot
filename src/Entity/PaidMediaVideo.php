@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
-use stdClass;
 
 /**
  * The paid media is a video.
@@ -43,13 +42,5 @@ final class PaidMediaVideo extends AbstractPaidMedia
     {
         $this->video = $video;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'video' => $this->video->toArray(),
-            'type' => $this->type->value,
-        ];
     }
 }

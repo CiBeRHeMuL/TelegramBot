@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with
  * the bot when the corresponding button is pressed. More about requesting users »
@@ -169,18 +167,5 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     {
         $this->user_is_premium = $user_is_premium;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'request_id' => $this->request_id,
-            'max_quantity' => $this->max_quantity,
-            'request_name' => $this->request_name,
-            'request_photo' => $this->request_photo,
-            'request_username' => $this->request_username,
-            'user_is_bot' => $this->user_is_bot,
-            'user_is_premium' => $this->user_is_premium,
-        ];
     }
 }

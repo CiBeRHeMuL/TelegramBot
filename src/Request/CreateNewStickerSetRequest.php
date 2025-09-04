@@ -100,19 +100,4 @@ class CreateNewStickerSetRequest implements RequestInterface
         $this->sticker_type = $sticker_type;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'name' => $this->name,
-            'stickers' => array_map(
-                fn(InputSticker $e) => $e->toArray(),
-                $this->stickers,
-            ),
-            'title' => $this->title,
-            'user_id' => $this->user_id,
-            'needs_repainting' => $this->needs_repainting,
-            'sticker_type' => $this->sticker_type?->value,
-        ];
-    }
 }

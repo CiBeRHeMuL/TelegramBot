@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents one row of the high scores table for a game.
  *
@@ -80,14 +78,5 @@ final class GameHighScore implements EntityInterface
     {
         $this->score = $score;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'position' => $this->position,
-            'user' => $this->user->toArray(),
-            'score' => $this->score,
-        ];
     }
 }

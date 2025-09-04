@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * This object represents the bot's short description.
  *
@@ -36,12 +34,5 @@ final class BotShortDescription implements EntityInterface
     {
         $this->short_description = $short_description;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'short_description' => $this->short_description,
-        ];
     }
 }

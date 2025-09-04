@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
-use stdClass;
 
 /**
  * Describes a unique gift received and owned by a user or a chat.
@@ -196,20 +195,5 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     {
         $this->next_transfer_date = $next_transfer_date;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'gift' => $this->gift->toArray(),
-            'send_date' => $this->send_date,
-            'can_be_transferred' => $this->can_be_transferred,
-            'is_saved' => $this->is_saved,
-            'owned_gift_id' => $this->owned_gift_id,
-            'sender_user' => $this->sender_user?->toArray(),
-            'transfer_star_count' => $this->transfer_star_count,
-            'next_transfer_date' => $this->next_transfer_date,
-            'type' => $this->type->value,
-        ];
     }
 }

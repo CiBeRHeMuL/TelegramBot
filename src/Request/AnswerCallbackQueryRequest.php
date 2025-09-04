@@ -80,15 +80,4 @@ class AnswerCallbackQueryRequest implements RequestInterface
         $this->url = $url;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'callback_query_id' => $this->callback_query_id,
-            'cache_time' => $this->cache_time,
-            'show_alert' => $this->show_alert,
-            'text' => $this->text,
-            'url' => $this->url?->getUrl(),
-        ];
-    }
 }

@@ -86,15 +86,4 @@ class RestrictChatMemberRequest implements RequestInterface
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'permissions' => $this->permissions->toArray(),
-            'user_id' => $this->user_id,
-            'until_date' => $this->until_date,
-            'use_independent_chat_permissions' => $this->use_independent_chat_permissions,
-        ];
-    }
 }

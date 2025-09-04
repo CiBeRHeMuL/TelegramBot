@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
-use stdClass;
 
 /**
  * This object represents a list of boosts added to a chat by a user.
@@ -40,15 +39,5 @@ final class UserChatBoosts implements EntityInterface
     {
         $this->boosts = $boosts;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'boosts' => array_map(
-                fn(ChatBoost $e) => $e->toArray(),
-                $this->boosts,
-            ),
-        ];
     }
 }

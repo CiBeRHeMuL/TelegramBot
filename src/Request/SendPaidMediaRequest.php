@@ -271,35 +271,4 @@ class SendPaidMediaRequest implements RequestInterface
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'chat_id' => $this->chat_id->getId(),
-            'media' => array_map(
-                fn(AbstractInputPaidMedia $e) => $e->toArray(),
-                $this->media,
-            ),
-            'star_count' => $this->star_count,
-            'caption' => $this->caption,
-            'caption_entities' => $this->caption_entities !== null
-                ? array_map(
-                    fn(MessageEntity $e) => $e->toArray(),
-                    $this->caption_entities,
-                )
-                : null,
-            'disable_notification' => $this->disable_notification,
-            'parse_mode' => $this->parse_mode?->value,
-            'protect_content' => $this->protect_content,
-            'reply_markup' => $this->reply_markup?->toArray(),
-            'reply_parameters' => $this->reply_parameters?->toArray(),
-            'show_caption_above_media' => $this->show_caption_above_media,
-            'business_connection_id' => $this->business_connection_id,
-            'payload' => $this->payload,
-            'allow_paid_broadcast' => $this->allow_paid_broadcast,
-            'message_thread_id' => $this->message_thread_id,
-            'direct_messages_topic_id' => $this->direct_messages_topic_id,
-            'suggested_post_parameters' => $this->suggested_post_parameters?->toArray(),
-        ];
-    }
 }

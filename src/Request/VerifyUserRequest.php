@@ -39,12 +39,4 @@ class VerifyUserRequest implements RequestInterface
         $this->custom_description = $custom_description;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'user_id' => $this->user_id,
-            'custom_description' => $this->custom_description,
-        ];
-    }
 }

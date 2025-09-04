@@ -107,17 +107,4 @@ class SetGameScoreRequest implements RequestInterface
         $this->message_id = $message_id;
         return $this;
     }
-
-    public function toArray(): array
-    {
-        return [
-            'score' => $this->score,
-            'user_id' => $this->user_id,
-            'chat_id' => $this->chat_id?->getId(),
-            'disable_edit_message' => $this->disable_edit_message,
-            'force' => $this->force,
-            'inline_message_id' => $this->inline_message_id,
-            'message_id' => $this->message_id,
-        ];
-    }
 }

@@ -2,8 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-use stdClass;
-
 /**
  * Describes a service message about a change in the price of direct messages sent to a channel chat.
  *
@@ -58,13 +56,5 @@ final class DirectMessagePriceChanged implements EntityInterface
     {
         $this->direct_message_star_count = $direct_message_star_count;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'are_direct_messages_enabled' => $this->are_direct_messages_enabled,
-            'direct_message_star_count' => $this->direct_message_star_count,
-        ];
     }
 }

@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\SuggestedPostRefundedReasonEnum;
-use stdClass;
 
 /**
  * Describes a service message about a payment refund for a suggested post.
@@ -64,13 +63,5 @@ final class SuggestedPostRefunded implements EntityInterface
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;
-    }
-
-    public function toArray(): array|stdClass
-    {
-        return [
-            'reason' => $this->reason->value,
-            'suggested_post_message' => $this->suggested_post_message?->toArray(),
-        ];
     }
 }
