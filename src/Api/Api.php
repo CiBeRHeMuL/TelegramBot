@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Api;
 
 use AndrewGos\ClassBuilder\ClassBuilderInterface;
+use AndrewGos\Serializer\SerializerInterface;
 use AndrewGos\TelegramBot\Entity as Ent;
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
@@ -11,22 +12,24 @@ use AndrewGos\TelegramBot\Filesystem as Fs;
 use AndrewGos\TelegramBot\Filesystem\FilesystemInterface;
 use AndrewGos\TelegramBot\Helper\HArray;
 use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactoryInterface;
-use AndrewGos\TelegramBot\Http\Stream\Stream;
 use AndrewGos\TelegramBot\Request as Req;
+use AndrewGos\TelegramBot\Request\RequestInterface;
 use AndrewGos\TelegramBot\Response as Res;
 use AndrewGos\TelegramBot\Response\GetFileResponse;
+use AndrewGos\TelegramBot\Response\RawResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use AndrewGos\TelegramBot\ValueObject\EncodedJson;
-use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
+use BadMethodCallException;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
-use stdClass;
 use Throwable;
 
 class Api implements ApiInterface
 {
     private const TELEGRAM_BOT_API_VERSION = '9.2';
+
+    private SerializerInterface $serializer;
 
     public function __construct(
         private readonly BotToken $token,
@@ -36,8 +39,14 @@ class Api implements ApiInterface
         private LoggerInterface $logger,
         private FileSystemInterface $fileSystem,
         private bool $throwOnErrorResponse = true,
+        SerializerInterface|null $serializer = null,
     ) {
+        if ($serializer === null) {
+            throw new BadMethodCallException('Passing null to $serializer is deprecated. This will be removed in v3.1.0');
+        }
+        $this->serializer = $serializer;
     }
+
     /**
      * Will the api throw an exception if the request does not return 2xx response
      * @return bool
@@ -102,7 +111,7 @@ class Api implements ApiInterface
      */
     public function getUpdates(Req\GetUpdatesRequest $request): Res\GetUpdatesResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $updates = $this->buildClassArrayForResponse(Ent\Update::class, $rawResponse);
         return new Res\GetUpdatesResponse($rawResponse, $updates);
     }
@@ -132,7 +141,7 @@ class Api implements ApiInterface
      */
     public function setWebhook(Req\SetWebhookRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -145,7 +154,7 @@ class Api implements ApiInterface
      */
     public function deleteWebhook(Req\DeleteWebhookRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -157,7 +166,7 @@ class Api implements ApiInterface
      */
     public function getWebhookInfo(): Res\GetWebhookInfoResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, []);
+        $rawResponse = $this->send(__FUNCTION__);
         $webhookInfo = $this->buildClassForResponse(Ent\WebhookInfo::class, $rawResponse);
         return new Res\GetWebhookInfoResponse($rawResponse, $webhookInfo);
     }
@@ -171,7 +180,7 @@ class Api implements ApiInterface
      */
     public function getMe(): Res\GetMeResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, []);
+        $rawResponse = $this->send(__FUNCTION__);
         $user = $this->buildClassForResponse(Ent\User::class, $rawResponse);
         return new Res\GetMeResponse($rawResponse, $user);
     }
@@ -188,7 +197,7 @@ class Api implements ApiInterface
      */
     public function logOut(): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, []);
+        return $this->send(__FUNCTION__);
     }
 
     /**
@@ -202,7 +211,7 @@ class Api implements ApiInterface
      */
     public function close(): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, []);
+        return $this->send(__FUNCTION__);
     }
 
     /**
@@ -216,7 +225,7 @@ class Api implements ApiInterface
      */
     public function sendMessage(Req\SendMessageRequest $request): Res\SendMessageResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendMessageResponse($rawResponse, $message);
     }
@@ -233,7 +242,7 @@ class Api implements ApiInterface
      */
     public function forwardMessage(Req\ForwardMessageRequest $request): Res\ForwardMessageResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\ForwardMessageResponse($rawResponse, $message);
     }
@@ -252,7 +261,7 @@ class Api implements ApiInterface
      */
     public function forwardMessages(Req\ForwardMessagesRequest $request): Res\ForwardMessagesResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $messageIds = $this->buildClassArrayForResponse(Ent\MessageId::class, $rawResponse);
         return new Res\ForwardMessagesResponse($rawResponse, $messageIds);
     }
@@ -272,7 +281,7 @@ class Api implements ApiInterface
      */
     public function copyMessage(Req\CopyMessageRequest $request): Res\CopyMessageResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $messageId = $this->buildClassForResponse(Ent\MessageId::class, $rawResponse);
         return new Res\CopyMessageResponse($rawResponse, $messageId);
     }
@@ -292,7 +301,7 @@ class Api implements ApiInterface
      */
     public function copyMessages(Req\CopyMessagesRequest $request): Res\CopyMessagesResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $messageIds = $this->buildClassArrayForResponse(Ent\MessageId::class, $rawResponse);
         return new Res\CopyMessagesResponse($rawResponse, $messageIds);
     }
@@ -308,7 +317,7 @@ class Api implements ApiInterface
      */
     public function sendPhoto(Req\SendPhotoRequest $request): Res\SendPhotoResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendPhotoResponse($rawResponse, $message);
     }
@@ -326,7 +335,7 @@ class Api implements ApiInterface
      */
     public function sendAudio(Req\SendAudioRequest $request): Res\SendAudioResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendAudioResponse($rawResponse, $message);
     }
@@ -343,7 +352,7 @@ class Api implements ApiInterface
      */
     public function sendDocument(Req\SendDocumentRequest $request): Res\SendDocumentResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendDocumentResponse($rawResponse, $message);
     }
@@ -360,7 +369,7 @@ class Api implements ApiInterface
      */
     public function sendVideo(Req\SendVideoRequest $request): Res\SendVideoResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendVideoResponse($rawResponse, $message);
     }
@@ -377,7 +386,7 @@ class Api implements ApiInterface
      */
     public function sendAnimation(Req\SendAnimationRequest $request): Res\SendAnimationResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendAnimationResponse($rawResponse, $message);
     }
@@ -396,7 +405,7 @@ class Api implements ApiInterface
      */
     public function sendVoice(Req\SendVoiceRequest $request): Res\SendVoiceResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendVoiceResponse($rawResponse, $message);
     }
@@ -412,7 +421,7 @@ class Api implements ApiInterface
      */
     public function sendVideoNote(Req\SendVideoNoteRequest $request): Res\SendVideoNoteResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendVideoNoteResponse($rawResponse, $message);
     }
@@ -429,7 +438,7 @@ class Api implements ApiInterface
      */
     public function sendMediaGroup(Req\SendMediaGroupRequest $request): Res\SendMediaGroupResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $messages = $this->buildClassArrayForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendMediaGroupResponse($rawResponse, $messages);
     }
@@ -444,7 +453,7 @@ class Api implements ApiInterface
      */
     public function sendLocation(Req\SendLocationRequest $request): Res\SendLocationResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendLocationResponse($rawResponse, $message);
     }
@@ -459,7 +468,7 @@ class Api implements ApiInterface
      */
     public function sendVenue(Req\SendVenueRequest $request): Res\SendVenueResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendVenueResponse($rawResponse, $message);
     }
@@ -474,7 +483,7 @@ class Api implements ApiInterface
      */
     public function sendContact(Req\SendContactRequest $request): Res\SendContactResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendContactResponse($rawResponse, $message);
     }
@@ -489,7 +498,7 @@ class Api implements ApiInterface
      */
     public function sendPoll(Req\SendPollRequest $request): Res\SendPollResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendPollResponse($rawResponse, $message);
     }
@@ -504,7 +513,7 @@ class Api implements ApiInterface
      */
     public function sendDice(Req\SendDiceRequest $request): Res\SendDiceResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendDiceResponse($rawResponse, $message);
     }
@@ -528,7 +537,7 @@ class Api implements ApiInterface
      */
     public function sendChatAction(Req\SendChatActionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -543,7 +552,7 @@ class Api implements ApiInterface
      */
     public function setMessageReaction(Req\SetMessageReactionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -556,7 +565,7 @@ class Api implements ApiInterface
      */
     public function getUserProfilePhotos(Req\GetUserProfilePhotosRequest $request): Res\GetUserProfilePhotosResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $userProfilePhotos = $this->buildClassForResponse(Ent\UserProfilePhotos::class, $rawResponse);
         return new Res\GetUserProfilePhotosResponse($rawResponse, $userProfilePhotos);
     }
@@ -578,7 +587,7 @@ class Api implements ApiInterface
      */
     public function getFile(Req\GetFileRequest $request): Res\GetFileResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $file = $this->buildClassForResponse(Ent\File::class, $rawResponse);
         return new Res\GetFileResponse($rawResponse, $file);
     }
@@ -596,7 +605,7 @@ class Api implements ApiInterface
      */
     public function banChatMember(Req\BanChatMemberRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -614,7 +623,7 @@ class Api implements ApiInterface
      */
     public function unbanChatMember(Req\UnbanChatMemberRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -629,7 +638,7 @@ class Api implements ApiInterface
      */
     public function restrictChatMember(Req\RestrictChatMemberRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -644,7 +653,7 @@ class Api implements ApiInterface
      */
     public function promoteChatMember(Req\PromoteChatMemberRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -657,7 +666,7 @@ class Api implements ApiInterface
      */
     public function setChatAdministratorCustomTitle(Req\SetChatAdministratorCustomTitleRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -672,7 +681,7 @@ class Api implements ApiInterface
      */
     public function banChatSenderChat(Req\BanChatSenderChatRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -686,7 +695,7 @@ class Api implements ApiInterface
      */
     public function unbanChatSenderChat(Req\UnbanChatSenderChatRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -700,7 +709,7 @@ class Api implements ApiInterface
      */
     public function setChatPermissions(Req\SetChatPermissionsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -721,7 +730,7 @@ class Api implements ApiInterface
      */
     public function exportChatInviteLink(Req\ExportChatInviteLinkRequest $request): Res\ExportChatInviteLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $inviteLink = $this->buildClassForResponse(Url::class, $rawResponse);
         return new Res\ExportChatInviteLinkResponse($rawResponse, $inviteLink);
     }
@@ -738,7 +747,7 @@ class Api implements ApiInterface
      */
     public function createChatInviteLink(Req\CreateChatInviteLinkRequest $request): Res\CreateChatInviteLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
         return new Res\CreateChatInviteLinkResponse($rawResponse, $chatInviteLink);
     }
@@ -754,7 +763,7 @@ class Api implements ApiInterface
      */
     public function editChatInviteLink(Req\EditChatInviteLinkRequest $request): Res\EditChatInviteLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
         return new Res\EditChatInviteLinkResponse($rawResponse, $chatInviteLink);
     }
@@ -771,7 +780,7 @@ class Api implements ApiInterface
      */
     public function revokeChatInviteLink(Req\RevokeChatInviteLinkRequest $request): Res\RevokeChatInviteLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
         return new Res\RevokeChatInviteLinkResponse($rawResponse, $chatInviteLink);
     }
@@ -787,7 +796,7 @@ class Api implements ApiInterface
      */
     public function approveChatJoinRequest(Req\ApproveChatJoinRequestRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -801,7 +810,7 @@ class Api implements ApiInterface
      */
     public function declineChatJoinRequest(Req\DeclineChatJoinRequestRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -815,7 +824,7 @@ class Api implements ApiInterface
      */
     public function setChatPhoto(Req\SetChatPhotoRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -829,7 +838,7 @@ class Api implements ApiInterface
      */
     public function deleteChatPhoto(Req\DeleteChatPhotoRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -843,7 +852,7 @@ class Api implements ApiInterface
      */
     public function setChatTitle(Req\SetChatTitleRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -857,7 +866,7 @@ class Api implements ApiInterface
      */
     public function setChatDescription(Req\SetChatDescriptionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -872,7 +881,7 @@ class Api implements ApiInterface
      */
     public function pinChatMessage(Req\PinChatMessageRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -887,7 +896,7 @@ class Api implements ApiInterface
      */
     public function unpinChatMessage(Req\UnpinChatMessageRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -902,7 +911,7 @@ class Api implements ApiInterface
      */
     public function unpinAllChatMessages(Req\UnpinAllChatMessagesRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -915,7 +924,7 @@ class Api implements ApiInterface
      */
     public function leaveChat(Req\LeaveChatRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -928,7 +937,7 @@ class Api implements ApiInterface
      */
     public function getChat(Req\GetChatRequest $request): Res\GetChatResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray());
+        $rawResponse = $this->send(__FUNCTION__, $request);
         $chatFullInfo = $this->buildClassForResponse(Ent\ChatFullInfo::class, $rawResponse);
         return new Res\GetChatResponse($rawResponse, $chatFullInfo);
     }
@@ -943,7 +952,7 @@ class Api implements ApiInterface
      */
     public function getChatAdministrators(Req\GetChatAdministratorsRequest $request): Res\GetChatAdministratorsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatMembers = $this->buildClassArrayForResponse(Ent\AbstractChatMember::class, $rawResponse);
         return new Res\GetChatAdministratorsResponse($rawResponse, $chatMembers);
     }
@@ -958,7 +967,7 @@ class Api implements ApiInterface
      */
     public function getChatMemberCount(Req\GetChatMemberCountRequest $request): Res\GetChatMemberCountResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         return new Res\GetChatMemberCountResponse($rawResponse, $rawResponse->getResult());
     }
 
@@ -973,7 +982,7 @@ class Api implements ApiInterface
      */
     public function getChatMember(Req\GetChatMemberRequest $request): Res\GetChatMemberResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatMember = $this->buildClassForResponse(Ent\AbstractChatMember::class, $rawResponse);
         return new Res\GetChatMemberResponse($rawResponse, $chatMember);
     }
@@ -990,7 +999,7 @@ class Api implements ApiInterface
      */
     public function setChatStickerSet(Req\SetChatStickerSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1005,7 +1014,7 @@ class Api implements ApiInterface
      */
     public function deleteChatStickerSet(Req\DeleteChatStickerSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1018,7 +1027,7 @@ class Api implements ApiInterface
      */
     public function getForumTopicIconStickers(): Res\GetForumTopicIconStickers
     {
-        $rawResponse = $this->send(__FUNCTION__, [], HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
         $stickers = $this->buildClassArrayForResponse(Ent\Sticker::class, $rawResponse);
         return new Res\GetForumTopicIconStickers($rawResponse, $stickers);
     }
@@ -1034,7 +1043,7 @@ class Api implements ApiInterface
      */
     public function createForumTopic(Req\CreateForumTopicRequest $request): Res\CreateForumTopicResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $forumTopic = $this->buildClassForResponse(Ent\ForumTopic::class, $rawResponse);
         return new Res\CreateForumTopicResponse($rawResponse, $forumTopic);
     }
@@ -1051,7 +1060,7 @@ class Api implements ApiInterface
      */
     public function editForumTopic(Req\EditForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1065,7 +1074,7 @@ class Api implements ApiInterface
      */
     public function closeForumTopic(Req\CloseForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1079,7 +1088,7 @@ class Api implements ApiInterface
      */
     public function reopenForumTopic(Req\ReopenForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1093,7 +1102,7 @@ class Api implements ApiInterface
      */
     public function deleteForumTopic(Req\DeleteForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1107,7 +1116,7 @@ class Api implements ApiInterface
      */
     public function unpinAllForumTopicMessages(Req\UnpinAllForumTopicMessagesRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1121,7 +1130,7 @@ class Api implements ApiInterface
      */
     public function editGeneralForumTopic(Req\EditGeneralForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1135,7 +1144,7 @@ class Api implements ApiInterface
      */
     public function closeGeneralForumTopic(Req\CloseGeneralForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1150,7 +1159,7 @@ class Api implements ApiInterface
      */
     public function reopenGeneralForumTopic(Req\ReopenGeneralForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1165,7 +1174,7 @@ class Api implements ApiInterface
      */
     public function hideGeneralForumTopic(Req\HideGeneralForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1179,7 +1188,7 @@ class Api implements ApiInterface
      */
     public function unhideGeneralForumTopic(Req\UnhideGeneralForumTopicRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1193,7 +1202,7 @@ class Api implements ApiInterface
      */
     public function unpinAllGeneralForumTopicMessages(Req\UnpinAllGeneralForumTopicMessagesRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1211,7 +1220,7 @@ class Api implements ApiInterface
      */
     public function answerCallbackQuery(Req\AnswerCallbackQueryRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1225,7 +1234,7 @@ class Api implements ApiInterface
      */
     public function getUserChatBoosts(Req\GetUserChatBoostsRequest $request): Res\GetUserChatBoostsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $userChatBoosts = $this->buildClassForResponse(Ent\UserChatBoosts::class, $rawResponse);
         return new Res\GetUserChatBoostsResponse($rawResponse, $userChatBoosts);
     }
@@ -1241,7 +1250,7 @@ class Api implements ApiInterface
      */
     public function getBusinessConnection(Req\GetBusinessConnectionRequest $request): Res\GetBusinessConnectionResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $connection = $this->buildClassForResponse(Ent\BusinessConnection::class, $rawResponse);
         return new Res\GetBusinessConnectionResponse($rawResponse, $connection);
     }
@@ -1258,7 +1267,7 @@ class Api implements ApiInterface
      */
     public function setMyCommands(Req\SetMyCommandsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1272,7 +1281,7 @@ class Api implements ApiInterface
      */
     public function deleteMyCommands(Req\DeleteMyCommandsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1286,7 +1295,7 @@ class Api implements ApiInterface
      */
     public function getMyCommands(Req\GetMyCommandsRequest $request): Res\GetMyCommandsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $commands = $this->buildClassArrayForResponse(Ent\BotCommand::class, $rawResponse);
         return new Res\GetMyCommandsResponse($rawResponse, $commands);
     }
@@ -1301,7 +1310,7 @@ class Api implements ApiInterface
      */
     public function setMyName(Req\SetMyNameRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1314,7 +1323,7 @@ class Api implements ApiInterface
      */
     public function getMyName(Req\GetMyNameRequest $request): Res\GetMyNameResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $name = $this->buildClassForResponse(Ent\BotName::class, $rawResponse);
         return new Res\GetMyNameResponse($rawResponse, $name);
     }
@@ -1330,7 +1339,7 @@ class Api implements ApiInterface
      */
     public function setMyDescription(Req\SetMyDescriptionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1343,7 +1352,7 @@ class Api implements ApiInterface
      */
     public function getMyDescription(Req\GetMyDescriptionRequest $request): Res\GetMyDescriptionResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $description = $this->buildClassForResponse(Ent\BotDescription::class, $rawResponse);
         return new Res\GetMyDescriptionResponse($rawResponse, $description);
     }
@@ -1359,7 +1368,7 @@ class Api implements ApiInterface
      */
     public function setMyShortDescription(Req\SetMyShortDescriptionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1372,7 +1381,7 @@ class Api implements ApiInterface
      */
     public function getMyShortDescription(Req\GetMyShortDescriptionRequest $request): Res\GetMyShortDescriptionResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $shortDescription = $this->buildClassForResponse(Ent\BotShortDescription::class, $rawResponse);
         return new Res\GetMyShortDescriptionResponse($rawResponse, $shortDescription);
     }
@@ -1387,7 +1396,7 @@ class Api implements ApiInterface
      */
     public function setChatMenuButton(Req\SetChatMenuButtonRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1401,7 +1410,7 @@ class Api implements ApiInterface
      */
     public function getChatMenuButton(Req\GetChatMenuButtonRequest $request): Res\GetChatMenuButtonResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $menuButton = $this->buildClassForResponse(Ent\AbstractMenuButton::class, $rawResponse);
         return new Res\GetChatMenuButtonResponse($rawResponse, $menuButton);
     }
@@ -1418,7 +1427,7 @@ class Api implements ApiInterface
      */
     public function setMyDefaultAdministratorRights(Req\SetMyDefaultAdministratorRightsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1431,7 +1440,7 @@ class Api implements ApiInterface
      */
     public function getMyDefaultAdministratorRights(Req\GetMyDefaultAdministratorRightsRequest $request): Res\GetMyDefaultAdministratorRightsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatAdministratorsRights = $this->buildClassForResponse(Ent\ChatAdministratorRights::class, $rawResponse);
         return new Res\GetMyDefaultAdministratorRightsResponse($rawResponse, $chatAdministratorsRights);
     }
@@ -1449,7 +1458,7 @@ class Api implements ApiInterface
      */
     public function editMessageText(Req\EditMessageTextRequest $request): Res\EditMessageTextResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1472,7 +1481,7 @@ class Api implements ApiInterface
      */
     public function editMessageCaption(Req\EditMessageCaptionRequest $request): Res\EditMessageCaptionResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1497,7 +1506,7 @@ class Api implements ApiInterface
      */
     public function editMessageMedia(Req\EditMessageMediaRequest $request): Res\EditMessageMediaResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1519,7 +1528,7 @@ class Api implements ApiInterface
      */
     public function editMessageLiveLocation(Req\EditMessageLiveLocationRequest $request): Res\EditMessageLiveLocationResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1540,7 +1549,7 @@ class Api implements ApiInterface
      */
     public function stopMessageLiveLocation(Req\StopMessageLiveLocationRequest $request): Res\StopMessageLiveLocationResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1563,7 +1572,7 @@ class Api implements ApiInterface
      */
     public function editMessageReplyMarkup(Req\EditMessageReplyMarkupRequest $request): Res\EditMessageReplyMarkupResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -1583,7 +1592,7 @@ class Api implements ApiInterface
      */
     public function stopPoll(Req\StopPollRequest $request): Res\StopPollResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $poll = $this->buildClassForResponse(Ent\Poll::class, $rawResponse);
         return new Res\StopPollResponse($rawResponse, $poll);
     }
@@ -1604,7 +1613,7 @@ class Api implements ApiInterface
      */
     public function deleteMessage(Req\DeleteMessageRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1618,7 +1627,7 @@ class Api implements ApiInterface
      */
     public function deleteMessages(Req\DeleteMessagesRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1631,7 +1640,7 @@ class Api implements ApiInterface
      */
     public function sendSticker(Req\SendStickerRequest $request): Res\SendStickerResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendStickerResponse($rawResponse, $message);
     }
@@ -1646,7 +1655,7 @@ class Api implements ApiInterface
      */
     public function getStickerSet(Req\GetStickerSetRequest $request): Res\GetStickerSetResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $stickerSet = $this->buildClassForResponse(Ent\StickerSet::class, $rawResponse);
         return new Res\GetStickerSetResponse($rawResponse, $stickerSet);
     }
@@ -1661,7 +1670,7 @@ class Api implements ApiInterface
      */
     public function getCustomEmojiStickers(Req\GetCustomEmojiStickersRequest $request): Res\GetCustomEmojiStickersResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $stickers = $this->buildClassArrayForResponse(Ent\Sticker::class, $rawResponse);
         return new Res\GetCustomEmojiStickersResponse($rawResponse, $stickers);
     }
@@ -1677,7 +1686,7 @@ class Api implements ApiInterface
      */
     public function uploadStickerFile(Req\UploadStickerFileRequest $request): Res\UploadStickerFileResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $file = $this->buildClassForResponse(Ent\File::class, $rawResponse);
         return new Res\UploadStickerFileResponse($rawResponse, $file);
     }
@@ -1693,7 +1702,7 @@ class Api implements ApiInterface
      */
     public function createNewStickerSet(Req\CreateNewStickerSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1707,7 +1716,7 @@ class Api implements ApiInterface
      */
     public function addStickerToSet(Req\AddStickerToSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1720,7 +1729,7 @@ class Api implements ApiInterface
      */
     public function setStickerPositionInSet(Req\SetStickerPositionInSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1733,7 +1742,7 @@ class Api implements ApiInterface
      */
     public function deleteStickerFromSet(Req\DeleteStickerFromSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1747,7 +1756,7 @@ class Api implements ApiInterface
      */
     public function replaceStickerInSet(Req\ReplaceStickerInSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1761,7 +1770,7 @@ class Api implements ApiInterface
      */
     public function setStickerEmojiList(Req\SetStickerEmojiListRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1775,7 +1784,7 @@ class Api implements ApiInterface
      */
     public function setStickerKeywords(Req\SetStickerKeywordsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1789,7 +1798,7 @@ class Api implements ApiInterface
      */
     public function setStickerMaskPosition(Req\SetStickerMaskPositionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1802,7 +1811,7 @@ class Api implements ApiInterface
      */
     public function setStickerSetTitle(Req\SetStickerSetTitleRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1816,7 +1825,7 @@ class Api implements ApiInterface
      */
     public function setStickerSetThumbnail(Req\SetStickerSetThumbnailRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1829,7 +1838,7 @@ class Api implements ApiInterface
      */
     public function setCustomEmojiStickerSetThumbnail(Req\SetCustomEmojiStickerSetThumbnailRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1842,7 +1851,7 @@ class Api implements ApiInterface
      */
     public function deleteStickerSet(Req\DeleteStickerSetRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1855,7 +1864,7 @@ class Api implements ApiInterface
      */
     public function answerInlineQuery(Req\AnswerInlineQueryRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1869,7 +1878,7 @@ class Api implements ApiInterface
      */
     public function answerWebAppQuery(Req\AnswerWebAppQueryRequest $request): Res\AnswerWebAppQueryResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $sentWebAppMessage = $this->buildClassForResponse(Ent\SentWebAppMessage::class, $rawResponse);
         return new Res\AnswerWebAppQueryResponse($rawResponse, $sentWebAppMessage);
     }
@@ -1884,7 +1893,7 @@ class Api implements ApiInterface
      */
     public function sendInvoice(Req\SendInvoiceRequest $request): Res\SendInvoiceResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendInvoiceResponse($rawResponse, $message);
     }
@@ -1899,7 +1908,7 @@ class Api implements ApiInterface
      */
     public function createInvoiceLink(Req\CreateInvoiceLinkRequest $request): Res\CreateInvoiceLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $url = $this->buildClassForResponse(Url::class, $rawResponse);
         return new Res\CreateInvoiceLinkResponse($rawResponse, $url);
     }
@@ -1915,7 +1924,7 @@ class Api implements ApiInterface
      */
     public function answerShippingQuery(Req\AnswerShippingQueryRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1930,7 +1939,7 @@ class Api implements ApiInterface
      */
     public function answerPreCheckoutQuery(Req\AnswerPreCheckoutQueryRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1949,7 +1958,7 @@ class Api implements ApiInterface
      */
     public function setPassportDataErrors(Req\SetPassportDataErrorsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -1962,7 +1971,7 @@ class Api implements ApiInterface
      */
     public function sendGame(Req\SendGameRequest $request): Res\SendGameResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendGameResponse($rawResponse, $message);
     }
@@ -1979,7 +1988,7 @@ class Api implements ApiInterface
      */
     public function setGameScore(Req\SetGameScoreRequest $request): Res\SetGameScoreResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = null;
         if ($rawResponse->getResult() === true) {
             $message = true;
@@ -2003,7 +2012,7 @@ class Api implements ApiInterface
      */
     public function getGameHighScores(Req\GetGameHighScoresRequest $request): Res\GetGameHighScoresResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $gameHighScores = $this->buildClassArrayForResponse(Ent\GameHighScore::class, $rawResponse);
         return new Res\GetGameHighScoresResponse($rawResponse, $gameHighScores);
     }
@@ -2018,7 +2027,7 @@ class Api implements ApiInterface
      */
     public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2031,7 +2040,7 @@ class Api implements ApiInterface
      */
     public function getStarTransactions(Req\GetStarTransactionsRequest $request): Res\GetStarTransactionsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $starTransactions = $this->buildClassForResponse(Ent\StarTransactions::class, $rawResponse);
         return new Res\GetStarTransactionsResponse($rawResponse, $starTransactions);
     }
@@ -2046,7 +2055,7 @@ class Api implements ApiInterface
      */
     public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendPaidMediaResponse($rawResponse, $message);
     }
@@ -2064,7 +2073,7 @@ class Api implements ApiInterface
     public function createChatSubscriptionInviteLink(
         Req\CreateChatSubscriptionInviteLinkRequest $request,
     ): Res\CreateChatSubscriptionInviteLinkResponse {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
         return new Res\CreateChatSubscriptionInviteLinkResponse($rawResponse, $chatInviteLink);
     }
@@ -2080,7 +2089,7 @@ class Api implements ApiInterface
      */
     public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $chatInviteLink = $this->buildClassForResponse(Ent\ChatInviteLink::class, $rawResponse);
         return new Res\EditChatSubscriptionInviteLinkResponse($rawResponse, $chatInviteLink);
     }
@@ -2095,7 +2104,7 @@ class Api implements ApiInterface
      */
     public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2109,7 +2118,7 @@ class Api implements ApiInterface
      */
     public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2122,7 +2131,7 @@ class Api implements ApiInterface
      */
     public function savePreparedInlineMessage(Req\SavePreparedInlineMessageRequest $request): Res\SavePreparedInlineMessageResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $preparedInlineMessage = $this->buildClassForResponse(Ent\PreparedInlineMessage::class, $rawResponse);
         return new Res\SavePreparedInlineMessageResponse($rawResponse, $preparedInlineMessage);
     }
@@ -2136,7 +2145,7 @@ class Api implements ApiInterface
      */
     public function getAvailableGifts(): Res\GetAvailableGiftsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, [], HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
         $gifts = $this->buildClassForResponse(Ent\Gifts::class, $rawResponse);
         return new Res\GetAvailableGiftsResponse($rawResponse, $gifts);
     }
@@ -2152,7 +2161,7 @@ class Api implements ApiInterface
      */
     public function sendGift(Req\SendGiftRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2165,7 +2174,7 @@ class Api implements ApiInterface
      */
     public function verifyUser(Req\VerifyUserRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2178,7 +2187,7 @@ class Api implements ApiInterface
      */
     public function verifyChat(Req\VerifyChatRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2192,7 +2201,7 @@ class Api implements ApiInterface
      */
     public function removeUserVerification(Req\RemoveUserVerificationRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2206,7 +2215,7 @@ class Api implements ApiInterface
      */
     public function removeChatVerification(Req\RemoveChatVerificationRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2220,7 +2229,7 @@ class Api implements ApiInterface
      */
     public function readBusinessMessage(Req\ReadBusinessMessageRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2234,7 +2243,7 @@ class Api implements ApiInterface
      */
     public function deleteBusinessMessages(Req\DeleteBusinessMessagesRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2248,7 +2257,7 @@ class Api implements ApiInterface
      */
     public function setBusinessAccountName(Req\SetBusinessAccountNameRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2261,7 +2270,7 @@ class Api implements ApiInterface
      */
     public function setBusinessAccountUsername(Req\SetBusinessAccountUsernameRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2274,7 +2283,7 @@ class Api implements ApiInterface
      */
     public function setBusinessAccountBio(Req\SetBusinessAccountBioRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2288,7 +2297,7 @@ class Api implements ApiInterface
      */
     public function setBusinessAccountProfilePhoto(Req\SetBusinessAccountProfilePhotoRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2302,7 +2311,7 @@ class Api implements ApiInterface
      */
     public function removeBusinessAccountProfilePhoto(Req\RemoveBusinessAccountProfilePhotoRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2316,7 +2325,7 @@ class Api implements ApiInterface
      */
     public function setBusinessAccountGiftSettings(Req\SetBusinessAccountGiftSettingsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2330,7 +2339,7 @@ class Api implements ApiInterface
      */
     public function getBusinessAccountStarBalance(Req\GetBusinessAccountStarBalanceRequest $request): Res\GetBusinessAccountStarBalanceResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $amount = $this->buildClassForResponse(Ent\StarAmount::class, $rawResponse);
         return new Res\GetBusinessAccountStarBalanceResponse($rawResponse, $amount);
     }
@@ -2346,7 +2355,7 @@ class Api implements ApiInterface
      */
     public function transferBusinessAccountStars(Req\TransferBusinessAccountStarsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2360,7 +2369,7 @@ class Api implements ApiInterface
      */
     public function getBusinessAccountGifts(Req\GetBusinessAccountGiftsRequest $request): Res\GetBusinessAccountGiftsResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $gifts = $this->buildClassForResponse(Ent\OwnedGifts::class, $rawResponse);
         return new Res\GetBusinessAccountGiftsResponse($rawResponse, $gifts);
     }
@@ -2376,7 +2385,7 @@ class Api implements ApiInterface
      */
     public function convertGiftToStars(Req\ConvertGiftToStarsRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2390,7 +2399,7 @@ class Api implements ApiInterface
      */
     public function upgradeGift(Req\UpgradeGiftRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2404,7 +2413,7 @@ class Api implements ApiInterface
      */
     public function transferGift(Req\TransferGiftRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2418,7 +2427,7 @@ class Api implements ApiInterface
      */
     public function postStory(Req\PostStoryRequest $request): Res\PostStoryResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $story = $this->buildClassForResponse(Ent\Story::class, $rawResponse);
         return new Res\PostStoryResponse($rawResponse, $story);
     }
@@ -2434,7 +2443,7 @@ class Api implements ApiInterface
      */
     public function editStory(Req\EditStoryRequest $request): Res\EditStoryResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $story = $this->buildClassForResponse(Ent\Story::class, $rawResponse);
         return new Res\EditStoryResponse($rawResponse, $story);
     }
@@ -2450,7 +2459,7 @@ class Api implements ApiInterface
      */
     public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2463,7 +2472,7 @@ class Api implements ApiInterface
      */
     public function sendChecklist(Req\SendChecklistRequest $request): Res\SendChecklistResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\SendChecklistResponse($rawResponse, $message);
     }
@@ -2478,7 +2487,7 @@ class Api implements ApiInterface
      */
     public function editMessageChecklist(Req\EditMessageChecklistRequest $request): Res\EditMessageChecklistResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
         return new Res\EditMessageChecklistResponse($rawResponse, $message);
     }
@@ -2493,7 +2502,7 @@ class Api implements ApiInterface
      */
     public function getMyStarBalance(Req\GetMyStarBalanceRequest $request): Res\GetMyStarBalanceResponse
     {
-        $rawResponse = $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $starAmount = $this->buildClassForResponse(Ent\StarAmount::class, $rawResponse);
         return new Res\GetMyStarBalanceResponse($rawResponse, $starAmount);
     }
@@ -2508,7 +2517,7 @@ class Api implements ApiInterface
      */
     public function giftPremiumSubscription(Req\GiftPremiumSubscriptionRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2522,7 +2531,7 @@ class Api implements ApiInterface
      */
     public function approveSuggestedPost(Req\ApproveSuggestedPostRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2536,7 +2545,7 @@ class Api implements ApiInterface
      */
     public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): Res\RawResponse
     {
-        return $this->send(__FUNCTION__, $request->toArray(), HttpMethodEnum::Post);
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**
@@ -2629,24 +2638,22 @@ class Api implements ApiInterface
 
     /**
      * @param string $method method (ex. getMe)
-     * @param array|stdClass $data
+     * @param RequestInterface|null $data
      * @param HttpMethodEnum $httpMethod
      *
-     * @return Res\RawResponse
+     * @return RawResponse
      */
-    private function send(string $method, array|stdClass $data, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
+    private function send(string $method, Req\RequestInterface|null $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
         $code = 200;
         $prevException = null;
         try {
-            if ($data instanceof stdClass) {
-                $data = json_decode(json_encode($data), true);
+            if ($data !== null) {
+                $data = $this->serializer->normalize($data);
+                $data = HArray::filterRecursive($data, fn($v) => $v !== null);
+            } else {
+                $data = [];
             }
-            $data = HArray::filterRecursive($data, fn($v) => $v !== null);
-            array_walk_recursive(
-                $data,
-                fn(&$d) => $d = ($d instanceof Filename) ? new Stream(fopen($d->getFilename(), 'rb')) : $d,
-            );
             $request = $this->telegramRequestFactory
                 ->createRequest($this->token, $method, $data, $httpMethod);
             $response = $this->client->sendRequest($request);
@@ -2683,7 +2690,7 @@ class Api implements ApiInterface
     /**
      * Build object for response
      *
-     * @template T
+     * @template T of object
      *
      * @param class-string<T> $entityClass
      * @param Res\RawResponse $rawResponse
@@ -2706,7 +2713,7 @@ class Api implements ApiInterface
     /**
      * Build objects array for response
      *
-     * @template T
+     * @template T of object
      *
      * @param class-string<T> $entityClass
      * @param Res\RawResponse $rawResponse

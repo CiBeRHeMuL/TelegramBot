@@ -34,7 +34,8 @@ class ApiTest extends TestCase
                 new Filename((new Path(__DIR__ . '/' . $file))->getPath()),
             ),
         );
-        $fileId = $sendDocumentResponse->getMessage()->getDocument()->getFileId();
+        $fileId = $sendDocumentResponse->getMessage()?->getDocument()?->getFileId();
+        $this->assertNotNull($fileId);
         $downloaded = $telegram->getApi()->downloadFileToDirById(
             $fileId,
             new Dir(new Path(__DIR__ . '/../files')),

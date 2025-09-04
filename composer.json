@@ -33,7 +33,8 @@
         "psr/container": "^2.0",
         "ext-ctype": "*",
         "psr/log": "^3.0",
-        "andrew-gos/class-builder": "^1.0"
+        "andrew-gos/class-builder": "^1.0",
+        "andrew-gos/serializer": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.2"
