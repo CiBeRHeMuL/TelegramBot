@@ -1,5 +1,12 @@
 # Change log of Telegram Bot Library
 
+## Version 3.1
+
+### General
++ Connect andrew-gos/serializer package for requests and entities serialization
++ Drop all toArray methods from entities and requests
++ Remove AbstractEntity class to improve performance
+
 ## Version 3.0
 
 ### General
