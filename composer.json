@@ -34,7 +34,8 @@
         "ext-ctype": "*",
         "psr/log": "^3.0",
         "andrew-gos/class-builder": "^1.0",
-        "andrew-gos/serializer": "^1.0"
+        "andrew-gos/serializer": "^1.0",
+        "psr/event-dispatcher": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.2"

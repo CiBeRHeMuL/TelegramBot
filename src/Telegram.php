@@ -4,7 +4,7 @@ namespace AndrewGos\TelegramBot;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\User;
-use AndrewGos\TelegramBot\UpdateHandler\UpdateHandlerInterface;
+use AndrewGos\TelegramBot\Kernel\UpdateHandlerInterface;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
