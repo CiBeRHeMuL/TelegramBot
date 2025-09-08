@@ -18,15 +18,14 @@ final class SuggestedPostDeclined implements EntityInterface
      * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
-        protected string|null $comment = null,
-        protected Message|null $suggested_post_message = null,
-    ) {
-    }
+        protected ?string $comment = null,
+        protected ?Message $suggested_post_message = null,
+    ) {}
 
     /**
      * @return string|null
      */
-    public function getComment(): string|null
+    public function getComment(): ?string
     {
         return $this->comment;
     }
@@ -36,7 +35,7 @@ final class SuggestedPostDeclined implements EntityInterface
      *
      * @return SuggestedPostDeclined
      */
-    public function setComment(string|null $comment): SuggestedPostDeclined
+    public function setComment(?string $comment): SuggestedPostDeclined
     {
         $this->comment = $comment;
         return $this;
@@ -45,7 +44,7 @@ final class SuggestedPostDeclined implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getSuggestedPostMessage(): Message|null
+    public function getSuggestedPostMessage(): ?Message
     {
         return $this->suggested_post_message;
     }
@@ -55,7 +54,7 @@ final class SuggestedPostDeclined implements EntityInterface
      *
      * @return SuggestedPostDeclined
      */
-    public function setSuggestedPostMessage(Message|null $suggested_post_message): SuggestedPostDeclined
+    public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostDeclined
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;

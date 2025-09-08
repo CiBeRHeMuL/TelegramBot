@@ -11,8 +11,7 @@ final readonly class Response implements ContainerInterface
     public function __construct(
         private HttpStatusCodeEnum $statusCode,
         private array $attributes = [],
-    ) {
-    }
+    ) {}
 
     public function getStatusCode(): HttpStatusCodeEnum
     {

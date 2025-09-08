@@ -20,7 +20,7 @@ final class TransactionPartnerFragment extends AbstractTransactionPartner
      * @see https://core.telegram.org/bots/api#revenuewithdrawalstate RevenueWithdrawalState
      */
     public function __construct(
-        protected AbstractRevenueWithdrawalState|null $withdrawal_state = null,
+        protected ?AbstractRevenueWithdrawalState $withdrawal_state = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::Fragment);
     }
@@ -28,7 +28,7 @@ final class TransactionPartnerFragment extends AbstractTransactionPartner
     /**
      * @return AbstractRevenueWithdrawalState|null
      */
-    public function getWithdrawalState(): AbstractRevenueWithdrawalState|null
+    public function getWithdrawalState(): ?AbstractRevenueWithdrawalState
     {
         return $this->withdrawal_state;
     }
@@ -38,7 +38,7 @@ final class TransactionPartnerFragment extends AbstractTransactionPartner
      *
      * @return TransactionPartnerFragment
      */
-    public function setWithdrawalState(AbstractRevenueWithdrawalState|null $withdrawal_state): TransactionPartnerFragment
+    public function setWithdrawalState(?AbstractRevenueWithdrawalState $withdrawal_state): TransactionPartnerFragment
     {
         $this->withdrawal_state = $withdrawal_state;
         return $this;

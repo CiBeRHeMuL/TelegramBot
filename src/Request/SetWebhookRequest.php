@@ -30,14 +30,13 @@ class SetWebhookRequest implements RequestInterface
      */
     public function __construct(
         private Url $url,
-        private array|null $allowed_updates = null,
+        private ?array $allowed_updates = null,
         private Filename|Url|null $certificate = null,
-        private bool|null $drop_pending_updates = null,
+        private ?bool $drop_pending_updates = null,
         private IpV4|IpV6|null $ip_address = null,
-        private int|null $max_connections = null,
-        private string|null $secret_token = null,
-    ) {
-    }
+        private ?int $max_connections = null,
+        private ?string $secret_token = null,
+    ) {}
 
     public function getUrl(): Url
     {
@@ -50,12 +49,12 @@ class SetWebhookRequest implements RequestInterface
         return $this;
     }
 
-    public function getAllowedUpdates(): array|null
+    public function getAllowedUpdates(): ?array
     {
         return $this->allowed_updates;
     }
 
-    public function setAllowedUpdates(array|null $allowed_updates): SetWebhookRequest
+    public function setAllowedUpdates(?array $allowed_updates): SetWebhookRequest
     {
         $this->allowed_updates = $allowed_updates;
         return $this;
@@ -72,12 +71,12 @@ class SetWebhookRequest implements RequestInterface
         return $this;
     }
 
-    public function getDropPendingUpdates(): bool|null
+    public function getDropPendingUpdates(): ?bool
     {
         return $this->drop_pending_updates;
     }
 
-    public function setDropPendingUpdates(bool|null $drop_pending_updates): SetWebhookRequest
+    public function setDropPendingUpdates(?bool $drop_pending_updates): SetWebhookRequest
     {
         $this->drop_pending_updates = $drop_pending_updates;
         return $this;
@@ -94,23 +93,23 @@ class SetWebhookRequest implements RequestInterface
         return $this;
     }
 
-    public function getMaxConnections(): int|null
+    public function getMaxConnections(): ?int
     {
         return $this->max_connections;
     }
 
-    public function setMaxConnections(int|null $max_connections): SetWebhookRequest
+    public function setMaxConnections(?int $max_connections): SetWebhookRequest
     {
         $this->max_connections = $max_connections;
         return $this;
     }
 
-    public function getSecretToken(): string|null
+    public function getSecretToken(): ?string
     {
         return $this->secret_token;
     }
 
-    public function setSecretToken(string|null $secret_token): SetWebhookRequest
+    public function setSecretToken(?string $secret_token): SetWebhookRequest
     {
         $this->secret_token = $secret_token;
         return $this;

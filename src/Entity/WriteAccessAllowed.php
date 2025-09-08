@@ -22,16 +22,15 @@ final class WriteAccessAllowed implements EntityInterface
      * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
      */
     public function __construct(
-        protected bool|null $from_request = null,
-        protected string|null $web_app_name = null,
-        protected bool|null $from_attachment_menu = null,
-    ) {
-    }
+        protected ?bool $from_request = null,
+        protected ?string $web_app_name = null,
+        protected ?bool $from_attachment_menu = null,
+    ) {}
 
     /**
      * @return bool|null
      */
-    public function getFromRequest(): bool|null
+    public function getFromRequest(): ?bool
     {
         return $this->from_request;
     }
@@ -41,7 +40,7 @@ final class WriteAccessAllowed implements EntityInterface
      *
      * @return WriteAccessAllowed
      */
-    public function setFromRequest(bool|null $from_request): WriteAccessAllowed
+    public function setFromRequest(?bool $from_request): WriteAccessAllowed
     {
         $this->from_request = $from_request;
         return $this;
@@ -50,7 +49,7 @@ final class WriteAccessAllowed implements EntityInterface
     /**
      * @return string|null
      */
-    public function getWebAppName(): string|null
+    public function getWebAppName(): ?string
     {
         return $this->web_app_name;
     }
@@ -60,7 +59,7 @@ final class WriteAccessAllowed implements EntityInterface
      *
      * @return WriteAccessAllowed
      */
-    public function setWebAppName(string|null $web_app_name): WriteAccessAllowed
+    public function setWebAppName(?string $web_app_name): WriteAccessAllowed
     {
         $this->web_app_name = $web_app_name;
         return $this;
@@ -69,7 +68,7 @@ final class WriteAccessAllowed implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getFromAttachmentMenu(): bool|null
+    public function getFromAttachmentMenu(): ?bool
     {
         return $this->from_attachment_menu;
     }
@@ -79,7 +78,7 @@ final class WriteAccessAllowed implements EntityInterface
      *
      * @return WriteAccessAllowed
      */
-    public function setFromAttachmentMenu(bool|null $from_attachment_menu): WriteAccessAllowed
+    public function setFromAttachmentMenu(?bool $from_attachment_menu): WriteAccessAllowed
     {
         $this->from_attachment_menu = $from_attachment_menu;
         return $this;

@@ -23,8 +23,7 @@ class ReplaceStickerInSetRequest implements RequestInterface
         private string $old_sticker,
         private InputSticker $sticker,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

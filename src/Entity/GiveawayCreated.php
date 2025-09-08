@@ -14,14 +14,13 @@ final class GiveawayCreated implements EntityInterface
      * Star giveaways only
      */
     public function __construct(
-        protected int|null $prize_star_count = null,
-    ) {
-    }
+        protected ?int $prize_star_count = null,
+    ) {}
 
     /**
      * @return int|null
      */
-    public function getPrizeStarCount(): int|null
+    public function getPrizeStarCount(): ?int
     {
         return $this->prize_star_count;
     }
@@ -31,7 +30,7 @@ final class GiveawayCreated implements EntityInterface
      *
      * @return GiveawayCreated
      */
-    public function setPrizeStarCount(int|null $prize_star_count): GiveawayCreated
+    public function setPrizeStarCount(?int $prize_star_count): GiveawayCreated
     {
         $this->prize_star_count = $prize_star_count;
         return $this;

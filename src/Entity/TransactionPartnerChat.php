@@ -23,7 +23,7 @@ final class TransactionPartnerChat extends AbstractTransactionPartner
      */
     public function __construct(
         protected Chat $chat,
-        protected Gift|null $gift = null,
+        protected ?Gift $gift = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::Chat);
     }
@@ -50,7 +50,7 @@ final class TransactionPartnerChat extends AbstractTransactionPartner
     /**
      * @return Gift|null
      */
-    public function getGift(): Gift|null
+    public function getGift(): ?Gift
     {
         return $this->gift;
     }
@@ -60,7 +60,7 @@ final class TransactionPartnerChat extends AbstractTransactionPartner
      *
      * @return TransactionPartnerChat
      */
-    public function setGift(Gift|null $gift): TransactionPartnerChat
+    public function setGift(?Gift $gift): TransactionPartnerChat
     {
         $this->gift = $gift;
         return $this;

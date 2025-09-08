@@ -57,18 +57,17 @@ final class InlineKeyboardButton implements EntityInterface
      */
     public function __construct(
         protected string $text,
-        protected CallbackData|null $callback_data = null,
-        protected CallbackGame|null $callback_game = null,
-        protected LoginUrl|null $login_url = null,
-        protected bool|null $pay = null,
-        protected string|null $switch_inline_query = null,
-        protected SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat = null,
-        protected string|null $switch_inline_query_current_chat = null,
-        protected Url|null $url = null,
-        protected WebAppInfo|null $web_app = null,
-        protected CopyTextButton|null $copy_text = null,
-    ) {
-    }
+        protected ?CallbackData $callback_data = null,
+        protected ?CallbackGame $callback_game = null,
+        protected ?LoginUrl $login_url = null,
+        protected ?bool $pay = null,
+        protected ?string $switch_inline_query = null,
+        protected ?SwitchInlineQueryChosenChat $switch_inline_query_chosen_chat = null,
+        protected ?string $switch_inline_query_current_chat = null,
+        protected ?Url $url = null,
+        protected ?WebAppInfo $web_app = null,
+        protected ?CopyTextButton $copy_text = null,
+    ) {}
 
     /**
      * @return string
@@ -92,7 +91,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return CallbackData|null
      */
-    public function getCallbackData(): CallbackData|null
+    public function getCallbackData(): ?CallbackData
     {
         return $this->callback_data;
     }
@@ -102,7 +101,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setCallbackData(CallbackData|null $callback_data): InlineKeyboardButton
+    public function setCallbackData(?CallbackData $callback_data): InlineKeyboardButton
     {
         $this->callback_data = $callback_data;
         return $this;
@@ -111,7 +110,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return CallbackGame|null
      */
-    public function getCallbackGame(): CallbackGame|null
+    public function getCallbackGame(): ?CallbackGame
     {
         return $this->callback_game;
     }
@@ -121,7 +120,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setCallbackGame(CallbackGame|null $callback_game): InlineKeyboardButton
+    public function setCallbackGame(?CallbackGame $callback_game): InlineKeyboardButton
     {
         $this->callback_game = $callback_game;
         return $this;
@@ -130,7 +129,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return LoginUrl|null
      */
-    public function getLoginUrl(): LoginUrl|null
+    public function getLoginUrl(): ?LoginUrl
     {
         return $this->login_url;
     }
@@ -140,7 +139,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setLoginUrl(LoginUrl|null $login_url): InlineKeyboardButton
+    public function setLoginUrl(?LoginUrl $login_url): InlineKeyboardButton
     {
         $this->login_url = $login_url;
         return $this;
@@ -149,7 +148,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getPay(): bool|null
+    public function getPay(): ?bool
     {
         return $this->pay;
     }
@@ -159,7 +158,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setPay(bool|null $pay): InlineKeyboardButton
+    public function setPay(?bool $pay): InlineKeyboardButton
     {
         $this->pay = $pay;
         return $this;
@@ -168,7 +167,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return string|null
      */
-    public function getSwitchInlineQuery(): string|null
+    public function getSwitchInlineQuery(): ?string
     {
         return $this->switch_inline_query;
     }
@@ -178,7 +177,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setSwitchInlineQuery(string|null $switch_inline_query): InlineKeyboardButton
+    public function setSwitchInlineQuery(?string $switch_inline_query): InlineKeyboardButton
     {
         $this->switch_inline_query = $switch_inline_query;
         return $this;
@@ -187,7 +186,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return SwitchInlineQueryChosenChat|null
      */
-    public function getSwitchInlineQueryChosenChat(): SwitchInlineQueryChosenChat|null
+    public function getSwitchInlineQueryChosenChat(): ?SwitchInlineQueryChosenChat
     {
         return $this->switch_inline_query_chosen_chat;
     }
@@ -197,7 +196,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setSwitchInlineQueryChosenChat(SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat): InlineKeyboardButton
+    public function setSwitchInlineQueryChosenChat(?SwitchInlineQueryChosenChat $switch_inline_query_chosen_chat): InlineKeyboardButton
     {
         $this->switch_inline_query_chosen_chat = $switch_inline_query_chosen_chat;
         return $this;
@@ -206,7 +205,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return string|null
      */
-    public function getSwitchInlineQueryCurrentChat(): string|null
+    public function getSwitchInlineQueryCurrentChat(): ?string
     {
         return $this->switch_inline_query_current_chat;
     }
@@ -216,7 +215,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setSwitchInlineQueryCurrentChat(string|null $switch_inline_query_current_chat): InlineKeyboardButton
+    public function setSwitchInlineQueryCurrentChat(?string $switch_inline_query_current_chat): InlineKeyboardButton
     {
         $this->switch_inline_query_current_chat = $switch_inline_query_current_chat;
         return $this;
@@ -225,7 +224,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return Url|null
      */
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
@@ -235,7 +234,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setUrl(Url|null $url): InlineKeyboardButton
+    public function setUrl(?Url $url): InlineKeyboardButton
     {
         $this->url = $url;
         return $this;
@@ -244,7 +243,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return WebAppInfo|null
      */
-    public function getWebApp(): WebAppInfo|null
+    public function getWebApp(): ?WebAppInfo
     {
         return $this->web_app;
     }
@@ -254,7 +253,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setWebApp(WebAppInfo|null $web_app): InlineKeyboardButton
+    public function setWebApp(?WebAppInfo $web_app): InlineKeyboardButton
     {
         $this->web_app = $web_app;
         return $this;
@@ -263,7 +262,7 @@ final class InlineKeyboardButton implements EntityInterface
     /**
      * @return CopyTextButton|null
      */
-    public function getCopyText(): CopyTextButton|null
+    public function getCopyText(): ?CopyTextButton
     {
         return $this->copy_text;
     }
@@ -273,7 +272,7 @@ final class InlineKeyboardButton implements EntityInterface
      *
      * @return InlineKeyboardButton
      */
-    public function setCopyText(CopyTextButton|null $copy_text): InlineKeyboardButton
+    public function setCopyText(?CopyTextButton $copy_text): InlineKeyboardButton
     {
         $this->copy_text = $copy_text;
         return $this;

@@ -31,12 +31,11 @@ final class Animation implements EntityInterface
         protected int $width,
         protected int $height,
         protected int $duration,
-        protected PhotoSize|null $thumbnail = null,
-        protected string|null $file_name = null,
-        protected string|null $mime_type = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?PhotoSize $thumbnail = null,
+        protected ?string $file_name = null,
+        protected ?string $mime_type = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -136,7 +135,7 @@ final class Animation implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -146,7 +145,7 @@ final class Animation implements EntityInterface
      *
      * @return Animation
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): Animation
+    public function setThumbnail(?PhotoSize $thumbnail): Animation
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -155,7 +154,7 @@ final class Animation implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFileName(): string|null
+    public function getFileName(): ?string
     {
         return $this->file_name;
     }
@@ -165,7 +164,7 @@ final class Animation implements EntityInterface
      *
      * @return Animation
      */
-    public function setFileName(string|null $file_name): Animation
+    public function setFileName(?string $file_name): Animation
     {
         $this->file_name = $file_name;
         return $this;
@@ -174,7 +173,7 @@ final class Animation implements EntityInterface
     /**
      * @return string|null
      */
-    public function getMimeType(): string|null
+    public function getMimeType(): ?string
     {
         return $this->mime_type;
     }
@@ -184,7 +183,7 @@ final class Animation implements EntityInterface
      *
      * @return Animation
      */
-    public function setMimeType(string|null $mime_type): Animation
+    public function setMimeType(?string $mime_type): Animation
     {
         $this->mime_type = $mime_type;
         return $this;
@@ -193,7 +192,7 @@ final class Animation implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -203,7 +202,7 @@ final class Animation implements EntityInterface
      *
      * @return Animation
      */
-    public function setFileSize(int|null $file_size): Animation
+    public function setFileSize(?int $file_size): Animation
     {
         $this->file_size = $file_size;
         return $this;

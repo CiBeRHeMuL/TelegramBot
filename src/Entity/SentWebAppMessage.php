@@ -17,14 +17,13 @@ final class SentWebAppMessage implements EntityInterface
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup inline keyboard
      */
     public function __construct(
-        protected string|null $inline_message_id = null,
-    ) {
-    }
+        protected ?string $inline_message_id = null,
+    ) {}
 
     /**
      * @return string|null
      */
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
@@ -34,7 +33,7 @@ final class SentWebAppMessage implements EntityInterface
      *
      * @return SentWebAppMessage
      */
-    public function setInlineMessageId(string|null $inline_message_id): SentWebAppMessage
+    public function setInlineMessageId(?string $inline_message_id): SentWebAppMessage
     {
         $this->inline_message_id = $inline_message_id;
         return $this;

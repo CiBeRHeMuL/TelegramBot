@@ -8,12 +8,12 @@ class GetMeResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly User|null $user = null,
+        private readonly ?User $user = null,
     ) {
         parent::__construct($response);
     }
 
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }

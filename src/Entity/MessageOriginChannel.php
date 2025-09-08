@@ -26,7 +26,7 @@ final class MessageOriginChannel extends AbstractMessageOrigin
         protected int $date,
         protected Chat $chat,
         protected int $message_id,
-        protected string|null $author_signature = null,
+        protected ?string $author_signature = null,
     ) {
         parent::__construct(MessageOriginTypeEnum::Channel);
     }
@@ -91,7 +91,7 @@ final class MessageOriginChannel extends AbstractMessageOrigin
     /**
      * @return string|null
      */
-    public function getAuthorSignature(): string|null
+    public function getAuthorSignature(): ?string
     {
         return $this->author_signature;
     }
@@ -101,7 +101,7 @@ final class MessageOriginChannel extends AbstractMessageOrigin
      *
      * @return MessageOriginChannel
      */
-    public function setAuthorSignature(string|null $author_signature): MessageOriginChannel
+    public function setAuthorSignature(?string $author_signature): MessageOriginChannel
     {
         $this->author_signature = $author_signature;
         return $this;

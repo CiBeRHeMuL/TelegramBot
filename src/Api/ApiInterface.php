@@ -1875,7 +1875,7 @@ interface ApiInterface
         string $fileId,
         Fs\Dir $targetDir,
         bool $overwrite = false,
-        Res\GetFileResponse|null &$getFileResponse = null,
+        ?Res\GetFileResponse &$getFileResponse = null,
     ): bool;
 
     /**
@@ -1893,7 +1893,7 @@ interface ApiInterface
         string $fileId,
         Fs\File $targetFile,
         bool $overwrite,
-        Res\GetFileResponse|null &$getFileResponse = null,
+        ?Res\GetFileResponse &$getFileResponse = null,
     ): bool;
 
     /**

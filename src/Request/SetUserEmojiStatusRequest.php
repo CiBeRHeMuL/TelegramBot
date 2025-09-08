@@ -15,10 +15,9 @@ class SetUserEmojiStatusRequest implements RequestInterface
      */
     public function __construct(
         private int $user_id,
-        private string|null $emoji_status_custom_emoji_id = null,
-        private int|null $emoji_status_expiration_date = null,
-    ) {
-    }
+        private ?string $emoji_status_custom_emoji_id = null,
+        private ?int $emoji_status_expiration_date = null,
+    ) {}
 
     public function getUserId(): int
     {
@@ -31,23 +30,23 @@ class SetUserEmojiStatusRequest implements RequestInterface
         return $this;
     }
 
-    public function getEmojiStatusCustomEmojiId(): string|null
+    public function getEmojiStatusCustomEmojiId(): ?string
     {
         return $this->emoji_status_custom_emoji_id;
     }
 
-    public function setEmojiStatusCustomEmojiId(string|null $emoji_status_custom_emoji_id): SetUserEmojiStatusRequest
+    public function setEmojiStatusCustomEmojiId(?string $emoji_status_custom_emoji_id): SetUserEmojiStatusRequest
     {
         $this->emoji_status_custom_emoji_id = $emoji_status_custom_emoji_id;
         return $this;
     }
 
-    public function getEmojiStatusExpirationDate(): int|null
+    public function getEmojiStatusExpirationDate(): ?int
     {
         return $this->emoji_status_expiration_date;
     }
 
-    public function setEmojiStatusExpirationDate(int|null $emoji_status_expiration_date): SetUserEmojiStatusRequest
+    public function setEmojiStatusExpirationDate(?int $emoji_status_expiration_date): SetUserEmojiStatusRequest
     {
         $this->emoji_status_expiration_date = $emoji_status_expiration_date;
         return $this;

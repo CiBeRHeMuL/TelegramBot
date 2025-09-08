@@ -21,8 +21,7 @@ final class UserProfilePhotos implements EntityInterface
         protected int $total_count,
         #[ArrayType(new ArrayType(PhotoSize::class))]
         protected array $photos,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

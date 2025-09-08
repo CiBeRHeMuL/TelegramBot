@@ -47,15 +47,15 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     public function __construct(
         protected string $id,
         protected string $photo_file_id,
-        protected string|null $caption = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected string|null $description = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected string|null $title = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?string $description = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?string $title = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Photo);
     }
@@ -101,7 +101,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -111,7 +111,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setCaption(string|null $caption): InlineQueryResultCachedPhoto
+    public function setCaption(?string $caption): InlineQueryResultCachedPhoto
     {
         $this->caption = $caption;
         return $this;
@@ -120,7 +120,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -130,7 +130,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultCachedPhoto
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedPhoto
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -139,7 +139,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -149,7 +149,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setDescription(string|null $description): InlineQueryResultCachedPhoto
+    public function setDescription(?string $description): InlineQueryResultCachedPhoto
     {
         $this->description = $description;
         return $this;
@@ -158,7 +158,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -168,7 +168,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultCachedPhoto
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedPhoto
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -177,7 +177,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -187,7 +187,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultCachedPhoto
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedPhoto
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -196,7 +196,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -206,7 +206,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultCachedPhoto
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedPhoto
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -215,7 +215,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -225,7 +225,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setTitle(string|null $title): InlineQueryResultCachedPhoto
+    public function setTitle(?string $title): InlineQueryResultCachedPhoto
     {
         $this->title = $title;
         return $this;
@@ -234,7 +234,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -244,7 +244,7 @@ final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedPhoto
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultCachedPhoto
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultCachedPhoto
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

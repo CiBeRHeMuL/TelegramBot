@@ -14,8 +14,7 @@ class RefundStarPaymentRequest implements RequestInterface
     public function __construct(
         private string $telegram_payment_charge_id,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getTelegramPaymentChargeId(): string
     {

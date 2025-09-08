@@ -13,8 +13,7 @@ class GetCustomEmojiStickersRequest implements RequestInterface
      */
     public function __construct(
         private array $custom_emoji_ids,
-    ) {
-    }
+    ) {}
 
     public function getCustomEmojiIds(): array
     {

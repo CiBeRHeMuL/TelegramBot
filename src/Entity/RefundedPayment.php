@@ -30,9 +30,8 @@ final class RefundedPayment implements EntityInterface
         protected int $total_amount,
         protected string $invoice_payload,
         protected string $telegram_payment_charge_id,
-        protected string|null $provider_payment_charge_id = null,
-    ) {
-    }
+        protected ?string $provider_payment_charge_id = null,
+    ) {}
 
     /**
      * @return CurrencyEnum
@@ -113,7 +112,7 @@ final class RefundedPayment implements EntityInterface
     /**
      * @return string|null
      */
-    public function getProviderPaymentChargeId(): string|null
+    public function getProviderPaymentChargeId(): ?string
     {
         return $this->provider_payment_charge_id;
     }
@@ -123,7 +122,7 @@ final class RefundedPayment implements EntityInterface
      *
      * @return RefundedPayment
      */
-    public function setProviderPaymentChargeId(string|null $provider_payment_charge_id): RefundedPayment
+    public function setProviderPaymentChargeId(?string $provider_payment_charge_id): RefundedPayment
     {
         $this->provider_payment_charge_id = $provider_payment_charge_id;
         return $this;

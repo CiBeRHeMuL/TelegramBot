@@ -17,8 +17,7 @@ class RevokeChatInviteLinkRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private Url $invite_link,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

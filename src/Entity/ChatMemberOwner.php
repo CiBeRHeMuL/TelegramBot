@@ -25,7 +25,7 @@ final class ChatMemberOwner extends AbstractChatMember
     public function __construct(
         protected User $user,
         protected bool $is_anonymous,
-        protected string|null $custom_title = null,
+        protected ?string $custom_title = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Creator);
     }
@@ -71,7 +71,7 @@ final class ChatMemberOwner extends AbstractChatMember
     /**
      * @return string|null
      */
-    public function getCustomTitle(): string|null
+    public function getCustomTitle(): ?string
     {
         return $this->custom_title;
     }
@@ -81,7 +81,7 @@ final class ChatMemberOwner extends AbstractChatMember
      *
      * @return ChatMemberOwner
      */
-    public function setCustomTitle(string|null $custom_title): ChatMemberOwner
+    public function setCustomTitle(?string $custom_title): ChatMemberOwner
     {
         $this->custom_title = $custom_title;
         return $this;

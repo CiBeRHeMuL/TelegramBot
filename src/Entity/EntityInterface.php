@@ -2,6 +2,4 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
-interface EntityInterface
-{
-}
+interface EntityInterface {}

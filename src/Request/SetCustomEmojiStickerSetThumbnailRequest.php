@@ -14,9 +14,8 @@ class SetCustomEmojiStickerSetThumbnailRequest implements RequestInterface
      */
     public function __construct(
         private string $name,
-        private string|null $custom_emoji_id = null,
-    ) {
-    }
+        private ?string $custom_emoji_id = null,
+    ) {}
 
     public function getName(): string
     {
@@ -29,12 +28,12 @@ class SetCustomEmojiStickerSetThumbnailRequest implements RequestInterface
         return $this;
     }
 
-    public function getCustomEmojiId(): string|null
+    public function getCustomEmojiId(): ?string
     {
         return $this->custom_emoji_id;
     }
 
-    public function setCustomEmojiId(string|null $custom_emoji_id): SetCustomEmojiStickerSetThumbnailRequest
+    public function setCustomEmojiId(?string $custom_emoji_id): SetCustomEmojiStickerSetThumbnailRequest
     {
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;

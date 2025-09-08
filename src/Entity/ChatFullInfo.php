@@ -112,51 +112,50 @@ final class ChatFullInfo implements EntityInterface
         protected int $max_reaction_count,
         protected AcceptedGiftTypes $accepted_gift_types,
         #[ArrayType('string')]
-        protected array|null $active_usernames = null,
+        protected ?array $active_usernames = null,
         #[ArrayType(AbstractReactionType::class)]
-        protected array|null $available_reactions = null,
-        protected string|null $background_custom_emoji_id = null,
-        protected string|null $bio = null,
-        protected Birthdate|null $birthdate = null,
-        protected BusinessIntro|null $business_intro = null,
-        protected BusinessLocation|null $business_location = null,
-        protected BusinessOpeningHours|null $business_opening_hours = null,
-        protected bool|null $can_set_sticker_set = null,
-        protected string|null $custom_emoji_sticker_set_name = null,
-        protected string|null $description = null,
-        protected string|null $emoji_status_custom_emoji_id = null,
-        protected int|null $emoji_status_expiration_date = null,
-        protected string|null $first_name = null,
-        protected bool|null $has_aggressive_anti_spam_enabled = null,
-        protected bool|null $has_hidden_members = null,
-        protected bool|null $has_private_forwards = null,
-        protected bool|null $has_protected_content = null,
-        protected bool|null $has_restricted_voice_and_video_messages = null,
-        protected bool|null $has_visible_history = null,
-        protected string|null $invite_link = null,
-        protected bool|null $is_forum = null,
-        protected bool|null $join_by_request = null,
-        protected bool|null $join_to_send_messages = null,
-        protected string|null $last_name = null,
-        protected int|null $linked_chat_id = null,
-        protected ChatLocation|null $location = null,
-        protected int|null $message_auto_delete_time = null,
-        protected ChatPermissions|null $permissions = null,
-        protected Chat|null $personal_chat = null,
-        protected ChatPhoto|null $photo = null,
-        protected Message|null $pinned_message = null,
-        protected int|null $profile_accent_color_id = null,
-        protected string|null $profile_background_custom_emoji_id = null,
-        protected int|null $slow_mode_delay = null,
-        protected string|null $sticker_set_name = null,
-        protected string|null $title = null,
-        protected int|null $unrestrict_boost_count = null,
-        protected string|null $username = null,
-        protected bool|null $can_send_paid_media = null,
-        protected bool|null $is_direct_messages = null,
-        protected Chat|null $parent_chat = null,
-    ) {
-    }
+        protected ?array $available_reactions = null,
+        protected ?string $background_custom_emoji_id = null,
+        protected ?string $bio = null,
+        protected ?Birthdate $birthdate = null,
+        protected ?BusinessIntro $business_intro = null,
+        protected ?BusinessLocation $business_location = null,
+        protected ?BusinessOpeningHours $business_opening_hours = null,
+        protected ?bool $can_set_sticker_set = null,
+        protected ?string $custom_emoji_sticker_set_name = null,
+        protected ?string $description = null,
+        protected ?string $emoji_status_custom_emoji_id = null,
+        protected ?int $emoji_status_expiration_date = null,
+        protected ?string $first_name = null,
+        protected ?bool $has_aggressive_anti_spam_enabled = null,
+        protected ?bool $has_hidden_members = null,
+        protected ?bool $has_private_forwards = null,
+        protected ?bool $has_protected_content = null,
+        protected ?bool $has_restricted_voice_and_video_messages = null,
+        protected ?bool $has_visible_history = null,
+        protected ?string $invite_link = null,
+        protected ?bool $is_forum = null,
+        protected ?bool $join_by_request = null,
+        protected ?bool $join_to_send_messages = null,
+        protected ?string $last_name = null,
+        protected ?int $linked_chat_id = null,
+        protected ?ChatLocation $location = null,
+        protected ?int $message_auto_delete_time = null,
+        protected ?ChatPermissions $permissions = null,
+        protected ?Chat $personal_chat = null,
+        protected ?ChatPhoto $photo = null,
+        protected ?Message $pinned_message = null,
+        protected ?int $profile_accent_color_id = null,
+        protected ?string $profile_background_custom_emoji_id = null,
+        protected ?int $slow_mode_delay = null,
+        protected ?string $sticker_set_name = null,
+        protected ?string $title = null,
+        protected ?int $unrestrict_boost_count = null,
+        protected ?string $username = null,
+        protected ?bool $can_send_paid_media = null,
+        protected ?bool $is_direct_messages = null,
+        protected ?Chat $parent_chat = null,
+    ) {}
 
     /**
      * @return int
@@ -256,7 +255,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string[]|null
      */
-    public function getActiveUsernames(): array|null
+    public function getActiveUsernames(): ?array
     {
         return $this->active_usernames;
     }
@@ -266,7 +265,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setActiveUsernames(array|null $active_usernames): ChatFullInfo
+    public function setActiveUsernames(?array $active_usernames): ChatFullInfo
     {
         $this->active_usernames = $active_usernames;
         return $this;
@@ -275,7 +274,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return AbstractReactionType[]|null
      */
-    public function getAvailableReactions(): array|null
+    public function getAvailableReactions(): ?array
     {
         return $this->available_reactions;
     }
@@ -285,7 +284,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setAvailableReactions(array|null $available_reactions): ChatFullInfo
+    public function setAvailableReactions(?array $available_reactions): ChatFullInfo
     {
         $this->available_reactions = $available_reactions;
         return $this;
@@ -294,7 +293,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getBackgroundCustomEmojiId(): string|null
+    public function getBackgroundCustomEmojiId(): ?string
     {
         return $this->background_custom_emoji_id;
     }
@@ -304,7 +303,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBackgroundCustomEmojiId(string|null $background_custom_emoji_id): ChatFullInfo
+    public function setBackgroundCustomEmojiId(?string $background_custom_emoji_id): ChatFullInfo
     {
         $this->background_custom_emoji_id = $background_custom_emoji_id;
         return $this;
@@ -313,7 +312,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getBio(): string|null
+    public function getBio(): ?string
     {
         return $this->bio;
     }
@@ -323,7 +322,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBio(string|null $bio): ChatFullInfo
+    public function setBio(?string $bio): ChatFullInfo
     {
         $this->bio = $bio;
         return $this;
@@ -332,7 +331,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return Birthdate|null
      */
-    public function getBirthdate(): Birthdate|null
+    public function getBirthdate(): ?Birthdate
     {
         return $this->birthdate;
     }
@@ -342,7 +341,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBirthdate(Birthdate|null $birthdate): ChatFullInfo
+    public function setBirthdate(?Birthdate $birthdate): ChatFullInfo
     {
         $this->birthdate = $birthdate;
         return $this;
@@ -351,7 +350,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return BusinessIntro|null
      */
-    public function getBusinessIntro(): BusinessIntro|null
+    public function getBusinessIntro(): ?BusinessIntro
     {
         return $this->business_intro;
     }
@@ -361,7 +360,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBusinessIntro(BusinessIntro|null $business_intro): ChatFullInfo
+    public function setBusinessIntro(?BusinessIntro $business_intro): ChatFullInfo
     {
         $this->business_intro = $business_intro;
         return $this;
@@ -370,7 +369,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return BusinessLocation|null
      */
-    public function getBusinessLocation(): BusinessLocation|null
+    public function getBusinessLocation(): ?BusinessLocation
     {
         return $this->business_location;
     }
@@ -380,7 +379,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBusinessLocation(BusinessLocation|null $business_location): ChatFullInfo
+    public function setBusinessLocation(?BusinessLocation $business_location): ChatFullInfo
     {
         $this->business_location = $business_location;
         return $this;
@@ -389,7 +388,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return BusinessOpeningHours|null
      */
-    public function getBusinessOpeningHours(): BusinessOpeningHours|null
+    public function getBusinessOpeningHours(): ?BusinessOpeningHours
     {
         return $this->business_opening_hours;
     }
@@ -399,7 +398,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setBusinessOpeningHours(BusinessOpeningHours|null $business_opening_hours): ChatFullInfo
+    public function setBusinessOpeningHours(?BusinessOpeningHours $business_opening_hours): ChatFullInfo
     {
         $this->business_opening_hours = $business_opening_hours;
         return $this;
@@ -408,7 +407,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSetStickerSet(): bool|null
+    public function getCanSetStickerSet(): ?bool
     {
         return $this->can_set_sticker_set;
     }
@@ -418,7 +417,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setCanSetStickerSet(bool|null $can_set_sticker_set): ChatFullInfo
+    public function setCanSetStickerSet(?bool $can_set_sticker_set): ChatFullInfo
     {
         $this->can_set_sticker_set = $can_set_sticker_set;
         return $this;
@@ -427,7 +426,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getCustomEmojiStickerSetName(): string|null
+    public function getCustomEmojiStickerSetName(): ?string
     {
         return $this->custom_emoji_sticker_set_name;
     }
@@ -437,7 +436,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setCustomEmojiStickerSetName(string|null $custom_emoji_sticker_set_name): ChatFullInfo
+    public function setCustomEmojiStickerSetName(?string $custom_emoji_sticker_set_name): ChatFullInfo
     {
         $this->custom_emoji_sticker_set_name = $custom_emoji_sticker_set_name;
         return $this;
@@ -446,7 +445,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -456,7 +455,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setDescription(string|null $description): ChatFullInfo
+    public function setDescription(?string $description): ChatFullInfo
     {
         $this->description = $description;
         return $this;
@@ -465,7 +464,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getEmojiStatusCustomEmojiId(): string|null
+    public function getEmojiStatusCustomEmojiId(): ?string
     {
         return $this->emoji_status_custom_emoji_id;
     }
@@ -475,7 +474,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setEmojiStatusCustomEmojiId(string|null $emoji_status_custom_emoji_id): ChatFullInfo
+    public function setEmojiStatusCustomEmojiId(?string $emoji_status_custom_emoji_id): ChatFullInfo
     {
         $this->emoji_status_custom_emoji_id = $emoji_status_custom_emoji_id;
         return $this;
@@ -484,7 +483,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getEmojiStatusExpirationDate(): int|null
+    public function getEmojiStatusExpirationDate(): ?int
     {
         return $this->emoji_status_expiration_date;
     }
@@ -494,7 +493,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setEmojiStatusExpirationDate(int|null $emoji_status_expiration_date): ChatFullInfo
+    public function setEmojiStatusExpirationDate(?int $emoji_status_expiration_date): ChatFullInfo
     {
         $this->emoji_status_expiration_date = $emoji_status_expiration_date;
         return $this;
@@ -503,7 +502,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFirstName(): string|null
+    public function getFirstName(): ?string
     {
         return $this->first_name;
     }
@@ -513,7 +512,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setFirstName(string|null $first_name): ChatFullInfo
+    public function setFirstName(?string $first_name): ChatFullInfo
     {
         $this->first_name = $first_name;
         return $this;
@@ -522,7 +521,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasAggressiveAntiSpamEnabled(): bool|null
+    public function getHasAggressiveAntiSpamEnabled(): ?bool
     {
         return $this->has_aggressive_anti_spam_enabled;
     }
@@ -532,7 +531,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasAggressiveAntiSpamEnabled(bool|null $has_aggressive_anti_spam_enabled): ChatFullInfo
+    public function setHasAggressiveAntiSpamEnabled(?bool $has_aggressive_anti_spam_enabled): ChatFullInfo
     {
         $this->has_aggressive_anti_spam_enabled = $has_aggressive_anti_spam_enabled;
         return $this;
@@ -541,7 +540,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasHiddenMembers(): bool|null
+    public function getHasHiddenMembers(): ?bool
     {
         return $this->has_hidden_members;
     }
@@ -551,7 +550,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasHiddenMembers(bool|null $has_hidden_members): ChatFullInfo
+    public function setHasHiddenMembers(?bool $has_hidden_members): ChatFullInfo
     {
         $this->has_hidden_members = $has_hidden_members;
         return $this;
@@ -560,7 +559,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasPrivateForwards(): bool|null
+    public function getHasPrivateForwards(): ?bool
     {
         return $this->has_private_forwards;
     }
@@ -570,7 +569,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasPrivateForwards(bool|null $has_private_forwards): ChatFullInfo
+    public function setHasPrivateForwards(?bool $has_private_forwards): ChatFullInfo
     {
         $this->has_private_forwards = $has_private_forwards;
         return $this;
@@ -579,7 +578,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasProtectedContent(): bool|null
+    public function getHasProtectedContent(): ?bool
     {
         return $this->has_protected_content;
     }
@@ -589,7 +588,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasProtectedContent(bool|null $has_protected_content): ChatFullInfo
+    public function setHasProtectedContent(?bool $has_protected_content): ChatFullInfo
     {
         $this->has_protected_content = $has_protected_content;
         return $this;
@@ -598,7 +597,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasRestrictedVoiceAndVideoMessages(): bool|null
+    public function getHasRestrictedVoiceAndVideoMessages(): ?bool
     {
         return $this->has_restricted_voice_and_video_messages;
     }
@@ -608,7 +607,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasRestrictedVoiceAndVideoMessages(bool|null $has_restricted_voice_and_video_messages): ChatFullInfo
+    public function setHasRestrictedVoiceAndVideoMessages(?bool $has_restricted_voice_and_video_messages): ChatFullInfo
     {
         $this->has_restricted_voice_and_video_messages = $has_restricted_voice_and_video_messages;
         return $this;
@@ -617,7 +616,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasVisibleHistory(): bool|null
+    public function getHasVisibleHistory(): ?bool
     {
         return $this->has_visible_history;
     }
@@ -627,7 +626,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setHasVisibleHistory(bool|null $has_visible_history): ChatFullInfo
+    public function setHasVisibleHistory(?bool $has_visible_history): ChatFullInfo
     {
         $this->has_visible_history = $has_visible_history;
         return $this;
@@ -636,7 +635,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getInviteLink(): string|null
+    public function getInviteLink(): ?string
     {
         return $this->invite_link;
     }
@@ -646,7 +645,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setInviteLink(string|null $invite_link): ChatFullInfo
+    public function setInviteLink(?string $invite_link): ChatFullInfo
     {
         $this->invite_link = $invite_link;
         return $this;
@@ -655,7 +654,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsForum(): bool|null
+    public function getIsForum(): ?bool
     {
         return $this->is_forum;
     }
@@ -665,7 +664,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setIsForum(bool|null $is_forum): ChatFullInfo
+    public function setIsForum(?bool $is_forum): ChatFullInfo
     {
         $this->is_forum = $is_forum;
         return $this;
@@ -674,7 +673,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getJoinByRequest(): bool|null
+    public function getJoinByRequest(): ?bool
     {
         return $this->join_by_request;
     }
@@ -684,7 +683,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setJoinByRequest(bool|null $join_by_request): ChatFullInfo
+    public function setJoinByRequest(?bool $join_by_request): ChatFullInfo
     {
         $this->join_by_request = $join_by_request;
         return $this;
@@ -693,7 +692,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getJoinToSendMessages(): bool|null
+    public function getJoinToSendMessages(): ?bool
     {
         return $this->join_to_send_messages;
     }
@@ -703,7 +702,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setJoinToSendMessages(bool|null $join_to_send_messages): ChatFullInfo
+    public function setJoinToSendMessages(?bool $join_to_send_messages): ChatFullInfo
     {
         $this->join_to_send_messages = $join_to_send_messages;
         return $this;
@@ -712,7 +711,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -722,7 +721,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setLastName(string|null $last_name): ChatFullInfo
+    public function setLastName(?string $last_name): ChatFullInfo
     {
         $this->last_name = $last_name;
         return $this;
@@ -731,7 +730,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLinkedChatId(): int|null
+    public function getLinkedChatId(): ?int
     {
         return $this->linked_chat_id;
     }
@@ -741,7 +740,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setLinkedChatId(int|null $linked_chat_id): ChatFullInfo
+    public function setLinkedChatId(?int $linked_chat_id): ChatFullInfo
     {
         $this->linked_chat_id = $linked_chat_id;
         return $this;
@@ -750,7 +749,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return ChatLocation|null
      */
-    public function getLocation(): ChatLocation|null
+    public function getLocation(): ?ChatLocation
     {
         return $this->location;
     }
@@ -760,7 +759,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setLocation(ChatLocation|null $location): ChatFullInfo
+    public function setLocation(?ChatLocation $location): ChatFullInfo
     {
         $this->location = $location;
         return $this;
@@ -769,7 +768,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getMessageAutoDeleteTime(): int|null
+    public function getMessageAutoDeleteTime(): ?int
     {
         return $this->message_auto_delete_time;
     }
@@ -779,7 +778,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setMessageAutoDeleteTime(int|null $message_auto_delete_time): ChatFullInfo
+    public function setMessageAutoDeleteTime(?int $message_auto_delete_time): ChatFullInfo
     {
         $this->message_auto_delete_time = $message_auto_delete_time;
         return $this;
@@ -788,7 +787,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return ChatPermissions|null
      */
-    public function getPermissions(): ChatPermissions|null
+    public function getPermissions(): ?ChatPermissions
     {
         return $this->permissions;
     }
@@ -798,7 +797,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setPermissions(ChatPermissions|null $permissions): ChatFullInfo
+    public function setPermissions(?ChatPermissions $permissions): ChatFullInfo
     {
         $this->permissions = $permissions;
         return $this;
@@ -807,7 +806,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getPersonalChat(): Chat|null
+    public function getPersonalChat(): ?Chat
     {
         return $this->personal_chat;
     }
@@ -817,7 +816,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setPersonalChat(Chat|null $personal_chat): ChatFullInfo
+    public function setPersonalChat(?Chat $personal_chat): ChatFullInfo
     {
         $this->personal_chat = $personal_chat;
         return $this;
@@ -826,7 +825,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return ChatPhoto|null
      */
-    public function getPhoto(): ChatPhoto|null
+    public function getPhoto(): ?ChatPhoto
     {
         return $this->photo;
     }
@@ -836,7 +835,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setPhoto(ChatPhoto|null $photo): ChatFullInfo
+    public function setPhoto(?ChatPhoto $photo): ChatFullInfo
     {
         $this->photo = $photo;
         return $this;
@@ -845,7 +844,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getPinnedMessage(): Message|null
+    public function getPinnedMessage(): ?Message
     {
         return $this->pinned_message;
     }
@@ -855,7 +854,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setPinnedMessage(Message|null $pinned_message): ChatFullInfo
+    public function setPinnedMessage(?Message $pinned_message): ChatFullInfo
     {
         $this->pinned_message = $pinned_message;
         return $this;
@@ -864,7 +863,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getProfileAccentColorId(): int|null
+    public function getProfileAccentColorId(): ?int
     {
         return $this->profile_accent_color_id;
     }
@@ -874,7 +873,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setProfileAccentColorId(int|null $profile_accent_color_id): ChatFullInfo
+    public function setProfileAccentColorId(?int $profile_accent_color_id): ChatFullInfo
     {
         $this->profile_accent_color_id = $profile_accent_color_id;
         return $this;
@@ -883,7 +882,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getProfileBackgroundCustomEmojiId(): string|null
+    public function getProfileBackgroundCustomEmojiId(): ?string
     {
         return $this->profile_background_custom_emoji_id;
     }
@@ -893,7 +892,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setProfileBackgroundCustomEmojiId(string|null $profile_background_custom_emoji_id): ChatFullInfo
+    public function setProfileBackgroundCustomEmojiId(?string $profile_background_custom_emoji_id): ChatFullInfo
     {
         $this->profile_background_custom_emoji_id = $profile_background_custom_emoji_id;
         return $this;
@@ -902,7 +901,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSlowModeDelay(): int|null
+    public function getSlowModeDelay(): ?int
     {
         return $this->slow_mode_delay;
     }
@@ -912,7 +911,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setSlowModeDelay(int|null $slow_mode_delay): ChatFullInfo
+    public function setSlowModeDelay(?int $slow_mode_delay): ChatFullInfo
     {
         $this->slow_mode_delay = $slow_mode_delay;
         return $this;
@@ -921,7 +920,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getStickerSetName(): string|null
+    public function getStickerSetName(): ?string
     {
         return $this->sticker_set_name;
     }
@@ -931,7 +930,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setStickerSetName(string|null $sticker_set_name): ChatFullInfo
+    public function setStickerSetName(?string $sticker_set_name): ChatFullInfo
     {
         $this->sticker_set_name = $sticker_set_name;
         return $this;
@@ -940,7 +939,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -950,7 +949,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setTitle(string|null $title): ChatFullInfo
+    public function setTitle(?string $title): ChatFullInfo
     {
         $this->title = $title;
         return $this;
@@ -959,7 +958,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getUnrestrictBoostCount(): int|null
+    public function getUnrestrictBoostCount(): ?int
     {
         return $this->unrestrict_boost_count;
     }
@@ -969,7 +968,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setUnrestrictBoostCount(int|null $unrestrict_boost_count): ChatFullInfo
+    public function setUnrestrictBoostCount(?int $unrestrict_boost_count): ChatFullInfo
     {
         $this->unrestrict_boost_count = $unrestrict_boost_count;
         return $this;
@@ -978,7 +977,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -988,7 +987,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setUsername(string|null $username): ChatFullInfo
+    public function setUsername(?string $username): ChatFullInfo
     {
         $this->username = $username;
         return $this;
@@ -997,7 +996,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendPaidMedia(): bool|null
+    public function getCanSendPaidMedia(): ?bool
     {
         return $this->can_send_paid_media;
     }
@@ -1007,7 +1006,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setCanSendPaidMedia(bool|null $can_send_paid_media): ChatFullInfo
+    public function setCanSendPaidMedia(?bool $can_send_paid_media): ChatFullInfo
     {
         $this->can_send_paid_media = $can_send_paid_media;
         return $this;
@@ -1016,7 +1015,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsDirectMessages(): bool|null
+    public function getIsDirectMessages(): ?bool
     {
         return $this->is_direct_messages;
     }
@@ -1026,7 +1025,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setIsDirectMessages(bool|null $is_direct_messages): ChatFullInfo
+    public function setIsDirectMessages(?bool $is_direct_messages): ChatFullInfo
     {
         $this->is_direct_messages = $is_direct_messages;
         return $this;
@@ -1035,7 +1034,7 @@ final class ChatFullInfo implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getParentChat(): Chat|null
+    public function getParentChat(): ?Chat
     {
         return $this->parent_chat;
     }
@@ -1045,7 +1044,7 @@ final class ChatFullInfo implements EntityInterface
      *
      * @return ChatFullInfo
      */
-    public function setParentChat(Chat|null $parent_chat): ChatFullInfo
+    public function setParentChat(?Chat $parent_chat): ChatFullInfo
     {
         $this->parent_chat = $parent_chat;
         return $this;

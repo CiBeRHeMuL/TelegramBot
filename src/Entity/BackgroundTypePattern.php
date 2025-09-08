@@ -30,8 +30,8 @@ final class BackgroundTypePattern extends AbstractBackgroundType
         protected Document $document,
         protected AbstractBackgroundFill $fill,
         protected int $intensity,
-        protected bool|null $is_inverted = null,
-        protected bool|null $is_moving = null,
+        protected ?bool $is_inverted = null,
+        protected ?bool $is_moving = null,
     ) {
         parent::__construct(BackgroundTypeTypeEnum::Pattern);
     }
@@ -96,7 +96,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     /**
      * @return bool|null
      */
-    public function getIsInverted(): bool|null
+    public function getIsInverted(): ?bool
     {
         return $this->is_inverted;
     }
@@ -106,7 +106,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
      *
      * @return BackgroundTypePattern
      */
-    public function setIsInverted(bool|null $is_inverted): BackgroundTypePattern
+    public function setIsInverted(?bool $is_inverted): BackgroundTypePattern
     {
         $this->is_inverted = $is_inverted;
         return $this;
@@ -115,7 +115,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     /**
      * @return bool|null
      */
-    public function getIsMoving(): bool|null
+    public function getIsMoving(): ?bool
     {
         return $this->is_moving;
     }
@@ -125,7 +125,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
      *
      * @return BackgroundTypePattern
      */
-    public function setIsMoving(bool|null $is_moving): BackgroundTypePattern
+    public function setIsMoving(?bool $is_moving): BackgroundTypePattern
     {
         $this->is_moving = $is_moving;
         return $this;

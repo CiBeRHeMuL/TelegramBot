@@ -14,10 +14,9 @@ class GetUserProfilePhotosRequest implements RequestInterface
      */
     public function __construct(
         private int $user_id,
-        private int|null $limit = null,
-        private int|null $offset = null,
-    ) {
-    }
+        private ?int $limit = null,
+        private ?int $offset = null,
+    ) {}
 
     public function getUserId(): int
     {
@@ -30,23 +29,23 @@ class GetUserProfilePhotosRequest implements RequestInterface
         return $this;
     }
 
-    public function getLimit(): int|null
+    public function getLimit(): ?int
     {
         return $this->limit;
     }
 
-    public function setLimit(int|null $limit): GetUserProfilePhotosRequest
+    public function setLimit(?int $limit): GetUserProfilePhotosRequest
     {
         $this->limit = $limit;
         return $this;
     }
 
-    public function getOffset(): int|null
+    public function getOffset(): ?int
     {
         return $this->offset;
     }
 
-    public function setOffset(int|null $offset): GetUserProfilePhotosRequest
+    public function setOffset(?int $offset): GetUserProfilePhotosRequest
     {
         $this->offset = $offset;
         return $this;

@@ -21,8 +21,7 @@ final class LabeledPrice implements EntityInterface
     public function __construct(
         protected string $label,
         protected int $amount,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

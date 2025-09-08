@@ -9,11 +9,11 @@ interface ResponseInterface
 {
     public function isOk(): bool;
 
-    public function getDescription(): string|null;
+    public function getDescription(): ?string;
 
-    public function getRawResult(): array|null;
+    public function getRawResult(): ?array;
 
-    public function getErrorCode(): HttpStatusCodeEnum|null;
+    public function getErrorCode(): ?HttpStatusCodeEnum;
 
-    public function getParameters(): ResponseParameters|null;
+    public function getParameters(): ?ResponseParameters;
 }

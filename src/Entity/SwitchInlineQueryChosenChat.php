@@ -19,18 +19,17 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      * username will be inserted
      */
     public function __construct(
-        protected bool|null $allow_bot_chats = null,
-        protected bool|null $allow_channel_chats = null,
-        protected bool|null $allow_group_chats = null,
-        protected bool|null $allow_user_chats = null,
-        protected string|null $query = null,
-    ) {
-    }
+        protected ?bool $allow_bot_chats = null,
+        protected ?bool $allow_channel_chats = null,
+        protected ?bool $allow_group_chats = null,
+        protected ?bool $allow_user_chats = null,
+        protected ?string $query = null,
+    ) {}
 
     /**
      * @return bool|null
      */
-    public function getAllowBotChats(): bool|null
+    public function getAllowBotChats(): ?bool
     {
         return $this->allow_bot_chats;
     }
@@ -40,7 +39,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      *
      * @return SwitchInlineQueryChosenChat
      */
-    public function setAllowBotChats(bool|null $allow_bot_chats): SwitchInlineQueryChosenChat
+    public function setAllowBotChats(?bool $allow_bot_chats): SwitchInlineQueryChosenChat
     {
         $this->allow_bot_chats = $allow_bot_chats;
         return $this;
@@ -49,7 +48,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getAllowChannelChats(): bool|null
+    public function getAllowChannelChats(): ?bool
     {
         return $this->allow_channel_chats;
     }
@@ -59,7 +58,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      *
      * @return SwitchInlineQueryChosenChat
      */
-    public function setAllowChannelChats(bool|null $allow_channel_chats): SwitchInlineQueryChosenChat
+    public function setAllowChannelChats(?bool $allow_channel_chats): SwitchInlineQueryChosenChat
     {
         $this->allow_channel_chats = $allow_channel_chats;
         return $this;
@@ -68,7 +67,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getAllowGroupChats(): bool|null
+    public function getAllowGroupChats(): ?bool
     {
         return $this->allow_group_chats;
     }
@@ -78,7 +77,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      *
      * @return SwitchInlineQueryChosenChat
      */
-    public function setAllowGroupChats(bool|null $allow_group_chats): SwitchInlineQueryChosenChat
+    public function setAllowGroupChats(?bool $allow_group_chats): SwitchInlineQueryChosenChat
     {
         $this->allow_group_chats = $allow_group_chats;
         return $this;
@@ -87,7 +86,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getAllowUserChats(): bool|null
+    public function getAllowUserChats(): ?bool
     {
         return $this->allow_user_chats;
     }
@@ -97,7 +96,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      *
      * @return SwitchInlineQueryChosenChat
      */
-    public function setAllowUserChats(bool|null $allow_user_chats): SwitchInlineQueryChosenChat
+    public function setAllowUserChats(?bool $allow_user_chats): SwitchInlineQueryChosenChat
     {
         $this->allow_user_chats = $allow_user_chats;
         return $this;
@@ -106,7 +105,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
     /**
      * @return string|null
      */
-    public function getQuery(): string|null
+    public function getQuery(): ?string
     {
         return $this->query;
     }
@@ -116,7 +115,7 @@ final class SwitchInlineQueryChosenChat implements EntityInterface
      *
      * @return SwitchInlineQueryChosenChat
      */
-    public function setQuery(string|null $query): SwitchInlineQueryChosenChat
+    public function setQuery(?string $query): SwitchInlineQueryChosenChat
     {
         $this->query = $query;
         return $this;

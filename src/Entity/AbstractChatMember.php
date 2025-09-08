@@ -21,8 +21,7 @@ abstract class AbstractChatMember implements EntityInterface
 {
     public function __construct(
         protected readonly ChatMemberStatusEnum $status,
-    ) {
-    }
+    ) {}
 
     public function getStatus(): ChatMemberStatusEnum
     {

@@ -15,15 +15,14 @@ final class ForumTopicEdited implements EntityInterface
      * an empty string if the icon was removed
      */
     public function __construct(
-        protected string|null $name = null,
-        protected string|null $icon_custom_emoji_id = null,
-    ) {
-    }
+        protected ?string $name = null,
+        protected ?string $icon_custom_emoji_id = null,
+    ) {}
 
     /**
      * @return string|null
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -33,7 +32,7 @@ final class ForumTopicEdited implements EntityInterface
      *
      * @return ForumTopicEdited
      */
-    public function setName(string|null $name): ForumTopicEdited
+    public function setName(?string $name): ForumTopicEdited
     {
         $this->name = $name;
         return $this;
@@ -42,7 +41,7 @@ final class ForumTopicEdited implements EntityInterface
     /**
      * @return string|null
      */
-    public function getIconCustomEmojiId(): string|null
+    public function getIconCustomEmojiId(): ?string
     {
         return $this->icon_custom_emoji_id;
     }
@@ -52,7 +51,7 @@ final class ForumTopicEdited implements EntityInterface
      *
      * @return ForumTopicEdited
      */
-    public function setIconCustomEmojiId(string|null $icon_custom_emoji_id): ForumTopicEdited
+    public function setIconCustomEmojiId(?string $icon_custom_emoji_id): ForumTopicEdited
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;

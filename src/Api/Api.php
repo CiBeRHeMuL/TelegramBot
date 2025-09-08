@@ -39,7 +39,7 @@ class Api implements ApiInterface
         private LoggerInterface $logger,
         private FileSystemInterface $fileSystem,
         private bool $throwOnErrorResponse = true,
-        SerializerInterface|null $serializer = null,
+        ?SerializerInterface $serializer = null,
     ) {
         if ($serializer === null) {
             throw new BadMethodCallException('Passing null to $serializer is deprecated. This will be removed in v3.1.0');
@@ -2578,7 +2578,7 @@ class Api implements ApiInterface
         string $fileId,
         Fs\Dir $targetDir,
         bool $overwrite = false,
-        Res\GetFileResponse|null &$getFileResponse = null,
+        ?Res\GetFileResponse &$getFileResponse = null,
     ): bool {
         $getFileResponse = $this->getFile(new Req\GetFileRequest($fileId));
         if ($getFileResponse->getFile() !== null) {
@@ -2602,7 +2602,7 @@ class Api implements ApiInterface
         string $fileId,
         Fs\File $targetFile,
         bool $overwrite,
-        Res\GetFileResponse|null &$getFileResponse = null,
+        ?Res\GetFileResponse &$getFileResponse = null,
     ): bool {
         $getFileResponse = $this->getFile(new Req\GetFileRequest($fileId));
         if ($getFileResponse->getFile() !== null) {
@@ -2643,7 +2643,7 @@ class Api implements ApiInterface
      *
      * @return RawResponse
      */
-    private function send(string $method, Req\RequestInterface|null $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
+    private function send(string $method, ?Req\RequestInterface $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
         $code = 200;
         $prevException = null;
@@ -2697,7 +2697,7 @@ class Api implements ApiInterface
      *
      * @return T|null
      */
-    private function buildClassForResponse(string $entityClass, Res\RawResponse $rawResponse): object|null
+    private function buildClassForResponse(string $entityClass, Res\RawResponse $rawResponse): ?object
     {
         $data = $rawResponse->getResult();
         try {
@@ -2720,7 +2720,7 @@ class Api implements ApiInterface
      *
      * @return T[]|null
      */
-    private function buildClassArrayForResponse(string $entityClass, Res\RawResponse $rawResponse): array|null
+    private function buildClassArrayForResponse(string $entityClass, Res\RawResponse $rawResponse): ?array
     {
         $data = $rawResponse->getResult();
         try {

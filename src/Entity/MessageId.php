@@ -16,8 +16,7 @@ final class MessageId implements EntityInterface
      */
     public function __construct(
         protected int $message_id,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

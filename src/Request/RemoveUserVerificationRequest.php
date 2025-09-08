@@ -12,8 +12,7 @@ class RemoveUserVerificationRequest implements RequestInterface
      */
     public function __construct(
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getUserId(): int
     {

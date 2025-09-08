@@ -14,8 +14,7 @@ class SetStickerEmojiListRequest implements RequestInterface
     public function __construct(
         private array $emoji_list,
         private string $sticker,
-    ) {
-    }
+    ) {}
 
     public function getEmojiList(): array
     {

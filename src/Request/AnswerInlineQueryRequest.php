@@ -28,12 +28,11 @@ class AnswerInlineQueryRequest implements RequestInterface
     public function __construct(
         private string $inline_query_id,
         private array $results,
-        private InlineQueryResultsButton|null $button = null,
-        private int|null $cache_time = null,
-        private bool|null $is_personal = null,
-        private string|null $next_offset = null,
-    ) {
-    }
+        private ?InlineQueryResultsButton $button = null,
+        private ?int $cache_time = null,
+        private ?bool $is_personal = null,
+        private ?string $next_offset = null,
+    ) {}
 
     public function getInlineQueryId(): string
     {
@@ -57,45 +56,45 @@ class AnswerInlineQueryRequest implements RequestInterface
         return $this;
     }
 
-    public function getButton(): InlineQueryResultsButton|null
+    public function getButton(): ?InlineQueryResultsButton
     {
         return $this->button;
     }
 
-    public function setButton(InlineQueryResultsButton|null $button): AnswerInlineQueryRequest
+    public function setButton(?InlineQueryResultsButton $button): AnswerInlineQueryRequest
     {
         $this->button = $button;
         return $this;
     }
 
-    public function getCacheTime(): int|null
+    public function getCacheTime(): ?int
     {
         return $this->cache_time;
     }
 
-    public function setCacheTime(int|null $cache_time): AnswerInlineQueryRequest
+    public function setCacheTime(?int $cache_time): AnswerInlineQueryRequest
     {
         $this->cache_time = $cache_time;
         return $this;
     }
 
-    public function getIsPersonal(): bool|null
+    public function getIsPersonal(): ?bool
     {
         return $this->is_personal;
     }
 
-    public function setIsPersonal(bool|null $is_personal): AnswerInlineQueryRequest
+    public function setIsPersonal(?bool $is_personal): AnswerInlineQueryRequest
     {
         $this->is_personal = $is_personal;
         return $this;
     }
 
-    public function getNextOffset(): string|null
+    public function getNextOffset(): ?string
     {
         return $this->next_offset;
     }
 
-    public function setNextOffset(string|null $next_offset): AnswerInlineQueryRequest
+    public function setNextOffset(?string $next_offset): AnswerInlineQueryRequest
     {
         $this->next_offset = $next_offset;
         return $this;

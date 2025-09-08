@@ -12,8 +12,7 @@ readonly class UpdateTypeChecker implements CheckerInterface
 {
     public function __construct(
         private UpdateTypeEnum $expectedType,
-    ) {
-    }
+    ) {}
 
     public function check(Update $update): bool
     {

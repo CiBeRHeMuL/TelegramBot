@@ -25,10 +25,9 @@ final class File implements EntityInterface
     public function __construct(
         protected string $file_id,
         protected string $file_unique_id,
-        protected int|null $file_size = null,
-        protected string|null $file_path = null,
-    ) {
-    }
+        protected ?int $file_size = null,
+        protected ?string $file_path = null,
+    ) {}
 
     public function getFileId(): string
     {
@@ -52,23 +51,23 @@ final class File implements EntityInterface
         return $this;
     }
 
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
 
-    public function setFileSize(int|null $file_size): File
+    public function setFileSize(?int $file_size): File
     {
         $this->file_size = $file_size;
         return $this;
     }
 
-    public function getFilePath(): string|null
+    public function getFilePath(): ?string
     {
         return $this->file_path;
     }
 
-    public function setFilePath(string|null $file_path): File
+    public function setFilePath(?string $file_path): File
     {
         $this->file_path = $file_path;
         return $this;

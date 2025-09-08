@@ -35,17 +35,16 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function __construct(
         private float $latitude,
         private float $longitude,
-        private ChatId|null $chat_id = null,
-        private int|null $heading = null,
-        private float|null $horizontal_accuracy = null,
-        private string|null $inline_message_id = null,
-        private int|null $live_period = null,
-        private int|null $message_id = null,
-        private int|null $proximity_alert_radius = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?int $heading = null,
+        private ?float $horizontal_accuracy = null,
+        private ?string $inline_message_id = null,
+        private ?int $live_period = null,
+        private ?int $message_id = null,
+        private ?int $proximity_alert_radius = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getLatitude(): float
     {
@@ -69,100 +68,100 @@ class EditMessageLiveLocationRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): EditMessageLiveLocationRequest
+    public function setChatId(?ChatId $chat_id): EditMessageLiveLocationRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getHeading(): int|null
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
 
-    public function setHeading(int|null $heading): EditMessageLiveLocationRequest
+    public function setHeading(?int $heading): EditMessageLiveLocationRequest
     {
         $this->heading = $heading;
         return $this;
     }
 
-    public function getHorizontalAccuracy(): float|null
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontal_accuracy;
     }
 
-    public function setHorizontalAccuracy(float|null $horizontal_accuracy): EditMessageLiveLocationRequest
+    public function setHorizontalAccuracy(?float $horizontal_accuracy): EditMessageLiveLocationRequest
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): EditMessageLiveLocationRequest
+    public function setInlineMessageId(?string $inline_message_id): EditMessageLiveLocationRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getLivePeriod(): int|null
+    public function getLivePeriod(): ?int
     {
         return $this->live_period;
     }
 
-    public function setLivePeriod(int|null $live_period): EditMessageLiveLocationRequest
+    public function setLivePeriod(?int $live_period): EditMessageLiveLocationRequest
     {
         $this->live_period = $live_period;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): EditMessageLiveLocationRequest
+    public function setMessageId(?int $message_id): EditMessageLiveLocationRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getProximityAlertRadius(): int|null
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximity_alert_radius;
     }
 
-    public function setProximityAlertRadius(int|null $proximity_alert_radius): EditMessageLiveLocationRequest
+    public function setProximityAlertRadius(?int $proximity_alert_radius): EditMessageLiveLocationRequest
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): EditMessageLiveLocationRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageLiveLocationRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageLiveLocationRequest
+    public function setBusinessConnectionId(?string $business_connection_id): EditMessageLiveLocationRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

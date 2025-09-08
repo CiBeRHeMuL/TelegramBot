@@ -22,12 +22,11 @@ final class Location implements EntityInterface
     public function __construct(
         protected float $latitude,
         protected float $longitude,
-        protected float|null $horizontal_accuracy = null,
-        protected int|null $live_period = null,
-        protected int|null $heading = null,
-        protected int|null $proximity_alert_radius = null,
-    ) {
-    }
+        protected ?float $horizontal_accuracy = null,
+        protected ?int $live_period = null,
+        protected ?int $heading = null,
+        protected ?int $proximity_alert_radius = null,
+    ) {}
 
     /**
      * @return float
@@ -70,7 +69,7 @@ final class Location implements EntityInterface
     /**
      * @return float|null
      */
-    public function getHorizontalAccuracy(): float|null
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontal_accuracy;
     }
@@ -80,7 +79,7 @@ final class Location implements EntityInterface
      *
      * @return Location
      */
-    public function setHorizontalAccuracy(float|null $horizontal_accuracy): Location
+    public function setHorizontalAccuracy(?float $horizontal_accuracy): Location
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
@@ -89,7 +88,7 @@ final class Location implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLivePeriod(): int|null
+    public function getLivePeriod(): ?int
     {
         return $this->live_period;
     }
@@ -99,7 +98,7 @@ final class Location implements EntityInterface
      *
      * @return Location
      */
-    public function setLivePeriod(int|null $live_period): Location
+    public function setLivePeriod(?int $live_period): Location
     {
         $this->live_period = $live_period;
         return $this;
@@ -108,7 +107,7 @@ final class Location implements EntityInterface
     /**
      * @return int|null
      */
-    public function getHeading(): int|null
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
@@ -118,7 +117,7 @@ final class Location implements EntityInterface
      *
      * @return Location
      */
-    public function setHeading(int|null $heading): Location
+    public function setHeading(?int $heading): Location
     {
         $this->heading = $heading;
         return $this;
@@ -127,7 +126,7 @@ final class Location implements EntityInterface
     /**
      * @return int|null
      */
-    public function getProximityAlertRadius(): int|null
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximity_alert_radius;
     }
@@ -137,7 +136,7 @@ final class Location implements EntityInterface
      *
      * @return Location
      */
-    public function setProximityAlertRadius(int|null $proximity_alert_radius): Location
+    public function setProximityAlertRadius(?int $proximity_alert_radius): Location
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;

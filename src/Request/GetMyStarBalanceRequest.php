@@ -7,6 +7,5 @@ class GetMyStarBalanceRequest implements RequestInterface
     /**
      */
     public function __construct(
-    ) {
-    }
+    ) {}
 }

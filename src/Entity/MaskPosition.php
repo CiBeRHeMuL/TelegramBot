@@ -25,8 +25,7 @@ final class MaskPosition implements EntityInterface
         protected float $x_shift,
         protected float $y_shift,
         protected float $scale,
-    ) {
-    }
+    ) {}
 
     /**
      * @return MaskPositionEnum

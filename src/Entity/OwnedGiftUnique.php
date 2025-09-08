@@ -35,12 +35,12 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function __construct(
         protected UniqueGift $gift,
         protected int $send_date,
-        protected bool|null $can_be_transferred = null,
-        protected bool|null $is_saved = null,
-        protected string|null $owned_gift_id = null,
-        protected User|null $sender_user = null,
-        protected int|null $transfer_star_count = null,
-        protected int|null $next_transfer_date = null,
+        protected ?bool $can_be_transferred = null,
+        protected ?bool $is_saved = null,
+        protected ?string $owned_gift_id = null,
+        protected ?User $sender_user = null,
+        protected ?int $transfer_star_count = null,
+        protected ?int $next_transfer_date = null,
     ) {
         parent::__construct(OwnedGiftTypeEnum::Unique);
     }
@@ -86,7 +86,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getCanBeTransferred(): bool|null
+    public function getCanBeTransferred(): ?bool
     {
         return $this->can_be_transferred;
     }
@@ -96,7 +96,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setCanBeTransferred(bool|null $can_be_transferred): OwnedGiftUnique
+    public function setCanBeTransferred(?bool $can_be_transferred): OwnedGiftUnique
     {
         $this->can_be_transferred = $can_be_transferred;
         return $this;
@@ -105,7 +105,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getIsSaved(): bool|null
+    public function getIsSaved(): ?bool
     {
         return $this->is_saved;
     }
@@ -115,7 +115,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setIsSaved(bool|null $is_saved): OwnedGiftUnique
+    public function setIsSaved(?bool $is_saved): OwnedGiftUnique
     {
         $this->is_saved = $is_saved;
         return $this;
@@ -124,7 +124,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return string|null
      */
-    public function getOwnedGiftId(): string|null
+    public function getOwnedGiftId(): ?string
     {
         return $this->owned_gift_id;
     }
@@ -134,7 +134,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setOwnedGiftId(string|null $owned_gift_id): OwnedGiftUnique
+    public function setOwnedGiftId(?string $owned_gift_id): OwnedGiftUnique
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
@@ -143,7 +143,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return User|null
      */
-    public function getSenderUser(): User|null
+    public function getSenderUser(): ?User
     {
         return $this->sender_user;
     }
@@ -153,7 +153,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setSenderUser(User|null $sender_user): OwnedGiftUnique
+    public function setSenderUser(?User $sender_user): OwnedGiftUnique
     {
         $this->sender_user = $sender_user;
         return $this;
@@ -162,7 +162,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return int|null
      */
-    public function getTransferStarCount(): int|null
+    public function getTransferStarCount(): ?int
     {
         return $this->transfer_star_count;
     }
@@ -172,7 +172,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setTransferStarCount(int|null $transfer_star_count): OwnedGiftUnique
+    public function setTransferStarCount(?int $transfer_star_count): OwnedGiftUnique
     {
         $this->transfer_star_count = $transfer_star_count;
         return $this;
@@ -181,7 +181,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     /**
      * @return int|null
      */
-    public function getNextTransferDate(): int|null
+    public function getNextTransferDate(): ?int
     {
         return $this->next_transfer_date;
     }
@@ -191,7 +191,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
      *
      * @return OwnedGiftUnique
      */
-    public function setNextTransferDate(int|null $next_transfer_date): OwnedGiftUnique
+    public function setNextTransferDate(?int $next_transfer_date): OwnedGiftUnique
     {
         $this->next_transfer_date = $next_transfer_date;
         return $this;

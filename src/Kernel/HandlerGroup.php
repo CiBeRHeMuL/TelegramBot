@@ -19,8 +19,7 @@ final readonly class HandlerGroup
         private RequestHandlerInterface $requestHandler,
         private array $middlewares = [],
         private int $priority = 0,
-    ) {
-    }
+    ) {}
 
     public function getChecker(): CheckerInterface
     {

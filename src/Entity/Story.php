@@ -18,8 +18,7 @@ final class Story implements EntityInterface
     public function __construct(
         protected Chat $chat,
         protected int $id,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Chat

@@ -8,8 +8,7 @@ final class UpdateReceivedEvent extends AbstractEvent
 {
     public function __construct(
         private readonly Update $update,
-    ) {
-    }
+    ) {}
 
     public function getUpdate(): Update
     {

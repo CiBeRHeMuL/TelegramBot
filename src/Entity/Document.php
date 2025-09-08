@@ -28,12 +28,11 @@ final class Document implements EntityInterface
     public function __construct(
         protected string $file_id,
         protected string $file_unique_id,
-        protected PhotoSize|null $thumbnail = null,
-        protected string|null $file_name = null,
-        protected string|null $mime_type = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?PhotoSize $thumbnail = null,
+        protected ?string $file_name = null,
+        protected ?string $mime_type = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -76,7 +75,7 @@ final class Document implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -86,7 +85,7 @@ final class Document implements EntityInterface
      *
      * @return Document
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): Document
+    public function setThumbnail(?PhotoSize $thumbnail): Document
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -95,7 +94,7 @@ final class Document implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFileName(): string|null
+    public function getFileName(): ?string
     {
         return $this->file_name;
     }
@@ -105,7 +104,7 @@ final class Document implements EntityInterface
      *
      * @return Document
      */
-    public function setFileName(string|null $file_name): Document
+    public function setFileName(?string $file_name): Document
     {
         $this->file_name = $file_name;
         return $this;
@@ -114,7 +113,7 @@ final class Document implements EntityInterface
     /**
      * @return string|null
      */
-    public function getMimeType(): string|null
+    public function getMimeType(): ?string
     {
         return $this->mime_type;
     }
@@ -124,7 +123,7 @@ final class Document implements EntityInterface
      *
      * @return Document
      */
-    public function setMimeType(string|null $mime_type): Document
+    public function setMimeType(?string $mime_type): Document
     {
         $this->mime_type = $mime_type;
         return $this;
@@ -133,7 +132,7 @@ final class Document implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -143,7 +142,7 @@ final class Document implements EntityInterface
      *
      * @return Document
      */
-    public function setFileSize(int|null $file_size): Document
+    public function setFileSize(?int $file_size): Document
     {
         $this->file_size = $file_size;
         return $this;

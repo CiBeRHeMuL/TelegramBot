@@ -29,10 +29,9 @@ final class InlineQueryResultsButton implements EntityInterface
      */
     public function __construct(
         protected string $text,
-        protected string|null $start_parameter = null,
-        protected WebAppInfo|null $web_app = null,
-    ) {
-    }
+        protected ?string $start_parameter = null,
+        protected ?WebAppInfo $web_app = null,
+    ) {}
 
     /**
      * @return string
@@ -56,7 +55,7 @@ final class InlineQueryResultsButton implements EntityInterface
     /**
      * @return string|null
      */
-    public function getStartParameter(): string|null
+    public function getStartParameter(): ?string
     {
         return $this->start_parameter;
     }
@@ -66,7 +65,7 @@ final class InlineQueryResultsButton implements EntityInterface
      *
      * @return InlineQueryResultsButton
      */
-    public function setStartParameter(string|null $start_parameter): InlineQueryResultsButton
+    public function setStartParameter(?string $start_parameter): InlineQueryResultsButton
     {
         $this->start_parameter = $start_parameter;
         return $this;
@@ -75,7 +74,7 @@ final class InlineQueryResultsButton implements EntityInterface
     /**
      * @return WebAppInfo|null
      */
-    public function getWebApp(): WebAppInfo|null
+    public function getWebApp(): ?WebAppInfo
     {
         return $this->web_app;
     }
@@ -85,7 +84,7 @@ final class InlineQueryResultsButton implements EntityInterface
      *
      * @return InlineQueryResultsButton
      */
-    public function setWebApp(WebAppInfo|null $web_app): InlineQueryResultsButton
+    public function setWebApp(?WebAppInfo $web_app): InlineQueryResultsButton
     {
         $this->web_app = $web_app;
         return $this;

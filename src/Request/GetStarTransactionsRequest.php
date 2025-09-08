@@ -13,28 +13,27 @@ class GetStarTransactionsRequest implements RequestInterface
      * @param int|null $offset Number of transactions to skip in the response
      */
     public function __construct(
-        private int|null $limit = null,
-        private int|null $offset = null,
-    ) {
-    }
+        private ?int $limit = null,
+        private ?int $offset = null,
+    ) {}
 
-    public function getLimit(): int|null
+    public function getLimit(): ?int
     {
         return $this->limit;
     }
 
-    public function setLimit(int|null $limit): GetStarTransactionsRequest
+    public function setLimit(?int $limit): GetStarTransactionsRequest
     {
         $this->limit = $limit;
         return $this;
     }
 
-    public function getOffset(): int|null
+    public function getOffset(): ?int
     {
         return $this->offset;
     }
 
-    public function setOffset(int|null $offset): GetStarTransactionsRequest
+    public function setOffset(?int $offset): GetStarTransactionsRequest
     {
         $this->offset = $offset;
         return $this;

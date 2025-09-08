@@ -16,14 +16,13 @@ final class KeyboardButtonPollType implements EntityInterface
      * If regular is passed, only regular polls will be allowed. Otherwise, the user will be allowed to create a poll of any type.
      */
     public function __construct(
-        protected PollTypeEnum|null $type = null,
-    ) {
-    }
+        protected ?PollTypeEnum $type = null,
+    ) {}
 
     /**
      * @return PollTypeEnum|null
      */
-    public function getType(): PollTypeEnum|null
+    public function getType(): ?PollTypeEnum
     {
         return $this->type;
     }
@@ -33,7 +32,7 @@ final class KeyboardButtonPollType implements EntityInterface
      *
      * @return KeyboardButtonPollType
      */
-    public function setType(PollTypeEnum|null $type): KeyboardButtonPollType
+    public function setType(?PollTypeEnum $type): KeyboardButtonPollType
     {
         $this->type = $type;
         return $this;

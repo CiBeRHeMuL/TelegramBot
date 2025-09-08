@@ -261,110 +261,110 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected int $message_id,
         protected int $date,
         protected Chat $chat,
-        protected int|null $message_thread_id = null,
-        protected User|null $from = null,
-        protected Chat|null $sender_chat = null,
-        protected int|null $sender_boost_count = null,
-        protected AbstractMessageOrigin|null $forward_origin = null,
-        protected bool|null $is_topic_message = null,
-        protected bool|null $is_automatic_forward = null,
-        protected Message|null $reply_to_message = null,
-        protected ExternalReplyInfo|null $external_reply = null,
-        protected TextQuote|null $quote = null,
-        protected Story|null $reply_to_story = null,
-        protected User|null $via_bot = null,
-        protected int|null $edit_date = null,
-        protected bool|null $has_protected_content = null,
-        protected string|null $media_group_id = null,
-        protected string|null $author_signature = null,
-        protected string|null $text = null,
+        protected ?int $message_thread_id = null,
+        protected ?User $from = null,
+        protected ?Chat $sender_chat = null,
+        protected ?int $sender_boost_count = null,
+        protected ?AbstractMessageOrigin $forward_origin = null,
+        protected ?bool $is_topic_message = null,
+        protected ?bool $is_automatic_forward = null,
+        protected ?Message $reply_to_message = null,
+        protected ?ExternalReplyInfo $external_reply = null,
+        protected ?TextQuote $quote = null,
+        protected ?Story $reply_to_story = null,
+        protected ?User $via_bot = null,
+        protected ?int $edit_date = null,
+        protected ?bool $has_protected_content = null,
+        protected ?string $media_group_id = null,
+        protected ?string $author_signature = null,
+        protected ?string $text = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $entities = null,
-        protected LinkPreviewOptions|null $link_preview_options = null,
-        protected Animation|null $animation = null,
-        protected Audio|null $audio = null,
-        protected Document|null $document = null,
+        protected ?array $entities = null,
+        protected ?LinkPreviewOptions $link_preview_options = null,
+        protected ?Animation $animation = null,
+        protected ?Audio $audio = null,
+        protected ?Document $document = null,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $photo = null,
-        protected Sticker|null $sticker = null,
-        protected Story|null $story = null,
-        protected Video|null $video = null,
-        protected VideoNote|null $video_note = null,
-        protected Voice|null $voice = null,
-        protected string|null $caption = null,
+        protected ?array $photo = null,
+        protected ?Sticker $sticker = null,
+        protected ?Story $story = null,
+        protected ?Video $video = null,
+        protected ?VideoNote $video_note = null,
+        protected ?Voice $voice = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected bool|null $has_media_spoiler = null,
-        protected Contact|null $contact = null,
-        protected Dice|null $dice = null,
-        protected Game|null $game = null,
-        protected Poll|null $poll = null,
-        protected Venue|null $venue = null,
-        protected Location|null $location = null,
+        protected ?array $caption_entities = null,
+        protected ?bool $has_media_spoiler = null,
+        protected ?Contact $contact = null,
+        protected ?Dice $dice = null,
+        protected ?Game $game = null,
+        protected ?Poll $poll = null,
+        protected ?Venue $venue = null,
+        protected ?Location $location = null,
         #[ArrayType(User::class)]
-        protected array|null $new_chat_members = null,
-        protected User|null $left_chat_member = null,
-        protected string|null $new_chat_title = null,
+        protected ?array $new_chat_members = null,
+        protected ?User $left_chat_member = null,
+        protected ?string $new_chat_title = null,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $new_chat_photo = null,
-        protected bool|null $delete_chat_photo = null,
-        protected bool|null $group_chat_created = null,
-        protected bool|null $supergroup_chat_created = null,
-        protected bool|null $channel_chat_created = null,
-        protected MessageAutoDeleteTimerChanged|null $message_auto_delete_timer_changed = null,
-        protected int|null $migrate_to_chat_id = null,
-        protected int|null $migrate_from_chat_id = null,
-        protected AbstractMaybeInaccessibleMessage|null $pinned_message = null,
-        protected Invoice|null $invoice = null,
-        protected SuccessfulPayment|null $successful_payment = null,
-        protected UsersShared|null $users_shared = null,
-        protected ChatShared|null $chat_shared = null,
-        protected string|null $connected_website = null,
-        protected WriteAccessAllowed|null $write_access_allowed = null,
-        protected PassportData|null $passport_data = null,
-        protected ProximityAlertTriggered|null $proximity_alert_triggered = null,
-        protected ChatBoostAdded|null $boost_added = null,
-        protected ForumTopicCreated|null $forum_topic_created = null,
-        protected ForumTopicEdited|null $forum_topic_edited = null,
-        protected ForumTopicClosed|null $forum_topic_closed = null,
-        protected ForumTopicReopened|null $forum_topic_reopened = null,
-        protected GeneralForumTopicHidden|null $general_forum_topic_hidden = null,
-        protected GeneralForumTopicUnhidden|null $general_forum_topic_unhidden = null,
-        protected GiveawayCreated|null $giveaway_created = null,
-        protected Giveaway|null $giveaway = null,
-        protected GiveawayWinners|null $giveaway_winners = null,
-        protected GiveawayCompleted|null $giveaway_completed = null,
-        protected VideoChatScheduled|null $video_chat_scheduled = null,
-        protected VideoChatStarted|null $video_chat_started = null,
-        protected VideoChatEnded|null $video_chat_ended = null,
-        protected VideoChatParticipantsInvited|null $video_chat_participants_invited = null,
-        protected WebAppData|null $web_app_data = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected ChatBackground|null $chat_background_set = null,
-        protected string|null $business_connection_id = null,
-        protected User|null $sender_business_bot = null,
-        protected bool|null $is_from_offline = null,
-        protected string|null $effect_id = null,
-        protected bool|null $show_caption_above_media = null,
-        protected PaidMediaInfo|null $paid_media = null,
-        protected RefundedPayment|null $refunded_payment = null,
-        protected GiftInfo|null $gift = null,
-        protected UniqueGiftInfo|null $unique_gift = null,
-        protected PaidMessagePriceChanged|null $paid_message_price_changed = null,
-        protected int|null $paid_star_count = null,
-        protected Checklist|null $checklist = null,
-        protected ChecklistTasksDone|null $checklist_tasks_done = null,
-        protected ChecklistTasksAdded|null $checklist_tasks_added = null,
-        protected DirectMessagePriceChanged|null $direct_message_price_changed = null,
-        protected DirectMessagesTopic|null $direct_messages_topic = null,
-        protected int|null $reply_to_checklist_task_id = null,
-        protected bool|null $is_paid_post = null,
-        protected SuggestedPostInfo|null $suggested_post_info = null,
-        protected SuggestedPostApproved|null $suggested_post_approved = null,
-        protected SuggestedPostApprovalFailed|null $suggested_post_approval_failed = null,
-        protected SuggestedPostDeclined|null $suggested_post_declined = null,
-        protected SuggestedPostPaid|null $suggested_post_paid = null,
-        protected SuggestedPostRefunded|null $suggested_post_refunded = null,
+        protected ?array $new_chat_photo = null,
+        protected ?bool $delete_chat_photo = null,
+        protected ?bool $group_chat_created = null,
+        protected ?bool $supergroup_chat_created = null,
+        protected ?bool $channel_chat_created = null,
+        protected ?MessageAutoDeleteTimerChanged $message_auto_delete_timer_changed = null,
+        protected ?int $migrate_to_chat_id = null,
+        protected ?int $migrate_from_chat_id = null,
+        protected ?AbstractMaybeInaccessibleMessage $pinned_message = null,
+        protected ?Invoice $invoice = null,
+        protected ?SuccessfulPayment $successful_payment = null,
+        protected ?UsersShared $users_shared = null,
+        protected ?ChatShared $chat_shared = null,
+        protected ?string $connected_website = null,
+        protected ?WriteAccessAllowed $write_access_allowed = null,
+        protected ?PassportData $passport_data = null,
+        protected ?ProximityAlertTriggered $proximity_alert_triggered = null,
+        protected ?ChatBoostAdded $boost_added = null,
+        protected ?ForumTopicCreated $forum_topic_created = null,
+        protected ?ForumTopicEdited $forum_topic_edited = null,
+        protected ?ForumTopicClosed $forum_topic_closed = null,
+        protected ?ForumTopicReopened $forum_topic_reopened = null,
+        protected ?GeneralForumTopicHidden $general_forum_topic_hidden = null,
+        protected ?GeneralForumTopicUnhidden $general_forum_topic_unhidden = null,
+        protected ?GiveawayCreated $giveaway_created = null,
+        protected ?Giveaway $giveaway = null,
+        protected ?GiveawayWinners $giveaway_winners = null,
+        protected ?GiveawayCompleted $giveaway_completed = null,
+        protected ?VideoChatScheduled $video_chat_scheduled = null,
+        protected ?VideoChatStarted $video_chat_started = null,
+        protected ?VideoChatEnded $video_chat_ended = null,
+        protected ?VideoChatParticipantsInvited $video_chat_participants_invited = null,
+        protected ?WebAppData $web_app_data = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?ChatBackground $chat_background_set = null,
+        protected ?string $business_connection_id = null,
+        protected ?User $sender_business_bot = null,
+        protected ?bool $is_from_offline = null,
+        protected ?string $effect_id = null,
+        protected ?bool $show_caption_above_media = null,
+        protected ?PaidMediaInfo $paid_media = null,
+        protected ?RefundedPayment $refunded_payment = null,
+        protected ?GiftInfo $gift = null,
+        protected ?UniqueGiftInfo $unique_gift = null,
+        protected ?PaidMessagePriceChanged $paid_message_price_changed = null,
+        protected ?int $paid_star_count = null,
+        protected ?Checklist $checklist = null,
+        protected ?ChecklistTasksDone $checklist_tasks_done = null,
+        protected ?ChecklistTasksAdded $checklist_tasks_added = null,
+        protected ?DirectMessagePriceChanged $direct_message_price_changed = null,
+        protected ?DirectMessagesTopic $direct_messages_topic = null,
+        protected ?int $reply_to_checklist_task_id = null,
+        protected ?bool $is_paid_post = null,
+        protected ?SuggestedPostInfo $suggested_post_info = null,
+        protected ?SuggestedPostApproved $suggested_post_approved = null,
+        protected ?SuggestedPostApprovalFailed $suggested_post_approval_failed = null,
+        protected ?SuggestedPostDeclined $suggested_post_declined = null,
+        protected ?SuggestedPostPaid $suggested_post_paid = null,
+        protected ?SuggestedPostRefunded $suggested_post_refunded = null,
     ) {
         parent::__construct($this->date);
     }
@@ -429,7 +429,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
@@ -439,7 +439,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setMessageThreadId(int|null $message_thread_id): Message
+    public function setMessageThreadId(?int $message_thread_id): Message
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
@@ -448,7 +448,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return User|null
      */
-    public function getFrom(): User|null
+    public function getFrom(): ?User
     {
         return $this->from;
     }
@@ -458,7 +458,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setFrom(User|null $from): Message
+    public function setFrom(?User $from): Message
     {
         $this->from = $from;
         return $this;
@@ -467,7 +467,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Chat|null
      */
-    public function getSenderChat(): Chat|null
+    public function getSenderChat(): ?Chat
     {
         return $this->sender_chat;
     }
@@ -477,7 +477,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSenderChat(Chat|null $sender_chat): Message
+    public function setSenderChat(?Chat $sender_chat): Message
     {
         $this->sender_chat = $sender_chat;
         return $this;
@@ -486,7 +486,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getSenderBoostCount(): int|null
+    public function getSenderBoostCount(): ?int
     {
         return $this->sender_boost_count;
     }
@@ -496,7 +496,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSenderBoostCount(int|null $sender_boost_count): Message
+    public function setSenderBoostCount(?int $sender_boost_count): Message
     {
         $this->sender_boost_count = $sender_boost_count;
         return $this;
@@ -505,7 +505,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return AbstractMessageOrigin|null
      */
-    public function getForwardOrigin(): AbstractMessageOrigin|null
+    public function getForwardOrigin(): ?AbstractMessageOrigin
     {
         return $this->forward_origin;
     }
@@ -515,7 +515,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setForwardOrigin(AbstractMessageOrigin|null $forward_origin): Message
+    public function setForwardOrigin(?AbstractMessageOrigin $forward_origin): Message
     {
         $this->forward_origin = $forward_origin;
         return $this;
@@ -524,7 +524,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getIsTopicMessage(): bool|null
+    public function getIsTopicMessage(): ?bool
     {
         return $this->is_topic_message;
     }
@@ -534,7 +534,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setIsTopicMessage(bool|null $is_topic_message): Message
+    public function setIsTopicMessage(?bool $is_topic_message): Message
     {
         $this->is_topic_message = $is_topic_message;
         return $this;
@@ -543,7 +543,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getIsAutomaticForward(): bool|null
+    public function getIsAutomaticForward(): ?bool
     {
         return $this->is_automatic_forward;
     }
@@ -553,7 +553,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setIsAutomaticForward(bool|null $is_automatic_forward): Message
+    public function setIsAutomaticForward(?bool $is_automatic_forward): Message
     {
         $this->is_automatic_forward = $is_automatic_forward;
         return $this;
@@ -562,7 +562,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Message|null
      */
-    public function getReplyToMessage(): Message|null
+    public function getReplyToMessage(): ?Message
     {
         return $this->reply_to_message;
     }
@@ -572,7 +572,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setReplyToMessage(Message|null $reply_to_message): Message
+    public function setReplyToMessage(?Message $reply_to_message): Message
     {
         $this->reply_to_message = $reply_to_message;
         return $this;
@@ -581,7 +581,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ExternalReplyInfo|null
      */
-    public function getExternalReply(): ExternalReplyInfo|null
+    public function getExternalReply(): ?ExternalReplyInfo
     {
         return $this->external_reply;
     }
@@ -591,7 +591,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setExternalReply(ExternalReplyInfo|null $external_reply): Message
+    public function setExternalReply(?ExternalReplyInfo $external_reply): Message
     {
         $this->external_reply = $external_reply;
         return $this;
@@ -600,7 +600,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return TextQuote|null
      */
-    public function getQuote(): TextQuote|null
+    public function getQuote(): ?TextQuote
     {
         return $this->quote;
     }
@@ -610,7 +610,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setQuote(TextQuote|null $quote): Message
+    public function setQuote(?TextQuote $quote): Message
     {
         $this->quote = $quote;
         return $this;
@@ -619,7 +619,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Story|null
      */
-    public function getReplyToStory(): Story|null
+    public function getReplyToStory(): ?Story
     {
         return $this->reply_to_story;
     }
@@ -629,7 +629,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setReplyToStory(Story|null $reply_to_story): Message
+    public function setReplyToStory(?Story $reply_to_story): Message
     {
         $this->reply_to_story = $reply_to_story;
         return $this;
@@ -638,7 +638,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return User|null
      */
-    public function getViaBot(): User|null
+    public function getViaBot(): ?User
     {
         return $this->via_bot;
     }
@@ -648,7 +648,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setViaBot(User|null $via_bot): Message
+    public function setViaBot(?User $via_bot): Message
     {
         $this->via_bot = $via_bot;
         return $this;
@@ -657,7 +657,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getEditDate(): int|null
+    public function getEditDate(): ?int
     {
         return $this->edit_date;
     }
@@ -667,7 +667,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setEditDate(int|null $edit_date): Message
+    public function setEditDate(?int $edit_date): Message
     {
         $this->edit_date = $edit_date;
         return $this;
@@ -676,7 +676,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getHasProtectedContent(): bool|null
+    public function getHasProtectedContent(): ?bool
     {
         return $this->has_protected_content;
     }
@@ -686,7 +686,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setHasProtectedContent(bool|null $has_protected_content): Message
+    public function setHasProtectedContent(?bool $has_protected_content): Message
     {
         $this->has_protected_content = $has_protected_content;
         return $this;
@@ -695,7 +695,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getMediaGroupId(): string|null
+    public function getMediaGroupId(): ?string
     {
         return $this->media_group_id;
     }
@@ -705,7 +705,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setMediaGroupId(string|null $media_group_id): Message
+    public function setMediaGroupId(?string $media_group_id): Message
     {
         $this->media_group_id = $media_group_id;
         return $this;
@@ -714,7 +714,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getAuthorSignature(): string|null
+    public function getAuthorSignature(): ?string
     {
         return $this->author_signature;
     }
@@ -724,7 +724,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setAuthorSignature(string|null $author_signature): Message
+    public function setAuthorSignature(?string $author_signature): Message
     {
         $this->author_signature = $author_signature;
         return $this;
@@ -733,7 +733,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -743,7 +743,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setText(string|null $text): Message
+    public function setText(?string $text): Message
     {
         $this->text = $text;
         return $this;
@@ -752,7 +752,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
@@ -762,7 +762,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setEntities(array|null $entities): Message
+    public function setEntities(?array $entities): Message
     {
         $this->entities = $entities;
         return $this;
@@ -771,7 +771,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return LinkPreviewOptions|null
      */
-    public function getLinkPreviewOptions(): LinkPreviewOptions|null
+    public function getLinkPreviewOptions(): ?LinkPreviewOptions
     {
         return $this->link_preview_options;
     }
@@ -781,7 +781,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setLinkPreviewOptions(LinkPreviewOptions|null $link_preview_options): Message
+    public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): Message
     {
         $this->link_preview_options = $link_preview_options;
         return $this;
@@ -790,7 +790,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Animation|null
      */
-    public function getAnimation(): Animation|null
+    public function getAnimation(): ?Animation
     {
         return $this->animation;
     }
@@ -800,7 +800,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setAnimation(Animation|null $animation): Message
+    public function setAnimation(?Animation $animation): Message
     {
         $this->animation = $animation;
         return $this;
@@ -809,7 +809,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Audio|null
      */
-    public function getAudio(): Audio|null
+    public function getAudio(): ?Audio
     {
         return $this->audio;
     }
@@ -819,7 +819,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setAudio(Audio|null $audio): Message
+    public function setAudio(?Audio $audio): Message
     {
         $this->audio = $audio;
         return $this;
@@ -828,7 +828,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Document|null
      */
-    public function getDocument(): Document|null
+    public function getDocument(): ?Document
     {
         return $this->document;
     }
@@ -838,7 +838,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setDocument(Document|null $document): Message
+    public function setDocument(?Document $document): Message
     {
         $this->document = $document;
         return $this;
@@ -847,7 +847,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return PhotoSize[]|null
      */
-    public function getPhoto(): array|null
+    public function getPhoto(): ?array
     {
         return $this->photo;
     }
@@ -857,7 +857,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPhoto(array|null $photo): Message
+    public function setPhoto(?array $photo): Message
     {
         $this->photo = $photo;
         return $this;
@@ -866,7 +866,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Sticker|null
      */
-    public function getSticker(): Sticker|null
+    public function getSticker(): ?Sticker
     {
         return $this->sticker;
     }
@@ -876,7 +876,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSticker(Sticker|null $sticker): Message
+    public function setSticker(?Sticker $sticker): Message
     {
         $this->sticker = $sticker;
         return $this;
@@ -885,7 +885,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Story|null
      */
-    public function getStory(): Story|null
+    public function getStory(): ?Story
     {
         return $this->story;
     }
@@ -895,7 +895,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setStory(Story|null $story): Message
+    public function setStory(?Story $story): Message
     {
         $this->story = $story;
         return $this;
@@ -904,7 +904,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Video|null
      */
-    public function getVideo(): Video|null
+    public function getVideo(): ?Video
     {
         return $this->video;
     }
@@ -914,7 +914,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideo(Video|null $video): Message
+    public function setVideo(?Video $video): Message
     {
         $this->video = $video;
         return $this;
@@ -923,7 +923,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return VideoNote|null
      */
-    public function getVideoNote(): VideoNote|null
+    public function getVideoNote(): ?VideoNote
     {
         return $this->video_note;
     }
@@ -933,7 +933,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideoNote(VideoNote|null $video_note): Message
+    public function setVideoNote(?VideoNote $video_note): Message
     {
         $this->video_note = $video_note;
         return $this;
@@ -942,7 +942,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Voice|null
      */
-    public function getVoice(): Voice|null
+    public function getVoice(): ?Voice
     {
         return $this->voice;
     }
@@ -952,7 +952,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVoice(Voice|null $voice): Message
+    public function setVoice(?Voice $voice): Message
     {
         $this->voice = $voice;
         return $this;
@@ -961,7 +961,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -971,7 +971,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setCaption(string|null $caption): Message
+    public function setCaption(?string $caption): Message
     {
         $this->caption = $caption;
         return $this;
@@ -980,7 +980,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -990,7 +990,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setCaptionEntities(array|null $caption_entities): Message
+    public function setCaptionEntities(?array $caption_entities): Message
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -999,7 +999,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getHasMediaSpoiler(): bool|null
+    public function getHasMediaSpoiler(): ?bool
     {
         return $this->has_media_spoiler;
     }
@@ -1009,7 +1009,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setHasMediaSpoiler(bool|null $has_media_spoiler): Message
+    public function setHasMediaSpoiler(?bool $has_media_spoiler): Message
     {
         $this->has_media_spoiler = $has_media_spoiler;
         return $this;
@@ -1018,7 +1018,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Contact|null
      */
-    public function getContact(): Contact|null
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
@@ -1028,7 +1028,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setContact(Contact|null $contact): Message
+    public function setContact(?Contact $contact): Message
     {
         $this->contact = $contact;
         return $this;
@@ -1037,7 +1037,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Dice|null
      */
-    public function getDice(): Dice|null
+    public function getDice(): ?Dice
     {
         return $this->dice;
     }
@@ -1047,7 +1047,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setDice(Dice|null $dice): Message
+    public function setDice(?Dice $dice): Message
     {
         $this->dice = $dice;
         return $this;
@@ -1056,7 +1056,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Game|null
      */
-    public function getGame(): Game|null
+    public function getGame(): ?Game
     {
         return $this->game;
     }
@@ -1066,7 +1066,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGame(Game|null $game): Message
+    public function setGame(?Game $game): Message
     {
         $this->game = $game;
         return $this;
@@ -1075,7 +1075,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Poll|null
      */
-    public function getPoll(): Poll|null
+    public function getPoll(): ?Poll
     {
         return $this->poll;
     }
@@ -1085,7 +1085,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPoll(Poll|null $poll): Message
+    public function setPoll(?Poll $poll): Message
     {
         $this->poll = $poll;
         return $this;
@@ -1094,7 +1094,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Venue|null
      */
-    public function getVenue(): Venue|null
+    public function getVenue(): ?Venue
     {
         return $this->venue;
     }
@@ -1104,7 +1104,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVenue(Venue|null $venue): Message
+    public function setVenue(?Venue $venue): Message
     {
         $this->venue = $venue;
         return $this;
@@ -1113,7 +1113,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Location|null
      */
-    public function getLocation(): Location|null
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
@@ -1123,7 +1123,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setLocation(Location|null $location): Message
+    public function setLocation(?Location $location): Message
     {
         $this->location = $location;
         return $this;
@@ -1132,7 +1132,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return User[]|null
      */
-    public function getNewChatMembers(): array|null
+    public function getNewChatMembers(): ?array
     {
         return $this->new_chat_members;
     }
@@ -1142,7 +1142,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setNewChatMembers(array|null $new_chat_members): Message
+    public function setNewChatMembers(?array $new_chat_members): Message
     {
         $this->new_chat_members = $new_chat_members;
         return $this;
@@ -1151,7 +1151,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return User|null
      */
-    public function getLeftChatMember(): User|null
+    public function getLeftChatMember(): ?User
     {
         return $this->left_chat_member;
     }
@@ -1161,7 +1161,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setLeftChatMember(User|null $left_chat_member): Message
+    public function setLeftChatMember(?User $left_chat_member): Message
     {
         $this->left_chat_member = $left_chat_member;
         return $this;
@@ -1170,7 +1170,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getNewChatTitle(): string|null
+    public function getNewChatTitle(): ?string
     {
         return $this->new_chat_title;
     }
@@ -1180,7 +1180,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setNewChatTitle(string|null $new_chat_title): Message
+    public function setNewChatTitle(?string $new_chat_title): Message
     {
         $this->new_chat_title = $new_chat_title;
         return $this;
@@ -1189,7 +1189,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return PhotoSize[]|null
      */
-    public function getNewChatPhoto(): array|null
+    public function getNewChatPhoto(): ?array
     {
         return $this->new_chat_photo;
     }
@@ -1199,7 +1199,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setNewChatPhoto(array|null $new_chat_photo): Message
+    public function setNewChatPhoto(?array $new_chat_photo): Message
     {
         $this->new_chat_photo = $new_chat_photo;
         return $this;
@@ -1208,7 +1208,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getDeleteChatPhoto(): bool|null
+    public function getDeleteChatPhoto(): ?bool
     {
         return $this->delete_chat_photo;
     }
@@ -1218,7 +1218,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setDeleteChatPhoto(bool|null $delete_chat_photo): Message
+    public function setDeleteChatPhoto(?bool $delete_chat_photo): Message
     {
         $this->delete_chat_photo = $delete_chat_photo;
         return $this;
@@ -1227,7 +1227,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getGroupChatCreated(): bool|null
+    public function getGroupChatCreated(): ?bool
     {
         return $this->group_chat_created;
     }
@@ -1237,7 +1237,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGroupChatCreated(bool|null $group_chat_created): Message
+    public function setGroupChatCreated(?bool $group_chat_created): Message
     {
         $this->group_chat_created = $group_chat_created;
         return $this;
@@ -1246,7 +1246,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getSupergroupChatCreated(): bool|null
+    public function getSupergroupChatCreated(): ?bool
     {
         return $this->supergroup_chat_created;
     }
@@ -1256,7 +1256,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSupergroupChatCreated(bool|null $supergroup_chat_created): Message
+    public function setSupergroupChatCreated(?bool $supergroup_chat_created): Message
     {
         $this->supergroup_chat_created = $supergroup_chat_created;
         return $this;
@@ -1265,7 +1265,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getChannelChatCreated(): bool|null
+    public function getChannelChatCreated(): ?bool
     {
         return $this->channel_chat_created;
     }
@@ -1275,7 +1275,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChannelChatCreated(bool|null $channel_chat_created): Message
+    public function setChannelChatCreated(?bool $channel_chat_created): Message
     {
         $this->channel_chat_created = $channel_chat_created;
         return $this;
@@ -1284,7 +1284,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return MessageAutoDeleteTimerChanged|null
      */
-    public function getMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged|null
+    public function getMessageAutoDeleteTimerChanged(): ?MessageAutoDeleteTimerChanged
     {
         return $this->message_auto_delete_timer_changed;
     }
@@ -1294,7 +1294,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setMessageAutoDeleteTimerChanged(MessageAutoDeleteTimerChanged|null $message_auto_delete_timer_changed): Message
+    public function setMessageAutoDeleteTimerChanged(?MessageAutoDeleteTimerChanged $message_auto_delete_timer_changed): Message
     {
         $this->message_auto_delete_timer_changed = $message_auto_delete_timer_changed;
         return $this;
@@ -1303,7 +1303,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getMigrateToChatId(): int|null
+    public function getMigrateToChatId(): ?int
     {
         return $this->migrate_to_chat_id;
     }
@@ -1313,7 +1313,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setMigrateToChatId(int|null $migrate_to_chat_id): Message
+    public function setMigrateToChatId(?int $migrate_to_chat_id): Message
     {
         $this->migrate_to_chat_id = $migrate_to_chat_id;
         return $this;
@@ -1322,7 +1322,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getMigrateFromChatId(): int|null
+    public function getMigrateFromChatId(): ?int
     {
         return $this->migrate_from_chat_id;
     }
@@ -1332,7 +1332,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setMigrateFromChatId(int|null $migrate_from_chat_id): Message
+    public function setMigrateFromChatId(?int $migrate_from_chat_id): Message
     {
         $this->migrate_from_chat_id = $migrate_from_chat_id;
         return $this;
@@ -1341,7 +1341,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return AbstractMaybeInaccessibleMessage|null
      */
-    public function getPinnedMessage(): AbstractMaybeInaccessibleMessage|null
+    public function getPinnedMessage(): ?AbstractMaybeInaccessibleMessage
     {
         return $this->pinned_message;
     }
@@ -1351,7 +1351,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPinnedMessage(AbstractMaybeInaccessibleMessage|null $pinned_message): Message
+    public function setPinnedMessage(?AbstractMaybeInaccessibleMessage $pinned_message): Message
     {
         $this->pinned_message = $pinned_message;
         return $this;
@@ -1360,7 +1360,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Invoice|null
      */
-    public function getInvoice(): Invoice|null
+    public function getInvoice(): ?Invoice
     {
         return $this->invoice;
     }
@@ -1370,7 +1370,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setInvoice(Invoice|null $invoice): Message
+    public function setInvoice(?Invoice $invoice): Message
     {
         $this->invoice = $invoice;
         return $this;
@@ -1379,7 +1379,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuccessfulPayment|null
      */
-    public function getSuccessfulPayment(): SuccessfulPayment|null
+    public function getSuccessfulPayment(): ?SuccessfulPayment
     {
         return $this->successful_payment;
     }
@@ -1389,7 +1389,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuccessfulPayment(SuccessfulPayment|null $successful_payment): Message
+    public function setSuccessfulPayment(?SuccessfulPayment $successful_payment): Message
     {
         $this->successful_payment = $successful_payment;
         return $this;
@@ -1398,7 +1398,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return UsersShared|null
      */
-    public function getUsersShared(): UsersShared|null
+    public function getUsersShared(): ?UsersShared
     {
         return $this->users_shared;
     }
@@ -1408,7 +1408,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setUsersShared(UsersShared|null $users_shared): Message
+    public function setUsersShared(?UsersShared $users_shared): Message
     {
         $this->users_shared = $users_shared;
         return $this;
@@ -1417,7 +1417,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ChatShared|null
      */
-    public function getChatShared(): ChatShared|null
+    public function getChatShared(): ?ChatShared
     {
         return $this->chat_shared;
     }
@@ -1427,7 +1427,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChatShared(ChatShared|null $chat_shared): Message
+    public function setChatShared(?ChatShared $chat_shared): Message
     {
         $this->chat_shared = $chat_shared;
         return $this;
@@ -1436,7 +1436,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getConnectedWebsite(): string|null
+    public function getConnectedWebsite(): ?string
     {
         return $this->connected_website;
     }
@@ -1446,7 +1446,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setConnectedWebsite(string|null $connected_website): Message
+    public function setConnectedWebsite(?string $connected_website): Message
     {
         $this->connected_website = $connected_website;
         return $this;
@@ -1455,7 +1455,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return WriteAccessAllowed|null
      */
-    public function getWriteAccessAllowed(): WriteAccessAllowed|null
+    public function getWriteAccessAllowed(): ?WriteAccessAllowed
     {
         return $this->write_access_allowed;
     }
@@ -1465,7 +1465,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setWriteAccessAllowed(WriteAccessAllowed|null $write_access_allowed): Message
+    public function setWriteAccessAllowed(?WriteAccessAllowed $write_access_allowed): Message
     {
         $this->write_access_allowed = $write_access_allowed;
         return $this;
@@ -1474,7 +1474,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return PassportData|null
      */
-    public function getPassportData(): PassportData|null
+    public function getPassportData(): ?PassportData
     {
         return $this->passport_data;
     }
@@ -1484,7 +1484,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPassportData(PassportData|null $passport_data): Message
+    public function setPassportData(?PassportData $passport_data): Message
     {
         $this->passport_data = $passport_data;
         return $this;
@@ -1493,7 +1493,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ProximityAlertTriggered|null
      */
-    public function getProximityAlertTriggered(): ProximityAlertTriggered|null
+    public function getProximityAlertTriggered(): ?ProximityAlertTriggered
     {
         return $this->proximity_alert_triggered;
     }
@@ -1503,7 +1503,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setProximityAlertTriggered(ProximityAlertTriggered|null $proximity_alert_triggered): Message
+    public function setProximityAlertTriggered(?ProximityAlertTriggered $proximity_alert_triggered): Message
     {
         $this->proximity_alert_triggered = $proximity_alert_triggered;
         return $this;
@@ -1512,7 +1512,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ChatBoostAdded|null
      */
-    public function getBoostAdded(): ChatBoostAdded|null
+    public function getBoostAdded(): ?ChatBoostAdded
     {
         return $this->boost_added;
     }
@@ -1522,7 +1522,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setBoostAdded(ChatBoostAdded|null $boost_added): Message
+    public function setBoostAdded(?ChatBoostAdded $boost_added): Message
     {
         $this->boost_added = $boost_added;
         return $this;
@@ -1531,7 +1531,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ForumTopicCreated|null
      */
-    public function getForumTopicCreated(): ForumTopicCreated|null
+    public function getForumTopicCreated(): ?ForumTopicCreated
     {
         return $this->forum_topic_created;
     }
@@ -1541,7 +1541,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setForumTopicCreated(ForumTopicCreated|null $forum_topic_created): Message
+    public function setForumTopicCreated(?ForumTopicCreated $forum_topic_created): Message
     {
         $this->forum_topic_created = $forum_topic_created;
         return $this;
@@ -1550,7 +1550,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ForumTopicEdited|null
      */
-    public function getForumTopicEdited(): ForumTopicEdited|null
+    public function getForumTopicEdited(): ?ForumTopicEdited
     {
         return $this->forum_topic_edited;
     }
@@ -1560,7 +1560,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setForumTopicEdited(ForumTopicEdited|null $forum_topic_edited): Message
+    public function setForumTopicEdited(?ForumTopicEdited $forum_topic_edited): Message
     {
         $this->forum_topic_edited = $forum_topic_edited;
         return $this;
@@ -1569,7 +1569,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ForumTopicClosed|null
      */
-    public function getForumTopicClosed(): ForumTopicClosed|null
+    public function getForumTopicClosed(): ?ForumTopicClosed
     {
         return $this->forum_topic_closed;
     }
@@ -1579,7 +1579,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setForumTopicClosed(ForumTopicClosed|null $forum_topic_closed): Message
+    public function setForumTopicClosed(?ForumTopicClosed $forum_topic_closed): Message
     {
         $this->forum_topic_closed = $forum_topic_closed;
         return $this;
@@ -1588,7 +1588,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ForumTopicReopened|null
      */
-    public function getForumTopicReopened(): ForumTopicReopened|null
+    public function getForumTopicReopened(): ?ForumTopicReopened
     {
         return $this->forum_topic_reopened;
     }
@@ -1598,7 +1598,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setForumTopicReopened(ForumTopicReopened|null $forum_topic_reopened): Message
+    public function setForumTopicReopened(?ForumTopicReopened $forum_topic_reopened): Message
     {
         $this->forum_topic_reopened = $forum_topic_reopened;
         return $this;
@@ -1607,7 +1607,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GeneralForumTopicHidden|null
      */
-    public function getGeneralForumTopicHidden(): GeneralForumTopicHidden|null
+    public function getGeneralForumTopicHidden(): ?GeneralForumTopicHidden
     {
         return $this->general_forum_topic_hidden;
     }
@@ -1617,7 +1617,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGeneralForumTopicHidden(GeneralForumTopicHidden|null $general_forum_topic_hidden): Message
+    public function setGeneralForumTopicHidden(?GeneralForumTopicHidden $general_forum_topic_hidden): Message
     {
         $this->general_forum_topic_hidden = $general_forum_topic_hidden;
         return $this;
@@ -1626,7 +1626,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GeneralForumTopicUnhidden|null
      */
-    public function getGeneralForumTopicUnhidden(): GeneralForumTopicUnhidden|null
+    public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhidden
     {
         return $this->general_forum_topic_unhidden;
     }
@@ -1636,7 +1636,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGeneralForumTopicUnhidden(GeneralForumTopicUnhidden|null $general_forum_topic_unhidden): Message
+    public function setGeneralForumTopicUnhidden(?GeneralForumTopicUnhidden $general_forum_topic_unhidden): Message
     {
         $this->general_forum_topic_unhidden = $general_forum_topic_unhidden;
         return $this;
@@ -1645,7 +1645,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GiveawayCreated|null
      */
-    public function getGiveawayCreated(): GiveawayCreated|null
+    public function getGiveawayCreated(): ?GiveawayCreated
     {
         return $this->giveaway_created;
     }
@@ -1655,7 +1655,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGiveawayCreated(GiveawayCreated|null $giveaway_created): Message
+    public function setGiveawayCreated(?GiveawayCreated $giveaway_created): Message
     {
         $this->giveaway_created = $giveaway_created;
         return $this;
@@ -1664,7 +1664,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Giveaway|null
      */
-    public function getGiveaway(): Giveaway|null
+    public function getGiveaway(): ?Giveaway
     {
         return $this->giveaway;
     }
@@ -1674,7 +1674,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGiveaway(Giveaway|null $giveaway): Message
+    public function setGiveaway(?Giveaway $giveaway): Message
     {
         $this->giveaway = $giveaway;
         return $this;
@@ -1683,7 +1683,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GiveawayWinners|null
      */
-    public function getGiveawayWinners(): GiveawayWinners|null
+    public function getGiveawayWinners(): ?GiveawayWinners
     {
         return $this->giveaway_winners;
     }
@@ -1693,7 +1693,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGiveawayWinners(GiveawayWinners|null $giveaway_winners): Message
+    public function setGiveawayWinners(?GiveawayWinners $giveaway_winners): Message
     {
         $this->giveaway_winners = $giveaway_winners;
         return $this;
@@ -1702,7 +1702,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GiveawayCompleted|null
      */
-    public function getGiveawayCompleted(): GiveawayCompleted|null
+    public function getGiveawayCompleted(): ?GiveawayCompleted
     {
         return $this->giveaway_completed;
     }
@@ -1712,7 +1712,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGiveawayCompleted(GiveawayCompleted|null $giveaway_completed): Message
+    public function setGiveawayCompleted(?GiveawayCompleted $giveaway_completed): Message
     {
         $this->giveaway_completed = $giveaway_completed;
         return $this;
@@ -1721,7 +1721,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return VideoChatScheduled|null
      */
-    public function getVideoChatScheduled(): VideoChatScheduled|null
+    public function getVideoChatScheduled(): ?VideoChatScheduled
     {
         return $this->video_chat_scheduled;
     }
@@ -1731,7 +1731,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideoChatScheduled(VideoChatScheduled|null $video_chat_scheduled): Message
+    public function setVideoChatScheduled(?VideoChatScheduled $video_chat_scheduled): Message
     {
         $this->video_chat_scheduled = $video_chat_scheduled;
         return $this;
@@ -1740,7 +1740,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return VideoChatStarted|null
      */
-    public function getVideoChatStarted(): VideoChatStarted|null
+    public function getVideoChatStarted(): ?VideoChatStarted
     {
         return $this->video_chat_started;
     }
@@ -1750,7 +1750,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideoChatStarted(VideoChatStarted|null $video_chat_started): Message
+    public function setVideoChatStarted(?VideoChatStarted $video_chat_started): Message
     {
         $this->video_chat_started = $video_chat_started;
         return $this;
@@ -1759,7 +1759,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return VideoChatEnded|null
      */
-    public function getVideoChatEnded(): VideoChatEnded|null
+    public function getVideoChatEnded(): ?VideoChatEnded
     {
         return $this->video_chat_ended;
     }
@@ -1769,7 +1769,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideoChatEnded(VideoChatEnded|null $video_chat_ended): Message
+    public function setVideoChatEnded(?VideoChatEnded $video_chat_ended): Message
     {
         $this->video_chat_ended = $video_chat_ended;
         return $this;
@@ -1778,7 +1778,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return VideoChatParticipantsInvited|null
      */
-    public function getVideoChatParticipantsInvited(): VideoChatParticipantsInvited|null
+    public function getVideoChatParticipantsInvited(): ?VideoChatParticipantsInvited
     {
         return $this->video_chat_participants_invited;
     }
@@ -1788,7 +1788,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setVideoChatParticipantsInvited(VideoChatParticipantsInvited|null $video_chat_participants_invited): Message
+    public function setVideoChatParticipantsInvited(?VideoChatParticipantsInvited $video_chat_participants_invited): Message
     {
         $this->video_chat_participants_invited = $video_chat_participants_invited;
         return $this;
@@ -1797,7 +1797,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return WebAppData|null
      */
-    public function getWebAppData(): WebAppData|null
+    public function getWebAppData(): ?WebAppData
     {
         return $this->web_app_data;
     }
@@ -1807,7 +1807,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setWebAppData(WebAppData|null $web_app_data): Message
+    public function setWebAppData(?WebAppData $web_app_data): Message
     {
         $this->web_app_data = $web_app_data;
         return $this;
@@ -1816,7 +1816,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -1826,7 +1826,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): Message
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): Message
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -1835,7 +1835,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ChatBackground|null
      */
-    public function getChatBackgroundSet(): ChatBackground|null
+    public function getChatBackgroundSet(): ?ChatBackground
     {
         return $this->chat_background_set;
     }
@@ -1845,7 +1845,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChatBackgroundSet(ChatBackground|null $chat_background_set): Message
+    public function setChatBackgroundSet(?ChatBackground $chat_background_set): Message
     {
         $this->chat_background_set = $chat_background_set;
         return $this;
@@ -1854,7 +1854,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
@@ -1864,7 +1864,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setBusinessConnectionId(string|null $business_connection_id): Message
+    public function setBusinessConnectionId(?string $business_connection_id): Message
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
@@ -1873,7 +1873,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return User|null
      */
-    public function getSenderBusinessBot(): User|null
+    public function getSenderBusinessBot(): ?User
     {
         return $this->sender_business_bot;
     }
@@ -1883,7 +1883,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSenderBusinessBot(User|null $sender_business_bot): Message
+    public function setSenderBusinessBot(?User $sender_business_bot): Message
     {
         $this->sender_business_bot = $sender_business_bot;
         return $this;
@@ -1892,7 +1892,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getIsFromOffline(): bool|null
+    public function getIsFromOffline(): ?bool
     {
         return $this->is_from_offline;
     }
@@ -1902,7 +1902,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setIsFromOffline(bool|null $is_from_offline): Message
+    public function setIsFromOffline(?bool $is_from_offline): Message
     {
         $this->is_from_offline = $is_from_offline;
         return $this;
@@ -1911,7 +1911,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return string|null
      */
-    public function getEffectId(): string|null
+    public function getEffectId(): ?string
     {
         return $this->effect_id;
     }
@@ -1921,7 +1921,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setEffectId(string|null $effect_id): Message
+    public function setEffectId(?string $effect_id): Message
     {
         $this->effect_id = $effect_id;
         return $this;
@@ -1930,7 +1930,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -1940,7 +1940,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): Message
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): Message
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
@@ -1949,7 +1949,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return PaidMediaInfo|null
      */
-    public function getPaidMedia(): PaidMediaInfo|null
+    public function getPaidMedia(): ?PaidMediaInfo
     {
         return $this->paid_media;
     }
@@ -1959,7 +1959,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPaidMedia(PaidMediaInfo|null $paid_media): Message
+    public function setPaidMedia(?PaidMediaInfo $paid_media): Message
     {
         $this->paid_media = $paid_media;
         return $this;
@@ -1968,7 +1968,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return RefundedPayment|null
      */
-    public function getRefundedPayment(): RefundedPayment|null
+    public function getRefundedPayment(): ?RefundedPayment
     {
         return $this->refunded_payment;
     }
@@ -1978,7 +1978,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setRefundedPayment(RefundedPayment|null $refunded_payment): Message
+    public function setRefundedPayment(?RefundedPayment $refunded_payment): Message
     {
         $this->refunded_payment = $refunded_payment;
         return $this;
@@ -1987,7 +1987,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return GiftInfo|null
      */
-    public function getGift(): GiftInfo|null
+    public function getGift(): ?GiftInfo
     {
         return $this->gift;
     }
@@ -1997,7 +1997,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setGift(GiftInfo|null $gift): Message
+    public function setGift(?GiftInfo $gift): Message
     {
         $this->gift = $gift;
         return $this;
@@ -2006,7 +2006,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return UniqueGiftInfo|null
      */
-    public function getUniqueGift(): UniqueGiftInfo|null
+    public function getUniqueGift(): ?UniqueGiftInfo
     {
         return $this->unique_gift;
     }
@@ -2016,7 +2016,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setUniqueGift(UniqueGiftInfo|null $unique_gift): Message
+    public function setUniqueGift(?UniqueGiftInfo $unique_gift): Message
     {
         $this->unique_gift = $unique_gift;
         return $this;
@@ -2025,7 +2025,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return PaidMessagePriceChanged|null
      */
-    public function getPaidMessagePriceChanged(): PaidMessagePriceChanged|null
+    public function getPaidMessagePriceChanged(): ?PaidMessagePriceChanged
     {
         return $this->paid_message_price_changed;
     }
@@ -2035,7 +2035,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPaidMessagePriceChanged(PaidMessagePriceChanged|null $paid_message_price_changed): Message
+    public function setPaidMessagePriceChanged(?PaidMessagePriceChanged $paid_message_price_changed): Message
     {
         $this->paid_message_price_changed = $paid_message_price_changed;
         return $this;
@@ -2044,7 +2044,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getPaidStarCount(): int|null
+    public function getPaidStarCount(): ?int
     {
         return $this->paid_star_count;
     }
@@ -2054,7 +2054,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setPaidStarCount(int|null $paid_star_count): Message
+    public function setPaidStarCount(?int $paid_star_count): Message
     {
         $this->paid_star_count = $paid_star_count;
         return $this;
@@ -2063,7 +2063,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return Checklist|null
      */
-    public function getChecklist(): Checklist|null
+    public function getChecklist(): ?Checklist
     {
         return $this->checklist;
     }
@@ -2073,7 +2073,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChecklist(Checklist|null $checklist): Message
+    public function setChecklist(?Checklist $checklist): Message
     {
         $this->checklist = $checklist;
         return $this;
@@ -2082,7 +2082,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ChecklistTasksDone|null
      */
-    public function getChecklistTasksDone(): ChecklistTasksDone|null
+    public function getChecklistTasksDone(): ?ChecklistTasksDone
     {
         return $this->checklist_tasks_done;
     }
@@ -2092,7 +2092,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChecklistTasksDone(ChecklistTasksDone|null $checklist_tasks_done): Message
+    public function setChecklistTasksDone(?ChecklistTasksDone $checklist_tasks_done): Message
     {
         $this->checklist_tasks_done = $checklist_tasks_done;
         return $this;
@@ -2101,7 +2101,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return ChecklistTasksAdded|null
      */
-    public function getChecklistTasksAdded(): ChecklistTasksAdded|null
+    public function getChecklistTasksAdded(): ?ChecklistTasksAdded
     {
         return $this->checklist_tasks_added;
     }
@@ -2111,7 +2111,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setChecklistTasksAdded(ChecklistTasksAdded|null $checklist_tasks_added): Message
+    public function setChecklistTasksAdded(?ChecklistTasksAdded $checklist_tasks_added): Message
     {
         $this->checklist_tasks_added = $checklist_tasks_added;
         return $this;
@@ -2120,7 +2120,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return DirectMessagePriceChanged|null
      */
-    public function getDirectMessagePriceChanged(): DirectMessagePriceChanged|null
+    public function getDirectMessagePriceChanged(): ?DirectMessagePriceChanged
     {
         return $this->direct_message_price_changed;
     }
@@ -2130,7 +2130,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setDirectMessagePriceChanged(DirectMessagePriceChanged|null $direct_message_price_changed): Message
+    public function setDirectMessagePriceChanged(?DirectMessagePriceChanged $direct_message_price_changed): Message
     {
         $this->direct_message_price_changed = $direct_message_price_changed;
         return $this;
@@ -2139,7 +2139,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return DirectMessagesTopic|null
      */
-    public function getDirectMessagesTopic(): DirectMessagesTopic|null
+    public function getDirectMessagesTopic(): ?DirectMessagesTopic
     {
         return $this->direct_messages_topic;
     }
@@ -2149,7 +2149,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setDirectMessagesTopic(DirectMessagesTopic|null $direct_messages_topic): Message
+    public function setDirectMessagesTopic(?DirectMessagesTopic $direct_messages_topic): Message
     {
         $this->direct_messages_topic = $direct_messages_topic;
         return $this;
@@ -2158,7 +2158,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return int|null
      */
-    public function getReplyToChecklistTaskId(): int|null
+    public function getReplyToChecklistTaskId(): ?int
     {
         return $this->reply_to_checklist_task_id;
     }
@@ -2168,7 +2168,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setReplyToChecklistTaskId(int|null $reply_to_checklist_task_id): Message
+    public function setReplyToChecklistTaskId(?int $reply_to_checklist_task_id): Message
     {
         $this->reply_to_checklist_task_id = $reply_to_checklist_task_id;
         return $this;
@@ -2177,7 +2177,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return bool|null
      */
-    public function getIsPaidPost(): bool|null
+    public function getIsPaidPost(): ?bool
     {
         return $this->is_paid_post;
     }
@@ -2187,7 +2187,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setIsPaidPost(bool|null $is_paid_post): Message
+    public function setIsPaidPost(?bool $is_paid_post): Message
     {
         $this->is_paid_post = $is_paid_post;
         return $this;
@@ -2196,7 +2196,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostInfo|null
      */
-    public function getSuggestedPostInfo(): SuggestedPostInfo|null
+    public function getSuggestedPostInfo(): ?SuggestedPostInfo
     {
         return $this->suggested_post_info;
     }
@@ -2206,7 +2206,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostInfo(SuggestedPostInfo|null $suggested_post_info): Message
+    public function setSuggestedPostInfo(?SuggestedPostInfo $suggested_post_info): Message
     {
         $this->suggested_post_info = $suggested_post_info;
         return $this;
@@ -2215,7 +2215,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostApproved|null
      */
-    public function getSuggestedPostApproved(): SuggestedPostApproved|null
+    public function getSuggestedPostApproved(): ?SuggestedPostApproved
     {
         return $this->suggested_post_approved;
     }
@@ -2225,7 +2225,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostApproved(SuggestedPostApproved|null $suggested_post_approved): Message
+    public function setSuggestedPostApproved(?SuggestedPostApproved $suggested_post_approved): Message
     {
         $this->suggested_post_approved = $suggested_post_approved;
         return $this;
@@ -2234,7 +2234,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostApprovalFailed|null
      */
-    public function getSuggestedPostApprovalFailed(): SuggestedPostApprovalFailed|null
+    public function getSuggestedPostApprovalFailed(): ?SuggestedPostApprovalFailed
     {
         return $this->suggested_post_approval_failed;
     }
@@ -2244,7 +2244,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostApprovalFailed(SuggestedPostApprovalFailed|null $suggested_post_approval_failed): Message
+    public function setSuggestedPostApprovalFailed(?SuggestedPostApprovalFailed $suggested_post_approval_failed): Message
     {
         $this->suggested_post_approval_failed = $suggested_post_approval_failed;
         return $this;
@@ -2253,7 +2253,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostDeclined|null
      */
-    public function getSuggestedPostDeclined(): SuggestedPostDeclined|null
+    public function getSuggestedPostDeclined(): ?SuggestedPostDeclined
     {
         return $this->suggested_post_declined;
     }
@@ -2263,7 +2263,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostDeclined(SuggestedPostDeclined|null $suggested_post_declined): Message
+    public function setSuggestedPostDeclined(?SuggestedPostDeclined $suggested_post_declined): Message
     {
         $this->suggested_post_declined = $suggested_post_declined;
         return $this;
@@ -2272,7 +2272,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostPaid|null
      */
-    public function getSuggestedPostPaid(): SuggestedPostPaid|null
+    public function getSuggestedPostPaid(): ?SuggestedPostPaid
     {
         return $this->suggested_post_paid;
     }
@@ -2282,7 +2282,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostPaid(SuggestedPostPaid|null $suggested_post_paid): Message
+    public function setSuggestedPostPaid(?SuggestedPostPaid $suggested_post_paid): Message
     {
         $this->suggested_post_paid = $suggested_post_paid;
         return $this;
@@ -2291,7 +2291,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
     /**
      * @return SuggestedPostRefunded|null
      */
-    public function getSuggestedPostRefunded(): SuggestedPostRefunded|null
+    public function getSuggestedPostRefunded(): ?SuggestedPostRefunded
     {
         return $this->suggested_post_refunded;
     }
@@ -2301,7 +2301,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *
      * @return Message
      */
-    public function setSuggestedPostRefunded(SuggestedPostRefunded|null $suggested_post_refunded): Message
+    public function setSuggestedPostRefunded(?SuggestedPostRefunded $suggested_post_refunded): Message
     {
         $this->suggested_post_refunded = $suggested_post_refunded;
         return $this;

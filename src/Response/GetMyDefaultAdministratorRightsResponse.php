@@ -8,12 +8,12 @@ class GetMyDefaultAdministratorRightsResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly ChatAdministratorRights|null $chatAdministratorRights = null,
+        private readonly ?ChatAdministratorRights $chatAdministratorRights = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getChatAdministratorRights(): ChatAdministratorRights|null
+    public function getChatAdministratorRights(): ?ChatAdministratorRights
     {
         return $this->chatAdministratorRights;
     }

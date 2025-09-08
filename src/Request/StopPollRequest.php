@@ -23,10 +23,9 @@ class StopPollRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_id,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -50,23 +49,23 @@ class StopPollRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): StopPollRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): StopPollRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): StopPollRequest
+    public function setBusinessConnectionId(?string $business_connection_id): StopPollRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

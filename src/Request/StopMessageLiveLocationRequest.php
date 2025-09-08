@@ -24,64 +24,63 @@ class StopMessageLiveLocationRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
-        private ChatId|null $chat_id = null,
-        private string|null $inline_message_id = null,
-        private int|null $message_id = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?string $inline_message_id = null,
+        private ?int $message_id = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): StopMessageLiveLocationRequest
+    public function setChatId(?ChatId $chat_id): StopMessageLiveLocationRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): StopMessageLiveLocationRequest
+    public function setInlineMessageId(?string $inline_message_id): StopMessageLiveLocationRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): StopMessageLiveLocationRequest
+    public function setMessageId(?int $message_id): StopMessageLiveLocationRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): StopMessageLiveLocationRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): StopMessageLiveLocationRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): StopMessageLiveLocationRequest
+    public function setBusinessConnectionId(?string $business_connection_id): StopMessageLiveLocationRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

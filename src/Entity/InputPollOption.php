@@ -24,11 +24,10 @@ final class InputPollOption implements EntityInterface
      */
     public function __construct(
         protected string $text,
-        protected TelegramParseModeEnum|null $text_parse_mode = null,
+        protected ?TelegramParseModeEnum $text_parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $text_entities = null,
-    ) {
-    }
+        protected ?array $text_entities = null,
+    ) {}
 
     /**
      * @return string
@@ -52,7 +51,7 @@ final class InputPollOption implements EntityInterface
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getTextParseMode(): TelegramParseModeEnum|null
+    public function getTextParseMode(): ?TelegramParseModeEnum
     {
         return $this->text_parse_mode;
     }
@@ -62,7 +61,7 @@ final class InputPollOption implements EntityInterface
      *
      * @return InputPollOption
      */
-    public function setTextParseMode(TelegramParseModeEnum|null $text_parse_mode): InputPollOption
+    public function setTextParseMode(?TelegramParseModeEnum $text_parse_mode): InputPollOption
     {
         $this->text_parse_mode = $text_parse_mode;
         return $this;
@@ -71,7 +70,7 @@ final class InputPollOption implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
@@ -81,7 +80,7 @@ final class InputPollOption implements EntityInterface
      *
      * @return InputPollOption
      */
-    public function setTextEntities(array|null $text_entities): InputPollOption
+    public function setTextEntities(?array $text_entities): InputPollOption
     {
         $this->text_entities = $text_entities;
         return $this;

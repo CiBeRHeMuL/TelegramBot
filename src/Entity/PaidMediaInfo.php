@@ -21,8 +21,7 @@ final class PaidMediaInfo implements EntityInterface
         protected int $star_count,
         #[ArrayType(AbstractPaidMedia::class)]
         protected array $paid_media,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

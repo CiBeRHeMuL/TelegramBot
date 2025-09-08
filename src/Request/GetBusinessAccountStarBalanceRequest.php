@@ -12,8 +12,7 @@ class GetBusinessAccountStarBalanceRequest implements RequestInterface
      */
     public function __construct(
         private string $business_connection_id,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

@@ -28,8 +28,7 @@ final class ShippingAddress implements EntityInterface
         protected string $street_line1,
         protected string $street_line2,
         protected string $post_code,
-    ) {
-    }
+    ) {}
 
     /**
      * @return CountryCodeEnum

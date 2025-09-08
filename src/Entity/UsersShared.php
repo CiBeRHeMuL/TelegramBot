@@ -23,8 +23,7 @@ final class UsersShared implements EntityInterface
         protected int $request_id,
         #[ArrayType(SharedUser::class)]
         protected array $users,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

@@ -8,4 +8,3 @@ enum UniqueGiftInfoOriginEnum: string
     case Transfer = 'transfer';
     case Resale = 'resale';
 }
-

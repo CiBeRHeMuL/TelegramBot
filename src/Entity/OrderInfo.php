@@ -21,17 +21,16 @@ final class OrderInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#shippingaddress ShippingAddress
      */
     public function __construct(
-        protected string|null $name = null,
-        protected Phone|null $phone_number = null,
-        protected Email|null $email = null,
-        protected ShippingAddress|null $shipping_address = null,
-    ) {
-    }
+        protected ?string $name = null,
+        protected ?Phone $phone_number = null,
+        protected ?Email $email = null,
+        protected ?ShippingAddress $shipping_address = null,
+    ) {}
 
     /**
      * @return string|null
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -41,7 +40,7 @@ final class OrderInfo implements EntityInterface
      *
      * @return OrderInfo
      */
-    public function setName(string|null $name): OrderInfo
+    public function setName(?string $name): OrderInfo
     {
         $this->name = $name;
         return $this;
@@ -50,7 +49,7 @@ final class OrderInfo implements EntityInterface
     /**
      * @return Phone|null
      */
-    public function getPhoneNumber(): Phone|null
+    public function getPhoneNumber(): ?Phone
     {
         return $this->phone_number;
     }
@@ -60,7 +59,7 @@ final class OrderInfo implements EntityInterface
      *
      * @return OrderInfo
      */
-    public function setPhoneNumber(Phone|null $phone_number): OrderInfo
+    public function setPhoneNumber(?Phone $phone_number): OrderInfo
     {
         $this->phone_number = $phone_number;
         return $this;
@@ -69,7 +68,7 @@ final class OrderInfo implements EntityInterface
     /**
      * @return Email|null
      */
-    public function getEmail(): Email|null
+    public function getEmail(): ?Email
     {
         return $this->email;
     }
@@ -79,7 +78,7 @@ final class OrderInfo implements EntityInterface
      *
      * @return OrderInfo
      */
-    public function setEmail(Email|null $email): OrderInfo
+    public function setEmail(?Email $email): OrderInfo
     {
         $this->email = $email;
         return $this;
@@ -88,7 +87,7 @@ final class OrderInfo implements EntityInterface
     /**
      * @return ShippingAddress|null
      */
-    public function getShippingAddress(): ShippingAddress|null
+    public function getShippingAddress(): ?ShippingAddress
     {
         return $this->shipping_address;
     }
@@ -98,7 +97,7 @@ final class OrderInfo implements EntityInterface
      *
      * @return OrderInfo
      */
-    public function setShippingAddress(ShippingAddress|null $shipping_address): OrderInfo
+    public function setShippingAddress(?ShippingAddress $shipping_address): OrderInfo
     {
         $this->shipping_address = $shipping_address;
         return $this;

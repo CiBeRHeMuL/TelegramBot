@@ -36,12 +36,12 @@ final class InputMediaPhoto extends AbstractInputMedia
      */
     public function __construct(
         protected Filename|Url|string $media,
-        protected string|null $caption = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected bool|null $has_spoiler = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?bool $has_spoiler = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Photo);
     }
@@ -68,7 +68,7 @@ final class InputMediaPhoto extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -78,7 +78,7 @@ final class InputMediaPhoto extends AbstractInputMedia
      *
      * @return InputMediaPhoto
      */
-    public function setCaption(string|null $caption): InputMediaPhoto
+    public function setCaption(?string $caption): InputMediaPhoto
     {
         $this->caption = $caption;
         return $this;
@@ -87,7 +87,7 @@ final class InputMediaPhoto extends AbstractInputMedia
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -97,7 +97,7 @@ final class InputMediaPhoto extends AbstractInputMedia
      *
      * @return InputMediaPhoto
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputMediaPhoto
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaPhoto
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -106,7 +106,7 @@ final class InputMediaPhoto extends AbstractInputMedia
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -116,7 +116,7 @@ final class InputMediaPhoto extends AbstractInputMedia
      *
      * @return InputMediaPhoto
      */
-    public function setCaptionEntities(array|null $caption_entities): InputMediaPhoto
+    public function setCaptionEntities(?array $caption_entities): InputMediaPhoto
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -125,7 +125,7 @@ final class InputMediaPhoto extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getHasSpoiler(): bool|null
+    public function getHasSpoiler(): ?bool
     {
         return $this->has_spoiler;
     }
@@ -135,7 +135,7 @@ final class InputMediaPhoto extends AbstractInputMedia
      *
      * @return InputMediaPhoto
      */
-    public function setHasSpoiler(bool|null $has_spoiler): InputMediaPhoto
+    public function setHasSpoiler(?bool $has_spoiler): InputMediaPhoto
     {
         $this->has_spoiler = $has_spoiler;
         return $this;
@@ -144,7 +144,7 @@ final class InputMediaPhoto extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -154,7 +154,7 @@ final class InputMediaPhoto extends AbstractInputMedia
      *
      * @return InputMediaPhoto
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaPhoto
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InputMediaPhoto
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

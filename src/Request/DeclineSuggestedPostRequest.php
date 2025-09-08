@@ -17,9 +17,8 @@ class DeclineSuggestedPostRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_id,
-        private string|null $comment = null,
-    ) {
-    }
+        private ?string $comment = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -43,12 +42,12 @@ class DeclineSuggestedPostRequest implements RequestInterface
         return $this;
     }
 
-    public function getComment(): string|null
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(string|null $comment): DeclineSuggestedPostRequest
+    public function setComment(?string $comment): DeclineSuggestedPostRequest
     {
         $this->comment = $comment;
         return $this;

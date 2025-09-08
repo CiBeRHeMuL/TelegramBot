@@ -26,12 +26,11 @@ final class Checklist implements EntityInterface
         protected string $title,
         #[ArrayType(ChecklistTask::class)]
         protected array $tasks,
-        protected bool|null $others_can_add_tasks = null,
-        protected bool|null $others_can_mark_tasks_as_done = null,
+        protected ?bool $others_can_add_tasks = null,
+        protected ?bool $others_can_mark_tasks_as_done = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $title_entities = null,
-    ) {
-    }
+        protected ?array $title_entities = null,
+    ) {}
 
     /**
      * @return string
@@ -74,7 +73,7 @@ final class Checklist implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOthersCanAddTasks(): bool|null
+    public function getOthersCanAddTasks(): ?bool
     {
         return $this->others_can_add_tasks;
     }
@@ -84,7 +83,7 @@ final class Checklist implements EntityInterface
      *
      * @return Checklist
      */
-    public function setOthersCanAddTasks(bool|null $others_can_add_tasks): Checklist
+    public function setOthersCanAddTasks(?bool $others_can_add_tasks): Checklist
     {
         $this->others_can_add_tasks = $others_can_add_tasks;
         return $this;
@@ -93,7 +92,7 @@ final class Checklist implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOthersCanMarkTasksAsDone(): bool|null
+    public function getOthersCanMarkTasksAsDone(): ?bool
     {
         return $this->others_can_mark_tasks_as_done;
     }
@@ -103,7 +102,7 @@ final class Checklist implements EntityInterface
      *
      * @return Checklist
      */
-    public function setOthersCanMarkTasksAsDone(bool|null $others_can_mark_tasks_as_done): Checklist
+    public function setOthersCanMarkTasksAsDone(?bool $others_can_mark_tasks_as_done): Checklist
     {
         $this->others_can_mark_tasks_as_done = $others_can_mark_tasks_as_done;
         return $this;
@@ -112,7 +111,7 @@ final class Checklist implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTitleEntities(): array|null
+    public function getTitleEntities(): ?array
     {
         return $this->title_entities;
     }
@@ -122,7 +121,7 @@ final class Checklist implements EntityInterface
      *
      * @return Checklist
      */
-    public function setTitleEntities(array|null $title_entities): Checklist
+    public function setTitleEntities(?array $title_entities): Checklist
     {
         $this->title_entities = $title_entities;
         return $this;

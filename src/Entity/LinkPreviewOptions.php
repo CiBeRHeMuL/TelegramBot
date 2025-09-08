@@ -23,18 +23,17 @@ final class LinkPreviewOptions implements EntityInterface
      * link preview will be shown below the message text
      */
     public function __construct(
-        protected bool|null $is_disabled = null,
-        protected Url|null $url = null,
-        protected bool|null $prefer_small_media = null,
-        protected bool|null $prefer_large_media = null,
-        protected bool|null $show_above_text = null,
-    ) {
-    }
+        protected ?bool $is_disabled = null,
+        protected ?Url $url = null,
+        protected ?bool $prefer_small_media = null,
+        protected ?bool $prefer_large_media = null,
+        protected ?bool $show_above_text = null,
+    ) {}
 
     /**
      * @return bool|null
      */
-    public function getIsDisabled(): bool|null
+    public function getIsDisabled(): ?bool
     {
         return $this->is_disabled;
     }
@@ -44,7 +43,7 @@ final class LinkPreviewOptions implements EntityInterface
      *
      * @return LinkPreviewOptions
      */
-    public function setIsDisabled(bool|null $is_disabled): LinkPreviewOptions
+    public function setIsDisabled(?bool $is_disabled): LinkPreviewOptions
     {
         $this->is_disabled = $is_disabled;
         return $this;
@@ -53,7 +52,7 @@ final class LinkPreviewOptions implements EntityInterface
     /**
      * @return Url|null
      */
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
@@ -63,7 +62,7 @@ final class LinkPreviewOptions implements EntityInterface
      *
      * @return LinkPreviewOptions
      */
-    public function setUrl(Url|null $url): LinkPreviewOptions
+    public function setUrl(?Url $url): LinkPreviewOptions
     {
         $this->url = $url;
         return $this;
@@ -72,7 +71,7 @@ final class LinkPreviewOptions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getPreferSmallMedia(): bool|null
+    public function getPreferSmallMedia(): ?bool
     {
         return $this->prefer_small_media;
     }
@@ -82,7 +81,7 @@ final class LinkPreviewOptions implements EntityInterface
      *
      * @return LinkPreviewOptions
      */
-    public function setPreferSmallMedia(bool|null $prefer_small_media): LinkPreviewOptions
+    public function setPreferSmallMedia(?bool $prefer_small_media): LinkPreviewOptions
     {
         $this->prefer_small_media = $prefer_small_media;
         return $this;
@@ -91,7 +90,7 @@ final class LinkPreviewOptions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getPreferLargeMedia(): bool|null
+    public function getPreferLargeMedia(): ?bool
     {
         return $this->prefer_large_media;
     }
@@ -101,7 +100,7 @@ final class LinkPreviewOptions implements EntityInterface
      *
      * @return LinkPreviewOptions
      */
-    public function setPreferLargeMedia(bool|null $prefer_large_media): LinkPreviewOptions
+    public function setPreferLargeMedia(?bool $prefer_large_media): LinkPreviewOptions
     {
         $this->prefer_large_media = $prefer_large_media;
         return $this;
@@ -110,7 +109,7 @@ final class LinkPreviewOptions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getShowAboveText(): bool|null
+    public function getShowAboveText(): ?bool
     {
         return $this->show_above_text;
     }
@@ -120,7 +119,7 @@ final class LinkPreviewOptions implements EntityInterface
      *
      * @return LinkPreviewOptions
      */
-    public function setShowAboveText(bool|null $show_above_text): LinkPreviewOptions
+    public function setShowAboveText(?bool $show_above_text): LinkPreviewOptions
     {
         $this->show_above_text = $show_above_text;
         return $this;

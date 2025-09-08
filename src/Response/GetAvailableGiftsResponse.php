@@ -8,12 +8,12 @@ class GetAvailableGiftsResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Gifts|null $gifts = null,
+        private readonly ?Gifts $gifts = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getGifts(): Gifts|null
+    public function getGifts(): ?Gifts
     {
         return $this->gifts;
     }

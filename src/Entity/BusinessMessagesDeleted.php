@@ -24,8 +24,7 @@ final class BusinessMessagesDeleted implements EntityInterface
         protected Chat $chat,
         #[ArrayType('int')]
         protected array $message_ids,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

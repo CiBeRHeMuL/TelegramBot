@@ -28,9 +28,8 @@ final class BusinessConnection implements EntityInterface
         protected int $user_chat_id,
         protected int $date,
         protected bool $is_enabled,
-        protected BusinessBotRights|null $rights = null,
-    ) {
-    }
+        protected ?BusinessBotRights $rights = null,
+    ) {}
 
     /**
      * @return string
@@ -130,7 +129,7 @@ final class BusinessConnection implements EntityInterface
     /**
      * @return BusinessBotRights|null
      */
-    public function getRights(): BusinessBotRights|null
+    public function getRights(): ?BusinessBotRights
     {
         return $this->rights;
     }
@@ -140,7 +139,7 @@ final class BusinessConnection implements EntityInterface
      *
      * @return BusinessConnection
      */
-    public function setRights(BusinessBotRights|null $rights): BusinessConnection
+    public function setRights(?BusinessBotRights $rights): BusinessConnection
     {
         $this->rights = $rights;
         return $this;

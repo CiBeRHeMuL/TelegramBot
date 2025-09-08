@@ -34,8 +34,7 @@ class SetStickerSetThumbnailRequest implements RequestInterface
         private string $name,
         private int $user_id,
         private Filename|Url|string|null $thumbnail = null,
-    ) {
-    }
+    ) {}
 
     public function getFormat(): StickerFormatEnum
     {

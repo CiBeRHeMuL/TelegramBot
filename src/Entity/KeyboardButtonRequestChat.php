@@ -41,17 +41,16 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function __construct(
         protected int $request_id,
         protected bool $chat_is_channel,
-        protected ChatAdministratorRights|null $bot_administrator_rights = null,
-        protected bool|null $bot_is_member = null,
-        protected bool|null $chat_has_username = null,
-        protected bool|null $chat_is_created = null,
-        protected bool|null $chat_is_forum = null,
-        protected bool|null $request_photo = null,
-        protected bool|null $request_title = null,
-        protected bool|null $request_username = null,
-        protected ChatAdministratorRights|null $user_administrator_rights = null,
-    ) {
-    }
+        protected ?ChatAdministratorRights $bot_administrator_rights = null,
+        protected ?bool $bot_is_member = null,
+        protected ?bool $chat_has_username = null,
+        protected ?bool $chat_is_created = null,
+        protected ?bool $chat_is_forum = null,
+        protected ?bool $request_photo = null,
+        protected ?bool $request_title = null,
+        protected ?bool $request_username = null,
+        protected ?ChatAdministratorRights $user_administrator_rights = null,
+    ) {}
 
     /**
      * @return int
@@ -94,7 +93,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return ChatAdministratorRights|null
      */
-    public function getBotAdministratorRights(): ChatAdministratorRights|null
+    public function getBotAdministratorRights(): ?ChatAdministratorRights
     {
         return $this->bot_administrator_rights;
     }
@@ -104,7 +103,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setBotAdministratorRights(ChatAdministratorRights|null $bot_administrator_rights): KeyboardButtonRequestChat
+    public function setBotAdministratorRights(?ChatAdministratorRights $bot_administrator_rights): KeyboardButtonRequestChat
     {
         $this->bot_administrator_rights = $bot_administrator_rights;
         return $this;
@@ -113,7 +112,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getBotIsMember(): bool|null
+    public function getBotIsMember(): ?bool
     {
         return $this->bot_is_member;
     }
@@ -123,7 +122,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setBotIsMember(bool|null $bot_is_member): KeyboardButtonRequestChat
+    public function setBotIsMember(?bool $bot_is_member): KeyboardButtonRequestChat
     {
         $this->bot_is_member = $bot_is_member;
         return $this;
@@ -132,7 +131,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getChatHasUsername(): bool|null
+    public function getChatHasUsername(): ?bool
     {
         return $this->chat_has_username;
     }
@@ -142,7 +141,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setChatHasUsername(bool|null $chat_has_username): KeyboardButtonRequestChat
+    public function setChatHasUsername(?bool $chat_has_username): KeyboardButtonRequestChat
     {
         $this->chat_has_username = $chat_has_username;
         return $this;
@@ -151,7 +150,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getChatIsCreated(): bool|null
+    public function getChatIsCreated(): ?bool
     {
         return $this->chat_is_created;
     }
@@ -161,7 +160,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setChatIsCreated(bool|null $chat_is_created): KeyboardButtonRequestChat
+    public function setChatIsCreated(?bool $chat_is_created): KeyboardButtonRequestChat
     {
         $this->chat_is_created = $chat_is_created;
         return $this;
@@ -170,7 +169,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getChatIsForum(): bool|null
+    public function getChatIsForum(): ?bool
     {
         return $this->chat_is_forum;
     }
@@ -180,7 +179,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setChatIsForum(bool|null $chat_is_forum): KeyboardButtonRequestChat
+    public function setChatIsForum(?bool $chat_is_forum): KeyboardButtonRequestChat
     {
         $this->chat_is_forum = $chat_is_forum;
         return $this;
@@ -189,7 +188,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestPhoto(): bool|null
+    public function getRequestPhoto(): ?bool
     {
         return $this->request_photo;
     }
@@ -199,7 +198,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setRequestPhoto(bool|null $request_photo): KeyboardButtonRequestChat
+    public function setRequestPhoto(?bool $request_photo): KeyboardButtonRequestChat
     {
         $this->request_photo = $request_photo;
         return $this;
@@ -208,7 +207,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestTitle(): bool|null
+    public function getRequestTitle(): ?bool
     {
         return $this->request_title;
     }
@@ -218,7 +217,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setRequestTitle(bool|null $request_title): KeyboardButtonRequestChat
+    public function setRequestTitle(?bool $request_title): KeyboardButtonRequestChat
     {
         $this->request_title = $request_title;
         return $this;
@@ -227,7 +226,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestUsername(): bool|null
+    public function getRequestUsername(): ?bool
     {
         return $this->request_username;
     }
@@ -237,7 +236,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setRequestUsername(bool|null $request_username): KeyboardButtonRequestChat
+    public function setRequestUsername(?bool $request_username): KeyboardButtonRequestChat
     {
         $this->request_username = $request_username;
         return $this;
@@ -246,7 +245,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     /**
      * @return ChatAdministratorRights|null
      */
-    public function getUserAdministratorRights(): ChatAdministratorRights|null
+    public function getUserAdministratorRights(): ?ChatAdministratorRights
     {
         return $this->user_administrator_rights;
     }
@@ -256,7 +255,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @return KeyboardButtonRequestChat
      */
-    public function setUserAdministratorRights(ChatAdministratorRights|null $user_administrator_rights): KeyboardButtonRequestChat
+    public function setUserAdministratorRights(?ChatAdministratorRights $user_administrator_rights): KeyboardButtonRequestChat
     {
         $this->user_administrator_rights = $user_administrator_rights;
         return $this;

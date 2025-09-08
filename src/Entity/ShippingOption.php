@@ -23,8 +23,7 @@ final class ShippingOption implements EntityInterface
         protected string $title,
         #[ArrayType(LabeledPrice::class)]
         protected array $prices,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

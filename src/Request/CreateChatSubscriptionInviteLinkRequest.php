@@ -21,9 +21,8 @@ class CreateChatSubscriptionInviteLinkRequest implements RequestInterface
         private ChatId $chat_id,
         private int $subscription_period,
         private int $subscription_price,
-        private string|null $name = null,
-    ) {
-    }
+        private ?string $name = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -58,12 +57,12 @@ class CreateChatSubscriptionInviteLinkRequest implements RequestInterface
         return $this;
     }
 
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string|null $name): CreateChatSubscriptionInviteLinkRequest
+    public function setName(?string $name): CreateChatSubscriptionInviteLinkRequest
     {
         $this->name = $name;
         return $this;

@@ -27,9 +27,8 @@ class EditMessageChecklistRequest implements RequestInterface
         private ChatId $chat_id,
         private InputChecklist $checklist,
         private int $message_id,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-    ) {
-    }
+        private ?InlineKeyboardMarkup $reply_markup = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -75,12 +74,12 @@ class EditMessageChecklistRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): EditMessageChecklistRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageChecklistRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;

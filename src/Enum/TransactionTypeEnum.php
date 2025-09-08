@@ -10,4 +10,3 @@ enum TransactionTypeEnum: string
     case PremiumPurchase = 'premium_purchase';
     case BusinessAccountTransfer = 'business_account_transfer';
 }
-

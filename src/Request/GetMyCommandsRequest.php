@@ -18,28 +18,27 @@ class GetMyCommandsRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#botcommandscopedefault BotCommandScopeDefault
      */
     public function __construct(
-        private Language|null $language_code = null,
-        private AbstractBotCommandScope|null $scope = null,
-    ) {
-    }
+        private ?Language $language_code = null,
+        private ?AbstractBotCommandScope $scope = null,
+    ) {}
 
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(Language|null $language_code): GetMyCommandsRequest
+    public function setLanguageCode(?Language $language_code): GetMyCommandsRequest
     {
         $this->language_code = $language_code;
         return $this;
     }
 
-    public function getScope(): AbstractBotCommandScope|null
+    public function getScope(): ?AbstractBotCommandScope
     {
         return $this->scope;
     }
 
-    public function setScope(AbstractBotCommandScope|null $scope): GetMyCommandsRequest
+    public function setScope(?AbstractBotCommandScope $scope): GetMyCommandsRequest
     {
         $this->scope = $scope;
         return $this;

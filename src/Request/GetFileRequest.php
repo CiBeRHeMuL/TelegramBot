@@ -12,8 +12,7 @@ class GetFileRequest implements RequestInterface
      */
     public function __construct(
         private string $file_id,
-    ) {
-    }
+    ) {}
 
     public function getFileId(): string
     {

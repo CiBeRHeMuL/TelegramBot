@@ -13,7 +13,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @link https://core.telegram.org/bots/api#inputprofilephotoanimated
  */
-#[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Animated->value,))]
+#[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Animated->value, ))]
 final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
 {
     /**
@@ -27,7 +27,7 @@ final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
      */
     public function __construct(
         protected Filename|Url $animation,
-        protected float|null $main_frame_timestamp = null,
+        protected ?float $main_frame_timestamp = null,
     ) {
         parent::__construct(InputProfilePhotoTypeEnum::Animated);
     }
@@ -54,7 +54,7 @@ final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
     /**
      * @return float|null
      */
-    public function getMainFrameTimestamp(): float|null
+    public function getMainFrameTimestamp(): ?float
     {
         return $this->main_frame_timestamp;
     }
@@ -64,7 +64,7 @@ final class InputProfilePhotoAnimated extends AbstractInputProfilePhoto
      *
      * @return InputProfilePhotoAnimated
      */
-    public function setMainFrameTimestamp(float|null $main_frame_timestamp): InputProfilePhotoAnimated
+    public function setMainFrameTimestamp(?float $main_frame_timestamp): InputProfilePhotoAnimated
     {
         $this->main_frame_timestamp = $main_frame_timestamp;
         return $this;

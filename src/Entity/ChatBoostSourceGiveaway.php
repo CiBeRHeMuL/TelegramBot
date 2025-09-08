@@ -28,9 +28,9 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
      */
     public function __construct(
         protected int $giveaway_message_id,
-        protected bool|null $is_unclaimed = null,
-        protected User|null $user = null,
-        protected int|null $prize_star_count = null,
+        protected ?bool $is_unclaimed = null,
+        protected ?User $user = null,
+        protected ?int $prize_star_count = null,
     ) {
         parent::__construct(ChatBoostSourceEnum::Giveaway);
     }
@@ -57,7 +57,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
     /**
      * @return bool|null
      */
-    public function getIsUnclaimed(): bool|null
+    public function getIsUnclaimed(): ?bool
     {
         return $this->is_unclaimed;
     }
@@ -67,7 +67,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
      *
      * @return ChatBoostSourceGiveaway
      */
-    public function setIsUnclaimed(bool|null $is_unclaimed): ChatBoostSourceGiveaway
+    public function setIsUnclaimed(?bool $is_unclaimed): ChatBoostSourceGiveaway
     {
         $this->is_unclaimed = $is_unclaimed;
         return $this;
@@ -76,7 +76,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
     /**
      * @return User|null
      */
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -86,7 +86,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
      *
      * @return ChatBoostSourceGiveaway
      */
-    public function setUser(User|null $user): ChatBoostSourceGiveaway
+    public function setUser(?User $user): ChatBoostSourceGiveaway
     {
         $this->user = $user;
         return $this;
@@ -95,7 +95,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
     /**
      * @return int|null
      */
-    public function getPrizeStarCount(): int|null
+    public function getPrizeStarCount(): ?int
     {
         return $this->prize_star_count;
     }
@@ -105,7 +105,7 @@ final class ChatBoostSourceGiveaway extends AbstractChatBoostSource
      *
      * @return ChatBoostSourceGiveaway
      */
-    public function setPrizeStarCount(int|null $prize_star_count): ChatBoostSourceGiveaway
+    public function setPrizeStarCount(?int $prize_star_count): ChatBoostSourceGiveaway
     {
         $this->prize_star_count = $prize_star_count;
         return $this;

@@ -19,8 +19,7 @@ class DeleteMessagesRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private array $message_ids,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

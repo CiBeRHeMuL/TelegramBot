@@ -10,7 +10,7 @@ class Uri implements UriInterface
     private string $scheme = '';
     private string $userInfo = '';
     private string $host = '';
-    private int|null $port = null;
+    private ?int $port = null;
     private string $path = '';
     private string $query = '';
     private string $fragment = '';
@@ -50,7 +50,7 @@ class Uri implements UriInterface
         return $this->host;
     }
 
-    public function getPort(): int|null
+    public function getPort(): ?int
     {
         return $this->port;
     }
@@ -76,7 +76,7 @@ class Uri implements UriInterface
         return $this;
     }
 
-    public function withUserInfo(string $user, string|null $password = null): UriInterface
+    public function withUserInfo(string $user, ?string $password = null): UriInterface
     {
         $this->userInfo = $password === null ? $user : "$user:$password";
         return $this;
@@ -88,7 +88,7 @@ class Uri implements UriInterface
         return $this;
     }
 
-    public function withPort(int|null $port): UriInterface
+    public function withPort(?int $port): UriInterface
     {
         $this->port = $port;
         return $this;

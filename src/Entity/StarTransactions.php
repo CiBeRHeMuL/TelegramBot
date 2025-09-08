@@ -19,8 +19,7 @@ final class StarTransactions implements EntityInterface
     public function __construct(
         #[ArrayType(StarTransaction::class)]
         protected array $transactions,
-    ) {
-    }
+    ) {}
 
     /**
      * @return StarTransaction[]

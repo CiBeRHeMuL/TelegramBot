@@ -23,9 +23,8 @@ class SetChatPermissionsRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private ChatPermissions $permissions,
-        private bool|null $use_independent_chat_permissions = null,
-    ) {
-    }
+        private ?bool $use_independent_chat_permissions = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -49,12 +48,12 @@ class SetChatPermissionsRequest implements RequestInterface
         return $this;
     }
 
-    public function getUseIndependentChatPermissions(): bool|null
+    public function getUseIndependentChatPermissions(): ?bool
     {
         return $this->use_independent_chat_permissions;
     }
 
-    public function setUseIndependentChatPermissions(bool|null $use_independent_chat_permissions): SetChatPermissionsRequest
+    public function setUseIndependentChatPermissions(?bool $use_independent_chat_permissions): SetChatPermissionsRequest
     {
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
         return $this;

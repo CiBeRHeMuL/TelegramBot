@@ -64,21 +64,20 @@ class CopyMessageRequest implements RequestInterface
         private ChatId $chat_id,
         private ChatId $from_chat_id,
         private int $message_id,
-        private int|null $message_thread_id = null,
-        private string|null $caption = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private array|null $caption_entities = null,
-        private bool|null $disable_notification = null,
-        private bool|null $protect_content = null,
-        private ReplyParameters|null $reply_parameters = null,
+        private ?int $message_thread_id = null,
+        private ?string $caption = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?array $caption_entities = null,
+        private ?bool $disable_notification = null,
+        private ?bool $protect_content = null,
+        private ?ReplyParameters $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private bool|null $show_caption_above_media = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $video_start_timestamp = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?bool $show_caption_above_media = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $video_start_timestamp = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -113,78 +112,78 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): CopyMessageRequest
+    public function setMessageThreadId(?int $message_thread_id): CopyMessageRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): CopyMessageRequest
+    public function setCaption(?string $caption): CopyMessageRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): CopyMessageRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): CopyMessageRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): CopyMessageRequest
+    public function setCaptionEntities(?array $caption_entities): CopyMessageRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): CopyMessageRequest
+    public function setDisableNotification(?bool $disable_notification): CopyMessageRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): CopyMessageRequest
+    public function setProtectContent(?bool $protect_content): CopyMessageRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): CopyMessageRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): CopyMessageRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
@@ -201,56 +200,56 @@ class CopyMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
 
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): CopyMessageRequest
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): CopyMessageRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): CopyMessageRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): CopyMessageRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getVideoStartTimestamp(): int|null
+    public function getVideoStartTimestamp(): ?int
     {
         return $this->video_start_timestamp;
     }
 
-    public function setVideoStartTimestamp(int|null $video_start_timestamp): CopyMessageRequest
+    public function setVideoStartTimestamp(?int $video_start_timestamp): CopyMessageRequest
     {
         $this->video_start_timestamp = $video_start_timestamp;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): CopyMessageRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): CopyMessageRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): CopyMessageRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): CopyMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

@@ -23,8 +23,8 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
      */
     public function __construct(
         protected AbstractReactionType $reaction_type,
-        protected bool|null $is_dark = null,
-        protected bool|null $is_flipped = null,
+        protected ?bool $is_dark = null,
+        protected ?bool $is_flipped = null,
     ) {
         parent::__construct(StoryAreaTypeTypeEnum::SuggestedReaction);
     }
@@ -51,7 +51,7 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
     /**
      * @return bool|null
      */
-    public function getIsDark(): bool|null
+    public function getIsDark(): ?bool
     {
         return $this->is_dark;
     }
@@ -61,7 +61,7 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
      *
      * @return StoryAreaTypeSuggestedReaction
      */
-    public function setIsDark(bool|null $is_dark): StoryAreaTypeSuggestedReaction
+    public function setIsDark(?bool $is_dark): StoryAreaTypeSuggestedReaction
     {
         $this->is_dark = $is_dark;
         return $this;
@@ -70,7 +70,7 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
     /**
      * @return bool|null
      */
-    public function getIsFlipped(): bool|null
+    public function getIsFlipped(): ?bool
     {
         return $this->is_flipped;
     }
@@ -80,7 +80,7 @@ final class StoryAreaTypeSuggestedReaction extends AbstractStoryAreaType
      *
      * @return StoryAreaTypeSuggestedReaction
      */
-    public function setIsFlipped(bool|null $is_flipped): StoryAreaTypeSuggestedReaction
+    public function setIsFlipped(?bool $is_flipped): StoryAreaTypeSuggestedReaction
     {
         $this->is_flipped = $is_flipped;
         return $this;

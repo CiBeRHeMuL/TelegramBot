@@ -21,8 +21,7 @@ class SetBusinessAccountGiftSettingsRequest implements RequestInterface
         private AcceptedGiftTypes $accepted_gift_types,
         private string $business_connection_id,
         private bool $show_gift_button,
-    ) {
-    }
+    ) {}
 
     public function getAcceptedGiftTypes(): AcceptedGiftTypes
     {

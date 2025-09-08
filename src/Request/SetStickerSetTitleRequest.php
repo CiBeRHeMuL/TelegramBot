@@ -14,8 +14,7 @@ class SetStickerSetTitleRequest implements RequestInterface
     public function __construct(
         private string $name,
         private string $title,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

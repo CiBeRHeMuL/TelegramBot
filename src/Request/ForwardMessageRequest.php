@@ -32,14 +32,13 @@ class ForwardMessageRequest implements RequestInterface
         private ChatId $chat_id,
         private ChatId $from_chat_id,
         private int $message_id,
-        private int|null $message_thread_id = null,
-        private bool|null $disable_notification = null,
-        private bool|null $protect_content = null,
-        private int|null $video_start_timestamp = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?int $message_thread_id = null,
+        private ?bool $disable_notification = null,
+        private ?bool $protect_content = null,
+        private ?int $video_start_timestamp = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -74,67 +73,67 @@ class ForwardMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): ForwardMessageRequest
+    public function setMessageThreadId(?int $message_thread_id): ForwardMessageRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): ForwardMessageRequest
+    public function setDisableNotification(?bool $disable_notification): ForwardMessageRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): ForwardMessageRequest
+    public function setProtectContent(?bool $protect_content): ForwardMessageRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getVideoStartTimestamp(): int|null
+    public function getVideoStartTimestamp(): ?int
     {
         return $this->video_start_timestamp;
     }
 
-    public function setVideoStartTimestamp(int|null $video_start_timestamp): ForwardMessageRequest
+    public function setVideoStartTimestamp(?int $video_start_timestamp): ForwardMessageRequest
     {
         $this->video_start_timestamp = $video_start_timestamp;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): ForwardMessageRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): ForwardMessageRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): ForwardMessageRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): ForwardMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

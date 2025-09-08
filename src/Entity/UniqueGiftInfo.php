@@ -28,12 +28,11 @@ final class UniqueGiftInfo implements EntityInterface
     public function __construct(
         protected UniqueGift $gift,
         protected UniqueGiftInfoOriginEnum $origin,
-        protected string|null $owned_gift_id = null,
-        protected int|null $transfer_star_count = null,
-        protected int|null $last_resale_star_count = null,
-        protected int|null $next_transfer_date = null,
-    ) {
-    }
+        protected ?string $owned_gift_id = null,
+        protected ?int $transfer_star_count = null,
+        protected ?int $last_resale_star_count = null,
+        protected ?int $next_transfer_date = null,
+    ) {}
 
     /**
      * @return UniqueGift
@@ -76,7 +75,7 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getOwnedGiftId(): string|null
+    public function getOwnedGiftId(): ?string
     {
         return $this->owned_gift_id;
     }
@@ -86,7 +85,7 @@ final class UniqueGiftInfo implements EntityInterface
      *
      * @return UniqueGiftInfo
      */
-    public function setOwnedGiftId(string|null $owned_gift_id): UniqueGiftInfo
+    public function setOwnedGiftId(?string $owned_gift_id): UniqueGiftInfo
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
@@ -95,7 +94,7 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getTransferStarCount(): int|null
+    public function getTransferStarCount(): ?int
     {
         return $this->transfer_star_count;
     }
@@ -105,7 +104,7 @@ final class UniqueGiftInfo implements EntityInterface
      *
      * @return UniqueGiftInfo
      */
-    public function setTransferStarCount(int|null $transfer_star_count): UniqueGiftInfo
+    public function setTransferStarCount(?int $transfer_star_count): UniqueGiftInfo
     {
         $this->transfer_star_count = $transfer_star_count;
         return $this;
@@ -114,7 +113,7 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLastResaleStarCount(): int|null
+    public function getLastResaleStarCount(): ?int
     {
         return $this->last_resale_star_count;
     }
@@ -124,7 +123,7 @@ final class UniqueGiftInfo implements EntityInterface
      *
      * @return UniqueGiftInfo
      */
-    public function setLastResaleStarCount(int|null $last_resale_star_count): UniqueGiftInfo
+    public function setLastResaleStarCount(?int $last_resale_star_count): UniqueGiftInfo
     {
         $this->last_resale_star_count = $last_resale_star_count;
         return $this;
@@ -133,7 +132,7 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getNextTransferDate(): int|null
+    public function getNextTransferDate(): ?int
     {
         return $this->next_transfer_date;
     }
@@ -143,7 +142,7 @@ final class UniqueGiftInfo implements EntityInterface
      *
      * @return UniqueGiftInfo
      */
-    public function setNextTransferDate(int|null $next_transfer_date): UniqueGiftInfo
+    public function setNextTransferDate(?int $next_transfer_date): UniqueGiftInfo
     {
         $this->next_transfer_date = $next_transfer_date;
         return $this;

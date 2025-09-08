@@ -39,12 +39,11 @@ final class CallbackQuery implements EntityInterface
         protected string $id,
         protected User $from,
         protected string $chat_instance,
-        protected CallbackData|null $data = null,
-        protected string|null $game_short_name = null,
-        protected string|null $inline_message_id = null,
-        protected AbstractMaybeInaccessibleMessage|null $message = null,
-    ) {
-    }
+        protected ?CallbackData $data = null,
+        protected ?string $game_short_name = null,
+        protected ?string $inline_message_id = null,
+        protected ?AbstractMaybeInaccessibleMessage $message = null,
+    ) {}
 
     /**
      * @return string
@@ -106,7 +105,7 @@ final class CallbackQuery implements EntityInterface
     /**
      * @return CallbackData|null
      */
-    public function getData(): CallbackData|null
+    public function getData(): ?CallbackData
     {
         return $this->data;
     }
@@ -116,7 +115,7 @@ final class CallbackQuery implements EntityInterface
      *
      * @return CallbackQuery
      */
-    public function setData(CallbackData|null $data): CallbackQuery
+    public function setData(?CallbackData $data): CallbackQuery
     {
         $this->data = $data;
         return $this;
@@ -125,7 +124,7 @@ final class CallbackQuery implements EntityInterface
     /**
      * @return string|null
      */
-    public function getGameShortName(): string|null
+    public function getGameShortName(): ?string
     {
         return $this->game_short_name;
     }
@@ -135,7 +134,7 @@ final class CallbackQuery implements EntityInterface
      *
      * @return CallbackQuery
      */
-    public function setGameShortName(string|null $game_short_name): CallbackQuery
+    public function setGameShortName(?string $game_short_name): CallbackQuery
     {
         $this->game_short_name = $game_short_name;
         return $this;
@@ -144,7 +143,7 @@ final class CallbackQuery implements EntityInterface
     /**
      * @return string|null
      */
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
@@ -154,7 +153,7 @@ final class CallbackQuery implements EntityInterface
      *
      * @return CallbackQuery
      */
-    public function setInlineMessageId(string|null $inline_message_id): CallbackQuery
+    public function setInlineMessageId(?string $inline_message_id): CallbackQuery
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
@@ -163,7 +162,7 @@ final class CallbackQuery implements EntityInterface
     /**
      * @return AbstractMaybeInaccessibleMessage|null
      */
-    public function getMessage(): AbstractMaybeInaccessibleMessage|null
+    public function getMessage(): ?AbstractMaybeInaccessibleMessage
     {
         return $this->message;
     }
@@ -173,7 +172,7 @@ final class CallbackQuery implements EntityInterface
      *
      * @return CallbackQuery
      */
-    public function setMessage(AbstractMaybeInaccessibleMessage|null $message): CallbackQuery
+    public function setMessage(?AbstractMaybeInaccessibleMessage $message): CallbackQuery
     {
         $this->message = $message;
         return $this;

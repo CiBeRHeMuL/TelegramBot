@@ -8,12 +8,12 @@ class GetChatMenuButtonResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly AbstractMenuButton|null $menuButton = null,
+        private readonly ?AbstractMenuButton $menuButton = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getMenuButton(): AbstractMenuButton|null
+    public function getMenuButton(): ?AbstractMenuButton
     {
         return $this->menuButton;
     }

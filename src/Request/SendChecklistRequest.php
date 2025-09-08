@@ -31,13 +31,12 @@ class SendChecklistRequest implements RequestInterface
         private string $business_connection_id,
         private ChatId $chat_id,
         private InputChecklist $checklist,
-        private bool|null $disable_notification = null,
-        private string|null $message_effect_id = null,
-        private bool|null $protect_content = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-    ) {
-    }
+        private ?bool $disable_notification = null,
+        private ?string $message_effect_id = null,
+        private ?bool $protect_content = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?ReplyParameters $reply_parameters = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -72,56 +71,56 @@ class SendChecklistRequest implements RequestInterface
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendChecklistRequest
+    public function setDisableNotification(?bool $disable_notification): SendChecklistRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendChecklistRequest
+    public function setMessageEffectId(?string $message_effect_id): SendChecklistRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendChecklistRequest
+    public function setProtectContent(?bool $protect_content): SendChecklistRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): SendChecklistRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): SendChecklistRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendChecklistRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendChecklistRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;

@@ -1,43 +1,59 @@
 {
-    "name": "andrew-gos/telegram-bot",
-    "description": "Advanced strictly typed Telegram Bot Library",
-    "type": "library",
-    "license": "MIT",
-    "keywords": ["telegram", "api", "andrew-gos", "php", "bot", "telegram-bot"],
-    "homepage": "https://github.com/CiBeRHeMuL/TelegramBot",
-    "autoload": {
-        "psr-4": {
-            "AndrewGos\\TelegramBot\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "AndrewGos\\TelegramBot\\Tests\\": "tests/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Andrey Gostev",
-            "email": "Gostev71@outlook.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-        "php": ">=8.2",
-        "ext-curl": "*",
-        "psr/http-message": "^2.0",
-        "psr/http-client": "^1.0",
-        "psr/http-factory": "^1.0",
-        "psr/http-server-handler": "^1.0",
-        "psr/http-server-middleware": "^1.0",
-        "psr/container": "^2.0",
-        "ext-ctype": "*",
-        "psr/log": "^3.0",
-        "andrew-gos/class-builder": "^1.0",
-        "andrew-gos/serializer": "^1.0",
-        "psr/event-dispatcher": "^1.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^11.2"
+  "name": "andrew-gos/telegram-bot",
+  "description": "Advanced strictly typed Telegram Bot Library",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "telegram",
+    "api",
+    "andrew-gos",
+    "php",
+    "bot",
+    "telegram-bot"
+  ],
+  "homepage": "https://github.com/CiBeRHeMuL/TelegramBot",
+  "autoload": {
+    "psr-4": {
+      "AndrewGos\\TelegramBot\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AndrewGos\\TelegramBot\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Andrey Gostev",
+      "email": "Gostev71@outlook.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.2",
+    "ext-curl": "*",
+    "psr/http-message": "^2.0",
+    "psr/http-client": "^1.0",
+    "psr/http-factory": "^1.0",
+    "psr/http-server-handler": "^1.0",
+    "psr/http-server-middleware": "^1.0",
+    "psr/container": "^2.0",
+    "ext-ctype": "*",
+    "psr/log": "^3.0",
+    "andrew-gos/class-builder": "^1.0",
+    "andrew-gos/serializer": "^1.0",
+    "psr/event-dispatcher": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.2",
+    "friendsofphp/php-cs-fixer": "^3.87"
+  },
+  "extra": {
+    "sort-packages": true,
+    "prefer-stable": true
+  },
+  "scripts": {
+    "php-cs-fix": "php-cs-fixer fix",
+    "php-cs-check": "php-cs-fixer check"
+  }
 }

@@ -29,13 +29,12 @@ class CopyMessagesRequest implements RequestInterface
         private ChatId $chat_id,
         private ChatId $from_chat_id,
         private array $message_ids,
-        private bool|null $disable_notification = null,
-        private bool|null $remove_caption = null,
-        private int|null $message_thread_id = null,
-        private bool|null $protect_content = null,
-        private int|null $direct_messages_topic_id = null,
-    ) {
-    }
+        private ?bool $disable_notification = null,
+        private ?bool $remove_caption = null,
+        private ?int $message_thread_id = null,
+        private ?bool $protect_content = null,
+        private ?int $direct_messages_topic_id = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -70,56 +69,56 @@ class CopyMessagesRequest implements RequestInterface
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): CopyMessagesRequest
+    public function setDisableNotification(?bool $disable_notification): CopyMessagesRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getRemoveCaption(): bool|null
+    public function getRemoveCaption(): ?bool
     {
         return $this->remove_caption;
     }
 
-    public function setRemoveCaption(bool|null $remove_caption): CopyMessagesRequest
+    public function setRemoveCaption(?bool $remove_caption): CopyMessagesRequest
     {
         $this->remove_caption = $remove_caption;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): CopyMessagesRequest
+    public function setMessageThreadId(?int $message_thread_id): CopyMessagesRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): CopyMessagesRequest
+    public function setProtectContent(?bool $protect_content): CopyMessagesRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): CopyMessagesRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): CopyMessagesRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;

@@ -22,8 +22,7 @@ final class PassportFile implements EntityInterface
         protected string $file_unique_id,
         protected int $file_size,
         protected int $file_date,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

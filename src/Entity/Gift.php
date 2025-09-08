@@ -27,12 +27,11 @@ final class Gift implements EntityInterface
         protected string $id,
         protected Sticker $sticker,
         protected int $star_count,
-        protected int|null $remaining_count = null,
-        protected int|null $total_count = null,
-        protected int|null $upgrade_star_count = null,
-        protected Chat|null $publisher_chat = null,
-    ) {
-    }
+        protected ?int $remaining_count = null,
+        protected ?int $total_count = null,
+        protected ?int $upgrade_star_count = null,
+        protected ?Chat $publisher_chat = null,
+    ) {}
 
     /**
      * @return string
@@ -94,7 +93,7 @@ final class Gift implements EntityInterface
     /**
      * @return int|null
      */
-    public function getRemainingCount(): int|null
+    public function getRemainingCount(): ?int
     {
         return $this->remaining_count;
     }
@@ -104,7 +103,7 @@ final class Gift implements EntityInterface
      *
      * @return Gift
      */
-    public function setRemainingCount(int|null $remaining_count): Gift
+    public function setRemainingCount(?int $remaining_count): Gift
     {
         $this->remaining_count = $remaining_count;
         return $this;
@@ -113,7 +112,7 @@ final class Gift implements EntityInterface
     /**
      * @return int|null
      */
-    public function getTotalCount(): int|null
+    public function getTotalCount(): ?int
     {
         return $this->total_count;
     }
@@ -123,7 +122,7 @@ final class Gift implements EntityInterface
      *
      * @return Gift
      */
-    public function setTotalCount(int|null $total_count): Gift
+    public function setTotalCount(?int $total_count): Gift
     {
         $this->total_count = $total_count;
         return $this;
@@ -132,7 +131,7 @@ final class Gift implements EntityInterface
     /**
      * @return int|null
      */
-    public function getUpgradeStarCount(): int|null
+    public function getUpgradeStarCount(): ?int
     {
         return $this->upgrade_star_count;
     }
@@ -142,7 +141,7 @@ final class Gift implements EntityInterface
      *
      * @return Gift
      */
-    public function setUpgradeStarCount(int|null $upgrade_star_count): Gift
+    public function setUpgradeStarCount(?int $upgrade_star_count): Gift
     {
         $this->upgrade_star_count = $upgrade_star_count;
         return $this;
@@ -151,7 +150,7 @@ final class Gift implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getPublisherChat(): Chat|null
+    public function getPublisherChat(): ?Chat
     {
         return $this->publisher_chat;
     }
@@ -161,7 +160,7 @@ final class Gift implements EntityInterface
      *
      * @return Gift
      */
-    public function setPublisherChat(Chat|null $publisher_chat): Gift
+    public function setPublisherChat(?Chat $publisher_chat): Gift
     {
         $this->publisher_chat = $publisher_chat;
         return $this;

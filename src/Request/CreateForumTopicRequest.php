@@ -22,10 +22,9 @@ class CreateForumTopicRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private string $name,
-        private int|null $icon_color = null,
-        private string|null $icon_custom_emoji_id = null,
-    ) {
-    }
+        private ?int $icon_color = null,
+        private ?string $icon_custom_emoji_id = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -49,23 +48,23 @@ class CreateForumTopicRequest implements RequestInterface
         return $this;
     }
 
-    public function getIconColor(): int|null
+    public function getIconColor(): ?int
     {
         return $this->icon_color;
     }
 
-    public function setIconColor(int|null $icon_color): CreateForumTopicRequest
+    public function setIconColor(?int $icon_color): CreateForumTopicRequest
     {
         $this->icon_color = $icon_color;
         return $this;
     }
 
-    public function getIconCustomEmojiId(): string|null
+    public function getIconCustomEmojiId(): ?string
     {
         return $this->icon_custom_emoji_id;
     }
 
-    public function setIconCustomEmojiId(string|null $icon_custom_emoji_id): CreateForumTopicRequest
+    public function setIconCustomEmojiId(?string $icon_custom_emoji_id): CreateForumTopicRequest
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;

@@ -13,8 +13,7 @@ abstract class AbstractMaybeInaccessibleMessage implements EntityInterface
 {
     public function __construct(
         protected int $date,
-    ) {
-    }
+    ) {}
 
     public function getDate(): int
     {

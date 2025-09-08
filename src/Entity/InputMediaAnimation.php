@@ -46,15 +46,15 @@ final class InputMediaAnimation extends AbstractInputMedia
     public function __construct(
         protected Filename|Url|string $media,
         protected Filename|Url|string|null $thumbnail = null,
-        protected string|null $caption = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected int|null $width = null,
-        protected int|null $height = null,
-        protected int|null $duration = null,
-        protected bool|null $has_spoiler = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?int $width = null,
+        protected ?int $height = null,
+        protected ?int $duration = null,
+        protected ?bool $has_spoiler = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Animation);
     }
@@ -100,7 +100,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -110,7 +110,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setCaption(string|null $caption): InputMediaAnimation
+    public function setCaption(?string $caption): InputMediaAnimation
     {
         $this->caption = $caption;
         return $this;
@@ -119,7 +119,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -129,7 +129,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputMediaAnimation
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaAnimation
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -138,7 +138,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -148,7 +148,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setCaptionEntities(array|null $caption_entities): InputMediaAnimation
+    public function setCaptionEntities(?array $caption_entities): InputMediaAnimation
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -157,7 +157,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
@@ -167,7 +167,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setWidth(int|null $width): InputMediaAnimation
+    public function setWidth(?int $width): InputMediaAnimation
     {
         $this->width = $width;
         return $this;
@@ -176,7 +176,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -186,7 +186,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setHeight(int|null $height): InputMediaAnimation
+    public function setHeight(?int $height): InputMediaAnimation
     {
         $this->height = $height;
         return $this;
@@ -195,7 +195,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -205,7 +205,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setDuration(int|null $duration): InputMediaAnimation
+    public function setDuration(?int $duration): InputMediaAnimation
     {
         $this->duration = $duration;
         return $this;
@@ -214,7 +214,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getHasSpoiler(): bool|null
+    public function getHasSpoiler(): ?bool
     {
         return $this->has_spoiler;
     }
@@ -224,7 +224,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setHasSpoiler(bool|null $has_spoiler): InputMediaAnimation
+    public function setHasSpoiler(?bool $has_spoiler): InputMediaAnimation
     {
         $this->has_spoiler = $has_spoiler;
         return $this;
@@ -233,7 +233,7 @@ final class InputMediaAnimation extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -243,7 +243,7 @@ final class InputMediaAnimation extends AbstractInputMedia
      *
      * @return InputMediaAnimation
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaAnimation
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InputMediaAnimation
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

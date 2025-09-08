@@ -12,8 +12,7 @@ class DeleteStickerSetRequest implements RequestInterface
      */
     public function __construct(
         private string $name,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

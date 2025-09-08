@@ -14,11 +14,10 @@ class GetGameHighScoresRequest implements RequestInterface
      */
     public function __construct(
         private int $user_id,
-        private ChatId|null $chat_id = null,
-        private string|null $inline_message_id = null,
-        private int|null $message_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?string $inline_message_id = null,
+        private ?int $message_id = null,
+    ) {}
 
     public function getUserId(): int
     {
@@ -31,34 +30,34 @@ class GetGameHighScoresRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): GetGameHighScoresRequest
+    public function setChatId(?ChatId $chat_id): GetGameHighScoresRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): GetGameHighScoresRequest
+    public function setInlineMessageId(?string $inline_message_id): GetGameHighScoresRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): GetGameHighScoresRequest
+    public function setMessageId(?int $message_id): GetGameHighScoresRequest
     {
         $this->message_id = $message_id;
         return $this;

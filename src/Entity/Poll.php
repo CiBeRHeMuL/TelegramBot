@@ -47,15 +47,14 @@ final class Poll implements EntityInterface
         protected PollTypeEnum $type,
         protected bool $allows_multiple_answers,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $question_entities = null,
-        protected int|null $correct_option_id = null,
-        protected string|null $explanation = null,
+        protected ?array $question_entities = null,
+        protected ?int $correct_option_id = null,
+        protected ?string $explanation = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $explanation_entities = null,
-        protected int|null $open_period = null,
-        protected int|null $close_date = null,
-    ) {
-    }
+        protected ?array $explanation_entities = null,
+        protected ?int $open_period = null,
+        protected ?int $close_date = null,
+    ) {}
 
     /**
      * @return string
@@ -212,7 +211,7 @@ final class Poll implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getQuestionEntities(): array|null
+    public function getQuestionEntities(): ?array
     {
         return $this->question_entities;
     }
@@ -222,7 +221,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setQuestionEntities(array|null $question_entities): Poll
+    public function setQuestionEntities(?array $question_entities): Poll
     {
         $this->question_entities = $question_entities;
         return $this;
@@ -231,7 +230,7 @@ final class Poll implements EntityInterface
     /**
      * @return int|null
      */
-    public function getCorrectOptionId(): int|null
+    public function getCorrectOptionId(): ?int
     {
         return $this->correct_option_id;
     }
@@ -241,7 +240,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setCorrectOptionId(int|null $correct_option_id): Poll
+    public function setCorrectOptionId(?int $correct_option_id): Poll
     {
         $this->correct_option_id = $correct_option_id;
         return $this;
@@ -250,7 +249,7 @@ final class Poll implements EntityInterface
     /**
      * @return string|null
      */
-    public function getExplanation(): string|null
+    public function getExplanation(): ?string
     {
         return $this->explanation;
     }
@@ -260,7 +259,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setExplanation(string|null $explanation): Poll
+    public function setExplanation(?string $explanation): Poll
     {
         $this->explanation = $explanation;
         return $this;
@@ -269,7 +268,7 @@ final class Poll implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getExplanationEntities(): array|null
+    public function getExplanationEntities(): ?array
     {
         return $this->explanation_entities;
     }
@@ -279,7 +278,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setExplanationEntities(array|null $explanation_entities): Poll
+    public function setExplanationEntities(?array $explanation_entities): Poll
     {
         $this->explanation_entities = $explanation_entities;
         return $this;
@@ -288,7 +287,7 @@ final class Poll implements EntityInterface
     /**
      * @return int|null
      */
-    public function getOpenPeriod(): int|null
+    public function getOpenPeriod(): ?int
     {
         return $this->open_period;
     }
@@ -298,7 +297,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setOpenPeriod(int|null $open_period): Poll
+    public function setOpenPeriod(?int $open_period): Poll
     {
         $this->open_period = $open_period;
         return $this;
@@ -307,7 +306,7 @@ final class Poll implements EntityInterface
     /**
      * @return int|null
      */
-    public function getCloseDate(): int|null
+    public function getCloseDate(): ?int
     {
         return $this->close_date;
     }
@@ -317,7 +316,7 @@ final class Poll implements EntityInterface
      *
      * @return Poll
      */
-    public function setCloseDate(int|null $close_date): Poll
+    public function setCloseDate(?int $close_date): Poll
     {
         $this->close_date = $close_date;
         return $this;

@@ -16,8 +16,7 @@ class EditGeneralForumTopicRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private string $name,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

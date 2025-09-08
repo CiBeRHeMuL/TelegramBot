@@ -18,8 +18,7 @@ final class WebAppData implements EntityInterface
     public function __construct(
         protected string $data,
         protected string $button_text,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

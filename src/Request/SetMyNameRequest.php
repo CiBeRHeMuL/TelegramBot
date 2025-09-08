@@ -15,28 +15,27 @@ class SetMyNameRequest implements RequestInterface
      * @param string|null $name New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
      */
     public function __construct(
-        private Language|null $language_code = null,
-        private string|null $name = null,
-    ) {
-    }
+        private ?Language $language_code = null,
+        private ?string $name = null,
+    ) {}
 
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(Language|null $language_code): SetMyNameRequest
+    public function setLanguageCode(?Language $language_code): SetMyNameRequest
     {
         $this->language_code = $language_code;
         return $this;
     }
 
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string|null $name): SetMyNameRequest
+    public function setName(?string $name): SetMyNameRequest
     {
         $this->name = $name;
         return $this;

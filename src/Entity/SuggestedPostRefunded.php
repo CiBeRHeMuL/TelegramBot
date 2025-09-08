@@ -23,9 +23,8 @@ final class SuggestedPostRefunded implements EntityInterface
      */
     public function __construct(
         protected SuggestedPostRefundedReasonEnum $reason,
-        protected Message|null $suggested_post_message = null,
-    ) {
-    }
+        protected ?Message $suggested_post_message = null,
+    ) {}
 
     /**
      * @return SuggestedPostRefundedReasonEnum
@@ -49,7 +48,7 @@ final class SuggestedPostRefunded implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getSuggestedPostMessage(): Message|null
+    public function getSuggestedPostMessage(): ?Message
     {
         return $this->suggested_post_message;
     }
@@ -59,7 +58,7 @@ final class SuggestedPostRefunded implements EntityInterface
      *
      * @return SuggestedPostRefunded
      */
-    public function setSuggestedPostMessage(Message|null $suggested_post_message): SuggestedPostRefunded
+    public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostRefunded
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;

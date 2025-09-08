@@ -54,7 +54,7 @@ class HArray
             ? $k
             : fn($el) => $el[$k] ?? null;
 
-        $key = (array)$key;
+        $key = (array) $key;
 
         $result = [];
         foreach ($array as $i => $el) {
@@ -92,7 +92,7 @@ class HArray
         $keyToCallable = fn($k) => is_callable($k)
             ? $k
             : fn($el) => $el[$k] ?? null;
-        $key = (array)$key;
+        $key = (array) $key;
 
 
         $index = is_callable($index)
@@ -210,7 +210,7 @@ class HArray
         iterable $array,
         int|string|callable|array $key,
         int|string|callable|null $index = null,
-        callable|null $projection = null,
+        ?callable $projection = null,
         bool $preserveKeys = true,
         int|string|null $defaultIndex = null,
     ): array {
@@ -223,7 +223,7 @@ class HArray
             ? $k
             : fn($el) => $el[$k] ?? null;
         // Принудительно преобразовываем $key в массив
-        $key = (array)$key;
+        $key = (array) $key;
 
         // Принудительно сбрасываем индекс, если необходимо сбросить ключи вложенных массивов
         if ($preserveKeys) {
@@ -300,7 +300,7 @@ class HArray
      *
      * @return array
      */
-    public static function filterRecursive(array $array, callable|null $callable = null, int $mode = 0): array
+    public static function filterRecursive(array $array, ?callable $callable = null, int $mode = 0): array
     {
         $filterFunc = function (array $value) use (&$filterFunc, &$callable, &$mode) {
             $value = array_filter($value, $callable, $mode);

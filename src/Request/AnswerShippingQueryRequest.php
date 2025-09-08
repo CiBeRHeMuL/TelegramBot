@@ -23,10 +23,9 @@ class AnswerShippingQueryRequest implements RequestInterface
     public function __construct(
         private bool $ok,
         private string $shipping_query_id,
-        private string|null $error_message = null,
-        private array|null $shipping_options = null,
-    ) {
-    }
+        private ?string $error_message = null,
+        private ?array $shipping_options = null,
+    ) {}
 
     public function getOk(): bool
     {
@@ -50,23 +49,23 @@ class AnswerShippingQueryRequest implements RequestInterface
         return $this;
     }
 
-    public function getErrorMessage(): string|null
+    public function getErrorMessage(): ?string
     {
         return $this->error_message;
     }
 
-    public function setErrorMessage(string|null $error_message): AnswerShippingQueryRequest
+    public function setErrorMessage(?string $error_message): AnswerShippingQueryRequest
     {
         $this->error_message = $error_message;
         return $this;
     }
 
-    public function getShippingOptions(): array|null
+    public function getShippingOptions(): ?array
     {
         return $this->shipping_options;
     }
 
-    public function setShippingOptions(array|null $shipping_options): AnswerShippingQueryRequest
+    public function setShippingOptions(?array $shipping_options): AnswerShippingQueryRequest
     {
         $this->shipping_options = $shipping_options;
         return $this;

@@ -18,8 +18,7 @@ final class ReactionCount implements EntityInterface
     public function __construct(
         protected AbstractReactionType $type,
         protected int $total_count,
-    ) {
-    }
+    ) {}
 
     /**
      * @return AbstractReactionType

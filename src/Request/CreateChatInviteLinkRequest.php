@@ -20,12 +20,11 @@ class CreateChatInviteLinkRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-        private bool|null $creates_join_request = null,
-        private int|null $expire_date = null,
-        private int|null $member_limit = null,
-        private string|null $name = null,
-    ) {
-    }
+        private ?bool $creates_join_request = null,
+        private ?int $expire_date = null,
+        private ?int $member_limit = null,
+        private ?string $name = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -38,45 +37,45 @@ class CreateChatInviteLinkRequest implements RequestInterface
         return $this;
     }
 
-    public function getCreatesJoinRequest(): bool|null
+    public function getCreatesJoinRequest(): ?bool
     {
         return $this->creates_join_request;
     }
 
-    public function setCreatesJoinRequest(bool|null $creates_join_request): CreateChatInviteLinkRequest
+    public function setCreatesJoinRequest(?bool $creates_join_request): CreateChatInviteLinkRequest
     {
         $this->creates_join_request = $creates_join_request;
         return $this;
     }
 
-    public function getExpireDate(): int|null
+    public function getExpireDate(): ?int
     {
         return $this->expire_date;
     }
 
-    public function setExpireDate(int|null $expire_date): CreateChatInviteLinkRequest
+    public function setExpireDate(?int $expire_date): CreateChatInviteLinkRequest
     {
         $this->expire_date = $expire_date;
         return $this;
     }
 
-    public function getMemberLimit(): int|null
+    public function getMemberLimit(): ?int
     {
         return $this->member_limit;
     }
 
-    public function setMemberLimit(int|null $member_limit): CreateChatInviteLinkRequest
+    public function setMemberLimit(?int $member_limit): CreateChatInviteLinkRequest
     {
         $this->member_limit = $member_limit;
         return $this;
     }
 
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string|null $name): CreateChatInviteLinkRequest
+    public function setName(?string $name): CreateChatInviteLinkRequest
     {
         $this->name = $name;
         return $this;

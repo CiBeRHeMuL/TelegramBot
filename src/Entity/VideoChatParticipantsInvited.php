@@ -19,8 +19,7 @@ final class VideoChatParticipantsInvited implements EntityInterface
     public function __construct(
         #[ArrayType(User::class)]
         protected array $users,
-    ) {
-    }
+    ) {}
 
     /**
      * @return User[]

@@ -40,13 +40,13 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      */
     public function __construct(
         protected Filename|Url|string $media,
-        protected int|null $duration = null,
-        protected int|null $height = null,
-        protected bool|null $supports_streaming = null,
+        protected ?int $duration = null,
+        protected ?int $height = null,
+        protected ?bool $supports_streaming = null,
         protected Filename|Url|string|null $thumbnail = null,
-        protected int|null $width = null,
+        protected ?int $width = null,
         protected Filename|Url|string|null $cover = null,
-        protected int|null $start_timestamp = null,
+        protected ?int $start_timestamp = null,
     ) {
         parent::__construct(InputPaidMediaTypeEnum::Video);
     }
@@ -73,7 +73,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
     /**
      * @return int|null
      */
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -83,7 +83,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      *
      * @return InputPaidMediaVideo
      */
-    public function setDuration(int|null $duration): InputPaidMediaVideo
+    public function setDuration(?int $duration): InputPaidMediaVideo
     {
         $this->duration = $duration;
         return $this;
@@ -92,7 +92,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
     /**
      * @return int|null
      */
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -102,7 +102,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      *
      * @return InputPaidMediaVideo
      */
-    public function setHeight(int|null $height): InputPaidMediaVideo
+    public function setHeight(?int $height): InputPaidMediaVideo
     {
         $this->height = $height;
         return $this;
@@ -111,7 +111,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
     /**
      * @return bool|null
      */
-    public function getSupportsStreaming(): bool|null
+    public function getSupportsStreaming(): ?bool
     {
         return $this->supports_streaming;
     }
@@ -121,7 +121,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      *
      * @return InputPaidMediaVideo
      */
-    public function setSupportsStreaming(bool|null $supports_streaming): InputPaidMediaVideo
+    public function setSupportsStreaming(?bool $supports_streaming): InputPaidMediaVideo
     {
         $this->supports_streaming = $supports_streaming;
         return $this;
@@ -149,7 +149,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
     /**
      * @return int|null
      */
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
@@ -159,7 +159,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      *
      * @return InputPaidMediaVideo
      */
-    public function setWidth(int|null $width): InputPaidMediaVideo
+    public function setWidth(?int $width): InputPaidMediaVideo
     {
         $this->width = $width;
         return $this;
@@ -187,7 +187,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
     /**
      * @return int|null
      */
-    public function getStartTimestamp(): int|null
+    public function getStartTimestamp(): ?int
     {
         return $this->start_timestamp;
     }
@@ -197,7 +197,7 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      *
      * @return InputPaidMediaVideo
      */
-    public function setStartTimestamp(int|null $start_timestamp): InputPaidMediaVideo
+    public function setStartTimestamp(?int $start_timestamp): InputPaidMediaVideo
     {
         $this->start_timestamp = $start_timestamp;
         return $this;

@@ -35,14 +35,13 @@ final class ChatInviteLink implements EntityInterface
         protected bool $creates_join_request,
         protected bool $is_primary,
         protected bool $is_revoked,
-        protected int|null $expire_date = null,
-        protected int|null $member_limit = null,
-        protected string|null $name = null,
-        protected int|null $pending_join_request_count = null,
-        protected int|null $subscription_period = null,
-        protected int|null $subscription_price = null,
-    ) {
-    }
+        protected ?int $expire_date = null,
+        protected ?int $member_limit = null,
+        protected ?string $name = null,
+        protected ?int $pending_join_request_count = null,
+        protected ?int $subscription_period = null,
+        protected ?int $subscription_price = null,
+    ) {}
 
     /**
      * @return Url
@@ -142,7 +141,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return int|null
      */
-    public function getExpireDate(): int|null
+    public function getExpireDate(): ?int
     {
         return $this->expire_date;
     }
@@ -152,7 +151,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setExpireDate(int|null $expire_date): ChatInviteLink
+    public function setExpireDate(?int $expire_date): ChatInviteLink
     {
         $this->expire_date = $expire_date;
         return $this;
@@ -161,7 +160,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return int|null
      */
-    public function getMemberLimit(): int|null
+    public function getMemberLimit(): ?int
     {
         return $this->member_limit;
     }
@@ -171,7 +170,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setMemberLimit(int|null $member_limit): ChatInviteLink
+    public function setMemberLimit(?int $member_limit): ChatInviteLink
     {
         $this->member_limit = $member_limit;
         return $this;
@@ -180,7 +179,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return string|null
      */
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -190,7 +189,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setName(string|null $name): ChatInviteLink
+    public function setName(?string $name): ChatInviteLink
     {
         $this->name = $name;
         return $this;
@@ -199,7 +198,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return int|null
      */
-    public function getPendingJoinRequestCount(): int|null
+    public function getPendingJoinRequestCount(): ?int
     {
         return $this->pending_join_request_count;
     }
@@ -209,7 +208,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setPendingJoinRequestCount(int|null $pending_join_request_count): ChatInviteLink
+    public function setPendingJoinRequestCount(?int $pending_join_request_count): ChatInviteLink
     {
         $this->pending_join_request_count = $pending_join_request_count;
         return $this;
@@ -218,7 +217,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSubscriptionPeriod(): int|null
+    public function getSubscriptionPeriod(): ?int
     {
         return $this->subscription_period;
     }
@@ -228,7 +227,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setSubscriptionPeriod(int|null $subscription_period): ChatInviteLink
+    public function setSubscriptionPeriod(?int $subscription_period): ChatInviteLink
     {
         $this->subscription_period = $subscription_period;
         return $this;
@@ -237,7 +236,7 @@ final class ChatInviteLink implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSubscriptionPrice(): int|null
+    public function getSubscriptionPrice(): ?int
     {
         return $this->subscription_price;
     }
@@ -247,7 +246,7 @@ final class ChatInviteLink implements EntityInterface
      *
      * @return ChatInviteLink
      */
-    public function setSubscriptionPrice(int|null $subscription_price): ChatInviteLink
+    public function setSubscriptionPrice(?int $subscription_price): ChatInviteLink
     {
         $this->subscription_price = $subscription_price;
         return $this;

@@ -20,8 +20,7 @@ abstract class AbstractInputMedia implements EntityInterface
 {
     public function __construct(
         protected readonly InputMediaTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): InputMediaTypeEnum
     {

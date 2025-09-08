@@ -19,8 +19,7 @@ abstract class AbstractBackgroundType implements EntityInterface
 {
     public function __construct(
         protected readonly BackgroundTypeTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): BackgroundTypeTypeEnum
     {

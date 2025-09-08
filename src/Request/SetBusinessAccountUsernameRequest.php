@@ -13,9 +13,8 @@ class SetBusinessAccountUsernameRequest implements RequestInterface
      */
     public function __construct(
         private string $business_connection_id,
-        private string|null $username = null,
-    ) {
-    }
+        private ?string $username = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -28,12 +27,12 @@ class SetBusinessAccountUsernameRequest implements RequestInterface
         return $this;
     }
 
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    public function setUsername(string|null $username): SetBusinessAccountUsernameRequest
+    public function setUsername(?string $username): SetBusinessAccountUsernameRequest
     {
         $this->username = $username;
         return $this;

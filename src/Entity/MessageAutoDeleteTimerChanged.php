@@ -14,8 +14,7 @@ final class MessageAutoDeleteTimerChanged implements EntityInterface
      */
     public function __construct(
         protected int $message_auto_delete_time,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

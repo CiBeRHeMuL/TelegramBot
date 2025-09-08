@@ -27,11 +27,10 @@ final class InputChecklistTask implements EntityInterface
     public function __construct(
         protected int $id,
         protected string $text,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $text_entities = null,
-    ) {
-    }
+        protected ?array $text_entities = null,
+    ) {}
 
     /**
      * @return int
@@ -74,7 +73,7 @@ final class InputChecklistTask implements EntityInterface
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -84,7 +83,7 @@ final class InputChecklistTask implements EntityInterface
      *
      * @return InputChecklistTask
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputChecklistTask
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputChecklistTask
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -93,7 +92,7 @@ final class InputChecklistTask implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
@@ -103,7 +102,7 @@ final class InputChecklistTask implements EntityInterface
      *
      * @return InputChecklistTask
      */
-    public function setTextEntities(array|null $text_entities): InputChecklistTask
+    public function setTextEntities(?array $text_entities): InputChecklistTask
     {
         $this->text_entities = $text_entities;
         return $this;

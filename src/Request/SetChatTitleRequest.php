@@ -16,8 +16,7 @@ class SetChatTitleRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private string $title,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

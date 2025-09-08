@@ -30,10 +30,9 @@ class CreateNewStickerSetRequest implements RequestInterface
         private array $stickers,
         private string $title,
         private int $user_id,
-        private bool|null $needs_repainting = null,
-        private StickerTypeEnum|null $sticker_type = null,
-    ) {
-    }
+        private ?bool $needs_repainting = null,
+        private ?StickerTypeEnum $sticker_type = null,
+    ) {}
 
     public function getName(): string
     {
@@ -79,23 +78,23 @@ class CreateNewStickerSetRequest implements RequestInterface
         return $this;
     }
 
-    public function getNeedsRepainting(): bool|null
+    public function getNeedsRepainting(): ?bool
     {
         return $this->needs_repainting;
     }
 
-    public function setNeedsRepainting(bool|null $needs_repainting): CreateNewStickerSetRequest
+    public function setNeedsRepainting(?bool $needs_repainting): CreateNewStickerSetRequest
     {
         $this->needs_repainting = $needs_repainting;
         return $this;
     }
 
-    public function getStickerType(): StickerTypeEnum|null
+    public function getStickerType(): ?StickerTypeEnum
     {
         return $this->sticker_type;
     }
 
-    public function setStickerType(StickerTypeEnum|null $sticker_type): CreateNewStickerSetRequest
+    public function setStickerType(?StickerTypeEnum $sticker_type): CreateNewStickerSetRequest
     {
         $this->sticker_type = $sticker_type;
         return $this;

@@ -23,13 +23,12 @@ class SetGameScoreRequest implements RequestInterface
     public function __construct(
         private int $score,
         private int $user_id,
-        private ChatId|null $chat_id = null,
-        private bool|null $disable_edit_message = null,
-        private bool|null $force = null,
-        private string|null $inline_message_id = null,
-        private int|null $message_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?bool $disable_edit_message = null,
+        private ?bool $force = null,
+        private ?string $inline_message_id = null,
+        private ?int $message_id = null,
+    ) {}
 
     public function getScore(): int
     {
@@ -53,56 +52,56 @@ class SetGameScoreRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): SetGameScoreRequest
+    public function setChatId(?ChatId $chat_id): SetGameScoreRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getDisableEditMessage(): bool|null
+    public function getDisableEditMessage(): ?bool
     {
         return $this->disable_edit_message;
     }
 
-    public function setDisableEditMessage(bool|null $disable_edit_message): SetGameScoreRequest
+    public function setDisableEditMessage(?bool $disable_edit_message): SetGameScoreRequest
     {
         $this->disable_edit_message = $disable_edit_message;
         return $this;
     }
 
-    public function getForce(): bool|null
+    public function getForce(): ?bool
     {
         return $this->force;
     }
 
-    public function setForce(bool|null $force): SetGameScoreRequest
+    public function setForce(?bool $force): SetGameScoreRequest
     {
         $this->force = $force;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): SetGameScoreRequest
+    public function setInlineMessageId(?string $inline_message_id): SetGameScoreRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): SetGameScoreRequest
+    public function setMessageId(?int $message_id): SetGameScoreRequest
     {
         $this->message_id = $message_id;
         return $this;

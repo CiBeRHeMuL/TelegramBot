@@ -29,14 +29,13 @@ final class Audio implements EntityInterface
         protected int $duration,
         protected string $file_id,
         protected string $file_unique_id,
-        protected string|null $performer = null,
-        protected string|null $title = null,
-        protected PhotoSize|null $thumbnail = null,
-        protected string|null $file_name = null,
-        protected string|null $mime_type = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?string $performer = null,
+        protected ?string $title = null,
+        protected ?PhotoSize $thumbnail = null,
+        protected ?string $file_name = null,
+        protected ?string $mime_type = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return int
@@ -98,7 +97,7 @@ final class Audio implements EntityInterface
     /**
      * @return string|null
      */
-    public function getPerformer(): string|null
+    public function getPerformer(): ?string
     {
         return $this->performer;
     }
@@ -108,7 +107,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setPerformer(string|null $performer): Audio
+    public function setPerformer(?string $performer): Audio
     {
         $this->performer = $performer;
         return $this;
@@ -117,7 +116,7 @@ final class Audio implements EntityInterface
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -127,7 +126,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setTitle(string|null $title): Audio
+    public function setTitle(?string $title): Audio
     {
         $this->title = $title;
         return $this;
@@ -136,7 +135,7 @@ final class Audio implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -146,7 +145,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): Audio
+    public function setThumbnail(?PhotoSize $thumbnail): Audio
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -155,7 +154,7 @@ final class Audio implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFileName(): string|null
+    public function getFileName(): ?string
     {
         return $this->file_name;
     }
@@ -165,7 +164,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setFileName(string|null $file_name): Audio
+    public function setFileName(?string $file_name): Audio
     {
         $this->file_name = $file_name;
         return $this;
@@ -174,7 +173,7 @@ final class Audio implements EntityInterface
     /**
      * @return string|null
      */
-    public function getMimeType(): string|null
+    public function getMimeType(): ?string
     {
         return $this->mime_type;
     }
@@ -184,7 +183,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setMimeType(string|null $mime_type): Audio
+    public function setMimeType(?string $mime_type): Audio
     {
         $this->mime_type = $mime_type;
         return $this;
@@ -193,7 +192,7 @@ final class Audio implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -203,7 +202,7 @@ final class Audio implements EntityInterface
      *
      * @return Audio
      */
-    public function setFileSize(int|null $file_size): Audio
+    public function setFileSize(?int $file_size): Audio
     {
         $this->file_size = $file_size;
         return $this;

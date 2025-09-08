@@ -25,10 +25,9 @@ final class TextQuote implements EntityInterface
         protected string $text,
         protected int $position,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $entities = null,
-        protected bool|null $is_manual = null,
-    ) {
-    }
+        protected ?array $entities = null,
+        protected ?bool $is_manual = null,
+    ) {}
 
     /**
      * @return string
@@ -71,7 +70,7 @@ final class TextQuote implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
@@ -81,7 +80,7 @@ final class TextQuote implements EntityInterface
      *
      * @return TextQuote
      */
-    public function setEntities(array|null $entities): TextQuote
+    public function setEntities(?array $entities): TextQuote
     {
         $this->entities = $entities;
         return $this;
@@ -90,7 +89,7 @@ final class TextQuote implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsManual(): bool|null
+    public function getIsManual(): ?bool
     {
         return $this->is_manual;
     }
@@ -100,7 +99,7 @@ final class TextQuote implements EntityInterface
      *
      * @return TextQuote
      */
-    public function setIsManual(bool|null $is_manual): TextQuote
+    public function setIsManual(?bool $is_manual): TextQuote
     {
         $this->is_manual = $is_manual;
         return $this;

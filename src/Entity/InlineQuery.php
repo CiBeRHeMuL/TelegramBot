@@ -31,10 +31,9 @@ final class InlineQuery implements EntityInterface
         protected User $from,
         protected string $query,
         protected string $offset,
-        protected ChatTypeEnum|null $chat_type = null,
-        protected Location|null $location = null,
-    ) {
-    }
+        protected ?ChatTypeEnum $chat_type = null,
+        protected ?Location $location = null,
+    ) {}
 
     /**
      * @return string
@@ -115,7 +114,7 @@ final class InlineQuery implements EntityInterface
     /**
      * @return ChatTypeEnum|null
      */
-    public function getChatType(): ChatTypeEnum|null
+    public function getChatType(): ?ChatTypeEnum
     {
         return $this->chat_type;
     }
@@ -125,7 +124,7 @@ final class InlineQuery implements EntityInterface
      *
      * @return InlineQuery
      */
-    public function setChatType(ChatTypeEnum|null $chat_type): InlineQuery
+    public function setChatType(?ChatTypeEnum $chat_type): InlineQuery
     {
         $this->chat_type = $chat_type;
         return $this;
@@ -134,7 +133,7 @@ final class InlineQuery implements EntityInterface
     /**
      * @return Location|null
      */
-    public function getLocation(): Location|null
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
@@ -144,7 +143,7 @@ final class InlineQuery implements EntityInterface
      *
      * @return InlineQuery
      */
-    public function setLocation(Location|null $location): InlineQuery
+    public function setLocation(?Location $location): InlineQuery
     {
         $this->location = $location;
         return $this;

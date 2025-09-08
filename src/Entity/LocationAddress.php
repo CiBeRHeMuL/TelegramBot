@@ -19,11 +19,10 @@ final class LocationAddress implements EntityInterface
      */
     public function __construct(
         protected CountryCodeEnum $country_code,
-        protected string|null $city = null,
-        protected string|null $state = null,
-        protected string|null $street = null,
-    ) {
-    }
+        protected ?string $city = null,
+        protected ?string $state = null,
+        protected ?string $street = null,
+    ) {}
 
     /**
      * @return CountryCodeEnum
@@ -47,7 +46,7 @@ final class LocationAddress implements EntityInterface
     /**
      * @return string|null
      */
-    public function getCity(): string|null
+    public function getCity(): ?string
     {
         return $this->city;
     }
@@ -57,7 +56,7 @@ final class LocationAddress implements EntityInterface
      *
      * @return LocationAddress
      */
-    public function setCity(string|null $city): LocationAddress
+    public function setCity(?string $city): LocationAddress
     {
         $this->city = $city;
         return $this;
@@ -66,7 +65,7 @@ final class LocationAddress implements EntityInterface
     /**
      * @return string|null
      */
-    public function getState(): string|null
+    public function getState(): ?string
     {
         return $this->state;
     }
@@ -76,7 +75,7 @@ final class LocationAddress implements EntityInterface
      *
      * @return LocationAddress
      */
-    public function setState(string|null $state): LocationAddress
+    public function setState(?string $state): LocationAddress
     {
         $this->state = $state;
         return $this;
@@ -85,7 +84,7 @@ final class LocationAddress implements EntityInterface
     /**
      * @return string|null
      */
-    public function getStreet(): string|null
+    public function getStreet(): ?string
     {
         return $this->street;
     }
@@ -95,7 +94,7 @@ final class LocationAddress implements EntityInterface
      *
      * @return LocationAddress
      */
-    public function setStreet(string|null $street): LocationAddress
+    public function setStreet(?string $street): LocationAddress
     {
         $this->street = $street;
         return $this;

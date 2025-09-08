@@ -14,9 +14,8 @@ class VerifyUserRequest implements RequestInterface
      */
     public function __construct(
         private int $user_id,
-        private string|null $custom_description = null,
-    ) {
-    }
+        private ?string $custom_description = null,
+    ) {}
 
     public function getUserId(): int
     {
@@ -29,12 +28,12 @@ class VerifyUserRequest implements RequestInterface
         return $this;
     }
 
-    public function getCustomDescription(): string|null
+    public function getCustomDescription(): ?string
     {
         return $this->custom_description;
     }
 
-    public function setCustomDescription(string|null $custom_description): VerifyUserRequest
+    public function setCustomDescription(?string $custom_description): VerifyUserRequest
     {
         $this->custom_description = $custom_description;
         return $this;

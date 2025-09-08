@@ -8,8 +8,7 @@ final class HandlerGroupAddedEvent extends AbstractEvent
 {
     public function __construct(
         private readonly HandlerGroup $group,
-    ) {
-    }
+    ) {}
 
     public function getGroup(): HandlerGroup
     {

@@ -78,27 +78,26 @@ class SendAnimationRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private Filename|Url|string $animation,
-        private string|null $business_connection_id = null,
-        private int|null $message_thread_id = null,
-        private int|null $duration = null,
-        private int|null $width = null,
-        private int|null $height = null,
+        private ?string $business_connection_id = null,
+        private ?int $message_thread_id = null,
+        private ?int $duration = null,
+        private ?int $width = null,
+        private ?int $height = null,
         private Filename|Url|string|null $thumbnail = null,
-        private string|null $caption = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private array|null $caption_entities = null,
-        private bool|null $has_spoiler = null,
-        private bool|null $disable_notification = null,
-        private bool|null $protect_content = null,
-        private ReplyParameters|null $reply_parameters = null,
+        private ?string $caption = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?array $caption_entities = null,
+        private ?bool $has_spoiler = null,
+        private ?bool $disable_notification = null,
+        private ?bool $protect_content = null,
+        private ?ReplyParameters $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private string|null $message_effect_id = null,
-        private bool|null $show_caption_above_media = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?string $message_effect_id = null,
+        private ?bool $show_caption_above_media = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -122,56 +121,56 @@ class SendAnimationRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendAnimationRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendAnimationRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendAnimationRequest
+    public function setMessageThreadId(?int $message_thread_id): SendAnimationRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    public function setDuration(int|null $duration): SendAnimationRequest
+    public function setDuration(?int $duration): SendAnimationRequest
     {
         $this->duration = $duration;
         return $this;
     }
 
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function setWidth(int|null $width): SendAnimationRequest
+    public function setWidth(?int $width): SendAnimationRequest
     {
         $this->width = $width;
         return $this;
     }
 
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    public function setHeight(int|null $height): SendAnimationRequest
+    public function setHeight(?int $height): SendAnimationRequest
     {
         $this->height = $height;
         return $this;
@@ -188,78 +187,78 @@ class SendAnimationRequest implements RequestInterface
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): SendAnimationRequest
+    public function setCaption(?string $caption): SendAnimationRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): SendAnimationRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): SendAnimationRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): SendAnimationRequest
+    public function setCaptionEntities(?array $caption_entities): SendAnimationRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getHasSpoiler(): bool|null
+    public function getHasSpoiler(): ?bool
     {
         return $this->has_spoiler;
     }
 
-    public function setHasSpoiler(bool|null $has_spoiler): SendAnimationRequest
+    public function setHasSpoiler(?bool $has_spoiler): SendAnimationRequest
     {
         $this->has_spoiler = $has_spoiler;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendAnimationRequest
+    public function setDisableNotification(?bool $disable_notification): SendAnimationRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendAnimationRequest
+    public function setProtectContent(?bool $protect_content): SendAnimationRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendAnimationRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendAnimationRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
@@ -276,56 +275,56 @@ class SendAnimationRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendAnimationRequest
+    public function setMessageEffectId(?string $message_effect_id): SendAnimationRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
 
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): SendAnimationRequest
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): SendAnimationRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendAnimationRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendAnimationRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendAnimationRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendAnimationRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendAnimationRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendAnimationRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

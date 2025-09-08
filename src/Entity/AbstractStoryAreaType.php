@@ -20,8 +20,7 @@ abstract class AbstractStoryAreaType implements EntityInterface
 {
     public function __construct(
         protected readonly StoryAreaTypeTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): StoryAreaTypeTypeEnum
     {

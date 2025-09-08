@@ -18,10 +18,9 @@ class UnpinChatMessageRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-        private int|null $message_id = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?int $message_id = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -34,23 +33,23 @@ class UnpinChatMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): UnpinChatMessageRequest
+    public function setMessageId(?int $message_id): UnpinChatMessageRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): UnpinChatMessageRequest
+    public function setBusinessConnectionId(?string $business_connection_id): UnpinChatMessageRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

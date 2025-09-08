@@ -39,7 +39,7 @@ class TelegramFactory
     public static function getDefaultTelegram(
         BotToken $token,
         bool $throwOnErrorResponse = false,
-        EventDispatcherInterface|null $eventDispatcher = null,
+        ?EventDispatcherInterface $eventDispatcher = null,
     ): Telegram {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
@@ -78,7 +78,7 @@ class TelegramFactory
     public static function getGetUpdatesTelegram(
         BotToken $token,
         bool $throwOnErrorResponse = false,
-        EventDispatcherInterface|null $eventDispatcher = null,
+        ?EventDispatcherInterface $eventDispatcher = null,
     ): Telegram {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
@@ -121,7 +121,7 @@ class TelegramFactory
             EntityInterface::class => (new EntityNormalizer($serializer))(...),
             UnitEnum::class => fn(UnitEnum $e) => $e->name,
             BackedEnum::class => fn(BackedEnum $e) => $e->value,
-            'object' => fn(object $e) => $serializer->normalize((array)$e),
+            'object' => fn(object $e) => $serializer->normalize((array) $e),
         ]);
         return $serializer;
     }

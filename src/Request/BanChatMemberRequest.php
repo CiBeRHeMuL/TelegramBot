@@ -22,10 +22,9 @@ class BanChatMemberRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $user_id,
-        private bool|null $revoke_messages = null,
-        private int|null $until_date = null,
-    ) {
-    }
+        private ?bool $revoke_messages = null,
+        private ?int $until_date = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -49,23 +48,23 @@ class BanChatMemberRequest implements RequestInterface
         return $this;
     }
 
-    public function getRevokeMessages(): bool|null
+    public function getRevokeMessages(): ?bool
     {
         return $this->revoke_messages;
     }
 
-    public function setRevokeMessages(bool|null $revoke_messages): BanChatMemberRequest
+    public function setRevokeMessages(?bool $revoke_messages): BanChatMemberRequest
     {
         $this->revoke_messages = $revoke_messages;
         return $this;
     }
 
-    public function getUntilDate(): int|null
+    public function getUntilDate(): ?int
     {
         return $this->until_date;
     }
 
-    public function setUntilDate(int|null $until_date): BanChatMemberRequest
+    public function setUntilDate(?int $until_date): BanChatMemberRequest
     {
         $this->until_date = $until_date;
         return $this;

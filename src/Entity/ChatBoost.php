@@ -23,8 +23,7 @@ final class ChatBoost implements EntityInterface
         protected int $add_date,
         protected int $expiration_date,
         protected AbstractChatBoostSource $source,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

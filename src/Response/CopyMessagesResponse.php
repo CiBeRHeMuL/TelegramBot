@@ -12,12 +12,12 @@ class CopyMessagesResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $messageIds = null,
+        private readonly ?array $messageIds = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getMessageIds(): array|null
+    public function getMessageIds(): ?array
     {
         return $this->messageIds;
     }

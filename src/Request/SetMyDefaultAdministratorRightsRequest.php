@@ -18,28 +18,27 @@ class SetMyDefaultAdministratorRightsRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
      */
     public function __construct(
-        private bool|null $for_channels = null,
-        private ChatAdministratorRights|null $rights = null,
-    ) {
-    }
+        private ?bool $for_channels = null,
+        private ?ChatAdministratorRights $rights = null,
+    ) {}
 
-    public function getForChannels(): bool|null
+    public function getForChannels(): ?bool
     {
         return $this->for_channels;
     }
 
-    public function setForChannels(bool|null $for_channels): SetMyDefaultAdministratorRightsRequest
+    public function setForChannels(?bool $for_channels): SetMyDefaultAdministratorRightsRequest
     {
         $this->for_channels = $for_channels;
         return $this;
     }
 
-    public function getRights(): ChatAdministratorRights|null
+    public function getRights(): ?ChatAdministratorRights
     {
         return $this->rights;
     }
 
-    public function setRights(ChatAdministratorRights|null $rights): SetMyDefaultAdministratorRightsRequest
+    public function setRights(?ChatAdministratorRights $rights): SetMyDefaultAdministratorRightsRequest
     {
         $this->rights = $rights;
         return $this;

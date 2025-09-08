@@ -8,12 +8,12 @@ class GetStickerSetResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly StickerSet|null $stickerSet = null,
+        private readonly ?StickerSet $stickerSet = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getStickerSet(): StickerSet|null
+    public function getStickerSet(): ?StickerSet
     {
         return $this->stickerSet;
     }

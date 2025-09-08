@@ -24,10 +24,9 @@ class SetMessageReactionRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_id,
-        private bool|null $is_big = null,
-        private array|null $reaction = null,
-    ) {
-    }
+        private ?bool $is_big = null,
+        private ?array $reaction = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -51,23 +50,23 @@ class SetMessageReactionRequest implements RequestInterface
         return $this;
     }
 
-    public function getIsBig(): bool|null
+    public function getIsBig(): ?bool
     {
         return $this->is_big;
     }
 
-    public function setIsBig(bool|null $is_big): SetMessageReactionRequest
+    public function setIsBig(?bool $is_big): SetMessageReactionRequest
     {
         $this->is_big = $is_big;
         return $this;
     }
 
-    public function getReaction(): array|null
+    public function getReaction(): ?array
     {
         return $this->reaction;
     }
 
-    public function setReaction(array|null $reaction): SetMessageReactionRequest
+    public function setReaction(?array $reaction): SetMessageReactionRequest
     {
         $this->reaction = $reaction;
         return $this;

@@ -31,10 +31,9 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     public function __construct(
         protected Phone $phone_number,
         protected string $first_name,
-        protected string|null $last_name = null,
-        protected string|null $vcard = null,
-    ) {
-    }
+        protected ?string $last_name = null,
+        protected ?string $vcard = null,
+    ) {}
 
     /**
      * @return Phone
@@ -77,7 +76,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -87,7 +86,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
      *
      * @return InputContactMessageContent
      */
-    public function setLastName(string|null $last_name): InputContactMessageContent
+    public function setLastName(?string $last_name): InputContactMessageContent
     {
         $this->last_name = $last_name;
         return $this;
@@ -96,7 +95,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getVcard(): string|null
+    public function getVcard(): ?string
     {
         return $this->vcard;
     }
@@ -106,7 +105,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
      *
      * @return InputContactMessageContent
      */
-    public function setVcard(string|null $vcard): InputContactMessageContent
+    public function setVcard(?string $vcard): InputContactMessageContent
     {
         $this->vcard = $vcard;
         return $this;

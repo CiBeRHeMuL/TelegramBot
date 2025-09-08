@@ -36,14 +36,13 @@ final class WebhookInfo implements EntityInterface
         protected bool $has_custom_certificate,
         protected int $pending_update_count,
         #[ArrayType(UpdateTypeEnum::class)]
-        protected array|null $allowed_updates = null,
+        protected ?array $allowed_updates = null,
         protected IpV4|IpV6|null $ip_address = null,
-        protected int|null $last_error_date = null,
-        protected string|null $last_error_message = null,
-        protected int|null $last_synchronization_error_date = null,
-        protected int|null $max_connections = null,
-    ) {
-    }
+        protected ?int $last_error_date = null,
+        protected ?string $last_error_message = null,
+        protected ?int $last_synchronization_error_date = null,
+        protected ?int $max_connections = null,
+    ) {}
 
     /**
      * @return Url
@@ -105,7 +104,7 @@ final class WebhookInfo implements EntityInterface
     /**
      * @return UpdateTypeEnum[]|null
      */
-    public function getAllowedUpdates(): array|null
+    public function getAllowedUpdates(): ?array
     {
         return $this->allowed_updates;
     }
@@ -115,7 +114,7 @@ final class WebhookInfo implements EntityInterface
      *
      * @return WebhookInfo
      */
-    public function setAllowedUpdates(array|null $allowed_updates): WebhookInfo
+    public function setAllowedUpdates(?array $allowed_updates): WebhookInfo
     {
         $this->allowed_updates = $allowed_updates;
         return $this;
@@ -143,7 +142,7 @@ final class WebhookInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLastErrorDate(): int|null
+    public function getLastErrorDate(): ?int
     {
         return $this->last_error_date;
     }
@@ -153,7 +152,7 @@ final class WebhookInfo implements EntityInterface
      *
      * @return WebhookInfo
      */
-    public function setLastErrorDate(int|null $last_error_date): WebhookInfo
+    public function setLastErrorDate(?int $last_error_date): WebhookInfo
     {
         $this->last_error_date = $last_error_date;
         return $this;
@@ -162,7 +161,7 @@ final class WebhookInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLastErrorMessage(): string|null
+    public function getLastErrorMessage(): ?string
     {
         return $this->last_error_message;
     }
@@ -172,7 +171,7 @@ final class WebhookInfo implements EntityInterface
      *
      * @return WebhookInfo
      */
-    public function setLastErrorMessage(string|null $last_error_message): WebhookInfo
+    public function setLastErrorMessage(?string $last_error_message): WebhookInfo
     {
         $this->last_error_message = $last_error_message;
         return $this;
@@ -181,7 +180,7 @@ final class WebhookInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLastSynchronizationErrorDate(): int|null
+    public function getLastSynchronizationErrorDate(): ?int
     {
         return $this->last_synchronization_error_date;
     }
@@ -191,7 +190,7 @@ final class WebhookInfo implements EntityInterface
      *
      * @return WebhookInfo
      */
-    public function setLastSynchronizationErrorDate(int|null $last_synchronization_error_date): WebhookInfo
+    public function setLastSynchronizationErrorDate(?int $last_synchronization_error_date): WebhookInfo
     {
         $this->last_synchronization_error_date = $last_synchronization_error_date;
         return $this;
@@ -200,7 +199,7 @@ final class WebhookInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getMaxConnections(): int|null
+    public function getMaxConnections(): ?int
     {
         return $this->max_connections;
     }
@@ -210,7 +209,7 @@ final class WebhookInfo implements EntityInterface
      *
      * @return WebhookInfo
      */
-    public function setMaxConnections(int|null $max_connections): WebhookInfo
+    public function setMaxConnections(?int $max_connections): WebhookInfo
     {
         $this->max_connections = $max_connections;
         return $this;

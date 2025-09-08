@@ -17,9 +17,8 @@ final class BusinessLocation implements EntityInterface
      */
     public function __construct(
         protected string $address,
-        protected Location|null $location = null,
-    ) {
-    }
+        protected ?Location $location = null,
+    ) {}
 
     /**
      * @return string
@@ -43,7 +42,7 @@ final class BusinessLocation implements EntityInterface
     /**
      * @return Location|null
      */
-    public function getLocation(): Location|null
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
@@ -53,7 +52,7 @@ final class BusinessLocation implements EntityInterface
      *
      * @return BusinessLocation
      */
-    public function setLocation(Location|null $location): BusinessLocation
+    public function setLocation(?Location $location): BusinessLocation
     {
         $this->location = $location;
         return $this;

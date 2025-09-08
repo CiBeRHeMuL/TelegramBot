@@ -71,33 +71,32 @@ final class ExternalReplyInfo implements EntityInterface
      */
     public function __construct(
         protected AbstractMessageOrigin $origin,
-        protected Chat|null $chat = null,
-        protected int|null $message_id = null,
-        protected LinkPreviewOptions|null $link_preview_options = null,
-        protected Animation|null $animation = null,
-        protected Audio|null $audio = null,
-        protected Document|null $document = null,
+        protected ?Chat $chat = null,
+        protected ?int $message_id = null,
+        protected ?LinkPreviewOptions $link_preview_options = null,
+        protected ?Animation $animation = null,
+        protected ?Audio $audio = null,
+        protected ?Document $document = null,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $photo = null,
-        protected Sticker|null $sticker = null,
-        protected Story|null $story = null,
-        protected Video|null $video = null,
-        protected VideoNote|null $video_note = null,
-        protected Voice|null $voice = null,
-        protected bool|null $has_media_spoiler = null,
-        protected Contact|null $contact = null,
-        protected Dice|null $dice = null,
-        protected Game|null $game = null,
-        protected Giveaway|null $giveaway = null,
-        protected GiveawayWinners|null $giveaway_winners = null,
-        protected Invoice|null $invoice = null,
-        protected Location|null $location = null,
-        protected Poll|null $poll = null,
-        protected Venue|null $venue = null,
-        protected PaidMediaInfo|null $paid_media = null,
-        protected Checklist|null $checklist = null,
-    ) {
-    }
+        protected ?array $photo = null,
+        protected ?Sticker $sticker = null,
+        protected ?Story $story = null,
+        protected ?Video $video = null,
+        protected ?VideoNote $video_note = null,
+        protected ?Voice $voice = null,
+        protected ?bool $has_media_spoiler = null,
+        protected ?Contact $contact = null,
+        protected ?Dice $dice = null,
+        protected ?Game $game = null,
+        protected ?Giveaway $giveaway = null,
+        protected ?GiveawayWinners $giveaway_winners = null,
+        protected ?Invoice $invoice = null,
+        protected ?Location $location = null,
+        protected ?Poll $poll = null,
+        protected ?Venue $venue = null,
+        protected ?PaidMediaInfo $paid_media = null,
+        protected ?Checklist $checklist = null,
+    ) {}
 
     /**
      * @return AbstractMessageOrigin
@@ -121,7 +120,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getChat(): Chat|null
+    public function getChat(): ?Chat
     {
         return $this->chat;
     }
@@ -131,7 +130,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setChat(Chat|null $chat): ExternalReplyInfo
+    public function setChat(?Chat $chat): ExternalReplyInfo
     {
         $this->chat = $chat;
         return $this;
@@ -140,7 +139,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
@@ -150,7 +149,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setMessageId(int|null $message_id): ExternalReplyInfo
+    public function setMessageId(?int $message_id): ExternalReplyInfo
     {
         $this->message_id = $message_id;
         return $this;
@@ -159,7 +158,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return LinkPreviewOptions|null
      */
-    public function getLinkPreviewOptions(): LinkPreviewOptions|null
+    public function getLinkPreviewOptions(): ?LinkPreviewOptions
     {
         return $this->link_preview_options;
     }
@@ -169,7 +168,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setLinkPreviewOptions(LinkPreviewOptions|null $link_preview_options): ExternalReplyInfo
+    public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): ExternalReplyInfo
     {
         $this->link_preview_options = $link_preview_options;
         return $this;
@@ -178,7 +177,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Animation|null
      */
-    public function getAnimation(): Animation|null
+    public function getAnimation(): ?Animation
     {
         return $this->animation;
     }
@@ -188,7 +187,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setAnimation(Animation|null $animation): ExternalReplyInfo
+    public function setAnimation(?Animation $animation): ExternalReplyInfo
     {
         $this->animation = $animation;
         return $this;
@@ -197,7 +196,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Audio|null
      */
-    public function getAudio(): Audio|null
+    public function getAudio(): ?Audio
     {
         return $this->audio;
     }
@@ -207,7 +206,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setAudio(Audio|null $audio): ExternalReplyInfo
+    public function setAudio(?Audio $audio): ExternalReplyInfo
     {
         $this->audio = $audio;
         return $this;
@@ -216,7 +215,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Document|null
      */
-    public function getDocument(): Document|null
+    public function getDocument(): ?Document
     {
         return $this->document;
     }
@@ -226,7 +225,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setDocument(Document|null $document): ExternalReplyInfo
+    public function setDocument(?Document $document): ExternalReplyInfo
     {
         $this->document = $document;
         return $this;
@@ -235,7 +234,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getPhoto(): array|null
+    public function getPhoto(): ?array
     {
         return $this->photo;
     }
@@ -245,7 +244,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setPhoto(array|null $photo): ExternalReplyInfo
+    public function setPhoto(?array $photo): ExternalReplyInfo
     {
         $this->photo = $photo;
         return $this;
@@ -254,7 +253,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Sticker|null
      */
-    public function getSticker(): Sticker|null
+    public function getSticker(): ?Sticker
     {
         return $this->sticker;
     }
@@ -264,7 +263,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setSticker(Sticker|null $sticker): ExternalReplyInfo
+    public function setSticker(?Sticker $sticker): ExternalReplyInfo
     {
         $this->sticker = $sticker;
         return $this;
@@ -273,7 +272,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Story|null
      */
-    public function getStory(): Story|null
+    public function getStory(): ?Story
     {
         return $this->story;
     }
@@ -283,7 +282,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setStory(Story|null $story): ExternalReplyInfo
+    public function setStory(?Story $story): ExternalReplyInfo
     {
         $this->story = $story;
         return $this;
@@ -292,7 +291,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Video|null
      */
-    public function getVideo(): Video|null
+    public function getVideo(): ?Video
     {
         return $this->video;
     }
@@ -302,7 +301,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setVideo(Video|null $video): ExternalReplyInfo
+    public function setVideo(?Video $video): ExternalReplyInfo
     {
         $this->video = $video;
         return $this;
@@ -311,7 +310,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return VideoNote|null
      */
-    public function getVideoNote(): VideoNote|null
+    public function getVideoNote(): ?VideoNote
     {
         return $this->video_note;
     }
@@ -321,7 +320,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setVideoNote(VideoNote|null $video_note): ExternalReplyInfo
+    public function setVideoNote(?VideoNote $video_note): ExternalReplyInfo
     {
         $this->video_note = $video_note;
         return $this;
@@ -330,7 +329,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Voice|null
      */
-    public function getVoice(): Voice|null
+    public function getVoice(): ?Voice
     {
         return $this->voice;
     }
@@ -340,7 +339,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setVoice(Voice|null $voice): ExternalReplyInfo
+    public function setVoice(?Voice $voice): ExternalReplyInfo
     {
         $this->voice = $voice;
         return $this;
@@ -349,7 +348,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasMediaSpoiler(): bool|null
+    public function getHasMediaSpoiler(): ?bool
     {
         return $this->has_media_spoiler;
     }
@@ -359,7 +358,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setHasMediaSpoiler(bool|null $has_media_spoiler): ExternalReplyInfo
+    public function setHasMediaSpoiler(?bool $has_media_spoiler): ExternalReplyInfo
     {
         $this->has_media_spoiler = $has_media_spoiler;
         return $this;
@@ -368,7 +367,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Contact|null
      */
-    public function getContact(): Contact|null
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
@@ -378,7 +377,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setContact(Contact|null $contact): ExternalReplyInfo
+    public function setContact(?Contact $contact): ExternalReplyInfo
     {
         $this->contact = $contact;
         return $this;
@@ -387,7 +386,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Dice|null
      */
-    public function getDice(): Dice|null
+    public function getDice(): ?Dice
     {
         return $this->dice;
     }
@@ -397,7 +396,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setDice(Dice|null $dice): ExternalReplyInfo
+    public function setDice(?Dice $dice): ExternalReplyInfo
     {
         $this->dice = $dice;
         return $this;
@@ -406,7 +405,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Game|null
      */
-    public function getGame(): Game|null
+    public function getGame(): ?Game
     {
         return $this->game;
     }
@@ -416,7 +415,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setGame(Game|null $game): ExternalReplyInfo
+    public function setGame(?Game $game): ExternalReplyInfo
     {
         $this->game = $game;
         return $this;
@@ -425,7 +424,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Giveaway|null
      */
-    public function getGiveaway(): Giveaway|null
+    public function getGiveaway(): ?Giveaway
     {
         return $this->giveaway;
     }
@@ -435,7 +434,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setGiveaway(Giveaway|null $giveaway): ExternalReplyInfo
+    public function setGiveaway(?Giveaway $giveaway): ExternalReplyInfo
     {
         $this->giveaway = $giveaway;
         return $this;
@@ -444,7 +443,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return GiveawayWinners|null
      */
-    public function getGiveawayWinners(): GiveawayWinners|null
+    public function getGiveawayWinners(): ?GiveawayWinners
     {
         return $this->giveaway_winners;
     }
@@ -454,7 +453,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setGiveawayWinners(GiveawayWinners|null $giveaway_winners): ExternalReplyInfo
+    public function setGiveawayWinners(?GiveawayWinners $giveaway_winners): ExternalReplyInfo
     {
         $this->giveaway_winners = $giveaway_winners;
         return $this;
@@ -463,7 +462,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Invoice|null
      */
-    public function getInvoice(): Invoice|null
+    public function getInvoice(): ?Invoice
     {
         return $this->invoice;
     }
@@ -473,7 +472,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setInvoice(Invoice|null $invoice): ExternalReplyInfo
+    public function setInvoice(?Invoice $invoice): ExternalReplyInfo
     {
         $this->invoice = $invoice;
         return $this;
@@ -482,7 +481,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Location|null
      */
-    public function getLocation(): Location|null
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
@@ -492,7 +491,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setLocation(Location|null $location): ExternalReplyInfo
+    public function setLocation(?Location $location): ExternalReplyInfo
     {
         $this->location = $location;
         return $this;
@@ -501,7 +500,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Poll|null
      */
-    public function getPoll(): Poll|null
+    public function getPoll(): ?Poll
     {
         return $this->poll;
     }
@@ -511,7 +510,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setPoll(Poll|null $poll): ExternalReplyInfo
+    public function setPoll(?Poll $poll): ExternalReplyInfo
     {
         $this->poll = $poll;
         return $this;
@@ -520,7 +519,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Venue|null
      */
-    public function getVenue(): Venue|null
+    public function getVenue(): ?Venue
     {
         return $this->venue;
     }
@@ -530,7 +529,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setVenue(Venue|null $venue): ExternalReplyInfo
+    public function setVenue(?Venue $venue): ExternalReplyInfo
     {
         $this->venue = $venue;
         return $this;
@@ -539,7 +538,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return PaidMediaInfo|null
      */
-    public function getPaidMedia(): PaidMediaInfo|null
+    public function getPaidMedia(): ?PaidMediaInfo
     {
         return $this->paid_media;
     }
@@ -549,7 +548,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setPaidMedia(PaidMediaInfo|null $paid_media): ExternalReplyInfo
+    public function setPaidMedia(?PaidMediaInfo $paid_media): ExternalReplyInfo
     {
         $this->paid_media = $paid_media;
         return $this;
@@ -558,7 +557,7 @@ final class ExternalReplyInfo implements EntityInterface
     /**
      * @return Checklist|null
      */
-    public function getChecklist(): Checklist|null
+    public function getChecklist(): ?Checklist
     {
         return $this->checklist;
     }
@@ -568,7 +567,7 @@ final class ExternalReplyInfo implements EntityInterface
      *
      * @return ExternalReplyInfo
      */
-    public function setChecklist(Checklist|null $checklist): ExternalReplyInfo
+    public function setChecklist(?Checklist $checklist): ExternalReplyInfo
     {
         $this->checklist = $checklist;
         return $this;

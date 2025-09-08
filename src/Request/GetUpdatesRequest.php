@@ -28,52 +28,51 @@ class GetUpdatesRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#update Update
      */
     public function __construct(
-        private array|null $allowed_updates = null,
-        private int|null $limit = null,
-        private int|null $offset = null,
-        private int|null $timeout = null,
-    ) {
-    }
+        private ?array $allowed_updates = null,
+        private ?int $limit = null,
+        private ?int $offset = null,
+        private ?int $timeout = null,
+    ) {}
 
-    public function getAllowedUpdates(): array|null
+    public function getAllowedUpdates(): ?array
     {
         return $this->allowed_updates;
     }
 
-    public function setAllowedUpdates(array|null $allowed_updates): GetUpdatesRequest
+    public function setAllowedUpdates(?array $allowed_updates): GetUpdatesRequest
     {
         $this->allowed_updates = $allowed_updates;
         return $this;
     }
 
-    public function getLimit(): int|null
+    public function getLimit(): ?int
     {
         return $this->limit;
     }
 
-    public function setLimit(int|null $limit): GetUpdatesRequest
+    public function setLimit(?int $limit): GetUpdatesRequest
     {
         $this->limit = $limit;
         return $this;
     }
 
-    public function getOffset(): int|null
+    public function getOffset(): ?int
     {
         return $this->offset;
     }
 
-    public function setOffset(int|null $offset): GetUpdatesRequest
+    public function setOffset(?int $offset): GetUpdatesRequest
     {
         $this->offset = $offset;
         return $this;
     }
 
-    public function getTimeout(): int|null
+    public function getTimeout(): ?int
     {
         return $this->timeout;
     }
 
-    public function setTimeout(int|null $timeout): GetUpdatesRequest
+    public function setTimeout(?int $timeout): GetUpdatesRequest
     {
         $this->timeout = $timeout;
         return $this;

@@ -45,15 +45,15 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
         protected float $longitude,
         protected string $title,
         protected string $address,
-        protected string|null $foursquare_id = null,
-        protected string|null $foursquare_type = null,
-        protected string|null $google_place_id = null,
-        protected string|null $google_place_type = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $thumbnail_height = null,
-        protected Url|null $thumbnail_url = null,
-        protected int|null $thumbnail_width = null,
+        protected ?string $foursquare_id = null,
+        protected ?string $foursquare_type = null,
+        protected ?string $google_place_id = null,
+        protected ?string $google_place_type = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $thumbnail_height = null,
+        protected ?Url $thumbnail_url = null,
+        protected ?int $thumbnail_width = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Venue);
     }
@@ -156,7 +156,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getFoursquareId(): string|null
+    public function getFoursquareId(): ?string
     {
         return $this->foursquare_id;
     }
@@ -166,7 +166,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setFoursquareId(string|null $foursquare_id): InlineQueryResultVenue
+    public function setFoursquareId(?string $foursquare_id): InlineQueryResultVenue
     {
         $this->foursquare_id = $foursquare_id;
         return $this;
@@ -175,7 +175,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getFoursquareType(): string|null
+    public function getFoursquareType(): ?string
     {
         return $this->foursquare_type;
     }
@@ -185,7 +185,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setFoursquareType(string|null $foursquare_type): InlineQueryResultVenue
+    public function setFoursquareType(?string $foursquare_type): InlineQueryResultVenue
     {
         $this->foursquare_type = $foursquare_type;
         return $this;
@@ -194,7 +194,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getGooglePlaceId(): string|null
+    public function getGooglePlaceId(): ?string
     {
         return $this->google_place_id;
     }
@@ -204,7 +204,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setGooglePlaceId(string|null $google_place_id): InlineQueryResultVenue
+    public function setGooglePlaceId(?string $google_place_id): InlineQueryResultVenue
     {
         $this->google_place_id = $google_place_id;
         return $this;
@@ -213,7 +213,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getGooglePlaceType(): string|null
+    public function getGooglePlaceType(): ?string
     {
         return $this->google_place_type;
     }
@@ -223,7 +223,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setGooglePlaceType(string|null $google_place_type): InlineQueryResultVenue
+    public function setGooglePlaceType(?string $google_place_type): InlineQueryResultVenue
     {
         $this->google_place_type = $google_place_type;
         return $this;
@@ -232,7 +232,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -242,7 +242,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultVenue
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultVenue
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -251,7 +251,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -261,7 +261,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultVenue
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultVenue
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -270,7 +270,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailHeight(): int|null
+    public function getThumbnailHeight(): ?int
     {
         return $this->thumbnail_height;
     }
@@ -280,7 +280,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultVenue
+    public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultVenue
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
@@ -289,7 +289,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getThumbnailUrl(): Url|null
+    public function getThumbnailUrl(): ?Url
     {
         return $this->thumbnail_url;
     }
@@ -299,7 +299,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultVenue
+    public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultVenue
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
@@ -308,7 +308,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailWidth(): int|null
+    public function getThumbnailWidth(): ?int
     {
         return $this->thumbnail_width;
     }
@@ -318,7 +318,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultVenue
      */
-    public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultVenue
+    public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultVenue
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;

@@ -15,8 +15,7 @@ final readonly class MiddlewareChainRequestHandler implements RequestHandlerInte
     public function __construct(
         private array $middlewares,
         private RequestHandlerInterface $handler,
-    ) {
-    }
+    ) {}
 
     /**
      * @inheritDoc

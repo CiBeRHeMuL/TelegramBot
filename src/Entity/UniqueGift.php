@@ -30,9 +30,8 @@ final class UniqueGift implements EntityInterface
         protected UniqueGiftModel $model,
         protected UniqueGiftSymbol $symbol,
         protected UniqueGiftBackdrop $backdrop,
-        protected Chat|null $publisher_chat = null,
-    ) {
-    }
+        protected ?Chat $publisher_chat = null,
+    ) {}
 
     /**
      * @return string
@@ -151,7 +150,7 @@ final class UniqueGift implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getPublisherChat(): Chat|null
+    public function getPublisherChat(): ?Chat
     {
         return $this->publisher_chat;
     }
@@ -161,7 +160,7 @@ final class UniqueGift implements EntityInterface
      *
      * @return UniqueGift
      */
-    public function setPublisherChat(Chat|null $publisher_chat): UniqueGift
+    public function setPublisherChat(?Chat $publisher_chat): UniqueGift
     {
         $this->publisher_chat = $publisher_chat;
         return $this;

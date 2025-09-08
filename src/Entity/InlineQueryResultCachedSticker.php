@@ -35,8 +35,8 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     public function __construct(
         protected string $id,
         protected string $sticker_file_id,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Sticker);
     }
@@ -82,7 +82,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -92,7 +92,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedSticker
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultCachedSticker
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedSticker
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -101,7 +101,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -111,7 +111,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedSticker
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultCachedSticker
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedSticker
     {
         $this->reply_markup = $reply_markup;
         return $this;

@@ -21,8 +21,7 @@ final class SuggestedPostPrice implements EntityInterface
     public function __construct(
         protected CurrencyEnum $currency,
         protected int $amount,
-    ) {
-    }
+    ) {}
 
     /**
      * @return CurrencyEnum

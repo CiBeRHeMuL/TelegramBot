@@ -62,22 +62,21 @@ class SendLocationRequest implements RequestInterface
         private ChatId $chat_id,
         private float $latitude,
         private float $longitude,
-        private string|null $business_connection_id = null,
-        private bool|null $disable_notification = null,
-        private int|null $heading = null,
-        private float|null $horizontal_accuracy = null,
-        private int|null $live_period = null,
-        private int|null $message_thread_id = null,
-        private bool|null $protect_content = null,
-        private int|null $proximity_alert_radius = null,
+        private ?string $business_connection_id = null,
+        private ?bool $disable_notification = null,
+        private ?int $heading = null,
+        private ?float $horizontal_accuracy = null,
+        private ?int $live_period = null,
+        private ?int $message_thread_id = null,
+        private ?bool $protect_content = null,
+        private ?int $proximity_alert_radius = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?ReplyParameters $reply_parameters = null,
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -112,89 +111,89 @@ class SendLocationRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendLocationRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendLocationRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendLocationRequest
+    public function setDisableNotification(?bool $disable_notification): SendLocationRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getHeading(): int|null
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
 
-    public function setHeading(int|null $heading): SendLocationRequest
+    public function setHeading(?int $heading): SendLocationRequest
     {
         $this->heading = $heading;
         return $this;
     }
 
-    public function getHorizontalAccuracy(): float|null
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontal_accuracy;
     }
 
-    public function setHorizontalAccuracy(float|null $horizontal_accuracy): SendLocationRequest
+    public function setHorizontalAccuracy(?float $horizontal_accuracy): SendLocationRequest
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
     }
 
-    public function getLivePeriod(): int|null
+    public function getLivePeriod(): ?int
     {
         return $this->live_period;
     }
 
-    public function setLivePeriod(int|null $live_period): SendLocationRequest
+    public function setLivePeriod(?int $live_period): SendLocationRequest
     {
         $this->live_period = $live_period;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendLocationRequest
+    public function setMessageThreadId(?int $message_thread_id): SendLocationRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendLocationRequest
+    public function setProtectContent(?bool $protect_content): SendLocationRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getProximityAlertRadius(): int|null
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximity_alert_radius;
     }
 
-    public function setProximityAlertRadius(int|null $proximity_alert_radius): SendLocationRequest
+    public function setProximityAlertRadius(?int $proximity_alert_radius): SendLocationRequest
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
@@ -211,56 +210,56 @@ class SendLocationRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendLocationRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendLocationRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendLocationRequest
+    public function setMessageEffectId(?string $message_effect_id): SendLocationRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendLocationRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendLocationRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendLocationRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendLocationRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendLocationRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendLocationRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

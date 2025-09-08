@@ -42,17 +42,17 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function __construct(
         protected Gift $gift,
         protected int $send_date,
-        protected bool|null $can_be_upgraded = null,
-        protected int|null $convert_star_count = null,
+        protected ?bool $can_be_upgraded = null,
+        protected ?int $convert_star_count = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $entities = null,
-        protected bool|null $is_private = null,
-        protected bool|null $is_saved = null,
-        protected string|null $owned_gift_id = null,
-        protected int|null $prepaid_upgrade_star_count = null,
-        protected User|null $sender_user = null,
-        protected string|null $text = null,
-        protected bool|null $was_refunded = null,
+        protected ?array $entities = null,
+        protected ?bool $is_private = null,
+        protected ?bool $is_saved = null,
+        protected ?string $owned_gift_id = null,
+        protected ?int $prepaid_upgrade_star_count = null,
+        protected ?User $sender_user = null,
+        protected ?string $text = null,
+        protected ?bool $was_refunded = null,
     ) {
         parent::__construct(OwnedGiftTypeEnum::Regular);
     }
@@ -98,7 +98,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getCanBeUpgraded(): bool|null
+    public function getCanBeUpgraded(): ?bool
     {
         return $this->can_be_upgraded;
     }
@@ -108,7 +108,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setCanBeUpgraded(bool|null $can_be_upgraded): OwnedGiftRegular
+    public function setCanBeUpgraded(?bool $can_be_upgraded): OwnedGiftRegular
     {
         $this->can_be_upgraded = $can_be_upgraded;
         return $this;
@@ -117,7 +117,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return int|null
      */
-    public function getConvertStarCount(): int|null
+    public function getConvertStarCount(): ?int
     {
         return $this->convert_star_count;
     }
@@ -127,7 +127,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setConvertStarCount(int|null $convert_star_count): OwnedGiftRegular
+    public function setConvertStarCount(?int $convert_star_count): OwnedGiftRegular
     {
         $this->convert_star_count = $convert_star_count;
         return $this;
@@ -136,7 +136,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
@@ -146,7 +146,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setEntities(array|null $entities): OwnedGiftRegular
+    public function setEntities(?array $entities): OwnedGiftRegular
     {
         $this->entities = $entities;
         return $this;
@@ -155,7 +155,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getIsPrivate(): bool|null
+    public function getIsPrivate(): ?bool
     {
         return $this->is_private;
     }
@@ -165,7 +165,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setIsPrivate(bool|null $is_private): OwnedGiftRegular
+    public function setIsPrivate(?bool $is_private): OwnedGiftRegular
     {
         $this->is_private = $is_private;
         return $this;
@@ -174,7 +174,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getIsSaved(): bool|null
+    public function getIsSaved(): ?bool
     {
         return $this->is_saved;
     }
@@ -184,7 +184,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setIsSaved(bool|null $is_saved): OwnedGiftRegular
+    public function setIsSaved(?bool $is_saved): OwnedGiftRegular
     {
         $this->is_saved = $is_saved;
         return $this;
@@ -193,7 +193,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return string|null
      */
-    public function getOwnedGiftId(): string|null
+    public function getOwnedGiftId(): ?string
     {
         return $this->owned_gift_id;
     }
@@ -203,7 +203,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setOwnedGiftId(string|null $owned_gift_id): OwnedGiftRegular
+    public function setOwnedGiftId(?string $owned_gift_id): OwnedGiftRegular
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
@@ -212,7 +212,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return int|null
      */
-    public function getPrepaidUpgradeStarCount(): int|null
+    public function getPrepaidUpgradeStarCount(): ?int
     {
         return $this->prepaid_upgrade_star_count;
     }
@@ -222,7 +222,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setPrepaidUpgradeStarCount(int|null $prepaid_upgrade_star_count): OwnedGiftRegular
+    public function setPrepaidUpgradeStarCount(?int $prepaid_upgrade_star_count): OwnedGiftRegular
     {
         $this->prepaid_upgrade_star_count = $prepaid_upgrade_star_count;
         return $this;
@@ -231,7 +231,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return User|null
      */
-    public function getSenderUser(): User|null
+    public function getSenderUser(): ?User
     {
         return $this->sender_user;
     }
@@ -241,7 +241,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setSenderUser(User|null $sender_user): OwnedGiftRegular
+    public function setSenderUser(?User $sender_user): OwnedGiftRegular
     {
         $this->sender_user = $sender_user;
         return $this;
@@ -250,7 +250,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return string|null
      */
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -260,7 +260,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setText(string|null $text): OwnedGiftRegular
+    public function setText(?string $text): OwnedGiftRegular
     {
         $this->text = $text;
         return $this;
@@ -269,7 +269,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     /**
      * @return bool|null
      */
-    public function getWasRefunded(): bool|null
+    public function getWasRefunded(): ?bool
     {
         return $this->was_refunded;
     }
@@ -279,7 +279,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
      *
      * @return OwnedGiftRegular
      */
-    public function setWasRefunded(bool|null $was_refunded): OwnedGiftRegular
+    public function setWasRefunded(?bool $was_refunded): OwnedGiftRegular
     {
         $this->was_refunded = $was_refunded;
         return $this;

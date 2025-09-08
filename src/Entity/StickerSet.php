@@ -28,9 +28,8 @@ final class StickerSet implements EntityInterface
         protected StickerTypeEnum $sticker_type,
         #[ArrayType(Sticker::class)]
         protected array $stickers,
-        protected PhotoSize|null $thumbnail = null,
-    ) {
-    }
+        protected ?PhotoSize $thumbnail = null,
+    ) {}
 
     /**
      * @return string
@@ -111,7 +110,7 @@ final class StickerSet implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -121,7 +120,7 @@ final class StickerSet implements EntityInterface
      *
      * @return StickerSet
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): StickerSet
+    public function setThumbnail(?PhotoSize $thumbnail): StickerSet
     {
         $this->thumbnail = $thumbnail;
         return $this;

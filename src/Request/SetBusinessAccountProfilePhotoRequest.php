@@ -20,9 +20,8 @@ class SetBusinessAccountProfilePhotoRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private AbstractInputProfilePhoto $photo,
-        private bool|null $is_public = null,
-    ) {
-    }
+        private ?bool $is_public = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -46,12 +45,12 @@ class SetBusinessAccountProfilePhotoRequest implements RequestInterface
         return $this;
     }
 
-    public function getIsPublic(): bool|null
+    public function getIsPublic(): ?bool
     {
         return $this->is_public;
     }
 
-    public function setIsPublic(bool|null $is_public): SetBusinessAccountProfilePhotoRequest
+    public function setIsPublic(?bool $is_public): SetBusinessAccountProfilePhotoRequest
     {
         $this->is_public = $is_public;
         return $this;

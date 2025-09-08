@@ -23,10 +23,9 @@ final class Voice implements EntityInterface
         protected string $file_id,
         protected string $file_unique_id,
         protected int $duration,
-        protected string|null $mime_type = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?string $mime_type = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -88,7 +87,7 @@ final class Voice implements EntityInterface
     /**
      * @return string|null
      */
-    public function getMimeType(): string|null
+    public function getMimeType(): ?string
     {
         return $this->mime_type;
     }
@@ -98,7 +97,7 @@ final class Voice implements EntityInterface
      *
      * @return Voice
      */
-    public function setMimeType(string|null $mime_type): Voice
+    public function setMimeType(?string $mime_type): Voice
     {
         $this->mime_type = $mime_type;
         return $this;
@@ -107,7 +106,7 @@ final class Voice implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -117,7 +116,7 @@ final class Voice implements EntityInterface
      *
      * @return Voice
      */
-    public function setFileSize(int|null $file_size): Voice
+    public function setFileSize(?int $file_size): Voice
     {
         $this->file_size = $file_size;
         return $this;

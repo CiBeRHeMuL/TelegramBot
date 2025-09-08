@@ -12,8 +12,7 @@ readonly class MessageCommandChecker implements CheckerInterface
 {
     public function __construct(
         private string $expectedCommand,
-    ) {
-    }
+    ) {}
 
     public function check(Update $update): bool
     {

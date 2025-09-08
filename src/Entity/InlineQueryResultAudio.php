@@ -49,14 +49,14 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
         protected string $id,
         protected Url $audio_url,
         protected string $title,
-        protected int|null $audio_duration = null,
-        protected string|null $caption = null,
+        protected ?int $audio_duration = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected string|null $performer = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected ?array $caption_entities = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?string $performer = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Audio);
     }
@@ -121,7 +121,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getAudioDuration(): int|null
+    public function getAudioDuration(): ?int
     {
         return $this->audio_duration;
     }
@@ -131,7 +131,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setAudioDuration(int|null $audio_duration): InlineQueryResultAudio
+    public function setAudioDuration(?int $audio_duration): InlineQueryResultAudio
     {
         $this->audio_duration = $audio_duration;
         return $this;
@@ -140,7 +140,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -150,7 +150,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setCaption(string|null $caption): InlineQueryResultAudio
+    public function setCaption(?string $caption): InlineQueryResultAudio
     {
         $this->caption = $caption;
         return $this;
@@ -159,7 +159,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -169,7 +169,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultAudio
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultAudio
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -178,7 +178,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -188,7 +188,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultAudio
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultAudio
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -197,7 +197,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -207,7 +207,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultAudio
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultAudio
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -216,7 +216,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getPerformer(): string|null
+    public function getPerformer(): ?string
     {
         return $this->performer;
     }
@@ -226,7 +226,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setPerformer(string|null $performer): InlineQueryResultAudio
+    public function setPerformer(?string $performer): InlineQueryResultAudio
     {
         $this->performer = $performer;
         return $this;
@@ -235,7 +235,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -245,7 +245,7 @@ final class InlineQueryResultAudio extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultAudio
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultAudio
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultAudio
     {
         $this->reply_markup = $reply_markup;
         return $this;

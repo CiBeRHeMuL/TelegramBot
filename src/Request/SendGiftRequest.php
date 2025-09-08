@@ -31,14 +31,13 @@ class SendGiftRequest implements RequestInterface
      */
     public function __construct(
         private string $gift_id,
-        private ChatId|null $chat_id = null,
-        private bool|null $pay_for_upgrade = null,
-        private string|null $text = null,
-        private array|null $text_entities = null,
-        private TelegramParseModeEnum|null $text_parse_mode = null,
-        private int|null $user_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?bool $pay_for_upgrade = null,
+        private ?string $text = null,
+        private ?array $text_entities = null,
+        private ?TelegramParseModeEnum $text_parse_mode = null,
+        private ?int $user_id = null,
+    ) {}
 
     public function getGiftId(): string
     {
@@ -51,67 +50,67 @@ class SendGiftRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): SendGiftRequest
+    public function setChatId(?ChatId $chat_id): SendGiftRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getPayForUpgrade(): bool|null
+    public function getPayForUpgrade(): ?bool
     {
         return $this->pay_for_upgrade;
     }
 
-    public function setPayForUpgrade(bool|null $pay_for_upgrade): SendGiftRequest
+    public function setPayForUpgrade(?bool $pay_for_upgrade): SendGiftRequest
     {
         $this->pay_for_upgrade = $pay_for_upgrade;
         return $this;
     }
 
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string|null $text): SendGiftRequest
+    public function setText(?string $text): SendGiftRequest
     {
         $this->text = $text;
         return $this;
     }
 
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
 
-    public function setTextEntities(array|null $text_entities): SendGiftRequest
+    public function setTextEntities(?array $text_entities): SendGiftRequest
     {
         $this->text_entities = $text_entities;
         return $this;
     }
 
-    public function getTextParseMode(): TelegramParseModeEnum|null
+    public function getTextParseMode(): ?TelegramParseModeEnum
     {
         return $this->text_parse_mode;
     }
 
-    public function setTextParseMode(TelegramParseModeEnum|null $text_parse_mode): SendGiftRequest
+    public function setTextParseMode(?TelegramParseModeEnum $text_parse_mode): SendGiftRequest
     {
         $this->text_parse_mode = $text_parse_mode;
         return $this;
     }
 
-    public function getUserId(): int|null
+    public function getUserId(): ?int
     {
         return $this->user_id;
     }
 
-    public function setUserId(int|null $user_id): SendGiftRequest
+    public function setUserId(?int $user_id): SendGiftRequest
     {
         $this->user_id = $user_id;
         return $this;

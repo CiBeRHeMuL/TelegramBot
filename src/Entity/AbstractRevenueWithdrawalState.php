@@ -18,8 +18,7 @@ abstract class AbstractRevenueWithdrawalState implements EntityInterface
 {
     public function __construct(
         protected readonly RevenueWithdrawalStateTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): RevenueWithdrawalStateTypeEnum
     {

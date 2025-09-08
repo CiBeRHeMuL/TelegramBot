@@ -8,12 +8,12 @@ class GetMyDescriptionResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly BotDescription|null $myDescription = null,
+        private readonly ?BotDescription $myDescription = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getMyDescription(): BotDescription|null
+    public function getMyDescription(): ?BotDescription
     {
         return $this->myDescription;
     }

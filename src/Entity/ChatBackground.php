@@ -16,8 +16,7 @@ final class ChatBackground implements EntityInterface
      */
     public function __construct(
         protected AbstractBackgroundType $type,
-    ) {
-    }
+    ) {}
 
     /**
      * @return AbstractBackgroundType

@@ -16,9 +16,8 @@ final class StarAmount implements EntityInterface
      */
     public function __construct(
         protected int $amount,
-        protected int|null $nanostar_amount = null,
-    ) {
-    }
+        protected ?int $nanostar_amount = null,
+    ) {}
 
     /**
      * @return int
@@ -42,7 +41,7 @@ final class StarAmount implements EntityInterface
     /**
      * @return int|null
      */
-    public function getNanostarAmount(): int|null
+    public function getNanostarAmount(): ?int
     {
         return $this->nanostar_amount;
     }
@@ -52,7 +51,7 @@ final class StarAmount implements EntityInterface
      *
      * @return StarAmount
      */
-    public function setNanostarAmount(int|null $nanostar_amount): StarAmount
+    public function setNanostarAmount(?int $nanostar_amount): StarAmount
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;

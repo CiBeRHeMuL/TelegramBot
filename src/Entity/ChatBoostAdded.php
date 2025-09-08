@@ -14,8 +14,7 @@ final class ChatBoostAdded implements EntityInterface
      */
     public function __construct(
         protected int $boost_count,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

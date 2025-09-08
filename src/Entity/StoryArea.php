@@ -19,8 +19,7 @@ final class StoryArea implements EntityInterface
     public function __construct(
         protected StoryAreaPosition $position,
         protected AbstractStoryAreaType $type,
-    ) {
-    }
+    ) {}
 
     /**
      * @return StoryAreaPosition

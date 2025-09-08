@@ -20,10 +20,9 @@ class SendChatActionRequest implements RequestInterface
     public function __construct(
         private ChatActionEnum $action,
         private ChatId $chat_id,
-        private string|null $business_connection_id = null,
-        private int|null $message_thread_id = null,
-    ) {
-    }
+        private ?string $business_connection_id = null,
+        private ?int $message_thread_id = null,
+    ) {}
 
     public function getAction(): ChatActionEnum
     {
@@ -47,23 +46,23 @@ class SendChatActionRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendChatActionRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendChatActionRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendChatActionRequest
+    public function setMessageThreadId(?int $message_thread_id): SendChatActionRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;

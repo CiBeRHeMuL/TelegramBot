@@ -27,14 +27,13 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      */
     public function __construct(
         protected int $request_id,
-        protected int|null $max_quantity = null,
-        protected bool|null $request_name = null,
-        protected bool|null $request_photo = null,
-        protected bool|null $request_username = null,
-        protected bool|null $user_is_bot = null,
-        protected bool|null $user_is_premium = null,
-    ) {
-    }
+        protected ?int $max_quantity = null,
+        protected ?bool $request_name = null,
+        protected ?bool $request_photo = null,
+        protected ?bool $request_username = null,
+        protected ?bool $user_is_bot = null,
+        protected ?bool $user_is_premium = null,
+    ) {}
 
     /**
      * @return int
@@ -58,7 +57,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return int|null
      */
-    public function getMaxQuantity(): int|null
+    public function getMaxQuantity(): ?int
     {
         return $this->max_quantity;
     }
@@ -68,7 +67,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setMaxQuantity(int|null $max_quantity): KeyboardButtonRequestUsers
+    public function setMaxQuantity(?int $max_quantity): KeyboardButtonRequestUsers
     {
         $this->max_quantity = $max_quantity;
         return $this;
@@ -77,7 +76,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestName(): bool|null
+    public function getRequestName(): ?bool
     {
         return $this->request_name;
     }
@@ -87,7 +86,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setRequestName(bool|null $request_name): KeyboardButtonRequestUsers
+    public function setRequestName(?bool $request_name): KeyboardButtonRequestUsers
     {
         $this->request_name = $request_name;
         return $this;
@@ -96,7 +95,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestPhoto(): bool|null
+    public function getRequestPhoto(): ?bool
     {
         return $this->request_photo;
     }
@@ -106,7 +105,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setRequestPhoto(bool|null $request_photo): KeyboardButtonRequestUsers
+    public function setRequestPhoto(?bool $request_photo): KeyboardButtonRequestUsers
     {
         $this->request_photo = $request_photo;
         return $this;
@@ -115,7 +114,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestUsername(): bool|null
+    public function getRequestUsername(): ?bool
     {
         return $this->request_username;
     }
@@ -125,7 +124,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setRequestUsername(bool|null $request_username): KeyboardButtonRequestUsers
+    public function setRequestUsername(?bool $request_username): KeyboardButtonRequestUsers
     {
         $this->request_username = $request_username;
         return $this;
@@ -134,7 +133,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getUserIsBot(): bool|null
+    public function getUserIsBot(): ?bool
     {
         return $this->user_is_bot;
     }
@@ -144,7 +143,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setUserIsBot(bool|null $user_is_bot): KeyboardButtonRequestUsers
+    public function setUserIsBot(?bool $user_is_bot): KeyboardButtonRequestUsers
     {
         $this->user_is_bot = $user_is_bot;
         return $this;
@@ -153,7 +152,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getUserIsPremium(): bool|null
+    public function getUserIsPremium(): ?bool
     {
         return $this->user_is_premium;
     }
@@ -163,7 +162,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
      *
      * @return KeyboardButtonRequestUsers
      */
-    public function setUserIsPremium(bool|null $user_is_premium): KeyboardButtonRequestUsers
+    public function setUserIsPremium(?bool $user_is_premium): KeyboardButtonRequestUsers
     {
         $this->user_is_premium = $user_is_premium;
         return $this;

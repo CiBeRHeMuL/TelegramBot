@@ -42,24 +42,23 @@ class PromoteChatMemberRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $user_id,
-        private bool|null $can_change_info = null,
-        private bool|null $can_delete_messages = null,
-        private bool|null $can_delete_stories = null,
-        private bool|null $can_edit_messages = null,
-        private bool|null $can_edit_stories = null,
-        private bool|null $can_invite_users = null,
-        private bool|null $can_manage_chat = null,
-        private bool|null $can_manage_topics = null,
-        private bool|null $can_manage_video_chats = null,
-        private bool|null $can_pin_messages = null,
-        private bool|null $can_post_messages = null,
-        private bool|null $can_post_stories = null,
-        private bool|null $can_promote_members = null,
-        private bool|null $can_restrict_members = null,
-        private bool|null $is_anonymous = null,
-        private bool|null $can_manage_direct_messages = null,
-    ) {
-    }
+        private ?bool $can_change_info = null,
+        private ?bool $can_delete_messages = null,
+        private ?bool $can_delete_stories = null,
+        private ?bool $can_edit_messages = null,
+        private ?bool $can_edit_stories = null,
+        private ?bool $can_invite_users = null,
+        private ?bool $can_manage_chat = null,
+        private ?bool $can_manage_topics = null,
+        private ?bool $can_manage_video_chats = null,
+        private ?bool $can_pin_messages = null,
+        private ?bool $can_post_messages = null,
+        private ?bool $can_post_stories = null,
+        private ?bool $can_promote_members = null,
+        private ?bool $can_restrict_members = null,
+        private ?bool $is_anonymous = null,
+        private ?bool $can_manage_direct_messages = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -83,177 +82,177 @@ class PromoteChatMemberRequest implements RequestInterface
         return $this;
     }
 
-    public function getCanChangeInfo(): bool|null
+    public function getCanChangeInfo(): ?bool
     {
         return $this->can_change_info;
     }
 
-    public function setCanChangeInfo(bool|null $can_change_info): PromoteChatMemberRequest
+    public function setCanChangeInfo(?bool $can_change_info): PromoteChatMemberRequest
     {
         $this->can_change_info = $can_change_info;
         return $this;
     }
 
-    public function getCanDeleteMessages(): bool|null
+    public function getCanDeleteMessages(): ?bool
     {
         return $this->can_delete_messages;
     }
 
-    public function setCanDeleteMessages(bool|null $can_delete_messages): PromoteChatMemberRequest
+    public function setCanDeleteMessages(?bool $can_delete_messages): PromoteChatMemberRequest
     {
         $this->can_delete_messages = $can_delete_messages;
         return $this;
     }
 
-    public function getCanDeleteStories(): bool|null
+    public function getCanDeleteStories(): ?bool
     {
         return $this->can_delete_stories;
     }
 
-    public function setCanDeleteStories(bool|null $can_delete_stories): PromoteChatMemberRequest
+    public function setCanDeleteStories(?bool $can_delete_stories): PromoteChatMemberRequest
     {
         $this->can_delete_stories = $can_delete_stories;
         return $this;
     }
 
-    public function getCanEditMessages(): bool|null
+    public function getCanEditMessages(): ?bool
     {
         return $this->can_edit_messages;
     }
 
-    public function setCanEditMessages(bool|null $can_edit_messages): PromoteChatMemberRequest
+    public function setCanEditMessages(?bool $can_edit_messages): PromoteChatMemberRequest
     {
         $this->can_edit_messages = $can_edit_messages;
         return $this;
     }
 
-    public function getCanEditStories(): bool|null
+    public function getCanEditStories(): ?bool
     {
         return $this->can_edit_stories;
     }
 
-    public function setCanEditStories(bool|null $can_edit_stories): PromoteChatMemberRequest
+    public function setCanEditStories(?bool $can_edit_stories): PromoteChatMemberRequest
     {
         $this->can_edit_stories = $can_edit_stories;
         return $this;
     }
 
-    public function getCanInviteUsers(): bool|null
+    public function getCanInviteUsers(): ?bool
     {
         return $this->can_invite_users;
     }
 
-    public function setCanInviteUsers(bool|null $can_invite_users): PromoteChatMemberRequest
+    public function setCanInviteUsers(?bool $can_invite_users): PromoteChatMemberRequest
     {
         $this->can_invite_users = $can_invite_users;
         return $this;
     }
 
-    public function getCanManageChat(): bool|null
+    public function getCanManageChat(): ?bool
     {
         return $this->can_manage_chat;
     }
 
-    public function setCanManageChat(bool|null $can_manage_chat): PromoteChatMemberRequest
+    public function setCanManageChat(?bool $can_manage_chat): PromoteChatMemberRequest
     {
         $this->can_manage_chat = $can_manage_chat;
         return $this;
     }
 
-    public function getCanManageTopics(): bool|null
+    public function getCanManageTopics(): ?bool
     {
         return $this->can_manage_topics;
     }
 
-    public function setCanManageTopics(bool|null $can_manage_topics): PromoteChatMemberRequest
+    public function setCanManageTopics(?bool $can_manage_topics): PromoteChatMemberRequest
     {
         $this->can_manage_topics = $can_manage_topics;
         return $this;
     }
 
-    public function getCanManageVideoChats(): bool|null
+    public function getCanManageVideoChats(): ?bool
     {
         return $this->can_manage_video_chats;
     }
 
-    public function setCanManageVideoChats(bool|null $can_manage_video_chats): PromoteChatMemberRequest
+    public function setCanManageVideoChats(?bool $can_manage_video_chats): PromoteChatMemberRequest
     {
         $this->can_manage_video_chats = $can_manage_video_chats;
         return $this;
     }
 
-    public function getCanPinMessages(): bool|null
+    public function getCanPinMessages(): ?bool
     {
         return $this->can_pin_messages;
     }
 
-    public function setCanPinMessages(bool|null $can_pin_messages): PromoteChatMemberRequest
+    public function setCanPinMessages(?bool $can_pin_messages): PromoteChatMemberRequest
     {
         $this->can_pin_messages = $can_pin_messages;
         return $this;
     }
 
-    public function getCanPostMessages(): bool|null
+    public function getCanPostMessages(): ?bool
     {
         return $this->can_post_messages;
     }
 
-    public function setCanPostMessages(bool|null $can_post_messages): PromoteChatMemberRequest
+    public function setCanPostMessages(?bool $can_post_messages): PromoteChatMemberRequest
     {
         $this->can_post_messages = $can_post_messages;
         return $this;
     }
 
-    public function getCanPostStories(): bool|null
+    public function getCanPostStories(): ?bool
     {
         return $this->can_post_stories;
     }
 
-    public function setCanPostStories(bool|null $can_post_stories): PromoteChatMemberRequest
+    public function setCanPostStories(?bool $can_post_stories): PromoteChatMemberRequest
     {
         $this->can_post_stories = $can_post_stories;
         return $this;
     }
 
-    public function getCanPromoteMembers(): bool|null
+    public function getCanPromoteMembers(): ?bool
     {
         return $this->can_promote_members;
     }
 
-    public function setCanPromoteMembers(bool|null $can_promote_members): PromoteChatMemberRequest
+    public function setCanPromoteMembers(?bool $can_promote_members): PromoteChatMemberRequest
     {
         $this->can_promote_members = $can_promote_members;
         return $this;
     }
 
-    public function getCanRestrictMembers(): bool|null
+    public function getCanRestrictMembers(): ?bool
     {
         return $this->can_restrict_members;
     }
 
-    public function setCanRestrictMembers(bool|null $can_restrict_members): PromoteChatMemberRequest
+    public function setCanRestrictMembers(?bool $can_restrict_members): PromoteChatMemberRequest
     {
         $this->can_restrict_members = $can_restrict_members;
         return $this;
     }
 
-    public function getIsAnonymous(): bool|null
+    public function getIsAnonymous(): ?bool
     {
         return $this->is_anonymous;
     }
 
-    public function setIsAnonymous(bool|null $is_anonymous): PromoteChatMemberRequest
+    public function setIsAnonymous(?bool $is_anonymous): PromoteChatMemberRequest
     {
         $this->is_anonymous = $is_anonymous;
         return $this;
     }
 
-    public function getCanManageDirectMessages(): bool|null
+    public function getCanManageDirectMessages(): ?bool
     {
         return $this->can_manage_direct_messages;
     }
 
-    public function setCanManageDirectMessages(bool|null $can_manage_direct_messages): PromoteChatMemberRequest
+    public function setCanManageDirectMessages(?bool $can_manage_direct_messages): PromoteChatMemberRequest
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
         return $this;

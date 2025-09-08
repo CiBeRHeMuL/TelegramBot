@@ -31,11 +31,10 @@ class GiftPremiumSubscriptionRequest implements RequestInterface
         private int $month_count,
         private int $star_count,
         private int $user_id,
-        private string|null $text = null,
-        private array|null $text_entities = null,
-        private TelegramParseModeEnum|null $text_parse_mode = null,
-    ) {
-    }
+        private ?string $text = null,
+        private ?array $text_entities = null,
+        private ?TelegramParseModeEnum $text_parse_mode = null,
+    ) {}
 
     public function getMonthCount(): int
     {
@@ -70,34 +69,34 @@ class GiftPremiumSubscriptionRequest implements RequestInterface
         return $this;
     }
 
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string|null $text): GiftPremiumSubscriptionRequest
+    public function setText(?string $text): GiftPremiumSubscriptionRequest
     {
         $this->text = $text;
         return $this;
     }
 
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
 
-    public function setTextEntities(array|null $text_entities): GiftPremiumSubscriptionRequest
+    public function setTextEntities(?array $text_entities): GiftPremiumSubscriptionRequest
     {
         $this->text_entities = $text_entities;
         return $this;
     }
 
-    public function getTextParseMode(): TelegramParseModeEnum|null
+    public function getTextParseMode(): ?TelegramParseModeEnum
     {
         return $this->text_parse_mode;
     }
 
-    public function setTextParseMode(TelegramParseModeEnum|null $text_parse_mode): GiftPremiumSubscriptionRequest
+    public function setTextParseMode(?TelegramParseModeEnum $text_parse_mode): GiftPremiumSubscriptionRequest
     {
         $this->text_parse_mode = $text_parse_mode;
         return $this;

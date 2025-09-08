@@ -21,10 +21,9 @@ final class SuggestedPostApproved implements EntityInterface
      */
     public function __construct(
         protected int $send_date,
-        protected SuggestedPostPrice|null $price = null,
-        protected Message|null $suggested_post_message = null,
-    ) {
-    }
+        protected ?SuggestedPostPrice $price = null,
+        protected ?Message $suggested_post_message = null,
+    ) {}
 
     /**
      * @return int
@@ -48,7 +47,7 @@ final class SuggestedPostApproved implements EntityInterface
     /**
      * @return SuggestedPostPrice|null
      */
-    public function getPrice(): SuggestedPostPrice|null
+    public function getPrice(): ?SuggestedPostPrice
     {
         return $this->price;
     }
@@ -58,7 +57,7 @@ final class SuggestedPostApproved implements EntityInterface
      *
      * @return SuggestedPostApproved
      */
-    public function setPrice(SuggestedPostPrice|null $price): SuggestedPostApproved
+    public function setPrice(?SuggestedPostPrice $price): SuggestedPostApproved
     {
         $this->price = $price;
         return $this;
@@ -67,7 +66,7 @@ final class SuggestedPostApproved implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getSuggestedPostMessage(): Message|null
+    public function getSuggestedPostMessage(): ?Message
     {
         return $this->suggested_post_message;
     }
@@ -77,7 +76,7 @@ final class SuggestedPostApproved implements EntityInterface
      *
      * @return SuggestedPostApproved
      */
-    public function setSuggestedPostMessage(Message|null $suggested_post_message): SuggestedPostApproved
+    public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostApproved
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;

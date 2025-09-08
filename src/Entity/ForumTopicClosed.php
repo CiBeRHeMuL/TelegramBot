@@ -6,6 +6,4 @@ namespace AndrewGos\TelegramBot\Entity;
  * This object represents a service message about a forum topic closed in the chat. Currently holds no information.
  * @link https://core.telegram.org/bots/api#forumtopicclosed
  */
-final class ForumTopicClosed implements EntityInterface
-{
-}
+final class ForumTopicClosed implements EntityInterface {}

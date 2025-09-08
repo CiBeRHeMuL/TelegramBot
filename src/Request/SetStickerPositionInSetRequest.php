@@ -14,8 +14,7 @@ class SetStickerPositionInSetRequest implements RequestInterface
     public function __construct(
         private int $position,
         private string $sticker,
-    ) {
-    }
+    ) {}
 
     public function getPosition(): int
     {

@@ -22,8 +22,7 @@ abstract class AbstractTransactionPartner implements EntityInterface
 {
     public function __construct(
         protected readonly TransactionPartnerTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): TransactionPartnerTypeEnum
     {

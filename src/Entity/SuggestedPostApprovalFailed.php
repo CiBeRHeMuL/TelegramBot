@@ -21,9 +21,8 @@ final class SuggestedPostApprovalFailed implements EntityInterface
      */
     public function __construct(
         protected SuggestedPostPrice $price,
-        protected Message|null $suggested_post_message = null,
-    ) {
-    }
+        protected ?Message $suggested_post_message = null,
+    ) {}
 
     /**
      * @return SuggestedPostPrice
@@ -47,7 +46,7 @@ final class SuggestedPostApprovalFailed implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getSuggestedPostMessage(): Message|null
+    public function getSuggestedPostMessage(): ?Message
     {
         return $this->suggested_post_message;
     }
@@ -57,7 +56,7 @@ final class SuggestedPostApprovalFailed implements EntityInterface
      *
      * @return SuggestedPostApprovalFailed
      */
-    public function setSuggestedPostMessage(Message|null $suggested_post_message): SuggestedPostApprovalFailed
+    public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostApprovalFailed
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;

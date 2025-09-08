@@ -20,9 +20,9 @@ final class PaidMediaPreview extends AbstractPaidMedia
      * @param int|null $width Optional. Media width as defined by the sender
      */
     public function __construct(
-        protected int|null $duration = null,
-        protected int|null $height = null,
-        protected int|null $width = null,
+        protected ?int $duration = null,
+        protected ?int $height = null,
+        protected ?int $width = null,
     ) {
         parent::__construct(PaidMediaTypeEnum::Preview);
     }
@@ -30,7 +30,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
     /**
      * @return int|null
      */
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -40,7 +40,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
      *
      * @return PaidMediaPreview
      */
-    public function setDuration(int|null $duration): PaidMediaPreview
+    public function setDuration(?int $duration): PaidMediaPreview
     {
         $this->duration = $duration;
         return $this;
@@ -49,7 +49,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
     /**
      * @return int|null
      */
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -59,7 +59,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
      *
      * @return PaidMediaPreview
      */
-    public function setHeight(int|null $height): PaidMediaPreview
+    public function setHeight(?int $height): PaidMediaPreview
     {
         $this->height = $height;
         return $this;
@@ -68,7 +68,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
     /**
      * @return int|null
      */
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
@@ -78,7 +78,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
      *
      * @return PaidMediaPreview
      */
-    public function setWidth(int|null $width): PaidMediaPreview
+    public function setWidth(?int $width): PaidMediaPreview
     {
         $this->width = $width;
         return $this;

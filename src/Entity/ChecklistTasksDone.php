@@ -21,18 +21,17 @@ final class ChecklistTasksDone implements EntityInterface
      * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
-        protected Message|null $checklist_message = null,
+        protected ?Message $checklist_message = null,
         #[ArrayType('int')]
-        protected array|null $marked_as_done_task_ids = null,
+        protected ?array $marked_as_done_task_ids = null,
         #[ArrayType('int')]
-        protected array|null $marked_as_not_done_task_ids = null,
-    ) {
-    }
+        protected ?array $marked_as_not_done_task_ids = null,
+    ) {}
 
     /**
      * @return Message|null
      */
-    public function getChecklistMessage(): Message|null
+    public function getChecklistMessage(): ?Message
     {
         return $this->checklist_message;
     }
@@ -42,7 +41,7 @@ final class ChecklistTasksDone implements EntityInterface
      *
      * @return ChecklistTasksDone
      */
-    public function setChecklistMessage(Message|null $checklist_message): ChecklistTasksDone
+    public function setChecklistMessage(?Message $checklist_message): ChecklistTasksDone
     {
         $this->checklist_message = $checklist_message;
         return $this;
@@ -51,7 +50,7 @@ final class ChecklistTasksDone implements EntityInterface
     /**
      * @return int[]|null
      */
-    public function getMarkedAsDoneTaskIds(): array|null
+    public function getMarkedAsDoneTaskIds(): ?array
     {
         return $this->marked_as_done_task_ids;
     }
@@ -61,7 +60,7 @@ final class ChecklistTasksDone implements EntityInterface
      *
      * @return ChecklistTasksDone
      */
-    public function setMarkedAsDoneTaskIds(array|null $marked_as_done_task_ids): ChecklistTasksDone
+    public function setMarkedAsDoneTaskIds(?array $marked_as_done_task_ids): ChecklistTasksDone
     {
         $this->marked_as_done_task_ids = $marked_as_done_task_ids;
         return $this;
@@ -70,7 +69,7 @@ final class ChecklistTasksDone implements EntityInterface
     /**
      * @return int[]|null
      */
-    public function getMarkedAsNotDoneTaskIds(): array|null
+    public function getMarkedAsNotDoneTaskIds(): ?array
     {
         return $this->marked_as_not_done_task_ids;
     }
@@ -80,7 +79,7 @@ final class ChecklistTasksDone implements EntityInterface
      *
      * @return ChecklistTasksDone
      */
-    public function setMarkedAsNotDoneTaskIds(array|null $marked_as_not_done_task_ids): ChecklistTasksDone
+    public function setMarkedAsNotDoneTaskIds(?array $marked_as_not_done_task_ids): ChecklistTasksDone
     {
         $this->marked_as_not_done_task_ids = $marked_as_not_done_task_ids;
         return $this;

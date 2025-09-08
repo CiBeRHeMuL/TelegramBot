@@ -27,9 +27,8 @@ final class ReplyKeyboardRemove implements EntityInterface
      */
     public function __construct(
         protected bool $remove_keyboard,
-        protected bool|null $selective = null,
-    ) {
-    }
+        protected ?bool $selective = null,
+    ) {}
 
     /**
      * @return bool
@@ -53,7 +52,7 @@ final class ReplyKeyboardRemove implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getSelective(): bool|null
+    public function getSelective(): ?bool
     {
         return $this->selective;
     }
@@ -63,7 +62,7 @@ final class ReplyKeyboardRemove implements EntityInterface
      *
      * @return ReplyKeyboardRemove
      */
-    public function setSelective(bool|null $selective): ReplyKeyboardRemove
+    public function setSelective(?bool $selective): ReplyKeyboardRemove
     {
         $this->selective = $selective;
         return $this;

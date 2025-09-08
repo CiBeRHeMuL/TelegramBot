@@ -16,8 +16,7 @@ abstract class AbstractOwnedGift implements EntityInterface
 {
     public function __construct(
         protected readonly OwnedGiftTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): OwnedGiftTypeEnum
     {

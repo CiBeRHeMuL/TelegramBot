@@ -52,17 +52,17 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
         protected string $id,
         protected Url $photo_url,
         protected Url $thumbnail_url,
-        protected string|null $caption = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected string|null $description = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected int|null $photo_height = null,
-        protected int|null $photo_width = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected string|null $title = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?string $description = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?int $photo_height = null,
+        protected ?int $photo_width = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?string $title = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Photo);
     }
@@ -127,7 +127,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -137,7 +137,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setCaption(string|null $caption): InlineQueryResultPhoto
+    public function setCaption(?string $caption): InlineQueryResultPhoto
     {
         $this->caption = $caption;
         return $this;
@@ -146,7 +146,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -156,7 +156,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultPhoto
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultPhoto
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -165,7 +165,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -175,7 +175,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setDescription(string|null $description): InlineQueryResultPhoto
+    public function setDescription(?string $description): InlineQueryResultPhoto
     {
         $this->description = $description;
         return $this;
@@ -184,7 +184,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -194,7 +194,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultPhoto
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultPhoto
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -203,7 +203,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -213,7 +213,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultPhoto
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultPhoto
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -222,7 +222,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getPhotoHeight(): int|null
+    public function getPhotoHeight(): ?int
     {
         return $this->photo_height;
     }
@@ -232,7 +232,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setPhotoHeight(int|null $photo_height): InlineQueryResultPhoto
+    public function setPhotoHeight(?int $photo_height): InlineQueryResultPhoto
     {
         $this->photo_height = $photo_height;
         return $this;
@@ -241,7 +241,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getPhotoWidth(): int|null
+    public function getPhotoWidth(): ?int
     {
         return $this->photo_width;
     }
@@ -251,7 +251,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setPhotoWidth(int|null $photo_width): InlineQueryResultPhoto
+    public function setPhotoWidth(?int $photo_width): InlineQueryResultPhoto
     {
         $this->photo_width = $photo_width;
         return $this;
@@ -260,7 +260,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -270,7 +270,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultPhoto
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultPhoto
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -279,7 +279,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -289,7 +289,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setTitle(string|null $title): InlineQueryResultPhoto
+    public function setTitle(?string $title): InlineQueryResultPhoto
     {
         $this->title = $title;
         return $this;
@@ -298,7 +298,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -308,7 +308,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultPhoto
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultPhoto
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultPhoto
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

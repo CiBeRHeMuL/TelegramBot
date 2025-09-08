@@ -17,9 +17,8 @@ final class ForumTopicCreated implements EntityInterface
     public function __construct(
         protected string $name,
         protected int $icon_color,
-        protected string|null $icon_custom_emoji_id = null,
-    ) {
-    }
+        protected ?string $icon_custom_emoji_id = null,
+    ) {}
 
     /**
      * @return string
@@ -62,7 +61,7 @@ final class ForumTopicCreated implements EntityInterface
     /**
      * @return string|null
      */
-    public function getIconCustomEmojiId(): string|null
+    public function getIconCustomEmojiId(): ?string
     {
         return $this->icon_custom_emoji_id;
     }
@@ -72,7 +71,7 @@ final class ForumTopicCreated implements EntityInterface
      *
      * @return ForumTopicCreated
      */
-    public function setIconCustomEmojiId(string|null $icon_custom_emoji_id): ForumTopicCreated
+    public function setIconCustomEmojiId(?string $icon_custom_emoji_id): ForumTopicCreated
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;

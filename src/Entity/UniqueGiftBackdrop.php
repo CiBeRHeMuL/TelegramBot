@@ -20,8 +20,7 @@ final class UniqueGiftBackdrop implements EntityInterface
         protected string $name,
         protected UniqueGiftBackdropColors $colors,
         protected int $rarity_per_mille,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

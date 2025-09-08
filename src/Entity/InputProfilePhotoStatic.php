@@ -13,7 +13,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @link https://core.telegram.org/bots/api#inputprofilephotostatic
  */
-#[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Static->value,))]
+#[BuildIf(new FieldIsChecker('type', InputProfilePhotoTypeEnum::Static->value, ))]
 final class InputProfilePhotoStatic extends AbstractInputProfilePhoto
 {
     /**

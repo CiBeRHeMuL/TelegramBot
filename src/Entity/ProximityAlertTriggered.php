@@ -22,8 +22,7 @@ final class ProximityAlertTriggered implements EntityInterface
         protected User $traveler,
         protected User $watcher,
         protected int $distance,
-    ) {
-    }
+    ) {}
 
     /**
      * @return User

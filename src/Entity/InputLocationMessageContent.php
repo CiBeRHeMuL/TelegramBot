@@ -34,12 +34,11 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function __construct(
         protected float $latitude,
         protected float $longitude,
-        protected int|null $heading = null,
-        protected float|null $horizontal_accuracy = null,
-        protected int|null $live_period = null,
-        protected int|null $proximity_alert_radius = null,
-    ) {
-    }
+        protected ?int $heading = null,
+        protected ?float $horizontal_accuracy = null,
+        protected ?int $live_period = null,
+        protected ?int $proximity_alert_radius = null,
+    ) {}
 
     /**
      * @return float
@@ -82,7 +81,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getHeading(): int|null
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
@@ -92,7 +91,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
      *
      * @return InputLocationMessageContent
      */
-    public function setHeading(int|null $heading): InputLocationMessageContent
+    public function setHeading(?int $heading): InputLocationMessageContent
     {
         $this->heading = $heading;
         return $this;
@@ -101,7 +100,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     /**
      * @return float|null
      */
-    public function getHorizontalAccuracy(): float|null
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontal_accuracy;
     }
@@ -111,7 +110,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
      *
      * @return InputLocationMessageContent
      */
-    public function setHorizontalAccuracy(float|null $horizontal_accuracy): InputLocationMessageContent
+    public function setHorizontalAccuracy(?float $horizontal_accuracy): InputLocationMessageContent
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
@@ -120,7 +119,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getLivePeriod(): int|null
+    public function getLivePeriod(): ?int
     {
         return $this->live_period;
     }
@@ -130,7 +129,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
      *
      * @return InputLocationMessageContent
      */
-    public function setLivePeriod(int|null $live_period): InputLocationMessageContent
+    public function setLivePeriod(?int $live_period): InputLocationMessageContent
     {
         $this->live_period = $live_period;
         return $this;
@@ -139,7 +138,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getProximityAlertRadius(): int|null
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximity_alert_radius;
     }
@@ -149,7 +148,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
      *
      * @return InputLocationMessageContent
      */
-    public function setProximityAlertRadius(int|null $proximity_alert_radius): InputLocationMessageContent
+    public function setProximityAlertRadius(?int $proximity_alert_radius): InputLocationMessageContent
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;

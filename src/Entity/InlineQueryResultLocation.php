@@ -44,15 +44,15 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
         protected float $latitude,
         protected float $longitude,
         protected string $title,
-        protected int|null $heading = null,
-        protected float|null $horizontal_accuracy = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected int|null $live_period = null,
-        protected int|null $proximity_alert_radius = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $thumbnail_height = null,
-        protected Url|null $thumbnail_url = null,
-        protected int|null $thumbnail_width = null,
+        protected ?int $heading = null,
+        protected ?float $horizontal_accuracy = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?int $live_period = null,
+        protected ?int $proximity_alert_radius = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $thumbnail_height = null,
+        protected ?Url $thumbnail_url = null,
+        protected ?int $thumbnail_width = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Location);
     }
@@ -136,7 +136,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getHeading(): int|null
+    public function getHeading(): ?int
     {
         return $this->heading;
     }
@@ -146,7 +146,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setHeading(int|null $heading): InlineQueryResultLocation
+    public function setHeading(?int $heading): InlineQueryResultLocation
     {
         $this->heading = $heading;
         return $this;
@@ -155,7 +155,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return float|null
      */
-    public function getHorizontalAccuracy(): float|null
+    public function getHorizontalAccuracy(): ?float
     {
         return $this->horizontal_accuracy;
     }
@@ -165,7 +165,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setHorizontalAccuracy(float|null $horizontal_accuracy): InlineQueryResultLocation
+    public function setHorizontalAccuracy(?float $horizontal_accuracy): InlineQueryResultLocation
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
         return $this;
@@ -174,7 +174,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -184,7 +184,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultLocation
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultLocation
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -193,7 +193,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getLivePeriod(): int|null
+    public function getLivePeriod(): ?int
     {
         return $this->live_period;
     }
@@ -203,7 +203,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setLivePeriod(int|null $live_period): InlineQueryResultLocation
+    public function setLivePeriod(?int $live_period): InlineQueryResultLocation
     {
         $this->live_period = $live_period;
         return $this;
@@ -212,7 +212,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getProximityAlertRadius(): int|null
+    public function getProximityAlertRadius(): ?int
     {
         return $this->proximity_alert_radius;
     }
@@ -222,7 +222,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setProximityAlertRadius(int|null $proximity_alert_radius): InlineQueryResultLocation
+    public function setProximityAlertRadius(?int $proximity_alert_radius): InlineQueryResultLocation
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
         return $this;
@@ -231,7 +231,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -241,7 +241,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultLocation
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultLocation
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -250,7 +250,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailHeight(): int|null
+    public function getThumbnailHeight(): ?int
     {
         return $this->thumbnail_height;
     }
@@ -260,7 +260,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultLocation
+    public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultLocation
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
@@ -269,7 +269,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getThumbnailUrl(): Url|null
+    public function getThumbnailUrl(): ?Url
     {
         return $this->thumbnail_url;
     }
@@ -279,7 +279,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultLocation
+    public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultLocation
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
@@ -288,7 +288,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailWidth(): int|null
+    public function getThumbnailWidth(): ?int
     {
         return $this->thumbnail_width;
     }
@@ -298,7 +298,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultLocation
      */
-    public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultLocation
+    public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultLocation
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;

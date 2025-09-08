@@ -37,8 +37,7 @@ abstract class AbstractInlineQueryResult implements EntityInterface
 {
     public function __construct(
         protected readonly InlineQueryResultTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): InlineQueryResultTypeEnum
     {

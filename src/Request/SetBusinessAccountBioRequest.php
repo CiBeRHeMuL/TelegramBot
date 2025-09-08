@@ -13,9 +13,8 @@ class SetBusinessAccountBioRequest implements RequestInterface
      */
     public function __construct(
         private string $business_connection_id,
-        private string|null $bio = null,
-    ) {
-    }
+        private ?string $bio = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -28,12 +27,12 @@ class SetBusinessAccountBioRequest implements RequestInterface
         return $this;
     }
 
-    public function getBio(): string|null
+    public function getBio(): ?string
     {
         return $this->bio;
     }
 
-    public function setBio(string|null $bio): SetBusinessAccountBioRequest
+    public function setBio(?string $bio): SetBusinessAccountBioRequest
     {
         $this->bio = $bio;
         return $this;

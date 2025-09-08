@@ -14,8 +14,7 @@ final class BotDescription implements EntityInterface
      */
     public function __construct(
         protected string $description,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

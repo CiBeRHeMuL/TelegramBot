@@ -19,10 +19,10 @@ class RawResponse
      */
     public function __construct(
         private bool $ok = false,
-        private string|null $description = null,
+        private ?string $description = null,
         private array|string|bool|int|null $result = null,
-        private HttpStatusCodeEnum|null $error_code = null,
-        private ResponseParameters|null $parameters = null,
+        private ?HttpStatusCodeEnum $error_code = null,
+        private ?ResponseParameters $parameters = null,
     ) {
         if ($this->ok && $this->result === null) {
             throw new InvalidValueObjectConfigException(self::class, 'missing result');
@@ -42,12 +42,12 @@ class RawResponse
         return $this;
     }
 
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string|null $description): RawResponse
+    public function setDescription(?string $description): RawResponse
     {
         $this->description = $description;
         return $this;
@@ -64,23 +64,23 @@ class RawResponse
         return $this;
     }
 
-    public function getErrorCode(): HttpStatusCodeEnum|null
+    public function getErrorCode(): ?HttpStatusCodeEnum
     {
         return $this->error_code;
     }
 
-    public function setErrorCode(HttpStatusCodeEnum|null $error_code): RawResponse
+    public function setErrorCode(?HttpStatusCodeEnum $error_code): RawResponse
     {
         $this->error_code = $error_code;
         return $this;
     }
 
-    public function getParameters(): ResponseParameters|null
+    public function getParameters(): ?ResponseParameters
     {
         return $this->parameters;
     }
 
-    public function setParameters(ResponseParameters|null $parameters): RawResponse
+    public function setParameters(?ResponseParameters $parameters): RawResponse
     {
         $this->parameters = $parameters;
         return $this;

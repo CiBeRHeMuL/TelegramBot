@@ -8,12 +8,12 @@ class ExportChatInviteLinkResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly Url|null $inviteLink = null,
+        private readonly ?Url $inviteLink = null,
     ) {
         parent::__construct($response);
     }
 
-    public function getInviteLink(): Url|null
+    public function getInviteLink(): ?Url
     {
         return $this->inviteLink;
     }

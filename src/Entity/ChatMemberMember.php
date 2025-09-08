@@ -23,7 +23,7 @@ final class ChatMemberMember extends AbstractChatMember
      */
     public function __construct(
         protected User $user,
-        protected int|null $until_date = null,
+        protected ?int $until_date = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Member);
     }
@@ -50,7 +50,7 @@ final class ChatMemberMember extends AbstractChatMember
     /**
      * @return int|null
      */
-    public function getUntilDate(): int|null
+    public function getUntilDate(): ?int
     {
         return $this->until_date;
     }
@@ -60,7 +60,7 @@ final class ChatMemberMember extends AbstractChatMember
      *
      * @return ChatMemberMember
      */
-    public function setUntilDate(int|null $until_date): ChatMemberMember
+    public function setUntilDate(?int $until_date): ChatMemberMember
     {
         $this->until_date = $until_date;
         return $this;

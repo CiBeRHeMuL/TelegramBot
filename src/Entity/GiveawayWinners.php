@@ -39,15 +39,14 @@ final class GiveawayWinners implements EntityInterface
         protected int $winner_count,
         #[ArrayType(User::class)]
         protected array $winners,
-        protected int|null $additional_chat_count = null,
-        protected int|null $premium_subscription_month_count = null,
-        protected int|null $unclaimed_prize_count = null,
-        protected bool|null $only_new_members = null,
-        protected bool|null $was_refunded = null,
-        protected string|null $prize_description = null,
-        protected int|null $prize_star_count = null,
-    ) {
-    }
+        protected ?int $additional_chat_count = null,
+        protected ?int $premium_subscription_month_count = null,
+        protected ?int $unclaimed_prize_count = null,
+        protected ?bool $only_new_members = null,
+        protected ?bool $was_refunded = null,
+        protected ?string $prize_description = null,
+        protected ?int $prize_star_count = null,
+    ) {}
 
     /**
      * @return Chat
@@ -147,7 +146,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return int|null
      */
-    public function getAdditionalChatCount(): int|null
+    public function getAdditionalChatCount(): ?int
     {
         return $this->additional_chat_count;
     }
@@ -157,7 +156,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setAdditionalChatCount(int|null $additional_chat_count): GiveawayWinners
+    public function setAdditionalChatCount(?int $additional_chat_count): GiveawayWinners
     {
         $this->additional_chat_count = $additional_chat_count;
         return $this;
@@ -166,7 +165,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return int|null
      */
-    public function getPremiumSubscriptionMonthCount(): int|null
+    public function getPremiumSubscriptionMonthCount(): ?int
     {
         return $this->premium_subscription_month_count;
     }
@@ -176,7 +175,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setPremiumSubscriptionMonthCount(int|null $premium_subscription_month_count): GiveawayWinners
+    public function setPremiumSubscriptionMonthCount(?int $premium_subscription_month_count): GiveawayWinners
     {
         $this->premium_subscription_month_count = $premium_subscription_month_count;
         return $this;
@@ -185,7 +184,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return int|null
      */
-    public function getUnclaimedPrizeCount(): int|null
+    public function getUnclaimedPrizeCount(): ?int
     {
         return $this->unclaimed_prize_count;
     }
@@ -195,7 +194,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setUnclaimedPrizeCount(int|null $unclaimed_prize_count): GiveawayWinners
+    public function setUnclaimedPrizeCount(?int $unclaimed_prize_count): GiveawayWinners
     {
         $this->unclaimed_prize_count = $unclaimed_prize_count;
         return $this;
@@ -204,7 +203,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOnlyNewMembers(): bool|null
+    public function getOnlyNewMembers(): ?bool
     {
         return $this->only_new_members;
     }
@@ -214,7 +213,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setOnlyNewMembers(bool|null $only_new_members): GiveawayWinners
+    public function setOnlyNewMembers(?bool $only_new_members): GiveawayWinners
     {
         $this->only_new_members = $only_new_members;
         return $this;
@@ -223,7 +222,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getWasRefunded(): bool|null
+    public function getWasRefunded(): ?bool
     {
         return $this->was_refunded;
     }
@@ -233,7 +232,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setWasRefunded(bool|null $was_refunded): GiveawayWinners
+    public function setWasRefunded(?bool $was_refunded): GiveawayWinners
     {
         $this->was_refunded = $was_refunded;
         return $this;
@@ -242,7 +241,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return string|null
      */
-    public function getPrizeDescription(): string|null
+    public function getPrizeDescription(): ?string
     {
         return $this->prize_description;
     }
@@ -252,7 +251,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setPrizeDescription(string|null $prize_description): GiveawayWinners
+    public function setPrizeDescription(?string $prize_description): GiveawayWinners
     {
         $this->prize_description = $prize_description;
         return $this;
@@ -261,7 +260,7 @@ final class GiveawayWinners implements EntityInterface
     /**
      * @return int|null
      */
-    public function getPrizeStarCount(): int|null
+    public function getPrizeStarCount(): ?int
     {
         return $this->prize_star_count;
     }
@@ -271,7 +270,7 @@ final class GiveawayWinners implements EntityInterface
      *
      * @return GiveawayWinners
      */
-    public function setPrizeStarCount(int|null $prize_star_count): GiveawayWinners
+    public function setPrizeStarCount(?int $prize_star_count): GiveawayWinners
     {
         $this->prize_star_count = $prize_star_count;
         return $this;

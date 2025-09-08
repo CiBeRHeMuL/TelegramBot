@@ -41,9 +41,8 @@ class UpdateHandler implements UpdateHandlerInterface
         private UpdateSourceInterface $updateSource,
         private ApiInterface $api,
         private LoggerInterface $logger,
-        private EventDispatcherInterface|null $eventDispatcher = null,
-    ) {
-    }
+        private ?EventDispatcherInterface $eventDispatcher = null,
+    ) {}
 
     public function getUpdateSource(): UpdateSourceInterface
     {
@@ -78,7 +77,7 @@ class UpdateHandler implements UpdateHandlerInterface
         return $this;
     }
 
-    public function getEventDispatcher(): EventDispatcherInterface|null
+    public function getEventDispatcher(): ?EventDispatcherInterface
     {
         return $this->eventDispatcher;
     }

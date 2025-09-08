@@ -18,8 +18,7 @@ final class BusinessOpeningHoursInterval implements EntityInterface
     public function __construct(
         protected int $opening_minute,
         protected int $closing_minute,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

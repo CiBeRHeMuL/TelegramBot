@@ -24,7 +24,7 @@ class MultipartStream implements StreamInterface
      *
      * @throws RandomException
      */
-    public function __construct(array $elements = [], string|null $boundary = null)
+    public function __construct(array $elements = [], ?string $boundary = null)
     {
         $this->boundary = $boundary ?: bin2hex(random_bytes(20));
         $this->stream = $this->createStream($elements);
@@ -196,7 +196,7 @@ class MultipartStream implements StreamInterface
         $length = $this->getHeader($headers, 'content-length');
         if (!$length) {
             if ($length = $stream->getSize()) {
-                $headers['Content-Length'] = (string)$length;
+                $headers['Content-Length'] = (string) $length;
             }
         }
 

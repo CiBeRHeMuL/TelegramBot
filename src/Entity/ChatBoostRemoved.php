@@ -23,8 +23,7 @@ final class ChatBoostRemoved implements EntityInterface
         protected string $boost_id,
         protected int $remove_date,
         protected AbstractChatBoostSource $source,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Chat

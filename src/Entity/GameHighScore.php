@@ -20,8 +20,7 @@ final class GameHighScore implements EntityInterface
         protected int $position,
         protected User $user,
         protected int $score,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

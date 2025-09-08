@@ -18,8 +18,7 @@ class EditUserStarSubscriptionRequest implements RequestInterface
         private bool $is_canceled,
         private string $telegram_payment_charge_id,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getIsCanceled(): bool
     {

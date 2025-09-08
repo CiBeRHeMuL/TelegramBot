@@ -18,8 +18,7 @@ final class PaidMediaPurchased implements EntityInterface
     public function __construct(
         protected User $from,
         protected string $paid_media_payload,
-    ) {
-    }
+    ) {}
 
     /**
      * @return User

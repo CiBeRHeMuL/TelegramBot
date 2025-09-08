@@ -22,8 +22,7 @@ final class InlineKeyboardMarkup implements EntityInterface
     public function __construct(
         #[ArrayType(new ArrayType(InlineKeyboardButton::class))]
         protected array $inline_keyboard,
-    ) {
-    }
+    ) {}
 
     /**
      * @return InlineKeyboardButton[][]

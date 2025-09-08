@@ -15,11 +15,11 @@ class Stream implements StreamInterface
 
     /** @var resource */
     private $stream;
-    private int|null $size = null;
+    private ?int $size = null;
     private bool $seekable = false;
     private bool $readable = false;
     private bool $writable = false;
-    private string|null $uri = null;
+    private ?string $uri = null;
     private array $customMetadata = [];
 
     public function __construct($stream, array $options = [])
@@ -36,8 +36,8 @@ class Stream implements StreamInterface
         $this->stream = $stream;
         $meta = stream_get_meta_data($this->stream);
         $this->seekable = $meta['seekable'];
-        $this->readable = (bool)preg_match(self::READABLE_MODES, $meta['mode']);
-        $this->writable = (bool)preg_match(self::WRITABLE_MODES, $meta['mode']);
+        $this->readable = (bool) preg_match(self::READABLE_MODES, $meta['mode']);
+        $this->writable = (bool) preg_match(self::WRITABLE_MODES, $meta['mode']);
         $this->uri = $this->getMetadata('uri');
     }
 
@@ -170,7 +170,7 @@ class Stream implements StreamInterface
 
     public function seek($offset, $whence = SEEK_SET): void
     {
-        $whence = (int)$whence;
+        $whence = (int) $whence;
 
         if (!isset($this->stream)) {
             throw new RuntimeException('Stream is detached');

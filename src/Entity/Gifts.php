@@ -19,8 +19,7 @@ final class Gifts implements EntityInterface
     public function __construct(
         #[ArrayType(Gift::class)]
         protected array $gifts,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Gift[]

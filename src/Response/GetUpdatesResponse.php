@@ -12,12 +12,12 @@ class GetUpdatesResponse extends AbstractResponse
      */
     public function __construct(
         RawResponse $rawResponse,
-        private readonly array|null $updates = null,
+        private readonly ?array $updates = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getUpdates(): array|null
+    public function getUpdates(): ?array
     {
         return $this->updates;
     }

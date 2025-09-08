@@ -21,8 +21,7 @@ class AddStickerToSetRequest implements RequestInterface
         private string $name,
         private InputSticker $sticker,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

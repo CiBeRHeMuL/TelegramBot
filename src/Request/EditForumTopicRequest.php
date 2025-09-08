@@ -23,10 +23,9 @@ class EditForumTopicRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_thread_id,
-        private string|null $icon_custom_emoji_id = null,
-        private string|null $name = null,
-    ) {
-    }
+        private ?string $icon_custom_emoji_id = null,
+        private ?string $name = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -50,23 +49,23 @@ class EditForumTopicRequest implements RequestInterface
         return $this;
     }
 
-    public function getIconCustomEmojiId(): string|null
+    public function getIconCustomEmojiId(): ?string
     {
         return $this->icon_custom_emoji_id;
     }
 
-    public function setIconCustomEmojiId(string|null $icon_custom_emoji_id): EditForumTopicRequest
+    public function setIconCustomEmojiId(?string $icon_custom_emoji_id): EditForumTopicRequest
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
         return $this;
     }
 
-    public function getName(): string|null
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string|null $name): EditForumTopicRequest
+    public function setName(?string $name): EditForumTopicRequest
     {
         $this->name = $name;
         return $this;

@@ -16,28 +16,27 @@ class SetMyShortDescriptionRequest implements RequestInterface
      * the dedicated short description for the given language.
      */
     public function __construct(
-        private Language|null $language_code = null,
-        private string|null $short_description = null,
-    ) {
-    }
+        private ?Language $language_code = null,
+        private ?string $short_description = null,
+    ) {}
 
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(Language|null $language_code): SetMyShortDescriptionRequest
+    public function setLanguageCode(?Language $language_code): SetMyShortDescriptionRequest
     {
         $this->language_code = $language_code;
         return $this;
     }
 
-    public function getShortDescription(): string|null
+    public function getShortDescription(): ?string
     {
         return $this->short_description;
     }
 
-    public function setShortDescription(string|null $short_description): SetMyShortDescriptionRequest
+    public function setShortDescription(?string $short_description): SetMyShortDescriptionRequest
     {
         $this->short_description = $short_description;
         return $this;

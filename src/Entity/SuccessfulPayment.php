@@ -39,13 +39,12 @@ final class SuccessfulPayment implements EntityInterface
         protected string $invoice_payload,
         protected string $telegram_payment_charge_id,
         protected string $provider_payment_charge_id,
-        protected string|null $shipping_option_id = null,
-        protected OrderInfo|null $order_info = null,
-        protected int|null $subscription_expiration_date = null,
-        protected bool|null $is_recurring = null,
-        protected bool|null $is_first_recurring = null,
-    ) {
-    }
+        protected ?string $shipping_option_id = null,
+        protected ?OrderInfo $order_info = null,
+        protected ?int $subscription_expiration_date = null,
+        protected ?bool $is_recurring = null,
+        protected ?bool $is_first_recurring = null,
+    ) {}
 
     /**
      * @return CurrencyEnum
@@ -145,7 +144,7 @@ final class SuccessfulPayment implements EntityInterface
     /**
      * @return string|null
      */
-    public function getShippingOptionId(): string|null
+    public function getShippingOptionId(): ?string
     {
         return $this->shipping_option_id;
     }
@@ -155,7 +154,7 @@ final class SuccessfulPayment implements EntityInterface
      *
      * @return SuccessfulPayment
      */
-    public function setShippingOptionId(string|null $shipping_option_id): SuccessfulPayment
+    public function setShippingOptionId(?string $shipping_option_id): SuccessfulPayment
     {
         $this->shipping_option_id = $shipping_option_id;
         return $this;
@@ -164,7 +163,7 @@ final class SuccessfulPayment implements EntityInterface
     /**
      * @return OrderInfo|null
      */
-    public function getOrderInfo(): OrderInfo|null
+    public function getOrderInfo(): ?OrderInfo
     {
         return $this->order_info;
     }
@@ -174,7 +173,7 @@ final class SuccessfulPayment implements EntityInterface
      *
      * @return SuccessfulPayment
      */
-    public function setOrderInfo(OrderInfo|null $order_info): SuccessfulPayment
+    public function setOrderInfo(?OrderInfo $order_info): SuccessfulPayment
     {
         $this->order_info = $order_info;
         return $this;
@@ -183,7 +182,7 @@ final class SuccessfulPayment implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSubscriptionExpirationDate(): int|null
+    public function getSubscriptionExpirationDate(): ?int
     {
         return $this->subscription_expiration_date;
     }
@@ -193,7 +192,7 @@ final class SuccessfulPayment implements EntityInterface
      *
      * @return SuccessfulPayment
      */
-    public function setSubscriptionExpirationDate(int|null $subscription_expiration_date): SuccessfulPayment
+    public function setSubscriptionExpirationDate(?int $subscription_expiration_date): SuccessfulPayment
     {
         $this->subscription_expiration_date = $subscription_expiration_date;
         return $this;
@@ -202,7 +201,7 @@ final class SuccessfulPayment implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsRecurring(): bool|null
+    public function getIsRecurring(): ?bool
     {
         return $this->is_recurring;
     }
@@ -212,7 +211,7 @@ final class SuccessfulPayment implements EntityInterface
      *
      * @return SuccessfulPayment
      */
-    public function setIsRecurring(bool|null $is_recurring): SuccessfulPayment
+    public function setIsRecurring(?bool $is_recurring): SuccessfulPayment
     {
         $this->is_recurring = $is_recurring;
         return $this;
@@ -221,7 +220,7 @@ final class SuccessfulPayment implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsFirstRecurring(): bool|null
+    public function getIsFirstRecurring(): ?bool
     {
         return $this->is_first_recurring;
     }
@@ -231,7 +230,7 @@ final class SuccessfulPayment implements EntityInterface
      *
      * @return SuccessfulPayment
      */
-    public function setIsFirstRecurring(bool|null $is_first_recurring): SuccessfulPayment
+    public function setIsFirstRecurring(?bool $is_first_recurring): SuccessfulPayment
     {
         $this->is_first_recurring = $is_first_recurring;
         return $this;

@@ -18,15 +18,14 @@ final class ResponseParameters implements EntityInterface
      * can be repeated
      */
     public function __construct(
-        protected int|null $migrate_to_chat_id = null,
-        protected int|null $retry_after = null,
-    ) {
-    }
+        protected ?int $migrate_to_chat_id = null,
+        protected ?int $retry_after = null,
+    ) {}
 
     /**
      * @return int|null
      */
-    public function getMigrateToChatId(): int|null
+    public function getMigrateToChatId(): ?int
     {
         return $this->migrate_to_chat_id;
     }
@@ -36,7 +35,7 @@ final class ResponseParameters implements EntityInterface
      *
      * @return ResponseParameters
      */
-    public function setMigrateToChatId(int|null $migrate_to_chat_id): ResponseParameters
+    public function setMigrateToChatId(?int $migrate_to_chat_id): ResponseParameters
     {
         $this->migrate_to_chat_id = $migrate_to_chat_id;
         return $this;
@@ -45,7 +44,7 @@ final class ResponseParameters implements EntityInterface
     /**
      * @return int|null
      */
-    public function getRetryAfter(): int|null
+    public function getRetryAfter(): ?int
     {
         return $this->retry_after;
     }
@@ -55,7 +54,7 @@ final class ResponseParameters implements EntityInterface
      *
      * @return ResponseParameters
      */
-    public function setRetryAfter(int|null $retry_after): ResponseParameters
+    public function setRetryAfter(?int $retry_after): ResponseParameters
     {
         $this->retry_after = $retry_after;
         return $this;

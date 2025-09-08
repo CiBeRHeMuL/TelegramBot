@@ -75,28 +75,27 @@ class SendPollRequest implements RequestInterface
         private ChatId $chat_id,
         private array $options,
         private string $question,
-        private bool|null $allows_multiple_answers = null,
-        private string|null $business_connection_id = null,
-        private int|null $close_date = null,
-        private int|null $correct_option_id = null,
-        private bool|null $disable_notification = null,
-        private string|null $explanation = null,
-        private array|null $explanation_entities = null,
-        private TelegramParseModeEnum|null $explanation_parse_mode = null,
-        private bool|null $is_anonymous = null,
-        private bool|null $is_closed = null,
-        private int|null $message_thread_id = null,
-        private int|null $open_period = null,
-        private bool|null $protect_content = null,
-        private array|null $question_entities = null,
-        private TelegramParseModeEnum|null $question_parse_mode = null,
+        private ?bool $allows_multiple_answers = null,
+        private ?string $business_connection_id = null,
+        private ?int $close_date = null,
+        private ?int $correct_option_id = null,
+        private ?bool $disable_notification = null,
+        private ?string $explanation = null,
+        private ?array $explanation_entities = null,
+        private ?TelegramParseModeEnum $explanation_parse_mode = null,
+        private ?bool $is_anonymous = null,
+        private ?bool $is_closed = null,
+        private ?int $message_thread_id = null,
+        private ?int $open_period = null,
+        private ?bool $protect_content = null,
+        private ?array $question_entities = null,
+        private ?TelegramParseModeEnum $question_parse_mode = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-        private PollTypeEnum|null $type = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-    ) {
-    }
+        private ?ReplyParameters $reply_parameters = null,
+        private ?PollTypeEnum $type = null,
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -131,166 +130,166 @@ class SendPollRequest implements RequestInterface
         return $this;
     }
 
-    public function getAllowsMultipleAnswers(): bool|null
+    public function getAllowsMultipleAnswers(): ?bool
     {
         return $this->allows_multiple_answers;
     }
 
-    public function setAllowsMultipleAnswers(bool|null $allows_multiple_answers): SendPollRequest
+    public function setAllowsMultipleAnswers(?bool $allows_multiple_answers): SendPollRequest
     {
         $this->allows_multiple_answers = $allows_multiple_answers;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendPollRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendPollRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getCloseDate(): int|null
+    public function getCloseDate(): ?int
     {
         return $this->close_date;
     }
 
-    public function setCloseDate(int|null $close_date): SendPollRequest
+    public function setCloseDate(?int $close_date): SendPollRequest
     {
         $this->close_date = $close_date;
         return $this;
     }
 
-    public function getCorrectOptionId(): int|null
+    public function getCorrectOptionId(): ?int
     {
         return $this->correct_option_id;
     }
 
-    public function setCorrectOptionId(int|null $correct_option_id): SendPollRequest
+    public function setCorrectOptionId(?int $correct_option_id): SendPollRequest
     {
         $this->correct_option_id = $correct_option_id;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendPollRequest
+    public function setDisableNotification(?bool $disable_notification): SendPollRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getExplanation(): string|null
+    public function getExplanation(): ?string
     {
         return $this->explanation;
     }
 
-    public function setExplanation(string|null $explanation): SendPollRequest
+    public function setExplanation(?string $explanation): SendPollRequest
     {
         $this->explanation = $explanation;
         return $this;
     }
 
-    public function getExplanationEntities(): array|null
+    public function getExplanationEntities(): ?array
     {
         return $this->explanation_entities;
     }
 
-    public function setExplanationEntities(array|null $explanation_entities): SendPollRequest
+    public function setExplanationEntities(?array $explanation_entities): SendPollRequest
     {
         $this->explanation_entities = $explanation_entities;
         return $this;
     }
 
-    public function getExplanationParseMode(): TelegramParseModeEnum|null
+    public function getExplanationParseMode(): ?TelegramParseModeEnum
     {
         return $this->explanation_parse_mode;
     }
 
-    public function setExplanationParseMode(TelegramParseModeEnum|null $explanation_parse_mode): SendPollRequest
+    public function setExplanationParseMode(?TelegramParseModeEnum $explanation_parse_mode): SendPollRequest
     {
         $this->explanation_parse_mode = $explanation_parse_mode;
         return $this;
     }
 
-    public function getIsAnonymous(): bool|null
+    public function getIsAnonymous(): ?bool
     {
         return $this->is_anonymous;
     }
 
-    public function setIsAnonymous(bool|null $is_anonymous): SendPollRequest
+    public function setIsAnonymous(?bool $is_anonymous): SendPollRequest
     {
         $this->is_anonymous = $is_anonymous;
         return $this;
     }
 
-    public function getIsClosed(): bool|null
+    public function getIsClosed(): ?bool
     {
         return $this->is_closed;
     }
 
-    public function setIsClosed(bool|null $is_closed): SendPollRequest
+    public function setIsClosed(?bool $is_closed): SendPollRequest
     {
         $this->is_closed = $is_closed;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendPollRequest
+    public function setMessageThreadId(?int $message_thread_id): SendPollRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getOpenPeriod(): int|null
+    public function getOpenPeriod(): ?int
     {
         return $this->open_period;
     }
 
-    public function setOpenPeriod(int|null $open_period): SendPollRequest
+    public function setOpenPeriod(?int $open_period): SendPollRequest
     {
         $this->open_period = $open_period;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendPollRequest
+    public function setProtectContent(?bool $protect_content): SendPollRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getQuestionEntities(): array|null
+    public function getQuestionEntities(): ?array
     {
         return $this->question_entities;
     }
 
-    public function setQuestionEntities(array|null $question_entities): SendPollRequest
+    public function setQuestionEntities(?array $question_entities): SendPollRequest
     {
         $this->question_entities = $question_entities;
         return $this;
     }
 
-    public function getQuestionParseMode(): TelegramParseModeEnum|null
+    public function getQuestionParseMode(): ?TelegramParseModeEnum
     {
         return $this->question_parse_mode;
     }
 
-    public function setQuestionParseMode(TelegramParseModeEnum|null $question_parse_mode): SendPollRequest
+    public function setQuestionParseMode(?TelegramParseModeEnum $question_parse_mode): SendPollRequest
     {
         $this->question_parse_mode = $question_parse_mode;
         return $this;
@@ -307,45 +306,45 @@ class SendPollRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendPollRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendPollRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
 
-    public function getType(): PollTypeEnum|null
+    public function getType(): ?PollTypeEnum
     {
         return $this->type;
     }
 
-    public function setType(PollTypeEnum|null $type): SendPollRequest
+    public function setType(?PollTypeEnum $type): SendPollRequest
     {
         $this->type = $type;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendPollRequest
+    public function setMessageEffectId(?string $message_effect_id): SendPollRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendPollRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendPollRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;

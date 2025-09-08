@@ -27,11 +27,10 @@ final class SuggestedPostPaid implements EntityInterface
      */
     public function __construct(
         protected CurrencyEnum $currency,
-        protected int|null $amount = null,
-        protected StarAmount|null $star_amount = null,
-        protected Message|null $suggested_post_message = null,
-    ) {
-    }
+        protected ?int $amount = null,
+        protected ?StarAmount $star_amount = null,
+        protected ?Message $suggested_post_message = null,
+    ) {}
 
     /**
      * @return CurrencyEnum
@@ -55,7 +54,7 @@ final class SuggestedPostPaid implements EntityInterface
     /**
      * @return int|null
      */
-    public function getAmount(): int|null
+    public function getAmount(): ?int
     {
         return $this->amount;
     }
@@ -65,7 +64,7 @@ final class SuggestedPostPaid implements EntityInterface
      *
      * @return SuggestedPostPaid
      */
-    public function setAmount(int|null $amount): SuggestedPostPaid
+    public function setAmount(?int $amount): SuggestedPostPaid
     {
         $this->amount = $amount;
         return $this;
@@ -74,7 +73,7 @@ final class SuggestedPostPaid implements EntityInterface
     /**
      * @return StarAmount|null
      */
-    public function getStarAmount(): StarAmount|null
+    public function getStarAmount(): ?StarAmount
     {
         return $this->star_amount;
     }
@@ -84,7 +83,7 @@ final class SuggestedPostPaid implements EntityInterface
      *
      * @return SuggestedPostPaid
      */
-    public function setStarAmount(StarAmount|null $star_amount): SuggestedPostPaid
+    public function setStarAmount(?StarAmount $star_amount): SuggestedPostPaid
     {
         $this->star_amount = $star_amount;
         return $this;
@@ -93,7 +92,7 @@ final class SuggestedPostPaid implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getSuggestedPostMessage(): Message|null
+    public function getSuggestedPostMessage(): ?Message
     {
         return $this->suggested_post_message;
     }
@@ -103,7 +102,7 @@ final class SuggestedPostPaid implements EntityInterface
      *
      * @return SuggestedPostPaid
      */
-    public function setSuggestedPostMessage(Message|null $suggested_post_message): SuggestedPostPaid
+    public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostPaid
     {
         $this->suggested_post_message = $suggested_post_message;
         return $this;

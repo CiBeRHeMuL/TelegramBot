@@ -26,8 +26,7 @@ final class MessageReactionCountUpdated implements EntityInterface
         protected int $date,
         #[ArrayType(ReactionCount::class)]
         protected array $reactions,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Chat

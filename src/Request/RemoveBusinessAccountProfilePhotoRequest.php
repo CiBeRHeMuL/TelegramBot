@@ -15,9 +15,8 @@ class RemoveBusinessAccountProfilePhotoRequest implements RequestInterface
      */
     public function __construct(
         private string $business_connection_id,
-        private bool|null $is_public = null,
-    ) {
-    }
+        private ?bool $is_public = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -30,12 +29,12 @@ class RemoveBusinessAccountProfilePhotoRequest implements RequestInterface
         return $this;
     }
 
-    public function getIsPublic(): bool|null
+    public function getIsPublic(): ?bool
     {
         return $this->is_public;
     }
 
-    public function setIsPublic(bool|null $is_public): RemoveBusinessAccountProfilePhotoRequest
+    public function setIsPublic(?bool $is_public): RemoveBusinessAccountProfilePhotoRequest
     {
         $this->is_public = $is_public;
         return $this;

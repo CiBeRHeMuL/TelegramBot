@@ -16,8 +16,7 @@ final class BotCommand implements EntityInterface
     public function __construct(
         protected string $command,
         protected string $description,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

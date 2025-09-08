@@ -16,28 +16,27 @@ class SetMyDescriptionRequest implements RequestInterface
      * users for whose language there is no dedicated description.
      */
     public function __construct(
-        private string|null $description = null,
-        private Language|null $language_code = null,
-    ) {
-    }
+        private ?string $description = null,
+        private ?Language $language_code = null,
+    ) {}
 
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string|null $description): SetMyDescriptionRequest
+    public function setDescription(?string $description): SetMyDescriptionRequest
     {
         $this->description = $description;
         return $this;
     }
 
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(Language|null $language_code): SetMyDescriptionRequest
+    public function setLanguageCode(?Language $language_code): SetMyDescriptionRequest
     {
         $this->language_code = $language_code;
         return $this;

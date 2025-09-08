@@ -27,10 +27,9 @@ final class VideoNote implements EntityInterface
         protected string $file_unique_id,
         protected int $length,
         protected int $duration,
-        protected PhotoSize|null $thumbnail = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?PhotoSize $thumbnail = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -111,7 +110,7 @@ final class VideoNote implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -121,7 +120,7 @@ final class VideoNote implements EntityInterface
      *
      * @return VideoNote
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): VideoNote
+    public function setThumbnail(?PhotoSize $thumbnail): VideoNote
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -130,7 +129,7 @@ final class VideoNote implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -140,7 +139,7 @@ final class VideoNote implements EntityInterface
      *
      * @return VideoNote
      */
-    public function setFileSize(int|null $file_size): VideoNote
+    public function setFileSize(?int $file_size): VideoNote
     {
         $this->file_size = $file_size;
         return $this;

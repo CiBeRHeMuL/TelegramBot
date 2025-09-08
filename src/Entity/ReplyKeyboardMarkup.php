@@ -38,13 +38,12 @@ final class ReplyKeyboardMarkup implements EntityInterface
     public function __construct(
         #[ArrayType(new ArrayType(KeyboardButton::class))]
         protected array $keyboard,
-        protected bool|null $is_persistent = null,
-        protected bool|null $resize_keyboard = null,
-        protected bool|null $one_time_keyboard = null,
-        protected string|null $input_field_placeholder = null,
-        protected bool|null $selective = null,
-    ) {
-    }
+        protected ?bool $is_persistent = null,
+        protected ?bool $resize_keyboard = null,
+        protected ?bool $one_time_keyboard = null,
+        protected ?string $input_field_placeholder = null,
+        protected ?bool $selective = null,
+    ) {}
 
     /**
      * @return KeyboardButton[][]
@@ -68,7 +67,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsPersistent(): bool|null
+    public function getIsPersistent(): ?bool
     {
         return $this->is_persistent;
     }
@@ -78,7 +77,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *
      * @return ReplyKeyboardMarkup
      */
-    public function setIsPersistent(bool|null $is_persistent): ReplyKeyboardMarkup
+    public function setIsPersistent(?bool $is_persistent): ReplyKeyboardMarkup
     {
         $this->is_persistent = $is_persistent;
         return $this;
@@ -87,7 +86,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getResizeKeyboard(): bool|null
+    public function getResizeKeyboard(): ?bool
     {
         return $this->resize_keyboard;
     }
@@ -97,7 +96,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *
      * @return ReplyKeyboardMarkup
      */
-    public function setResizeKeyboard(bool|null $resize_keyboard): ReplyKeyboardMarkup
+    public function setResizeKeyboard(?bool $resize_keyboard): ReplyKeyboardMarkup
     {
         $this->resize_keyboard = $resize_keyboard;
         return $this;
@@ -106,7 +105,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOneTimeKeyboard(): bool|null
+    public function getOneTimeKeyboard(): ?bool
     {
         return $this->one_time_keyboard;
     }
@@ -116,7 +115,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *
      * @return ReplyKeyboardMarkup
      */
-    public function setOneTimeKeyboard(bool|null $one_time_keyboard): ReplyKeyboardMarkup
+    public function setOneTimeKeyboard(?bool $one_time_keyboard): ReplyKeyboardMarkup
     {
         $this->one_time_keyboard = $one_time_keyboard;
         return $this;
@@ -125,7 +124,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
     /**
      * @return string|null
      */
-    public function getInputFieldPlaceholder(): string|null
+    public function getInputFieldPlaceholder(): ?string
     {
         return $this->input_field_placeholder;
     }
@@ -135,7 +134,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *
      * @return ReplyKeyboardMarkup
      */
-    public function setInputFieldPlaceholder(string|null $input_field_placeholder): ReplyKeyboardMarkup
+    public function setInputFieldPlaceholder(?string $input_field_placeholder): ReplyKeyboardMarkup
     {
         $this->input_field_placeholder = $input_field_placeholder;
         return $this;
@@ -144,7 +143,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getSelective(): bool|null
+    public function getSelective(): ?bool
     {
         return $this->selective;
     }
@@ -154,7 +153,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *
      * @return ReplyKeyboardMarkup
      */
-    public function setSelective(bool|null $selective): ReplyKeyboardMarkup
+    public function setSelective(?bool $selective): ReplyKeyboardMarkup
     {
         $this->selective = $selective;
         return $this;

@@ -7,3 +7,6 @@ phpunit.xml
 composer.lock
 
 local
+
+.php-cs-fixer.cache
+.php-cs-fixer.php

@@ -18,9 +18,8 @@ class SetStickerMaskPositionRequest implements RequestInterface
      */
     public function __construct(
         private string $sticker,
-        private MaskPosition|null $mask_position = null,
-    ) {
-    }
+        private ?MaskPosition $mask_position = null,
+    ) {}
 
     public function getSticker(): string
     {
@@ -33,12 +32,12 @@ class SetStickerMaskPositionRequest implements RequestInterface
         return $this;
     }
 
-    public function getMaskPosition(): MaskPosition|null
+    public function getMaskPosition(): ?MaskPosition
     {
         return $this->mask_position;
     }
 
-    public function setMaskPosition(MaskPosition|null $mask_position): SetStickerMaskPositionRequest
+    public function setMaskPosition(?MaskPosition $mask_position): SetStickerMaskPositionRequest
     {
         $this->mask_position = $mask_position;
         return $this;

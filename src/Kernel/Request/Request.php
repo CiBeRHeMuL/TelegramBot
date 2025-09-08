@@ -15,8 +15,7 @@ final readonly class Request implements ContainerInterface
         private ApiInterface $api,
         private LoggerInterface $logger,
         private array $attributes = [],
-    ) {
-    }
+    ) {}
 
     public function getUpdate(): Update
     {

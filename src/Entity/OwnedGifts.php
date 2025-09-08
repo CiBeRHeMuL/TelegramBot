@@ -22,9 +22,8 @@ final class OwnedGifts implements EntityInterface
         protected int $total_count,
         #[ArrayType(AbstractOwnedGift::class)]
         protected array $gifts,
-        protected string|null $next_offset = null,
-    ) {
-    }
+        protected ?string $next_offset = null,
+    ) {}
 
     /**
      * @return int
@@ -67,7 +66,7 @@ final class OwnedGifts implements EntityInterface
     /**
      * @return string|null
      */
-    public function getNextOffset(): string|null
+    public function getNextOffset(): ?string
     {
         return $this->next_offset;
     }
@@ -77,7 +76,7 @@ final class OwnedGifts implements EntityInterface
      *
      * @return OwnedGifts
      */
-    public function setNextOffset(string|null $next_offset): OwnedGifts
+    public function setNextOffset(?string $next_offset): OwnedGifts
     {
         $this->next_offset = $next_offset;
         return $this;

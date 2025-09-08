@@ -35,14 +35,13 @@ class PostStoryRequest implements RequestInterface
         private int $active_period,
         private string $business_connection_id,
         private AbstractInputStoryContent $content,
-        private array|null $areas = null,
-        private string|null $caption = null,
-        private array|null $caption_entities = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private bool|null $post_to_chat_page = null,
-        private bool|null $protect_content = null,
-    ) {
-    }
+        private ?array $areas = null,
+        private ?string $caption = null,
+        private ?array $caption_entities = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?bool $post_to_chat_page = null,
+        private ?bool $protect_content = null,
+    ) {}
 
     public function getActivePeriod(): int
     {
@@ -77,67 +76,67 @@ class PostStoryRequest implements RequestInterface
         return $this;
     }
 
-    public function getAreas(): array|null
+    public function getAreas(): ?array
     {
         return $this->areas;
     }
 
-    public function setAreas(array|null $areas): PostStoryRequest
+    public function setAreas(?array $areas): PostStoryRequest
     {
         $this->areas = $areas;
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): PostStoryRequest
+    public function setCaption(?string $caption): PostStoryRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): PostStoryRequest
+    public function setCaptionEntities(?array $caption_entities): PostStoryRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): PostStoryRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): PostStoryRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getPostToChatPage(): bool|null
+    public function getPostToChatPage(): ?bool
     {
         return $this->post_to_chat_page;
     }
 
-    public function setPostToChatPage(bool|null $post_to_chat_page): PostStoryRequest
+    public function setPostToChatPage(?bool $post_to_chat_page): PostStoryRequest
     {
         $this->post_to_chat_page = $post_to_chat_page;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): PostStoryRequest
+    public function setProtectContent(?bool $protect_content): PostStoryRequest
     {
         $this->protect_content = $protect_content;
         return $this;

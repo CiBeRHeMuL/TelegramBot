@@ -8,12 +8,12 @@ class GetChatMemberResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly AbstractChatMember|null $chatMember = null,
+        private readonly ?AbstractChatMember $chatMember = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getChatMember(): AbstractChatMember|null
+    public function getChatMember(): ?AbstractChatMember
     {
         return $this->chatMember;
     }

@@ -22,8 +22,7 @@ abstract class AbstractBotCommandScope implements EntityInterface
 {
     public function __construct(
         protected readonly BotCommandScopeTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): BotCommandScopeTypeEnum
     {

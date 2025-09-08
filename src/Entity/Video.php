@@ -36,15 +36,14 @@ final class Video implements EntityInterface
         protected int $width,
         protected int $height,
         protected int $duration,
-        protected PhotoSize|null $thumbnail = null,
-        protected string|null $file_name = null,
-        protected string|null $mime_type = null,
-        protected int|null $file_size = null,
+        protected ?PhotoSize $thumbnail = null,
+        protected ?string $file_name = null,
+        protected ?string $mime_type = null,
+        protected ?int $file_size = null,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $cover = null,
-        protected int|null $start_timestamp = null,
-    ) {
-    }
+        protected ?array $cover = null,
+        protected ?int $start_timestamp = null,
+    ) {}
 
     /**
      * @return string
@@ -144,7 +143,7 @@ final class Video implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -154,7 +153,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): Video
+    public function setThumbnail(?PhotoSize $thumbnail): Video
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -163,7 +162,7 @@ final class Video implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFileName(): string|null
+    public function getFileName(): ?string
     {
         return $this->file_name;
     }
@@ -173,7 +172,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setFileName(string|null $file_name): Video
+    public function setFileName(?string $file_name): Video
     {
         $this->file_name = $file_name;
         return $this;
@@ -182,7 +181,7 @@ final class Video implements EntityInterface
     /**
      * @return string|null
      */
-    public function getMimeType(): string|null
+    public function getMimeType(): ?string
     {
         return $this->mime_type;
     }
@@ -192,7 +191,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setMimeType(string|null $mime_type): Video
+    public function setMimeType(?string $mime_type): Video
     {
         $this->mime_type = $mime_type;
         return $this;
@@ -201,7 +200,7 @@ final class Video implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -211,7 +210,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setFileSize(int|null $file_size): Video
+    public function setFileSize(?int $file_size): Video
     {
         $this->file_size = $file_size;
         return $this;
@@ -220,7 +219,7 @@ final class Video implements EntityInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getCover(): array|null
+    public function getCover(): ?array
     {
         return $this->cover;
     }
@@ -230,7 +229,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setCover(array|null $cover): Video
+    public function setCover(?array $cover): Video
     {
         $this->cover = $cover;
         return $this;
@@ -239,7 +238,7 @@ final class Video implements EntityInterface
     /**
      * @return int|null
      */
-    public function getStartTimestamp(): int|null
+    public function getStartTimestamp(): ?int
     {
         return $this->start_timestamp;
     }
@@ -249,7 +248,7 @@ final class Video implements EntityInterface
      *
      * @return Video
      */
-    public function setStartTimestamp(int|null $start_timestamp): Video
+    public function setStartTimestamp(?int $start_timestamp): Video
     {
         $this->start_timestamp = $start_timestamp;
         return $this;

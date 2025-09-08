@@ -19,8 +19,7 @@ class ReadBusinessMessageRequest implements RequestInterface
         private string $business_connection_id,
         private ChatId $chat_id,
         private int $message_id,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

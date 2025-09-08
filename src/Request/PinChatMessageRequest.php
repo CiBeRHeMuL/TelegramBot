@@ -20,10 +20,9 @@ class PinChatMessageRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_id,
-        private bool|null $disable_notification = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?bool $disable_notification = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -47,23 +46,23 @@ class PinChatMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): PinChatMessageRequest
+    public function setDisableNotification(?bool $disable_notification): PinChatMessageRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): PinChatMessageRequest
+    public function setBusinessConnectionId(?string $business_connection_id): PinChatMessageRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

@@ -41,18 +41,17 @@ final class User implements EntityInterface
         protected int $id,
         protected bool $is_bot,
         protected string $first_name,
-        protected string|null $last_name = null,
-        protected string|null $username = null,
-        protected Language|null $language_code = null,
-        protected bool|null $is_premium = null,
-        protected bool|null $added_to_attachment_menu = null,
-        protected bool|null $can_join_groups = null,
-        protected bool|null $can_read_all_group_messages = null,
-        protected bool|null $supports_inline_queries = null,
-        protected bool|null $can_connect_to_business = null,
-        protected bool|null $has_main_web_app = null,
-    ) {
-    }
+        protected ?string $last_name = null,
+        protected ?string $username = null,
+        protected ?Language $language_code = null,
+        protected ?bool $is_premium = null,
+        protected ?bool $added_to_attachment_menu = null,
+        protected ?bool $can_join_groups = null,
+        protected ?bool $can_read_all_group_messages = null,
+        protected ?bool $supports_inline_queries = null,
+        protected ?bool $can_connect_to_business = null,
+        protected ?bool $has_main_web_app = null,
+    ) {}
 
     /**
      * @return int
@@ -114,7 +113,7 @@ final class User implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -124,7 +123,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setLastName(string|null $last_name): User
+    public function setLastName(?string $last_name): User
     {
         $this->last_name = $last_name;
         return $this;
@@ -133,7 +132,7 @@ final class User implements EntityInterface
     /**
      * @return string|null
      */
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -143,7 +142,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setUsername(string|null $username): User
+    public function setUsername(?string $username): User
     {
         $this->username = $username;
         return $this;
@@ -152,7 +151,7 @@ final class User implements EntityInterface
     /**
      * @return Language|null
      */
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
@@ -162,7 +161,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setLanguageCode(Language|null $language_code): User
+    public function setLanguageCode(?Language $language_code): User
     {
         $this->language_code = $language_code;
         return $this;
@@ -171,7 +170,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsPremium(): bool|null
+    public function getIsPremium(): ?bool
     {
         return $this->is_premium;
     }
@@ -181,7 +180,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setIsPremium(bool|null $is_premium): User
+    public function setIsPremium(?bool $is_premium): User
     {
         $this->is_premium = $is_premium;
         return $this;
@@ -190,7 +189,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getAddedToAttachmentMenu(): bool|null
+    public function getAddedToAttachmentMenu(): ?bool
     {
         return $this->added_to_attachment_menu;
     }
@@ -200,7 +199,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setAddedToAttachmentMenu(bool|null $added_to_attachment_menu): User
+    public function setAddedToAttachmentMenu(?bool $added_to_attachment_menu): User
     {
         $this->added_to_attachment_menu = $added_to_attachment_menu;
         return $this;
@@ -209,7 +208,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanJoinGroups(): bool|null
+    public function getCanJoinGroups(): ?bool
     {
         return $this->can_join_groups;
     }
@@ -219,7 +218,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setCanJoinGroups(bool|null $can_join_groups): User
+    public function setCanJoinGroups(?bool $can_join_groups): User
     {
         $this->can_join_groups = $can_join_groups;
         return $this;
@@ -228,7 +227,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanReadAllGroupMessages(): bool|null
+    public function getCanReadAllGroupMessages(): ?bool
     {
         return $this->can_read_all_group_messages;
     }
@@ -238,7 +237,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setCanReadAllGroupMessages(bool|null $can_read_all_group_messages): User
+    public function setCanReadAllGroupMessages(?bool $can_read_all_group_messages): User
     {
         $this->can_read_all_group_messages = $can_read_all_group_messages;
         return $this;
@@ -247,7 +246,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getSupportsInlineQueries(): bool|null
+    public function getSupportsInlineQueries(): ?bool
     {
         return $this->supports_inline_queries;
     }
@@ -257,7 +256,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setSupportsInlineQueries(bool|null $supports_inline_queries): User
+    public function setSupportsInlineQueries(?bool $supports_inline_queries): User
     {
         $this->supports_inline_queries = $supports_inline_queries;
         return $this;
@@ -266,7 +265,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanConnectToBusiness(): bool|null
+    public function getCanConnectToBusiness(): ?bool
     {
         return $this->can_connect_to_business;
     }
@@ -276,7 +275,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setCanConnectToBusiness(bool|null $can_connect_to_business): User
+    public function setCanConnectToBusiness(?bool $can_connect_to_business): User
     {
         $this->can_connect_to_business = $can_connect_to_business;
         return $this;
@@ -285,7 +284,7 @@ final class User implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getHasMainWebApp(): bool|null
+    public function getHasMainWebApp(): ?bool
     {
         return $this->has_main_web_app;
     }
@@ -295,7 +294,7 @@ final class User implements EntityInterface
      *
      * @return User
      */
-    public function setHasMainWebApp(bool|null $has_main_web_app): User
+    public function setHasMainWebApp(?bool $has_main_web_app): User
     {
         $this->has_main_web_app = $has_main_web_app;
         return $this;

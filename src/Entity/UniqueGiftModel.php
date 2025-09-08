@@ -20,8 +20,7 @@ final class UniqueGiftModel implements EntityInterface
         protected string $name,
         protected Sticker $sticker,
         protected int $rarity_per_mille,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

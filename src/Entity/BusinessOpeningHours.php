@@ -21,8 +21,7 @@ final class BusinessOpeningHours implements EntityInterface
         protected string $time_zone_name,
         #[ArrayType(BusinessOpeningHoursInterval::class)]
         protected array $opening_hours,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

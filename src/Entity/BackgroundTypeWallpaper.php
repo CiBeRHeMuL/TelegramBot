@@ -26,8 +26,8 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function __construct(
         protected Document $document,
         protected int $dark_theme_dimming,
-        protected bool|null $is_blurred = null,
-        protected bool|null $is_moving = null,
+        protected ?bool $is_blurred = null,
+        protected ?bool $is_moving = null,
     ) {
         parent::__construct(BackgroundTypeTypeEnum::Wallpaper);
     }
@@ -73,7 +73,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     /**
      * @return bool|null
      */
-    public function getIsBlurred(): bool|null
+    public function getIsBlurred(): ?bool
     {
         return $this->is_blurred;
     }
@@ -83,7 +83,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
      *
      * @return BackgroundTypeWallpaper
      */
-    public function setIsBlurred(bool|null $is_blurred): BackgroundTypeWallpaper
+    public function setIsBlurred(?bool $is_blurred): BackgroundTypeWallpaper
     {
         $this->is_blurred = $is_blurred;
         return $this;
@@ -92,7 +92,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     /**
      * @return bool|null
      */
-    public function getIsMoving(): bool|null
+    public function getIsMoving(): ?bool
     {
         return $this->is_moving;
     }
@@ -102,7 +102,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
      *
      * @return BackgroundTypeWallpaper
      */
-    public function setIsMoving(bool|null $is_moving): BackgroundTypeWallpaper
+    public function setIsMoving(?bool $is_moving): BackgroundTypeWallpaper
     {
         $this->is_moving = $is_moving;
         return $this;

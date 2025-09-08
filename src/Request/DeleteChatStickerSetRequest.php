@@ -14,8 +14,7 @@ class DeleteChatStickerSetRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

@@ -16,9 +16,8 @@ final class DirectMessagePriceChanged implements EntityInterface
      */
     public function __construct(
         protected bool $are_direct_messages_enabled,
-        protected int|null $direct_message_star_count = null,
-    ) {
-    }
+        protected ?int $direct_message_star_count = null,
+    ) {}
 
     /**
      * @return bool
@@ -42,7 +41,7 @@ final class DirectMessagePriceChanged implements EntityInterface
     /**
      * @return int|null
      */
-    public function getDirectMessageStarCount(): int|null
+    public function getDirectMessageStarCount(): ?int
     {
         return $this->direct_message_star_count;
     }
@@ -52,7 +51,7 @@ final class DirectMessagePriceChanged implements EntityInterface
      *
      * @return DirectMessagePriceChanged
      */
-    public function setDirectMessageStarCount(int|null $direct_message_star_count): DirectMessagePriceChanged
+    public function setDirectMessageStarCount(?int $direct_message_star_count): DirectMessagePriceChanged
     {
         $this->direct_message_star_count = $direct_message_star_count;
         return $this;

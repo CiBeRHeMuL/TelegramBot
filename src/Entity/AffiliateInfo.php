@@ -26,11 +26,10 @@ final class AffiliateInfo implements EntityInterface
     public function __construct(
         protected int $commission_per_mille,
         protected int $amount,
-        protected Chat|null $affiliate_chat = null,
-        protected User|null $affiliate_user = null,
-        protected int|null $nanostar_amount = null,
-    ) {
-    }
+        protected ?Chat $affiliate_chat = null,
+        protected ?User $affiliate_user = null,
+        protected ?int $nanostar_amount = null,
+    ) {}
 
     /**
      * @return int
@@ -73,7 +72,7 @@ final class AffiliateInfo implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getAffiliateChat(): Chat|null
+    public function getAffiliateChat(): ?Chat
     {
         return $this->affiliate_chat;
     }
@@ -83,7 +82,7 @@ final class AffiliateInfo implements EntityInterface
      *
      * @return AffiliateInfo
      */
-    public function setAffiliateChat(Chat|null $affiliate_chat): AffiliateInfo
+    public function setAffiliateChat(?Chat $affiliate_chat): AffiliateInfo
     {
         $this->affiliate_chat = $affiliate_chat;
         return $this;
@@ -92,7 +91,7 @@ final class AffiliateInfo implements EntityInterface
     /**
      * @return User|null
      */
-    public function getAffiliateUser(): User|null
+    public function getAffiliateUser(): ?User
     {
         return $this->affiliate_user;
     }
@@ -102,7 +101,7 @@ final class AffiliateInfo implements EntityInterface
      *
      * @return AffiliateInfo
      */
-    public function setAffiliateUser(User|null $affiliate_user): AffiliateInfo
+    public function setAffiliateUser(?User $affiliate_user): AffiliateInfo
     {
         $this->affiliate_user = $affiliate_user;
         return $this;
@@ -111,7 +110,7 @@ final class AffiliateInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getNanostarAmount(): int|null
+    public function getNanostarAmount(): ?int
     {
         return $this->nanostar_amount;
     }
@@ -121,7 +120,7 @@ final class AffiliateInfo implements EntityInterface
      *
      * @return AffiliateInfo
      */
-    public function setNanostarAmount(int|null $nanostar_amount): AffiliateInfo
+    public function setNanostarAmount(?int $nanostar_amount): AffiliateInfo
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;

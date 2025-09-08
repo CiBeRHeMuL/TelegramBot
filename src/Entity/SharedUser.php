@@ -26,13 +26,12 @@ final class SharedUser implements EntityInterface
      */
     public function __construct(
         protected int $user_id,
-        protected string|null $first_name = null,
-        protected string|null $last_name = null,
+        protected ?string $first_name = null,
+        protected ?string $last_name = null,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $photo = null,
-        protected string|null $username = null,
-    ) {
-    }
+        protected ?array $photo = null,
+        protected ?string $username = null,
+    ) {}
 
     /**
      * @return int
@@ -56,7 +55,7 @@ final class SharedUser implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFirstName(): string|null
+    public function getFirstName(): ?string
     {
         return $this->first_name;
     }
@@ -66,7 +65,7 @@ final class SharedUser implements EntityInterface
      *
      * @return SharedUser
      */
-    public function setFirstName(string|null $first_name): SharedUser
+    public function setFirstName(?string $first_name): SharedUser
     {
         $this->first_name = $first_name;
         return $this;
@@ -75,7 +74,7 @@ final class SharedUser implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -85,7 +84,7 @@ final class SharedUser implements EntityInterface
      *
      * @return SharedUser
      */
-    public function setLastName(string|null $last_name): SharedUser
+    public function setLastName(?string $last_name): SharedUser
     {
         $this->last_name = $last_name;
         return $this;
@@ -94,7 +93,7 @@ final class SharedUser implements EntityInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getPhoto(): array|null
+    public function getPhoto(): ?array
     {
         return $this->photo;
     }
@@ -104,7 +103,7 @@ final class SharedUser implements EntityInterface
      *
      * @return SharedUser
      */
-    public function setPhoto(array|null $photo): SharedUser
+    public function setPhoto(?array $photo): SharedUser
     {
         $this->photo = $photo;
         return $this;
@@ -113,7 +112,7 @@ final class SharedUser implements EntityInterface
     /**
      * @return string|null
      */
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -123,7 +122,7 @@ final class SharedUser implements EntityInterface
      *
      * @return SharedUser
      */
-    public function setUsername(string|null $username): SharedUser
+    public function setUsername(?string $username): SharedUser
     {
         $this->username = $username;
         return $this;

@@ -33,27 +33,26 @@ final class BusinessBotRights implements EntityInterface
      * by the business account
      */
     public function __construct(
-        protected bool|null $can_change_gift_settings = null,
-        protected bool|null $can_convert_gifts_to_stars = null,
-        protected bool|null $can_delete_all_messages = null,
-        protected bool|null $can_delete_sent_messages = null,
-        protected bool|null $can_edit_bio = null,
-        protected bool|null $can_edit_name = null,
-        protected bool|null $can_edit_profile_photo = null,
-        protected bool|null $can_edit_username = null,
-        protected bool|null $can_manage_stories = null,
-        protected bool|null $can_read_messages = null,
-        protected bool|null $can_reply = null,
-        protected bool|null $can_transfer_and_upgrade_gifts = null,
-        protected bool|null $can_transfer_stars = null,
-        protected bool|null $can_view_gifts_and_stars = null,
-    ) {
-    }
+        protected ?bool $can_change_gift_settings = null,
+        protected ?bool $can_convert_gifts_to_stars = null,
+        protected ?bool $can_delete_all_messages = null,
+        protected ?bool $can_delete_sent_messages = null,
+        protected ?bool $can_edit_bio = null,
+        protected ?bool $can_edit_name = null,
+        protected ?bool $can_edit_profile_photo = null,
+        protected ?bool $can_edit_username = null,
+        protected ?bool $can_manage_stories = null,
+        protected ?bool $can_read_messages = null,
+        protected ?bool $can_reply = null,
+        protected ?bool $can_transfer_and_upgrade_gifts = null,
+        protected ?bool $can_transfer_stars = null,
+        protected ?bool $can_view_gifts_and_stars = null,
+    ) {}
 
     /**
      * @return bool|null
      */
-    public function getCanChangeGiftSettings(): bool|null
+    public function getCanChangeGiftSettings(): ?bool
     {
         return $this->can_change_gift_settings;
     }
@@ -63,7 +62,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanChangeGiftSettings(bool|null $can_change_gift_settings): BusinessBotRights
+    public function setCanChangeGiftSettings(?bool $can_change_gift_settings): BusinessBotRights
     {
         $this->can_change_gift_settings = $can_change_gift_settings;
         return $this;
@@ -72,7 +71,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanConvertGiftsToStars(): bool|null
+    public function getCanConvertGiftsToStars(): ?bool
     {
         return $this->can_convert_gifts_to_stars;
     }
@@ -82,7 +81,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanConvertGiftsToStars(bool|null $can_convert_gifts_to_stars): BusinessBotRights
+    public function setCanConvertGiftsToStars(?bool $can_convert_gifts_to_stars): BusinessBotRights
     {
         $this->can_convert_gifts_to_stars = $can_convert_gifts_to_stars;
         return $this;
@@ -91,7 +90,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanDeleteAllMessages(): bool|null
+    public function getCanDeleteAllMessages(): ?bool
     {
         return $this->can_delete_all_messages;
     }
@@ -101,7 +100,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanDeleteAllMessages(bool|null $can_delete_all_messages): BusinessBotRights
+    public function setCanDeleteAllMessages(?bool $can_delete_all_messages): BusinessBotRights
     {
         $this->can_delete_all_messages = $can_delete_all_messages;
         return $this;
@@ -110,7 +109,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanDeleteSentMessages(): bool|null
+    public function getCanDeleteSentMessages(): ?bool
     {
         return $this->can_delete_sent_messages;
     }
@@ -120,7 +119,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanDeleteSentMessages(bool|null $can_delete_sent_messages): BusinessBotRights
+    public function setCanDeleteSentMessages(?bool $can_delete_sent_messages): BusinessBotRights
     {
         $this->can_delete_sent_messages = $can_delete_sent_messages;
         return $this;
@@ -129,7 +128,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanEditBio(): bool|null
+    public function getCanEditBio(): ?bool
     {
         return $this->can_edit_bio;
     }
@@ -139,7 +138,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanEditBio(bool|null $can_edit_bio): BusinessBotRights
+    public function setCanEditBio(?bool $can_edit_bio): BusinessBotRights
     {
         $this->can_edit_bio = $can_edit_bio;
         return $this;
@@ -148,7 +147,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanEditName(): bool|null
+    public function getCanEditName(): ?bool
     {
         return $this->can_edit_name;
     }
@@ -158,7 +157,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanEditName(bool|null $can_edit_name): BusinessBotRights
+    public function setCanEditName(?bool $can_edit_name): BusinessBotRights
     {
         $this->can_edit_name = $can_edit_name;
         return $this;
@@ -167,7 +166,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanEditProfilePhoto(): bool|null
+    public function getCanEditProfilePhoto(): ?bool
     {
         return $this->can_edit_profile_photo;
     }
@@ -177,7 +176,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanEditProfilePhoto(bool|null $can_edit_profile_photo): BusinessBotRights
+    public function setCanEditProfilePhoto(?bool $can_edit_profile_photo): BusinessBotRights
     {
         $this->can_edit_profile_photo = $can_edit_profile_photo;
         return $this;
@@ -186,7 +185,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanEditUsername(): bool|null
+    public function getCanEditUsername(): ?bool
     {
         return $this->can_edit_username;
     }
@@ -196,7 +195,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanEditUsername(bool|null $can_edit_username): BusinessBotRights
+    public function setCanEditUsername(?bool $can_edit_username): BusinessBotRights
     {
         $this->can_edit_username = $can_edit_username;
         return $this;
@@ -205,7 +204,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanManageStories(): bool|null
+    public function getCanManageStories(): ?bool
     {
         return $this->can_manage_stories;
     }
@@ -215,7 +214,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanManageStories(bool|null $can_manage_stories): BusinessBotRights
+    public function setCanManageStories(?bool $can_manage_stories): BusinessBotRights
     {
         $this->can_manage_stories = $can_manage_stories;
         return $this;
@@ -224,7 +223,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanReadMessages(): bool|null
+    public function getCanReadMessages(): ?bool
     {
         return $this->can_read_messages;
     }
@@ -234,7 +233,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanReadMessages(bool|null $can_read_messages): BusinessBotRights
+    public function setCanReadMessages(?bool $can_read_messages): BusinessBotRights
     {
         $this->can_read_messages = $can_read_messages;
         return $this;
@@ -243,7 +242,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanReply(): bool|null
+    public function getCanReply(): ?bool
     {
         return $this->can_reply;
     }
@@ -253,7 +252,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanReply(bool|null $can_reply): BusinessBotRights
+    public function setCanReply(?bool $can_reply): BusinessBotRights
     {
         $this->can_reply = $can_reply;
         return $this;
@@ -262,7 +261,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanTransferAndUpgradeGifts(): bool|null
+    public function getCanTransferAndUpgradeGifts(): ?bool
     {
         return $this->can_transfer_and_upgrade_gifts;
     }
@@ -272,7 +271,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanTransferAndUpgradeGifts(bool|null $can_transfer_and_upgrade_gifts): BusinessBotRights
+    public function setCanTransferAndUpgradeGifts(?bool $can_transfer_and_upgrade_gifts): BusinessBotRights
     {
         $this->can_transfer_and_upgrade_gifts = $can_transfer_and_upgrade_gifts;
         return $this;
@@ -281,7 +280,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanTransferStars(): bool|null
+    public function getCanTransferStars(): ?bool
     {
         return $this->can_transfer_stars;
     }
@@ -291,7 +290,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanTransferStars(bool|null $can_transfer_stars): BusinessBotRights
+    public function setCanTransferStars(?bool $can_transfer_stars): BusinessBotRights
     {
         $this->can_transfer_stars = $can_transfer_stars;
         return $this;
@@ -300,7 +299,7 @@ final class BusinessBotRights implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanViewGiftsAndStars(): bool|null
+    public function getCanViewGiftsAndStars(): ?bool
     {
         return $this->can_view_gifts_and_stars;
     }
@@ -310,7 +309,7 @@ final class BusinessBotRights implements EntityInterface
      *
      * @return BusinessBotRights
      */
-    public function setCanViewGiftsAndStars(bool|null $can_view_gifts_and_stars): BusinessBotRights
+    public function setCanViewGiftsAndStars(?bool $can_view_gifts_and_stars): BusinessBotRights
     {
         $this->can_view_gifts_and_stars = $can_view_gifts_and_stars;
         return $this;

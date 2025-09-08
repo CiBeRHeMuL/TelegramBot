@@ -8,12 +8,12 @@ class CreateInvoiceLinkResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Url|null $url = null,
+        private readonly ?Url $url = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }

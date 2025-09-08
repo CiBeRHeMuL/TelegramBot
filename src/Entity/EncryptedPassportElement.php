@@ -57,18 +57,17 @@ final class EncryptedPassportElement implements EntityInterface
     public function __construct(
         protected EncryptedPassportElementTypeEnum $type,
         protected string $hash,
-        protected string|null $data = null,
-        protected Phone|null $phone_number = null,
-        protected Email|null $email = null,
+        protected ?string $data = null,
+        protected ?Phone $phone_number = null,
+        protected ?Email $email = null,
         #[ArrayType(PassportFile::class)]
-        protected array|null $files = null,
-        protected PassportFile|null $front_side = null,
-        protected PassportFile|null $reverse_side = null,
-        protected PassportFile|null $selfie = null,
+        protected ?array $files = null,
+        protected ?PassportFile $front_side = null,
+        protected ?PassportFile $reverse_side = null,
+        protected ?PassportFile $selfie = null,
         #[ArrayType(PassportFile::class)]
-        protected array|null $translation = null,
-    ) {
-    }
+        protected ?array $translation = null,
+    ) {}
 
     /**
      * @return EncryptedPassportElementTypeEnum
@@ -111,7 +110,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return string|null
      */
-    public function getData(): string|null
+    public function getData(): ?string
     {
         return $this->data;
     }
@@ -121,7 +120,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setData(string|null $data): EncryptedPassportElement
+    public function setData(?string $data): EncryptedPassportElement
     {
         $this->data = $data;
         return $this;
@@ -130,7 +129,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return Phone|null
      */
-    public function getPhoneNumber(): Phone|null
+    public function getPhoneNumber(): ?Phone
     {
         return $this->phone_number;
     }
@@ -140,7 +139,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setPhoneNumber(Phone|null $phone_number): EncryptedPassportElement
+    public function setPhoneNumber(?Phone $phone_number): EncryptedPassportElement
     {
         $this->phone_number = $phone_number;
         return $this;
@@ -149,7 +148,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return Email|null
      */
-    public function getEmail(): Email|null
+    public function getEmail(): ?Email
     {
         return $this->email;
     }
@@ -159,7 +158,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setEmail(Email|null $email): EncryptedPassportElement
+    public function setEmail(?Email $email): EncryptedPassportElement
     {
         $this->email = $email;
         return $this;
@@ -168,7 +167,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return PassportFile[]|null
      */
-    public function getFiles(): array|null
+    public function getFiles(): ?array
     {
         return $this->files;
     }
@@ -178,7 +177,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setFiles(array|null $files): EncryptedPassportElement
+    public function setFiles(?array $files): EncryptedPassportElement
     {
         $this->files = $files;
         return $this;
@@ -187,7 +186,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return PassportFile|null
      */
-    public function getFrontSide(): PassportFile|null
+    public function getFrontSide(): ?PassportFile
     {
         return $this->front_side;
     }
@@ -197,7 +196,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setFrontSide(PassportFile|null $front_side): EncryptedPassportElement
+    public function setFrontSide(?PassportFile $front_side): EncryptedPassportElement
     {
         $this->front_side = $front_side;
         return $this;
@@ -206,7 +205,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return PassportFile|null
      */
-    public function getReverseSide(): PassportFile|null
+    public function getReverseSide(): ?PassportFile
     {
         return $this->reverse_side;
     }
@@ -216,7 +215,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setReverseSide(PassportFile|null $reverse_side): EncryptedPassportElement
+    public function setReverseSide(?PassportFile $reverse_side): EncryptedPassportElement
     {
         $this->reverse_side = $reverse_side;
         return $this;
@@ -225,7 +224,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return PassportFile|null
      */
-    public function getSelfie(): PassportFile|null
+    public function getSelfie(): ?PassportFile
     {
         return $this->selfie;
     }
@@ -235,7 +234,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setSelfie(PassportFile|null $selfie): EncryptedPassportElement
+    public function setSelfie(?PassportFile $selfie): EncryptedPassportElement
     {
         $this->selfie = $selfie;
         return $this;
@@ -244,7 +243,7 @@ final class EncryptedPassportElement implements EntityInterface
     /**
      * @return PassportFile[]|null
      */
-    public function getTranslation(): array|null
+    public function getTranslation(): ?array
     {
         return $this->translation;
     }
@@ -254,7 +253,7 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @return EncryptedPassportElement
      */
-    public function setTranslation(array|null $translation): EncryptedPassportElement
+    public function setTranslation(?array $translation): EncryptedPassportElement
     {
         $this->translation = $translation;
         return $this;

@@ -2,6 +2,4 @@
 
 namespace AndrewGos\TelegramBot\Kernel\EventDispatcher\Event;
 
-final class BeforeHandleEvent extends AbstractEvent
-{
-}
+final class BeforeHandleEvent extends AbstractEvent {}

@@ -30,16 +30,15 @@ final class GiftInfo implements EntityInterface
      */
     public function __construct(
         protected Gift $gift,
-        protected bool|null $can_be_upgraded = null,
-        protected int|null $convert_star_count = null,
+        protected ?bool $can_be_upgraded = null,
+        protected ?int $convert_star_count = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $entities = null,
-        protected bool|null $is_private = null,
-        protected string|null $owned_gift_id = null,
-        protected int|null $prepaid_upgrade_star_count = null,
-        protected string|null $text = null,
-    ) {
-    }
+        protected ?array $entities = null,
+        protected ?bool $is_private = null,
+        protected ?string $owned_gift_id = null,
+        protected ?int $prepaid_upgrade_star_count = null,
+        protected ?string $text = null,
+    ) {}
 
     /**
      * @return Gift
@@ -63,7 +62,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanBeUpgraded(): bool|null
+    public function getCanBeUpgraded(): ?bool
     {
         return $this->can_be_upgraded;
     }
@@ -73,7 +72,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setCanBeUpgraded(bool|null $can_be_upgraded): GiftInfo
+    public function setCanBeUpgraded(?bool $can_be_upgraded): GiftInfo
     {
         $this->can_be_upgraded = $can_be_upgraded;
         return $this;
@@ -82,7 +81,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getConvertStarCount(): int|null
+    public function getConvertStarCount(): ?int
     {
         return $this->convert_star_count;
     }
@@ -92,7 +91,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setConvertStarCount(int|null $convert_star_count): GiftInfo
+    public function setConvertStarCount(?int $convert_star_count): GiftInfo
     {
         $this->convert_star_count = $convert_star_count;
         return $this;
@@ -101,7 +100,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
@@ -111,7 +110,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setEntities(array|null $entities): GiftInfo
+    public function setEntities(?array $entities): GiftInfo
     {
         $this->entities = $entities;
         return $this;
@@ -120,7 +119,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsPrivate(): bool|null
+    public function getIsPrivate(): ?bool
     {
         return $this->is_private;
     }
@@ -130,7 +129,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setIsPrivate(bool|null $is_private): GiftInfo
+    public function setIsPrivate(?bool $is_private): GiftInfo
     {
         $this->is_private = $is_private;
         return $this;
@@ -139,7 +138,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getOwnedGiftId(): string|null
+    public function getOwnedGiftId(): ?string
     {
         return $this->owned_gift_id;
     }
@@ -149,7 +148,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setOwnedGiftId(string|null $owned_gift_id): GiftInfo
+    public function setOwnedGiftId(?string $owned_gift_id): GiftInfo
     {
         $this->owned_gift_id = $owned_gift_id;
         return $this;
@@ -158,7 +157,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getPrepaidUpgradeStarCount(): int|null
+    public function getPrepaidUpgradeStarCount(): ?int
     {
         return $this->prepaid_upgrade_star_count;
     }
@@ -168,7 +167,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setPrepaidUpgradeStarCount(int|null $prepaid_upgrade_star_count): GiftInfo
+    public function setPrepaidUpgradeStarCount(?int $prepaid_upgrade_star_count): GiftInfo
     {
         $this->prepaid_upgrade_star_count = $prepaid_upgrade_star_count;
         return $this;
@@ -177,7 +176,7 @@ final class GiftInfo implements EntityInterface
     /**
      * @return string|null
      */
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -187,7 +186,7 @@ final class GiftInfo implements EntityInterface
      *
      * @return GiftInfo
      */
-    public function setText(string|null $text): GiftInfo
+    public function setText(?string $text): GiftInfo
     {
         $this->text = $text;
         return $this;

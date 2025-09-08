@@ -43,11 +43,11 @@ final class InputMediaDocument extends AbstractInputMedia
     public function __construct(
         protected Filename|Url|string $media,
         protected Filename|Url|string|null $thumbnail = null,
-        protected string|null $caption = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected bool|null $disable_content_type_detection = null,
+        protected ?array $caption_entities = null,
+        protected ?bool $disable_content_type_detection = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Document);
     }
@@ -93,7 +93,7 @@ final class InputMediaDocument extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -103,7 +103,7 @@ final class InputMediaDocument extends AbstractInputMedia
      *
      * @return InputMediaDocument
      */
-    public function setCaption(string|null $caption): InputMediaDocument
+    public function setCaption(?string $caption): InputMediaDocument
     {
         $this->caption = $caption;
         return $this;
@@ -112,7 +112,7 @@ final class InputMediaDocument extends AbstractInputMedia
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -122,7 +122,7 @@ final class InputMediaDocument extends AbstractInputMedia
      *
      * @return InputMediaDocument
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputMediaDocument
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaDocument
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -131,7 +131,7 @@ final class InputMediaDocument extends AbstractInputMedia
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -141,7 +141,7 @@ final class InputMediaDocument extends AbstractInputMedia
      *
      * @return InputMediaDocument
      */
-    public function setCaptionEntities(array|null $caption_entities): InputMediaDocument
+    public function setCaptionEntities(?array $caption_entities): InputMediaDocument
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -150,7 +150,7 @@ final class InputMediaDocument extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getDisableContentTypeDetection(): bool|null
+    public function getDisableContentTypeDetection(): ?bool
     {
         return $this->disable_content_type_detection;
     }
@@ -160,7 +160,7 @@ final class InputMediaDocument extends AbstractInputMedia
      *
      * @return InputMediaDocument
      */
-    public function setDisableContentTypeDetection(bool|null $disable_content_type_detection): InputMediaDocument
+    public function setDisableContentTypeDetection(?bool $disable_content_type_detection): InputMediaDocument
     {
         $this->disable_content_type_detection = $disable_content_type_detection;
         return $this;

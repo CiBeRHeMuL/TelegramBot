@@ -27,7 +27,7 @@ class HttpClient implements ClientInterface
             throw new RuntimeException('Failed to initialize cURL');
         }
 
-        curl_setopt($ch, CURLOPT_URL, (string)$request->getUri());
+        curl_setopt($ch, CURLOPT_URL, (string) $request->getUri());
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request->getMethod());
         curl_setopt($ch, CURLOPT_HTTP_VERSION, $request->getProtocolVersion());

@@ -23,8 +23,7 @@ final class PassportData implements EntityInterface
         #[ArrayType(EncryptedPassportElement::class)]
         protected array $data,
         protected EncryptedCredentials $credentials,
-    ) {
-    }
+    ) {}
 
     /**
      * @return EncryptedPassportElement[]

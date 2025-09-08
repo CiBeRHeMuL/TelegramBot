@@ -10,8 +10,7 @@ final readonly class RequestNormalizer
 {
     public function __construct(
         private SerializerInterface $serializer,
-    ) {
-    }
+    ) {}
 
     public function __invoke(RequestInterface $req): array|stdClass
     {

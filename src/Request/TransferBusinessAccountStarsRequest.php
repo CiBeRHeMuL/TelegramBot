@@ -14,8 +14,7 @@ class TransferBusinessAccountStarsRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private int $star_count,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

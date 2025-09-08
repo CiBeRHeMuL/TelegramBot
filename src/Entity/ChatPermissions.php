@@ -30,27 +30,26 @@ final class ChatPermissions implements EntityInterface
      * the value of can_pin_messages
      */
     public function __construct(
-        protected bool|null $can_send_messages = null,
-        protected bool|null $can_send_audios = null,
-        protected bool|null $can_send_documents = null,
-        protected bool|null $can_send_photos = null,
-        protected bool|null $can_send_videos = null,
-        protected bool|null $can_send_video_notes = null,
-        protected bool|null $can_send_voice_notes = null,
-        protected bool|null $can_send_polls = null,
-        protected bool|null $can_send_other_messages = null,
-        protected bool|null $can_add_web_page_previews = null,
-        protected bool|null $can_change_info = null,
-        protected bool|null $can_invite_users = null,
-        protected bool|null $can_pin_messages = null,
-        protected bool|null $can_manage_topics = null,
-    ) {
-    }
+        protected ?bool $can_send_messages = null,
+        protected ?bool $can_send_audios = null,
+        protected ?bool $can_send_documents = null,
+        protected ?bool $can_send_photos = null,
+        protected ?bool $can_send_videos = null,
+        protected ?bool $can_send_video_notes = null,
+        protected ?bool $can_send_voice_notes = null,
+        protected ?bool $can_send_polls = null,
+        protected ?bool $can_send_other_messages = null,
+        protected ?bool $can_add_web_page_previews = null,
+        protected ?bool $can_change_info = null,
+        protected ?bool $can_invite_users = null,
+        protected ?bool $can_pin_messages = null,
+        protected ?bool $can_manage_topics = null,
+    ) {}
 
     /**
      * @return bool|null
      */
-    public function getCanSendMessages(): bool|null
+    public function getCanSendMessages(): ?bool
     {
         return $this->can_send_messages;
     }
@@ -60,7 +59,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendMessages(bool|null $can_send_messages): ChatPermissions
+    public function setCanSendMessages(?bool $can_send_messages): ChatPermissions
     {
         $this->can_send_messages = $can_send_messages;
         return $this;
@@ -69,7 +68,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendAudios(): bool|null
+    public function getCanSendAudios(): ?bool
     {
         return $this->can_send_audios;
     }
@@ -79,7 +78,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendAudios(bool|null $can_send_audios): ChatPermissions
+    public function setCanSendAudios(?bool $can_send_audios): ChatPermissions
     {
         $this->can_send_audios = $can_send_audios;
         return $this;
@@ -88,7 +87,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendDocuments(): bool|null
+    public function getCanSendDocuments(): ?bool
     {
         return $this->can_send_documents;
     }
@@ -98,7 +97,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendDocuments(bool|null $can_send_documents): ChatPermissions
+    public function setCanSendDocuments(?bool $can_send_documents): ChatPermissions
     {
         $this->can_send_documents = $can_send_documents;
         return $this;
@@ -107,7 +106,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendPhotos(): bool|null
+    public function getCanSendPhotos(): ?bool
     {
         return $this->can_send_photos;
     }
@@ -117,7 +116,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendPhotos(bool|null $can_send_photos): ChatPermissions
+    public function setCanSendPhotos(?bool $can_send_photos): ChatPermissions
     {
         $this->can_send_photos = $can_send_photos;
         return $this;
@@ -126,7 +125,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendVideos(): bool|null
+    public function getCanSendVideos(): ?bool
     {
         return $this->can_send_videos;
     }
@@ -136,7 +135,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendVideos(bool|null $can_send_videos): ChatPermissions
+    public function setCanSendVideos(?bool $can_send_videos): ChatPermissions
     {
         $this->can_send_videos = $can_send_videos;
         return $this;
@@ -145,7 +144,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendVideoNotes(): bool|null
+    public function getCanSendVideoNotes(): ?bool
     {
         return $this->can_send_video_notes;
     }
@@ -155,7 +154,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendVideoNotes(bool|null $can_send_video_notes): ChatPermissions
+    public function setCanSendVideoNotes(?bool $can_send_video_notes): ChatPermissions
     {
         $this->can_send_video_notes = $can_send_video_notes;
         return $this;
@@ -164,7 +163,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendVoiceNotes(): bool|null
+    public function getCanSendVoiceNotes(): ?bool
     {
         return $this->can_send_voice_notes;
     }
@@ -174,7 +173,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendVoiceNotes(bool|null $can_send_voice_notes): ChatPermissions
+    public function setCanSendVoiceNotes(?bool $can_send_voice_notes): ChatPermissions
     {
         $this->can_send_voice_notes = $can_send_voice_notes;
         return $this;
@@ -183,7 +182,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendPolls(): bool|null
+    public function getCanSendPolls(): ?bool
     {
         return $this->can_send_polls;
     }
@@ -193,7 +192,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendPolls(bool|null $can_send_polls): ChatPermissions
+    public function setCanSendPolls(?bool $can_send_polls): ChatPermissions
     {
         $this->can_send_polls = $can_send_polls;
         return $this;
@@ -202,7 +201,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanSendOtherMessages(): bool|null
+    public function getCanSendOtherMessages(): ?bool
     {
         return $this->can_send_other_messages;
     }
@@ -212,7 +211,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanSendOtherMessages(bool|null $can_send_other_messages): ChatPermissions
+    public function setCanSendOtherMessages(?bool $can_send_other_messages): ChatPermissions
     {
         $this->can_send_other_messages = $can_send_other_messages;
         return $this;
@@ -221,7 +220,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanAddWebPagePreviews(): bool|null
+    public function getCanAddWebPagePreviews(): ?bool
     {
         return $this->can_add_web_page_previews;
     }
@@ -231,7 +230,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanAddWebPagePreviews(bool|null $can_add_web_page_previews): ChatPermissions
+    public function setCanAddWebPagePreviews(?bool $can_add_web_page_previews): ChatPermissions
     {
         $this->can_add_web_page_previews = $can_add_web_page_previews;
         return $this;
@@ -240,7 +239,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanChangeInfo(): bool|null
+    public function getCanChangeInfo(): ?bool
     {
         return $this->can_change_info;
     }
@@ -250,7 +249,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanChangeInfo(bool|null $can_change_info): ChatPermissions
+    public function setCanChangeInfo(?bool $can_change_info): ChatPermissions
     {
         $this->can_change_info = $can_change_info;
         return $this;
@@ -259,7 +258,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanInviteUsers(): bool|null
+    public function getCanInviteUsers(): ?bool
     {
         return $this->can_invite_users;
     }
@@ -269,7 +268,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanInviteUsers(bool|null $can_invite_users): ChatPermissions
+    public function setCanInviteUsers(?bool $can_invite_users): ChatPermissions
     {
         $this->can_invite_users = $can_invite_users;
         return $this;
@@ -278,7 +277,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanPinMessages(): bool|null
+    public function getCanPinMessages(): ?bool
     {
         return $this->can_pin_messages;
     }
@@ -288,7 +287,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanPinMessages(bool|null $can_pin_messages): ChatPermissions
+    public function setCanPinMessages(?bool $can_pin_messages): ChatPermissions
     {
         $this->can_pin_messages = $can_pin_messages;
         return $this;
@@ -297,7 +296,7 @@ final class ChatPermissions implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getCanManageTopics(): bool|null
+    public function getCanManageTopics(): ?bool
     {
         return $this->can_manage_topics;
     }
@@ -307,7 +306,7 @@ final class ChatPermissions implements EntityInterface
      *
      * @return ChatPermissions
      */
-    public function setCanManageTopics(bool|null $can_manage_topics): ChatPermissions
+    public function setCanManageTopics(?bool $can_manage_topics): ChatPermissions
     {
         $this->can_manage_topics = $can_manage_topics;
         return $this;

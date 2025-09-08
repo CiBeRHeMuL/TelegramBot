@@ -17,8 +17,7 @@ class DeleteBusinessMessagesRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private array $message_ids,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

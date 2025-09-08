@@ -7,4 +7,3 @@ enum InputProfilePhotoTypeEnum: string
     case Static = 'static';
     case Animated = 'animated';
 }
-

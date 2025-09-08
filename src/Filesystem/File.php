@@ -9,8 +9,7 @@ final class File
 {
     public function __construct(
         private Path $path,
-    ) {
-    }
+    ) {}
 
     public function getPath(): Path
     {

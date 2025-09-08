@@ -36,14 +36,13 @@ final class KeyboardButton implements EntityInterface
      */
     public function __construct(
         protected string $text,
-        protected KeyboardButtonRequestUsers|null $request_users = null,
-        protected KeyboardButtonRequestChat|null $request_chat = null,
-        protected bool|null $request_contact = null,
-        protected bool|null $request_location = null,
-        protected KeyboardButtonPollType|null $request_poll = null,
-        protected WebAppInfo|null $web_app = null,
-    ) {
-    }
+        protected ?KeyboardButtonRequestUsers $request_users = null,
+        protected ?KeyboardButtonRequestChat $request_chat = null,
+        protected ?bool $request_contact = null,
+        protected ?bool $request_location = null,
+        protected ?KeyboardButtonPollType $request_poll = null,
+        protected ?WebAppInfo $web_app = null,
+    ) {}
 
     /**
      * @return string
@@ -67,7 +66,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return KeyboardButtonRequestUsers|null
      */
-    public function getRequestUsers(): KeyboardButtonRequestUsers|null
+    public function getRequestUsers(): ?KeyboardButtonRequestUsers
     {
         return $this->request_users;
     }
@@ -77,7 +76,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setRequestUsers(KeyboardButtonRequestUsers|null $request_users): KeyboardButton
+    public function setRequestUsers(?KeyboardButtonRequestUsers $request_users): KeyboardButton
     {
         $this->request_users = $request_users;
         return $this;
@@ -86,7 +85,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return KeyboardButtonRequestChat|null
      */
-    public function getRequestChat(): KeyboardButtonRequestChat|null
+    public function getRequestChat(): ?KeyboardButtonRequestChat
     {
         return $this->request_chat;
     }
@@ -96,7 +95,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setRequestChat(KeyboardButtonRequestChat|null $request_chat): KeyboardButton
+    public function setRequestChat(?KeyboardButtonRequestChat $request_chat): KeyboardButton
     {
         $this->request_chat = $request_chat;
         return $this;
@@ -105,7 +104,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestContact(): bool|null
+    public function getRequestContact(): ?bool
     {
         return $this->request_contact;
     }
@@ -115,7 +114,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setRequestContact(bool|null $request_contact): KeyboardButton
+    public function setRequestContact(?bool $request_contact): KeyboardButton
     {
         $this->request_contact = $request_contact;
         return $this;
@@ -124,7 +123,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getRequestLocation(): bool|null
+    public function getRequestLocation(): ?bool
     {
         return $this->request_location;
     }
@@ -134,7 +133,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setRequestLocation(bool|null $request_location): KeyboardButton
+    public function setRequestLocation(?bool $request_location): KeyboardButton
     {
         $this->request_location = $request_location;
         return $this;
@@ -143,7 +142,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return KeyboardButtonPollType|null
      */
-    public function getRequestPoll(): KeyboardButtonPollType|null
+    public function getRequestPoll(): ?KeyboardButtonPollType
     {
         return $this->request_poll;
     }
@@ -153,7 +152,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setRequestPoll(KeyboardButtonPollType|null $request_poll): KeyboardButton
+    public function setRequestPoll(?KeyboardButtonPollType $request_poll): KeyboardButton
     {
         $this->request_poll = $request_poll;
         return $this;
@@ -162,7 +161,7 @@ final class KeyboardButton implements EntityInterface
     /**
      * @return WebAppInfo|null
      */
-    public function getWebApp(): WebAppInfo|null
+    public function getWebApp(): ?WebAppInfo
     {
         return $this->web_app;
     }
@@ -172,7 +171,7 @@ final class KeyboardButton implements EntityInterface
      *
      * @return KeyboardButton
      */
-    public function setWebApp(WebAppInfo|null $web_app): KeyboardButton
+    public function setWebApp(?WebAppInfo $web_app): KeyboardButton
     {
         $this->web_app = $web_app;
         return $this;

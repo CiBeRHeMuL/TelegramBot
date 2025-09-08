@@ -24,7 +24,7 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     public function __construct(
         protected float $latitude,
         protected float $longitude,
-        protected LocationAddress|null $address = null,
+        protected ?LocationAddress $address = null,
     ) {
         parent::__construct(StoryAreaTypeTypeEnum::Location);
     }
@@ -70,7 +70,7 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     /**
      * @return LocationAddress|null
      */
-    public function getAddress(): LocationAddress|null
+    public function getAddress(): ?LocationAddress
     {
         return $this->address;
     }
@@ -80,7 +80,7 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
      *
      * @return StoryAreaTypeLocation
      */
-    public function setAddress(LocationAddress|null $address): StoryAreaTypeLocation
+    public function setAddress(?LocationAddress $address): StoryAreaTypeLocation
     {
         $this->address = $address;
         return $this;

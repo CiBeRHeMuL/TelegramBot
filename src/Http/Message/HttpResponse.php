@@ -19,7 +19,7 @@ class HttpResponse implements ResponseInterface
     public function __construct(
         int $statusCode,
         HttpHeadersContainer $headers,
-        StreamInterface|null $body = null,
+        ?StreamInterface $body = null,
         string $reasonPhrase = '',
     ) {
         $this->statusCode = $statusCode;
@@ -93,7 +93,7 @@ class HttpResponse implements ResponseInterface
 
     public function withHeader(string $name, $value): ResponseInterface
     {
-        $this->headers->set($name, (array)$value);
+        $this->headers->set($name, (array) $value);
         return $this;
     }
 

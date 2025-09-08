@@ -8,12 +8,12 @@ class GetBusinessConnectionResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly BusinessConnection|null $connection = null,
+        private readonly ?BusinessConnection $connection = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getConnection(): BusinessConnection|null
+    public function getConnection(): ?BusinessConnection
     {
         return $this->connection;
     }

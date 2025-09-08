@@ -19,9 +19,8 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
     public function __construct(
         private bool $ok,
         private string $pre_checkout_query_id,
-        private string|null $error_message = null,
-    ) {
-    }
+        private ?string $error_message = null,
+    ) {}
 
     public function getOk(): bool
     {
@@ -45,12 +44,12 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
         return $this;
     }
 
-    public function getErrorMessage(): string|null
+    public function getErrorMessage(): ?string
     {
         return $this->error_message;
     }
 
-    public function setErrorMessage(string|null $error_message): AnswerPreCheckoutQueryRequest
+    public function setErrorMessage(?string $error_message): AnswerPreCheckoutQueryRequest
     {
         $this->error_message = $error_message;
         return $this;

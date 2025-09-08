@@ -24,9 +24,8 @@ final class PhotoSize implements EntityInterface
         protected string $file_unique_id,
         protected int $width,
         protected int $height,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -107,7 +106,7 @@ final class PhotoSize implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -117,7 +116,7 @@ final class PhotoSize implements EntityInterface
      *
      * @return PhotoSize
      */
-    public function setFileSize(int|null $file_size): PhotoSize
+    public function setFileSize(?int $file_size): PhotoSize
     {
         $this->file_size = $file_size;
         return $this;

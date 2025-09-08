@@ -18,15 +18,14 @@ final class SuggestedPostParameters implements EntityInterface
      * @see https://core.telegram.org/bots/api#suggestedpostprice SuggestedPostPrice
      */
     public function __construct(
-        protected SuggestedPostPrice|null $price = null,
-        protected int|null $send_date = null,
-    ) {
-    }
+        protected ?SuggestedPostPrice $price = null,
+        protected ?int $send_date = null,
+    ) {}
 
     /**
      * @return SuggestedPostPrice|null
      */
-    public function getPrice(): SuggestedPostPrice|null
+    public function getPrice(): ?SuggestedPostPrice
     {
         return $this->price;
     }
@@ -36,7 +35,7 @@ final class SuggestedPostParameters implements EntityInterface
      *
      * @return SuggestedPostParameters
      */
-    public function setPrice(SuggestedPostPrice|null $price): SuggestedPostParameters
+    public function setPrice(?SuggestedPostPrice $price): SuggestedPostParameters
     {
         $this->price = $price;
         return $this;
@@ -45,7 +44,7 @@ final class SuggestedPostParameters implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSendDate(): int|null
+    public function getSendDate(): ?int
     {
         return $this->send_date;
     }
@@ -55,7 +54,7 @@ final class SuggestedPostParameters implements EntityInterface
      *
      * @return SuggestedPostParameters
      */
-    public function setSendDate(int|null $send_date): SuggestedPostParameters
+    public function setSendDate(?int $send_date): SuggestedPostParameters
     {
         $this->send_date = $send_date;
         return $this;

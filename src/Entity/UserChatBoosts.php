@@ -19,8 +19,7 @@ final class UserChatBoosts implements EntityInterface
     public function __construct(
         #[ArrayType(ChatBoost::class)]
         protected array $boosts,
-    ) {
-    }
+    ) {}
 
     /**
      * @return ChatBoost[]

@@ -15,8 +15,7 @@ final class PaidMessagePriceChanged implements EntityInterface
      */
     public function __construct(
         protected int $paid_message_star_count,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

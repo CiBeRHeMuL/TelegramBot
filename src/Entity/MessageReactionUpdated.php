@@ -34,10 +34,9 @@ final class MessageReactionUpdated implements EntityInterface
         protected array $old_reaction,
         #[ArrayType(AbstractReactionType::class)]
         protected array $new_reaction,
-        protected Chat|null $actor_chat = null,
-        protected User|null $user = null,
-    ) {
-    }
+        protected ?Chat $actor_chat = null,
+        protected ?User $user = null,
+    ) {}
 
     /**
      * @return Chat
@@ -137,7 +136,7 @@ final class MessageReactionUpdated implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getActorChat(): Chat|null
+    public function getActorChat(): ?Chat
     {
         return $this->actor_chat;
     }
@@ -147,7 +146,7 @@ final class MessageReactionUpdated implements EntityInterface
      *
      * @return MessageReactionUpdated
      */
-    public function setActorChat(Chat|null $actor_chat): MessageReactionUpdated
+    public function setActorChat(?Chat $actor_chat): MessageReactionUpdated
     {
         $this->actor_chat = $actor_chat;
         return $this;
@@ -156,7 +155,7 @@ final class MessageReactionUpdated implements EntityInterface
     /**
      * @return User|null
      */
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -166,7 +165,7 @@ final class MessageReactionUpdated implements EntityInterface
      *
      * @return MessageReactionUpdated
      */
-    public function setUser(User|null $user): MessageReactionUpdated
+    public function setUser(?User $user): MessageReactionUpdated
     {
         $this->user = $user;
         return $this;

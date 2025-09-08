@@ -27,10 +27,9 @@ class RestrictChatMemberRequest implements RequestInterface
         private ChatId $chat_id,
         private ChatPermissions $permissions,
         private int $user_id,
-        private int|null $until_date = null,
-        private bool|null $use_independent_chat_permissions = null,
-    ) {
-    }
+        private ?int $until_date = null,
+        private ?bool $use_independent_chat_permissions = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -65,23 +64,23 @@ class RestrictChatMemberRequest implements RequestInterface
         return $this;
     }
 
-    public function getUntilDate(): int|null
+    public function getUntilDate(): ?int
     {
         return $this->until_date;
     }
 
-    public function setUntilDate(int|null $until_date): RestrictChatMemberRequest
+    public function setUntilDate(?int $until_date): RestrictChatMemberRequest
     {
         $this->until_date = $until_date;
         return $this;
     }
 
-    public function getUseIndependentChatPermissions(): bool|null
+    public function getUseIndependentChatPermissions(): ?bool
     {
         return $this->use_independent_chat_permissions;
     }
 
-    public function setUseIndependentChatPermissions(bool|null $use_independent_chat_permissions): RestrictChatMemberRequest
+    public function setUseIndependentChatPermissions(?bool $use_independent_chat_permissions): RestrictChatMemberRequest
     {
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
         return $this;

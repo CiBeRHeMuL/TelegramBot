@@ -23,9 +23,8 @@ final class PollOption implements EntityInterface
         protected string $text,
         protected int $voter_count,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $text_entities = null,
-    ) {
-    }
+        protected ?array $text_entities = null,
+    ) {}
 
     /**
      * @return string
@@ -68,7 +67,7 @@ final class PollOption implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
@@ -78,7 +77,7 @@ final class PollOption implements EntityInterface
      *
      * @return PollOption
      */
-    public function setTextEntities(array|null $text_entities): PollOption
+    public function setTextEntities(?array $text_entities): PollOption
     {
         $this->text_entities = $text_entities;
         return $this;

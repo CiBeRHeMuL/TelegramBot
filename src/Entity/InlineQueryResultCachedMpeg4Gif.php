@@ -47,14 +47,14 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function __construct(
         protected string $id,
         protected string $mpeg4_file_id,
-        protected string|null $caption = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected string|null $title = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?string $title = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Mpeg4Gif);
     }
@@ -100,7 +100,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -110,7 +110,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setCaption(string|null $caption): InlineQueryResultCachedMpeg4Gif
+    public function setCaption(?string $caption): InlineQueryResultCachedMpeg4Gif
     {
         $this->caption = $caption;
         return $this;
@@ -119,7 +119,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -129,7 +129,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultCachedMpeg4Gif
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedMpeg4Gif
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -138,7 +138,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -148,7 +148,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultCachedMpeg4Gif
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedMpeg4Gif
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -157,7 +157,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -167,7 +167,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultCachedMpeg4Gif
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedMpeg4Gif
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -176,7 +176,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -186,7 +186,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultCachedMpeg4Gif
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedMpeg4Gif
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -195,7 +195,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -205,7 +205,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setTitle(string|null $title): InlineQueryResultCachedMpeg4Gif
+    public function setTitle(?string $title): InlineQueryResultCachedMpeg4Gif
     {
         $this->title = $title;
         return $this;
@@ -214,7 +214,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -224,7 +224,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedMpeg4Gif
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultCachedMpeg4Gif
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultCachedMpeg4Gif
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

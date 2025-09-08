@@ -8,12 +8,12 @@ class GetWebhookInfoResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly WebhookInfo|null $webhookInfo = null,
+        private readonly ?WebhookInfo $webhookInfo = null,
     ) {
         parent::__construct($response);
     }
 
-    public function getWebhookInfo(): WebhookInfo|null
+    public function getWebhookInfo(): ?WebhookInfo
     {
         return $this->webhookInfo;
     }

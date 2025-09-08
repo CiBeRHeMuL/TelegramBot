@@ -19,8 +19,7 @@ final class Dice implements EntityInterface
     public function __construct(
         protected DiceEmojiEnum $emoji,
         protected int $value,
-    ) {
-    }
+    ) {}
 
     /**
      * @return DiceEmojiEnum

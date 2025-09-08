@@ -55,16 +55,16 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
         protected string $title,
         protected Url $document_url,
         protected InlineQueryResultDocumentMimeTypeEnum $mime_type,
-        protected string|null $caption = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected string|null $description = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $thumbnail_height = null,
-        protected Url|null $thumbnail_url = null,
-        protected int|null $thumbnail_width = null,
+        protected ?array $caption_entities = null,
+        protected ?string $description = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $thumbnail_height = null,
+        protected ?Url $thumbnail_url = null,
+        protected ?int $thumbnail_width = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Document);
     }
@@ -148,7 +148,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -158,7 +158,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setCaption(string|null $caption): InlineQueryResultDocument
+    public function setCaption(?string $caption): InlineQueryResultDocument
     {
         $this->caption = $caption;
         return $this;
@@ -167,7 +167,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -177,7 +177,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultDocument
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultDocument
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -186,7 +186,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -196,7 +196,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setDescription(string|null $description): InlineQueryResultDocument
+    public function setDescription(?string $description): InlineQueryResultDocument
     {
         $this->description = $description;
         return $this;
@@ -205,7 +205,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -215,7 +215,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultDocument
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultDocument
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -224,7 +224,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -234,7 +234,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultDocument
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultDocument
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -243,7 +243,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -253,7 +253,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultDocument
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultDocument
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -262,7 +262,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailHeight(): int|null
+    public function getThumbnailHeight(): ?int
     {
         return $this->thumbnail_height;
     }
@@ -272,7 +272,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultDocument
+    public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultDocument
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
@@ -281,7 +281,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getThumbnailUrl(): Url|null
+    public function getThumbnailUrl(): ?Url
     {
         return $this->thumbnail_url;
     }
@@ -291,7 +291,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultDocument
+    public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultDocument
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
@@ -300,7 +300,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailWidth(): int|null
+    public function getThumbnailWidth(): ?int
     {
         return $this->thumbnail_width;
     }
@@ -310,7 +310,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultDocument
      */
-    public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultDocument
+    public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultDocument
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;

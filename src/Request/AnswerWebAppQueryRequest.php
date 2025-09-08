@@ -18,8 +18,7 @@ class AnswerWebAppQueryRequest implements RequestInterface
     public function __construct(
         private AbstractInlineQueryResult $result,
         private string $web_app_query_id,
-    ) {
-    }
+    ) {}
 
     public function getResult(): AbstractInlineQueryResult
     {

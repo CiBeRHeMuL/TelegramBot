@@ -68,22 +68,21 @@ class SendVoiceRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private Filename|Url|string $voice,
-        private string|null $business_connection_id = null,
-        private string|null $caption = null,
-        private array|null $caption_entities = null,
-        private bool|null $disable_notification = null,
-        private int|null $duration = null,
-        private int|null $message_thread_id = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private bool|null $protect_content = null,
+        private ?string $business_connection_id = null,
+        private ?string $caption = null,
+        private ?array $caption_entities = null,
+        private ?bool $disable_notification = null,
+        private ?int $duration = null,
+        private ?int $message_thread_id = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?bool $protect_content = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?ReplyParameters $reply_parameters = null,
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -107,89 +106,89 @@ class SendVoiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendVoiceRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendVoiceRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): SendVoiceRequest
+    public function setCaption(?string $caption): SendVoiceRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): SendVoiceRequest
+    public function setCaptionEntities(?array $caption_entities): SendVoiceRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendVoiceRequest
+    public function setDisableNotification(?bool $disable_notification): SendVoiceRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    public function setDuration(int|null $duration): SendVoiceRequest
+    public function setDuration(?int $duration): SendVoiceRequest
     {
         $this->duration = $duration;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendVoiceRequest
+    public function setMessageThreadId(?int $message_thread_id): SendVoiceRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): SendVoiceRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): SendVoiceRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendVoiceRequest
+    public function setProtectContent(?bool $protect_content): SendVoiceRequest
     {
         $this->protect_content = $protect_content;
         return $this;
@@ -206,56 +205,56 @@ class SendVoiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendVoiceRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendVoiceRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendVoiceRequest
+    public function setMessageEffectId(?string $message_effect_id): SendVoiceRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendVoiceRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendVoiceRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendVoiceRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendVoiceRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendVoiceRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendVoiceRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

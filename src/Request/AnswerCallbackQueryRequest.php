@@ -19,12 +19,11 @@ class AnswerCallbackQueryRequest implements RequestInterface
      */
     public function __construct(
         private string $callback_query_id,
-        private int|null $cache_time = null,
-        private bool|null $show_alert = null,
-        private string|null $text = null,
-        private Url|null $url = null,
-    ) {
-    }
+        private ?int $cache_time = null,
+        private ?bool $show_alert = null,
+        private ?string $text = null,
+        private ?Url $url = null,
+    ) {}
 
     public function getCallbackQueryId(): string
     {
@@ -37,45 +36,45 @@ class AnswerCallbackQueryRequest implements RequestInterface
         return $this;
     }
 
-    public function getCacheTime(): int|null
+    public function getCacheTime(): ?int
     {
         return $this->cache_time;
     }
 
-    public function setCacheTime(int|null $cache_time): AnswerCallbackQueryRequest
+    public function setCacheTime(?int $cache_time): AnswerCallbackQueryRequest
     {
         $this->cache_time = $cache_time;
         return $this;
     }
 
-    public function getShowAlert(): bool|null
+    public function getShowAlert(): ?bool
     {
         return $this->show_alert;
     }
 
-    public function setShowAlert(bool|null $show_alert): AnswerCallbackQueryRequest
+    public function setShowAlert(?bool $show_alert): AnswerCallbackQueryRequest
     {
         $this->show_alert = $show_alert;
         return $this;
     }
 
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string|null $text): AnswerCallbackQueryRequest
+    public function setText(?string $text): AnswerCallbackQueryRequest
     {
         $this->text = $text;
         return $this;
     }
 
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
 
-    public function setUrl(Url|null $url): AnswerCallbackQueryRequest
+    public function setUrl(?Url $url): AnswerCallbackQueryRequest
     {
         $this->url = $url;
         return $this;

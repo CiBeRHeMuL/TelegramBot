@@ -15,6 +15,4 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
     InputContactMessageContent::class,
     InputInvoiceMessageContent::class,
 ])]
-abstract class AbstractInputMessageContent implements EntityInterface
-{
-}
+abstract class AbstractInputMessageContent implements EntityInterface {}

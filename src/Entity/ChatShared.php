@@ -29,11 +29,10 @@ final class ChatShared implements EntityInterface
         protected int $request_id,
         protected ChatId $chat_id,
         #[ArrayType(PhotoSize::class)]
-        protected array|null $photo = null,
-        protected string|null $title = null,
-        protected string|null $username = null,
-    ) {
-    }
+        protected ?array $photo = null,
+        protected ?string $title = null,
+        protected ?string $username = null,
+    ) {}
 
     /**
      * @return int
@@ -76,7 +75,7 @@ final class ChatShared implements EntityInterface
     /**
      * @return PhotoSize[]|null
      */
-    public function getPhoto(): array|null
+    public function getPhoto(): ?array
     {
         return $this->photo;
     }
@@ -86,7 +85,7 @@ final class ChatShared implements EntityInterface
      *
      * @return ChatShared
      */
-    public function setPhoto(array|null $photo): ChatShared
+    public function setPhoto(?array $photo): ChatShared
     {
         $this->photo = $photo;
         return $this;
@@ -95,7 +94,7 @@ final class ChatShared implements EntityInterface
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -105,7 +104,7 @@ final class ChatShared implements EntityInterface
      *
      * @return ChatShared
      */
-    public function setTitle(string|null $title): ChatShared
+    public function setTitle(?string $title): ChatShared
     {
         $this->title = $title;
         return $this;
@@ -114,7 +113,7 @@ final class ChatShared implements EntityInterface
     /**
      * @return string|null
      */
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -124,7 +123,7 @@ final class ChatShared implements EntityInterface
      *
      * @return ChatShared
      */
-    public function setUsername(string|null $username): ChatShared
+    public function setUsername(?string $username): ChatShared
     {
         $this->username = $username;
         return $this;

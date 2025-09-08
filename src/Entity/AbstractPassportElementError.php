@@ -24,8 +24,7 @@ abstract class AbstractPassportElementError implements EntityInterface
 {
     public function __construct(
         protected readonly PassportElementErrorSourceEnum $source,
-    ) {
-    }
+    ) {}
 
     public function getSource(): PassportElementErrorSourceEnum
     {

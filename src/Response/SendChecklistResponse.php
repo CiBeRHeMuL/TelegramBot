@@ -8,12 +8,12 @@ class SendChecklistResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly Message|null $message = null,
+        private readonly ?Message $message = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getMessage(): Message|null
+    public function getMessage(): ?Message
     {
         return $this->message;
     }

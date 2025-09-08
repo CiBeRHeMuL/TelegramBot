@@ -14,8 +14,7 @@ final class BotName implements EntityInterface
      */
     public function __construct(
         protected string $name,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

@@ -90,31 +90,30 @@ final class Update implements EntityInterface
      */
     public function __construct(
         protected int $update_id,
-        protected BusinessConnection|null $business_connection = null,
-        protected Message|null $business_message = null,
-        protected CallbackQuery|null $callback_query = null,
-        protected Message|null $channel_post = null,
-        protected ChatBoostUpdated|null $chat_boost = null,
-        protected ChatJoinRequest|null $chat_join_request = null,
-        protected ChatMemberUpdated|null $chat_member = null,
-        protected ChosenInlineResult|null $chosen_inline_result = null,
-        protected BusinessMessagesDeleted|null $deleted_business_messages = null,
-        protected Message|null $edited_business_message = null,
-        protected Message|null $edited_channel_post = null,
-        protected Message|null $edited_message = null,
-        protected InlineQuery|null $inline_query = null,
-        protected Message|null $message = null,
-        protected MessageReactionUpdated|null $message_reaction = null,
-        protected MessageReactionCountUpdated|null $message_reaction_count = null,
-        protected ChatMemberUpdated|null $my_chat_member = null,
-        protected Poll|null $poll = null,
-        protected PollAnswer|null $poll_answer = null,
-        protected PreCheckoutQuery|null $pre_checkout_query = null,
-        protected ChatBoostRemoved|null $removed_chat_boost = null,
-        protected ShippingQuery|null $shipping_query = null,
-        protected PaidMediaPurchased|null $purchased_paid_media = null,
-    ) {
-    }
+        protected ?BusinessConnection $business_connection = null,
+        protected ?Message $business_message = null,
+        protected ?CallbackQuery $callback_query = null,
+        protected ?Message $channel_post = null,
+        protected ?ChatBoostUpdated $chat_boost = null,
+        protected ?ChatJoinRequest $chat_join_request = null,
+        protected ?ChatMemberUpdated $chat_member = null,
+        protected ?ChosenInlineResult $chosen_inline_result = null,
+        protected ?BusinessMessagesDeleted $deleted_business_messages = null,
+        protected ?Message $edited_business_message = null,
+        protected ?Message $edited_channel_post = null,
+        protected ?Message $edited_message = null,
+        protected ?InlineQuery $inline_query = null,
+        protected ?Message $message = null,
+        protected ?MessageReactionUpdated $message_reaction = null,
+        protected ?MessageReactionCountUpdated $message_reaction_count = null,
+        protected ?ChatMemberUpdated $my_chat_member = null,
+        protected ?Poll $poll = null,
+        protected ?PollAnswer $poll_answer = null,
+        protected ?PreCheckoutQuery $pre_checkout_query = null,
+        protected ?ChatBoostRemoved $removed_chat_boost = null,
+        protected ?ShippingQuery $shipping_query = null,
+        protected ?PaidMediaPurchased $purchased_paid_media = null,
+    ) {}
 
     /**
      * @return int
@@ -138,7 +137,7 @@ final class Update implements EntityInterface
     /**
      * @return BusinessConnection|null
      */
-    public function getBusinessConnection(): BusinessConnection|null
+    public function getBusinessConnection(): ?BusinessConnection
     {
         return $this->business_connection;
     }
@@ -148,7 +147,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setBusinessConnection(BusinessConnection|null $business_connection): Update
+    public function setBusinessConnection(?BusinessConnection $business_connection): Update
     {
         $this->business_connection = $business_connection;
         return $this;
@@ -157,7 +156,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getBusinessMessage(): Message|null
+    public function getBusinessMessage(): ?Message
     {
         return $this->business_message;
     }
@@ -167,7 +166,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setBusinessMessage(Message|null $business_message): Update
+    public function setBusinessMessage(?Message $business_message): Update
     {
         $this->business_message = $business_message;
         return $this;
@@ -176,7 +175,7 @@ final class Update implements EntityInterface
     /**
      * @return CallbackQuery|null
      */
-    public function getCallbackQuery(): CallbackQuery|null
+    public function getCallbackQuery(): ?CallbackQuery
     {
         return $this->callback_query;
     }
@@ -186,7 +185,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setCallbackQuery(CallbackQuery|null $callback_query): Update
+    public function setCallbackQuery(?CallbackQuery $callback_query): Update
     {
         $this->callback_query = $callback_query;
         return $this;
@@ -195,7 +194,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getChannelPost(): Message|null
+    public function getChannelPost(): ?Message
     {
         return $this->channel_post;
     }
@@ -205,7 +204,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setChannelPost(Message|null $channel_post): Update
+    public function setChannelPost(?Message $channel_post): Update
     {
         $this->channel_post = $channel_post;
         return $this;
@@ -214,7 +213,7 @@ final class Update implements EntityInterface
     /**
      * @return ChatBoostUpdated|null
      */
-    public function getChatBoost(): ChatBoostUpdated|null
+    public function getChatBoost(): ?ChatBoostUpdated
     {
         return $this->chat_boost;
     }
@@ -224,7 +223,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setChatBoost(ChatBoostUpdated|null $chat_boost): Update
+    public function setChatBoost(?ChatBoostUpdated $chat_boost): Update
     {
         $this->chat_boost = $chat_boost;
         return $this;
@@ -233,7 +232,7 @@ final class Update implements EntityInterface
     /**
      * @return ChatJoinRequest|null
      */
-    public function getChatJoinRequest(): ChatJoinRequest|null
+    public function getChatJoinRequest(): ?ChatJoinRequest
     {
         return $this->chat_join_request;
     }
@@ -243,7 +242,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setChatJoinRequest(ChatJoinRequest|null $chat_join_request): Update
+    public function setChatJoinRequest(?ChatJoinRequest $chat_join_request): Update
     {
         $this->chat_join_request = $chat_join_request;
         return $this;
@@ -252,7 +251,7 @@ final class Update implements EntityInterface
     /**
      * @return ChatMemberUpdated|null
      */
-    public function getChatMember(): ChatMemberUpdated|null
+    public function getChatMember(): ?ChatMemberUpdated
     {
         return $this->chat_member;
     }
@@ -262,7 +261,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setChatMember(ChatMemberUpdated|null $chat_member): Update
+    public function setChatMember(?ChatMemberUpdated $chat_member): Update
     {
         $this->chat_member = $chat_member;
         return $this;
@@ -271,7 +270,7 @@ final class Update implements EntityInterface
     /**
      * @return ChosenInlineResult|null
      */
-    public function getChosenInlineResult(): ChosenInlineResult|null
+    public function getChosenInlineResult(): ?ChosenInlineResult
     {
         return $this->chosen_inline_result;
     }
@@ -281,7 +280,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setChosenInlineResult(ChosenInlineResult|null $chosen_inline_result): Update
+    public function setChosenInlineResult(?ChosenInlineResult $chosen_inline_result): Update
     {
         $this->chosen_inline_result = $chosen_inline_result;
         return $this;
@@ -290,7 +289,7 @@ final class Update implements EntityInterface
     /**
      * @return BusinessMessagesDeleted|null
      */
-    public function getDeletedBusinessMessages(): BusinessMessagesDeleted|null
+    public function getDeletedBusinessMessages(): ?BusinessMessagesDeleted
     {
         return $this->deleted_business_messages;
     }
@@ -300,7 +299,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setDeletedBusinessMessages(BusinessMessagesDeleted|null $deleted_business_messages): Update
+    public function setDeletedBusinessMessages(?BusinessMessagesDeleted $deleted_business_messages): Update
     {
         $this->deleted_business_messages = $deleted_business_messages;
         return $this;
@@ -309,7 +308,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getEditedBusinessMessage(): Message|null
+    public function getEditedBusinessMessage(): ?Message
     {
         return $this->edited_business_message;
     }
@@ -319,7 +318,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setEditedBusinessMessage(Message|null $edited_business_message): Update
+    public function setEditedBusinessMessage(?Message $edited_business_message): Update
     {
         $this->edited_business_message = $edited_business_message;
         return $this;
@@ -328,7 +327,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getEditedChannelPost(): Message|null
+    public function getEditedChannelPost(): ?Message
     {
         return $this->edited_channel_post;
     }
@@ -338,7 +337,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setEditedChannelPost(Message|null $edited_channel_post): Update
+    public function setEditedChannelPost(?Message $edited_channel_post): Update
     {
         $this->edited_channel_post = $edited_channel_post;
         return $this;
@@ -347,7 +346,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getEditedMessage(): Message|null
+    public function getEditedMessage(): ?Message
     {
         return $this->edited_message;
     }
@@ -357,7 +356,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setEditedMessage(Message|null $edited_message): Update
+    public function setEditedMessage(?Message $edited_message): Update
     {
         $this->edited_message = $edited_message;
         return $this;
@@ -366,7 +365,7 @@ final class Update implements EntityInterface
     /**
      * @return InlineQuery|null
      */
-    public function getInlineQuery(): InlineQuery|null
+    public function getInlineQuery(): ?InlineQuery
     {
         return $this->inline_query;
     }
@@ -376,7 +375,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setInlineQuery(InlineQuery|null $inline_query): Update
+    public function setInlineQuery(?InlineQuery $inline_query): Update
     {
         $this->inline_query = $inline_query;
         return $this;
@@ -385,7 +384,7 @@ final class Update implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getMessage(): Message|null
+    public function getMessage(): ?Message
     {
         return $this->message;
     }
@@ -395,7 +394,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setMessage(Message|null $message): Update
+    public function setMessage(?Message $message): Update
     {
         $this->message = $message;
         return $this;
@@ -404,7 +403,7 @@ final class Update implements EntityInterface
     /**
      * @return MessageReactionUpdated|null
      */
-    public function getMessageReaction(): MessageReactionUpdated|null
+    public function getMessageReaction(): ?MessageReactionUpdated
     {
         return $this->message_reaction;
     }
@@ -414,7 +413,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setMessageReaction(MessageReactionUpdated|null $message_reaction): Update
+    public function setMessageReaction(?MessageReactionUpdated $message_reaction): Update
     {
         $this->message_reaction = $message_reaction;
         return $this;
@@ -423,7 +422,7 @@ final class Update implements EntityInterface
     /**
      * @return MessageReactionCountUpdated|null
      */
-    public function getMessageReactionCount(): MessageReactionCountUpdated|null
+    public function getMessageReactionCount(): ?MessageReactionCountUpdated
     {
         return $this->message_reaction_count;
     }
@@ -433,7 +432,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setMessageReactionCount(MessageReactionCountUpdated|null $message_reaction_count): Update
+    public function setMessageReactionCount(?MessageReactionCountUpdated $message_reaction_count): Update
     {
         $this->message_reaction_count = $message_reaction_count;
         return $this;
@@ -442,7 +441,7 @@ final class Update implements EntityInterface
     /**
      * @return ChatMemberUpdated|null
      */
-    public function getMyChatMember(): ChatMemberUpdated|null
+    public function getMyChatMember(): ?ChatMemberUpdated
     {
         return $this->my_chat_member;
     }
@@ -452,7 +451,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setMyChatMember(ChatMemberUpdated|null $my_chat_member): Update
+    public function setMyChatMember(?ChatMemberUpdated $my_chat_member): Update
     {
         $this->my_chat_member = $my_chat_member;
         return $this;
@@ -461,7 +460,7 @@ final class Update implements EntityInterface
     /**
      * @return Poll|null
      */
-    public function getPoll(): Poll|null
+    public function getPoll(): ?Poll
     {
         return $this->poll;
     }
@@ -471,7 +470,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setPoll(Poll|null $poll): Update
+    public function setPoll(?Poll $poll): Update
     {
         $this->poll = $poll;
         return $this;
@@ -480,7 +479,7 @@ final class Update implements EntityInterface
     /**
      * @return PollAnswer|null
      */
-    public function getPollAnswer(): PollAnswer|null
+    public function getPollAnswer(): ?PollAnswer
     {
         return $this->poll_answer;
     }
@@ -490,7 +489,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setPollAnswer(PollAnswer|null $poll_answer): Update
+    public function setPollAnswer(?PollAnswer $poll_answer): Update
     {
         $this->poll_answer = $poll_answer;
         return $this;
@@ -499,7 +498,7 @@ final class Update implements EntityInterface
     /**
      * @return PreCheckoutQuery|null
      */
-    public function getPreCheckoutQuery(): PreCheckoutQuery|null
+    public function getPreCheckoutQuery(): ?PreCheckoutQuery
     {
         return $this->pre_checkout_query;
     }
@@ -509,7 +508,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setPreCheckoutQuery(PreCheckoutQuery|null $pre_checkout_query): Update
+    public function setPreCheckoutQuery(?PreCheckoutQuery $pre_checkout_query): Update
     {
         $this->pre_checkout_query = $pre_checkout_query;
         return $this;
@@ -518,7 +517,7 @@ final class Update implements EntityInterface
     /**
      * @return ChatBoostRemoved|null
      */
-    public function getRemovedChatBoost(): ChatBoostRemoved|null
+    public function getRemovedChatBoost(): ?ChatBoostRemoved
     {
         return $this->removed_chat_boost;
     }
@@ -528,7 +527,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setRemovedChatBoost(ChatBoostRemoved|null $removed_chat_boost): Update
+    public function setRemovedChatBoost(?ChatBoostRemoved $removed_chat_boost): Update
     {
         $this->removed_chat_boost = $removed_chat_boost;
         return $this;
@@ -537,7 +536,7 @@ final class Update implements EntityInterface
     /**
      * @return ShippingQuery|null
      */
-    public function getShippingQuery(): ShippingQuery|null
+    public function getShippingQuery(): ?ShippingQuery
     {
         return $this->shipping_query;
     }
@@ -547,7 +546,7 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setShippingQuery(ShippingQuery|null $shipping_query): Update
+    public function setShippingQuery(?ShippingQuery $shipping_query): Update
     {
         $this->shipping_query = $shipping_query;
         return $this;
@@ -556,7 +555,7 @@ final class Update implements EntityInterface
     /**
      * @return PaidMediaPurchased|null
      */
-    public function getPurchasedPaidMedia(): PaidMediaPurchased|null
+    public function getPurchasedPaidMedia(): ?PaidMediaPurchased
     {
         return $this->purchased_paid_media;
     }
@@ -566,13 +565,13 @@ final class Update implements EntityInterface
      *
      * @return Update
      */
-    public function setPurchasedPaidMedia(PaidMediaPurchased|null $purchased_paid_media): Update
+    public function setPurchasedPaidMedia(?PaidMediaPurchased $purchased_paid_media): Update
     {
         $this->purchased_paid_media = $purchased_paid_media;
         return $this;
     }
 
-    public function getType(): UpdateTypeEnum|null
+    public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
             $this->getBusinessConnection() !== null => UpdateTypeEnum::BusinessConnection,

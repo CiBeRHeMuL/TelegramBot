@@ -31,13 +31,12 @@ final class InputChecklist implements EntityInterface
         protected string $title,
         #[ArrayType(InputChecklistTask::class)]
         protected array $tasks,
-        protected bool|null $others_can_add_tasks = null,
-        protected bool|null $others_can_mark_tasks_as_done = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?bool $others_can_add_tasks = null,
+        protected ?bool $others_can_mark_tasks_as_done = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $title_entities = null,
-    ) {
-    }
+        protected ?array $title_entities = null,
+    ) {}
 
     /**
      * @return string
@@ -80,7 +79,7 @@ final class InputChecklist implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOthersCanAddTasks(): bool|null
+    public function getOthersCanAddTasks(): ?bool
     {
         return $this->others_can_add_tasks;
     }
@@ -90,7 +89,7 @@ final class InputChecklist implements EntityInterface
      *
      * @return InputChecklist
      */
-    public function setOthersCanAddTasks(bool|null $others_can_add_tasks): InputChecklist
+    public function setOthersCanAddTasks(?bool $others_can_add_tasks): InputChecklist
     {
         $this->others_can_add_tasks = $others_can_add_tasks;
         return $this;
@@ -99,7 +98,7 @@ final class InputChecklist implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getOthersCanMarkTasksAsDone(): bool|null
+    public function getOthersCanMarkTasksAsDone(): ?bool
     {
         return $this->others_can_mark_tasks_as_done;
     }
@@ -109,7 +108,7 @@ final class InputChecklist implements EntityInterface
      *
      * @return InputChecklist
      */
-    public function setOthersCanMarkTasksAsDone(bool|null $others_can_mark_tasks_as_done): InputChecklist
+    public function setOthersCanMarkTasksAsDone(?bool $others_can_mark_tasks_as_done): InputChecklist
     {
         $this->others_can_mark_tasks_as_done = $others_can_mark_tasks_as_done;
         return $this;
@@ -118,7 +117,7 @@ final class InputChecklist implements EntityInterface
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -128,7 +127,7 @@ final class InputChecklist implements EntityInterface
      *
      * @return InputChecklist
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputChecklist
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputChecklist
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -137,7 +136,7 @@ final class InputChecklist implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTitleEntities(): array|null
+    public function getTitleEntities(): ?array
     {
         return $this->title_entities;
     }
@@ -147,7 +146,7 @@ final class InputChecklist implements EntityInterface
      *
      * @return InputChecklist
      */
-    public function setTitleEntities(array|null $title_entities): InputChecklist
+    public function setTitleEntities(?array $title_entities): InputChecklist
     {
         $this->title_entities = $title_entities;
         return $this;

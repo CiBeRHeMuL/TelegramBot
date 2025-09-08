@@ -19,9 +19,8 @@ class TransferGiftRequest implements RequestInterface
         private string $business_connection_id,
         private int $new_owner_chat_id,
         private string $owned_gift_id,
-        private int|null $star_count = null,
-    ) {
-    }
+        private ?int $star_count = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -56,12 +55,12 @@ class TransferGiftRequest implements RequestInterface
         return $this;
     }
 
-    public function getStarCount(): int|null
+    public function getStarCount(): ?int
     {
         return $this->star_count;
     }
 
-    public function setStarCount(int|null $star_count): TransferGiftRequest
+    public function setStarCount(?int $star_count): TransferGiftRequest
     {
         $this->star_count = $star_count;
         return $this;

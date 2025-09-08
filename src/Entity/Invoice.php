@@ -30,8 +30,7 @@ final class Invoice implements EntityInterface
         protected string $start_parameter,
         protected CurrencyEnum $currency,
         protected int $total_amount,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

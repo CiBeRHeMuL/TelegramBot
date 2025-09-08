@@ -36,16 +36,15 @@ class EditMessageTextRequest implements RequestInterface
      */
     public function __construct(
         private string $text,
-        private ChatId|null $chat_id = null,
-        private array|null $entities = null,
-        private string|null $inline_message_id = null,
-        private LinkPreviewOptions|null $link_preview_options = null,
-        private int|null $message_id = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?array $entities = null,
+        private ?string $inline_message_id = null,
+        private ?LinkPreviewOptions $link_preview_options = null,
+        private ?int $message_id = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getText(): string
     {
@@ -58,89 +57,89 @@ class EditMessageTextRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): EditMessageTextRequest
+    public function setChatId(?ChatId $chat_id): EditMessageTextRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
 
-    public function setEntities(array|null $entities): EditMessageTextRequest
+    public function setEntities(?array $entities): EditMessageTextRequest
     {
         $this->entities = $entities;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): EditMessageTextRequest
+    public function setInlineMessageId(?string $inline_message_id): EditMessageTextRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getLinkPreviewOptions(): LinkPreviewOptions|null
+    public function getLinkPreviewOptions(): ?LinkPreviewOptions
     {
         return $this->link_preview_options;
     }
 
-    public function setLinkPreviewOptions(LinkPreviewOptions|null $link_preview_options): EditMessageTextRequest
+    public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): EditMessageTextRequest
     {
         $this->link_preview_options = $link_preview_options;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): EditMessageTextRequest
+    public function setMessageId(?int $message_id): EditMessageTextRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): EditMessageTextRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): EditMessageTextRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): EditMessageTextRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageTextRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageTextRequest
+    public function setBusinessConnectionId(?string $business_connection_id): EditMessageTextRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

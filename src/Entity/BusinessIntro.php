@@ -17,16 +17,15 @@ final class BusinessIntro implements EntityInterface
      * @see https://core.telegram.org/bots/api#sticker Sticker
      */
     public function __construct(
-        protected string|null $message = null,
-        protected Sticker|null $sticker = null,
-        protected string|null $title = null,
-    ) {
-    }
+        protected ?string $message = null,
+        protected ?Sticker $sticker = null,
+        protected ?string $title = null,
+    ) {}
 
     /**
      * @return string|null
      */
-    public function getMessage(): string|null
+    public function getMessage(): ?string
     {
         return $this->message;
     }
@@ -36,7 +35,7 @@ final class BusinessIntro implements EntityInterface
      *
      * @return BusinessIntro
      */
-    public function setMessage(string|null $message): BusinessIntro
+    public function setMessage(?string $message): BusinessIntro
     {
         $this->message = $message;
         return $this;
@@ -45,7 +44,7 @@ final class BusinessIntro implements EntityInterface
     /**
      * @return Sticker|null
      */
-    public function getSticker(): Sticker|null
+    public function getSticker(): ?Sticker
     {
         return $this->sticker;
     }
@@ -55,7 +54,7 @@ final class BusinessIntro implements EntityInterface
      *
      * @return BusinessIntro
      */
-    public function setSticker(Sticker|null $sticker): BusinessIntro
+    public function setSticker(?Sticker $sticker): BusinessIntro
     {
         $this->sticker = $sticker;
         return $this;
@@ -64,7 +63,7 @@ final class BusinessIntro implements EntityInterface
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -74,7 +73,7 @@ final class BusinessIntro implements EntityInterface
      *
      * @return BusinessIntro
      */
-    public function setTitle(string|null $title): BusinessIntro
+    public function setTitle(?string $title): BusinessIntro
     {
         $this->title = $title;
         return $this;

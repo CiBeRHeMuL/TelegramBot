@@ -90,7 +90,7 @@ final class Utils
         if (is_scalar($resource)) {
             $stream = self::tryFopen('php://temp', 'r+');
             if ($resource !== '') {
-                fwrite($stream, (string)$resource);
+                fwrite($stream, (string) $resource);
                 fseek($stream, 0);
             }
 
@@ -118,7 +118,7 @@ final class Utils
                 if ($resource instanceof StreamInterface) {
                     return $resource;
                 } elseif (method_exists($resource, '__toString')) {
-                    return self::streamFor((string)$resource, $options);
+                    return self::streamFor((string) $resource, $options);
                 }
                 break;
             case 'NULL':

@@ -7,4 +7,3 @@ enum OwnedGiftTypeEnum: string
     case Regular = 'regular';
     case Unique = 'unique';
 }
-

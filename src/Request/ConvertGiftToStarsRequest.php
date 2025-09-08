@@ -14,8 +14,7 @@ class ConvertGiftToStarsRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private string $owned_gift_id,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

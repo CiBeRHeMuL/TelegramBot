@@ -14,9 +14,8 @@ class SetStickerKeywordsRequest implements RequestInterface
      */
     public function __construct(
         private string $sticker,
-        private array|null $keywords = null,
-    ) {
-    }
+        private ?array $keywords = null,
+    ) {}
 
     public function getSticker(): string
     {
@@ -29,12 +28,12 @@ class SetStickerKeywordsRequest implements RequestInterface
         return $this;
     }
 
-    public function getKeywords(): array|null
+    public function getKeywords(): ?array
     {
         return $this->keywords;
     }
 
-    public function setKeywords(array|null $keywords): SetStickerKeywordsRequest
+    public function setKeywords(?array $keywords): SetStickerKeywordsRequest
     {
         $this->keywords = $keywords;
         return $this;

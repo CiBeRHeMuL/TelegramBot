@@ -22,12 +22,11 @@ class SavePreparedInlineMessageRequest implements RequestInterface
     public function __construct(
         private AbstractInlineQueryResult $result,
         private int $user_id,
-        private bool|null $allow_bot_chats = null,
-        private bool|null $allow_channel_chats = null,
-        private bool|null $allow_group_chats = null,
-        private bool|null $allow_user_chats = null,
-    ) {
-    }
+        private ?bool $allow_bot_chats = null,
+        private ?bool $allow_channel_chats = null,
+        private ?bool $allow_group_chats = null,
+        private ?bool $allow_user_chats = null,
+    ) {}
 
     public function getResult(): AbstractInlineQueryResult
     {
@@ -51,45 +50,45 @@ class SavePreparedInlineMessageRequest implements RequestInterface
         return $this;
     }
 
-    public function getAllowBotChats(): bool|null
+    public function getAllowBotChats(): ?bool
     {
         return $this->allow_bot_chats;
     }
 
-    public function setAllowBotChats(bool|null $allow_bot_chats): SavePreparedInlineMessageRequest
+    public function setAllowBotChats(?bool $allow_bot_chats): SavePreparedInlineMessageRequest
     {
         $this->allow_bot_chats = $allow_bot_chats;
         return $this;
     }
 
-    public function getAllowChannelChats(): bool|null
+    public function getAllowChannelChats(): ?bool
     {
         return $this->allow_channel_chats;
     }
 
-    public function setAllowChannelChats(bool|null $allow_channel_chats): SavePreparedInlineMessageRequest
+    public function setAllowChannelChats(?bool $allow_channel_chats): SavePreparedInlineMessageRequest
     {
         $this->allow_channel_chats = $allow_channel_chats;
         return $this;
     }
 
-    public function getAllowGroupChats(): bool|null
+    public function getAllowGroupChats(): ?bool
     {
         return $this->allow_group_chats;
     }
 
-    public function setAllowGroupChats(bool|null $allow_group_chats): SavePreparedInlineMessageRequest
+    public function setAllowGroupChats(?bool $allow_group_chats): SavePreparedInlineMessageRequest
     {
         $this->allow_group_chats = $allow_group_chats;
         return $this;
     }
 
-    public function getAllowUserChats(): bool|null
+    public function getAllowUserChats(): ?bool
     {
         return $this->allow_user_chats;
     }
 
-    public function setAllowUserChats(bool|null $allow_user_chats): SavePreparedInlineMessageRequest
+    public function setAllowUserChats(?bool $allow_user_chats): SavePreparedInlineMessageRequest
     {
         $this->allow_user_chats = $allow_user_chats;
         return $this;

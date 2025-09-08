@@ -34,112 +34,111 @@ class EditMessageCaptionRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
-        private string|null $caption = null,
-        private array|null $caption_entities = null,
-        private ChatId|null $chat_id = null,
-        private string|null $inline_message_id = null,
-        private int|null $message_id = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private bool|null $show_caption_above_media = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?string $caption = null,
+        private ?array $caption_entities = null,
+        private ?ChatId $chat_id = null,
+        private ?string $inline_message_id = null,
+        private ?int $message_id = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?bool $show_caption_above_media = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): EditMessageCaptionRequest
+    public function setCaption(?string $caption): EditMessageCaptionRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): EditMessageCaptionRequest
+    public function setCaptionEntities(?array $caption_entities): EditMessageCaptionRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): EditMessageCaptionRequest
+    public function setChatId(?ChatId $chat_id): EditMessageCaptionRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): EditMessageCaptionRequest
+    public function setInlineMessageId(?string $inline_message_id): EditMessageCaptionRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): EditMessageCaptionRequest
+    public function setMessageId(?int $message_id): EditMessageCaptionRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): EditMessageCaptionRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): EditMessageCaptionRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): EditMessageCaptionRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageCaptionRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
 
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): EditMessageCaptionRequest
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): EditMessageCaptionRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageCaptionRequest
+    public function setBusinessConnectionId(?string $business_connection_id): EditMessageCaptionRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

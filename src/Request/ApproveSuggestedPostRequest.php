@@ -19,9 +19,8 @@ class ApproveSuggestedPostRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_id,
-        private int|null $send_date = null,
-    ) {
-    }
+        private ?int $send_date = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -45,12 +44,12 @@ class ApproveSuggestedPostRequest implements RequestInterface
         return $this;
     }
 
-    public function getSendDate(): int|null
+    public function getSendDate(): ?int
     {
         return $this->send_date;
     }
 
-    public function setSendDate(int|null $send_date): ApproveSuggestedPostRequest
+    public function setSendDate(?int $send_date): ApproveSuggestedPostRequest
     {
         $this->send_date = $send_date;
         return $this;

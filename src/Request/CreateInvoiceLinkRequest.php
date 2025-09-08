@@ -69,25 +69,24 @@ class CreateInvoiceLinkRequest implements RequestInterface
         private string $payload,
         private array $prices,
         private string $title,
-        private string|null $provider_token = null,
-        private bool|null $is_flexible = null,
-        private int|null $max_tip_amount = null,
-        private bool|null $need_email = null,
-        private bool|null $need_name = null,
-        private bool|null $need_phone_number = null,
-        private bool|null $need_shipping_address = null,
-        private int|null $photo_height = null,
-        private int|null $photo_size = null,
-        private Url|null $photo_url = null,
-        private int|null $photo_width = null,
-        private string|null $provider_data = null,
-        private bool|null $send_email_to_provider = null,
-        private bool|null $send_phone_number_to_provider = null,
-        private array|null $suggested_tip_amounts = null,
-        private int|null $subscription_period = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?string $provider_token = null,
+        private ?bool $is_flexible = null,
+        private ?int $max_tip_amount = null,
+        private ?bool $need_email = null,
+        private ?bool $need_name = null,
+        private ?bool $need_phone_number = null,
+        private ?bool $need_shipping_address = null,
+        private ?int $photo_height = null,
+        private ?int $photo_size = null,
+        private ?Url $photo_url = null,
+        private ?int $photo_width = null,
+        private ?string $provider_data = null,
+        private ?bool $send_email_to_provider = null,
+        private ?bool $send_phone_number_to_provider = null,
+        private ?array $suggested_tip_amounts = null,
+        private ?int $subscription_period = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getCurrency(): CurrencyEnum
     {
@@ -144,188 +143,188 @@ class CreateInvoiceLinkRequest implements RequestInterface
         return $this;
     }
 
-    public function getProviderToken(): string|null
+    public function getProviderToken(): ?string
     {
         return $this->provider_token;
     }
 
-    public function setProviderToken(string|null $provider_token): CreateInvoiceLinkRequest
+    public function setProviderToken(?string $provider_token): CreateInvoiceLinkRequest
     {
         $this->provider_token = $provider_token;
         return $this;
     }
 
-    public function getIsFlexible(): bool|null
+    public function getIsFlexible(): ?bool
     {
         return $this->is_flexible;
     }
 
-    public function setIsFlexible(bool|null $is_flexible): CreateInvoiceLinkRequest
+    public function setIsFlexible(?bool $is_flexible): CreateInvoiceLinkRequest
     {
         $this->is_flexible = $is_flexible;
         return $this;
     }
 
-    public function getMaxTipAmount(): int|null
+    public function getMaxTipAmount(): ?int
     {
         return $this->max_tip_amount;
     }
 
-    public function setMaxTipAmount(int|null $max_tip_amount): CreateInvoiceLinkRequest
+    public function setMaxTipAmount(?int $max_tip_amount): CreateInvoiceLinkRequest
     {
         $this->max_tip_amount = $max_tip_amount;
         return $this;
     }
 
-    public function getNeedEmail(): bool|null
+    public function getNeedEmail(): ?bool
     {
         return $this->need_email;
     }
 
-    public function setNeedEmail(bool|null $need_email): CreateInvoiceLinkRequest
+    public function setNeedEmail(?bool $need_email): CreateInvoiceLinkRequest
     {
         $this->need_email = $need_email;
         return $this;
     }
 
-    public function getNeedName(): bool|null
+    public function getNeedName(): ?bool
     {
         return $this->need_name;
     }
 
-    public function setNeedName(bool|null $need_name): CreateInvoiceLinkRequest
+    public function setNeedName(?bool $need_name): CreateInvoiceLinkRequest
     {
         $this->need_name = $need_name;
         return $this;
     }
 
-    public function getNeedPhoneNumber(): bool|null
+    public function getNeedPhoneNumber(): ?bool
     {
         return $this->need_phone_number;
     }
 
-    public function setNeedPhoneNumber(bool|null $need_phone_number): CreateInvoiceLinkRequest
+    public function setNeedPhoneNumber(?bool $need_phone_number): CreateInvoiceLinkRequest
     {
         $this->need_phone_number = $need_phone_number;
         return $this;
     }
 
-    public function getNeedShippingAddress(): bool|null
+    public function getNeedShippingAddress(): ?bool
     {
         return $this->need_shipping_address;
     }
 
-    public function setNeedShippingAddress(bool|null $need_shipping_address): CreateInvoiceLinkRequest
+    public function setNeedShippingAddress(?bool $need_shipping_address): CreateInvoiceLinkRequest
     {
         $this->need_shipping_address = $need_shipping_address;
         return $this;
     }
 
-    public function getPhotoHeight(): int|null
+    public function getPhotoHeight(): ?int
     {
         return $this->photo_height;
     }
 
-    public function setPhotoHeight(int|null $photo_height): CreateInvoiceLinkRequest
+    public function setPhotoHeight(?int $photo_height): CreateInvoiceLinkRequest
     {
         $this->photo_height = $photo_height;
         return $this;
     }
 
-    public function getPhotoSize(): int|null
+    public function getPhotoSize(): ?int
     {
         return $this->photo_size;
     }
 
-    public function setPhotoSize(int|null $photo_size): CreateInvoiceLinkRequest
+    public function setPhotoSize(?int $photo_size): CreateInvoiceLinkRequest
     {
         $this->photo_size = $photo_size;
         return $this;
     }
 
-    public function getPhotoUrl(): Url|null
+    public function getPhotoUrl(): ?Url
     {
         return $this->photo_url;
     }
 
-    public function setPhotoUrl(Url|null $photo_url): CreateInvoiceLinkRequest
+    public function setPhotoUrl(?Url $photo_url): CreateInvoiceLinkRequest
     {
         $this->photo_url = $photo_url;
         return $this;
     }
 
-    public function getPhotoWidth(): int|null
+    public function getPhotoWidth(): ?int
     {
         return $this->photo_width;
     }
 
-    public function setPhotoWidth(int|null $photo_width): CreateInvoiceLinkRequest
+    public function setPhotoWidth(?int $photo_width): CreateInvoiceLinkRequest
     {
         $this->photo_width = $photo_width;
         return $this;
     }
 
-    public function getProviderData(): string|null
+    public function getProviderData(): ?string
     {
         return $this->provider_data;
     }
 
-    public function setProviderData(string|null $provider_data): CreateInvoiceLinkRequest
+    public function setProviderData(?string $provider_data): CreateInvoiceLinkRequest
     {
         $this->provider_data = $provider_data;
         return $this;
     }
 
-    public function getSendEmailToProvider(): bool|null
+    public function getSendEmailToProvider(): ?bool
     {
         return $this->send_email_to_provider;
     }
 
-    public function setSendEmailToProvider(bool|null $send_email_to_provider): CreateInvoiceLinkRequest
+    public function setSendEmailToProvider(?bool $send_email_to_provider): CreateInvoiceLinkRequest
     {
         $this->send_email_to_provider = $send_email_to_provider;
         return $this;
     }
 
-    public function getSendPhoneNumberToProvider(): bool|null
+    public function getSendPhoneNumberToProvider(): ?bool
     {
         return $this->send_phone_number_to_provider;
     }
 
-    public function setSendPhoneNumberToProvider(bool|null $send_phone_number_to_provider): CreateInvoiceLinkRequest
+    public function setSendPhoneNumberToProvider(?bool $send_phone_number_to_provider): CreateInvoiceLinkRequest
     {
         $this->send_phone_number_to_provider = $send_phone_number_to_provider;
         return $this;
     }
 
-    public function getSuggestedTipAmounts(): array|null
+    public function getSuggestedTipAmounts(): ?array
     {
         return $this->suggested_tip_amounts;
     }
 
-    public function setSuggestedTipAmounts(array|null $suggested_tip_amounts): CreateInvoiceLinkRequest
+    public function setSuggestedTipAmounts(?array $suggested_tip_amounts): CreateInvoiceLinkRequest
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
         return $this;
     }
 
-    public function getSubscriptionPeriod(): int|null
+    public function getSubscriptionPeriod(): ?int
     {
         return $this->subscription_period;
     }
 
-    public function setSubscriptionPeriod(int|null $subscription_period): CreateInvoiceLinkRequest
+    public function setSubscriptionPeriod(?int $subscription_period): CreateInvoiceLinkRequest
     {
         $this->subscription_period = $subscription_period;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): CreateInvoiceLinkRequest
+    public function setBusinessConnectionId(?string $business_connection_id): CreateInvoiceLinkRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

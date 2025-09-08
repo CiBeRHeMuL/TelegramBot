@@ -17,8 +17,7 @@ abstract class AbstractInputStoryContent implements EntityInterface
 {
     public function __construct(
         protected readonly InputStoryContentTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): InputStoryContentTypeEnum
     {

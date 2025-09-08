@@ -23,9 +23,8 @@ final class ChecklistTasksAdded implements EntityInterface
     public function __construct(
         #[ArrayType(ChecklistTask::class)]
         protected array $tasks,
-        protected Message|null $checklist_message = null,
-    ) {
-    }
+        protected ?Message $checklist_message = null,
+    ) {}
 
     /**
      * @return ChecklistTask[]
@@ -49,7 +48,7 @@ final class ChecklistTasksAdded implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getChecklistMessage(): Message|null
+    public function getChecklistMessage(): ?Message
     {
         return $this->checklist_message;
     }
@@ -59,7 +58,7 @@ final class ChecklistTasksAdded implements EntityInterface
      *
      * @return ChecklistTasksAdded
      */
-    public function setChecklistMessage(Message|null $checklist_message): ChecklistTasksAdded
+    public function setChecklistMessage(?Message $checklist_message): ChecklistTasksAdded
     {
         $this->checklist_message = $checklist_message;
         return $this;

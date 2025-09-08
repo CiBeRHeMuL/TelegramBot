@@ -16,8 +16,7 @@ class SetChatStickerSetRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private string $sticker_set_name,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

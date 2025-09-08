@@ -39,13 +39,13 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
         protected string $id,
         protected Phone $phone_number,
         protected string $first_name,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected string|null $last_name = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $thumbnail_height = null,
-        protected Url|null $thumbnail_url = null,
-        protected int|null $thumbnail_width = null,
-        protected string|null $vcard = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?string $last_name = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $thumbnail_height = null,
+        protected ?Url $thumbnail_url = null,
+        protected ?int $thumbnail_width = null,
+        protected ?string $vcard = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Contact);
     }
@@ -110,7 +110,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -120,7 +120,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultContact
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultContact
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -129,7 +129,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -139,7 +139,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setLastName(string|null $last_name): InlineQueryResultContact
+    public function setLastName(?string $last_name): InlineQueryResultContact
     {
         $this->last_name = $last_name;
         return $this;
@@ -148,7 +148,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -158,7 +158,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultContact
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultContact
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -167,7 +167,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailHeight(): int|null
+    public function getThumbnailHeight(): ?int
     {
         return $this->thumbnail_height;
     }
@@ -177,7 +177,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultContact
+    public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultContact
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
@@ -186,7 +186,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getThumbnailUrl(): Url|null
+    public function getThumbnailUrl(): ?Url
     {
         return $this->thumbnail_url;
     }
@@ -196,7 +196,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultContact
+    public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultContact
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
@@ -205,7 +205,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailWidth(): int|null
+    public function getThumbnailWidth(): ?int
     {
         return $this->thumbnail_width;
     }
@@ -215,7 +215,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultContact
+    public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultContact
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;
@@ -224,7 +224,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getVcard(): string|null
+    public function getVcard(): ?string
     {
         return $this->vcard;
     }
@@ -234,7 +234,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultContact
      */
-    public function setVcard(string|null $vcard): InlineQueryResultContact
+    public function setVcard(?string $vcard): InlineQueryResultContact
     {
         $this->vcard = $vcard;
         return $this;

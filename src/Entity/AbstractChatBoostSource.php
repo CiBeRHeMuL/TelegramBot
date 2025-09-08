@@ -17,8 +17,7 @@ abstract class AbstractChatBoostSource implements EntityInterface
      */
     public function __construct(
         protected readonly ChatBoostSourceEnum $source,
-    ) {
-    }
+    ) {}
 
     public function getSource(): ChatBoostSourceEnum
     {

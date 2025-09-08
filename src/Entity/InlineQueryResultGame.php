@@ -26,7 +26,7 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     public function __construct(
         protected string $id,
         protected string $game_short_name,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Game);
     }
@@ -72,7 +72,7 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -82,7 +82,7 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultGame
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultGame
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultGame
     {
         $this->reply_markup = $reply_markup;
         return $this;

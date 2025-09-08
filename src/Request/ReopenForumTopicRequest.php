@@ -16,8 +16,7 @@ class ReopenForumTopicRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $message_thread_id,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

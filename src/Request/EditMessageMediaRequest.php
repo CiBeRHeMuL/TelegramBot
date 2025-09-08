@@ -27,13 +27,12 @@ class EditMessageMediaRequest implements RequestInterface
      */
     public function __construct(
         private AbstractInputMedia $media,
-        private ChatId|null $chat_id = null,
-        private string|null $inline_message_id = null,
-        private int|null $message_id = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private string|null $business_connection_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?string $inline_message_id = null,
+        private ?int $message_id = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?string $business_connection_id = null,
+    ) {}
 
     public function getMedia(): AbstractInputMedia
     {
@@ -46,56 +45,56 @@ class EditMessageMediaRequest implements RequestInterface
         return $this;
     }
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): EditMessageMediaRequest
+    public function setChatId(?ChatId $chat_id): EditMessageMediaRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
 
-    public function setInlineMessageId(string|null $inline_message_id): EditMessageMediaRequest
+    public function setInlineMessageId(?string $inline_message_id): EditMessageMediaRequest
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
     }
 
-    public function getMessageId(): int|null
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
-    public function setMessageId(int|null $message_id): EditMessageMediaRequest
+    public function setMessageId(?int $message_id): EditMessageMediaRequest
     {
         $this->message_id = $message_id;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): EditMessageMediaRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageMediaRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): EditMessageMediaRequest
+    public function setBusinessConnectionId(?string $business_connection_id): EditMessageMediaRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;

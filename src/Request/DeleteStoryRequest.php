@@ -14,8 +14,7 @@ class DeleteStoryRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private int $story_id,
-    ) {
-    }
+    ) {}
 
     public function getBusinessConnectionId(): string
     {

@@ -14,8 +14,7 @@ final class VideoChatScheduled implements EntityInterface
      */
     public function __construct(
         protected int $start_date,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

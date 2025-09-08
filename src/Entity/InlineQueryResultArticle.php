@@ -34,12 +34,12 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
         protected string $id,
         protected string $title,
         protected AbstractInputMessageContent $input_message_content,
-        protected string|null $description = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $thumbnail_height = null,
-        protected Url|null $thumbnail_url = null,
-        protected int|null $thumbnail_width = null,
-        protected Url|null $url = null,
+        protected ?string $description = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $thumbnail_height = null,
+        protected ?Url $thumbnail_url = null,
+        protected ?int $thumbnail_width = null,
+        protected ?Url $url = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Article);
     }
@@ -104,7 +104,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -114,7 +114,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setDescription(string|null $description): InlineQueryResultArticle
+    public function setDescription(?string $description): InlineQueryResultArticle
     {
         $this->description = $description;
         return $this;
@@ -123,7 +123,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -133,7 +133,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultArticle
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultArticle
     {
         $this->reply_markup = $reply_markup;
         return $this;
@@ -142,7 +142,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailHeight(): int|null
+    public function getThumbnailHeight(): ?int
     {
         return $this->thumbnail_height;
     }
@@ -152,7 +152,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setThumbnailHeight(int|null $thumbnail_height): InlineQueryResultArticle
+    public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultArticle
     {
         $this->thumbnail_height = $thumbnail_height;
         return $this;
@@ -161,7 +161,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getThumbnailUrl(): Url|null
+    public function getThumbnailUrl(): ?Url
     {
         return $this->thumbnail_url;
     }
@@ -171,7 +171,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setThumbnailUrl(Url|null $thumbnail_url): InlineQueryResultArticle
+    public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultArticle
     {
         $this->thumbnail_url = $thumbnail_url;
         return $this;
@@ -180,7 +180,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return int|null
      */
-    public function getThumbnailWidth(): int|null
+    public function getThumbnailWidth(): ?int
     {
         return $this->thumbnail_width;
     }
@@ -190,7 +190,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setThumbnailWidth(int|null $thumbnail_width): InlineQueryResultArticle
+    public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultArticle
     {
         $this->thumbnail_width = $thumbnail_width;
         return $this;
@@ -199,7 +199,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     /**
      * @return Url|null
      */
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
@@ -209,7 +209,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultArticle
      */
-    public function setUrl(Url|null $url): InlineQueryResultArticle
+    public function setUrl(?Url $url): InlineQueryResultArticle
     {
         $this->url = $url;
         return $this;

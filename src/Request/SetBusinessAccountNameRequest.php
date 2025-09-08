@@ -15,9 +15,8 @@ class SetBusinessAccountNameRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private string $first_name,
-        private string|null $last_name = null,
-    ) {
-    }
+        private ?string $last_name = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -41,12 +40,12 @@ class SetBusinessAccountNameRequest implements RequestInterface
         return $this;
     }
 
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
 
-    public function setLastName(string|null $last_name): SetBusinessAccountNameRequest
+    public function setLastName(?string $last_name): SetBusinessAccountNameRequest
     {
         $this->last_name = $last_name;
         return $this;

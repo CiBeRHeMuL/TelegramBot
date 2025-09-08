@@ -25,12 +25,11 @@ final class ChecklistTask implements EntityInterface
     public function __construct(
         protected int $id,
         protected string $text,
-        protected User|null $completed_by_user = null,
-        protected int|null $completion_date = null,
+        protected ?User $completed_by_user = null,
+        protected ?int $completion_date = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $text_entities = null,
-    ) {
-    }
+        protected ?array $text_entities = null,
+    ) {}
 
     /**
      * @return int
@@ -73,7 +72,7 @@ final class ChecklistTask implements EntityInterface
     /**
      * @return User|null
      */
-    public function getCompletedByUser(): User|null
+    public function getCompletedByUser(): ?User
     {
         return $this->completed_by_user;
     }
@@ -83,7 +82,7 @@ final class ChecklistTask implements EntityInterface
      *
      * @return ChecklistTask
      */
-    public function setCompletedByUser(User|null $completed_by_user): ChecklistTask
+    public function setCompletedByUser(?User $completed_by_user): ChecklistTask
     {
         $this->completed_by_user = $completed_by_user;
         return $this;
@@ -92,7 +91,7 @@ final class ChecklistTask implements EntityInterface
     /**
      * @return int|null
      */
-    public function getCompletionDate(): int|null
+    public function getCompletionDate(): ?int
     {
         return $this->completion_date;
     }
@@ -102,7 +101,7 @@ final class ChecklistTask implements EntityInterface
      *
      * @return ChecklistTask
      */
-    public function setCompletionDate(int|null $completion_date): ChecklistTask
+    public function setCompletionDate(?int $completion_date): ChecklistTask
     {
         $this->completion_date = $completion_date;
         return $this;
@@ -111,7 +110,7 @@ final class ChecklistTask implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
@@ -121,7 +120,7 @@ final class ChecklistTask implements EntityInterface
      *
      * @return ChecklistTask
      */
-    public function setTextEntities(array|null $text_entities): ChecklistTask
+    public function setTextEntities(?array $text_entities): ChecklistTask
     {
         $this->text_entities = $text_entities;
         return $this;

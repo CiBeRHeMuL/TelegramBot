@@ -30,10 +30,9 @@ final class ChatJoinRequest implements EntityInterface
         protected User $from,
         protected int $user_chat_id,
         protected int $date,
-        protected string|null $bio = null,
-        protected ChatInviteLink|null $invite_link = null,
-    ) {
-    }
+        protected ?string $bio = null,
+        protected ?ChatInviteLink $invite_link = null,
+    ) {}
 
     /**
      * @return Chat
@@ -114,7 +113,7 @@ final class ChatJoinRequest implements EntityInterface
     /**
      * @return string|null
      */
-    public function getBio(): string|null
+    public function getBio(): ?string
     {
         return $this->bio;
     }
@@ -124,7 +123,7 @@ final class ChatJoinRequest implements EntityInterface
      *
      * @return ChatJoinRequest
      */
-    public function setBio(string|null $bio): ChatJoinRequest
+    public function setBio(?string $bio): ChatJoinRequest
     {
         $this->bio = $bio;
         return $this;
@@ -133,7 +132,7 @@ final class ChatJoinRequest implements EntityInterface
     /**
      * @return ChatInviteLink|null
      */
-    public function getInviteLink(): ChatInviteLink|null
+    public function getInviteLink(): ?ChatInviteLink
     {
         return $this->invite_link;
     }
@@ -143,7 +142,7 @@ final class ChatJoinRequest implements EntityInterface
      *
      * @return ChatJoinRequest
      */
-    public function setInviteLink(ChatInviteLink|null $invite_link): ChatJoinRequest
+    public function setInviteLink(?ChatInviteLink $invite_link): ChatJoinRequest
     {
         $this->invite_link = $invite_link;
         return $this;

@@ -39,12 +39,11 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
         protected float $longitude,
         protected string $title,
         protected string $address,
-        protected string|null $foursquare_id = null,
-        protected string|null $foursquare_type = null,
-        protected string|null $google_place_id = null,
-        protected string|null $google_place_type = null,
-    ) {
-    }
+        protected ?string $foursquare_id = null,
+        protected ?string $foursquare_type = null,
+        protected ?string $google_place_id = null,
+        protected ?string $google_place_type = null,
+    ) {}
 
     /**
      * @return float
@@ -125,7 +124,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getFoursquareId(): string|null
+    public function getFoursquareId(): ?string
     {
         return $this->foursquare_id;
     }
@@ -135,7 +134,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
      *
      * @return InputVenueMessageContent
      */
-    public function setFoursquareId(string|null $foursquare_id): InputVenueMessageContent
+    public function setFoursquareId(?string $foursquare_id): InputVenueMessageContent
     {
         $this->foursquare_id = $foursquare_id;
         return $this;
@@ -144,7 +143,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getFoursquareType(): string|null
+    public function getFoursquareType(): ?string
     {
         return $this->foursquare_type;
     }
@@ -154,7 +153,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
      *
      * @return InputVenueMessageContent
      */
-    public function setFoursquareType(string|null $foursquare_type): InputVenueMessageContent
+    public function setFoursquareType(?string $foursquare_type): InputVenueMessageContent
     {
         $this->foursquare_type = $foursquare_type;
         return $this;
@@ -163,7 +162,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getGooglePlaceId(): string|null
+    public function getGooglePlaceId(): ?string
     {
         return $this->google_place_id;
     }
@@ -173,7 +172,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
      *
      * @return InputVenueMessageContent
      */
-    public function setGooglePlaceId(string|null $google_place_id): InputVenueMessageContent
+    public function setGooglePlaceId(?string $google_place_id): InputVenueMessageContent
     {
         $this->google_place_id = $google_place_id;
         return $this;
@@ -182,7 +181,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getGooglePlaceType(): string|null
+    public function getGooglePlaceType(): ?string
     {
         return $this->google_place_type;
     }
@@ -192,7 +191,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
      *
      * @return InputVenueMessageContent
      */
-    public function setGooglePlaceType(string|null $google_place_type): InputVenueMessageContent
+    public function setGooglePlaceType(?string $google_place_type): InputVenueMessageContent
     {
         $this->google_place_type = $google_place_type;
         return $this;

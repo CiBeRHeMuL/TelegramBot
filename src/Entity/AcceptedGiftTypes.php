@@ -20,8 +20,7 @@ final class AcceptedGiftTypes implements EntityInterface
         protected bool $limited_gifts,
         protected bool $unique_gifts,
         protected bool $premium_subscription,
-    ) {
-    }
+    ) {}
 
     /**
      * @return bool

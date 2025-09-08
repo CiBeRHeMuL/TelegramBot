@@ -20,8 +20,7 @@ abstract class AbstractMenuButton implements EntityInterface
 {
     public function __construct(
         protected readonly MenuButtonTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): MenuButtonTypeEnum
     {

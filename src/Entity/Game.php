@@ -34,12 +34,11 @@ final class Game implements EntityInterface
         protected string $description,
         #[ArrayType(PhotoSize::class)]
         protected array $photo,
-        protected string|null $text = null,
+        protected ?string $text = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $text_entities = null,
-        protected Animation|null $animation = null,
-    ) {
-    }
+        protected ?array $text_entities = null,
+        protected ?Animation $animation = null,
+    ) {}
 
     /**
      * @return string
@@ -101,7 +100,7 @@ final class Game implements EntityInterface
     /**
      * @return string|null
      */
-    public function getText(): string|null
+    public function getText(): ?string
     {
         return $this->text;
     }
@@ -111,7 +110,7 @@ final class Game implements EntityInterface
      *
      * @return Game
      */
-    public function setText(string|null $text): Game
+    public function setText(?string $text): Game
     {
         $this->text = $text;
         return $this;
@@ -120,7 +119,7 @@ final class Game implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getTextEntities(): array|null
+    public function getTextEntities(): ?array
     {
         return $this->text_entities;
     }
@@ -130,7 +129,7 @@ final class Game implements EntityInterface
      *
      * @return Game
      */
-    public function setTextEntities(array|null $text_entities): Game
+    public function setTextEntities(?array $text_entities): Game
     {
         $this->text_entities = $text_entities;
         return $this;
@@ -139,7 +138,7 @@ final class Game implements EntityInterface
     /**
      * @return Animation|null
      */
-    public function getAnimation(): Animation|null
+    public function getAnimation(): ?Animation
     {
         return $this->animation;
     }
@@ -149,7 +148,7 @@ final class Game implements EntityInterface
      *
      * @return Game
      */
-    public function setAnimation(Animation|null $animation): Game
+    public function setAnimation(?Animation $animation): Game
     {
         $this->animation = $animation;
         return $this;

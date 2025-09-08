@@ -17,9 +17,8 @@ final class Birthdate implements EntityInterface
     public function __construct(
         protected int $day,
         protected int $month,
-        protected int|null $year = null,
-    ) {
-    }
+        protected ?int $year = null,
+    ) {}
 
     /**
      * @return int
@@ -62,7 +61,7 @@ final class Birthdate implements EntityInterface
     /**
      * @return int|null
      */
-    public function getYear(): int|null
+    public function getYear(): ?int
     {
         return $this->year;
     }
@@ -72,7 +71,7 @@ final class Birthdate implements EntityInterface
      *
      * @return Birthdate
      */
-    public function setYear(int|null $year): Birthdate
+    public function setYear(?int $year): Birthdate
     {
         $this->year = $year;
         return $this;

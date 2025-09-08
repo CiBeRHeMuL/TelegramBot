@@ -20,8 +20,7 @@ class SetChatPhotoRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private Filename|Url $photo,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

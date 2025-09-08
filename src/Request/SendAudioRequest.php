@@ -54,23 +54,22 @@ class SendAudioRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private string|Filename|Url $audio,
-        private string|null $business_connection_id = null,
-        private int|null $message_thread_id = null,
-        private string|null $caption = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private array|null $caption_entities = null,
-        private int|null $duration = null,
-        private string|null $performer = null,
-        private string|null $title = null,
+        private ?string $business_connection_id = null,
+        private ?int $message_thread_id = null,
+        private ?string $caption = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?array $caption_entities = null,
+        private ?int $duration = null,
+        private ?string $performer = null,
+        private ?string $title = null,
         private string|Filename|Url|null $thumbnail = null,
-        private bool|null $disable_notification = null,
-        private bool|null $protect_content = null,
-        private ReplyParameters|null $reply_parameters = null,
+        private ?bool $disable_notification = null,
+        private ?bool $protect_content = null,
+        private ?ReplyParameters $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-    ) {
-    }
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -94,89 +93,89 @@ class SendAudioRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendAudioRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendAudioRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendAudioRequest
+    public function setMessageThreadId(?int $message_thread_id): SendAudioRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): SendAudioRequest
+    public function setCaption(?string $caption): SendAudioRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): SendAudioRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): SendAudioRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): SendAudioRequest
+    public function setCaptionEntities(?array $caption_entities): SendAudioRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    public function setDuration(int|null $duration): SendAudioRequest
+    public function setDuration(?int $duration): SendAudioRequest
     {
         $this->duration = $duration;
         return $this;
     }
 
-    public function getPerformer(): string|null
+    public function getPerformer(): ?string
     {
         return $this->performer;
     }
 
-    public function setPerformer(string|null $performer): SendAudioRequest
+    public function setPerformer(?string $performer): SendAudioRequest
     {
         $this->performer = $performer;
         return $this;
     }
 
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string|null $title): SendAudioRequest
+    public function setTitle(?string $title): SendAudioRequest
     {
         $this->title = $title;
         return $this;
@@ -193,34 +192,34 @@ class SendAudioRequest implements RequestInterface
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendAudioRequest
+    public function setDisableNotification(?bool $disable_notification): SendAudioRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendAudioRequest
+    public function setProtectContent(?bool $protect_content): SendAudioRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendAudioRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendAudioRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
@@ -237,23 +236,23 @@ class SendAudioRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendAudioRequest
+    public function setMessageEffectId(?string $message_effect_id): SendAudioRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendAudioRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendAudioRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;

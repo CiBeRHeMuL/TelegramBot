@@ -19,8 +19,7 @@ abstract class AbstractMessageOrigin implements EntityInterface
 {
     public function __construct(
         protected readonly MessageOriginTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): MessageOriginTypeEnum
     {

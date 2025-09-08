@@ -19,8 +19,7 @@ final class ChatBoostUpdated implements EntityInterface
     public function __construct(
         protected Chat $chat,
         protected ChatBoost $boost,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Chat

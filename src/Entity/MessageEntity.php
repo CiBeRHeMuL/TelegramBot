@@ -38,12 +38,11 @@ final class MessageEntity implements EntityInterface
         protected MessageEntityTypeEnum $type,
         protected int $offset,
         protected int $length,
-        protected Url|null $url = null,
-        protected User|null $user = null,
-        protected string|null $language = null,
-        protected string|null $custom_emoji_id = null,
-    ) {
-    }
+        protected ?Url $url = null,
+        protected ?User $user = null,
+        protected ?string $language = null,
+        protected ?string $custom_emoji_id = null,
+    ) {}
 
     /**
      * @return MessageEntityTypeEnum
@@ -105,7 +104,7 @@ final class MessageEntity implements EntityInterface
     /**
      * @return Url|null
      */
-    public function getUrl(): Url|null
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
@@ -115,7 +114,7 @@ final class MessageEntity implements EntityInterface
      *
      * @return MessageEntity
      */
-    public function setUrl(Url|null $url): MessageEntity
+    public function setUrl(?Url $url): MessageEntity
     {
         $this->url = $url;
         return $this;
@@ -124,7 +123,7 @@ final class MessageEntity implements EntityInterface
     /**
      * @return User|null
      */
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -134,7 +133,7 @@ final class MessageEntity implements EntityInterface
      *
      * @return MessageEntity
      */
-    public function setUser(User|null $user): MessageEntity
+    public function setUser(?User $user): MessageEntity
     {
         $this->user = $user;
         return $this;
@@ -143,7 +142,7 @@ final class MessageEntity implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLanguage(): string|null
+    public function getLanguage(): ?string
     {
         return $this->language;
     }
@@ -153,7 +152,7 @@ final class MessageEntity implements EntityInterface
      *
      * @return MessageEntity
      */
-    public function setLanguage(string|null $language): MessageEntity
+    public function setLanguage(?string $language): MessageEntity
     {
         $this->language = $language;
         return $this;
@@ -162,7 +161,7 @@ final class MessageEntity implements EntityInterface
     /**
      * @return string|null
      */
-    public function getCustomEmojiId(): string|null
+    public function getCustomEmojiId(): ?string
     {
         return $this->custom_emoji_id;
     }
@@ -172,7 +171,7 @@ final class MessageEntity implements EntityInterface
      *
      * @return MessageEntity
      */
-    public function setCustomEmojiId(string|null $custom_emoji_id): MessageEntity
+    public function setCustomEmojiId(?string $custom_emoji_id): MessageEntity
     {
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;

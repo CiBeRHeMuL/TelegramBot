@@ -22,10 +22,9 @@ final class SuggestedPostInfo implements EntityInterface
      */
     public function __construct(
         protected SuggestedPostInfoStateEnum $state,
-        protected SuggestedPostPrice|null $price = null,
-        protected int|null $send_date = null,
-    ) {
-    }
+        protected ?SuggestedPostPrice $price = null,
+        protected ?int $send_date = null,
+    ) {}
 
     /**
      * @return SuggestedPostInfoStateEnum
@@ -49,7 +48,7 @@ final class SuggestedPostInfo implements EntityInterface
     /**
      * @return SuggestedPostPrice|null
      */
-    public function getPrice(): SuggestedPostPrice|null
+    public function getPrice(): ?SuggestedPostPrice
     {
         return $this->price;
     }
@@ -59,7 +58,7 @@ final class SuggestedPostInfo implements EntityInterface
      *
      * @return SuggestedPostInfo
      */
-    public function setPrice(SuggestedPostPrice|null $price): SuggestedPostInfo
+    public function setPrice(?SuggestedPostPrice $price): SuggestedPostInfo
     {
         $this->price = $price;
         return $this;
@@ -68,7 +67,7 @@ final class SuggestedPostInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getSendDate(): int|null
+    public function getSendDate(): ?int
     {
         return $this->send_date;
     }
@@ -78,7 +77,7 @@ final class SuggestedPostInfo implements EntityInterface
      *
      * @return SuggestedPostInfo
      */
-    public function setSendDate(int|null $send_date): SuggestedPostInfo
+    public function setSendDate(?int $send_date): SuggestedPostInfo
     {
         $this->send_date = $send_date;
         return $this;

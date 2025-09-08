@@ -95,33 +95,32 @@ class SendInvoiceRequest implements RequestInterface
         private string $payload,
         private array $prices,
         private string $title,
-        private string|null $provider_token = null,
-        private bool|null $disable_notification = null,
-        private bool|null $is_flexible = null,
-        private int|null $max_tip_amount = null,
-        private int|null $message_thread_id = null,
-        private bool|null $need_email = null,
-        private bool|null $need_name = null,
-        private bool|null $need_phone_number = null,
-        private bool|null $need_shipping_address = null,
-        private int|null $photo_height = null,
-        private int|null $photo_size = null,
-        private Url|null $photo_url = null,
-        private int|null $photo_width = null,
-        private bool|null $protect_content = null,
-        private string|null $provider_data = null,
-        private InlineKeyboardMarkup|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-        private bool|null $send_email_to_provider = null,
-        private bool|null $send_phone_number_to_provider = null,
-        private string|null $start_parameter = null,
-        private array|null $suggested_tip_amounts = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?string $provider_token = null,
+        private ?bool $disable_notification = null,
+        private ?bool $is_flexible = null,
+        private ?int $max_tip_amount = null,
+        private ?int $message_thread_id = null,
+        private ?bool $need_email = null,
+        private ?bool $need_name = null,
+        private ?bool $need_phone_number = null,
+        private ?bool $need_shipping_address = null,
+        private ?int $photo_height = null,
+        private ?int $photo_size = null,
+        private ?Url $photo_url = null,
+        private ?int $photo_width = null,
+        private ?bool $protect_content = null,
+        private ?string $provider_data = null,
+        private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?ReplyParameters $reply_parameters = null,
+        private ?bool $send_email_to_provider = null,
+        private ?bool $send_phone_number_to_provider = null,
+        private ?string $start_parameter = null,
+        private ?array $suggested_tip_amounts = null,
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -189,276 +188,276 @@ class SendInvoiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getProviderToken(): string|null
+    public function getProviderToken(): ?string
     {
         return $this->provider_token;
     }
 
-    public function setProviderToken(string|null $provider_token): SendInvoiceRequest
+    public function setProviderToken(?string $provider_token): SendInvoiceRequest
     {
         $this->provider_token = $provider_token;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendInvoiceRequest
+    public function setDisableNotification(?bool $disable_notification): SendInvoiceRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getIsFlexible(): bool|null
+    public function getIsFlexible(): ?bool
     {
         return $this->is_flexible;
     }
 
-    public function setIsFlexible(bool|null $is_flexible): SendInvoiceRequest
+    public function setIsFlexible(?bool $is_flexible): SendInvoiceRequest
     {
         $this->is_flexible = $is_flexible;
         return $this;
     }
 
-    public function getMaxTipAmount(): int|null
+    public function getMaxTipAmount(): ?int
     {
         return $this->max_tip_amount;
     }
 
-    public function setMaxTipAmount(int|null $max_tip_amount): SendInvoiceRequest
+    public function setMaxTipAmount(?int $max_tip_amount): SendInvoiceRequest
     {
         $this->max_tip_amount = $max_tip_amount;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendInvoiceRequest
+    public function setMessageThreadId(?int $message_thread_id): SendInvoiceRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getNeedEmail(): bool|null
+    public function getNeedEmail(): ?bool
     {
         return $this->need_email;
     }
 
-    public function setNeedEmail(bool|null $need_email): SendInvoiceRequest
+    public function setNeedEmail(?bool $need_email): SendInvoiceRequest
     {
         $this->need_email = $need_email;
         return $this;
     }
 
-    public function getNeedName(): bool|null
+    public function getNeedName(): ?bool
     {
         return $this->need_name;
     }
 
-    public function setNeedName(bool|null $need_name): SendInvoiceRequest
+    public function setNeedName(?bool $need_name): SendInvoiceRequest
     {
         $this->need_name = $need_name;
         return $this;
     }
 
-    public function getNeedPhoneNumber(): bool|null
+    public function getNeedPhoneNumber(): ?bool
     {
         return $this->need_phone_number;
     }
 
-    public function setNeedPhoneNumber(bool|null $need_phone_number): SendInvoiceRequest
+    public function setNeedPhoneNumber(?bool $need_phone_number): SendInvoiceRequest
     {
         $this->need_phone_number = $need_phone_number;
         return $this;
     }
 
-    public function getNeedShippingAddress(): bool|null
+    public function getNeedShippingAddress(): ?bool
     {
         return $this->need_shipping_address;
     }
 
-    public function setNeedShippingAddress(bool|null $need_shipping_address): SendInvoiceRequest
+    public function setNeedShippingAddress(?bool $need_shipping_address): SendInvoiceRequest
     {
         $this->need_shipping_address = $need_shipping_address;
         return $this;
     }
 
-    public function getPhotoHeight(): int|null
+    public function getPhotoHeight(): ?int
     {
         return $this->photo_height;
     }
 
-    public function setPhotoHeight(int|null $photo_height): SendInvoiceRequest
+    public function setPhotoHeight(?int $photo_height): SendInvoiceRequest
     {
         $this->photo_height = $photo_height;
         return $this;
     }
 
-    public function getPhotoSize(): int|null
+    public function getPhotoSize(): ?int
     {
         return $this->photo_size;
     }
 
-    public function setPhotoSize(int|null $photo_size): SendInvoiceRequest
+    public function setPhotoSize(?int $photo_size): SendInvoiceRequest
     {
         $this->photo_size = $photo_size;
         return $this;
     }
 
-    public function getPhotoUrl(): Url|null
+    public function getPhotoUrl(): ?Url
     {
         return $this->photo_url;
     }
 
-    public function setPhotoUrl(Url|null $photo_url): SendInvoiceRequest
+    public function setPhotoUrl(?Url $photo_url): SendInvoiceRequest
     {
         $this->photo_url = $photo_url;
         return $this;
     }
 
-    public function getPhotoWidth(): int|null
+    public function getPhotoWidth(): ?int
     {
         return $this->photo_width;
     }
 
-    public function setPhotoWidth(int|null $photo_width): SendInvoiceRequest
+    public function setPhotoWidth(?int $photo_width): SendInvoiceRequest
     {
         $this->photo_width = $photo_width;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendInvoiceRequest
+    public function setProtectContent(?bool $protect_content): SendInvoiceRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getProviderData(): string|null
+    public function getProviderData(): ?string
     {
         return $this->provider_data;
     }
 
-    public function setProviderData(string|null $provider_data): SendInvoiceRequest
+    public function setProviderData(?string $provider_data): SendInvoiceRequest
     {
         $this->provider_data = $provider_data;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): SendInvoiceRequest
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): SendInvoiceRequest
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendInvoiceRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendInvoiceRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
 
-    public function getSendEmailToProvider(): bool|null
+    public function getSendEmailToProvider(): ?bool
     {
         return $this->send_email_to_provider;
     }
 
-    public function setSendEmailToProvider(bool|null $send_email_to_provider): SendInvoiceRequest
+    public function setSendEmailToProvider(?bool $send_email_to_provider): SendInvoiceRequest
     {
         $this->send_email_to_provider = $send_email_to_provider;
         return $this;
     }
 
-    public function getSendPhoneNumberToProvider(): bool|null
+    public function getSendPhoneNumberToProvider(): ?bool
     {
         return $this->send_phone_number_to_provider;
     }
 
-    public function setSendPhoneNumberToProvider(bool|null $send_phone_number_to_provider): SendInvoiceRequest
+    public function setSendPhoneNumberToProvider(?bool $send_phone_number_to_provider): SendInvoiceRequest
     {
         $this->send_phone_number_to_provider = $send_phone_number_to_provider;
         return $this;
     }
 
-    public function getStartParameter(): string|null
+    public function getStartParameter(): ?string
     {
         return $this->start_parameter;
     }
 
-    public function setStartParameter(string|null $start_parameter): SendInvoiceRequest
+    public function setStartParameter(?string $start_parameter): SendInvoiceRequest
     {
         $this->start_parameter = $start_parameter;
         return $this;
     }
 
-    public function getSuggestedTipAmounts(): array|null
+    public function getSuggestedTipAmounts(): ?array
     {
         return $this->suggested_tip_amounts;
     }
 
-    public function setSuggestedTipAmounts(array|null $suggested_tip_amounts): SendInvoiceRequest
+    public function setSuggestedTipAmounts(?array $suggested_tip_amounts): SendInvoiceRequest
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendInvoiceRequest
+    public function setMessageEffectId(?string $message_effect_id): SendInvoiceRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendInvoiceRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendInvoiceRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendInvoiceRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendInvoiceRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendInvoiceRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendInvoiceRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

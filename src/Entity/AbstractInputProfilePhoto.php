@@ -17,8 +17,7 @@ abstract class AbstractInputProfilePhoto implements EntityInterface
 {
     public function __construct(
         protected readonly InputProfilePhotoTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): InputProfilePhotoTypeEnum
     {

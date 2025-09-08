@@ -83,30 +83,29 @@ class SendVideoRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private Filename|Url|string $video,
-        private string|null $business_connection_id = null,
-        private int|null $message_thread_id = null,
-        private int|null $duration = null,
-        private int|null $width = null,
-        private int|null $height = null,
+        private ?string $business_connection_id = null,
+        private ?int $message_thread_id = null,
+        private ?int $duration = null,
+        private ?int $width = null,
+        private ?int $height = null,
         private Filename|Url|string|null $thumbnail = null,
-        private string|null $caption = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-        private array|null $caption_entities = null,
-        private bool|null $has_spoiler = null,
-        private bool|null $supports_streaming = null,
-        private bool|null $disable_notification = null,
-        private bool|null $protect_content = null,
-        private ReplyParameters|null $reply_parameters = null,
+        private ?string $caption = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+        private ?array $caption_entities = null,
+        private ?bool $has_spoiler = null,
+        private ?bool $supports_streaming = null,
+        private ?bool $disable_notification = null,
+        private ?bool $protect_content = null,
+        private ?ReplyParameters $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private string|null $message_effect_id = null,
-        private bool|null $show_caption_above_media = null,
-        private bool|null $allow_paid_broadcast = null,
+        private ?string $message_effect_id = null,
+        private ?bool $show_caption_above_media = null,
+        private ?bool $allow_paid_broadcast = null,
         private Filename|Url|string|null $cover = null,
-        private int|null $start_timestamp = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?int $start_timestamp = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -130,56 +129,56 @@ class SendVideoRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendVideoRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendVideoRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendVideoRequest
+    public function setMessageThreadId(?int $message_thread_id): SendVideoRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    public function setDuration(int|null $duration): SendVideoRequest
+    public function setDuration(?int $duration): SendVideoRequest
     {
         $this->duration = $duration;
         return $this;
     }
 
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function setWidth(int|null $width): SendVideoRequest
+    public function setWidth(?int $width): SendVideoRequest
     {
         $this->width = $width;
         return $this;
     }
 
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    public function setHeight(int|null $height): SendVideoRequest
+    public function setHeight(?int $height): SendVideoRequest
     {
         $this->height = $height;
         return $this;
@@ -196,89 +195,89 @@ class SendVideoRequest implements RequestInterface
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): SendVideoRequest
+    public function setCaption(?string $caption): SendVideoRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): SendVideoRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): SendVideoRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): SendVideoRequest
+    public function setCaptionEntities(?array $caption_entities): SendVideoRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getHasSpoiler(): bool|null
+    public function getHasSpoiler(): ?bool
     {
         return $this->has_spoiler;
     }
 
-    public function setHasSpoiler(bool|null $has_spoiler): SendVideoRequest
+    public function setHasSpoiler(?bool $has_spoiler): SendVideoRequest
     {
         $this->has_spoiler = $has_spoiler;
         return $this;
     }
 
-    public function getSupportsStreaming(): bool|null
+    public function getSupportsStreaming(): ?bool
     {
         return $this->supports_streaming;
     }
 
-    public function setSupportsStreaming(bool|null $supports_streaming): SendVideoRequest
+    public function setSupportsStreaming(?bool $supports_streaming): SendVideoRequest
     {
         $this->supports_streaming = $supports_streaming;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendVideoRequest
+    public function setDisableNotification(?bool $disable_notification): SendVideoRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendVideoRequest
+    public function setProtectContent(?bool $protect_content): SendVideoRequest
     {
         $this->protect_content = $protect_content;
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendVideoRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendVideoRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
@@ -295,34 +294,34 @@ class SendVideoRequest implements RequestInterface
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendVideoRequest
+    public function setMessageEffectId(?string $message_effect_id): SendVideoRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
 
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): SendVideoRequest
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): SendVideoRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendVideoRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendVideoRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
@@ -339,34 +338,34 @@ class SendVideoRequest implements RequestInterface
         return $this;
     }
 
-    public function getStartTimestamp(): int|null
+    public function getStartTimestamp(): ?int
     {
         return $this->start_timestamp;
     }
 
-    public function setStartTimestamp(int|null $start_timestamp): SendVideoRequest
+    public function setStartTimestamp(?int $start_timestamp): SendVideoRequest
     {
         $this->start_timestamp = $start_timestamp;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendVideoRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendVideoRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendVideoRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendVideoRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

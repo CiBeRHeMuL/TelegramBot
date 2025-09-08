@@ -24,8 +24,7 @@ final class ChatPhoto implements EntityInterface
         protected string $small_file_unique_id,
         protected string $big_file_id,
         protected string $big_file_unique_id,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

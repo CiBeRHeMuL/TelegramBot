@@ -31,11 +31,10 @@ final class LoginUrl implements EntityInterface
      */
     public function __construct(
         protected Url $url,
-        protected string|null $bot_username = null,
-        protected string|null $forward_text = null,
-        protected bool|null $request_write_access = null,
-    ) {
-    }
+        protected ?string $bot_username = null,
+        protected ?string $forward_text = null,
+        protected ?bool $request_write_access = null,
+    ) {}
 
     public function getUrl(): Url
     {
@@ -48,34 +47,34 @@ final class LoginUrl implements EntityInterface
         return $this;
     }
 
-    public function getBotUsername(): string|null
+    public function getBotUsername(): ?string
     {
         return $this->bot_username;
     }
 
-    public function setBotUsername(string|null $bot_username): LoginUrl
+    public function setBotUsername(?string $bot_username): LoginUrl
     {
         $this->bot_username = $bot_username;
         return $this;
     }
 
-    public function getForwardText(): string|null
+    public function getForwardText(): ?string
     {
         return $this->forward_text;
     }
 
-    public function setForwardText(string|null $forward_text): LoginUrl
+    public function setForwardText(?string $forward_text): LoginUrl
     {
         $this->forward_text = $forward_text;
         return $this;
     }
 
-    public function getRequestWriteAccess(): bool|null
+    public function getRequestWriteAccess(): ?bool
     {
         return $this->request_write_access;
     }
 
-    public function setRequestWriteAccess(bool|null $request_write_access): LoginUrl
+    public function setRequestWriteAccess(?bool $request_write_access): LoginUrl
     {
         $this->request_write_access = $request_write_access;
         return $this;

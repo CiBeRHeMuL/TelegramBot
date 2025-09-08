@@ -8,12 +8,12 @@ class GetBusinessAccountGiftsResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $rawResponse,
-        private readonly OwnedGifts|null $gifts = null,
+        private readonly ?OwnedGifts $gifts = null,
     ) {
         parent::__construct($rawResponse);
     }
 
-    public function getGifts(): OwnedGifts|null
+    public function getGifts(): ?OwnedGifts
     {
         return $this->gifts;
     }

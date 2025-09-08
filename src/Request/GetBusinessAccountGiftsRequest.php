@@ -21,16 +21,15 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
      */
     public function __construct(
         private string $business_connection_id,
-        private bool|null $exclude_limited = null,
-        private bool|null $exclude_saved = null,
-        private bool|null $exclude_unique = null,
-        private bool|null $exclude_unlimited = null,
-        private bool|null $exclude_unsaved = null,
-        private int|null $limit = null,
-        private string|null $offset = null,
-        private bool|null $sort_by_price = null,
-    ) {
-    }
+        private ?bool $exclude_limited = null,
+        private ?bool $exclude_saved = null,
+        private ?bool $exclude_unique = null,
+        private ?bool $exclude_unlimited = null,
+        private ?bool $exclude_unsaved = null,
+        private ?int $limit = null,
+        private ?string $offset = null,
+        private ?bool $sort_by_price = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -43,89 +42,89 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
         return $this;
     }
 
-    public function getExcludeLimited(): bool|null
+    public function getExcludeLimited(): ?bool
     {
         return $this->exclude_limited;
     }
 
-    public function setExcludeLimited(bool|null $exclude_limited): GetBusinessAccountGiftsRequest
+    public function setExcludeLimited(?bool $exclude_limited): GetBusinessAccountGiftsRequest
     {
         $this->exclude_limited = $exclude_limited;
         return $this;
     }
 
-    public function getExcludeSaved(): bool|null
+    public function getExcludeSaved(): ?bool
     {
         return $this->exclude_saved;
     }
 
-    public function setExcludeSaved(bool|null $exclude_saved): GetBusinessAccountGiftsRequest
+    public function setExcludeSaved(?bool $exclude_saved): GetBusinessAccountGiftsRequest
     {
         $this->exclude_saved = $exclude_saved;
         return $this;
     }
 
-    public function getExcludeUnique(): bool|null
+    public function getExcludeUnique(): ?bool
     {
         return $this->exclude_unique;
     }
 
-    public function setExcludeUnique(bool|null $exclude_unique): GetBusinessAccountGiftsRequest
+    public function setExcludeUnique(?bool $exclude_unique): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unique = $exclude_unique;
         return $this;
     }
 
-    public function getExcludeUnlimited(): bool|null
+    public function getExcludeUnlimited(): ?bool
     {
         return $this->exclude_unlimited;
     }
 
-    public function setExcludeUnlimited(bool|null $exclude_unlimited): GetBusinessAccountGiftsRequest
+    public function setExcludeUnlimited(?bool $exclude_unlimited): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unlimited = $exclude_unlimited;
         return $this;
     }
 
-    public function getExcludeUnsaved(): bool|null
+    public function getExcludeUnsaved(): ?bool
     {
         return $this->exclude_unsaved;
     }
 
-    public function setExcludeUnsaved(bool|null $exclude_unsaved): GetBusinessAccountGiftsRequest
+    public function setExcludeUnsaved(?bool $exclude_unsaved): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unsaved = $exclude_unsaved;
         return $this;
     }
 
-    public function getLimit(): int|null
+    public function getLimit(): ?int
     {
         return $this->limit;
     }
 
-    public function setLimit(int|null $limit): GetBusinessAccountGiftsRequest
+    public function setLimit(?int $limit): GetBusinessAccountGiftsRequest
     {
         $this->limit = $limit;
         return $this;
     }
 
-    public function getOffset(): string|null
+    public function getOffset(): ?string
     {
         return $this->offset;
     }
 
-    public function setOffset(string|null $offset): GetBusinessAccountGiftsRequest
+    public function setOffset(?string $offset): GetBusinessAccountGiftsRequest
     {
         $this->offset = $offset;
         return $this;
     }
 
-    public function getSortByPrice(): bool|null
+    public function getSortByPrice(): ?bool
     {
         return $this->sort_by_price;
     }
 
-    public function setSortByPrice(bool|null $sort_by_price): GetBusinessAccountGiftsRequest
+    public function setSortByPrice(?bool $sort_by_price): GetBusinessAccountGiftsRequest
     {
         $this->sort_by_price = $sort_by_price;
         return $this;

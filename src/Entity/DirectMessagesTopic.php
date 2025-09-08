@@ -17,9 +17,8 @@ final class DirectMessagesTopic implements EntityInterface
      */
     public function __construct(
         protected int $topic_id,
-        protected User|null $user = null,
-    ) {
-    }
+        protected ?User $user = null,
+    ) {}
 
     /**
      * @return int
@@ -43,7 +42,7 @@ final class DirectMessagesTopic implements EntityInterface
     /**
      * @return User|null
      */
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -53,7 +52,7 @@ final class DirectMessagesTopic implements EntityInterface
      *
      * @return DirectMessagesTopic
      */
-    public function setUser(User|null $user): DirectMessagesTopic
+    public function setUser(?User $user): DirectMessagesTopic
     {
         $this->user = $user;
         return $this;

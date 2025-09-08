@@ -18,8 +18,7 @@ class SetChatAdministratorCustomTitleRequest implements RequestInterface
         private ChatId $chat_id,
         private string $custom_title,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

@@ -17,8 +17,7 @@ final class PreparedInlineMessage implements EntityInterface
     public function __construct(
         protected string $id,
         protected int $expiration_date,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

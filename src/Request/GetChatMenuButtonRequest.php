@@ -14,16 +14,15 @@ class GetChatMenuButtonRequest implements RequestInterface
      * be returned
      */
     public function __construct(
-        private ChatId|null $chat_id = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+    ) {}
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): GetChatMenuButtonRequest
+    public function setChatId(?ChatId $chat_id): GetChatMenuButtonRequest
     {
         $this->chat_id = $chat_id;
         return $this;

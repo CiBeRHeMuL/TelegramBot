@@ -18,9 +18,8 @@ class UnbanChatMemberRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $user_id,
-        private bool|null $only_if_banned = null,
-    ) {
-    }
+        private ?bool $only_if_banned = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -44,12 +43,12 @@ class UnbanChatMemberRequest implements RequestInterface
         return $this;
     }
 
-    public function getOnlyIfBanned(): bool|null
+    public function getOnlyIfBanned(): ?bool
     {
         return $this->only_if_banned;
     }
 
-    public function setOnlyIfBanned(bool|null $only_if_banned): UnbanChatMemberRequest
+    public function setOnlyIfBanned(?bool $only_if_banned): UnbanChatMemberRequest
     {
         $this->only_if_banned = $only_if_banned;
         return $this;

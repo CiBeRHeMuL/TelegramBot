@@ -8,12 +8,12 @@ class GetFileResponse extends AbstractResponse
 {
     public function __construct(
         RawResponse $response,
-        private readonly File|null $file = null,
+        private readonly ?File $file = null,
     ) {
         parent::__construct($response);
     }
 
-    public function getFile(): File|null
+    public function getFile(): ?File
     {
         return $this->file;
     }

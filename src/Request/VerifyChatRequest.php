@@ -17,9 +17,8 @@ class VerifyChatRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-        private string|null $custom_description = null,
-    ) {
-    }
+        private ?string $custom_description = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -32,12 +31,12 @@ class VerifyChatRequest implements RequestInterface
         return $this;
     }
 
-    public function getCustomDescription(): string|null
+    public function getCustomDescription(): ?string
     {
         return $this->custom_description;
     }
 
-    public function setCustomDescription(string|null $custom_description): VerifyChatRequest
+    public function setCustomDescription(?string $custom_description): VerifyChatRequest
     {
         $this->custom_description = $custom_description;
         return $this;

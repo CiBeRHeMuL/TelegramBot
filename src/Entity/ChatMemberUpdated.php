@@ -33,11 +33,10 @@ final class ChatMemberUpdated implements EntityInterface
         protected int $date,
         protected AbstractChatMember $old_chat_member,
         protected AbstractChatMember $new_chat_member,
-        protected ChatInviteLink|null $invite_link = null,
-        protected bool|null $via_chat_folder_invite_link = null,
-        protected bool|null $via_join_request = null,
-    ) {
-    }
+        protected ?ChatInviteLink $invite_link = null,
+        protected ?bool $via_chat_folder_invite_link = null,
+        protected ?bool $via_join_request = null,
+    ) {}
 
     /**
      * @return Chat
@@ -137,7 +136,7 @@ final class ChatMemberUpdated implements EntityInterface
     /**
      * @return ChatInviteLink|null
      */
-    public function getInviteLink(): ChatInviteLink|null
+    public function getInviteLink(): ?ChatInviteLink
     {
         return $this->invite_link;
     }
@@ -147,7 +146,7 @@ final class ChatMemberUpdated implements EntityInterface
      *
      * @return ChatMemberUpdated
      */
-    public function setInviteLink(ChatInviteLink|null $invite_link): ChatMemberUpdated
+    public function setInviteLink(?ChatInviteLink $invite_link): ChatMemberUpdated
     {
         $this->invite_link = $invite_link;
         return $this;
@@ -156,7 +155,7 @@ final class ChatMemberUpdated implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getViaChatFolderInviteLink(): bool|null
+    public function getViaChatFolderInviteLink(): ?bool
     {
         return $this->via_chat_folder_invite_link;
     }
@@ -166,7 +165,7 @@ final class ChatMemberUpdated implements EntityInterface
      *
      * @return ChatMemberUpdated
      */
-    public function setViaChatFolderInviteLink(bool|null $via_chat_folder_invite_link): ChatMemberUpdated
+    public function setViaChatFolderInviteLink(?bool $via_chat_folder_invite_link): ChatMemberUpdated
     {
         $this->via_chat_folder_invite_link = $via_chat_folder_invite_link;
         return $this;
@@ -175,7 +174,7 @@ final class ChatMemberUpdated implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getViaJoinRequest(): bool|null
+    public function getViaJoinRequest(): ?bool
     {
         return $this->via_join_request;
     }
@@ -185,7 +184,7 @@ final class ChatMemberUpdated implements EntityInterface
      *
      * @return ChatMemberUpdated
      */
-    public function setViaJoinRequest(bool|null $via_join_request): ChatMemberUpdated
+    public function setViaJoinRequest(?bool $via_join_request): ChatMemberUpdated
     {
         $this->via_join_request = $via_join_request;
         return $this;

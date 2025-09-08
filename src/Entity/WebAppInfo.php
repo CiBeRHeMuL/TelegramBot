@@ -19,8 +19,7 @@ final class WebAppInfo implements EntityInterface
      */
     public function __construct(
         protected Url $url,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Url

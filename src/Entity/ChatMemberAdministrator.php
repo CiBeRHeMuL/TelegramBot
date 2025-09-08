@@ -62,12 +62,12 @@ final class ChatMemberAdministrator extends AbstractChatMember
         protected bool $can_post_stories,
         protected bool $can_edit_stories,
         protected bool $can_delete_stories,
-        protected bool|null $can_edit_messages = null,
-        protected bool|null $can_manage_topics = null,
-        protected bool|null $can_pin_messages = null,
-        protected bool|null $can_post_messages = null,
-        protected string|null $custom_title = null,
-        protected bool|null $can_manage_direct_messages = null,
+        protected ?bool $can_edit_messages = null,
+        protected ?bool $can_manage_topics = null,
+        protected ?bool $can_pin_messages = null,
+        protected ?bool $can_post_messages = null,
+        protected ?string $custom_title = null,
+        protected ?bool $can_manage_direct_messages = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Administrator);
     }
@@ -322,7 +322,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return bool|null
      */
-    public function getCanEditMessages(): bool|null
+    public function getCanEditMessages(): ?bool
     {
         return $this->can_edit_messages;
     }
@@ -332,7 +332,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCanEditMessages(bool|null $can_edit_messages): ChatMemberAdministrator
+    public function setCanEditMessages(?bool $can_edit_messages): ChatMemberAdministrator
     {
         $this->can_edit_messages = $can_edit_messages;
         return $this;
@@ -341,7 +341,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return bool|null
      */
-    public function getCanManageTopics(): bool|null
+    public function getCanManageTopics(): ?bool
     {
         return $this->can_manage_topics;
     }
@@ -351,7 +351,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCanManageTopics(bool|null $can_manage_topics): ChatMemberAdministrator
+    public function setCanManageTopics(?bool $can_manage_topics): ChatMemberAdministrator
     {
         $this->can_manage_topics = $can_manage_topics;
         return $this;
@@ -360,7 +360,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return bool|null
      */
-    public function getCanPinMessages(): bool|null
+    public function getCanPinMessages(): ?bool
     {
         return $this->can_pin_messages;
     }
@@ -370,7 +370,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCanPinMessages(bool|null $can_pin_messages): ChatMemberAdministrator
+    public function setCanPinMessages(?bool $can_pin_messages): ChatMemberAdministrator
     {
         $this->can_pin_messages = $can_pin_messages;
         return $this;
@@ -379,7 +379,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return bool|null
      */
-    public function getCanPostMessages(): bool|null
+    public function getCanPostMessages(): ?bool
     {
         return $this->can_post_messages;
     }
@@ -389,7 +389,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCanPostMessages(bool|null $can_post_messages): ChatMemberAdministrator
+    public function setCanPostMessages(?bool $can_post_messages): ChatMemberAdministrator
     {
         $this->can_post_messages = $can_post_messages;
         return $this;
@@ -398,7 +398,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return string|null
      */
-    public function getCustomTitle(): string|null
+    public function getCustomTitle(): ?string
     {
         return $this->custom_title;
     }
@@ -408,7 +408,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCustomTitle(string|null $custom_title): ChatMemberAdministrator
+    public function setCustomTitle(?string $custom_title): ChatMemberAdministrator
     {
         $this->custom_title = $custom_title;
         return $this;
@@ -417,7 +417,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
     /**
      * @return bool|null
      */
-    public function getCanManageDirectMessages(): bool|null
+    public function getCanManageDirectMessages(): ?bool
     {
         return $this->can_manage_direct_messages;
     }
@@ -427,7 +427,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *
      * @return ChatMemberAdministrator
      */
-    public function setCanManageDirectMessages(bool|null $can_manage_direct_messages): ChatMemberAdministrator
+    public function setCanManageDirectMessages(?bool $can_manage_direct_messages): ChatMemberAdministrator
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
         return $this;

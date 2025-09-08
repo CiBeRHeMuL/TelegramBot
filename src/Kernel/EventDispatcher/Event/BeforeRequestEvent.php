@@ -8,8 +8,7 @@ final class BeforeRequestEvent extends AbstractEvent
 {
     public function __construct(
         private readonly Request $request,
-    ) {
-    }
+    ) {}
 
     public function getRequest(): Request
     {

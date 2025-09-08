@@ -24,10 +24,9 @@ final class PollAnswer implements EntityInterface
         protected string $poll_id,
         #[ArrayType('int')]
         protected array $option_ids,
-        protected User|null $user = null,
-        protected Chat|null $voter_chat = null,
-    ) {
-    }
+        protected ?User $user = null,
+        protected ?Chat $voter_chat = null,
+    ) {}
 
     /**
      * @return string
@@ -70,7 +69,7 @@ final class PollAnswer implements EntityInterface
     /**
      * @return User|null
      */
-    public function getUser(): User|null
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -80,7 +79,7 @@ final class PollAnswer implements EntityInterface
      *
      * @return PollAnswer
      */
-    public function setUser(User|null $user): PollAnswer
+    public function setUser(?User $user): PollAnswer
     {
         $this->user = $user;
         return $this;
@@ -89,7 +88,7 @@ final class PollAnswer implements EntityInterface
     /**
      * @return Chat|null
      */
-    public function getVoterChat(): Chat|null
+    public function getVoterChat(): ?Chat
     {
         return $this->voter_chat;
     }
@@ -99,7 +98,7 @@ final class PollAnswer implements EntityInterface
      *
      * @return PollAnswer
      */
-    public function setVoterChat(Chat|null $voter_chat): PollAnswer
+    public function setVoterChat(?Chat $voter_chat): PollAnswer
     {
         $this->voter_chat = $voter_chat;
         return $this;

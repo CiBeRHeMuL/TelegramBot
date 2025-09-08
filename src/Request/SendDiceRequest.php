@@ -54,19 +54,18 @@ class SendDiceRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-        private string|null $business_connection_id = null,
-        private bool|null $disable_notification = null,
-        private DiceEmojiEnum|null $emoji = null,
-        private int|null $message_thread_id = null,
-        private bool|null $protect_content = null,
+        private ?string $business_connection_id = null,
+        private ?bool $disable_notification = null,
+        private ?DiceEmojiEnum $emoji = null,
+        private ?int $message_thread_id = null,
+        private ?bool $protect_content = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
-        private ReplyParameters|null $reply_parameters = null,
-        private string|null $message_effect_id = null,
-        private bool|null $allow_paid_broadcast = null,
-        private int|null $direct_messages_topic_id = null,
-        private SuggestedPostParameters|null $suggested_post_parameters = null,
-    ) {
-    }
+        private ?ReplyParameters $reply_parameters = null,
+        private ?string $message_effect_id = null,
+        private ?bool $allow_paid_broadcast = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -79,56 +78,56 @@ class SendDiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getBusinessConnectionId(): string|null
+    public function getBusinessConnectionId(): ?string
     {
         return $this->business_connection_id;
     }
 
-    public function setBusinessConnectionId(string|null $business_connection_id): SendDiceRequest
+    public function setBusinessConnectionId(?string $business_connection_id): SendDiceRequest
     {
         $this->business_connection_id = $business_connection_id;
         return $this;
     }
 
-    public function getDisableNotification(): bool|null
+    public function getDisableNotification(): ?bool
     {
         return $this->disable_notification;
     }
 
-    public function setDisableNotification(bool|null $disable_notification): SendDiceRequest
+    public function setDisableNotification(?bool $disable_notification): SendDiceRequest
     {
         $this->disable_notification = $disable_notification;
         return $this;
     }
 
-    public function getEmoji(): DiceEmojiEnum|null
+    public function getEmoji(): ?DiceEmojiEnum
     {
         return $this->emoji;
     }
 
-    public function setEmoji(DiceEmojiEnum|null $emoji): SendDiceRequest
+    public function setEmoji(?DiceEmojiEnum $emoji): SendDiceRequest
     {
         $this->emoji = $emoji;
         return $this;
     }
 
-    public function getMessageThreadId(): int|null
+    public function getMessageThreadId(): ?int
     {
         return $this->message_thread_id;
     }
 
-    public function setMessageThreadId(int|null $message_thread_id): SendDiceRequest
+    public function setMessageThreadId(?int $message_thread_id): SendDiceRequest
     {
         $this->message_thread_id = $message_thread_id;
         return $this;
     }
 
-    public function getProtectContent(): bool|null
+    public function getProtectContent(): ?bool
     {
         return $this->protect_content;
     }
 
-    public function setProtectContent(bool|null $protect_content): SendDiceRequest
+    public function setProtectContent(?bool $protect_content): SendDiceRequest
     {
         $this->protect_content = $protect_content;
         return $this;
@@ -145,56 +144,56 @@ class SendDiceRequest implements RequestInterface
         return $this;
     }
 
-    public function getReplyParameters(): ReplyParameters|null
+    public function getReplyParameters(): ?ReplyParameters
     {
         return $this->reply_parameters;
     }
 
-    public function setReplyParameters(ReplyParameters|null $reply_parameters): SendDiceRequest
+    public function setReplyParameters(?ReplyParameters $reply_parameters): SendDiceRequest
     {
         $this->reply_parameters = $reply_parameters;
         return $this;
     }
 
-    public function getMessageEffectId(): string|null
+    public function getMessageEffectId(): ?string
     {
         return $this->message_effect_id;
     }
 
-    public function setMessageEffectId(string|null $message_effect_id): SendDiceRequest
+    public function setMessageEffectId(?string $message_effect_id): SendDiceRequest
     {
         $this->message_effect_id = $message_effect_id;
         return $this;
     }
 
-    public function getAllowPaidBroadcast(): bool|null
+    public function getAllowPaidBroadcast(): ?bool
     {
         return $this->allow_paid_broadcast;
     }
 
-    public function setAllowPaidBroadcast(bool|null $allow_paid_broadcast): SendDiceRequest
+    public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendDiceRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
         return $this;
     }
 
-    public function getDirectMessagesTopicId(): int|null
+    public function getDirectMessagesTopicId(): ?int
     {
         return $this->direct_messages_topic_id;
     }
 
-    public function setDirectMessagesTopicId(int|null $direct_messages_topic_id): SendDiceRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendDiceRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
         return $this;
     }
 
-    public function getSuggestedPostParameters(): SuggestedPostParameters|null
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
         return $this->suggested_post_parameters;
     }
 
-    public function setSuggestedPostParameters(SuggestedPostParameters|null $suggested_post_parameters): SendDiceRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendDiceRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
         return $this;

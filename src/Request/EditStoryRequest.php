@@ -32,12 +32,11 @@ class EditStoryRequest implements RequestInterface
         private string $business_connection_id,
         private AbstractInputStoryContent $content,
         private int $story_id,
-        private array|null $areas = null,
-        private string|null $caption = null,
-        private array|null $caption_entities = null,
-        private TelegramParseModeEnum|null $parse_mode = null,
-    ) {
-    }
+        private ?array $areas = null,
+        private ?string $caption = null,
+        private ?array $caption_entities = null,
+        private ?TelegramParseModeEnum $parse_mode = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -72,45 +71,45 @@ class EditStoryRequest implements RequestInterface
         return $this;
     }
 
-    public function getAreas(): array|null
+    public function getAreas(): ?array
     {
         return $this->areas;
     }
 
-    public function setAreas(array|null $areas): EditStoryRequest
+    public function setAreas(?array $areas): EditStoryRequest
     {
         $this->areas = $areas;
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): EditStoryRequest
+    public function setCaption(?string $caption): EditStoryRequest
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): EditStoryRequest
+    public function setCaptionEntities(?array $caption_entities): EditStoryRequest
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): EditStoryRequest
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): EditStoryRequest
     {
         $this->parse_mode = $parse_mode;
         return $this;

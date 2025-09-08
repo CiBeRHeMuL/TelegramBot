@@ -10,8 +10,7 @@ final readonly class EntityNormalizer
 {
     public function __construct(
         private SerializerInterface $serializer,
-    ) {
-    }
+    ) {}
 
     public function __invoke(EntityInterface $entity): array|stdClass
     {

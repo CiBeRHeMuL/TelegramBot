@@ -23,8 +23,7 @@ final class ShippingQuery implements EntityInterface
         protected User $from,
         protected string $invoice_payload,
         protected ShippingAddress $shipping_address,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

@@ -14,8 +14,7 @@ abstract class AbstractReactionType implements EntityInterface
 {
     public function __construct(
         protected readonly ReactionTypeEnum $type,
-    ) {
-    }
+    ) {}
 
     public function getType(): ReactionTypeEnum
     {

@@ -36,10 +36,9 @@ final class InputSticker implements EntityInterface
         #[ArrayType('string')]
         protected array $emoji_list,
         #[ArrayType('string')]
-        protected array|null $keywords = null,
-        protected MaskPosition|null $mask_position = null,
-    ) {
-    }
+        protected ?array $keywords = null,
+        protected ?MaskPosition $mask_position = null,
+    ) {}
 
     /**
      * @return Filename|Url|string
@@ -101,7 +100,7 @@ final class InputSticker implements EntityInterface
     /**
      * @return string[]|null
      */
-    public function getKeywords(): array|null
+    public function getKeywords(): ?array
     {
         return $this->keywords;
     }
@@ -111,7 +110,7 @@ final class InputSticker implements EntityInterface
      *
      * @return InputSticker
      */
-    public function setKeywords(array|null $keywords): InputSticker
+    public function setKeywords(?array $keywords): InputSticker
     {
         $this->keywords = $keywords;
         return $this;
@@ -120,7 +119,7 @@ final class InputSticker implements EntityInterface
     /**
      * @return MaskPosition|null
      */
-    public function getMaskPosition(): MaskPosition|null
+    public function getMaskPosition(): ?MaskPosition
     {
         return $this->mask_position;
     }
@@ -130,7 +129,7 @@ final class InputSticker implements EntityInterface
      *
      * @return InputSticker
      */
-    public function setMaskPosition(MaskPosition|null $mask_position): InputSticker
+    public function setMaskPosition(?MaskPosition $mask_position): InputSticker
     {
         $this->mask_position = $mask_position;
         return $this;

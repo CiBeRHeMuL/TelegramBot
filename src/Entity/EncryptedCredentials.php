@@ -24,8 +24,7 @@ final class EncryptedCredentials implements EntityInterface
         protected string $data,
         protected string $hash,
         protected string $secret,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

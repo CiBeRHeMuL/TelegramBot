@@ -23,7 +23,7 @@ final class TransactionPartnerAffiliateProgram extends AbstractTransactionPartne
      */
     public function __construct(
         protected int $commission_per_mille,
-        protected User|null $sponsor_user = null,
+        protected ?User $sponsor_user = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::AffiliateProgram);
     }
@@ -50,7 +50,7 @@ final class TransactionPartnerAffiliateProgram extends AbstractTransactionPartne
     /**
      * @return User|null
      */
-    public function getSponsorUser(): User|null
+    public function getSponsorUser(): ?User
     {
         return $this->sponsor_user;
     }
@@ -60,7 +60,7 @@ final class TransactionPartnerAffiliateProgram extends AbstractTransactionPartne
      *
      * @return TransactionPartnerAffiliateProgram
      */
-    public function setSponsorUser(User|null $sponsor_user): TransactionPartnerAffiliateProgram
+    public function setSponsorUser(?User $sponsor_user): TransactionPartnerAffiliateProgram
     {
         $this->sponsor_user = $sponsor_user;
         return $this;

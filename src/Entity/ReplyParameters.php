@@ -37,16 +37,15 @@ final class ReplyParameters implements EntityInterface
      */
     public function __construct(
         protected int $message_id,
-        protected ChatId|null $chat_id = null,
-        protected bool|null $allow_sending_without_reply = null,
-        protected string|null $quote = null,
-        protected TelegramParseModeEnum|null $quote_parse_mode = null,
+        protected ?ChatId $chat_id = null,
+        protected ?bool $allow_sending_without_reply = null,
+        protected ?string $quote = null,
+        protected ?TelegramParseModeEnum $quote_parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $quote_entities = null,
-        protected int|null $quote_position = null,
-        protected int|null $checklist_task_id = null,
-    ) {
-    }
+        protected ?array $quote_entities = null,
+        protected ?int $quote_position = null,
+        protected ?int $checklist_task_id = null,
+    ) {}
 
     /**
      * @return int
@@ -70,7 +69,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return ChatId|null
      */
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
@@ -80,7 +79,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setChatId(ChatId|null $chat_id): ReplyParameters
+    public function setChatId(?ChatId $chat_id): ReplyParameters
     {
         $this->chat_id = $chat_id;
         return $this;
@@ -89,7 +88,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getAllowSendingWithoutReply(): bool|null
+    public function getAllowSendingWithoutReply(): ?bool
     {
         return $this->allow_sending_without_reply;
     }
@@ -99,7 +98,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setAllowSendingWithoutReply(bool|null $allow_sending_without_reply): ReplyParameters
+    public function setAllowSendingWithoutReply(?bool $allow_sending_without_reply): ReplyParameters
     {
         $this->allow_sending_without_reply = $allow_sending_without_reply;
         return $this;
@@ -108,7 +107,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return string|null
      */
-    public function getQuote(): string|null
+    public function getQuote(): ?string
     {
         return $this->quote;
     }
@@ -118,7 +117,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setQuote(string|null $quote): ReplyParameters
+    public function setQuote(?string $quote): ReplyParameters
     {
         $this->quote = $quote;
         return $this;
@@ -127,7 +126,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getQuoteParseMode(): TelegramParseModeEnum|null
+    public function getQuoteParseMode(): ?TelegramParseModeEnum
     {
         return $this->quote_parse_mode;
     }
@@ -137,7 +136,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setQuoteParseMode(TelegramParseModeEnum|null $quote_parse_mode): ReplyParameters
+    public function setQuoteParseMode(?TelegramParseModeEnum $quote_parse_mode): ReplyParameters
     {
         $this->quote_parse_mode = $quote_parse_mode;
         return $this;
@@ -146,7 +145,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getQuoteEntities(): array|null
+    public function getQuoteEntities(): ?array
     {
         return $this->quote_entities;
     }
@@ -156,7 +155,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setQuoteEntities(array|null $quote_entities): ReplyParameters
+    public function setQuoteEntities(?array $quote_entities): ReplyParameters
     {
         $this->quote_entities = $quote_entities;
         return $this;
@@ -165,7 +164,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return int|null
      */
-    public function getQuotePosition(): int|null
+    public function getQuotePosition(): ?int
     {
         return $this->quote_position;
     }
@@ -175,7 +174,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setQuotePosition(int|null $quote_position): ReplyParameters
+    public function setQuotePosition(?int $quote_position): ReplyParameters
     {
         $this->quote_position = $quote_position;
         return $this;
@@ -184,7 +183,7 @@ final class ReplyParameters implements EntityInterface
     /**
      * @return int|null
      */
-    public function getChecklistTaskId(): int|null
+    public function getChecklistTaskId(): ?int
     {
         return $this->checklist_task_id;
     }
@@ -194,7 +193,7 @@ final class ReplyParameters implements EntityInterface
      *
      * @return ReplyParameters
      */
-    public function setChecklistTaskId(int|null $checklist_task_id): ReplyParameters
+    public function setChecklistTaskId(?int $checklist_task_id): ReplyParameters
     {
         $this->checklist_task_id = $checklist_task_id;
         return $this;

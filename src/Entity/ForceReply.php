@@ -25,10 +25,9 @@ final class ForceReply implements EntityInterface
      */
     public function __construct(
         protected bool $force_reply,
-        protected string|null $input_field_placeholder = null,
-        protected bool|null $selective = null,
-    ) {
-    }
+        protected ?string $input_field_placeholder = null,
+        protected ?bool $selective = null,
+    ) {}
 
     /**
      * @return bool
@@ -52,7 +51,7 @@ final class ForceReply implements EntityInterface
     /**
      * @return string|null
      */
-    public function getInputFieldPlaceholder(): string|null
+    public function getInputFieldPlaceholder(): ?string
     {
         return $this->input_field_placeholder;
     }
@@ -62,7 +61,7 @@ final class ForceReply implements EntityInterface
      *
      * @return ForceReply
      */
-    public function setInputFieldPlaceholder(string|null $input_field_placeholder): ForceReply
+    public function setInputFieldPlaceholder(?string $input_field_placeholder): ForceReply
     {
         $this->input_field_placeholder = $input_field_placeholder;
         return $this;
@@ -71,7 +70,7 @@ final class ForceReply implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getSelective(): bool|null
+    public function getSelective(): ?bool
     {
         return $this->selective;
     }
@@ -81,7 +80,7 @@ final class ForceReply implements EntityInterface
      *
      * @return ForceReply
      */
-    public function setSelective(bool|null $selective): ForceReply
+    public function setSelective(?bool $selective): ForceReply
     {
         $this->selective = $selective;
         return $this;

@@ -19,28 +19,27 @@ class SetChatMenuButtonRequest implements RequestInterface
      * @see https://core.telegram.org/bots/api#menubuttondefault MenuButtonDefault
      */
     public function __construct(
-        private ChatId|null $chat_id = null,
-        private AbstractMenuButton|null $menu_button = null,
-    ) {
-    }
+        private ?ChatId $chat_id = null,
+        private ?AbstractMenuButton $menu_button = null,
+    ) {}
 
-    public function getChatId(): ChatId|null
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId|null $chat_id): SetChatMenuButtonRequest
+    public function setChatId(?ChatId $chat_id): SetChatMenuButtonRequest
     {
         $this->chat_id = $chat_id;
         return $this;
     }
 
-    public function getMenuButton(): AbstractMenuButton|null
+    public function getMenuButton(): ?AbstractMenuButton
     {
         return $this->menu_button;
     }
 
-    public function setMenuButton(AbstractMenuButton|null $menu_button): SetChatMenuButtonRequest
+    public function setMenuButton(?AbstractMenuButton $menu_button): SetChatMenuButtonRequest
     {
         $this->menu_button = $menu_button;
         return $this;

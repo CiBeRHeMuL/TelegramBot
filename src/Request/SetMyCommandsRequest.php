@@ -25,10 +25,9 @@ class SetMyCommandsRequest implements RequestInterface
      */
     public function __construct(
         private array $commands,
-        private Language|null $language_code = null,
-        private AbstractBotCommandScope|null $scope = null,
-    ) {
-    }
+        private ?Language $language_code = null,
+        private ?AbstractBotCommandScope $scope = null,
+    ) {}
 
     public function getCommands(): array
     {
@@ -41,23 +40,23 @@ class SetMyCommandsRequest implements RequestInterface
         return $this;
     }
 
-    public function getLanguageCode(): Language|null
+    public function getLanguageCode(): ?Language
     {
         return $this->language_code;
     }
 
-    public function setLanguageCode(Language|null $language_code): SetMyCommandsRequest
+    public function setLanguageCode(?Language $language_code): SetMyCommandsRequest
     {
         $this->language_code = $language_code;
         return $this;
     }
 
-    public function getScope(): AbstractBotCommandScope|null
+    public function getScope(): ?AbstractBotCommandScope
     {
         return $this->scope;
     }
 
-    public function setScope(AbstractBotCommandScope|null $scope): SetMyCommandsRequest
+    public function setScope(?AbstractBotCommandScope $scope): SetMyCommandsRequest
     {
         $this->scope = $scope;
         return $this;

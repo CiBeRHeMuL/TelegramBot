@@ -12,16 +12,15 @@ class GetMyDefaultAdministratorRightsRequest implements RequestInterface
      * rights of the bot for groups and supergroups will be returned.
      */
     public function __construct(
-        private bool|null $for_channels = null,
-    ) {
-    }
+        private ?bool $for_channels = null,
+    ) {}
 
-    public function getForChannels(): bool|null
+    public function getForChannels(): ?bool
     {
         return $this->for_channels;
     }
 
-    public function setForChannels(bool|null $for_channels): GetMyDefaultAdministratorRightsRequest
+    public function setForChannels(?bool $for_channels): GetMyDefaultAdministratorRightsRequest
     {
         $this->for_channels = $for_channels;
         return $this;

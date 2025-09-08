@@ -28,14 +28,13 @@ final class Chat implements EntityInterface
     public function __construct(
         protected int $id,
         protected ChatTypeEnum $type,
-        protected string|null $first_name = null,
-        protected bool|null $is_forum = null,
-        protected string|null $last_name = null,
-        protected string|null $title = null,
-        protected string|null $username = null,
-        protected bool|null $is_direct_messages = null,
-    ) {
-    }
+        protected ?string $first_name = null,
+        protected ?bool $is_forum = null,
+        protected ?string $last_name = null,
+        protected ?string $title = null,
+        protected ?string $username = null,
+        protected ?bool $is_direct_messages = null,
+    ) {}
 
     /**
      * @return int
@@ -78,7 +77,7 @@ final class Chat implements EntityInterface
     /**
      * @return string|null
      */
-    public function getFirstName(): string|null
+    public function getFirstName(): ?string
     {
         return $this->first_name;
     }
@@ -88,7 +87,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setFirstName(string|null $first_name): Chat
+    public function setFirstName(?string $first_name): Chat
     {
         $this->first_name = $first_name;
         return $this;
@@ -97,7 +96,7 @@ final class Chat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsForum(): bool|null
+    public function getIsForum(): ?bool
     {
         return $this->is_forum;
     }
@@ -107,7 +106,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setIsForum(bool|null $is_forum): Chat
+    public function setIsForum(?bool $is_forum): Chat
     {
         $this->is_forum = $is_forum;
         return $this;
@@ -116,7 +115,7 @@ final class Chat implements EntityInterface
     /**
      * @return string|null
      */
-    public function getLastName(): string|null
+    public function getLastName(): ?string
     {
         return $this->last_name;
     }
@@ -126,7 +125,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setLastName(string|null $last_name): Chat
+    public function setLastName(?string $last_name): Chat
     {
         $this->last_name = $last_name;
         return $this;
@@ -135,7 +134,7 @@ final class Chat implements EntityInterface
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -145,7 +144,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setTitle(string|null $title): Chat
+    public function setTitle(?string $title): Chat
     {
         $this->title = $title;
         return $this;
@@ -154,7 +153,7 @@ final class Chat implements EntityInterface
     /**
      * @return string|null
      */
-    public function getUsername(): string|null
+    public function getUsername(): ?string
     {
         return $this->username;
     }
@@ -164,7 +163,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setUsername(string|null $username): Chat
+    public function setUsername(?string $username): Chat
     {
         $this->username = $username;
         return $this;
@@ -173,7 +172,7 @@ final class Chat implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsDirectMessages(): bool|null
+    public function getIsDirectMessages(): ?bool
     {
         return $this->is_direct_messages;
     }
@@ -183,7 +182,7 @@ final class Chat implements EntityInterface
      *
      * @return Chat
      */
-    public function setIsDirectMessages(bool|null $is_direct_messages): Chat
+    public function setIsDirectMessages(?bool $is_direct_messages): Chat
     {
         $this->is_direct_messages = $is_direct_messages;
         return $this;

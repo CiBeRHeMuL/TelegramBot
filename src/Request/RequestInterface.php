@@ -2,6 +2,4 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
-interface RequestInterface
-{
-}
+interface RequestInterface {}

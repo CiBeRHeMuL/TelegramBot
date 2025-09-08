@@ -52,18 +52,18 @@ final class InputMediaVideo extends AbstractInputMedia
     public function __construct(
         protected Filename|Url|string $media,
         protected Filename|Url|string|null $thumbnail = null,
-        protected string|null $caption = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected int|null $width = null,
-        protected int|null $height = null,
-        protected int|null $duration = null,
-        protected bool|null $supports_streaming = null,
-        protected bool|null $has_spoiler = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?array $caption_entities = null,
+        protected ?int $width = null,
+        protected ?int $height = null,
+        protected ?int $duration = null,
+        protected ?bool $supports_streaming = null,
+        protected ?bool $has_spoiler = null,
+        protected ?bool $show_caption_above_media = null,
         protected Filename|Url|string|null $cover = null,
-        protected int|null $start_timestamp = null,
+        protected ?int $start_timestamp = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Video);
     }
@@ -109,7 +109,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -119,7 +119,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setCaption(string|null $caption): InputMediaVideo
+    public function setCaption(?string $caption): InputMediaVideo
     {
         $this->caption = $caption;
         return $this;
@@ -128,7 +128,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -138,7 +138,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputMediaVideo
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaVideo
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -147,7 +147,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -157,7 +157,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setCaptionEntities(array|null $caption_entities): InputMediaVideo
+    public function setCaptionEntities(?array $caption_entities): InputMediaVideo
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -166,7 +166,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getWidth(): int|null
+    public function getWidth(): ?int
     {
         return $this->width;
     }
@@ -176,7 +176,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setWidth(int|null $width): InputMediaVideo
+    public function setWidth(?int $width): InputMediaVideo
     {
         $this->width = $width;
         return $this;
@@ -185,7 +185,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getHeight(): int|null
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -195,7 +195,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setHeight(int|null $height): InputMediaVideo
+    public function setHeight(?int $height): InputMediaVideo
     {
         $this->height = $height;
         return $this;
@@ -204,7 +204,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -214,7 +214,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setDuration(int|null $duration): InputMediaVideo
+    public function setDuration(?int $duration): InputMediaVideo
     {
         $this->duration = $duration;
         return $this;
@@ -223,7 +223,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getSupportsStreaming(): bool|null
+    public function getSupportsStreaming(): ?bool
     {
         return $this->supports_streaming;
     }
@@ -233,7 +233,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setSupportsStreaming(bool|null $supports_streaming): InputMediaVideo
+    public function setSupportsStreaming(?bool $supports_streaming): InputMediaVideo
     {
         $this->supports_streaming = $supports_streaming;
         return $this;
@@ -242,7 +242,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getHasSpoiler(): bool|null
+    public function getHasSpoiler(): ?bool
     {
         return $this->has_spoiler;
     }
@@ -252,7 +252,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setHasSpoiler(bool|null $has_spoiler): InputMediaVideo
+    public function setHasSpoiler(?bool $has_spoiler): InputMediaVideo
     {
         $this->has_spoiler = $has_spoiler;
         return $this;
@@ -261,7 +261,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return bool|null
      */
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
@@ -271,7 +271,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InputMediaVideo
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InputMediaVideo
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;
@@ -299,7 +299,7 @@ final class InputMediaVideo extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getStartTimestamp(): int|null
+    public function getStartTimestamp(): ?int
     {
         return $this->start_timestamp;
     }
@@ -309,7 +309,7 @@ final class InputMediaVideo extends AbstractInputMedia
      *
      * @return InputMediaVideo
      */
-    public function setStartTimestamp(int|null $start_timestamp): InputMediaVideo
+    public function setStartTimestamp(?int $start_timestamp): InputMediaVideo
     {
         $this->start_timestamp = $start_timestamp;
         return $this;

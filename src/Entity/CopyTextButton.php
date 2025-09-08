@@ -14,8 +14,7 @@ final class CopyTextButton implements EntityInterface
      */
     public function __construct(
         protected string $text,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string

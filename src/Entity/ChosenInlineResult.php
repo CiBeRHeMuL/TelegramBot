@@ -28,10 +28,9 @@ final class ChosenInlineResult implements EntityInterface
         protected string $result_id,
         protected User $from,
         protected string $query,
-        protected string|null $inline_message_id = null,
-        protected Location|null $location = null,
-    ) {
-    }
+        protected ?string $inline_message_id = null,
+        protected ?Location $location = null,
+    ) {}
 
     /**
      * @return string
@@ -93,7 +92,7 @@ final class ChosenInlineResult implements EntityInterface
     /**
      * @return string|null
      */
-    public function getInlineMessageId(): string|null
+    public function getInlineMessageId(): ?string
     {
         return $this->inline_message_id;
     }
@@ -103,7 +102,7 @@ final class ChosenInlineResult implements EntityInterface
      *
      * @return ChosenInlineResult
      */
-    public function setInlineMessageId(string|null $inline_message_id): ChosenInlineResult
+    public function setInlineMessageId(?string $inline_message_id): ChosenInlineResult
     {
         $this->inline_message_id = $inline_message_id;
         return $this;
@@ -112,7 +111,7 @@ final class ChosenInlineResult implements EntityInterface
     /**
      * @return Location|null
      */
-    public function getLocation(): Location|null
+    public function getLocation(): ?Location
     {
         return $this->location;
     }
@@ -122,7 +121,7 @@ final class ChosenInlineResult implements EntityInterface
      *
      * @return ChosenInlineResult
      */
-    public function setLocation(Location|null $location): ChosenInlineResult
+    public function setLocation(?Location $location): ChosenInlineResult
     {
         $this->location = $location;
         return $this;

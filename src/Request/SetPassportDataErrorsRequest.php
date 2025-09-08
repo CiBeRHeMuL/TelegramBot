@@ -13,8 +13,7 @@ class SetPassportDataErrorsRequest implements RequestInterface
     public function __construct(
         private array $errors,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getErrors(): array
     {

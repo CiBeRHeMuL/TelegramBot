@@ -18,10 +18,9 @@ class UpgradeGiftRequest implements RequestInterface
     public function __construct(
         private string $business_connection_id,
         private string $owned_gift_id,
-        private bool|null $keep_original_details = null,
-        private int|null $star_count = null,
-    ) {
-    }
+        private ?bool $keep_original_details = null,
+        private ?int $star_count = null,
+    ) {}
 
     public function getBusinessConnectionId(): string
     {
@@ -45,23 +44,23 @@ class UpgradeGiftRequest implements RequestInterface
         return $this;
     }
 
-    public function getKeepOriginalDetails(): bool|null
+    public function getKeepOriginalDetails(): ?bool
     {
         return $this->keep_original_details;
     }
 
-    public function setKeepOriginalDetails(bool|null $keep_original_details): UpgradeGiftRequest
+    public function setKeepOriginalDetails(?bool $keep_original_details): UpgradeGiftRequest
     {
         $this->keep_original_details = $keep_original_details;
         return $this;
     }
 
-    public function getStarCount(): int|null
+    public function getStarCount(): ?int
     {
         return $this->star_count;
     }
 
-    public function setStarCount(int|null $star_count): UpgradeGiftRequest
+    public function setStarCount(?int $star_count): UpgradeGiftRequest
     {
         $this->star_count = $star_count;
         return $this;

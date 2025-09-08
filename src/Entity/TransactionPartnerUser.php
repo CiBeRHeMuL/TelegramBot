@@ -44,14 +44,14 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function __construct(
         protected User $user,
         protected TransactionTypeEnum $transaction_type,
-        protected string|null $invoice_payload = null,
+        protected ?string $invoice_payload = null,
         #[ArrayType(AbstractPaidMedia::class)]
-        protected array|null $paid_media = null,
-        protected string|null $paid_media_payload = null,
-        protected int|null $subscription_period = null,
-        protected Gift|null $gift = null,
-        protected AffiliateInfo|null $affiliate = null,
-        protected int|null $premium_subscription_duration = null,
+        protected ?array $paid_media = null,
+        protected ?string $paid_media_payload = null,
+        protected ?int $subscription_period = null,
+        protected ?Gift $gift = null,
+        protected ?AffiliateInfo $affiliate = null,
+        protected ?int $premium_subscription_duration = null,
     ) {
         parent::__construct(TransactionPartnerTypeEnum::User);
     }
@@ -97,7 +97,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return string|null
      */
-    public function getInvoicePayload(): string|null
+    public function getInvoicePayload(): ?string
     {
         return $this->invoice_payload;
     }
@@ -107,7 +107,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setInvoicePayload(string|null $invoice_payload): TransactionPartnerUser
+    public function setInvoicePayload(?string $invoice_payload): TransactionPartnerUser
     {
         $this->invoice_payload = $invoice_payload;
         return $this;
@@ -116,7 +116,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return AbstractPaidMedia[]|null
      */
-    public function getPaidMedia(): array|null
+    public function getPaidMedia(): ?array
     {
         return $this->paid_media;
     }
@@ -126,7 +126,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setPaidMedia(array|null $paid_media): TransactionPartnerUser
+    public function setPaidMedia(?array $paid_media): TransactionPartnerUser
     {
         $this->paid_media = $paid_media;
         return $this;
@@ -135,7 +135,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return string|null
      */
-    public function getPaidMediaPayload(): string|null
+    public function getPaidMediaPayload(): ?string
     {
         return $this->paid_media_payload;
     }
@@ -145,7 +145,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setPaidMediaPayload(string|null $paid_media_payload): TransactionPartnerUser
+    public function setPaidMediaPayload(?string $paid_media_payload): TransactionPartnerUser
     {
         $this->paid_media_payload = $paid_media_payload;
         return $this;
@@ -154,7 +154,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return int|null
      */
-    public function getSubscriptionPeriod(): int|null
+    public function getSubscriptionPeriod(): ?int
     {
         return $this->subscription_period;
     }
@@ -164,7 +164,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setSubscriptionPeriod(int|null $subscription_period): TransactionPartnerUser
+    public function setSubscriptionPeriod(?int $subscription_period): TransactionPartnerUser
     {
         $this->subscription_period = $subscription_period;
         return $this;
@@ -173,7 +173,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return Gift|null
      */
-    public function getGift(): Gift|null
+    public function getGift(): ?Gift
     {
         return $this->gift;
     }
@@ -183,7 +183,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setGift(Gift|null $gift): TransactionPartnerUser
+    public function setGift(?Gift $gift): TransactionPartnerUser
     {
         $this->gift = $gift;
         return $this;
@@ -192,7 +192,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return AffiliateInfo|null
      */
-    public function getAffiliate(): AffiliateInfo|null
+    public function getAffiliate(): ?AffiliateInfo
     {
         return $this->affiliate;
     }
@@ -202,7 +202,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setAffiliate(AffiliateInfo|null $affiliate): TransactionPartnerUser
+    public function setAffiliate(?AffiliateInfo $affiliate): TransactionPartnerUser
     {
         $this->affiliate = $affiliate;
         return $this;
@@ -211,7 +211,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     /**
      * @return int|null
      */
-    public function getPremiumSubscriptionDuration(): int|null
+    public function getPremiumSubscriptionDuration(): ?int
     {
         return $this->premium_subscription_duration;
     }
@@ -221,7 +221,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
      *
      * @return TransactionPartnerUser
      */
-    public function setPremiumSubscriptionDuration(int|null $premium_subscription_duration): TransactionPartnerUser
+    public function setPremiumSubscriptionDuration(?int $premium_subscription_duration): TransactionPartnerUser
     {
         $this->premium_subscription_duration = $premium_subscription_duration;
         return $this;

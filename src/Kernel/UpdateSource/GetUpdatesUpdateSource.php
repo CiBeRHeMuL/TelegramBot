@@ -9,8 +9,7 @@ readonly class GetUpdatesUpdateSource implements UpdateSourceInterface
 {
     public function __construct(
         private ApiInterface $api,
-    ) {
-    }
+    ) {}
 
     public function getUpdates(): iterable
     {

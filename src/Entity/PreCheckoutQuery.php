@@ -34,10 +34,9 @@ final class PreCheckoutQuery implements EntityInterface
         protected CurrencyEnum $currency,
         protected int $total_amount,
         protected string $invoice_payload,
-        protected OrderInfo|null $order_info = null,
-        protected string|null $shipping_option_id = null,
-    ) {
-    }
+        protected ?OrderInfo $order_info = null,
+        protected ?string $shipping_option_id = null,
+    ) {}
 
     /**
      * @return string
@@ -137,7 +136,7 @@ final class PreCheckoutQuery implements EntityInterface
     /**
      * @return OrderInfo|null
      */
-    public function getOrderInfo(): OrderInfo|null
+    public function getOrderInfo(): ?OrderInfo
     {
         return $this->order_info;
     }
@@ -147,7 +146,7 @@ final class PreCheckoutQuery implements EntityInterface
      *
      * @return PreCheckoutQuery
      */
-    public function setOrderInfo(OrderInfo|null $order_info): PreCheckoutQuery
+    public function setOrderInfo(?OrderInfo $order_info): PreCheckoutQuery
     {
         $this->order_info = $order_info;
         return $this;
@@ -156,7 +155,7 @@ final class PreCheckoutQuery implements EntityInterface
     /**
      * @return string|null
      */
-    public function getShippingOptionId(): string|null
+    public function getShippingOptionId(): ?string
     {
         return $this->shipping_option_id;
     }
@@ -166,7 +165,7 @@ final class PreCheckoutQuery implements EntityInterface
      *
      * @return PreCheckoutQuery
      */
-    public function setShippingOptionId(string|null $shipping_option_id): PreCheckoutQuery
+    public function setShippingOptionId(?string $shipping_option_id): PreCheckoutQuery
     {
         $this->shipping_option_id = $shipping_option_id;
         return $this;

@@ -53,16 +53,17 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
         protected InlineQueryResultVideoMimeTypeEnum $mime_type,
         protected Url $thumbnail_url,
         protected string $title,
-        protected string|null $caption = null,
-        #[ArrayType(MessageEntity::class)] protected array|null $caption_entities = null,
-        protected string|null $description = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
-        protected int|null $video_duration = null,
-        protected int|null $video_height = null,
-        protected int|null $video_width = null,
-        protected bool|null $show_caption_above_media = null,
+        protected ?string $caption = null,
+        #[ArrayType(MessageEntity::class)]
+        protected ?array $caption_entities = null,
+        protected ?string $description = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
+        protected ?int $video_duration = null,
+        protected ?int $video_height = null,
+        protected ?int $video_width = null,
+        protected ?bool $show_caption_above_media = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Video);
     }
@@ -122,111 +123,111 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
         return $this;
     }
 
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
 
-    public function setCaption(string|null $caption): InlineQueryResultVideo
+    public function setCaption(?string $caption): InlineQueryResultVideo
     {
         $this->caption = $caption;
         return $this;
     }
 
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
 
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultVideo
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultVideo
     {
         $this->caption_entities = $caption_entities;
         return $this;
     }
 
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string|null $description): InlineQueryResultVideo
+    public function setDescription(?string $description): InlineQueryResultVideo
     {
         $this->description = $description;
         return $this;
     }
 
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
 
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultVideo
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultVideo
     {
         $this->input_message_content = $input_message_content;
         return $this;
     }
 
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
 
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultVideo
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultVideo
     {
         $this->parse_mode = $parse_mode;
         return $this;
     }
 
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
 
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultVideo
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultVideo
     {
         $this->reply_markup = $reply_markup;
         return $this;
     }
 
-    public function getVideoDuration(): int|null
+    public function getVideoDuration(): ?int
     {
         return $this->video_duration;
     }
 
-    public function setVideoDuration(int|null $video_duration): InlineQueryResultVideo
+    public function setVideoDuration(?int $video_duration): InlineQueryResultVideo
     {
         $this->video_duration = $video_duration;
         return $this;
     }
 
-    public function getVideoHeight(): int|null
+    public function getVideoHeight(): ?int
     {
         return $this->video_height;
     }
 
-    public function setVideoHeight(int|null $video_height): InlineQueryResultVideo
+    public function setVideoHeight(?int $video_height): InlineQueryResultVideo
     {
         $this->video_height = $video_height;
         return $this;
     }
 
-    public function getVideoWidth(): int|null
+    public function getVideoWidth(): ?int
     {
         return $this->video_width;
     }
 
-    public function setVideoWidth(int|null $video_width): InlineQueryResultVideo
+    public function setVideoWidth(?int $video_width): InlineQueryResultVideo
     {
         $this->video_width = $video_width;
         return $this;
     }
 
-    public function getShowCaptionAboveMedia(): bool|null
+    public function getShowCaptionAboveMedia(): ?bool
     {
         return $this->show_caption_above_media;
     }
 
-    public function setShowCaptionAboveMedia(bool|null $show_caption_above_media): InlineQueryResultVideo
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultVideo
     {
         $this->show_caption_above_media = $show_caption_above_media;
         return $this;

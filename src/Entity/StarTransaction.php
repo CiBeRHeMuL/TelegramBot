@@ -30,11 +30,10 @@ final class StarTransaction implements EntityInterface
         protected string $id,
         protected int $amount,
         protected int $date,
-        protected AbstractTransactionPartner|null $receiver = null,
-        protected AbstractTransactionPartner|null $source = null,
-        protected int|null $nanostar_amount = null,
-    ) {
-    }
+        protected ?AbstractTransactionPartner $receiver = null,
+        protected ?AbstractTransactionPartner $source = null,
+        protected ?int $nanostar_amount = null,
+    ) {}
 
     /**
      * @return string
@@ -96,7 +95,7 @@ final class StarTransaction implements EntityInterface
     /**
      * @return AbstractTransactionPartner|null
      */
-    public function getReceiver(): AbstractTransactionPartner|null
+    public function getReceiver(): ?AbstractTransactionPartner
     {
         return $this->receiver;
     }
@@ -106,7 +105,7 @@ final class StarTransaction implements EntityInterface
      *
      * @return StarTransaction
      */
-    public function setReceiver(AbstractTransactionPartner|null $receiver): StarTransaction
+    public function setReceiver(?AbstractTransactionPartner $receiver): StarTransaction
     {
         $this->receiver = $receiver;
         return $this;
@@ -115,7 +114,7 @@ final class StarTransaction implements EntityInterface
     /**
      * @return AbstractTransactionPartner|null
      */
-    public function getSource(): AbstractTransactionPartner|null
+    public function getSource(): ?AbstractTransactionPartner
     {
         return $this->source;
     }
@@ -125,7 +124,7 @@ final class StarTransaction implements EntityInterface
      *
      * @return StarTransaction
      */
-    public function setSource(AbstractTransactionPartner|null $source): StarTransaction
+    public function setSource(?AbstractTransactionPartner $source): StarTransaction
     {
         $this->source = $source;
         return $this;
@@ -134,7 +133,7 @@ final class StarTransaction implements EntityInterface
     /**
      * @return int|null
      */
-    public function getNanostarAmount(): int|null
+    public function getNanostarAmount(): ?int
     {
         return $this->nanostar_amount;
     }
@@ -144,7 +143,7 @@ final class StarTransaction implements EntityInterface
      *
      * @return StarTransaction
      */
-    public function setNanostarAmount(int|null $nanostar_amount): StarTransaction
+    public function setNanostarAmount(?int $nanostar_amount): StarTransaction
     {
         $this->nanostar_amount = $nanostar_amount;
         return $this;

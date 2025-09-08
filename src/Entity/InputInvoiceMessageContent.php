@@ -89,24 +89,23 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
         protected CurrencyEnum $currency,
         #[ArrayType(LabeledPrice::class)]
         protected array $prices,
-        protected string|null $provider_token = null,
-        protected bool|null $is_flexible = null,
-        protected int|null $max_tip_amount = null,
-        protected bool|null $need_email = null,
-        protected bool|null $need_name = null,
-        protected bool|null $need_phone_number = null,
-        protected bool|null $need_shipping_address = null,
-        protected int|null $photo_height = null,
-        protected int|null $photo_size = null,
-        protected Url|null $photo_url = null,
-        protected int|null $photo_width = null,
-        protected string|null $provider_data = null,
-        protected bool|null $send_email_to_provider = null,
-        protected bool|null $send_phone_number_to_provider = null,
+        protected ?string $provider_token = null,
+        protected ?bool $is_flexible = null,
+        protected ?int $max_tip_amount = null,
+        protected ?bool $need_email = null,
+        protected ?bool $need_name = null,
+        protected ?bool $need_phone_number = null,
+        protected ?bool $need_shipping_address = null,
+        protected ?int $photo_height = null,
+        protected ?int $photo_size = null,
+        protected ?Url $photo_url = null,
+        protected ?int $photo_width = null,
+        protected ?string $provider_data = null,
+        protected ?bool $send_email_to_provider = null,
+        protected ?bool $send_phone_number_to_provider = null,
         #[ArrayType('int')]
-        protected array|null $suggested_tip_amounts = null,
-    ) {
-    }
+        protected ?array $suggested_tip_amounts = null,
+    ) {}
 
     /**
      * @return string
@@ -206,7 +205,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getProviderToken(): string|null
+    public function getProviderToken(): ?string
     {
         return $this->provider_token;
     }
@@ -216,7 +215,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setProviderToken(string|null $provider_token): InputInvoiceMessageContent
+    public function setProviderToken(?string $provider_token): InputInvoiceMessageContent
     {
         $this->provider_token = $provider_token;
         return $this;
@@ -225,7 +224,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getIsFlexible(): bool|null
+    public function getIsFlexible(): ?bool
     {
         return $this->is_flexible;
     }
@@ -235,7 +234,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setIsFlexible(bool|null $is_flexible): InputInvoiceMessageContent
+    public function setIsFlexible(?bool $is_flexible): InputInvoiceMessageContent
     {
         $this->is_flexible = $is_flexible;
         return $this;
@@ -244,7 +243,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getMaxTipAmount(): int|null
+    public function getMaxTipAmount(): ?int
     {
         return $this->max_tip_amount;
     }
@@ -254,7 +253,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setMaxTipAmount(int|null $max_tip_amount): InputInvoiceMessageContent
+    public function setMaxTipAmount(?int $max_tip_amount): InputInvoiceMessageContent
     {
         $this->max_tip_amount = $max_tip_amount;
         return $this;
@@ -263,7 +262,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getNeedEmail(): bool|null
+    public function getNeedEmail(): ?bool
     {
         return $this->need_email;
     }
@@ -273,7 +272,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setNeedEmail(bool|null $need_email): InputInvoiceMessageContent
+    public function setNeedEmail(?bool $need_email): InputInvoiceMessageContent
     {
         $this->need_email = $need_email;
         return $this;
@@ -282,7 +281,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getNeedName(): bool|null
+    public function getNeedName(): ?bool
     {
         return $this->need_name;
     }
@@ -292,7 +291,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setNeedName(bool|null $need_name): InputInvoiceMessageContent
+    public function setNeedName(?bool $need_name): InputInvoiceMessageContent
     {
         $this->need_name = $need_name;
         return $this;
@@ -301,7 +300,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getNeedPhoneNumber(): bool|null
+    public function getNeedPhoneNumber(): ?bool
     {
         return $this->need_phone_number;
     }
@@ -311,7 +310,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setNeedPhoneNumber(bool|null $need_phone_number): InputInvoiceMessageContent
+    public function setNeedPhoneNumber(?bool $need_phone_number): InputInvoiceMessageContent
     {
         $this->need_phone_number = $need_phone_number;
         return $this;
@@ -320,7 +319,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getNeedShippingAddress(): bool|null
+    public function getNeedShippingAddress(): ?bool
     {
         return $this->need_shipping_address;
     }
@@ -330,7 +329,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setNeedShippingAddress(bool|null $need_shipping_address): InputInvoiceMessageContent
+    public function setNeedShippingAddress(?bool $need_shipping_address): InputInvoiceMessageContent
     {
         $this->need_shipping_address = $need_shipping_address;
         return $this;
@@ -339,7 +338,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getPhotoHeight(): int|null
+    public function getPhotoHeight(): ?int
     {
         return $this->photo_height;
     }
@@ -349,7 +348,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setPhotoHeight(int|null $photo_height): InputInvoiceMessageContent
+    public function setPhotoHeight(?int $photo_height): InputInvoiceMessageContent
     {
         $this->photo_height = $photo_height;
         return $this;
@@ -358,7 +357,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getPhotoSize(): int|null
+    public function getPhotoSize(): ?int
     {
         return $this->photo_size;
     }
@@ -368,7 +367,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setPhotoSize(int|null $photo_size): InputInvoiceMessageContent
+    public function setPhotoSize(?int $photo_size): InputInvoiceMessageContent
     {
         $this->photo_size = $photo_size;
         return $this;
@@ -377,7 +376,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return Url|null
      */
-    public function getPhotoUrl(): Url|null
+    public function getPhotoUrl(): ?Url
     {
         return $this->photo_url;
     }
@@ -387,7 +386,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setPhotoUrl(Url|null $photo_url): InputInvoiceMessageContent
+    public function setPhotoUrl(?Url $photo_url): InputInvoiceMessageContent
     {
         $this->photo_url = $photo_url;
         return $this;
@@ -396,7 +395,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return int|null
      */
-    public function getPhotoWidth(): int|null
+    public function getPhotoWidth(): ?int
     {
         return $this->photo_width;
     }
@@ -406,7 +405,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setPhotoWidth(int|null $photo_width): InputInvoiceMessageContent
+    public function setPhotoWidth(?int $photo_width): InputInvoiceMessageContent
     {
         $this->photo_width = $photo_width;
         return $this;
@@ -415,7 +414,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return string|null
      */
-    public function getProviderData(): string|null
+    public function getProviderData(): ?string
     {
         return $this->provider_data;
     }
@@ -425,7 +424,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setProviderData(string|null $provider_data): InputInvoiceMessageContent
+    public function setProviderData(?string $provider_data): InputInvoiceMessageContent
     {
         $this->provider_data = $provider_data;
         return $this;
@@ -434,7 +433,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getSendEmailToProvider(): bool|null
+    public function getSendEmailToProvider(): ?bool
     {
         return $this->send_email_to_provider;
     }
@@ -444,7 +443,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setSendEmailToProvider(bool|null $send_email_to_provider): InputInvoiceMessageContent
+    public function setSendEmailToProvider(?bool $send_email_to_provider): InputInvoiceMessageContent
     {
         $this->send_email_to_provider = $send_email_to_provider;
         return $this;
@@ -453,7 +452,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return bool|null
      */
-    public function getSendPhoneNumberToProvider(): bool|null
+    public function getSendPhoneNumberToProvider(): ?bool
     {
         return $this->send_phone_number_to_provider;
     }
@@ -463,7 +462,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setSendPhoneNumberToProvider(bool|null $send_phone_number_to_provider): InputInvoiceMessageContent
+    public function setSendPhoneNumberToProvider(?bool $send_phone_number_to_provider): InputInvoiceMessageContent
     {
         $this->send_phone_number_to_provider = $send_phone_number_to_provider;
         return $this;
@@ -472,7 +471,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     /**
      * @return int[]|null
      */
-    public function getSuggestedTipAmounts(): array|null
+    public function getSuggestedTipAmounts(): ?array
     {
         return $this->suggested_tip_amounts;
     }
@@ -482,7 +481,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      *
      * @return InputInvoiceMessageContent
      */
-    public function setSuggestedTipAmounts(array|null $suggested_tip_amounts): InputInvoiceMessageContent
+    public function setSuggestedTipAmounts(?array $suggested_tip_amounts): InputInvoiceMessageContent
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
         return $this;

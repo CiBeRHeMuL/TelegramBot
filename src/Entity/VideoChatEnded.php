@@ -14,8 +14,7 @@ final class VideoChatEnded implements EntityInterface
      */
     public function __construct(
         protected int $duration,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int

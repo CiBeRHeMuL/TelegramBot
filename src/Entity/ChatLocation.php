@@ -18,8 +18,7 @@ final class ChatLocation implements EntityInterface
     public function __construct(
         protected Location $location,
         protected string $address,
-    ) {
-    }
+    ) {}
 
     /**
      * @return Location

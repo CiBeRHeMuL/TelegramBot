@@ -25,8 +25,7 @@ class UploadStickerFileRequest implements RequestInterface
         private Filename|Url $sticker,
         private StickerFormatEnum $sticker_format,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getSticker(): Filename|Url
     {

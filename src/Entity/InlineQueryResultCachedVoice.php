@@ -46,12 +46,12 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
         protected string $id,
         protected string $voice_file_id,
         protected string $title,
-        protected string|null $caption = null,
+        protected ?string $caption = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected AbstractInputMessageContent|null $input_message_content = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-        protected InlineKeyboardMarkup|null $reply_markup = null,
+        protected ?array $caption_entities = null,
+        protected ?AbstractInputMessageContent $input_message_content = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+        protected ?InlineKeyboardMarkup $reply_markup = null,
     ) {
         parent::__construct(InlineQueryResultTypeEnum::Voice);
     }
@@ -116,7 +116,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -126,7 +126,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedVoice
      */
-    public function setCaption(string|null $caption): InlineQueryResultCachedVoice
+    public function setCaption(?string $caption): InlineQueryResultCachedVoice
     {
         $this->caption = $caption;
         return $this;
@@ -135,7 +135,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -145,7 +145,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedVoice
      */
-    public function setCaptionEntities(array|null $caption_entities): InlineQueryResultCachedVoice
+    public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedVoice
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -154,7 +154,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
     /**
      * @return AbstractInputMessageContent|null
      */
-    public function getInputMessageContent(): AbstractInputMessageContent|null
+    public function getInputMessageContent(): ?AbstractInputMessageContent
     {
         return $this->input_message_content;
     }
@@ -164,7 +164,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedVoice
      */
-    public function setInputMessageContent(AbstractInputMessageContent|null $input_message_content): InlineQueryResultCachedVoice
+    public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedVoice
     {
         $this->input_message_content = $input_message_content;
         return $this;
@@ -173,7 +173,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -183,7 +183,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedVoice
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InlineQueryResultCachedVoice
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedVoice
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -192,7 +192,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
     /**
      * @return InlineKeyboardMarkup|null
      */
-    public function getReplyMarkup(): InlineKeyboardMarkup|null
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
     {
         return $this->reply_markup;
     }
@@ -202,7 +202,7 @@ final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
      *
      * @return InlineQueryResultCachedVoice
      */
-    public function setReplyMarkup(InlineKeyboardMarkup|null $reply_markup): InlineQueryResultCachedVoice
+    public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedVoice
     {
         $this->reply_markup = $reply_markup;
         return $this;

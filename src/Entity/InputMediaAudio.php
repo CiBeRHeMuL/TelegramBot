@@ -44,13 +44,13 @@ final class InputMediaAudio extends AbstractInputMedia
     public function __construct(
         protected Filename|Url|string $media,
         protected Filename|Url|string|null $thumbnail = null,
-        protected string|null $caption = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
+        protected ?string $caption = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $caption_entities = null,
-        protected int|null $duration = null,
-        protected string|null $performer = null,
-        protected string|null $title = null,
+        protected ?array $caption_entities = null,
+        protected ?int $duration = null,
+        protected ?string $performer = null,
+        protected ?string $title = null,
     ) {
         parent::__construct(InputMediaTypeEnum::Audio);
     }
@@ -96,7 +96,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getCaption(): string|null
+    public function getCaption(): ?string
     {
         return $this->caption;
     }
@@ -106,7 +106,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setCaption(string|null $caption): InputMediaAudio
+    public function setCaption(?string $caption): InputMediaAudio
     {
         $this->caption = $caption;
         return $this;
@@ -115,7 +115,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -125,7 +125,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputMediaAudio
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaAudio
     {
         $this->parse_mode = $parse_mode;
         return $this;
@@ -134,7 +134,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return MessageEntity[]|null
      */
-    public function getCaptionEntities(): array|null
+    public function getCaptionEntities(): ?array
     {
         return $this->caption_entities;
     }
@@ -144,7 +144,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setCaptionEntities(array|null $caption_entities): InputMediaAudio
+    public function setCaptionEntities(?array $caption_entities): InputMediaAudio
     {
         $this->caption_entities = $caption_entities;
         return $this;
@@ -153,7 +153,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return int|null
      */
-    public function getDuration(): int|null
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
@@ -163,7 +163,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setDuration(int|null $duration): InputMediaAudio
+    public function setDuration(?int $duration): InputMediaAudio
     {
         $this->duration = $duration;
         return $this;
@@ -172,7 +172,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getPerformer(): string|null
+    public function getPerformer(): ?string
     {
         return $this->performer;
     }
@@ -182,7 +182,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setPerformer(string|null $performer): InputMediaAudio
+    public function setPerformer(?string $performer): InputMediaAudio
     {
         $this->performer = $performer;
         return $this;
@@ -191,7 +191,7 @@ final class InputMediaAudio extends AbstractInputMedia
     /**
      * @return string|null
      */
-    public function getTitle(): string|null
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -201,7 +201,7 @@ final class InputMediaAudio extends AbstractInputMedia
      *
      * @return InputMediaAudio
      */
-    public function setTitle(string|null $title): InputMediaAudio
+    public function setTitle(?string $title): InputMediaAudio
     {
         $this->title = $title;
         return $this;

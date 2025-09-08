@@ -24,8 +24,7 @@ final class StoryAreaPosition implements EntityInterface
         protected float $height_percentage,
         protected float $rotation_angle,
         protected float $corner_radius_percentage,
-    ) {
-    }
+    ) {}
 
     /**
      * @return float

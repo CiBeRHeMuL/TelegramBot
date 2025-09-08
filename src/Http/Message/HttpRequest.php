@@ -18,14 +18,14 @@ class HttpRequest implements RequestInterface
     private HttpMethodEnum $method;
     private UriInterface $uri;
     private HttpHeadersContainerInterface $headers;
-    private StreamInterface|null $body;
+    private ?StreamInterface $body;
     private HttpVersionEnum $protocolVersion;
 
     public function __construct(
         HttpMethodEnum $method,
         UriInterface $uri,
         HttpHeadersContainerInterface $headers,
-        StreamInterface|null $body = null,
+        ?StreamInterface $body = null,
         HttpVersionEnum $protocolVersion = HttpVersionEnum::Http11,
     ) {
         $this->method = $method;

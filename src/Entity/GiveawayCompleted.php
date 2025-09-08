@@ -20,11 +20,10 @@ final class GiveawayCompleted implements EntityInterface
      */
     public function __construct(
         protected int $winner_count,
-        protected int|null $unclaimed_prize_count = null,
-        protected Message|null $giveaway_message = null,
-        protected bool|null $is_star_giveaway = null,
-    ) {
-    }
+        protected ?int $unclaimed_prize_count = null,
+        protected ?Message $giveaway_message = null,
+        protected ?bool $is_star_giveaway = null,
+    ) {}
 
     /**
      * @return int
@@ -48,7 +47,7 @@ final class GiveawayCompleted implements EntityInterface
     /**
      * @return int|null
      */
-    public function getUnclaimedPrizeCount(): int|null
+    public function getUnclaimedPrizeCount(): ?int
     {
         return $this->unclaimed_prize_count;
     }
@@ -58,7 +57,7 @@ final class GiveawayCompleted implements EntityInterface
      *
      * @return GiveawayCompleted
      */
-    public function setUnclaimedPrizeCount(int|null $unclaimed_prize_count): GiveawayCompleted
+    public function setUnclaimedPrizeCount(?int $unclaimed_prize_count): GiveawayCompleted
     {
         $this->unclaimed_prize_count = $unclaimed_prize_count;
         return $this;
@@ -67,7 +66,7 @@ final class GiveawayCompleted implements EntityInterface
     /**
      * @return Message|null
      */
-    public function getGiveawayMessage(): Message|null
+    public function getGiveawayMessage(): ?Message
     {
         return $this->giveaway_message;
     }
@@ -77,7 +76,7 @@ final class GiveawayCompleted implements EntityInterface
      *
      * @return GiveawayCompleted
      */
-    public function setGiveawayMessage(Message|null $giveaway_message): GiveawayCompleted
+    public function setGiveawayMessage(?Message $giveaway_message): GiveawayCompleted
     {
         $this->giveaway_message = $giveaway_message;
         return $this;
@@ -86,7 +85,7 @@ final class GiveawayCompleted implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getIsStarGiveaway(): bool|null
+    public function getIsStarGiveaway(): ?bool
     {
         return $this->is_star_giveaway;
     }
@@ -96,7 +95,7 @@ final class GiveawayCompleted implements EntityInterface
      *
      * @return GiveawayCompleted
      */
-    public function setIsStarGiveaway(bool|null $is_star_giveaway): GiveawayCompleted
+    public function setIsStarGiveaway(?bool $is_star_giveaway): GiveawayCompleted
     {
         $this->is_star_giveaway = $is_star_giveaway;
         return $this;

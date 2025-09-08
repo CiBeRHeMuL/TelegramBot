@@ -58,9 +58,9 @@ interface UpdateHandlerInterface
      */
     public function setLogger(LoggerInterface $logger): static;
 
-    public function getEventDispatcher(): EventDispatcherInterface|null;
+    public function getEventDispatcher(): ?EventDispatcherInterface;
 
-    public function setEventDispatcher(EventDispatcherInterface|null $eventDispatcher): static;
+    public function setEventDispatcher(?EventDispatcherInterface $eventDispatcher): static;
 
     /**
      * Register a plugin to handle updates

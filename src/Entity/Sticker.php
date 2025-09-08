@@ -45,16 +45,15 @@ final class Sticker implements EntityInterface
         protected int $height,
         protected bool $is_animated,
         protected bool $is_video,
-        protected PhotoSize|null $thumbnail = null,
-        protected string|null $emoji = null,
-        protected string|null $set_name = null,
-        protected File|null $premium_animation = null,
-        protected MaskPosition|null $mask_position = null,
-        protected string|null $custom_emoji_id = null,
-        protected bool|null $needs_repainting = null,
-        protected int|null $file_size = null,
-    ) {
-    }
+        protected ?PhotoSize $thumbnail = null,
+        protected ?string $emoji = null,
+        protected ?string $set_name = null,
+        protected ?File $premium_animation = null,
+        protected ?MaskPosition $mask_position = null,
+        protected ?string $custom_emoji_id = null,
+        protected ?bool $needs_repainting = null,
+        protected ?int $file_size = null,
+    ) {}
 
     /**
      * @return string
@@ -192,7 +191,7 @@ final class Sticker implements EntityInterface
     /**
      * @return PhotoSize|null
      */
-    public function getThumbnail(): PhotoSize|null
+    public function getThumbnail(): ?PhotoSize
     {
         return $this->thumbnail;
     }
@@ -202,7 +201,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setThumbnail(PhotoSize|null $thumbnail): Sticker
+    public function setThumbnail(?PhotoSize $thumbnail): Sticker
     {
         $this->thumbnail = $thumbnail;
         return $this;
@@ -211,7 +210,7 @@ final class Sticker implements EntityInterface
     /**
      * @return string|null
      */
-    public function getEmoji(): string|null
+    public function getEmoji(): ?string
     {
         return $this->emoji;
     }
@@ -221,7 +220,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setEmoji(string|null $emoji): Sticker
+    public function setEmoji(?string $emoji): Sticker
     {
         $this->emoji = $emoji;
         return $this;
@@ -230,7 +229,7 @@ final class Sticker implements EntityInterface
     /**
      * @return string|null
      */
-    public function getSetName(): string|null
+    public function getSetName(): ?string
     {
         return $this->set_name;
     }
@@ -240,7 +239,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setSetName(string|null $set_name): Sticker
+    public function setSetName(?string $set_name): Sticker
     {
         $this->set_name = $set_name;
         return $this;
@@ -249,7 +248,7 @@ final class Sticker implements EntityInterface
     /**
      * @return File|null
      */
-    public function getPremiumAnimation(): File|null
+    public function getPremiumAnimation(): ?File
     {
         return $this->premium_animation;
     }
@@ -259,7 +258,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setPremiumAnimation(File|null $premium_animation): Sticker
+    public function setPremiumAnimation(?File $premium_animation): Sticker
     {
         $this->premium_animation = $premium_animation;
         return $this;
@@ -268,7 +267,7 @@ final class Sticker implements EntityInterface
     /**
      * @return MaskPosition|null
      */
-    public function getMaskPosition(): MaskPosition|null
+    public function getMaskPosition(): ?MaskPosition
     {
         return $this->mask_position;
     }
@@ -278,7 +277,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setMaskPosition(MaskPosition|null $mask_position): Sticker
+    public function setMaskPosition(?MaskPosition $mask_position): Sticker
     {
         $this->mask_position = $mask_position;
         return $this;
@@ -287,7 +286,7 @@ final class Sticker implements EntityInterface
     /**
      * @return string|null
      */
-    public function getCustomEmojiId(): string|null
+    public function getCustomEmojiId(): ?string
     {
         return $this->custom_emoji_id;
     }
@@ -297,7 +296,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setCustomEmojiId(string|null $custom_emoji_id): Sticker
+    public function setCustomEmojiId(?string $custom_emoji_id): Sticker
     {
         $this->custom_emoji_id = $custom_emoji_id;
         return $this;
@@ -306,7 +305,7 @@ final class Sticker implements EntityInterface
     /**
      * @return bool|null
      */
-    public function getNeedsRepainting(): bool|null
+    public function getNeedsRepainting(): ?bool
     {
         return $this->needs_repainting;
     }
@@ -316,7 +315,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setNeedsRepainting(bool|null $needs_repainting): Sticker
+    public function setNeedsRepainting(?bool $needs_repainting): Sticker
     {
         $this->needs_repainting = $needs_repainting;
         return $this;
@@ -325,7 +324,7 @@ final class Sticker implements EntityInterface
     /**
      * @return int|null
      */
-    public function getFileSize(): int|null
+    public function getFileSize(): ?int
     {
         return $this->file_size;
     }
@@ -335,7 +334,7 @@ final class Sticker implements EntityInterface
      *
      * @return Sticker
      */
-    public function setFileSize(int|null $file_size): Sticker
+    public function setFileSize(?int $file_size): Sticker
     {
         $this->file_size = $file_size;
         return $this;

@@ -16,8 +16,7 @@ class DeclineChatJoinRequestRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $user_id,
-    ) {
-    }
+    ) {}
 
     public function getChatId(): ChatId
     {

@@ -32,11 +32,10 @@ final class InputTextMessageContent implements EntityInterface
     public function __construct(
         protected string $message_text,
         #[ArrayType(MessageEntity::class)]
-        protected array|null $entities = null,
-        protected LinkPreviewOptions|null $link_preview_options = null,
-        protected TelegramParseModeEnum|null $parse_mode = null,
-    ) {
-    }
+        protected ?array $entities = null,
+        protected ?LinkPreviewOptions $link_preview_options = null,
+        protected ?TelegramParseModeEnum $parse_mode = null,
+    ) {}
 
     /**
      * @return string
@@ -60,7 +59,7 @@ final class InputTextMessageContent implements EntityInterface
     /**
      * @return MessageEntity[]|null
      */
-    public function getEntities(): array|null
+    public function getEntities(): ?array
     {
         return $this->entities;
     }
@@ -70,7 +69,7 @@ final class InputTextMessageContent implements EntityInterface
      *
      * @return InputTextMessageContent
      */
-    public function setEntities(array|null $entities): InputTextMessageContent
+    public function setEntities(?array $entities): InputTextMessageContent
     {
         $this->entities = $entities;
         return $this;
@@ -79,7 +78,7 @@ final class InputTextMessageContent implements EntityInterface
     /**
      * @return LinkPreviewOptions|null
      */
-    public function getLinkPreviewOptions(): LinkPreviewOptions|null
+    public function getLinkPreviewOptions(): ?LinkPreviewOptions
     {
         return $this->link_preview_options;
     }
@@ -89,7 +88,7 @@ final class InputTextMessageContent implements EntityInterface
      *
      * @return InputTextMessageContent
      */
-    public function setLinkPreviewOptions(LinkPreviewOptions|null $link_preview_options): InputTextMessageContent
+    public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): InputTextMessageContent
     {
         $this->link_preview_options = $link_preview_options;
         return $this;
@@ -98,7 +97,7 @@ final class InputTextMessageContent implements EntityInterface
     /**
      * @return TelegramParseModeEnum|null
      */
-    public function getParseMode(): TelegramParseModeEnum|null
+    public function getParseMode(): ?TelegramParseModeEnum
     {
         return $this->parse_mode;
     }
@@ -108,7 +107,7 @@ final class InputTextMessageContent implements EntityInterface
      *
      * @return InputTextMessageContent
      */
-    public function setParseMode(TelegramParseModeEnum|null $parse_mode): InputTextMessageContent
+    public function setParseMode(?TelegramParseModeEnum $parse_mode): InputTextMessageContent
     {
         $this->parse_mode = $parse_mode;
         return $this;

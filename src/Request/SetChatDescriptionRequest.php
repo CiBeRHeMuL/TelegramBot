@@ -15,9 +15,8 @@ class SetChatDescriptionRequest implements RequestInterface
      */
     public function __construct(
         private ChatId $chat_id,
-        private string|null $description = null,
-    ) {
-    }
+        private ?string $description = null,
+    ) {}
 
     public function getChatId(): ChatId
     {
@@ -30,12 +29,12 @@ class SetChatDescriptionRequest implements RequestInterface
         return $this;
     }
 
-    public function getDescription(): string|null
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string|null $description): SetChatDescriptionRequest
+    public function setDescription(?string $description): SetChatDescriptionRequest
     {
         $this->description = $description;
         return $this;

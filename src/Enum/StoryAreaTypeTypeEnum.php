@@ -10,4 +10,3 @@ enum StoryAreaTypeTypeEnum: string
     case Weather = 'weather';
     case UniqueGift = 'unique_gift';
 }
-

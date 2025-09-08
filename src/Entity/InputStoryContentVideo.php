@@ -30,9 +30,9 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
      */
     public function __construct(
         protected Filename|Url $video,
-        protected float|null $cover_frame_timestamp = null,
-        protected float|null $duration = null,
-        protected bool|null $is_animation = null,
+        protected ?float $cover_frame_timestamp = null,
+        protected ?float $duration = null,
+        protected ?bool $is_animation = null,
     ) {
         parent::__construct(InputStoryContentTypeEnum::Video);
     }
@@ -59,7 +59,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     /**
      * @return float|null
      */
-    public function getCoverFrameTimestamp(): float|null
+    public function getCoverFrameTimestamp(): ?float
     {
         return $this->cover_frame_timestamp;
     }
@@ -69,7 +69,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
      *
      * @return InputStoryContentVideo
      */
-    public function setCoverFrameTimestamp(float|null $cover_frame_timestamp): InputStoryContentVideo
+    public function setCoverFrameTimestamp(?float $cover_frame_timestamp): InputStoryContentVideo
     {
         $this->cover_frame_timestamp = $cover_frame_timestamp;
         return $this;
@@ -78,7 +78,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     /**
      * @return float|null
      */
-    public function getDuration(): float|null
+    public function getDuration(): ?float
     {
         return $this->duration;
     }
@@ -88,7 +88,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
      *
      * @return InputStoryContentVideo
      */
-    public function setDuration(float|null $duration): InputStoryContentVideo
+    public function setDuration(?float $duration): InputStoryContentVideo
     {
         $this->duration = $duration;
         return $this;
@@ -97,7 +97,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     /**
      * @return bool|null
      */
-    public function getIsAnimation(): bool|null
+    public function getIsAnimation(): ?bool
     {
         return $this->is_animation;
     }
@@ -107,7 +107,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
      *
      * @return InputStoryContentVideo
      */
-    public function setIsAnimation(bool|null $is_animation): InputStoryContentVideo
+    public function setIsAnimation(?bool $is_animation): InputStoryContentVideo
     {
         $this->is_animation = $is_animation;
         return $this;
