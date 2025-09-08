@@ -6,13 +6,6 @@ use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Helper\HArray;
 use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event as Events;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\AfterHandleEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\AfterRequestEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\BeforeHandleEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\BeforeRequestEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\HandlerGroupAddedEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\PluginRegisteredEvent;
-use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event\UpdateReceivedEvent;
 use AndrewGos\TelegramBot\Kernel\Plugin\PluginInterface;
 use AndrewGos\TelegramBot\Kernel\Request\Request;
 use AndrewGos\TelegramBot\Kernel\RequestHandler\MiddlewareChainRequestHandler;
@@ -101,7 +94,7 @@ class UpdateHandler implements UpdateHandlerInterface
         $this->plugins[] = $plugin;
         $this->handlerGroups = [...$this->handlerGroups, ...$plugin->getHandlerGroups()];
 
-        $this->getEventDispatcher()?->dispatch(new PluginRegisteredEvent($plugin));
+        $this->getEventDispatcher()?->dispatch(new Events\PluginRegisteredEvent($plugin));
         return $this;
     }
 
@@ -109,13 +102,13 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         $this->handlerGroups[] = $group;
 
-        $this->getEventDispatcher()?->dispatch(new HandlerGroupAddedEvent($group));
+        $this->getEventDispatcher()?->dispatch(new Events\HandlerGroupAddedEvent($group));
         return $this;
     }
 
     public function handle(): iterable
     {
-        $this->getEventDispatcher()?->dispatch(new BeforeHandleEvent());
+        $this->getEventDispatcher()?->dispatch(new Events\BeforeHandleEvent());
         yield from array_map(
             $this->handleUpdate(...),
             HArray::index(
@@ -123,7 +116,7 @@ class UpdateHandler implements UpdateHandlerInterface
                 static fn(Update $u) => $u->getUpdateId(),
             ),
         );
-        $this->getEventDispatcher()?->dispatch(new AfterHandleEvent());
+        $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
     }
 
     public function listen(int $timeout = 1): void
@@ -153,7 +146,7 @@ class UpdateHandler implements UpdateHandlerInterface
             $this->groupsSorted = true;
         }
 
-        $this->getEventDispatcher()?->dispatch(new UpdateReceivedEvent($update));
+        $this->getEventDispatcher()?->dispatch(new Events\UpdateReceivedEvent($update));
 
         foreach ($this->handlerGroups as $group) {
             if ($group->getChecker()->check($update)) {
@@ -168,11 +161,11 @@ class UpdateHandler implements UpdateHandlerInterface
                     $this->logger,
                 );
 
-                $this->getEventDispatcher()?->dispatch(new BeforeRequestEvent($request));
+                $this->getEventDispatcher()?->dispatch(new Events\BeforeRequestEvent($request));
 
                 $response = $middlewareChain->handle($request);
 
-                $this->getEventDispatcher()?->dispatch(new AfterRequestEvent($request, $response));
+                $this->getEventDispatcher()?->dispatch(new Events\AfterRequestEvent($request, $response));
 
                 yield $response;
             }
