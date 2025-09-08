@@ -3,7 +3,7 @@
 namespace AndrewGos\TelegramBot\Kernel\Response;
 
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
-use AndrewGos\TelegramBot\Exception\Kernel\Middleware\AttributeNotFoundException;
+use AndrewGos\TelegramBot\Exception\Container\AttributeNotFoundException;
 use Psr\Container\ContainerInterface;
 
 final readonly class Response implements ContainerInterface

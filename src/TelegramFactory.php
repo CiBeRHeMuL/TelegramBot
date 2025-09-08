@@ -11,15 +11,16 @@ use AndrewGos\TelegramBot\Filesystem\Filesystem;
 use AndrewGos\TelegramBot\Http\Client\HttpClient;
 use AndrewGos\TelegramBot\Http\Factory\TelegramRequestFactory;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
+use AndrewGos\TelegramBot\Kernel\UpdateHandler;
+use AndrewGos\TelegramBot\Kernel\UpdateSource\GetUpdatesUpdateSource;
+use AndrewGos\TelegramBot\Kernel\UpdateSource\PhpInputUpdateSource;
 use AndrewGos\TelegramBot\Request\RequestInterface;
 use AndrewGos\TelegramBot\Serializer\Normalizer\EntityNormalizer;
 use AndrewGos\TelegramBot\Serializer\Normalizer\RequestNormalizer;
-use AndrewGos\TelegramBot\UpdateHandler\UpdateHandler;
-use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\GetUpdatesUpdateSource;
-use AndrewGos\TelegramBot\UpdateHandler\UpdateSource\PhpInputUpdateSource;
 use AndrewGos\TelegramBot\ValueObject as VO;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use BackedEnum;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\NullLogger;
 use UnitEnum;
 
@@ -30,12 +31,16 @@ class TelegramFactory
      *
      * @param BotToken $token
      * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
+     * @param EventDispatcherInterface|null $eventDispatcher
      *
      * @return Telegram
      * @see PhpInputUpdateSource
      */
-    public static function getDefaultTelegram(BotToken $token, bool $throwOnErrorResponse = false): Telegram
-    {
+    public static function getDefaultTelegram(
+        BotToken $token,
+        bool $throwOnErrorResponse = false,
+        EventDispatcherInterface|null $eventDispatcher = null,
+    ): Telegram {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
@@ -51,7 +56,12 @@ class TelegramFactory
         return new Telegram(
             $token,
             $api,
-            new UpdateHandler(new PhpInputUpdateSource($classBuilder), $api, $logger),
+            new UpdateHandler(
+                new PhpInputUpdateSource($classBuilder),
+                $api,
+                $logger,
+                $eventDispatcher,
+            ),
         );
     }
 
@@ -60,12 +70,16 @@ class TelegramFactory
      *
      * @param BotToken $token
      * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
+     * @param EventDispatcherInterface|null $eventDispatcher
      *
      * @return Telegram
      * @see GetUpdatesUpdateSource
      */
-    public static function getGetUpdatesTelegram(BotToken $token, bool $throwOnErrorResponse = false): Telegram
-    {
+    public static function getGetUpdatesTelegram(
+        BotToken $token,
+        bool $throwOnErrorResponse = false,
+        EventDispatcherInterface|null $eventDispatcher = null,
+    ): Telegram {
         $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
@@ -81,7 +95,12 @@ class TelegramFactory
         return new Telegram(
             $token,
             $api,
-            new UpdateHandler(new GetUpdatesUpdateSource($api), $api, $logger),
+            new UpdateHandler(
+                new GetUpdatesUpdateSource($api),
+                $api,
+                $logger,
+                $eventDispatcher,
+            ),
         );
     }
 

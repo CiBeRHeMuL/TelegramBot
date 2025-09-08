@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\Exception\UpdateHandler\New\Middleware;
+namespace AndrewGos\TelegramBot\Exception\Container;
 
 use LogicException;
 use Psr\Container\NotFoundExceptionInterface;

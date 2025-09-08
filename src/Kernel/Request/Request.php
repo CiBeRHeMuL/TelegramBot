@@ -4,7 +4,7 @@ namespace AndrewGos\TelegramBot\Kernel\Request;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\Update;
-use AndrewGos\TelegramBot\Exception\UpdateHandler\New\Middleware\AttributeNotFoundException;
+use AndrewGos\TelegramBot\Exception\Container\AttributeNotFoundException;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
