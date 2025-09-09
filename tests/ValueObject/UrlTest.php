@@ -3,7 +3,7 @@
 namespace AndrewGos\TelegramBot\Tests\ValueObject;
 
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
-use AndrewGos\TelegramBot\Tests\ValueObject\DataProvider\UrlProvider;
+use AndrewGos\TelegramBot\Tests\DataProvider\ValueObject\UrlProvider;
 use AndrewGos\TelegramBot\ValueObject\Url;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProviderExternal;

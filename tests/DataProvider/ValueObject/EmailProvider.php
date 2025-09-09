@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\Tests\ValueObject\DataProvider;
+namespace AndrewGos\TelegramBot\Tests\DataProvider\ValueObject;
 
 class EmailProvider
 {

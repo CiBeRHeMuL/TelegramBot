@@ -4,6 +4,7 @@
          bootstrap="tests/bootstrap.php"
          backupGlobals="true"
          cacheResult="false"
+         processIsolation="true"
          colors="true">
     <testsuites>
         <testsuite name="TelegramBot Test Suite">
