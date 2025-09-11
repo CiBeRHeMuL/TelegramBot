@@ -13,7 +13,7 @@ final class Utils
         }
 
         if (str_starts_with($path, '~')) {
-            $path = self::getHomeDir() . substr($path, 2);
+            $path = self::getHomeDir() . substr($path, 1);
         }
 
         $path = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);

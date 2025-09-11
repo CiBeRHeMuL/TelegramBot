@@ -2628,8 +2628,13 @@ class Api implements ApiInterface
                 $file->getFilePath(),
             );
             $response = $this->client->sendRequest($fileContentRequest);
-            $fileContent = $response->getBody()->getContents();
-            return $this->fileSystem->save($targetFile, $fileContent, $overwrite, 0755);
+
+            $content = $response->getBody();
+            $content->rewind();
+            $content = $content->detach();
+            $result = $this->fileSystem->save($targetFile, $content, $overwrite, 0755);
+            fclose($content);
+            return $result;
         } catch (Throwable $e) {
             $this->logger->error($e->getMessage());
             return false;

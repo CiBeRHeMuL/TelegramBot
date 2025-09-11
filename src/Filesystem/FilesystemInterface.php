@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Filesystem;
 
+use Stringable;
+
 interface FilesystemInterface
 {
     /**
@@ -20,13 +22,13 @@ interface FilesystemInterface
      * Write content to file
      *
      * @param File $file
-     * @param string $content
+     * @param null|bool|int|float|string|Stringable|resource $content
      * @param bool $overwrite
      * @param int $mode
      *
      * @return bool
      */
-    public function save(File $file, string $content, bool $overwrite = false, int $mode = 0777): bool;
+    public function save(File $file, mixed $content, bool $overwrite = false, int $mode = 0777): bool;
 
     /**
      * Touch file

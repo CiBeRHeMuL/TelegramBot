@@ -18,6 +18,7 @@ class UtilsProvider
             'empty' => ['', ''],
             __DIR__ => [__DIR__, __DIR__],
             '~' => ['~', Utils::getHomeDir()],
+            '~/a' => ['~/a', Utils::getHomeDir() . $ds . 'a'],
         ];
     }
 
