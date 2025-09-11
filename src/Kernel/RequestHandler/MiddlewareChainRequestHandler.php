@@ -6,7 +6,7 @@ use AndrewGos\TelegramBot\Kernel\Middleware\MiddlewareInterface;
 use AndrewGos\TelegramBot\Kernel\Request\Request;
 use AndrewGos\TelegramBot\Kernel\Response\Response;
 
-final readonly class MiddlewareChainRequestHandler implements RequestHandlerInterface
+final class MiddlewareChainRequestHandler implements RequestHandlerInterface
 {
     /**
      * @param MiddlewareInterface[] $middlewares
@@ -14,7 +14,7 @@ final readonly class MiddlewareChainRequestHandler implements RequestHandlerInte
      */
     public function __construct(
         private array $middlewares,
-        private RequestHandlerInterface $handler,
+        private readonly RequestHandlerInterface $handler,
     ) {}
 
     /**
