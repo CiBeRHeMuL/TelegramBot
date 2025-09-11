@@ -1,6 +1,6 @@
 <?php
 
-namespace AndrewGos\TelegramBot\Tests\TestCase;
+namespace AndrewGos\TelegramBot\Tests\Api;
 
 use AndrewGos\TelegramBot\Filesystem\Dir;
 use AndrewGos\TelegramBot\Filesystem\Path;
