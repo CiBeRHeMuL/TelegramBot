@@ -17,16 +17,6 @@ use Psr\Log\LoggerInterface;
 
 class UpdateHandler implements UpdateHandlerInterface
 {
-    public const EVENTS = [
-        Events\AfterHandleEvent::class,
-        Events\AfterRequestEvent::class,
-        Events\BeforeHandleEvent::class,
-        Events\BeforeRequestEvent::class,
-        Events\HandlerGroupAddedEvent::class,
-        Events\PluginRegisteredEvent::class,
-        Events\UpdateReceivedEvent::class,
-    ];
-
     /**
      * @var PluginInterface[]
      */
@@ -92,6 +82,7 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         $this->plugins[] = $plugin;
         $this->handlerGroups = [...$this->handlerGroups, ...$plugin->getHandlerGroups()];
+        $this->groupsSorted = false;
 
         $this->getEventDispatcher()?->dispatch(new Events\PluginRegisteredEvent($plugin));
         return $this;
@@ -100,6 +91,7 @@ class UpdateHandler implements UpdateHandlerInterface
     public function addHandlerGroup(HandlerGroup $group): static
     {
         $this->handlerGroups[] = $group;
+        $this->groupsSorted = false;
 
         $this->getEventDispatcher()?->dispatch(new Events\HandlerGroupAddedEvent($group));
         return $this;
@@ -124,10 +116,8 @@ class UpdateHandler implements UpdateHandlerInterface
             throw new InvalidArgumentException('Timeout must be a positive integer or zero.');
         }
         while (true) {
-            $start = microtime(true);
             $this->handle();
-            $mcs = microtime(true) - $start;
-            usleep($timeout * 1000000 - $mcs);
+            usleep($timeout * 1000000);
         }
     }
 
@@ -140,10 +130,7 @@ class UpdateHandler implements UpdateHandlerInterface
      */
     public function handleUpdate(Update $update): iterable
     {
-        if (!$this->groupsSorted) {
-            $this->sortGroups();
-            $this->groupsSorted = true;
-        }
+        $this->sortGroups();
 
         $this->getEventDispatcher()?->dispatch(new Events\UpdateReceivedEvent($update));
 
@@ -173,9 +160,12 @@ class UpdateHandler implements UpdateHandlerInterface
 
     private function sortGroups(): void
     {
-        uasort(
-            $this->handlerGroups,
-            static fn(HandlerGroup $a, HandlerGroup $b): int => -($a->getPriority() <=> $b->getPriority()),
-        );
+        if (!$this->groupsSorted) {
+            uasort(
+                $this->handlerGroups,
+                static fn(HandlerGroup $a, HandlerGroup $b): int => -($a->getPriority() <=> $b->getPriority()),
+            );
+            $this->groupsSorted = true;
+        }
     }
 }
