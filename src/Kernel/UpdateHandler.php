@@ -175,7 +175,7 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         uasort(
             $this->handlerGroups,
-            static fn(HandlerGroup $a, HandlerGroup $b): int => $a->getPriority() <=> $b->getPriority(),
+            static fn(HandlerGroup $a, HandlerGroup $b): int => -($a->getPriority() <=> $b->getPriority()),
         );
     }
 }

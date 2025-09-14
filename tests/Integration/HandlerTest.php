@@ -6,6 +6,8 @@ use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 use AndrewGos\TelegramBot\Kernel\Checker\UpdateTypeChecker;
 use AndrewGos\TelegramBot\Kernel\HandlerGroup;
+use AndrewGos\TelegramBot\Kernel\Request\Request;
+use AndrewGos\TelegramBot\Kernel\RequestHandler\RequestHandlerInterface;
 use AndrewGos\TelegramBot\Kernel\Response\Response;
 use AndrewGos\TelegramBot\TelegramFactory;
 use AndrewGos\TelegramBot\Tests\Factory\Entity\EntityFactory;
@@ -111,5 +113,56 @@ class HandlerTest extends TestCase
         $this->assertTrue($response->getAttributes()['processed']);
 
         $this->assertSame(3, $response->getAttributes()['count']);
+    }
+
+    public function testHandlerPriority(): void
+    {
+        $update = EntityFactory::createMessageUpdate();
+
+        $telegram = TelegramFactory::getDefaultTelegram(
+            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+        );
+        $handler = $telegram->getUpdateHandler();
+        $handler->setUpdateSource(new ArrayUpdateSource([$update]));
+        $handler->addHandlerGroup(
+            new HandlerGroup(
+                new UpdateTypeChecker(UpdateTypeEnum::Message),
+                new class (1) implements RequestHandlerInterface {
+                    public function __construct(private int $index) {}
+
+                    public function handle(Request $request): Response
+                    {
+                        return new Response(HttpStatusCodeEnum::Ok, ['index' => $this->index]);
+                    }
+                },
+                priority: 1,
+            ),
+        );
+        $handler->addHandlerGroup(
+            new HandlerGroup(
+                new UpdateTypeChecker(UpdateTypeEnum::Message),
+                new class (2) implements RequestHandlerInterface {
+                    public function __construct(private int $index) {}
+
+                    public function handle(Request $request): Response
+                    {
+                        return new Response(HttpStatusCodeEnum::Ok, ['index' => $this->index]);
+                    }
+                },
+                priority: 2,
+            ),
+        );
+
+        $responses = $handler->handle();
+        $responses = is_array($responses) ? $responses : iterator_to_array($responses);
+        $this->assertCount(1, $responses);
+        $this->assertArrayHasKey($update->getUpdateId(), $responses);
+
+        $responses = iterator_to_array($responses[$update->getUpdateId()]);
+        /** @var Response[] $responses */
+        $this->assertCount(2, $responses);
+
+        $this->assertSame(2, $responses[0]->get('index'));
+        $this->assertSame(1, $responses[1]->get('index'));
     }
 }
