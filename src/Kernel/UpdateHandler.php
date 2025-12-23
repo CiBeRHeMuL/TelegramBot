@@ -100,14 +100,18 @@ class UpdateHandler implements UpdateHandlerInterface
     public function handle(): iterable
     {
         $this->getEventDispatcher()?->dispatch(new Events\BeforeHandleEvent());
-        yield from array_map(
+
+        $result = array_map(
             $this->handleUpdate(...),
             HArray::index(
                 $this->getUpdateSource()->getUpdates(),
                 static fn(Update $u) => $u->getUpdateId(),
             ),
         );
+
         $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
+
+        return $result;
     }
 
     public function listen(int $timeout = 1): void
@@ -116,9 +120,7 @@ class UpdateHandler implements UpdateHandlerInterface
             throw new InvalidArgumentException('Timeout must be a positive integer or zero.');
         }
         while (true) {
-            $responses = $this->handle();
-            // $this->handle returns iterable, so we must iterate responses, because it can be Generator
-            iterator_to_array($responses);
+            $this->handle();
             usleep($timeout * 1000000);
         }
     }
@@ -136,6 +138,7 @@ class UpdateHandler implements UpdateHandlerInterface
 
         $this->getEventDispatcher()?->dispatch(new Events\UpdateReceivedEvent($update));
 
+        $result = [];
         foreach ($this->handlerGroups as $group) {
             if ($group->getChecker()->check($update)) {
                 $middlewareChain = new MiddlewareChainRequestHandler(
@@ -155,9 +158,10 @@ class UpdateHandler implements UpdateHandlerInterface
 
                 $this->getEventDispatcher()?->dispatch(new Events\AfterRequestEvent($request, $response));
 
-                yield $response;
+                $result[] = $response;
             }
         }
+        return $result;
     }
 
     private function sortGroups(): void
