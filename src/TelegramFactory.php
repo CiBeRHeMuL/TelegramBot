@@ -13,6 +13,7 @@ use AndrewGos\TelegramBot\Kernel\UpdateSource\PhpInputUpdateSource;
 use AndrewGos\TelegramBot\Serializer\SerializerFactory;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
 class TelegramFactory
@@ -23,6 +24,7 @@ class TelegramFactory
      * @param BotToken $token
      * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      * @param EventDispatcherInterface|null $eventDispatcher
+     * @param LoggerInterface $logger
      *
      * @return Telegram
      * @see PhpInputUpdateSource
@@ -31,8 +33,8 @@ class TelegramFactory
         BotToken $token,
         bool $throwOnErrorResponse = false,
         ?EventDispatcherInterface $eventDispatcher = null,
+        LoggerInterface $logger = new NullLogger(),
     ): Telegram {
-        $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
             $token,
@@ -62,6 +64,9 @@ class TelegramFactory
      * @param BotToken $token
      * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      * @param EventDispatcherInterface|null $eventDispatcher
+     * @param LoggerInterface $logger
+     * @param int|null $limit limit for getUpdates API method (count of updates getting in one time)
+     * @param int|null $timeout timeout for getUpdates API method
      *
      * @return Telegram
      * @see GetUpdatesUpdateSource
@@ -70,8 +75,10 @@ class TelegramFactory
         BotToken $token,
         bool $throwOnErrorResponse = false,
         ?EventDispatcherInterface $eventDispatcher = null,
+        LoggerInterface $logger = new NullLogger(),
+        ?int $limit = null,
+        ?int $timeout = null,
     ): Telegram {
-        $logger = new NullLogger();
         $classBuilder = new ClassBuilder();
         $api = new Api(
             $token,
@@ -87,7 +94,11 @@ class TelegramFactory
             $token,
             $api,
             new UpdateHandler(
-                new GetUpdatesUpdateSource($api),
+                new GetUpdatesUpdateSource(
+                    $api,
+                    $limit,
+                    $timeout,
+                ),
                 $api,
                 $logger,
                 $eventDispatcher,

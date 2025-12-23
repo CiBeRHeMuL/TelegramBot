@@ -4,7 +4,6 @@ namespace AndrewGos\TelegramBot\Kernel;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Entity\Update;
-use AndrewGos\TelegramBot\Helper\HArray;
 use AndrewGos\TelegramBot\Kernel\EventDispatcher\Event as Events;
 use AndrewGos\TelegramBot\Kernel\Plugin\PluginInterface;
 use AndrewGos\TelegramBot\Kernel\Request\Request;
@@ -101,17 +100,11 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         $this->getEventDispatcher()?->dispatch(new Events\BeforeHandleEvent());
 
-        $result = array_map(
-            $this->handleUpdate(...),
-            HArray::index(
-                $this->getUpdateSource()->getUpdates(),
-                static fn(Update $u) => $u->getUpdateId(),
-            ),
-        );
+        foreach ($this->updateSource->getUpdates() as $update) {
+            yield $update->getUpdateId() => $this->handleUpdate($update);
+        }
 
-        $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
-
-        return $result;
+        return $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
     }
 
     public function listen(int $timeout = 1): void
