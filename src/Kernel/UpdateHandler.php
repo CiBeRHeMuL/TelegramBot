@@ -113,7 +113,12 @@ class UpdateHandler implements UpdateHandlerInterface
             throw new InvalidArgumentException('Timeout must be a positive integer or zero.');
         }
         while (true) {
-            $this->handle();
+            $responsesGenerator = $this->handle();
+
+            foreach ($responsesGenerator as $updateResponses) {
+                $updateResponses = iterator_to_array($updateResponses);
+            }
+
             usleep($timeout * 1000000);
         }
     }
