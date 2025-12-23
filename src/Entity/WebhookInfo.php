@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 final class WebhookInfo implements EntityInterface
 {
     /**
-     * @param Url $url Webhook URL, may be empty if webhook is not set up
+     * @param ?Url $url Webhook URL, may be empty if webhook is not set up
      * @param bool $has_custom_certificate True, if a custom certificate was provided for webhook certificate checks
      * @param int $pending_update_count Number of updates awaiting delivery
      * @param UpdateTypeEnum[]|null $allowed_updates Optional. A list of update types the bot is subscribed to. Defaults to all update
@@ -32,7 +32,7 @@ final class WebhookInfo implements EntityInterface
      * update delivery
      */
     public function __construct(
-        protected Url $url,
+        protected ?Url $url,
         protected bool $has_custom_certificate,
         protected int $pending_update_count,
         #[ArrayType(UpdateTypeEnum::class)]
@@ -45,19 +45,19 @@ final class WebhookInfo implements EntityInterface
     ) {}
 
     /**
-     * @return Url
+     * @return Url|null
      */
-    public function getUrl(): Url
+    public function getUrl(): ?Url
     {
         return $this->url;
     }
 
     /**
-     * @param Url $url
+     * @param Url|null $url
      *
      * @return WebhookInfo
      */
-    public function setUrl(Url $url): WebhookInfo
+    public function setUrl(?Url $url): WebhookInfo
     {
         $this->url = $url;
         return $this;
