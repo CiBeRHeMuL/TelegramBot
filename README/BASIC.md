@@ -223,6 +223,8 @@ Simply call the `handle()` method. This will process the single update that Tele
 
 ```php
 // Place this at the end of your webhook script.
+// Note, that $telegram->getUpdateHandler()->handle() returns iterable,
+// and it is Generator in default implementation, so, to handle updates you MUST iterate responses
 $telegram->getUpdateHandler()->handle();
 ```
 

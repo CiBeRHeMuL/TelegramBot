@@ -82,6 +82,7 @@ interface UpdateHandlerInterface
 
     /**
      * Handle incoming updates.
+     * Note, that this method returns iterable (possible Generator), so to handle updates you MUST iterate over responses
      *
      * @return iterable<int, iterable<Response>>
      * @throws Throwable
