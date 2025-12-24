@@ -19,6 +19,8 @@ class SerializerFactory
     {
         $serializer = BaseSerializerFactory::getDefaultSerializer();
         $serializer->addNormalizers([
+            VO\BotToken::class => fn(VO\BotToken $e) => $e->getToken(),
+            VO\CallbackData::class => fn(VO\CallbackData $e) => $e->getData(),
             VO\ChatId::class => fn(VO\ChatId $e) => $e->getId(),
             VO\Email::class => fn(VO\Email $e) => $e->getEmail(),
             VO\EncodedJson::class => fn(VO\EncodedJson $e) => $e->getJson(),
