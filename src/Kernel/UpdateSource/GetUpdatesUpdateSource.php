@@ -25,7 +25,7 @@ class GetUpdatesUpdateSource implements UpdateSourceInterface
                 timeout: $this->timeout,
             ))
             ->getUpdates();
-        foreach ($updates as $update) {
+        foreach ($updates ?? [] as $update) {
             yield $update;
 
             $this->lastUpdateId = $update->getUpdateId() + 1;
