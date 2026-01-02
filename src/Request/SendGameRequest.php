@@ -19,8 +19,8 @@ class SendGameRequest implements RequestInterface
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title'
      * button will be shown. If not empty, the first button must launch the game.

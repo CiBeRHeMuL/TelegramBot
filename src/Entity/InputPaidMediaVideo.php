@@ -35,8 +35,6 @@ final class InputPaidMediaVideo extends AbstractInputPaidMedia
      * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
     public function __construct(
         protected Filename|Url|string $media,

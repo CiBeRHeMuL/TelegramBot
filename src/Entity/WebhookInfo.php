@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 final class WebhookInfo implements EntityInterface
 {
     /**
-     * @param ?Url $url Webhook URL, may be empty if webhook is not set up
+     * @param Url|null $url Webhook URL, may be empty if webhook is not set up
      * @param bool $has_custom_certificate True, if a custom certificate was provided for webhook certificate checks
      * @param int $pending_update_count Number of updates awaiting delivery
      * @param UpdateTypeEnum[]|null $allowed_updates Optional. A list of update types the bot is subscribed to. Defaults to all update

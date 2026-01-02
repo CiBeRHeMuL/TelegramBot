@@ -24,8 +24,8 @@ class SendDiceRequest implements RequestInterface
      * @param DiceEmojiEnum|null $emoji Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”,
      * “🏀”, “⚽”, “🎳”, or “🎰”. Dice can have values 1-6 for “🎲”, “🎯” and “🎳”, values
      * 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
      * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force

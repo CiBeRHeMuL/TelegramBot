@@ -34,7 +34,7 @@ class PromoteChatMemberRequest implements RequestInterface
      * privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were
      * appointed by him)
      * @param bool|null $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
-     * statistics
+     * statistics. For backward compatibility, defaults to True for promotions of channel administrators
      * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
      * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel
      * and decline suggested posts; for channels only

@@ -27,8 +27,8 @@ class SendMessageRequest implements RequestInterface
      * @param MessageEntity[]|null $entities A JSON-serialized list of special entities that appear in message text, which can be
      * specified instead of parse_mode
      * @param LinkPreviewOptions|null $link_preview_options Link preview generation options for the message
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message text. See formatting options for more
      * details.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving

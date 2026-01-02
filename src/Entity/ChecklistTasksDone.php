@@ -18,7 +18,6 @@ final class ChecklistTasksDone implements EntityInterface
      * @param int[]|null $marked_as_not_done_task_ids Optional. Identifiers of the tasks that were marked as not done
      *
      * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
         protected ?Message $checklist_message = null,

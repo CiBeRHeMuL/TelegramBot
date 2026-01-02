@@ -63,7 +63,6 @@ final class ExternalReplyInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#giveaway Giveaway
      * @see https://core.telegram.org/bots/api#giveawaywinners GiveawayWinners
      * @see https://core.telegram.org/bots/api#invoice Invoice
-     * @see https://core.telegram.org/bots/api#payments payment
      * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#location Location
      * @see https://core.telegram.org/bots/api#poll Poll

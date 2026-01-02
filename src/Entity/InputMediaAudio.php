@@ -37,7 +37,6 @@ final class InputMediaAudio extends AbstractInputMedia
      * @param string|null $title Optional. Title of the audio
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */

@@ -1850,6 +1850,38 @@ interface ApiInterface
     public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): Res\RawResponse;
 
     /**
+     * Returns the gifts owned and hosted by a user. Returns OwnedGifts on success.
+     *
+     * @param Req\GetUserGiftsRequest $request
+     *
+     * @return Res\GetUserGiftsResponse
+     * @link https://core.telegram.org/bots/api#getusergifts
+     */
+    public function getUserGifts(Req\GetUserGiftsRequest $request): Res\GetUserGiftsResponse;
+
+    /**
+     * Returns the gifts owned by a chat. Returns OwnedGifts on success.
+     *
+     * @param Req\GetChatGiftsRequest $request
+     *
+     * @return Res\GetChatGiftsResponse
+     * @link https://core.telegram.org/bots/api#getchatgifts
+     */
+    public function getChatGifts(Req\GetChatGiftsRequest $request): Res\GetChatGiftsResponse;
+
+    /**
+     * Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the
+     * same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories
+     * business bot right for both business accounts. Returns Story on success.
+     *
+     * @param Req\RepostStoryRequest $request
+     *
+     * @return Res\RepostStoryResponse
+     * @link https://core.telegram.org/bots/api#repoststory
+     */
+    public function repostStory(Req\RepostStoryRequest $request): Res\RepostStoryResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

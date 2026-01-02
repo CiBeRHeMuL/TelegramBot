@@ -17,8 +17,8 @@ class CopyMessagesRequest implements RequestInterface
      * must be specified in a strictly increasing order.
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.
      * @param bool|null $remove_caption Pass True to copy the messages without their captions
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
      * if the messages are sent to a direct messages chat

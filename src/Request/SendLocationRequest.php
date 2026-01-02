@@ -27,8 +27,8 @@ class SendLocationRequest implements RequestInterface
      * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
      * @param int|null $live_period Period in seconds during which the location will be updated (see Live Locations, should be between
      * 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param int|null $proximity_alert_radius For live locations, a maximum distance for proximity alerts about approaching another
      * chat member, in meters. Must be between 1 and 100000 if specified.

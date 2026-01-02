@@ -34,7 +34,6 @@ final class Poll implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#polloption PollOption
-     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
     public function __construct(
         protected string $id,

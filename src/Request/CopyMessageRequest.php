@@ -22,8 +22,8 @@ class CopyMessageRequest implements RequestInterface
      * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
      * format \@channelusername)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
      * caption is kept
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more
@@ -46,6 +46,8 @@ class CopyMessageRequest implements RequestInterface
      * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
      * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      * post is automatically declined.
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; only available when
+     * copying to private chats
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -77,6 +79,7 @@ class CopyMessageRequest implements RequestInterface
         private ?int $video_start_timestamp = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
+        private ?string $message_effect_id = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -252,6 +255,17 @@ class CopyMessageRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): CopyMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+        return $this;
+    }
+
+    public function getMessageEffectId(): ?string
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(?string $message_effect_id): CopyMessageRequest
+    {
+        $this->message_effect_id = $message_effect_id;
         return $this;
     }
 }

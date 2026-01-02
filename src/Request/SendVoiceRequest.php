@@ -31,8 +31,8 @@ class SendVoiceRequest implements RequestInterface
      * can be specified instead of parse_mode
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param int|null $duration Duration of the voice message in seconds
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the voice message caption. See formatting options
      * for more details.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving

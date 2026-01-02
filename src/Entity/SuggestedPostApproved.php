@@ -16,7 +16,6 @@ final class SuggestedPostApproved implements EntityInterface
      * in this field will not contain the reply_to_message field even if it itself is a reply.
      *
      * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#suggestedpostprice SuggestedPostPrice
      */
     public function __construct(

@@ -16,11 +16,19 @@ final class UniqueGift implements EntityInterface
      * @param UniqueGiftModel $model Model of the gift
      * @param UniqueGiftSymbol $symbol Symbol of the gift
      * @param UniqueGiftBackdrop $backdrop Backdrop of the gift
+     * @param string $gift_id Identifier of the regular gift from which the gift was upgraded
      * @param Chat|null $publisher_chat Optional. Information about the chat that published the gift
+     * @param bool|null $is_premium Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium
+     * subscribers
+     * @param bool|null $is_from_blockchain Optional. True, if the gift is assigned from the TON blockchain and can't be resold or
+     * transferred in Telegram
+     * @param UniqueGiftColors|null $colors Optional. The color scheme that can be used by the gift's owner for the chat's name,
+     * replies to messages and link previews; for business account gifts and gifts that are currently on sale only
      *
      * @see https://core.telegram.org/bots/api#uniquegiftmodel UniqueGiftModel
      * @see https://core.telegram.org/bots/api#uniquegiftsymbol UniqueGiftSymbol
      * @see https://core.telegram.org/bots/api#uniquegiftbackdrop UniqueGiftBackdrop
+     * @see https://core.telegram.org/bots/api#uniquegiftcolors UniqueGiftColors
      * @see https://core.telegram.org/bots/api#chat Chat
      */
     public function __construct(
@@ -30,7 +38,11 @@ final class UniqueGift implements EntityInterface
         protected UniqueGiftModel $model,
         protected UniqueGiftSymbol $symbol,
         protected UniqueGiftBackdrop $backdrop,
+        protected string $gift_id,
         protected ?Chat $publisher_chat = null,
+        protected ?bool $is_premium = null,
+        protected ?bool $is_from_blockchain = null,
+        protected ?UniqueGiftColors $colors = null,
     ) {}
 
     /**
@@ -148,6 +160,25 @@ final class UniqueGift implements EntityInterface
     }
 
     /**
+     * @return string
+     */
+    public function getGiftId(): string
+    {
+        return $this->gift_id;
+    }
+
+    /**
+     * @param string $gift_id
+     *
+     * @return UniqueGift
+     */
+    public function setGiftId(string $gift_id): UniqueGift
+    {
+        $this->gift_id = $gift_id;
+        return $this;
+    }
+
+    /**
      * @return Chat|null
      */
     public function getPublisherChat(): ?Chat
@@ -163,6 +194,63 @@ final class UniqueGift implements EntityInterface
     public function setPublisherChat(?Chat $publisher_chat): UniqueGift
     {
         $this->publisher_chat = $publisher_chat;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsPremium(): ?bool
+    {
+        return $this->is_premium;
+    }
+
+    /**
+     * @param bool|null $is_premium
+     *
+     * @return UniqueGift
+     */
+    public function setIsPremium(?bool $is_premium): UniqueGift
+    {
+        $this->is_premium = $is_premium;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsFromBlockchain(): ?bool
+    {
+        return $this->is_from_blockchain;
+    }
+
+    /**
+     * @param bool|null $is_from_blockchain
+     *
+     * @return UniqueGift
+     */
+    public function setIsFromBlockchain(?bool $is_from_blockchain): UniqueGift
+    {
+        $this->is_from_blockchain = $is_from_blockchain;
+        return $this;
+    }
+
+    /**
+     * @return UniqueGiftColors|null
+     */
+    public function getColors(): ?UniqueGiftColors
+    {
+        return $this->colors;
+    }
+
+    /**
+     * @param UniqueGiftColors|null $colors
+     *
+     * @return UniqueGift
+     */
+    public function setColors(?UniqueGiftColors $colors): UniqueGift
+    {
+        $this->colors = $colors;
         return $this;
     }
 }

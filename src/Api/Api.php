@@ -2549,6 +2549,67 @@ class Api implements ApiInterface
     }
 
     /**
+     * Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum
+     * topic mode enabled. Returns True on success.
+     *
+     * @param Req\SendMessageDraftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#sendmessagedraft
+     */
+    public function sendMessageDraft(Req\SendMessageDraftRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Returns the gifts owned and hosted by a user. Returns OwnedGifts on success.
+     *
+     * @param Req\GetUserGiftsRequest $request
+     *
+     * @return Res\GetUserGiftsResponse
+     * @link https://core.telegram.org/bots/api#getusergifts
+     */
+    public function getUserGifts(Req\GetUserGiftsRequest $request): Res\GetUserGiftsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $ownedGifts = $this->buildClassForResponse(Ent\OwnedGifts::class, $rawResponse);
+        return new Res\GetUserGiftsResponse($rawResponse, $ownedGifts);
+    }
+
+    /**
+     * Returns the gifts owned by a chat. Returns OwnedGifts on success.
+     *
+     * @param Req\GetChatGiftsRequest $request
+     *
+     * @return Res\GetChatGiftsResponse
+     * @link https://core.telegram.org/bots/api#getchatgifts
+     */
+    public function getChatGifts(Req\GetChatGiftsRequest $request): Res\GetChatGiftsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $ownedGifts = $this->buildClassForResponse(Ent\OwnedGifts::class, $rawResponse);
+        return new Res\GetChatGiftsResponse($rawResponse, $ownedGifts);
+    }
+
+    /**
+     * Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the
+     * same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories
+     * business bot right for both business accounts. Returns Story on success.
+     *
+     * @param Req\RepostStoryRequest $request
+     *
+     * @return Res\RepostStoryResponse
+     * @link https://core.telegram.org/bots/api#repoststory
+     */
+    public function repostStory(Req\RepostStoryRequest $request): Res\RepostStoryResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $story = $this->buildClassForResponse(Ent\Story::class, $rawResponse);
+        return new Res\RepostStoryResponse($rawResponse, $story);
+    }
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

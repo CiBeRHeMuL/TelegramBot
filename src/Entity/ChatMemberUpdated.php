@@ -24,7 +24,6 @@ final class ChatMemberUpdated implements EntityInterface
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chatmember ChatMember
-     * @see https://core.telegram.org/bots/api#chatmember ChatMember
      * @see https://core.telegram.org/bots/api#chatinvitelink ChatInviteLink
      */
     public function __construct(

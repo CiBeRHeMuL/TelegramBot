@@ -14,12 +14,14 @@ final class AcceptedGiftTypes implements EntityInterface
      * @param bool $limited_gifts True, if limited regular gifts are accepted
      * @param bool $unique_gifts True, if unique gifts or gifts that can be upgraded to unique for free are accepted
      * @param bool $premium_subscription True, if a Telegram Premium subscription is accepted
+     * @param bool $gifts_from_channels True, if transfers of unique gifts from channels are accepted
      */
     public function __construct(
         protected bool $unlimited_gifts,
         protected bool $limited_gifts,
         protected bool $unique_gifts,
         protected bool $premium_subscription,
+        protected bool $gifts_from_channels,
     ) {}
 
     /**
@@ -95,6 +97,25 @@ final class AcceptedGiftTypes implements EntityInterface
     public function setPremiumSubscription(bool $premium_subscription): AcceptedGiftTypes
     {
         $this->premium_subscription = $premium_subscription;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getGiftsFromChannels(): bool
+    {
+        return $this->gifts_from_channels;
+    }
+
+    /**
+     * @param bool $gifts_from_channels
+     *
+     * @return AcceptedGiftTypes
+     */
+    public function setGiftsFromChannels(bool $gifts_from_channels): AcceptedGiftTypes
+    {
+        $this->gifts_from_channels = $gifts_from_channels;
         return $this;
     }
 }

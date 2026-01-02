@@ -86,6 +86,11 @@ final class ChatFullInfo implements EntityInterface
      * The field is available only for channel chats.
      * @param bool|null $is_direct_messages Optional. True, if the chat is the direct messages chat of a channel
      * @param Chat|null $parent_chat Optional. Information about the corresponding channel chat; for direct messages chats only
+     * @param UserRating|null $rating Optional. For private chats, the rating of the user if any
+     * @param UniqueGiftColors|null $unique_gift_colors Optional. The color scheme based on a unique gift that must be used for the
+     * chat's name, message replies and link previews
+     * @param int|null $paid_message_star_count Optional. The number of Telegram Stars a general user have to pay to send a message
+     * to the chat
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -96,7 +101,6 @@ final class ChatFullInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#businesslocation BusinessLocation
      * @see https://core.telegram.org/bots/api#businessopeninghours BusinessOpeningHours
      * @see https://core.telegram.org/bots/api#chat Chat
-     * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#reactiontype ReactionType
      * @see https://core.telegram.org/bots/api#reactiontypeemoji emoji reactions
      * @see https://core.telegram.org/bots/api#profile-accent-colors profile accent colors
@@ -104,6 +108,8 @@ final class ChatFullInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#chatpermissions ChatPermissions
      * @see https://core.telegram.org/bots/api#acceptedgifttypes AcceptedGiftTypes
      * @see https://core.telegram.org/bots/api#chatlocation ChatLocation
+     * @see https://core.telegram.org/bots/api#userrating UserRating
+     * @see https://core.telegram.org/bots/api#uniquegiftcolors UniqueGiftColors
      */
     public function __construct(
         protected int $id,
@@ -155,6 +161,9 @@ final class ChatFullInfo implements EntityInterface
         protected ?bool $can_send_paid_media = null,
         protected ?bool $is_direct_messages = null,
         protected ?Chat $parent_chat = null,
+        protected ?UserRating $rating = null,
+        protected ?UniqueGiftColors $unique_gift_colors = null,
+        protected ?int $paid_message_star_count = null,
     ) {}
 
     /**
@@ -1047,6 +1056,63 @@ final class ChatFullInfo implements EntityInterface
     public function setParentChat(?Chat $parent_chat): ChatFullInfo
     {
         $this->parent_chat = $parent_chat;
+        return $this;
+    }
+
+    /**
+     * @return UserRating|null
+     */
+    public function getRating(): ?UserRating
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param UserRating|null $rating
+     *
+     * @return ChatFullInfo
+     */
+    public function setRating(?UserRating $rating): ChatFullInfo
+    {
+        $this->rating = $rating;
+        return $this;
+    }
+
+    /**
+     * @return UniqueGiftColors|null
+     */
+    public function getUniqueGiftColors(): ?UniqueGiftColors
+    {
+        return $this->unique_gift_colors;
+    }
+
+    /**
+     * @param UniqueGiftColors|null $unique_gift_colors
+     *
+     * @return ChatFullInfo
+     */
+    public function setUniqueGiftColors(?UniqueGiftColors $unique_gift_colors): ChatFullInfo
+    {
+        $this->unique_gift_colors = $unique_gift_colors;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPaidMessageStarCount(): ?int
+    {
+        return $this->paid_message_star_count;
+    }
+
+    /**
+     * @param int|null $paid_message_star_count
+     *
+     * @return ChatFullInfo
+     */
+    public function setPaidMessageStarCount(?int $paid_message_star_count): ChatFullInfo
+    {
+        $this->paid_message_star_count = $paid_message_star_count;
         return $this;
     }
 }

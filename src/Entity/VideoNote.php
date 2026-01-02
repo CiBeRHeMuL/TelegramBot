@@ -5,7 +5,6 @@ namespace AndrewGos\TelegramBot\Entity;
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  *
- * @see https://telegram.org/blog/video-messages-and-telescope video message
  * @see https://telegram.org/blog/video-messages-and-telescope v.4.0
  * @link https://core.telegram.org/bots/api#videonote
  */

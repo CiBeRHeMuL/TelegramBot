@@ -15,8 +15,8 @@ class ForwardMessageRequest implements RequestInterface
      * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
      * format \@channelusername)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the forwarded message from forwarding and saving
      * @param int|null $video_start_timestamp New start timestamp for the forwarded video in the message
@@ -24,6 +24,8 @@ class ForwardMessageRequest implements RequestInterface
      * required if the message is forwarded to a direct messages chat
      * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
      * post to send; for direct messages chats only
+     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; only available when
+     * forwarding to private chats
      *
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/api#suggestedpostparameters SuggestedPostParameters
@@ -38,6 +40,7 @@ class ForwardMessageRequest implements RequestInterface
         private ?int $video_start_timestamp = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
+        private ?string $message_effect_id = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -136,6 +139,17 @@ class ForwardMessageRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): ForwardMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+        return $this;
+    }
+
+    public function getMessageEffectId(): ?string
+    {
+        return $this->message_effect_id;
+    }
+
+    public function setMessageEffectId(?string $message_effect_id): ForwardMessageRequest
+    {
+        $this->message_effect_id = $message_effect_id;
         return $this;
     }
 }

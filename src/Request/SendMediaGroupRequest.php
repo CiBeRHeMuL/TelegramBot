@@ -21,8 +21,8 @@ class SendMediaGroupRequest implements RequestInterface
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
      * @param ReplyParameters|null $reply_parameters Description of the message to reply to
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats

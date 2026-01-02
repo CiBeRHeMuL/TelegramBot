@@ -43,15 +43,6 @@ final class EncryptedPassportElement implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
      * @see https://core.telegram.org/bots/api#passportfile PassportFile
-     * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
-     * @see https://core.telegram.org/bots/api#passportfile PassportFile
-     * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
-     * @see https://core.telegram.org/bots/api#passportfile PassportFile
-     * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
-     * @see https://core.telegram.org/bots/api#passportfile PassportFile
-     * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
-     * @see https://core.telegram.org/bots/api#passportfile PassportFile
-     * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
      * @see https://core.telegram.org/bots/api#passportelementerrorunspecified PassportElementErrorUnspecified
      */
     public function __construct(

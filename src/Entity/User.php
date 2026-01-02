@@ -28,14 +28,12 @@ final class User implements EntityInterface
      * @param bool|null $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive
      * its messages. Returned only in getMe.
      * @param bool|null $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
+     * @param bool|null $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only
+     * in getMe.
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
      * @see https://core.telegram.org/bots/api#getme getMe
      * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
-     * @see https://core.telegram.org/bots/api#getme getMe
-     * @see https://core.telegram.org/bots/api#getme getMe
-     * @see https://core.telegram.org/bots/api#getme getMe
-     * @see https://core.telegram.org/bots/api#getme getMe
      */
     public function __construct(
         protected int $id,
@@ -51,6 +49,7 @@ final class User implements EntityInterface
         protected ?bool $supports_inline_queries = null,
         protected ?bool $can_connect_to_business = null,
         protected ?bool $has_main_web_app = null,
+        protected ?bool $has_topics_enabled = null,
     ) {}
 
     /**
@@ -297,6 +296,25 @@ final class User implements EntityInterface
     public function setHasMainWebApp(?bool $has_main_web_app): User
     {
         $this->has_main_web_app = $has_main_web_app;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getHasTopicsEnabled(): ?bool
+    {
+        return $this->has_topics_enabled;
+    }
+
+    /**
+     * @param bool|null $has_topics_enabled
+     *
+     * @return User
+     */
+    public function setHasTopicsEnabled(?bool $has_topics_enabled): User
+    {
+        $this->has_topics_enabled = $has_topics_enabled;
         return $this;
     }
 }

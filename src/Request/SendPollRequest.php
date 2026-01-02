@@ -39,8 +39,8 @@ class SendPollRequest implements RequestInterface
      * for more details.
      * @param bool|null $is_anonymous True, if the poll needs to be anonymous, defaults to True
      * @param bool|null $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together
      * with close_date.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving

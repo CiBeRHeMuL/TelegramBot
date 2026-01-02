@@ -17,7 +17,6 @@ final class InlineKeyboardMarkup implements EntityInterface
      * objects
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardbutton InlineKeyboardButton
-     * @see https://core.telegram.org/bots/api#inlinekeyboardbutton InlineKeyboardButton
      */
     public function __construct(
         #[ArrayType(new ArrayType(InlineKeyboardButton::class))]

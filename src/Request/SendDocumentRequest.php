@@ -26,8 +26,8 @@ class SendDocumentRequest implements RequestInterface
      * More information on Sending Files »
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param string|null $caption Document caption (may also be used when resending documents by file_id), 0-1024 characters after
      * entities parsing
      * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the document caption. See formatting options for

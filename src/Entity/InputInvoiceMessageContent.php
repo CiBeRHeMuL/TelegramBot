@@ -69,18 +69,8 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
      * @see https://t.me/botfather @BotFather
      * @see https://t.me/BotNews/90 Telegram Stars
      * @see https://core.telegram.org/bots/payments#supported-currencies more on currencies
-     * @see https://t.me/BotNews/90 Telegram Stars
      * @see https://core.telegram.org/bots/api#labeledprice LabeledPrice
-     * @see https://t.me/BotNews/90 Telegram Stars
      * @see https://core.telegram.org/bots/payments/currencies.json currencies.json
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
-     * @see https://t.me/BotNews/90 Telegram Stars
      */
     public function __construct(
         protected string $title,

@@ -15,8 +15,8 @@ class ForwardMessagesRequest implements RequestInterface
      * format \@channelusername)
      * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The
      * identifiers must be specified in a strictly increasing order.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $disable_notification Sends the messages silently. Users will receive a notification with no sound.
      * @param bool|null $protect_content Protects the contents of the forwarded messages from forwarding and saving
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be forwarded;

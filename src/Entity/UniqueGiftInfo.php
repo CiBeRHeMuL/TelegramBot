@@ -14,14 +14,19 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @param UniqueGift $gift Information about the gift
      * @param UniqueGiftInfoOriginEnum $origin Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular
-     * gifts, “transfer” for gifts transferred from other users or channels, or “resale” for gifts bought from other users
+     * gifts, “transfer” for gifts transferred from other users or channels, “resale” for gifts bought from other users,
+     * “gifted_upgrade” for upgrades purchased after the gift was sent, or “offer” for gifts bought or sold through gift
+     * purchase offers
      * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received
      * on behalf of business accounts
      * @param int|null $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
      * the bot cannot transfer the gift
-     * @param int|null $last_resale_star_count Optional. For gifts bought from other users, the price paid for the gift
      * @param int|null $next_transfer_date Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
      * the past, then the gift can be transferred now
+     * @param string|null $last_resale_currency Optional. For gifts bought from other users, the currency in which the payment for
+     * the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.
+     * @param int|null $last_resale_amount Optional. For gifts bought from other users, the price paid for the gift in either Telegram
+     * Stars or nanotoncoins
      *
      * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
      */
@@ -30,8 +35,9 @@ final class UniqueGiftInfo implements EntityInterface
         protected UniqueGiftInfoOriginEnum $origin,
         protected ?string $owned_gift_id = null,
         protected ?int $transfer_star_count = null,
-        protected ?int $last_resale_star_count = null,
         protected ?int $next_transfer_date = null,
+        protected ?string $last_resale_currency = null,
+        protected ?int $last_resale_amount = null,
     ) {}
 
     /**
@@ -113,25 +119,6 @@ final class UniqueGiftInfo implements EntityInterface
     /**
      * @return int|null
      */
-    public function getLastResaleStarCount(): ?int
-    {
-        return $this->last_resale_star_count;
-    }
-
-    /**
-     * @param int|null $last_resale_star_count
-     *
-     * @return UniqueGiftInfo
-     */
-    public function setLastResaleStarCount(?int $last_resale_star_count): UniqueGiftInfo
-    {
-        $this->last_resale_star_count = $last_resale_star_count;
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
     public function getNextTransferDate(): ?int
     {
         return $this->next_transfer_date;
@@ -145,6 +132,44 @@ final class UniqueGiftInfo implements EntityInterface
     public function setNextTransferDate(?int $next_transfer_date): UniqueGiftInfo
     {
         $this->next_transfer_date = $next_transfer_date;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastResaleCurrency(): ?string
+    {
+        return $this->last_resale_currency;
+    }
+
+    /**
+     * @param string|null $last_resale_currency
+     *
+     * @return UniqueGiftInfo
+     */
+    public function setLastResaleCurrency(?string $last_resale_currency): UniqueGiftInfo
+    {
+        $this->last_resale_currency = $last_resale_currency;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLastResaleAmount(): ?int
+    {
+        return $this->last_resale_amount;
+    }
+
+    /**
+     * @param int|null $last_resale_amount
+     *
+     * @return UniqueGiftInfo
+     */
+    public function setLastResaleAmount(?int $last_resale_amount): UniqueGiftInfo
+    {
+        $this->last_resale_amount = $last_resale_amount;
         return $this;
     }
 }

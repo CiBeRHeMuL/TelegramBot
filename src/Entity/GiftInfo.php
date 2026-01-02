@@ -21,12 +21,16 @@ final class GiftInfo implements EntityInterface
      * will be able to see them
      * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received
      * on behalf of business accounts
-     * @param int|null $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were prepaid by the sender for the ability
-     * to upgrade the gift
+     * @param int|null $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were prepaid for the ability to upgrade
+     * the gift
      * @param string|null $text Optional. Text of the message that was added to the gift
+     * @param bool|null $is_upgrade_separate Optional. True, if the gift's upgrade was purchased after the gift was sent
+     * @param int|null $unique_gift_number Optional. Unique number reserved for this gift when upgraded. See the number field in
+     * UniqueGift
      *
      * @see https://core.telegram.org/bots/api#gift Gift
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
      */
     public function __construct(
         protected Gift $gift,
@@ -38,6 +42,8 @@ final class GiftInfo implements EntityInterface
         protected ?string $owned_gift_id = null,
         protected ?int $prepaid_upgrade_star_count = null,
         protected ?string $text = null,
+        protected ?bool $is_upgrade_separate = null,
+        protected ?int $unique_gift_number = null,
     ) {}
 
     /**
@@ -189,6 +195,44 @@ final class GiftInfo implements EntityInterface
     public function setText(?string $text): GiftInfo
     {
         $this->text = $text;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsUpgradeSeparate(): ?bool
+    {
+        return $this->is_upgrade_separate;
+    }
+
+    /**
+     * @param bool|null $is_upgrade_separate
+     *
+     * @return GiftInfo
+     */
+    public function setIsUpgradeSeparate(?bool $is_upgrade_separate): GiftInfo
+    {
+        $this->is_upgrade_separate = $is_upgrade_separate;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUniqueGiftNumber(): ?int
+    {
+        return $this->unique_gift_number;
+    }
+
+    /**
+     * @param int|null $unique_gift_number
+     *
+     * @return GiftInfo
+     */
+    public function setUniqueGiftNumber(?int $unique_gift_number): GiftInfo
+    {
+        $this->unique_gift_number = $unique_gift_number;
         return $this;
     }
 }

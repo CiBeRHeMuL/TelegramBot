@@ -28,7 +28,6 @@ final class Video implements EntityInterface
      * @param int|null $start_timestamp Optional. Timestamp in seconds from which the video will play in the message
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
-     * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
     public function __construct(
         protected string $file_id,

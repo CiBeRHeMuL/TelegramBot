@@ -30,7 +30,6 @@ final class MessageEntity implements EntityInterface
      *
      * @see https://telegram.org/blog/edit#new-mentions without usernames
      * @see https://core.telegram.org/api/entities#entity-length UTF-16 code units
-     * @see https://core.telegram.org/api/entities#entity-length UTF-16 code units
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#getcustomemojistickers getCustomEmojiStickers
      */

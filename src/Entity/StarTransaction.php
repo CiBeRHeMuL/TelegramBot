@@ -24,7 +24,6 @@ final class StarTransaction implements EntityInterface
      * from 0 to 999999999
      *
      * @see https://core.telegram.org/bots/api#transactionpartner TransactionPartner
-     * @see https://core.telegram.org/bots/api#transactionpartner TransactionPartner
      */
     public function __construct(
         protected string $id,

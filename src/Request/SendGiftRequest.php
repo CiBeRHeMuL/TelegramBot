@@ -12,7 +12,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendGiftRequest implements RequestInterface
 {
     /**
-     * @param string $gift_id Identifier of the gift
+     * @param string $gift_id Identifier of the gift; limited gifts can't be sent to channel chats
      * @param ChatId|null $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel
      * (in the format \@channelusername) that will receive the gift.
      * @param bool|null $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade

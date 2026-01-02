@@ -36,7 +36,6 @@ final class InputMediaDocument extends AbstractInputMedia
      * uploaded using multipart/form-data. Always True, if the document is sent as part of an album.
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */

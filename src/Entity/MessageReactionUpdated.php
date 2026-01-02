@@ -22,8 +22,6 @@ final class MessageReactionUpdated implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
-     * @see https://core.telegram.org/bots/api#chat Chat
-     * @see https://core.telegram.org/bots/api#reactiontype ReactionType
      * @see https://core.telegram.org/bots/api#reactiontype ReactionType
      */
     public function __construct(

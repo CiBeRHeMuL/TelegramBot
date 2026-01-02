@@ -34,8 +34,8 @@ class SendInvoiceRequest implements RequestInterface
      * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the
      * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported
      * for payments in Telegram Stars.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param bool|null $need_email Pass True if you require the user's email address to complete the order. Ignored for payments
      * in Telegram Stars.
      * @param bool|null $need_name Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram

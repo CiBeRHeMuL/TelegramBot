@@ -39,7 +39,6 @@ final class InputMediaAnimation extends AbstractInputMedia
      * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
-     * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */

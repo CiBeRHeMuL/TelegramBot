@@ -16,7 +16,6 @@ final class ProximityAlertTriggered implements EntityInterface
      * @param int $distance The distance between the users
      *
      * @see https://core.telegram.org/bots/api#user User
-     * @see https://core.telegram.org/bots/api#user User
      */
     public function __construct(
         protected User $traveler,

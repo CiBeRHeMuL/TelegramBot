@@ -32,7 +32,6 @@ final class CallbackQuery implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
-     * @see https://core.telegram.org/bots/api#games games
      * @see https://core.telegram.org/bots/api#games Game
      */
     public function __construct(

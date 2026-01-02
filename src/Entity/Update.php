@@ -62,19 +62,13 @@ final class Update implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#businessconnection BusinessConnection
-     * @see https://core.telegram.org/bots/api#message Message
-     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#businessmessagesdeleted BusinessMessagesDeleted
      * @see https://core.telegram.org/bots/api#messagereactionupdated MessageReactionUpdated
      * @see https://core.telegram.org/bots/api#messagereactioncountupdated MessageReactionCountUpdated
      * @see https://core.telegram.org/bots/api#inlinequery InlineQuery
      * @see https://core.telegram.org/bots/api#inline-mode inline
      * @see https://core.telegram.org/bots/api#choseninlineresult ChosenInlineResult
-     * @see https://core.telegram.org/bots/api#inline-mode inline
      * @see https://core.telegram.org/bots/inline#collecting-feedback feedback collecting
      * @see https://core.telegram.org/bots/api#callbackquery CallbackQuery
      * @see https://core.telegram.org/bots/api#shippingquery ShippingQuery
@@ -82,7 +76,6 @@ final class Update implements EntityInterface
      * @see https://core.telegram.org/bots/api#paidmediapurchased PaidMediaPurchased
      * @see https://core.telegram.org/bots/api#poll Poll
      * @see https://core.telegram.org/bots/api#pollanswer PollAnswer
-     * @see https://core.telegram.org/bots/api#chatmemberupdated ChatMemberUpdated
      * @see https://core.telegram.org/bots/api#chatmemberupdated ChatMemberUpdated
      * @see https://core.telegram.org/bots/api#chatjoinrequest ChatJoinRequest
      * @see https://core.telegram.org/bots/api#chatboostupdated ChatBoostUpdated

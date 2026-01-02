@@ -26,8 +26,8 @@ class SendAnimationRequest implements RequestInterface
      * a new animation using multipart/form-data. More information on Sending Files »
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups
-     * only
+     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     * and private chats of bots with forum topic mode enabled only
      * @param int|null $duration Duration of sent animation in seconds
      * @param int|null $width Animation width
      * @param int|null $height Animation height

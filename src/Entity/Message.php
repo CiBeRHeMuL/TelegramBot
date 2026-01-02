@@ -21,8 +21,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * field will be 0 and the relevant message will be unusable until it is actually sent
      * @param int $date Date the message was sent in Unix time. It is always a positive number, representing a valid date.
      * @param Chat $chat Chat the message belongs to
-     * @param int|null $message_thread_id Optional. Unique identifier of a message thread to which the message belongs; for supergroups
-     * only
+     * @param int|null $message_thread_id Optional. Unique identifier of a message thread or forum topic to which the message belongs;
+     * for supergroups and private chats only
      * @param User|null $from Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility,
      * if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
      * @param Chat|null $sender_chat Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself
@@ -32,7 +32,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param int|null $sender_boost_count Optional. If the sender of the message boosted the chat, the number of boosts added by
      * the user
      * @param AbstractMessageOrigin|null $forward_origin Optional. Information about the original message for forwarded messages
-     * @param bool|null $is_topic_message Optional. True, if the message is sent to a forum topic
+     * @param bool|null $is_topic_message Optional. True, if the message is sent to a topic in a forum supergroup or a private chat
+     * with the bot
      * @param bool|null $is_automatic_forward Optional. True, if the message is a channel post that was automatically forwarded to
      * the connected discussion group
      * @param Message|null $reply_to_message Optional. For replies in the same chat and message thread, the original message. Note
@@ -171,19 +172,16 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param SuggestedPostDeclined|null $suggested_post_declined Optional. Service message: a suggested post was declined
      * @param SuggestedPostPaid|null $suggested_post_paid Optional. Service message: payment for a suggested post was received
      * @param SuggestedPostRefunded|null $suggested_post_refunded Optional. Service message: payment for a suggested post was refunded
+     * @param GiftInfo|null $gift_upgrade_sent Optional. Service message: upgrade of a gift was purchased after the gift was sent
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
-     * @see https://core.telegram.org/bots/api#user User
-     * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
-     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#externalreplyinfo ExternalReplyInfo
      * @see https://core.telegram.org/bots/api#textquote TextQuote
      * @see https://core.telegram.org/bots/api#story Story
-     * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#linkpreviewoptions LinkPreviewOptions
      * @see https://core.telegram.org/bots/api#suggestedpostinfo SuggestedPostInfo
@@ -193,12 +191,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#paidmediainfo PaidMediaInfo
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      * @see https://core.telegram.org/bots/api#sticker Sticker
-     * @see https://core.telegram.org/bots/api#story Story
      * @see https://core.telegram.org/bots/api#video Video
      * @see https://core.telegram.org/bots/api#videonote VideoNote
      * @see https://telegram.org/blog/video-messages-and-telescope video note
      * @see https://core.telegram.org/bots/api#voice Voice
-     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#checklist Checklist
      * @see https://core.telegram.org/bots/api#contact Contact
      * @see https://core.telegram.org/bots/api#dice Dice
@@ -207,19 +203,12 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#poll Poll
      * @see https://core.telegram.org/bots/api#venue Venue
      * @see https://core.telegram.org/bots/api#location Location
-     * @see https://core.telegram.org/bots/api#user User
-     * @see https://core.telegram.org/bots/api#user User
-     * @see https://core.telegram.org/bots/api#photosize PhotoSize
      * @see https://core.telegram.org/bots/api#messageautodeletetimerchanged MessageAutoDeleteTimerChanged
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
-     * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#invoice Invoice
-     * @see https://core.telegram.org/bots/api#payments payment
      * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#successfulpayment SuccessfulPayment
-     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#refundedpayment RefundedPayment
-     * @see https://core.telegram.org/bots/api#payments More about payments »
      * @see https://core.telegram.org/bots/api#usersshared UsersShared
      * @see https://core.telegram.org/bots/api#chatshared ChatShared
      * @see https://core.telegram.org/bots/api#giftinfo GiftInfo
@@ -365,6 +354,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?SuggestedPostDeclined $suggested_post_declined = null,
         protected ?SuggestedPostPaid $suggested_post_paid = null,
         protected ?SuggestedPostRefunded $suggested_post_refunded = null,
+        protected ?GiftInfo $gift_upgrade_sent = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2304,6 +2294,25 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setSuggestedPostRefunded(?SuggestedPostRefunded $suggested_post_refunded): Message
     {
         $this->suggested_post_refunded = $suggested_post_refunded;
+        return $this;
+    }
+
+    /**
+     * @return GiftInfo|null
+     */
+    public function getGiftUpgradeSent(): ?GiftInfo
+    {
+        return $this->gift_upgrade_sent;
+    }
+
+    /**
+     * @param GiftInfo|null $gift_upgrade_sent
+     *
+     * @return Message
+     */
+    public function setGiftUpgradeSent(?GiftInfo $gift_upgrade_sent): Message
+    {
+        $this->gift_upgrade_sent = $gift_upgrade_sent;
         return $this;
     }
 }

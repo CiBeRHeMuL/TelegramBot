@@ -36,7 +36,6 @@ final class KeyboardButtonRequestChat implements EntityInterface
      *
      * @see https://core.telegram.org/bots/api#chatshared ChatShared
      * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
-     * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
      */
     public function __construct(
         protected int $request_id,
