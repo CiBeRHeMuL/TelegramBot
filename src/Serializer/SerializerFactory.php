@@ -7,8 +7,9 @@ use AndrewGos\Serializer\SerializerFactory as BaseSerializerFactory;
 use AndrewGos\TelegramBot\Entity\EntityInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use AndrewGos\TelegramBot\Request\RequestInterface;
-use AndrewGos\TelegramBot\Serializer\Normalizer\EntityNormalizer;
-use AndrewGos\TelegramBot\Serializer\Normalizer\RequestNormalizer;
+use AndrewGos\TelegramBot\Response\RawResponse;
+use AndrewGos\TelegramBot\Response\ResponseInterface;
+use AndrewGos\TelegramBot\Serializer\Normalizer\TelegramNormalizer;
 use AndrewGos\TelegramBot\ValueObject as VO;
 use BackedEnum;
 use UnitEnum;
@@ -30,8 +31,10 @@ class SerializerFactory
             VO\Language::class => fn(VO\Language $e) => $e->getLanguage(),
             VO\Phone::class => fn(VO\Phone $e) => $e->getPhone(),
             VO\Url::class => fn(VO\Url $e) => $e->getUrl(),
-            RequestInterface::class => (new RequestNormalizer($serializer))(...),
-            EntityInterface::class => (new EntityNormalizer($serializer))(...),
+            EntityInterface::class => (new TelegramNormalizer($serializer))(...),
+            ResponseInterface::class => (new TelegramNormalizer($serializer))(...),
+            RawResponse::class => (new TelegramNormalizer($serializer))(...),
+            RequestInterface::class => (new TelegramNormalizer($serializer))(...),
             UnitEnum::class => fn(UnitEnum $e) => $e->name,
             BackedEnum::class => fn(BackedEnum $e) => $e->value,
             'object' => fn(object $e) => $serializer->normalize((array) $e),

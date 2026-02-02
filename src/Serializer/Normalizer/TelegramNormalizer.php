@@ -6,7 +6,7 @@ use AndrewGos\Serializer\SerializerInterface;
 use AndrewGos\TelegramBot\Entity\EntityInterface;
 use stdClass;
 
-final readonly class EntityNormalizer
+final readonly class TelegramNormalizer
 {
     public function __construct(
         private SerializerInterface $serializer,
