@@ -3,7 +3,6 @@
 namespace AndrewGos\TelegramBot\Serializer\Normalizer;
 
 use AndrewGos\Serializer\SerializerInterface;
-use AndrewGos\TelegramBot\Entity\EntityInterface;
 use stdClass;
 
 final readonly class TelegramNormalizer
@@ -12,7 +11,7 @@ final readonly class TelegramNormalizer
         private SerializerInterface $serializer,
     ) {}
 
-    public function __invoke(EntityInterface $entity): array|stdClass
+    public function __invoke(object $obj): array|stdClass
     {
         $valueSerializer = function (mixed &$v) {
             $v = $this->serializer->normalize($v);
@@ -25,7 +24,7 @@ final readonly class TelegramNormalizer
             array_walk($vars, $valueSerializer);
             return $vars;
         };
-        $serializer = $serializer->bindTo($entity, $entity);
+        $serializer = $serializer->bindTo($obj, $obj);
         return $serializer();
     }
 }
