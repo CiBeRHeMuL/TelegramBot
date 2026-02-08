@@ -28,6 +28,8 @@ class UtilsTest extends TestCase
     {
         // Emulate Unix
         if (is_string($input)) {
+            putenv("HOMEDRIVE=");
+            putenv("HOMEPATH=");
             putenv("HOME=$input");
             if (!$input) {
                 $this->expectException(RuntimeException::class);
