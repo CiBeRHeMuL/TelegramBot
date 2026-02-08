@@ -82,7 +82,10 @@ interface UpdateHandlerInterface
 
     /**
      * Handle incoming updates.
-     * Note, that this method returns iterable (possible Generator), so to handle updates you MUST iterate over responses
+     * Note, that this method returns iterable (possible Generator), so to handle updates you MUST iterate over responses.
+     *
+     * Note, that if request handler returns response with `isRequestPropagationStopped() = true`,
+     * then request handler MUST skip next request handlers
      *
      * @return iterable<int, iterable<Response>>
      * @throws Throwable

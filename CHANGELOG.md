@@ -1,9 +1,14 @@
 # Change log of Telegram Bot Library
 
+## Version 4.2
+
+### General
++ Add functionality that allows you to stop request propagation
+
 ## Version 4.1
 
 ### General
-+ Add Bot Api 9.2 (December 31, 2025) functionality
++ Add Bot Api 9.3 (December 31, 2025) functionality
 
 ## Version 3.1
 

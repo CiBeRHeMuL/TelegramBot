@@ -157,6 +157,10 @@ class UpdateHandler implements UpdateHandlerInterface
                 $this->getEventDispatcher()?->dispatch(new Events\AfterRequestEvent($request, $response));
 
                 $result[] = $response;
+
+                if ($response->isStopRequestPropagation()) {
+                    break;
+                }
             }
         }
         return $result;

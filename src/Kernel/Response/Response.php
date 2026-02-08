@@ -8,9 +8,15 @@ use Psr\Container\ContainerInterface;
 
 final readonly class Response implements ContainerInterface
 {
+    /**
+     * @param HttpStatusCodeEnum $statusCode
+     * @param array $attributes
+     * @param bool $stopRequestPropagation must update handler stop request propagation or not
+     */
     public function __construct(
         private HttpStatusCodeEnum $statusCode,
         private array $attributes = [],
+        private bool $stopRequestPropagation = false,
     ) {}
 
     public function getStatusCode(): HttpStatusCodeEnum
@@ -53,5 +59,23 @@ final readonly class Response implements ContainerInterface
     public function has(string $id): bool
     {
         return array_key_exists($id, $this->attributes);
+    }
+
+    /**
+     * Returns copy of current instance with `$stopRequestPropagation = true`
+     * @return self
+     */
+    public function stopRequestPropagation(): self
+    {
+        return new self(
+            $this->statusCode,
+            $this->attributes,
+            true,
+        );
+    }
+
+    public function isStopRequestPropagation(): bool
+    {
+        return $this->stopRequestPropagation;
     }
 }

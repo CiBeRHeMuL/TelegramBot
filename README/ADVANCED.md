@@ -10,6 +10,7 @@ Here, we will explore concepts like `Middleware`, custom `Checkers`, `Plugins`, 
 4.  How to manually build a `Telegram` instance and replace its components.
 5.  Advanced file handling techniques.
 6.  Built-in Helpers: `Plugins`, `Middleware`, and `Handlers`.
+7.  Stop request propagation
 
 ---
 
@@ -372,3 +373,33 @@ $catchAllGroup = new HandlerGroup(
 $updateHandler->addHandlerGroup($catchAllGroup);
 ```
 
+---
+
+### 7. 🚫 Stop request propagation
+
+If you want the request to be processed by only one handler, you can pass `requestPropagationStop = true` in the response. \
+Update handler will not use any request handlers after recieving response with `requestPropagationStop = true`.
+
+This library provides default [StopRequestPropagationMiddleware.php](../src/Kernel/Middleware/StopRequestPropagationMiddleware.php) class, \
+that allows you to stop request propagation.
+
+Set `stopRequestPropagation` in [Response.php](../src/Kernel/Response/Response.php) constructor
+```php
+use AndrewGos\TelegramBot\Kernel\Response\Response;
+use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
+
+// In your request handler
+
+return new Response(HttpStatusCodeEnum::NoContent, stopRequestPropagation: true);
+```
+
+... or call `stopRequestPropagation` method of [Response.php](../src/Kernel/Response/Response.php)
+```php
+use AndrewGos\TelegramBot\Kernel\Response\Response;
+use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
+
+// In your request handler, middleware, etc.
+
+$response = new Response(HttpStatusCodeEnum::NoContent);
+return $response->stopRequestPropagation();
+```

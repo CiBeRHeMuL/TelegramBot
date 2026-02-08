@@ -15,6 +15,7 @@ final readonly class Request implements ContainerInterface
         private ApiInterface $api,
         private LoggerInterface $logger,
         private array $attributes = [],
+        private bool $propagationStopped = false,
     ) {}
 
     public function getUpdate(): Update
@@ -69,5 +70,21 @@ final readonly class Request implements ContainerInterface
     public function has(string $id): bool
     {
         return array_key_exists($id, $this->attributes);
+    }
+
+    public function stopPropagation(): self
+    {
+        return new self(
+            $this->update,
+            $this->api,
+            $this->logger,
+            $this->attributes,
+            true,
+        );
+    }
+
+    public function isPropagationStopped(): bool
+    {
+        return $this->propagationStopped;
     }
 }
