@@ -173,6 +173,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param SuggestedPostPaid|null $suggested_post_paid Optional. Service message: payment for a suggested post was received
      * @param SuggestedPostRefunded|null $suggested_post_refunded Optional. Service message: payment for a suggested post was refunded
      * @param GiftInfo|null $gift_upgrade_sent Optional. Service message: upgrade of a gift was purchased after the gift was sent
+     * @param ChatOwnerLeft|null $chat_owner_left Optional. Service message: chat owner has left
+     * @param ChatOwnerChanged|null $chat_owner_changed Optional. Service message: chat owner has changed
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -203,6 +205,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#poll Poll
      * @see https://core.telegram.org/bots/api#venue Venue
      * @see https://core.telegram.org/bots/api#location Location
+     * @see https://core.telegram.org/bots/api#chatownerleft ChatOwnerLeft
+     * @see https://core.telegram.org/bots/api#chatownerchanged ChatOwnerChanged
      * @see https://core.telegram.org/bots/api#messageautodeletetimerchanged MessageAutoDeleteTimerChanged
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#invoice Invoice
@@ -355,6 +359,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?SuggestedPostPaid $suggested_post_paid = null,
         protected ?SuggestedPostRefunded $suggested_post_refunded = null,
         protected ?GiftInfo $gift_upgrade_sent = null,
+        protected ?ChatOwnerLeft $chat_owner_left = null,
+        protected ?ChatOwnerChanged $chat_owner_changed = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2313,6 +2319,44 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setGiftUpgradeSent(?GiftInfo $gift_upgrade_sent): Message
     {
         $this->gift_upgrade_sent = $gift_upgrade_sent;
+        return $this;
+    }
+
+    /**
+     * @return ChatOwnerLeft|null
+     */
+    public function getChatOwnerLeft(): ?ChatOwnerLeft
+    {
+        return $this->chat_owner_left;
+    }
+
+    /**
+     * @param ChatOwnerLeft|null $chat_owner_left
+     *
+     * @return Message
+     */
+    public function setChatOwnerLeft(?ChatOwnerLeft $chat_owner_left): Message
+    {
+        $this->chat_owner_left = $chat_owner_left;
+        return $this;
+    }
+
+    /**
+     * @return ChatOwnerChanged|null
+     */
+    public function getChatOwnerChanged(): ?ChatOwnerChanged
+    {
+        return $this->chat_owner_changed;
+    }
+
+    /**
+     * @param ChatOwnerChanged|null $chat_owner_changed
+     *
+     * @return Message
+     */
+    public function setChatOwnerChanged(?ChatOwnerChanged $chat_owner_changed): Message
+    {
+        $this->chat_owner_changed = $chat_owner_changed;
         return $this;
     }
 }

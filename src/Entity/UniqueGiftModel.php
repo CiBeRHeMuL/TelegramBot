@@ -2,6 +2,8 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\UniqueGistModelRarityEnum;
+
 /**
  * This object describes the model of a unique gift.
  *
@@ -12,7 +14,10 @@ final class UniqueGiftModel implements EntityInterface
     /**
      * @param string $name Name of the model
      * @param Sticker $sticker The sticker that represents the unique gift
-     * @param int $rarity_per_mille The number of unique gifts that receive this model for every 1000 gifts upgraded
+     * @param int $rarity_per_mille The number of unique gifts that receive this model for every 1000 gift upgrades. Always 0 for
+     * crafted gifts.
+     * @param UniqueGistModelRarityEnum|null $rarity Optional. Rarity of the model if it is a crafted model. Currently, can be “uncommon”, “rare”,
+     * “epic”, or “legendary”.
      *
      * @see https://core.telegram.org/bots/api#sticker Sticker
      */
@@ -20,6 +25,7 @@ final class UniqueGiftModel implements EntityInterface
         protected string $name,
         protected Sticker $sticker,
         protected int $rarity_per_mille,
+        protected ?UniqueGistModelRarityEnum $rarity = null,
     ) {}
 
     /**
@@ -76,6 +82,25 @@ final class UniqueGiftModel implements EntityInterface
     public function setRarityPerMille(int $rarity_per_mille): UniqueGiftModel
     {
         $this->rarity_per_mille = $rarity_per_mille;
+        return $this;
+    }
+
+    /**
+     * @return UniqueGistModelRarityEnum|null
+     */
+    public function getRarity(): ?UniqueGistModelRarityEnum
+    {
+        return $this->rarity;
+    }
+
+    /**
+     * @param UniqueGistModelRarityEnum|null $rarity
+     *
+     * @return UniqueGiftModel
+     */
+    public function setRarity(?UniqueGistModelRarityEnum $rarity): UniqueGiftModel
+    {
+        $this->rarity = $rarity;
         return $this;
     }
 }

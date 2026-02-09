@@ -2610,6 +2610,45 @@ class Api implements ApiInterface
     }
 
     /**
+     * Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object.
+     *
+     * @param Req\GetUserProfileAudiosRequest $request
+     *
+     * @return Res\GetUserProfileAudiosResponse
+     * @link https://core.telegram.org/bots/api#getuserprofileaudios
+     */
+    public function getUserProfileAudios(Req\GetUserProfileAudiosRequest $request): Res\GetUserProfileAudiosResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $userProfileAudios = $this->buildClassForResponse(Ent\UserProfileAudios::class, $rawResponse);
+        return new Res\GetUserProfileAudiosResponse($rawResponse, $userProfileAudios);
+    }
+
+    /**
+     * Changes the profile photo of the bot. Returns True on success.
+     *
+     * @param Req\SetMyProfilePhotoRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setmyprofilephoto
+     */
+    public function setMyProfilePhoto(Req\SetMyProfilePhotoRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removemyprofilephoto
+     */
+    public function removeMyProfilePhoto(): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
+    }
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

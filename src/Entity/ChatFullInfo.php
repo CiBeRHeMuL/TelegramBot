@@ -91,6 +91,7 @@ final class ChatFullInfo implements EntityInterface
      * chat's name, message replies and link previews
      * @param int|null $paid_message_star_count Optional. The number of Telegram Stars a general user have to pay to send a message
      * to the chat
+     * @param Audio|null $first_profile_audio Optional. For private chats, the first audio added to the profile of the user
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -109,6 +110,7 @@ final class ChatFullInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#acceptedgifttypes AcceptedGiftTypes
      * @see https://core.telegram.org/bots/api#chatlocation ChatLocation
      * @see https://core.telegram.org/bots/api#userrating UserRating
+     * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#uniquegiftcolors UniqueGiftColors
      */
     public function __construct(
@@ -164,6 +166,7 @@ final class ChatFullInfo implements EntityInterface
         protected ?UserRating $rating = null,
         protected ?UniqueGiftColors $unique_gift_colors = null,
         protected ?int $paid_message_star_count = null,
+        protected ?Audio $first_profile_audio = null,
     ) {}
 
     /**
@@ -1113,6 +1116,25 @@ final class ChatFullInfo implements EntityInterface
     public function setPaidMessageStarCount(?int $paid_message_star_count): ChatFullInfo
     {
         $this->paid_message_star_count = $paid_message_star_count;
+        return $this;
+    }
+
+    /**
+     * @return Audio|null
+     */
+    public function getFirstProfileAudio(): ?Audio
+    {
+        return $this->first_profile_audio;
+    }
+
+    /**
+     * @param Audio|null $first_profile_audio
+     *
+     * @return ChatFullInfo
+     */
+    public function setFirstProfileAudio(?Audio $first_profile_audio): ChatFullInfo
+    {
+        $this->first_profile_audio = $first_profile_audio;
         return $this;
     }
 }

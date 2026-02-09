@@ -1882,6 +1882,34 @@ interface ApiInterface
     public function repostStory(Req\RepostStoryRequest $request): Res\RepostStoryResponse;
 
     /**
+     * Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object.
+     *
+     * @param Req\GetUserProfileAudiosRequest $request
+     *
+     * @return Res\GetUserProfileAudiosResponse
+     * @link https://core.telegram.org/bots/api#getuserprofileaudios
+     */
+    public function getUserProfileAudios(Req\GetUserProfileAudiosRequest $request): Res\GetUserProfileAudiosResponse;
+
+    /**
+     * Changes the profile photo of the bot. Returns True on success.
+     *
+     * @param Req\SetMyProfilePhotoRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setmyprofilephoto
+     */
+    public function setMyProfilePhoto(Req\SetMyProfilePhotoRequest $request): Res\RawResponse;
+
+    /**
+     * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#removemyprofilephoto
+     */
+    public function removeMyProfilePhoto(): Res\RawResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

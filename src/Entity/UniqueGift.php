@@ -24,6 +24,7 @@ final class UniqueGift implements EntityInterface
      * transferred in Telegram
      * @param UniqueGiftColors|null $colors Optional. The color scheme that can be used by the gift's owner for the chat's name,
      * replies to messages and link previews; for business account gifts and gifts that are currently on sale only
+     * @param bool|null $is_burned Optional. True, if the gift was used to craft another gift and isn't available anymore
      *
      * @see https://core.telegram.org/bots/api#uniquegiftmodel UniqueGiftModel
      * @see https://core.telegram.org/bots/api#uniquegiftsymbol UniqueGiftSymbol
@@ -43,6 +44,7 @@ final class UniqueGift implements EntityInterface
         protected ?bool $is_premium = null,
         protected ?bool $is_from_blockchain = null,
         protected ?UniqueGiftColors $colors = null,
+        protected ?bool $is_burned = null,
     ) {}
 
     /**
@@ -251,6 +253,25 @@ final class UniqueGift implements EntityInterface
     public function setColors(?UniqueGiftColors $colors): UniqueGift
     {
         $this->colors = $colors;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsBurned(): ?bool
+    {
+        return $this->is_burned;
+    }
+
+    /**
+     * @param bool|null $is_burned
+     *
+     * @return UniqueGift
+     */
+    public function setIsBurned(?bool $is_burned): UniqueGift
+    {
+        $this->is_burned = $is_burned;
         return $this;
     }
 }

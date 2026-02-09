@@ -2,12 +2,13 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\TelegramBot\Enum\KeyboardButtonStyleEnum;
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
 /**
- * This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of
- * the button.
+ * This object represents one button of an inline keyboard. Exactly one of the fields other than text, icon_custom_emoji_id,
+ * and style must be used to specify the type of the button.
  *
  * @link https://core.telegram.org/bots/api#inlinekeyboardbutton
  */
@@ -43,7 +44,13 @@ final class InlineKeyboardButton implements EntityInterface
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
      * only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
      * @param CopyTextButton|null $copy_text Optional. Description of the button that copies the specified text to the clipboard.
+     * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown before the text of the button.
+     * Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private,
+     * group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
+     * @param KeyboardButtonStyleEnum|null $style Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary”
+     * (blue). If omitted, then an app-specific style is used.
      *
+     * @see https://fragment.com Fragment
      * @see https://core.telegram.org/bots/api#callbackquery callback query
      * @see https://core.telegram.org/bots/api#webappinfo WebAppInfo
      * @see https://core.telegram.org/bots/webapps Web App
@@ -67,6 +74,8 @@ final class InlineKeyboardButton implements EntityInterface
         protected ?Url $url = null,
         protected ?WebAppInfo $web_app = null,
         protected ?CopyTextButton $copy_text = null,
+        protected ?string $icon_custom_emoji_id = null,
+        protected ?KeyboardButtonStyleEnum $style = null,
     ) {}
 
     /**
@@ -275,6 +284,44 @@ final class InlineKeyboardButton implements EntityInterface
     public function setCopyText(?CopyTextButton $copy_text): InlineKeyboardButton
     {
         $this->copy_text = $copy_text;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIconCustomEmojiId(): ?string
+    {
+        return $this->icon_custom_emoji_id;
+    }
+
+    /**
+     * @param string|null $icon_custom_emoji_id
+     *
+     * @return InlineKeyboardButton
+     */
+    public function setIconCustomEmojiId(?string $icon_custom_emoji_id): InlineKeyboardButton
+    {
+        $this->icon_custom_emoji_id = $icon_custom_emoji_id;
+        return $this;
+    }
+
+    /**
+     * @return KeyboardButtonStyleEnum|null
+     */
+    public function getStyle(): ?KeyboardButtonStyleEnum
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param KeyboardButtonStyleEnum|null $style
+     *
+     * @return InlineKeyboardButton
+     */
+    public function setStyle(?KeyboardButtonStyleEnum $style): InlineKeyboardButton
+    {
+        $this->style = $style;
         return $this;
     }
 }

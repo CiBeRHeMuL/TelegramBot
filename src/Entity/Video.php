@@ -26,8 +26,10 @@ final class Video implements EntityInterface
      * float type are safe for storing this value.
      * @param PhotoSize[]|null $cover Optional. Available sizes of the cover of the video in the message
      * @param int|null $start_timestamp Optional. Timestamp in seconds from which the video will play in the message
+     * @param VideoQuality[]|null $qualities Optional. List of available qualities of the video
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
+     * @see https://core.telegram.org/bots/api#videoquality VideoQuality
      */
     public function __construct(
         protected string $file_id,
@@ -42,6 +44,8 @@ final class Video implements EntityInterface
         #[ArrayType(PhotoSize::class)]
         protected ?array $cover = null,
         protected ?int $start_timestamp = null,
+        #[ArrayType(VideoQuality::class)]
+        protected ?array $qualities = null,
     ) {}
 
     /**
@@ -250,6 +254,25 @@ final class Video implements EntityInterface
     public function setStartTimestamp(?int $start_timestamp): Video
     {
         $this->start_timestamp = $start_timestamp;
+        return $this;
+    }
+
+    /**
+     * @return VideoQuality[]|null
+     */
+    public function getQualities(): ?array
+    {
+        return $this->qualities;
+    }
+
+    /**
+     * @param VideoQuality[]|null $qualities
+     *
+     * @return Video
+     */
+    public function setQualities(?array $qualities): Video
+    {
+        $this->qualities = $qualities;
         return $this;
     }
 }
