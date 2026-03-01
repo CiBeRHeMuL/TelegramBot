@@ -23,4 +23,5 @@ enum MessageEntityTypeEnum: string
     case TextMention = 'text_mention';
     case CustomEmoji = 'custom_emoji';
     case ExpandableBlockquote = 'expandable_blockquote';
+    case DateTime = 'date_time';
 }
