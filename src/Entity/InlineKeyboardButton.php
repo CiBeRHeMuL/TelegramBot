@@ -47,8 +47,8 @@ final class InlineKeyboardButton implements EntityInterface
      * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown before the text of the button.
      * Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private,
      * group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
-     * @param KeyboardButtonStyleEnum|null $style Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary”
-     * (blue). If omitted, then an app-specific style is used.
+     * @param KeyboardButtonStyleEnum|null $style Optional. Style of the button. Must be one of “danger” (red), “success”
+     * (green) or “primary” (blue). If omitted, then an app-specific style is used.
      *
      * @see https://fragment.com Fragment
      * @see https://core.telegram.org/bots/api#callbackquery callback query

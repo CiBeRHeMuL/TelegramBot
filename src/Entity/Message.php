@@ -45,7 +45,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param User|null $via_bot Optional. Bot through which the message was sent
      * @param int|null $edit_date Optional. Date the message was last edited in Unix time
      * @param bool|null $has_protected_content Optional. True, if the message can't be forwarded
-     * @param string|null $media_group_id Optional. The unique identifier of a media message group this message belongs to
+     * @param string|null $media_group_id Optional. The unique identifier inside this chat of a media message group this message
+     * belongs to
      * @param string|null $author_signature Optional. Signature of the post author for messages in channels, or the custom title
      * of an anonymous group administrator
      * @param string|null $text Optional. For text messages, the actual UTF-8 text of the message
@@ -175,6 +176,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param GiftInfo|null $gift_upgrade_sent Optional. Service message: upgrade of a gift was purchased after the gift was sent
      * @param ChatOwnerLeft|null $chat_owner_left Optional. Service message: chat owner has left
      * @param ChatOwnerChanged|null $chat_owner_changed Optional. Service message: chat owner has changed
+     * @param string|null $sender_tag Optional. Tag or custom title of the sender of the message; for supergroups only
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -249,6 +251,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#videochatparticipantsinvited VideoChatParticipantsInvited
      * @see https://core.telegram.org/bots/api#webappdata WebAppData
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
      */
     public function __construct(
         protected int $message_id,
@@ -361,6 +364,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?GiftInfo $gift_upgrade_sent = null,
         protected ?ChatOwnerLeft $chat_owner_left = null,
         protected ?ChatOwnerChanged $chat_owner_changed = null,
+        protected ?string $sender_tag = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2357,6 +2361,25 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setChatOwnerChanged(?ChatOwnerChanged $chat_owner_changed): Message
     {
         $this->chat_owner_changed = $chat_owner_changed;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSenderTag(): ?string
+    {
+        return $this->sender_tag;
+    }
+
+    /**
+     * @param string|null $sender_tag
+     *
+     * @return Message
+     */
+    public function setSenderTag(?string $sender_tag): Message
+    {
+        $this->sender_tag = $sender_tag;
         return $this;
     }
 }

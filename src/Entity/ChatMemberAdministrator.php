@@ -45,6 +45,8 @@ final class ChatMemberAdministrator extends AbstractChatMember
      * @param string|null $custom_title Optional. Custom title for this user
      * @param bool|null $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel
      * and decline suggested posts; for channels only
+     * @param bool|null $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and
+     * supergroups only. If omitted defaults to the value of can_pin_messages.
      *
      * @see https://core.telegram.org/bots/api#user User
      */
@@ -68,6 +70,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
         protected ?bool $can_post_messages = null,
         protected ?string $custom_title = null,
         protected ?bool $can_manage_direct_messages = null,
+        protected ?bool $can_manage_tags = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Administrator);
     }
@@ -430,6 +433,25 @@ final class ChatMemberAdministrator extends AbstractChatMember
     public function setCanManageDirectMessages(?bool $can_manage_direct_messages): ChatMemberAdministrator
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanManageTags(): ?bool
+    {
+        return $this->can_manage_tags;
+    }
+
+    /**
+     * @param bool|null $can_manage_tags
+     *
+     * @return ChatMemberAdministrator
+     */
+    public function setCanManageTags(?bool $can_manage_tags): ChatMemberAdministrator
+    {
+        $this->can_manage_tags = $can_manage_tags;
         return $this;
     }
 }

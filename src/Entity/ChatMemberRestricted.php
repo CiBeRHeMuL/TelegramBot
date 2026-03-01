@@ -34,6 +34,8 @@ final class ChatMemberRestricted extends AbstractChatMember
      * @param bool $can_pin_messages True, if the user is allowed to pin messages
      * @param bool $can_manage_topics True, if the user is allowed to create forum topics
      * @param int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
+     * @param bool $can_edit_tag True, if the user is allowed to edit their own tag
+     * @param string|null $tag Optional. Tag of the member
      *
      * @see https://core.telegram.org/bots/api#user User
      */
@@ -55,6 +57,8 @@ final class ChatMemberRestricted extends AbstractChatMember
         protected bool $can_pin_messages,
         protected bool $can_manage_topics,
         protected int $until_date,
+        protected bool $can_edit_tag,
+        protected ?string $tag = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Restricted);
     }
@@ -379,6 +383,44 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setUntilDate(int $until_date): ChatMemberRestricted
     {
         $this->until_date = $until_date;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getCanEditTag(): bool
+    {
+        return $this->can_edit_tag;
+    }
+
+    /**
+     * @param bool $can_edit_tag
+     *
+     * @return ChatMemberRestricted
+     */
+    public function setCanEditTag(bool $can_edit_tag): ChatMemberRestricted
+    {
+        $this->can_edit_tag = $can_edit_tag;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTag(): ?string
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param string|null $tag
+     *
+     * @return ChatMemberRestricted
+     */
+    public function setTag(?string $tag): ChatMemberRestricted
+    {
+        $this->tag = $tag;
         return $this;
     }
 }

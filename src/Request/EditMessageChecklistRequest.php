@@ -21,6 +21,7 @@ class EditMessageChecklistRequest implements RequestInterface
      *
      * @see https://core.telegram.org/bots/api#inputchecklist InputChecklist
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
         private string $business_connection_id,

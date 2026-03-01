@@ -19,7 +19,7 @@ final class MessageEntity implements EntityInterface
      * text), “underline” (underlined text), “strikethrough” (strikethrough text), “spoiler” (spoiler message), “blockquote”
      * (block quotation), “expandable_blockquote” (collapsed-by-default block quotation), “code” (monowidth string), “pre”
      * (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames), “custom_emoji”
-     * (for inline custom emoji stickers)
+     * (for inline custom emoji stickers), or “date_time” (for formatted date and time)
      * @param int $offset Offset in UTF-16 code units to the start of the entity
      * @param int $length Length of the entity in UTF-16 code units
      * @param Url|null $url Optional. For “text_link” only, URL that will be opened after user taps on the text
@@ -27,11 +27,15 @@ final class MessageEntity implements EntityInterface
      * @param string|null $language Optional. For “pre” only, the programming language of the entity text
      * @param string|null $custom_emoji_id Optional. For “custom_emoji” only, unique identifier of the custom emoji. Use getCustomEmojiStickers
      * to get full information about the sticker
+     * @param int|null $unix_time Optional. For “date_time” only, the Unix time associated with the entity
+     * @param string|null $date_time_format Optional. For “date_time” only, the string that defines the formatting of the date
+     * and time. See date-time entity formatting for more details.
      *
      * @see https://telegram.org/blog/edit#new-mentions without usernames
      * @see https://core.telegram.org/api/entities#entity-length UTF-16 code units
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#getcustomemojistickers getCustomEmojiStickers
+     * @see https://core.telegram.org/bots/api#date-time-entity-formatting date-time entity formatting
      */
     public function __construct(
         protected MessageEntityTypeEnum $type,
@@ -41,6 +45,8 @@ final class MessageEntity implements EntityInterface
         protected ?User $user = null,
         protected ?string $language = null,
         protected ?string $custom_emoji_id = null,
+        protected ?int $unix_time = null,
+        protected ?string $date_time_format = null,
     ) {}
 
     /**
@@ -173,6 +179,44 @@ final class MessageEntity implements EntityInterface
     public function setCustomEmojiId(?string $custom_emoji_id): MessageEntity
     {
         $this->custom_emoji_id = $custom_emoji_id;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUnixTime(): ?int
+    {
+        return $this->unix_time;
+    }
+
+    /**
+     * @param int|null $unix_time
+     *
+     * @return MessageEntity
+     */
+    public function setUnixTime(?int $unix_time): MessageEntity
+    {
+        $this->unix_time = $unix_time;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDateTimeFormat(): ?string
+    {
+        return $this->date_time_format;
+    }
+
+    /**
+     * @param string|null $date_time_format
+     *
+     * @return MessageEntity
+     */
+    public function setDateTimeFormat(?string $date_time_format): MessageEntity
+    {
+        $this->date_time_format = $date_time_format;
         return $this;
     }
 }

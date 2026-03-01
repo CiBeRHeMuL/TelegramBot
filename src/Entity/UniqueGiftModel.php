@@ -16,8 +16,8 @@ final class UniqueGiftModel implements EntityInterface
      * @param Sticker $sticker The sticker that represents the unique gift
      * @param int $rarity_per_mille The number of unique gifts that receive this model for every 1000 gift upgrades. Always 0 for
      * crafted gifts.
-     * @param UniqueGistModelRarityEnum|null $rarity Optional. Rarity of the model if it is a crafted model. Currently, can be “uncommon”, “rare”,
-     * “epic”, or “legendary”.
+     * @param UniqueGistModelRarityEnum|null $rarity Optional. Rarity of the model if it is a crafted model. Currently, can be “uncommon”,
+     * “rare”, “epic”, or “legendary”.
      *
      * @see https://core.telegram.org/bots/api#sticker Sticker
      */

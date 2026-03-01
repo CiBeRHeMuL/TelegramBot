@@ -38,6 +38,8 @@ class PromoteChatMemberRequest implements RequestInterface
      * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
      * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel
      * and decline suggested posts; for channels only
+     * @param bool|null $can_manage_tags Pass True if the administrator can edit the tags of regular members; for groups and supergroups
+     * only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -58,6 +60,7 @@ class PromoteChatMemberRequest implements RequestInterface
         private ?bool $can_restrict_members = null,
         private ?bool $is_anonymous = null,
         private ?bool $can_manage_direct_messages = null,
+        private ?bool $can_manage_tags = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -255,6 +258,17 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageDirectMessages(?bool $can_manage_direct_messages): PromoteChatMemberRequest
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
+        return $this;
+    }
+
+    public function getCanManageTags(): ?bool
+    {
+        return $this->can_manage_tags;
+    }
+
+    public function setCanManageTags(?bool $can_manage_tags): PromoteChatMemberRequest
+    {
+        $this->can_manage_tags = $can_manage_tags;
         return $this;
     }
 }

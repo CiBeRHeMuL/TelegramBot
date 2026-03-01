@@ -1910,6 +1910,17 @@ interface ApiInterface
     public function removeMyProfilePhoto(): Res\RawResponse;
 
     /**
+     * Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an administrator in the chat
+     * for this to work and must have the can_manage_tags administrator right. Returns True on success.
+     *
+     * @param Req\SetChatMemberTagRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setchatmembertag
+     */
+    public function setChatMemberTag(Req\SetChatMemberTagRequest $request): Res\RawResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

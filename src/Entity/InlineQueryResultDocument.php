@@ -48,6 +48,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
+     * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
      * @see https://core.telegram.org/bots/api#inputmessagecontent InputMessageContent
      */
     public function __construct(

@@ -36,6 +36,8 @@ final class ChatAdministratorRights implements EntityInterface
      * posts, or access channel statistics; for channels only
      * @param bool|null $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel
      * and decline suggested posts; for channels only
+     * @param bool|null $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and
+     * supergroups only. If omitted defaults to the value of can_pin_messages.
      */
     public function __construct(
         protected bool $is_anonymous,
@@ -54,6 +56,7 @@ final class ChatAdministratorRights implements EntityInterface
         protected ?bool $can_pin_messages = null,
         protected ?bool $can_post_messages = null,
         protected ?bool $can_manage_direct_messages = null,
+        protected ?bool $can_manage_tags = null,
     ) {}
 
     /**
@@ -357,6 +360,25 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageDirectMessages(?bool $can_manage_direct_messages): ChatAdministratorRights
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanManageTags(): ?bool
+    {
+        return $this->can_manage_tags;
+    }
+
+    /**
+     * @param bool|null $can_manage_tags
+     *
+     * @return ChatAdministratorRights
+     */
+    public function setCanManageTags(?bool $can_manage_tags): ChatAdministratorRights
+    {
+        $this->can_manage_tags = $can_manage_tags;
         return $this;
     }
 }

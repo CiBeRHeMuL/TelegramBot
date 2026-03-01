@@ -28,6 +28,7 @@ final class ChatPermissions implements EntityInterface
      * @param bool|null $can_pin_messages Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
      * @param bool|null $can_manage_topics Optional. True, if the user is allowed to create forum topics. If omitted defaults to
      * the value of can_pin_messages
+     * @param bool|null $can_edit_tag Optional. True, if the user is allowed to edit their own tag
      */
     public function __construct(
         protected ?bool $can_send_messages = null,
@@ -44,6 +45,7 @@ final class ChatPermissions implements EntityInterface
         protected ?bool $can_invite_users = null,
         protected ?bool $can_pin_messages = null,
         protected ?bool $can_manage_topics = null,
+        protected ?bool $can_edit_tag = null,
     ) {}
 
     /**
@@ -309,6 +311,25 @@ final class ChatPermissions implements EntityInterface
     public function setCanManageTopics(?bool $can_manage_topics): ChatPermissions
     {
         $this->can_manage_topics = $can_manage_topics;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanEditTag(): ?bool
+    {
+        return $this->can_edit_tag;
+    }
+
+    /**
+     * @param bool|null $can_edit_tag
+     *
+     * @return ChatPermissions
+     */
+    public function setCanEditTag(?bool $can_edit_tag): ChatPermissions
+    {
+        $this->can_edit_tag = $can_edit_tag;
         return $this;
     }
 }
