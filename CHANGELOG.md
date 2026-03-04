@@ -1,5 +1,11 @@
 # Change log of Telegram Bot Library
 
+## Version 4.4.1
+
+### General
++ Remove deprecations
++ Make $serializer parameter in Api required
+
 ## Version 4.4
 
 ### General

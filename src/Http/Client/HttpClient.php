@@ -51,8 +51,6 @@ class HttpClient implements ClientInterface
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $response = $this->createResponse($statusCode, $responseBody, curl_getinfo($ch));
 
-        curl_close($ch);
-
         return $response;
     }
 

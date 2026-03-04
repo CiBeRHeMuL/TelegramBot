@@ -20,16 +20,13 @@ use AndrewGos\TelegramBot\Response\RawResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use AndrewGos\TelegramBot\ValueObject\EncodedJson;
 use AndrewGos\TelegramBot\ValueObject\Url;
-use BadMethodCallException;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '9.2';
-
-    private SerializerInterface $serializer;
+    private const TELEGRAM_BOT_API_VERSION = '9.5';
 
     public function __construct(
         private readonly BotToken $token,
@@ -38,14 +35,9 @@ class Api implements ApiInterface
         private ClientInterface $client,
         private LoggerInterface $logger,
         private FileSystemInterface $fileSystem,
-        private bool $throwOnErrorResponse = true,
-        ?SerializerInterface $serializer = null,
-    ) {
-        if ($serializer === null) {
-            throw new BadMethodCallException('Passing null to $serializer is deprecated. This will be removed in v3.1.0');
-        }
-        $this->serializer = $serializer;
-    }
+        private bool $throwOnErrorResponse,
+        private SerializerInterface $serializer,
+    ) {}
 
     /**
      * Will the api throw an exception if the request does not return 2xx response
