@@ -15,25 +15,13 @@ use Psr\Http\Message\UriInterface;
 
 class HttpRequest implements RequestInterface
 {
-    private HttpMethodEnum $method;
-    private UriInterface $uri;
-    private HttpHeadersContainerInterface $headers;
-    private ?StreamInterface $body;
-    private HttpVersionEnum $protocolVersion;
-
     public function __construct(
-        HttpMethodEnum $method,
-        UriInterface $uri,
-        HttpHeadersContainerInterface $headers,
-        ?StreamInterface $body = null,
-        HttpVersionEnum $protocolVersion = HttpVersionEnum::Http11,
-    ) {
-        $this->method = $method;
-        $this->uri = $uri;
-        $this->headers = $headers;
-        $this->body = $body;
-        $this->protocolVersion = $protocolVersion;
-    }
+        private HttpMethodEnum $method,
+        private UriInterface $uri,
+        private HttpHeadersContainerInterface $headers,
+        private ?StreamInterface $body = null,
+        private HttpVersionEnum $protocolVersion = HttpVersionEnum::Http11,
+    ) {}
 
     public function getRequestTarget(): string
     {
@@ -172,6 +160,6 @@ class HttpRequest implements RequestInterface
             $host .= ':' . $port;
         }
 
-        $this->headers['Host'] = [$host];
+        $this->headers->set('Host', [$host]);
     }
 }
