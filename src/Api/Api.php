@@ -2655,6 +2655,51 @@ class Api implements ApiInterface
     }
 
     /**
+     * Use this method to get the token of a managed bot. Returns the token as String on success.
+     *
+     * @param Req\GetManagedBotTokenRequest $request
+     *
+     * @return Res\GetManagedBotTokenResponse
+     * @link https://core.telegram.org/bots/api#getmanagedbottoken
+     */
+    public function getManagedBotToken(Req\GetManagedBotTokenRequest $request): Res\GetManagedBotTokenResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $botToken = $this->buildClassForResponse(BotToken::class, $rawResponse);
+        return new Res\GetManagedBotTokenResponse($rawResponse, $botToken);
+    }
+
+    /**
+     * Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success.
+     *
+     * @param Req\ReplaceManagedBotTokenRequest $request
+     *
+     * @return Res\ReplaceManagedBotTokenResponse
+     * @link https://core.telegram.org/bots/api#replacemanagedbottoken
+     */
+    public function replaceManagedBotToken(Req\ReplaceManagedBotTokenRequest $request): Res\ReplaceManagedBotTokenResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $botToken = $this->buildClassForResponse(BotToken::class, $rawResponse);
+        return new Res\ReplaceManagedBotTokenResponse($rawResponse, $botToken);
+    }
+
+    /**
+     * Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.
+     *
+     * @param Req\SavePreparedKeyboardButtonRequest $request
+     *
+     * @return Res\SavePreparedKeyboardButtonResponse
+     * @link https://core.telegram.org/bots/api#savepreparedkeyboardbutton
+     */
+    public function savePreparedKeyboardButton(Req\SavePreparedKeyboardButtonRequest $request): Res\SavePreparedKeyboardButtonResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $preparedButton = $this->buildClassForResponse(Ent\PreparedKeyboardButton::class, $rawResponse);
+        return new Res\SavePreparedKeyboardButtonResponse($rawResponse, $preparedButton);
+    }
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file

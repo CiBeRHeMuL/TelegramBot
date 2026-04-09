@@ -35,10 +35,15 @@ final class KeyboardButton implements EntityInterface
      * group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
      * @param KeyboardButtonStyleEnum|null $style Optional. Style of the button. Must be one of “danger” (red), “success”
      * (green) or “primary” (blue). If omitted, then an app-specific style is used.
+     * @param KeyboardButtonRequestManagedBot|null $request_managed_bot Optional. If specified, pressing the button will ask the
+     * user to create and share a bot that will be managed by the current bot. Available for bots that enabled management of other
+     * bots in the \@BotFather Mini App. Available in private chats only.
      *
      * @see https://fragment.com Fragment
      * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers KeyboardButtonRequestUsers
      * @see https://core.telegram.org/bots/api#keyboardbuttonrequestchat KeyboardButtonRequestChat
+     * @see https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot KeyboardButtonRequestManagedBot
+     * @see https://t.me/BotFather @BotFather
      * @see https://core.telegram.org/bots/api#keyboardbuttonpolltype KeyboardButtonPollType
      * @see https://core.telegram.org/bots/api#webappinfo WebAppInfo
      * @see https://core.telegram.org/bots/webapps Web App
@@ -53,6 +58,7 @@ final class KeyboardButton implements EntityInterface
         protected ?WebAppInfo $web_app = null,
         protected ?string $icon_custom_emoji_id = null,
         protected ?KeyboardButtonStyleEnum $style = null,
+        protected ?KeyboardButtonRequestManagedBot $request_managed_bot = null,
     ) {}
 
     /**
@@ -223,6 +229,25 @@ final class KeyboardButton implements EntityInterface
     public function setStyle(?KeyboardButtonStyleEnum $style): KeyboardButton
     {
         $this->style = $style;
+        return $this;
+    }
+
+    /**
+     * @return KeyboardButtonRequestManagedBot|null
+     */
+    public function getRequestManagedBot(): ?KeyboardButtonRequestManagedBot
+    {
+        return $this->request_managed_bot;
+    }
+
+    /**
+     * @param KeyboardButtonRequestManagedBot|null $request_managed_bot
+     *
+     * @return KeyboardButton
+     */
+    public function setRequestManagedBot(?KeyboardButtonRequestManagedBot $request_managed_bot): KeyboardButton
+    {
+        $this->request_managed_bot = $request_managed_bot;
         return $this;
     }
 }

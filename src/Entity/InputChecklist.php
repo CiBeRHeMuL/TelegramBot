@@ -21,7 +21,8 @@ final class InputChecklist implements EntityInterface
      * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the title. See formatting options for
      * more details.
      * @param MessageEntity[]|null $title_entities Optional. List of special entities that appear in the title, which can be specified
-     * instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed.
+     * instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities
+     * are allowed.
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity

@@ -24,13 +24,14 @@ final class ReplyParameters implements EntityInterface
      * of a business account.
      * @param string|null $quote Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing.
      * The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler,
-     * and custom_emoji entities. The message will fail to send if the quote isn't found in the original message.
+     * custom_emoji, and date_time entities. The message will fail to send if the quote isn't found in the original message.
      * @param TelegramParseModeEnum|null $quote_parse_mode Optional. Mode for parsing entities in the quote. See formatting options
      * for more details.
      * @param MessageEntity[]|null $quote_entities Optional. A JSON-serialized list of special entities that appear in the quote.
      * It can be specified instead of quote_parse_mode.
      * @param int|null $quote_position Optional. Position of the quote in the original message in UTF-16 code units
      * @param int|null $checklist_task_id Optional. Identifier of the specific checklist task to be replied to
+     * @param string|null $poll_option_id Optional. Persistent identifier of the specific poll option to be replied to
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -45,6 +46,7 @@ final class ReplyParameters implements EntityInterface
         protected ?array $quote_entities = null,
         protected ?int $quote_position = null,
         protected ?int $checklist_task_id = null,
+        protected ?string $poll_option_id = null,
     ) {}
 
     /**
@@ -196,6 +198,25 @@ final class ReplyParameters implements EntityInterface
     public function setChecklistTaskId(?int $checklist_task_id): ReplyParameters
     {
         $this->checklist_task_id = $checklist_task_id;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPollOptionId(): ?string
+    {
+        return $this->poll_option_id;
+    }
+
+    /**
+     * @param string|null $poll_option_id
+     *
+     * @return ReplyParameters
+     */
+    public function setPollOptionId(?string $poll_option_id): ReplyParameters
+    {
+        $this->poll_option_id = $poll_option_id;
         return $this;
     }
 }

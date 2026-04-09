@@ -21,19 +21,24 @@ final class Poll implements EntityInterface
      * @param bool $is_anonymous True, if the poll is anonymous
      * @param PollTypeEnum $type Poll type, currently can be “regular” or “quiz”
      * @param bool $allows_multiple_answers True, if the poll allows multiple answers
+     * @param bool $allows_revoting True, if the poll allows to change the chosen answer options
      * @param MessageEntity[]|null $question_entities Optional. Special entities that appear in the question. Currently, only custom
      * emoji entities are allowed in poll questions
-     * @param int|null $correct_option_id Optional. 0-based identifier of the correct answer option. Available only for polls in
-     * the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
      * @param string|null $explanation Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon
      * in a quiz-style poll, 0-200 characters
      * @param MessageEntity[]|null $explanation_entities Optional. Special entities like usernames, URLs, bot commands, etc. that
      * appear in the explanation
      * @param int|null $open_period Optional. Amount of time in seconds the poll will be active after creation
      * @param int|null $close_date Optional. Point in time (Unix timestamp) when the poll will be automatically closed
+     * @param int[]|null $correct_option_ids Optional. Array of 0-based identifiers of the correct answer options. Available only
+     * for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
+     * @param string|null $description Optional. Description of the poll; for polls inside the Message object only
+     * @param MessageEntity[]|null $description_entities Optional. Special entities like usernames, URLs, bot commands, etc. that
+     * appear in the description
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#polloption PollOption
+     * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
         protected string $id,
@@ -45,14 +50,19 @@ final class Poll implements EntityInterface
         protected bool $is_anonymous,
         protected PollTypeEnum $type,
         protected bool $allows_multiple_answers,
+        protected bool $allows_revoting,
         #[ArrayType(MessageEntity::class)]
         protected ?array $question_entities = null,
-        protected ?int $correct_option_id = null,
         protected ?string $explanation = null,
         #[ArrayType(MessageEntity::class)]
         protected ?array $explanation_entities = null,
         protected ?int $open_period = null,
         protected ?int $close_date = null,
+        #[ArrayType('int')]
+        protected ?array $correct_option_ids = null,
+        protected ?string $description = null,
+        #[ArrayType(MessageEntity::class)]
+        protected ?array $description_entities = null,
     ) {}
 
     /**
@@ -208,6 +218,25 @@ final class Poll implements EntityInterface
     }
 
     /**
+     * @return bool
+     */
+    public function getAllowsRevoting(): bool
+    {
+        return $this->allows_revoting;
+    }
+
+    /**
+     * @param bool $allows_revoting
+     *
+     * @return Poll
+     */
+    public function setAllowsRevoting(bool $allows_revoting): Poll
+    {
+        $this->allows_revoting = $allows_revoting;
+        return $this;
+    }
+
+    /**
      * @return MessageEntity[]|null
      */
     public function getQuestionEntities(): ?array
@@ -223,25 +252,6 @@ final class Poll implements EntityInterface
     public function setQuestionEntities(?array $question_entities): Poll
     {
         $this->question_entities = $question_entities;
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getCorrectOptionId(): ?int
-    {
-        return $this->correct_option_id;
-    }
-
-    /**
-     * @param int|null $correct_option_id
-     *
-     * @return Poll
-     */
-    public function setCorrectOptionId(?int $correct_option_id): Poll
-    {
-        $this->correct_option_id = $correct_option_id;
         return $this;
     }
 
@@ -318,6 +328,63 @@ final class Poll implements EntityInterface
     public function setCloseDate(?int $close_date): Poll
     {
         $this->close_date = $close_date;
+        return $this;
+    }
+
+    /**
+     * @return int[]|null
+     */
+    public function getCorrectOptionIds(): ?array
+    {
+        return $this->correct_option_ids;
+    }
+
+    /**
+     * @param int[]|null $correct_option_ids
+     *
+     * @return Poll
+     */
+    public function setCorrectOptionIds(?array $correct_option_ids): Poll
+    {
+        $this->correct_option_ids = $correct_option_ids;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     *
+     * @return Poll
+     */
+    public function setDescription(?string $description): Poll
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return MessageEntity[]|null
+     */
+    public function getDescriptionEntities(): ?array
+    {
+        return $this->description_entities;
+    }
+
+    /**
+     * @param MessageEntity[]|null $description_entities
+     *
+     * @return Poll
+     */
+    public function setDescriptionEntities(?array $description_entities): Poll
+    {
+        $this->description_entities = $description_entities;
         return $this;
     }
 }

@@ -32,6 +32,8 @@ final class User implements EntityInterface
      * in getMe.
      * @param bool|null $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private
      * chats. Returned only in getMe.
+     * @param bool|null $can_manage_bots Optional. True, if other bots can be created to be controlled by the bot. Returned only
+     * in getMe.
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
      * @see https://core.telegram.org/bots/api#getme getMe
@@ -53,6 +55,7 @@ final class User implements EntityInterface
         protected ?bool $has_main_web_app = null,
         protected ?bool $has_topics_enabled = null,
         protected ?bool $allows_users_to_create_topics = null,
+        protected ?bool $can_manage_bots = null,
     ) {}
 
     /**
@@ -337,6 +340,25 @@ final class User implements EntityInterface
     public function setAllowsUsersToCreateTopics(?bool $allows_users_to_create_topics): User
     {
         $this->allows_users_to_create_topics = $allows_users_to_create_topics;
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanManageBots(): ?bool
+    {
+        return $this->can_manage_bots;
+    }
+
+    /**
+     * @param bool|null $can_manage_bots
+     *
+     * @return User
+     */
+    public function setCanManageBots(?bool $can_manage_bots): User
+    {
+        $this->can_manage_bots = $can_manage_bots;
         return $this;
     }
 }

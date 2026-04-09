@@ -14,6 +14,7 @@ final class PollAnswer implements EntityInterface
     /**
      * @param string $poll_id Unique poll identifier
      * @param int[] $option_ids 0-based identifiers of chosen answer options. May be empty if the vote was retracted.
+     * @param string[] $option_persistent_ids Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
      * @param User|null $user Optional. The user that changed the answer to the poll, if the voter isn't anonymous
      * @param Chat|null $voter_chat Optional. The chat that changed the answer to the poll, if the voter is anonymous
      *
@@ -24,6 +25,8 @@ final class PollAnswer implements EntityInterface
         protected string $poll_id,
         #[ArrayType('int')]
         protected array $option_ids,
+        #[ArrayType('string')]
+        protected array $option_persistent_ids,
         protected ?User $user = null,
         protected ?Chat $voter_chat = null,
     ) {}
@@ -63,6 +66,25 @@ final class PollAnswer implements EntityInterface
     public function setOptionIds(array $option_ids): PollAnswer
     {
         $this->option_ids = $option_ids;
+        return $this;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getOptionPersistentIds(): array
+    {
+        return $this->option_persistent_ids;
+    }
+
+    /**
+     * @param string[] $option_persistent_ids
+     *
+     * @return PollAnswer
+     */
+    public function setOptionPersistentIds(array $option_persistent_ids): PollAnswer
+    {
+        $this->option_persistent_ids = $option_persistent_ids;
         return $this;
     }
 

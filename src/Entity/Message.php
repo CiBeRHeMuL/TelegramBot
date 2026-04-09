@@ -177,6 +177,12 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param ChatOwnerLeft|null $chat_owner_left Optional. Service message: chat owner has left
      * @param ChatOwnerChanged|null $chat_owner_changed Optional. Service message: chat owner has changed
      * @param string|null $sender_tag Optional. Tag or custom title of the sender of the message; for supergroups only
+     * @param string|null $reply_to_poll_option_id Optional. Persistent identifier of the specific poll option that is being replied
+     * to
+     * @param ManagedBotCreated|null $managed_bot_created Optional. Service message: user created a bot that will be managed by the
+     * current bot
+     * @param PollOptionAdded|null $poll_option_added Optional. Service message: answer option was added to a poll
+     * @param PollOptionDeleted|null $poll_option_deleted Optional. Service message: answer option was deleted from a poll
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -239,7 +245,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#giveaway Giveaway
      * @see https://core.telegram.org/bots/api#giveawaywinners GiveawayWinners
      * @see https://core.telegram.org/bots/api#giveawaycompleted GiveawayCompleted
+     * @see https://core.telegram.org/bots/api#managedbotcreated ManagedBotCreated
      * @see https://core.telegram.org/bots/api#paidmessagepricechanged PaidMessagePriceChanged
+     * @see https://core.telegram.org/bots/api#polloptionadded PollOptionAdded
+     * @see https://core.telegram.org/bots/api#polloptiondeleted PollOptionDeleted
      * @see https://core.telegram.org/bots/api#suggestedpostapproved SuggestedPostApproved
      * @see https://core.telegram.org/bots/api#suggestedpostapprovalfailed SuggestedPostApprovalFailed
      * @see https://core.telegram.org/bots/api#suggestedpostdeclined SuggestedPostDeclined
@@ -365,6 +374,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?ChatOwnerLeft $chat_owner_left = null,
         protected ?ChatOwnerChanged $chat_owner_changed = null,
         protected ?string $sender_tag = null,
+        protected ?string $reply_to_poll_option_id = null,
+        protected ?ManagedBotCreated $managed_bot_created = null,
+        protected ?PollOptionAdded $poll_option_added = null,
+        protected ?PollOptionDeleted $poll_option_deleted = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2380,6 +2393,82 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setSenderTag(?string $sender_tag): Message
     {
         $this->sender_tag = $sender_tag;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReplyToPollOptionId(): ?string
+    {
+        return $this->reply_to_poll_option_id;
+    }
+
+    /**
+     * @param string|null $reply_to_poll_option_id
+     *
+     * @return Message
+     */
+    public function setReplyToPollOptionId(?string $reply_to_poll_option_id): Message
+    {
+        $this->reply_to_poll_option_id = $reply_to_poll_option_id;
+        return $this;
+    }
+
+    /**
+     * @return ManagedBotCreated|null
+     */
+    public function getManagedBotCreated(): ?ManagedBotCreated
+    {
+        return $this->managed_bot_created;
+    }
+
+    /**
+     * @param ManagedBotCreated|null $managed_bot_created
+     *
+     * @return Message
+     */
+    public function setManagedBotCreated(?ManagedBotCreated $managed_bot_created): Message
+    {
+        $this->managed_bot_created = $managed_bot_created;
+        return $this;
+    }
+
+    /**
+     * @return PollOptionAdded|null
+     */
+    public function getPollOptionAdded(): ?PollOptionAdded
+    {
+        return $this->poll_option_added;
+    }
+
+    /**
+     * @param PollOptionAdded|null $poll_option_added
+     *
+     * @return Message
+     */
+    public function setPollOptionAdded(?PollOptionAdded $poll_option_added): Message
+    {
+        $this->poll_option_added = $poll_option_added;
+        return $this;
+    }
+
+    /**
+     * @return PollOptionDeleted|null
+     */
+    public function getPollOptionDeleted(): ?PollOptionDeleted
+    {
+        return $this->poll_option_deleted;
+    }
+
+    /**
+     * @param PollOptionDeleted|null $poll_option_deleted
+     *
+     * @return Message
+     */
+    public function setPollOptionDeleted(?PollOptionDeleted $poll_option_deleted): Message
+    {
+        $this->poll_option_deleted = $poll_option_deleted;
         return $this;
     }
 }

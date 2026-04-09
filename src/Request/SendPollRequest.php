@@ -23,13 +23,11 @@ class SendPollRequest implements RequestInterface
      * Polls can't be sent to channel direct messages chats.
      * @param InputPollOption[] $options A JSON-serialized list of 2-12 answer options
      * @param string $question Poll question, 1-300 characters
-     * @param bool|null $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults
-     * to False
+     * @param bool|null $allows_multiple_answers Pass True, if the poll allows multiple answers, defaults to False
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param int|null $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5
-     * and no more than 600 seconds in the future. Can't be used together with open_period.
-     * @param int|null $correct_option_id 0-based identifier of the correct answer option, required for polls in quiz mode
+     * and no more than 2628000 seconds in the future. Can't be used together with open_period.
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param string|null $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style
      * poll, 0-200 characters with at most 2 line feeds after entities parsing
@@ -41,7 +39,7 @@ class SendPollRequest implements RequestInterface
      * @param bool|null $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
      * and private chats of bots with forum topic mode enabled only
-     * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together
+     * @param int|null $open_period Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together
      * with close_date.
      * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
      * @param MessageEntity[]|null $question_entities A JSON-serialized list of special entities that appear in the poll question.
@@ -57,6 +55,19 @@ class SendPollRequest implements RequestInterface
      * only
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
      * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param bool|null $allows_revoting Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes
+     * and to True for regular polls
+     * @param bool|null $shuffle_options Pass True, if the poll options must be shown in random order
+     * @param bool|null $allow_adding_options Pass True, if answer options can be added to the poll after creation; not supported
+     * for anonymous polls and quizzes
+     * @param bool|null $hide_results_until_closes Pass True, if poll results must be shown only after the poll closes
+     * @param int[]|null $correct_option_ids A JSON-serialized list of monotonically increasing 0-based identifiers of the correct
+     * answer options, required for polls in quiz mode
+     * @param string|null $description Description of the poll to be sent, 0-1024 characters after entities parsing
+     * @param TelegramParseModeEnum|null $description_parse_mode Mode for parsing entities in the poll description. See formatting
+     * options for more details.
+     * @param MessageEntity[]|null $description_entities A JSON-serialized list of special entities that appear in the poll description,
+     * which can be specified instead of description_parse_mode
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -78,7 +89,6 @@ class SendPollRequest implements RequestInterface
         private ?bool $allows_multiple_answers = null,
         private ?string $business_connection_id = null,
         private ?int $close_date = null,
-        private ?int $correct_option_id = null,
         private ?bool $disable_notification = null,
         private ?string $explanation = null,
         private ?array $explanation_entities = null,
@@ -95,6 +105,14 @@ class SendPollRequest implements RequestInterface
         private ?PollTypeEnum $type = null,
         private ?string $message_effect_id = null,
         private ?bool $allow_paid_broadcast = null,
+        private ?bool $allows_revoting = null,
+        private ?bool $shuffle_options = null,
+        private ?bool $allow_adding_options = null,
+        private ?bool $hide_results_until_closes = null,
+        private ?array $correct_option_ids = null,
+        private ?string $description = null,
+        private ?TelegramParseModeEnum $description_parse_mode = null,
+        private ?array $description_entities = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -160,17 +178,6 @@ class SendPollRequest implements RequestInterface
     public function setCloseDate(?int $close_date): SendPollRequest
     {
         $this->close_date = $close_date;
-        return $this;
-    }
-
-    public function getCorrectOptionId(): ?int
-    {
-        return $this->correct_option_id;
-    }
-
-    public function setCorrectOptionId(?int $correct_option_id): SendPollRequest
-    {
-        $this->correct_option_id = $correct_option_id;
         return $this;
     }
 
@@ -347,6 +354,94 @@ class SendPollRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendPollRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+        return $this;
+    }
+
+    public function getAllowsRevoting(): ?bool
+    {
+        return $this->allows_revoting;
+    }
+
+    public function setAllowsRevoting(?bool $allows_revoting): SendPollRequest
+    {
+        $this->allows_revoting = $allows_revoting;
+        return $this;
+    }
+
+    public function getShuffleOptions(): ?bool
+    {
+        return $this->shuffle_options;
+    }
+
+    public function setShuffleOptions(?bool $shuffle_options): SendPollRequest
+    {
+        $this->shuffle_options = $shuffle_options;
+        return $this;
+    }
+
+    public function getAllowAddingOptions(): ?bool
+    {
+        return $this->allow_adding_options;
+    }
+
+    public function setAllowAddingOptions(?bool $allow_adding_options): SendPollRequest
+    {
+        $this->allow_adding_options = $allow_adding_options;
+        return $this;
+    }
+
+    public function getHideResultsUntilCloses(): ?bool
+    {
+        return $this->hide_results_until_closes;
+    }
+
+    public function setHideResultsUntilCloses(?bool $hide_results_until_closes): SendPollRequest
+    {
+        $this->hide_results_until_closes = $hide_results_until_closes;
+        return $this;
+    }
+
+    public function getCorrectOptionIds(): ?array
+    {
+        return $this->correct_option_ids;
+    }
+
+    public function setCorrectOptionIds(?array $correct_option_ids): SendPollRequest
+    {
+        $this->correct_option_ids = $correct_option_ids;
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): SendPollRequest
+    {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function getDescriptionParseMode(): ?TelegramParseModeEnum
+    {
+        return $this->description_parse_mode;
+    }
+
+    public function setDescriptionParseMode(?TelegramParseModeEnum $description_parse_mode): SendPollRequest
+    {
+        $this->description_parse_mode = $description_parse_mode;
+        return $this;
+    }
+
+    public function getDescriptionEntities(): ?array
+    {
+        return $this->description_entities;
+    }
+
+    public function setDescriptionEntities(?array $description_entities): SendPollRequest
+    {
+        $this->description_entities = $description_entities;
         return $this;
     }
 }

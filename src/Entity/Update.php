@@ -59,6 +59,8 @@ final class Update implements EntityInterface
      * @param ShippingQuery|null $shipping_query Optional. New incoming shipping query. Only for invoices with flexible price
      * @param PaidMediaPurchased|null $purchased_paid_media Optional. A user purchased paid media with a non-empty payload sent by
      * the bot in a non-channel chat
+     * @param ManagedBotUpdated|null $managed_bot Optional. A new bot was created to be managed by the bot, or token or owner of
+     * a managed bot was changed
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
@@ -80,6 +82,7 @@ final class Update implements EntityInterface
      * @see https://core.telegram.org/bots/api#chatjoinrequest ChatJoinRequest
      * @see https://core.telegram.org/bots/api#chatboostupdated ChatBoostUpdated
      * @see https://core.telegram.org/bots/api#chatboostremoved ChatBoostRemoved
+     * @see https://core.telegram.org/bots/api#managedbotupdated ManagedBotUpdated
      */
     public function __construct(
         protected int $update_id,
@@ -106,6 +109,7 @@ final class Update implements EntityInterface
         protected ?ChatBoostRemoved $removed_chat_boost = null,
         protected ?ShippingQuery $shipping_query = null,
         protected ?PaidMediaPurchased $purchased_paid_media = null,
+        protected ?ManagedBotUpdated $managed_bot = null,
     ) {}
 
     /**
@@ -564,6 +568,25 @@ final class Update implements EntityInterface
         return $this;
     }
 
+    /**
+     * @return ManagedBotUpdated|null
+     */
+    public function getManagedBot(): ?ManagedBotUpdated
+    {
+        return $this->managed_bot;
+    }
+
+    /**
+     * @param ManagedBotUpdated|null $managed_bot
+     *
+     * @return Update
+     */
+    public function setManagedBot(?ManagedBotUpdated $managed_bot): Update
+    {
+        $this->managed_bot = $managed_bot;
+        return $this;
+    }
+
     public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
@@ -590,6 +613,7 @@ final class Update implements EntityInterface
             $this->getRemovedChatBoost() !== null => UpdateTypeEnum::RemovedChatBoost,
             $this->getShippingQuery() !== null => UpdateTypeEnum::ShippingQuery,
             $this->getPurchasedPaidmedia() !== null => UpdateTypeEnum::PurchasedPaidMedia,
+            $this->getManagedBot() !== null => UpdateTypeEnum::ManagedBot,
             default => null,
         };
     }

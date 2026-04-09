@@ -1921,6 +1921,36 @@ interface ApiInterface
     public function setChatMemberTag(Req\SetChatMemberTagRequest $request): Res\RawResponse;
 
     /**
+     * Use this method to get the token of a managed bot. Returns the token as String on success.
+     *
+     * @param Req\GetManagedBotTokenRequest $request
+     *
+     * @return Res\GetManagedBotTokenResponse
+     * @link https://core.telegram.org/bots/api#getmanagedbottoken
+     */
+    public function getManagedBotToken(Req\GetManagedBotTokenRequest $request): Res\GetManagedBotTokenResponse;
+
+    /**
+     * Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success.
+     *
+     * @param Req\ReplaceManagedBotTokenRequest $request
+     *
+     * @return Res\ReplaceManagedBotTokenResponse
+     * @link https://core.telegram.org/bots/api#replacemanagedbottoken
+     */
+    public function replaceManagedBotToken(Req\ReplaceManagedBotTokenRequest $request): Res\ReplaceManagedBotTokenResponse;
+
+    /**
+     * Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.
+     *
+     * @param Req\SavePreparedKeyboardButtonRequest $request
+     *
+     * @return Res\SavePreparedKeyboardButtonResponse
+     * @link https://core.telegram.org/bots/api#savepreparedkeyboardbutton
+     */
+    public function savePreparedKeyboardButton(Req\SavePreparedKeyboardButtonRequest $request): Res\SavePreparedKeyboardButtonResponse;
+
+    /**
      * Download file to specific dir
      *
      * @param Ent\File $file
