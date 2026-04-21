@@ -100,11 +100,14 @@ class UpdateHandler implements UpdateHandlerInterface
     {
         $this->getEventDispatcher()?->dispatch(new Events\BeforeHandleEvent());
 
+        $result = [];
         foreach ($this->updateSource->getUpdates() as $update) {
-            yield $update->getUpdateId() => $this->handleUpdate($update);
+            $result[$update->getUpdateId()] = iterator_to_array($this->handleUpdate($update));
         }
 
-        return $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
+        $this->getEventDispatcher()?->dispatch(new Events\AfterHandleEvent());
+
+        return $result;
     }
 
     public function listen(int $timeout = 1): void
