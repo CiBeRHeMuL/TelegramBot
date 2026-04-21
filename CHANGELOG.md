@@ -1,5 +1,10 @@
 # Change log of Telegram Bot Library
 
+## Version 4.5.1
+
+### General
++ Add \AndrewGos\TelegramBot\Kernel\UpdateSource\ArrayUpdateSource update source
+
 ## Version 4.5.0
 
 ### General
