@@ -10,8 +10,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class UnbanChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target group or username of the target supergroup or channel (in the format
-     * \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
+     * \@username
      * @param int $user_id Unique identifier of the target user
      * @param bool|null $only_if_banned Do nothing if the user is not banned
      */

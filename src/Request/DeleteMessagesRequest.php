@@ -10,7 +10,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class DeleteMessagesRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
      * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations
      * on which messages can be deleted
      *

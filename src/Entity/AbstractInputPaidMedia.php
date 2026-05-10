@@ -6,6 +6,7 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
 
 #[AvailableInheritors([
+    InputPaidMediaLivePhoto::class,
     InputPaidMediaPhoto::class,
     InputPaidMediaVideo::class,
 ])]

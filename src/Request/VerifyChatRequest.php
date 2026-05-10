@@ -10,8 +10,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class VerifyChatRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
-     * Channel direct messages chats can't be verified.
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username. Channel direct messages chats can't be verified.
      * @param string|null $custom_description Custom description for the verification; 0-70 characters. Must be empty if the organization
      * isn't allowed to provide a custom verification description.
      */

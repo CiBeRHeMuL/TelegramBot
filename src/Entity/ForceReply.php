@@ -5,8 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 /**
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user
  * has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step
- * interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a Telegram
- * Business account.
+ * interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a user account.
  *
  * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
  * @link https://core.telegram.org/bots/api#forcereply

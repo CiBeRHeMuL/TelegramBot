@@ -14,8 +14,9 @@ class SendMessageDraftRequest implements RequestInterface
     /**
      * @param ChatId $chat_id Unique identifier for the target private chat
      * @param int $draft_id Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier
-     * are animated
-     * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
+     * are animated.
+     * @param string|null $text Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show
+     * a “Thinking…” placeholder.
      * @param MessageEntity[]|null $entities A JSON-serialized list of special entities that appear in message text, which can be
      * specified instead of parse_mode
      * @param int|null $message_thread_id Unique identifier for the target message thread
@@ -28,7 +29,7 @@ class SendMessageDraftRequest implements RequestInterface
     public function __construct(
         private ChatId $chat_id,
         private int $draft_id,
-        private string $text,
+        private ?string $text = null,
         private ?array $entities = null,
         private ?int $message_thread_id = null,
         private ?TelegramParseModeEnum $parse_mode = null,
@@ -56,12 +57,12 @@ class SendMessageDraftRequest implements RequestInterface
         return $this;
     }
 
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string $text): SendMessageDraftRequest
+    public function setText(?string $text): SendMessageDraftRequest
     {
         $this->text = $text;
         return $this;

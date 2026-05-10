@@ -3,6 +3,7 @@
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
+use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 
 /**
@@ -22,6 +23,8 @@ final class Poll implements EntityInterface
      * @param PollTypeEnum $type Poll type, currently can be “regular” or “quiz”
      * @param bool $allows_multiple_answers True, if the poll allows multiple answers
      * @param bool $allows_revoting True, if the poll allows to change the chosen answer options
+     * @param bool $members_only True if voting is limited to users who have been members of the chat where the poll was originally
+     * sent for more than 24 hours
      * @param MessageEntity[]|null $question_entities Optional. Special entities that appear in the question. Currently, only custom
      * emoji entities are allowed in poll questions
      * @param string|null $explanation Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon
@@ -35,9 +38,15 @@ final class Poll implements EntityInterface
      * @param string|null $description Optional. Description of the poll; for polls inside the Message object only
      * @param MessageEntity[]|null $description_entities Optional. Special entities like usernames, URLs, bot commands, etc. that
      * appear in the description
+     * @param CountryCodeEnum[]|null $country_codes Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the
+     * countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll.
+     * @param PollMedia|null $explanation_media Optional. Media added to the quiz explanation
+     * @param PollMedia|null $media Optional. Media added to the poll description; for polls inside the Message object only
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#polloption PollOption
+     * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 ISO 3166-1 alpha-2
+     * @see https://core.telegram.org/bots/api#pollmedia PollMedia
      * @see https://core.telegram.org/bots/api#message Message
      */
     public function __construct(
@@ -51,6 +60,7 @@ final class Poll implements EntityInterface
         protected PollTypeEnum $type,
         protected bool $allows_multiple_answers,
         protected bool $allows_revoting,
+        protected bool $members_only,
         #[ArrayType(MessageEntity::class)]
         protected ?array $question_entities = null,
         protected ?string $explanation = null,
@@ -63,6 +73,10 @@ final class Poll implements EntityInterface
         protected ?string $description = null,
         #[ArrayType(MessageEntity::class)]
         protected ?array $description_entities = null,
+        #[ArrayType(CountryCodeEnum::class)]
+        protected ?array $country_codes = null,
+        protected ?PollMedia $explanation_media = null,
+        protected ?PollMedia $media = null,
     ) {}
 
     /**
@@ -237,6 +251,25 @@ final class Poll implements EntityInterface
     }
 
     /**
+     * @return bool
+     */
+    public function getMembersOnly(): bool
+    {
+        return $this->members_only;
+    }
+
+    /**
+     * @param bool $members_only
+     *
+     * @return Poll
+     */
+    public function setMembersOnly(bool $members_only): Poll
+    {
+        $this->members_only = $members_only;
+        return $this;
+    }
+
+    /**
      * @return MessageEntity[]|null
      */
     public function getQuestionEntities(): ?array
@@ -385,6 +418,63 @@ final class Poll implements EntityInterface
     public function setDescriptionEntities(?array $description_entities): Poll
     {
         $this->description_entities = $description_entities;
+        return $this;
+    }
+
+    /**
+     * @return CountryCodeEnum[]|null
+     */
+    public function getCountryCodes(): ?array
+    {
+        return $this->country_codes;
+    }
+
+    /**
+     * @param CountryCodeEnum[]|null $country_codes
+     *
+     * @return Poll
+     */
+    public function setCountryCodes(?array $country_codes): Poll
+    {
+        $this->country_codes = $country_codes;
+        return $this;
+    }
+
+    /**
+     * @return PollMedia|null
+     */
+    public function getExplanationMedia(): ?PollMedia
+    {
+        return $this->explanation_media;
+    }
+
+    /**
+     * @param PollMedia|null $explanation_media
+     *
+     * @return Poll
+     */
+    public function setExplanationMedia(?PollMedia $explanation_media): Poll
+    {
+        $this->explanation_media = $explanation_media;
+        return $this;
+    }
+
+    /**
+     * @return PollMedia|null
+     */
+    public function getMedia(): ?PollMedia
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param PollMedia|null $media
+     *
+     * @return Poll
+     */
+    public function setMedia(?PollMedia $media): Poll
+    {
+        $this->media = $media;
         return $this;
     }
 }

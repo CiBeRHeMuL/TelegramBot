@@ -20,7 +20,8 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class SendVideoRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
      * @param Filename|Url|string $video Video to send. Pass a file_id as String to send a video that exists on the Telegram servers
      * (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data.
      * More information on Sending Files »
@@ -54,7 +55,7 @@ class SendVideoRequest implements RequestInterface
      * only
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param Filename|Url|string|null $cover Cover for the video in the message. Pass a file_id to send a file that exists on the
      * Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
      * to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »

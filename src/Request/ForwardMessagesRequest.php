@@ -10,9 +10,10 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class ForwardMessagesRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original messages were sent (or channel username in the
-     * format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
+     * @param ChatId $from_chat_id Unique identifier for the chat where the original messages were sent (or username of the target
+     * bot, supergroup or channel in the format \@username)
      * @param int[] $message_ids A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The
      * identifiers must be specified in a strictly increasing order.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups

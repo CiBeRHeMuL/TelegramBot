@@ -23,8 +23,10 @@ final class PollOption implements EntityInterface
      * creation
      * @param int|null $addition_date Optional. Point in time (Unix timestamp) when the option was added; omitted if the option existed
      * in the original poll
+     * @param PollMedia|null $media Optional. Media added to the poll option
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#pollmedia PollMedia
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
      */
@@ -37,6 +39,7 @@ final class PollOption implements EntityInterface
         protected ?User $added_by_user = null,
         protected ?Chat $added_by_chat = null,
         protected ?int $addition_date = null,
+        protected ?PollMedia $media = null,
     ) {}
 
     /**
@@ -169,6 +172,25 @@ final class PollOption implements EntityInterface
     public function setAdditionDate(?int $addition_date): PollOption
     {
         $this->addition_date = $addition_date;
+        return $this;
+    }
+
+    /**
+     * @return PollMedia|null
+     */
+    public function getMedia(): ?PollMedia
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param PollMedia|null $media
+     *
+     * @return PollOption
+     */
+    public function setMedia(?PollMedia $media): PollOption
+    {
+        $this->media = $media;
         return $this;
     }
 }

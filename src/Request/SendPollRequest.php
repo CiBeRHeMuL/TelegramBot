@@ -4,11 +4,13 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
+use AndrewGos\TelegramBot\Entity\InputPollMediaInterface;
 use AndrewGos\TelegramBot\Entity\InputPollOption;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardRemove;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
@@ -19,9 +21,9 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendPollRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
-     * Polls can't be sent to channel direct messages chats.
-     * @param InputPollOption[] $options A JSON-serialized list of 2-12 answer options
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username. Polls can't be sent to channel direct messages chats.
+     * @param InputPollOption[] $options A JSON-serialized list of 1-12 answer options
      * @param string $question Poll question, 1-300 characters
      * @param bool|null $allows_multiple_answers Pass True, if the poll allows multiple answers, defaults to False
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
@@ -54,7 +56,7 @@ class SendPollRequest implements RequestInterface
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
      * only
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param bool|null $allows_revoting Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes
      * and to True for regular polls
      * @param bool|null $shuffle_options Pass True, if the poll options must be shown in random order
@@ -68,10 +70,19 @@ class SendPollRequest implements RequestInterface
      * options for more details.
      * @param MessageEntity[]|null $description_entities A JSON-serialized list of special entities that appear in the poll description,
      * which can be specified instead of description_parse_mode
+     * @param bool|null $members_only Pass True, if voting is limited to users who have been members of the chat where the poll is
+     * being sent for more than 24 hours; for channel chats only
+     * @param CountryCodeEnum[]|null $country_codes A JSON-serialized list of 0-12 two-letter ISO 3166-1 alpha-2 country codes indicating
+     * the countries from which users can vote in the poll; for channel chats only. If omitted or empty, then users from any country
+     * can participate in the poll.
+     * @param InputPollMediaInterface|null $explanation_media Media added to the quiz explanation
+     * @param InputPollMediaInterface|null $media Media added to the poll description
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#inputpolloption InputPollOption
+     * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 ISO 3166-1 alpha-2
+     * @see https://core.telegram.org/bots/api#inputpollmedia InputPollMediaInterface
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
@@ -113,6 +124,10 @@ class SendPollRequest implements RequestInterface
         private ?string $description = null,
         private ?TelegramParseModeEnum $description_parse_mode = null,
         private ?array $description_entities = null,
+        private ?bool $members_only = null,
+        private ?array $country_codes = null,
+        private ?InputPollMediaInterface $explanation_media = null,
+        private ?InputPollMediaInterface $media = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -442,6 +457,50 @@ class SendPollRequest implements RequestInterface
     public function setDescriptionEntities(?array $description_entities): SendPollRequest
     {
         $this->description_entities = $description_entities;
+        return $this;
+    }
+
+    public function getMembersOnly(): ?bool
+    {
+        return $this->members_only;
+    }
+
+    public function setMembersOnly(?bool $members_only): SendPollRequest
+    {
+        $this->members_only = $members_only;
+        return $this;
+    }
+
+    public function getCountryCodes(): ?array
+    {
+        return $this->country_codes;
+    }
+
+    public function setCountryCodes(?array $country_codes): SendPollRequest
+    {
+        $this->country_codes = $country_codes;
+        return $this;
+    }
+
+    public function getExplanationMedia(): ?InputPollMediaInterface
+    {
+        return $this->explanation_media;
+    }
+
+    public function setExplanationMedia(?InputPollMediaInterface $explanation_media): SendPollRequest
+    {
+        $this->explanation_media = $explanation_media;
+        return $this;
+    }
+
+    public function getMedia(): ?InputPollMediaInterface
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?InputPollMediaInterface $media): SendPollRequest
+    {
+        $this->media = $media;
         return $this;
     }
 }

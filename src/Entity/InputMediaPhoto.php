@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * @link https://core.telegram.org/bots/api#inputmediaphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Photo->value))]
-final class InputMediaPhoto extends AbstractInputMedia
+final class InputMediaPhoto extends AbstractInputMedia implements InputPollMediaInterface, InputPollOptionMediaInterface
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

@@ -10,8 +10,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class LeaveChatRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     * \@channelusername). Channel direct messages chats aren't supported; leave the corresponding channel instead.
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     * \@username. Channel direct messages chats aren't supported; leave the corresponding channel instead.
      */
     public function __construct(
         private ChatId $chat_id,

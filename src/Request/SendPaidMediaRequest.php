@@ -19,9 +19,9 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendPaidMediaRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername).
-     * If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they
-     * will be credited to the bot's balance.
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise,
+     * they will be credited to the bot's balance.
      * @param AbstractInputPaidMedia[] $media A JSON-serialized array describing the media to be sent; up to 10 items
      * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
      * @param string|null $caption Media caption, 0-1024 characters after entities parsing
@@ -41,7 +41,7 @@ class SendPaidMediaRequest implements RequestInterface
      * @param string|null $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for
      * your internal processes.
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
      * and private chats of bots with forum topic mode enabled only
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required

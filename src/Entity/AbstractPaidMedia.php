@@ -10,6 +10,7 @@ use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
  * @link https://core.telegram.org/bots/api#paidmedia
  */
 #[AvailableInheritors([
+    PaidMediaLivePhoto::class,
     PaidMediaPreview::class,
     PaidMediaPhoto::class,
     PaidMediaVideo::class,

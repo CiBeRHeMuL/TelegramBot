@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SetChatMemberTagRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username
      * @param int $user_id Unique identifier of the target user
      * @param string|null $tag New tag for the member; 0-16 characters, emoji are not allowed
      */

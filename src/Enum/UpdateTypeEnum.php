@@ -28,4 +28,5 @@ enum UpdateTypeEnum: string
     case ShippingQuery = 'shipping_query';
     case PurchasedPaidMedia = 'purchased_paid_media';
     case ManagedBot = 'managed_bot';
+    case GuestMessage = 'guest_message';
 }

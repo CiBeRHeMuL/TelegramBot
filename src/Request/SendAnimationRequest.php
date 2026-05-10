@@ -20,7 +20,8 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class SendAnimationRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
      * @param Filename|Url|string $animation Animation to send. Pass a file_id as String to send an animation that exists on the
      * Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload
      * a new animation using multipart/form-data. More information on Sending Files »
@@ -53,7 +54,7 @@ class SendAnimationRequest implements RequestInterface
      * only
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
      * if the message is sent to a direct messages chat
      * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested

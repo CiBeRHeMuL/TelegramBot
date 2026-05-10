@@ -11,7 +11,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class RevokeChatInviteLinkRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier of the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier of the target chat or username of the target channel in the format \@username
      * @param Url $invite_link The invite link to revoke
      */
     public function __construct(

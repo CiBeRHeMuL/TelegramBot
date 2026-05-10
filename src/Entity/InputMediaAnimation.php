@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * @link https://core.telegram.org/bots/api#inputmediaanimation
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Animation->value))]
-final class InputMediaAnimation extends AbstractInputMedia
+final class InputMediaAnimation extends AbstractInputMedia implements InputPollMediaInterface, InputPollOptionMediaInterface
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

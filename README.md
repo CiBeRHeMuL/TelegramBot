@@ -15,7 +15,7 @@ exceptional modularity and extensibility.
 
 ### ✨ Key Features
 
-* **💯 Full API Coverage:** Supports all methods and types of the Telegram Bot API (currently version **9.5**).
+* **💯 Full API Coverage:** Supports all methods and types of the Telegram Bot API (currently version **10.0**).
 * **🔒 Strict Typing:** Maximum code reliability and excellent IDE support.
 * **🧩 Modern Architecture:** A flexible update handling system using `HandlerGroup`, `Checker`, and `Middleware`.
 * **🔌 Extensibility:** Easily integrate your own logic through plugins and middleware.

@@ -10,7 +10,7 @@ namespace AndrewGos\TelegramBot\Entity;
 final class ChatOwnerLeft implements EntityInterface
 {
     /**
-     * @param User|null $new_owner Optional. The user which will be the new owner of the chat if the previous owner does not return
+     * @param User|null $new_owner Optional. The user who will become the new owner of the chat if the previous owner does not return
      * to the chat
      *
      * @see https://core.telegram.org/bots/api#user User

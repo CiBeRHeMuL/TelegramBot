@@ -9,7 +9,11 @@ use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
  * This object describes the source of a chat boost
  * @link https://core.telegram.org/bots/api#chatboostsource
  */
-#[AvailableInheritors([ChatBoostSourceGiftCode::class, ChatBoostSourceGiveaway::class, ChatBoostSourcePremium::class])]
+#[AvailableInheritors([
+    ChatBoostSourceGiftCode::class,
+    ChatBoostSourceGiveaway::class,
+    ChatBoostSourcePremium::class,
+])]
 abstract class AbstractChatBoostSource implements EntityInterface
 {
     /**

@@ -8,7 +8,10 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
  * This object describes a message that can be inaccessible to the bot
  * @link https://core.telegram.org/bots/api#maybeinaccessiblemessage
  */
-#[AvailableInheritors([Message::class, InaccessibleMessage::class])]
+#[AvailableInheritors([
+    Message::class,
+    InaccessibleMessage::class,
+])]
 abstract class AbstractMaybeInaccessibleMessage implements EntityInterface
 {
     public function __construct(

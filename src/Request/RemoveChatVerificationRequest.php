@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class RemoveChatVerificationRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot or channel in the format \@username
      */
     public function __construct(
         private ChatId $chat_id,

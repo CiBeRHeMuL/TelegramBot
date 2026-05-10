@@ -4,6 +4,7 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\InputMediaAudio;
 use AndrewGos\TelegramBot\Entity\InputMediaDocument;
+use AndrewGos\TelegramBot\Entity\InputMediaLivePhoto;
 use AndrewGos\TelegramBot\Entity\InputMediaPhoto;
 use AndrewGos\TelegramBot\Entity\InputMediaVideo;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
@@ -15,9 +16,10 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendMediaGroupRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param (InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized array describing messages
-     * to be sent, must include 2-10 items
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
+     * @param (InputMediaAudio|InputMediaDocument|InputMediaLivePhoto|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized
+     * array describing messages to be sent, must include 2-10 items
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
@@ -28,12 +30,13 @@ class SendMediaGroupRequest implements RequestInterface
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
      * only
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
      * if the messages are sent to a direct messages chat
      *
      * @see https://core.telegram.org/bots/api#inputmediaaudio InputMediaAudio
      * @see https://core.telegram.org/bots/api#inputmediadocument InputMediaDocument
+     * @see https://core.telegram.org/bots/api#inputmedialivephoto InputMediaLivePhoto
      * @see https://core.telegram.org/bots/api#inputmediaphoto InputMediaPhoto
      * @see https://core.telegram.org/bots/api#inputmediavideo InputMediaVideo
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently

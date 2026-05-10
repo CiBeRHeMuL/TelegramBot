@@ -15,7 +15,7 @@ class SendChecklistRequest implements RequestInterface
     /**
      * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be
      * sent
-     * @param ChatId $chat_id Unique identifier for the target chat
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot in the format \@username
      * @param InputChecklist $checklist A JSON-serialized object for the checklist to send
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message

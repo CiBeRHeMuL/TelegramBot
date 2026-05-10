@@ -35,6 +35,7 @@ final class ChatMemberRestricted extends AbstractChatMember
      * @param bool $can_manage_topics True, if the user is allowed to create forum topics
      * @param int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
      * @param bool $can_edit_tag True, if the user is allowed to edit their own tag
+     * @param bool $can_react_to_messages True, if the user is allowed to react to messages
      * @param string|null $tag Optional. Tag of the member
      *
      * @see https://core.telegram.org/bots/api#user User
@@ -58,6 +59,7 @@ final class ChatMemberRestricted extends AbstractChatMember
         protected bool $can_manage_topics,
         protected int $until_date,
         protected bool $can_edit_tag,
+        protected bool $can_react_to_messages,
         protected ?string $tag = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Restricted);
@@ -402,6 +404,25 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanEditTag(bool $can_edit_tag): ChatMemberRestricted
     {
         $this->can_edit_tag = $can_edit_tag;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getCanReactToMessages(): bool
+    {
+        return $this->can_react_to_messages;
+    }
+
+    /**
+     * @param bool $can_react_to_messages
+     *
+     * @return ChatMemberRestricted
+     */
+    public function setCanReactToMessages(bool $can_react_to_messages): ChatMemberRestricted
+    {
+        $this->can_react_to_messages = $can_react_to_messages;
         return $this;
     }
 

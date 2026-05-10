@@ -10,6 +10,10 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
  * @link https://core.telegram.org/bots/api#inputmedia
  */
 #[AvailableInheritors([
+    InputMediaVenue::class,
+    InputMediaSticker::class,
+    InputMediaLivePhoto::class,
+    InputMediaLocation::class,
     InputMediaAnimation::class,
     InputMediaDocument::class,
     InputMediaAudio::class,

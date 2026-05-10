@@ -16,7 +16,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * @link https://core.telegram.org/bots/api#inputmediaaudio
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Audio->value))]
-final class InputMediaAudio extends AbstractInputMedia
+final class InputMediaAudio extends AbstractInputMedia implements InputPollMediaInterface
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),

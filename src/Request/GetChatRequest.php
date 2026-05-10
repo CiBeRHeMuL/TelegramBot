@@ -10,8 +10,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class GetChatRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format
-     * \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup or channel in the format
+     * \@username
      */
     public function __construct(
         private ChatId $chat_id,

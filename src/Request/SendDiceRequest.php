@@ -17,7 +17,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendDiceRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
      * be sent
      * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -34,7 +35,7 @@ class SendDiceRequest implements RequestInterface
      * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
      * only
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
      * if the message is sent to a direct messages chat
      * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested

@@ -14,7 +14,7 @@ class EditMessageChecklistRequest implements RequestInterface
     /**
      * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be
      * sent
-     * @param ChatId $chat_id Unique identifier for the target chat
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot in the format \@username
      * @param InputChecklist $checklist A JSON-serialized object for the new checklist
      * @param int $message_id Unique identifier for the target message
      * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for the new inline keyboard for the message

@@ -28,21 +28,21 @@ final class InlineKeyboardButton implements EntityInterface
      * @param string|null $switch_inline_query Optional. If set, pressing the button will prompt the user to select one of their
      * chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which
      * case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf
-     * of a Telegram Business account.
+     * of a business account.
      * @param SwitchInlineQueryChosenChat|null $switch_inline_query_chosen_chat Optional. If set, pressing the button will prompt
      * the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified
-     * inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram
-     * Business account.
+     * inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business
+     * account.
      * @param string|null $switch_inline_query_current_chat Optional. If set, pressing the button will insert the bot's username
      * and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will
      * be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something
      * from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a
-     * Telegram Business account.
+     * business account.
      * @param Url|null $url Optional. HTTP or tg:// URL to be opened when the button is pressed. Links tg://user?id=<user_id> can
      * be used to mention a user by their identifier without using a username, if this is allowed by their privacy settings.
      * @param WebAppInfo|null $web_app Optional. Description of the Web App that will be launched when the user presses the button.
      * The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available
-     * only in private chats between a user and the bot. Not supported for messages sent on behalf of a Telegram Business account.
+     * only in private chats between a user and the bot. Not supported for messages sent on behalf of a business account.
      * @param CopyTextButton|null $copy_text Optional. Description of the button that copies the specified text to the clipboard.
      * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown before the text of the button.
      * Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private,

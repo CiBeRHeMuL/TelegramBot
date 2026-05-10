@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class GetChatGiftsRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel in the format \@username
      * @param bool|null $exclude_from_blockchain Pass True to exclude gifts that were assigned from the TON blockchain and can't
      * be resold or transferred in Telegram
      * @param bool|null $exclude_limited_non_upgradable Pass True to exclude gifts that can be purchased a limited number of times

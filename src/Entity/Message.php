@@ -183,10 +183,20 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * current bot
      * @param PollOptionAdded|null $poll_option_added Optional. Service message: answer option was added to a poll
      * @param PollOptionDeleted|null $poll_option_deleted Optional. Service message: answer option was deleted from a poll
+     * @param string|null $guest_query_id Optional. The unique identifier for the guest query. Use this identifier with the method
+     * answerGuestQuery to send a response message. If non-empty, the message belongs to the chat where the guest bot was summoned,
+     * which may not coincide with other existing bot chats sharing the same identifier.
+     * @param User|null $guest_bot_caller_user Optional. For a message sent by a guest bot, this is the user whose original message
+     * triggered the bot's response
+     * @param Chat|null $guest_bot_caller_chat Optional. For a message sent by a guest bot, this is the chat whose original message
+     * triggered the bot's response
+     * @param LivePhoto|null $live_photo Optional. Message is a live photo, information about the live photo. For backward compatibility,
+     * when this field is set, the photo field will also be set
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
+     * @see https://core.telegram.org/bots/api#answerguestquery answerGuestQuery
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#externalreplyinfo ExternalReplyInfo
@@ -198,6 +208,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#document Document
+     * @see https://core.telegram.org/bots/api#livephoto LivePhoto
      * @see https://core.telegram.org/bots/api#paidmediainfo PaidMediaInfo
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      * @see https://core.telegram.org/bots/api#sticker Sticker
@@ -378,6 +389,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?ManagedBotCreated $managed_bot_created = null,
         protected ?PollOptionAdded $poll_option_added = null,
         protected ?PollOptionDeleted $poll_option_deleted = null,
+        protected ?string $guest_query_id = null,
+        protected ?User $guest_bot_caller_user = null,
+        protected ?Chat $guest_bot_caller_chat = null,
+        protected ?LivePhoto $live_photo = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2469,6 +2484,82 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setPollOptionDeleted(?PollOptionDeleted $poll_option_deleted): Message
     {
         $this->poll_option_deleted = $poll_option_deleted;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGuestQueryId(): ?string
+    {
+        return $this->guest_query_id;
+    }
+
+    /**
+     * @param string|null $guest_query_id
+     *
+     * @return Message
+     */
+    public function setGuestQueryId(?string $guest_query_id): Message
+    {
+        $this->guest_query_id = $guest_query_id;
+        return $this;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getGuestBotCallerUser(): ?User
+    {
+        return $this->guest_bot_caller_user;
+    }
+
+    /**
+     * @param User|null $guest_bot_caller_user
+     *
+     * @return Message
+     */
+    public function setGuestBotCallerUser(?User $guest_bot_caller_user): Message
+    {
+        $this->guest_bot_caller_user = $guest_bot_caller_user;
+        return $this;
+    }
+
+    /**
+     * @return Chat|null
+     */
+    public function getGuestBotCallerChat(): ?Chat
+    {
+        return $this->guest_bot_caller_chat;
+    }
+
+    /**
+     * @param Chat|null $guest_bot_caller_chat
+     *
+     * @return Message
+     */
+    public function setGuestBotCallerChat(?Chat $guest_bot_caller_chat): Message
+    {
+        $this->guest_bot_caller_chat = $guest_bot_caller_chat;
+        return $this;
+    }
+
+    /**
+     * @return LivePhoto|null
+     */
+    public function getLivePhoto(): ?LivePhoto
+    {
+        return $this->live_photo;
+    }
+
+    /**
+     * @param LivePhoto|null $live_photo
+     *
+     * @return Message
+     */
+    public function setLivePhoto(?LivePhoto $live_photo): Message
+    {
+        $this->live_photo = $live_photo;
         return $this;
     }
 }

@@ -1,5 +1,18 @@
 # Usage with Symfony
 
+## Using native symfony bundle
+
+You can use the native symfony bundle to integrate the library into your application.
+```bash
+composer require andrew-gos/telegram-bot-bundle
+```
+
+More info about the bundle:
+- [Bundle on Packagist](https://packagist.org/packages/andrew-gos/telegram-bot-bundle)
+- [Bundle on GitHub](https://github.com/CiBeRHeMuL/TelegramBotBundle)
+
+## Using Symfony DI
+
 Integrating this library into a Symfony application is straightforward using its service container.
 This allows you to manage the `Telegram` object as a service and inject it anywhere you need it, such as in your controllers or custom services.
 

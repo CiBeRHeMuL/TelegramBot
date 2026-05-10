@@ -26,7 +26,7 @@ use Throwable;
 
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '9.5';
+    private const TELEGRAM_BOT_API_VERSION = '10.0';
 
     public function __construct(
         private readonly BotToken $token,
@@ -2697,6 +2697,108 @@ class Api implements ApiInterface
         $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
         $preparedButton = $this->buildClassForResponse(Ent\PreparedKeyboardButton::class, $rawResponse);
         return new Res\SavePreparedKeyboardButtonResponse($rawResponse, $preparedButton);
+    }
+
+    /**
+     * Use this method to send live photos. On success, the sent Message is returned.
+     *
+     * @param Req\SendLivePhotoRequest $request
+     *
+     * @return Res\SendLivePhotoResponse
+     * @link https://core.telegram.org/bots/api#sendlivephoto
+     */
+    public function sendLivePhoto(Req\SendLivePhotoRequest $request): Res\SendLivePhotoResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        return new Res\SendLivePhotoResponse($rawResponse, $message);
+    }
+
+    /**
+     * Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given
+     * user. On success, an array of Message objects is returned.
+     *
+     * @param Req\GetUserPersonalChatMessagesRequest $request
+     *
+     * @return Res\GetUserPersonalChatMessagesResponse
+     * @link https://core.telegram.org/bots/api#getuserpersonalchatmessages
+     */
+    public function getUserPersonalChatMessages(Req\GetUserPersonalChatMessagesRequest $request): Res\GetUserPersonalChatMessagesResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $messages = $this->buildClassArrayForResponse(Ent\Message::class, $rawResponse);
+        return new Res\GetUserPersonalChatMessagesResponse($rawResponse, $messages);
+    }
+
+    /**
+     * Use this method to reply to a received guest message. On success, a SentGuestMessage object is returned.
+     *
+     * @param Req\AnswerGuestQueryRequest $request
+     *
+     * @return Res\AnswerGuestQueryResponse
+     * @link https://core.telegram.org/bots/api#answerguestquery
+     */
+    public function answerGuestQuery(Req\AnswerGuestQueryRequest $request): Res\AnswerGuestQueryResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $sentGuestMessage = $this->buildClassForResponse(Ent\SentGuestMessage::class, $rawResponse);
+        return new Res\AnswerGuestQueryResponse($rawResponse, $sentGuestMessage);
+    }
+
+    /**
+     * Use this method to get the access settings of a managed bot. Returns a BotAccessSettings object on success.
+     *
+     * @param Req\GetManagedBotAccessSettingsRequest $request
+     *
+     * @return Res\GetManagedBotAccessSettingsResponse
+     * @link https://core.telegram.org/bots/api#getmanagedbotaccesssettings
+     */
+    public function getManagedBotAccessSettings(Req\GetManagedBotAccessSettingsRequest $request): Res\GetManagedBotAccessSettingsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $botAccessSettings = $this->buildClassForResponse(Ent\BotAccessSettings::class, $rawResponse);
+        return new Res\GetManagedBotAccessSettingsResponse($rawResponse, $botAccessSettings);
+    }
+
+    /**
+     * Use this method to change the access settings of a managed bot. Returns True on success.
+     *
+     * @param Req\SetManagedBotAccessSettingsRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#setmanagedbotaccesssettings
+     */
+    public function setManagedBotAccessSettings(Req\SetManagedBotAccessSettingsRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to remove a reaction from a message in a group or a supergroup chat. The bot must have the 'can_delete_messages'
+     * administrator right in the chat. Returns True on success.
+     *
+     * @param Req\DeleteMessageReactionRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#deletemessagereaction
+     */
+    public function deleteMessageReaction(Req\DeleteMessageReactionRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a given user or chat. The
+     * bot must have the 'can_delete_messages' administrator right in the chat. Returns True on success.
+     *
+     * @param Req\DeleteAllMessageReactionsRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/api#deleteallmessagereactions
+     */
+    public function deleteAllMessageReactions(Req\DeleteAllMessageReactionsRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 
     /**

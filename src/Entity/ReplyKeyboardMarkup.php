@@ -6,7 +6,7 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported
- * in channels and for messages sent on behalf of a Telegram Business account.
+ * in channels and for messages sent on behalf of a business account.
  *
  * @see https://core.telegram.org/bots/features#keyboards Introduction to bots
  * @link https://core.telegram.org/bots/api#replykeyboardmarkup

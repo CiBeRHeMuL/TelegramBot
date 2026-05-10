@@ -5,7 +5,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
 /**
- * This object represents an incoming update.At most one of the optional parameters can be present in any given update.
+ * This object represents an incoming update.At most one of the optional fields can be present in any given update.
  *
  * @see https://core.telegram.org/bots/api#available-types object
  * @link https://core.telegram.org/bots/api#update
@@ -61,11 +61,14 @@ final class Update implements EntityInterface
      * the bot in a non-channel chat
      * @param ManagedBotUpdated|null $managed_bot Optional. A new bot was created to be managed by the bot, or token or owner of
      * a managed bot was changed
+     * @param Message|null $guest_message Optional. New guest message. The bot can use the field Message.guest_query_id and the method
+     * answerGuestQuery to send a message in response.
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#businessconnection BusinessConnection
      * @see https://core.telegram.org/bots/api#businessmessagesdeleted BusinessMessagesDeleted
+     * @see https://core.telegram.org/bots/api#answerguestquery answerGuestQuery
      * @see https://core.telegram.org/bots/api#messagereactionupdated MessageReactionUpdated
      * @see https://core.telegram.org/bots/api#messagereactioncountupdated MessageReactionCountUpdated
      * @see https://core.telegram.org/bots/api#inlinequery InlineQuery
@@ -110,6 +113,7 @@ final class Update implements EntityInterface
         protected ?ShippingQuery $shipping_query = null,
         protected ?PaidMediaPurchased $purchased_paid_media = null,
         protected ?ManagedBotUpdated $managed_bot = null,
+        protected ?Message $guest_message = null,
     ) {}
 
     /**
@@ -587,6 +591,25 @@ final class Update implements EntityInterface
         return $this;
     }
 
+    /**
+     * @return Message|null
+     */
+    public function getGuestMessage(): ?Message
+    {
+        return $this->guest_message;
+    }
+
+    /**
+     * @param Message|null $guest_message
+     *
+     * @return Update
+     */
+    public function setGuestMessage(?Message $guest_message): Update
+    {
+        $this->guest_message = $guest_message;
+        return $this;
+    }
+
     public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
@@ -614,6 +637,7 @@ final class Update implements EntityInterface
             $this->getShippingQuery() !== null => UpdateTypeEnum::ShippingQuery,
             $this->getPurchasedPaidmedia() !== null => UpdateTypeEnum::PurchasedPaidMedia,
             $this->getManagedBot() !== null => UpdateTypeEnum::ManagedBot,
+            $this->getGuestMessage() !== null => UpdateTypeEnum::GuestMessage,
             default => null,
         };
     }

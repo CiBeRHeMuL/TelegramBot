@@ -17,7 +17,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 final class BotCommandScopeChatAdministrators extends AbstractBotCommandScope
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup (in the format \@supergroupusername).
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username.
      * Channel direct messages chats and channel chats aren't supported.
      */
     public function __construct(

@@ -18,9 +18,10 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class CopyMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
-     * format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
+     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target
+     * bot, supergroup or channel in the format \@username)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
      * and private chats of bots with forum topic mode enabled only
@@ -39,7 +40,7 @@ class CopyMessageRequest implements RequestInterface
      * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Ignored if a new
      * caption isn't specified.
      * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
      * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
      * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
      * if the message is sent to a direct messages chat

@@ -40,6 +40,7 @@ final class ExternalReplyInfo implements EntityInterface
      * @param Venue|null $venue Optional. Message is a venue, information about the venue
      * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
      * @param Checklist|null $checklist Optional. Message is a checklist
+     * @param LivePhoto|null $live_photo Optional. Message is a live photo, information about the live photo
      *
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
      * @see https://core.telegram.org/bots/api#chat Chat
@@ -47,6 +48,7 @@ final class ExternalReplyInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#document Document
+     * @see https://core.telegram.org/bots/api#livephoto LivePhoto
      * @see https://core.telegram.org/bots/api#paidmediainfo PaidMediaInfo
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      * @see https://core.telegram.org/bots/api#sticker Sticker
@@ -95,6 +97,7 @@ final class ExternalReplyInfo implements EntityInterface
         protected ?Venue $venue = null,
         protected ?PaidMediaInfo $paid_media = null,
         protected ?Checklist $checklist = null,
+        protected ?LivePhoto $live_photo = null,
     ) {}
 
     /**
@@ -569,6 +572,25 @@ final class ExternalReplyInfo implements EntityInterface
     public function setChecklist(?Checklist $checklist): ExternalReplyInfo
     {
         $this->checklist = $checklist;
+        return $this;
+    }
+
+    /**
+     * @return LivePhoto|null
+     */
+    public function getLivePhoto(): ?LivePhoto
+    {
+        return $this->live_photo;
+    }
+
+    /**
+     * @param LivePhoto|null $live_photo
+     *
+     * @return ExternalReplyInfo
+     */
+    public function setLivePhoto(?LivePhoto $live_photo): ExternalReplyInfo
+    {
+        $this->live_photo = $live_photo;
         return $this;
     }
 }

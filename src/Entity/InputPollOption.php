@@ -18,15 +18,18 @@ final class InputPollOption implements EntityInterface
      * for more details. Currently, only custom emoji entities are allowed
      * @param MessageEntity[]|null $text_entities Optional. A JSON-serialized list of special entities that appear in the poll option
      * text. It can be specified instead of text_parse_mode
+     * @param InputPollOptionMediaInterface|null $media Optional. Media added to the poll option
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#inputpolloptionmedia InputPollOptionMediaInterface
      */
     public function __construct(
         protected string $text,
         protected ?TelegramParseModeEnum $text_parse_mode = null,
         #[ArrayType(MessageEntity::class)]
         protected ?array $text_entities = null,
+        protected ?InputPollOptionMediaInterface $media = null,
     ) {}
 
     /**
@@ -83,6 +86,25 @@ final class InputPollOption implements EntityInterface
     public function setTextEntities(?array $text_entities): InputPollOption
     {
         $this->text_entities = $text_entities;
+        return $this;
+    }
+
+    /**
+     * @return InputPollOptionMediaInterface|null
+     */
+    public function getMedia(): ?InputPollOptionMediaInterface
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param InputPollOptionMediaInterface|null $media
+     *
+     * @return InputPollOption
+     */
+    public function setMedia(?InputPollOptionMediaInterface $media): InputPollOption
+    {
+        $this->media = $media;
         return $this;
     }
 }

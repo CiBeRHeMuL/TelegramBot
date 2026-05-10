@@ -11,9 +11,10 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class ForwardMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or channel username in the
-     * format \@channelusername)
+     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     * \@username
+     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target
+     * bot, supergroup or channel in the format \@username)
      * @param int $message_id Message identifier in the chat specified in from_chat_id
      * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
      * and private chats of bots with forum topic mode enabled only
