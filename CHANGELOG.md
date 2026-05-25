@@ -1,5 +1,10 @@
 # Change log of Telegram Bot Library
 
+# Version 4.6.1
+
+### General
++ Fix http client implementation
+
 ## Version 4.6.0
 
 ### General
