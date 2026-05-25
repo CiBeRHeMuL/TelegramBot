@@ -7,8 +7,6 @@ use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainerInterface;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
 use InvalidArgumentException;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -39,8 +37,11 @@ class HttpRequest implements RequestInterface
             throw new InvalidArgumentException('Invalid request target provided; cannot contain spaces');
         }
 
-        $this->uri = $this->uri->withPath($requestTarget);
-        return $this;
+        $new = clone $this;
+
+        $new->uri = $this->uri->withPath($requestTarget);
+
+        return $new;
     }
 
     public function getMethod(): string
@@ -50,8 +51,11 @@ class HttpRequest implements RequestInterface
 
     public function withMethod(string $method): RequestInterface
     {
-        $this->method = HttpMethodEnum::from($method);
-        return $this;
+        $new = clone $this;
+
+        $new->method = HttpMethodEnum::from($method);
+
+        return $new;
     }
 
     public function getUri(): UriInterface
@@ -61,13 +65,15 @@ class HttpRequest implements RequestInterface
 
     public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface
     {
-        $this->uri = $uri;
+        $new = clone $this;
 
-        if (!$preserveHost || !$this->hasHeader('Host')) {
-            $this->updateHostHeaderFromUri();
+        $new->uri = $uri;
+
+        if (!$preserveHost || !$new->hasHeader('Host')) {
+            $new->updateHostHeaderFromUri();
         }
 
-        return $this;
+        return $new;
     }
 
     public function getProtocolVersion(): string
@@ -77,8 +83,11 @@ class HttpRequest implements RequestInterface
 
     public function withProtocolVersion(string $version): RequestInterface
     {
-        $this->protocolVersion = HttpVersionEnum::from($version);
-        return $this;
+        $new = clone $this;
+
+        $new->protocolVersion = HttpVersionEnum::from($version);
+
+        return $new;
     }
 
     public function getHeaders(): array
@@ -94,12 +103,14 @@ class HttpRequest implements RequestInterface
     /**
      * @param string $name
      *
-     * @return array|string[]
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @return string[]
      */
     public function getHeader(string $name): array
     {
+        if (!$this->hasHeader($name)) {
+            return [];
+        }
+
         return $this->headers->get($name);
     }
 
@@ -107,8 +118,6 @@ class HttpRequest implements RequestInterface
      * @param string $name
      *
      * @return string
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function getHeaderLine(string $name): string
     {
@@ -117,21 +126,31 @@ class HttpRequest implements RequestInterface
 
     public function withHeader(string $name, $value): RequestInterface
     {
+        $new = clone $this;
+
         $normalizedValue = is_array($value) ? $value : [$value];
-        $this->headers->set($name, $normalizedValue);
-        return $this;
+
+        $new->headers->set($name, $normalizedValue);
+
+        return $new;
     }
 
     public function withAddedHeader(string $name, $value): RequestInterface
     {
-        $this->headers->add($name, $value);
-        return $this;
+        $new = clone $this;
+
+        $new->headers->add($name, $value);
+
+        return $new;
     }
 
     public function withoutHeader(string $name): RequestInterface
     {
-        $this->headers->unset($name);
-        return $this;
+        $new = clone $this;
+
+        $new->headers->unset($name);
+
+        return $new;
     }
 
     public function getBody(): StreamInterface
@@ -144,8 +163,11 @@ class HttpRequest implements RequestInterface
 
     public function withBody(StreamInterface $body): RequestInterface
     {
-        $this->body = $body;
-        return $this;
+        $new = clone $this;
+
+        $new->body = $body;
+
+        return $new;
     }
 
     private function updateHostHeaderFromUri(): void

@@ -2,6 +2,7 @@
 
 namespace AndrewGos\TelegramBot\Http\Client;
 
+use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainer;
 use AndrewGos\TelegramBot\Http\Message\HttpResponse;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
@@ -49,12 +50,12 @@ class HttpClient implements ClientInterface
         }
 
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = $this->createResponse($statusCode, $responseBody, curl_getinfo($ch));
+        $response = $this->createResponse($statusCode, $responseBody, $ch);
 
         return $response;
     }
 
-    private function createResponse(int $statusCode, string $body, array $info): ResponseInterface
+    private function createResponse(int $statusCode, string $body, \CurlHandle $ch): ResponseInterface
     {
         $stream = fopen('php://temp', 'r+');
         fwrite($stream, $body);
@@ -64,6 +65,7 @@ class HttpClient implements ClientInterface
             $statusCode,
             new HttpHeadersContainer(),
             new Stream($stream),
+            protocolVersion: (string) (curl_getinfo($ch, CURLINFO_HTTP_VERSION) ?: HttpVersionEnum::Http11->value),
         );
     }
 }

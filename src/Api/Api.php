@@ -2926,7 +2926,7 @@ class Api implements ApiInterface
             $rawResponse = new Res\RawResponse(
                 false,
                 'Invalid response',
-                null,
+                (string) $e,
                 HttpStatusCodeEnum::InternalServerError,
                 null,
             );

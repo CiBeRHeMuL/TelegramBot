@@ -2,30 +2,24 @@
 
 namespace AndrewGos\TelegramBot\Http\Message;
 
+use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainer;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
 class HttpResponse implements ResponseInterface
 {
-    private int $statusCode;
-    private HttpHeadersContainer $headers;
     private StreamInterface $body;
-    private string $reasonPhrase;
 
     public function __construct(
-        int $statusCode,
-        HttpHeadersContainer $headers,
+        private int $statusCode,
+        private HttpHeadersContainer $headers,
         ?StreamInterface $body = null,
-        string $reasonPhrase = '',
+        private string $reasonPhrase = '',
+        private string $protocolVersion = HttpVersionEnum::Http11->value,
     ) {
-        $this->statusCode = $statusCode;
-        $this->headers = $headers;
         $this->body = $body ?? new Stream(fopen('php://temp', 'r+'));
-        $this->reasonPhrase = $reasonPhrase;
     }
 
     public function getStatusCode(): int
@@ -49,12 +43,15 @@ class HttpResponse implements ResponseInterface
 
     public function getProtocolVersion(): string
     {
-        return '1.1';
+        return $this->protocolVersion;
     }
 
     public function withProtocolVersion(string $version): ResponseInterface
     {
-        return $this;
+        $new = clone $this;
+        $new->protocolVersion = $version;
+
+        return $new;
     }
 
     public function getHeaders(): array
@@ -70,12 +67,14 @@ class HttpResponse implements ResponseInterface
     /**
      * @param string $name
      *
-     * @return array|string[]
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
+     * @return string[]
      */
     public function getHeader(string $name): array
     {
+        if (!$this->hasHeader($name)) {
+            return [];
+        }
+
         return $this->headers->get($name);
     }
 
@@ -83,8 +82,6 @@ class HttpResponse implements ResponseInterface
      * @param string $name
      *
      * @return string
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
      */
     public function getHeaderLine(string $name): string
     {
@@ -93,20 +90,26 @@ class HttpResponse implements ResponseInterface
 
     public function withHeader(string $name, $value): ResponseInterface
     {
-        $this->headers->set($name, (array) $value);
-        return $this;
+        $new = clone $this;
+        $new->headers->set($name, (array) $value);
+
+        return $new;
     }
 
     public function withAddedHeader(string $name, $value): ResponseInterface
     {
-        $this->headers->add($name, $value);
-        return $this;
+        $new = clone $this;
+        $new->headers->add($name, $value);
+
+        return $new;
     }
 
     public function withoutHeader(string $name): ResponseInterface
     {
-        $this->headers->unset($name);
-        return $this;
+        $new = clone $this;
+        $new->headers->unset($name);
+
+        return $new;
     }
 
     public function getBody(): StreamInterface
@@ -116,7 +119,9 @@ class HttpResponse implements ResponseInterface
 
     public function withBody(StreamInterface $body): ResponseInterface
     {
-        $this->body = $body;
-        return $this;
+        $new = clone $this;
+        $new->body = $body;
+
+        return $new;
     }
 }
