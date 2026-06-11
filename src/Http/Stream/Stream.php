@@ -8,6 +8,20 @@ use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 use Throwable;
 
+// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(8): Stream; TECH(9): PSR-7]
+/**
+ * @moduleContract
+ * @purpose Implement PSR-7 StreamInterface wrapping a PHP stream resource with read/write/seek capabilities.
+ *
+ * @sees USES_API(8): Psr\Http\Message\StreamInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Stream, PSR-7, stream, resource, read, write, seek
+// STRUCTURE: ┌resource┐ → ○ detect mode (readable/writable/seekable) → ○ read/write/seek/tell → ⊕ string | int | void → __destruct → ○ close
+
+// region CLASS_Stream
 class Stream implements StreamInterface
 {
     private const READABLE_MODES = '/r|a\+|ab\+|w\+|wb\+|x\+|xb\+|c\+|cb\+/';
@@ -55,7 +69,7 @@ class Stream implements StreamInterface
 
             return $this->getContents();
         } catch (Throwable $e) {
-            if (PHP_VERSION_ID >= 70400) {
+            if (PHP_VERSION_ID >= 70_400) {
                 throw $e;
             }
             trigger_error(sprintf('%s::__toString exception: %s', self::class, $e), E_USER_ERROR);
@@ -250,3 +264,4 @@ class Stream implements StreamInterface
         return $meta[$key] ?? null;
     }
 }
+// endregion CLASS_Stream

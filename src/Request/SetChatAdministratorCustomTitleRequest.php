@@ -4,15 +4,31 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setChatAdministratorCustomTitle method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Chat, Administrator, Custom, Title
+// STRUCTURE: ▶ ┌chat_id + custom_title + user_id┐ → ◇ construct → ⊕ → ∑ ⟦SetChatAdministratorCustomTitleRequest⟧
+
+// region CLASS_SetChatAdministratorCustomTitleRequest
+/**
+ * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
  */
 class SetChatAdministratorCustomTitleRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username
+     * @param ChatId $chat_id      Unique identifier for the target chat or username of the target supergroup in the format \@username
      * @param string $custom_title New custom title for the administrator; 0-16 characters, emoji are not allowed
-     * @param int $user_id Unique identifier of the target user
+     * @param int    $user_id      Unique identifier of the target user
      */
     public function __construct(
         private ChatId $chat_id,
@@ -28,6 +44,7 @@ class SetChatAdministratorCustomTitleRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SetChatAdministratorCustomTitleRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -39,6 +56,7 @@ class SetChatAdministratorCustomTitleRequest implements RequestInterface
     public function setCustomTitle(string $custom_title): SetChatAdministratorCustomTitleRequest
     {
         $this->custom_title = $custom_title;
+
         return $this;
     }
 
@@ -50,6 +68,8 @@ class SetChatAdministratorCustomTitleRequest implements RequestInterface
     public function setUserId(int $user_id): SetChatAdministratorCustomTitleRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 }
+// endregion CLASS_SetChatAdministratorCustomTitleRequest

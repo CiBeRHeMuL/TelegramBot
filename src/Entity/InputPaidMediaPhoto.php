@@ -8,18 +8,32 @@ use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a paid photo to be sent as part of a paid media group.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputpaidmediaphoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputPaidMediaPhoto, Telegram, Bot API, DTO, inputpaidmediaphoto
+// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode → ∑ InputPaidMediaPhoto
+// region CLASS_InputPaidMediaPhoto
+
 /**
  * The paid media to send is a photo.
  *
- * @link https://core.telegram.org/bots/api#inputpaidmediaphoto
+ * @see https://core.telegram.org/bots/api#inputpaidmediaphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputPaidMediaTypeEnum::Photo->value))]
 final class InputPaidMediaPhoto extends AbstractInputPaidMedia
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-     * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
-     * using multipart/form-data under <file_attach_name> name. More information on Sending Files »
+     *                                   pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
+     *                                   using multipart/form-data under <file_attach_name> name. More information on Sending Files »
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
@@ -45,6 +59,9 @@ final class InputPaidMediaPhoto extends AbstractInputPaidMedia
     public function setMedia(Filename|Url|string $media): InputPaidMediaPhoto
     {
         $this->media = $media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputPaidMediaPhoto

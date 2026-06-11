@@ -4,22 +4,36 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a paid suggested channel post.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostpaid
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: SuggestedPostPaid, Telegram, Bot API, DTO, suggestedpostpaid
+// STRUCTURE: ▶ ┌star_count...┐ → ∑ SuggestedPostPaid
+// region CLASS_SuggestedPostPaid
+
 /**
  * Describes a service message about a successful payment for a suggested post.
  *
- * @link https://core.telegram.org/bots/api#suggestedpostpaid
+ * @see https://core.telegram.org/bots/api#suggestedpostpaid
  */
 final class SuggestedPostPaid implements EntityInterface
 {
     /**
-     * @param CurrencyEnum $currency Currency in which the payment was made. Currently, one of “XTR” for Telegram Stars or “TON”
-     * for toncoins
-     * @param int|null $amount Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments
-     * in toncoins only
-     * @param StarAmount|null $star_amount Optional. The amount of Telegram Stars that was received by the channel; for payments
-     * in Telegram Stars only
-     * @param Message|null $suggested_post_message Optional. Message containing the suggested post. Note that the Message object
-     * in this field will not contain the reply_to_message field even if it itself is a reply.
+     * @param CurrencyEnum    $currency               Currency in which the payment was made. Currently, one of “XTR” for Telegram Stars or “TON”
+     *                                                for toncoins
+     * @param int|null        $amount                 Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments
+     *                                                in toncoins only
+     * @param StarAmount|null $star_amount            Optional. The amount of Telegram Stars that was received by the channel; for payments
+     *                                                in Telegram Stars only
+     * @param Message|null    $suggested_post_message Optional. Message containing the suggested post. Note that the Message object
+     *                                                in this field will not contain the reply_to_message field even if it itself is a reply.
      *
      * @see https://core.telegram.org/bots/api#message Message
      * @see https://core.telegram.org/bots/api#staramount StarAmount
@@ -47,6 +61,7 @@ final class SuggestedPostPaid implements EntityInterface
     public function setCurrency(CurrencyEnum $currency): SuggestedPostPaid
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class SuggestedPostPaid implements EntityInterface
     public function setAmount(?int $amount): SuggestedPostPaid
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class SuggestedPostPaid implements EntityInterface
     public function setStarAmount(?StarAmount $star_amount): SuggestedPostPaid
     {
         $this->star_amount = $star_amount;
+
         return $this;
     }
 
@@ -104,6 +121,9 @@ final class SuggestedPostPaid implements EntityInterface
     public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostPaid
     {
         $this->suggested_post_message = $suggested_post_message;
+
         return $this;
     }
 }
+
+// endregion CLASS_SuggestedPostPaid

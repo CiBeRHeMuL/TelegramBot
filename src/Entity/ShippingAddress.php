@@ -4,20 +4,34 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a shipping address.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#shippingaddress
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ShippingAddress, Telegram, Bot API, DTO, shippingaddress
+// STRUCTURE: ▶ ┌country_code,state,city,street_line1,street_line2,post_code┐ → ∑ address
+// region CLASS_ShippingAddress
+
 /**
  * This object represents a shipping address.
  *
- * @link https://core.telegram.org/bots/api#shippingaddress
+ * @see https://core.telegram.org/bots/api#shippingaddress
  */
 final class ShippingAddress implements EntityInterface
 {
     /**
      * @param CountryCodeEnum $country_code Two-letter ISO 3166-1 alpha-2 country code
-     * @param string $state State, if applicable
-     * @param string $city City
-     * @param string $street_line1 First line for the address
-     * @param string $street_line2 Second line for the address
-     * @param string $post_code Address post code
+     * @param string          $state        State, if applicable
+     * @param string          $city         City
+     * @param string          $street_line1 First line for the address
+     * @param string          $street_line2 Second line for the address
+     * @param string          $post_code    Address post code
      *
      * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 ISO 3166-1 alpha-2
      */
@@ -46,6 +60,7 @@ final class ShippingAddress implements EntityInterface
     public function setCountryCode(CountryCodeEnum $country_code): ShippingAddress
     {
         $this->country_code = $country_code;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class ShippingAddress implements EntityInterface
     public function setState(string $state): ShippingAddress
     {
         $this->state = $state;
+
         return $this;
     }
 
@@ -84,6 +100,7 @@ final class ShippingAddress implements EntityInterface
     public function setCity(string $city): ShippingAddress
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -103,6 +120,7 @@ final class ShippingAddress implements EntityInterface
     public function setStreetLine1(string $street_line1): ShippingAddress
     {
         $this->street_line1 = $street_line1;
+
         return $this;
     }
 
@@ -122,6 +140,7 @@ final class ShippingAddress implements EntityInterface
     public function setStreetLine2(string $street_line2): ShippingAddress
     {
         $this->street_line2 = $street_line2;
+
         return $this;
     }
 
@@ -141,6 +160,9 @@ final class ShippingAddress implements EntityInterface
     public function setPostCode(string $post_code): ShippingAddress
     {
         $this->post_code = $post_code;
+
         return $this;
     }
 }
+
+// endregion CLASS_ShippingAddress

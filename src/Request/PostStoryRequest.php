@@ -7,24 +7,40 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\StoryArea;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#poststory
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API postStory method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#poststory
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Post, Story
+// STRUCTURE: ▶ ┌active_period + business_connection_id + content + areas + caption┐ → ◇ construct → ⊕ → ∑ ⟦PostStoryRequest⟧
+
+// region CLASS_PostStoryRequest
+/**
+ * @see https://core.telegram.org/bots/api#poststory
  */
 class PostStoryRequest implements RequestInterface
 {
     /**
-     * @param int $active_period Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 *
-     * 3600, 86400, or 2 * 86400
-     * @param string $business_connection_id Unique identifier of the business connection
-     * @param AbstractInputStoryContent $content Content of the story
-     * @param StoryArea[]|null $areas A JSON-serialized list of clickable areas to be shown on the story
-     * @param string|null $caption Caption of the story, 0-2048 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which
-     * can be specified instead of parse_mode
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the story caption. See formatting options for more
-     * details.
-     * @param bool|null $post_to_chat_page Pass True to keep the story accessible after it expires
-     * @param bool|null $protect_content Pass True if the content of the story must be protected from forwarding and screenshotting
+     * @param int                        $active_period          Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 *
+     *                                                           3600, 86400, or 2 * 86400
+     * @param string                     $business_connection_id Unique identifier of the business connection
+     * @param AbstractInputStoryContent  $content                Content of the story
+     * @param StoryArea[]|null           $areas                  A JSON-serialized list of clickable areas to be shown on the story
+     * @param string|null                $caption                Caption of the story, 0-2048 characters after entities parsing
+     * @param MessageEntity[]|null       $caption_entities       A JSON-serialized list of special entities that appear in the caption, which
+     *                                                           can be specified instead of parse_mode
+     * @param TelegramParseModeEnum|null $parse_mode             Mode for parsing entities in the story caption. See formatting options for more
+     *                                                           details.
+     * @param bool|null                  $post_to_chat_page      Pass True to keep the story accessible after it expires
+     * @param bool|null                  $protect_content        Pass True if the content of the story must be protected from forwarding and screenshotting
      *
      * @see https://core.telegram.org/bots/api#inputstorycontent InputStoryContent
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -51,6 +67,7 @@ class PostStoryRequest implements RequestInterface
     public function setActivePeriod(int $active_period): PostStoryRequest
     {
         $this->active_period = $active_period;
+
         return $this;
     }
 
@@ -62,6 +79,7 @@ class PostStoryRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): PostStoryRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -73,6 +91,7 @@ class PostStoryRequest implements RequestInterface
     public function setContent(AbstractInputStoryContent $content): PostStoryRequest
     {
         $this->content = $content;
+
         return $this;
     }
 
@@ -84,6 +103,7 @@ class PostStoryRequest implements RequestInterface
     public function setAreas(?array $areas): PostStoryRequest
     {
         $this->areas = $areas;
+
         return $this;
     }
 
@@ -95,6 +115,7 @@ class PostStoryRequest implements RequestInterface
     public function setCaption(?string $caption): PostStoryRequest
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -106,6 +127,7 @@ class PostStoryRequest implements RequestInterface
     public function setCaptionEntities(?array $caption_entities): PostStoryRequest
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -117,6 +139,7 @@ class PostStoryRequest implements RequestInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): PostStoryRequest
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -128,6 +151,7 @@ class PostStoryRequest implements RequestInterface
     public function setPostToChatPage(?bool $post_to_chat_page): PostStoryRequest
     {
         $this->post_to_chat_page = $post_to_chat_page;
+
         return $this;
     }
 
@@ -139,6 +163,8 @@ class PostStoryRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): PostStoryRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 }
+// endregion CLASS_PostStoryRequest

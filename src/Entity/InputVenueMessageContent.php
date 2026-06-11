@@ -11,7 +11,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
  * Represents the content of a venue message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent content
- * @link https://core.telegram.org/bots/api#inputvenuemessagecontent
+ * @see https://core.telegram.org/bots/api#inputvenuemessagecontent
  */
 #[BuildIf(new AndChecker([
     new FieldCompareChecker('latitude', null, CompareOperatorEnum::StrictNotEqual),
@@ -19,17 +19,30 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
     new FieldCompareChecker('title', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('address', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the content of a venue message to be sent as the result of an inline query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputvenuemessagecontent
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputVenueMessageContent, Telegram, Bot API, DTO, inputvenuemessagecontent
+// STRUCTURE: ▶ ┌latitude,longitude,title,address┐ → ◇ foursquare_id → ∑ content
+// region CLASS_InputVenueMessageContent
 final class InputVenueMessageContent extends AbstractInputMessageContent
 {
     /**
-     * @param float $latitude Latitude of the venue in degrees
-     * @param float $longitude Longitude of the venue in degrees
-     * @param string $title Name of the venue
-     * @param string $address Address of the venue
-     * @param string|null $foursquare_id Optional. Foursquare identifier of the venue, if known
-     * @param string|null $foursquare_type Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-     * “arts_entertainment/aquarium” or “food/icecream”.)
-     * @param string|null $google_place_id Optional. Google Places identifier of the venue
+     * @param float       $latitude          Latitude of the venue in degrees
+     * @param float       $longitude         Longitude of the venue in degrees
+     * @param string      $title             Name of the venue
+     * @param string      $address           Address of the venue
+     * @param string|null $foursquare_id     Optional. Foursquare identifier of the venue, if known
+     * @param string|null $foursquare_type   Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+     *                                       “arts_entertainment/aquarium” or “food/icecream”.)
+     * @param string|null $google_place_id   Optional. Google Places identifier of the venue
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
      *
      * @see https://developers.google.com/places/web-service/supported_types supported types
@@ -61,6 +74,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setLatitude(float $latitude): InputVenueMessageContent
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -80,6 +94,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setLongitude(float $longitude): InputVenueMessageContent
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -99,6 +114,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setTitle(string $title): InputVenueMessageContent
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -118,6 +134,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setAddress(string $address): InputVenueMessageContent
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -137,6 +154,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setFoursquareId(?string $foursquare_id): InputVenueMessageContent
     {
         $this->foursquare_id = $foursquare_id;
+
         return $this;
     }
 
@@ -156,6 +174,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setFoursquareType(?string $foursquare_type): InputVenueMessageContent
     {
         $this->foursquare_type = $foursquare_type;
+
         return $this;
     }
 
@@ -175,6 +194,7 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setGooglePlaceId(?string $google_place_id): InputVenueMessageContent
     {
         $this->google_place_id = $google_place_id;
+
         return $this;
     }
 
@@ -194,6 +214,9 @@ final class InputVenueMessageContent extends AbstractInputMessageContent
     public function setGooglePlaceType(?string $google_place_type): InputVenueMessageContent
     {
         $this->google_place_type = $google_place_type;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputVenueMessageContent

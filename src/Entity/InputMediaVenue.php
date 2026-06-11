@@ -6,23 +6,37 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a venue to be sent.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediavenue
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputMediaVenue, Telegram, Bot API, DTO, inputmediavenue
+// STRUCTURE: ▶ ┌latitude,longitude,title,address┐ → ◇ foursquare_id → ∑ InputMediaVenue
+// region CLASS_InputMediaVenue
+
 /**
  * Represents a venue to be sent.
  *
- * @link https://core.telegram.org/bots/api#inputmediavenue
+ * @see https://core.telegram.org/bots/api#inputmediavenue
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Venue->value))]
 final class InputMediaVenue extends AbstractInputMedia implements InputPollMediaInterface, InputPollOptionMediaInterface
 {
     /**
-     * @param float $latitude Latitude of the location
-     * @param float $longitude Longitude of the location
-     * @param string $title Name of the venue
-     * @param string $address Address of the venue
-     * @param string|null $foursquare_id Optional. Foursquare identifier of the venue
-     * @param string|null $foursquare_type Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-     * “arts_entertainment/aquarium” or “food/icecream”.)
-     * @param string|null $google_place_id Optional. Google Places identifier of the venue
+     * @param float       $latitude          Latitude of the location
+     * @param float       $longitude         Longitude of the location
+     * @param string      $title             Name of the venue
+     * @param string      $address           Address of the venue
+     * @param string|null $foursquare_id     Optional. Foursquare identifier of the venue
+     * @param string|null $foursquare_type   Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+     *                                       “arts_entertainment/aquarium” or “food/icecream”.)
+     * @param string|null $google_place_id   Optional. Google Places identifier of the venue
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
      *
      * @see https://developers.google.com/places/web-service/supported_types supported types
@@ -58,6 +72,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setLatitude(float $latitude): InputMediaVenue
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -77,6 +92,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setLongitude(float $longitude): InputMediaVenue
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -96,6 +112,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setTitle(string $title): InputMediaVenue
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -115,6 +132,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setAddress(string $address): InputMediaVenue
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -134,6 +152,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setFoursquareId(?string $foursquare_id): InputMediaVenue
     {
         $this->foursquare_id = $foursquare_id;
+
         return $this;
     }
 
@@ -153,6 +172,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setFoursquareType(?string $foursquare_type): InputMediaVenue
     {
         $this->foursquare_type = $foursquare_type;
+
         return $this;
     }
 
@@ -172,6 +192,7 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setGooglePlaceId(?string $google_place_id): InputMediaVenue
     {
         $this->google_place_id = $google_place_id;
+
         return $this;
     }
 
@@ -191,6 +212,9 @@ final class InputMediaVenue extends AbstractInputMedia implements InputPollMedia
     public function setGooglePlaceType(?string $google_place_type): InputMediaVenue
     {
         $this->google_place_type = $google_place_type;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputMediaVenue

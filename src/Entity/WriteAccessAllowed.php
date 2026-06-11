@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a user allowing the bot to write messages.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#writeaccessallowed
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: WriteAccessAllowed, Telegram, Bot API, DTO, writeaccessallowed
+// STRUCTURE: ▶ ◇ web_app_name,from_request,... → ∑ WriteAccessAllowed
+// region CLASS_WriteAccessAllowed
+
 /**
  * This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu,
  * launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
  *
  * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
- * @link https://core.telegram.org/bots/api#writeaccessallowed
+ * @see https://core.telegram.org/bots/api#writeaccessallowed
  */
 final class WriteAccessAllowed implements EntityInterface
 {
     /**
-     * @param bool|null $from_request Optional. True, if the access was granted after the user accepted an explicit request from
-     * a Web App sent by the method requestWriteAccess
-     * @param string|null $web_app_name Optional. Name of the Web App, if the access was granted when the Web App was launched from
-     * a link
-     * @param bool|null $from_attachment_menu Optional. True, if the access was granted when the bot was added to the attachment
-     * or side menu
+     * @param bool|null   $from_request         Optional. True, if the access was granted after the user accepted an explicit request from
+     *                                          a Web App sent by the method requestWriteAccess
+     * @param string|null $web_app_name         Optional. Name of the Web App, if the access was granted when the Web App was launched from
+     *                                          a link
+     * @param bool|null   $from_attachment_menu Optional. True, if the access was granted when the bot was added to the attachment
+     *                                          or side menu
      *
      * @see https://core.telegram.org/bots/webapps#initializing-mini-apps requestWriteAccess
      */
@@ -43,6 +57,7 @@ final class WriteAccessAllowed implements EntityInterface
     public function setFromRequest(?bool $from_request): WriteAccessAllowed
     {
         $this->from_request = $from_request;
+
         return $this;
     }
 
@@ -62,6 +77,7 @@ final class WriteAccessAllowed implements EntityInterface
     public function setWebAppName(?string $web_app_name): WriteAccessAllowed
     {
         $this->web_app_name = $web_app_name;
+
         return $this;
     }
 
@@ -81,6 +97,9 @@ final class WriteAccessAllowed implements EntityInterface
     public function setFromAttachmentMenu(?bool $from_attachment_menu): WriteAccessAllowed
     {
         $this->from_attachment_menu = $from_attachment_menu;
+
         return $this;
     }
 }
+
+// endregion CLASS_WriteAccessAllowed

@@ -2,17 +2,31 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about an incoming shipping query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#shippingquery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ShippingQuery, Telegram, Bot API, DTO, shippingquery
+// STRUCTURE: ▶ ┌id,from,invoice_payload,shipping_address┐ → ∑ ShippingQuery
+// region CLASS_ShippingQuery
+
 /**
  * This object contains information about an incoming shipping query.
  *
- * @link https://core.telegram.org/bots/api#shippingquery
+ * @see https://core.telegram.org/bots/api#shippingquery
  */
 final class ShippingQuery implements EntityInterface
 {
     /**
-     * @param string $id Unique query identifier
-     * @param User $from User who sent the query
-     * @param string $invoice_payload Bot-specified invoice payload
+     * @param string          $id               Unique query identifier
+     * @param User            $from             User who sent the query
+     * @param string          $invoice_payload  Bot-specified invoice payload
      * @param ShippingAddress $shipping_address User specified shipping address
      *
      * @see https://core.telegram.org/bots/api#user User
@@ -41,6 +55,7 @@ final class ShippingQuery implements EntityInterface
     public function setId(string $id): ShippingQuery
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -60,6 +75,7 @@ final class ShippingQuery implements EntityInterface
     public function setFrom(User $from): ShippingQuery
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -79,6 +95,7 @@ final class ShippingQuery implements EntityInterface
     public function setInvoicePayload(string $invoice_payload): ShippingQuery
     {
         $this->invoice_payload = $invoice_payload;
+
         return $this;
     }
 
@@ -98,6 +115,9 @@ final class ShippingQuery implements EntityInterface
     public function setShippingAddress(ShippingAddress $shipping_address): ShippingQuery
     {
         $this->shipping_address = $shipping_address;
+
         return $this;
     }
 }
+
+// endregion CLASS_ShippingQuery

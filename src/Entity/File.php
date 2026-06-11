@@ -2,25 +2,39 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a file ready to be downloaded.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#file
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: File, download, Telegram Bot API
+// STRUCTURE: ┌file_id, file_unique_id┐ + optional file_size + optional file_path → ∑ File
+// region CLASS_File
 /**
  * This object represents a file ready to be downloaded.
  * The file can be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>.
  * It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
  *
  * The maximum file size to download is 20 MB
- * @link https://core.telegram.org/bots/api#file
+ *
+ * @see https://core.telegram.org/bots/api#file
  */
 final class File implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file.
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different bots.
-     * Can't be used to download or reuse the file.
-     * @param int|null $file_size Optional. File size in bytes.
-     * It can be bigger than 2^31, and some programming languages may have difficulty/silent defects in interpreting it.
-     * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float
-     * type are safe for storing this value.
-     * @param string|null $file_path Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
+     * @param string      $file_id        identifier for this file, which can be used to download or reuse the file
+     * @param string      $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different bots.
+     *                                    Can't be used to download or reuse the file.
+     * @param int|null    $file_size      Optional. File size in bytes.
+     *                                    It can be bigger than 2^31, and some programming languages may have difficulty/silent defects in interpreting it.
+     *                                    But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float
+     *                                    type are safe for storing this value.
+     * @param string|null $file_path      Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
      */
     public function __construct(
         protected string $file_id,
@@ -37,6 +51,7 @@ final class File implements EntityInterface
     public function setFileId(string $file_id): File
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -48,6 +63,7 @@ final class File implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): File
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -59,6 +75,7 @@ final class File implements EntityInterface
     public function setFileSize(?int $file_size): File
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 
@@ -70,6 +87,8 @@ final class File implements EntityInterface
     public function setFilePath(?string $file_path): File
     {
         $this->file_path = $file_path;
+
         return $this;
     }
 }
+// endregion CLASS_File

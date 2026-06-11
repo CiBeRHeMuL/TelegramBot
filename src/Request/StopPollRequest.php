@@ -5,18 +5,34 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#stoppoll
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API stopPoll method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#stoppoll
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Stop, Poll
+// STRUCTURE: ▶ ┌chat_id + message_id + reply_markup + business_connection_id┐ → ◇ construct → ⊕ → ∑ ⟦StopPollRequest⟧
+
+// region CLASS_StopPollRequest
+/**
+ * @see https://core.telegram.org/bots/api#stoppoll
  */
 class StopPollRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param int $message_id Identifier of the original message with the poll
-     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new message inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
-     * be edited was sent
+     * @param ChatId                    $chat_id                Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                          \@username
+     * @param int                       $message_id             Identifier of the original message with the poll
+     * @param InlineKeyboardMarkup|null $reply_markup           a JSON-serialized object for a new message inline keyboard
+     * @param string|null               $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     *                                                          be edited was sent
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
@@ -36,6 +52,7 @@ class StopPollRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): StopPollRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -47,6 +64,7 @@ class StopPollRequest implements RequestInterface
     public function setMessageId(int $message_id): StopPollRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -58,6 +76,7 @@ class StopPollRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): StopPollRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -69,6 +88,8 @@ class StopPollRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): StopPollRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 }
+// endregion CLASS_StopPollRequest

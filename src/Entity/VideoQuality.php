@@ -2,23 +2,37 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the video quality setting.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#videoquality
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: VideoQuality, Telegram, Bot API, DTO, videoquality
+// STRUCTURE: ▶ ┌quality: string┐ → ∑ VideoQuality
+// region CLASS_VideoQuality
+
 /**
  * This object represents a video file of a specific quality.
  *
- * @link https://core.telegram.org/bots/api#videoquality
+ * @see https://core.telegram.org/bots/api#videoquality
  */
 final class VideoQuality implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param int $width Video width
-     * @param int $height Video height
-     * @param string $codec Codec that was used to encode the video, for example, “h264”, “h265”, or “av01”
-     * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
-     * difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
-     * float type are safe for storing this value.
+     * @param string   $file_id        Identifier for this file, which can be used to download or reuse the file
+     * @param string   $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
+     *                                 bots. Can't be used to download or reuse the file.
+     * @param int      $width          Video width
+     * @param int      $height         Video height
+     * @param string   $codec          Codec that was used to encode the video, for example, “h264”, “h265”, or “av01”
+     * @param int|null $file_size      Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
+     *                                 difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
+     *                                 float type are safe for storing this value.
      */
     public function __construct(
         protected string $file_id,
@@ -45,6 +59,7 @@ final class VideoQuality implements EntityInterface
     public function setFileId(string $file_id): VideoQuality
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -64,6 +79,7 @@ final class VideoQuality implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): VideoQuality
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -83,6 +99,7 @@ final class VideoQuality implements EntityInterface
     public function setWidth(int $width): VideoQuality
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -102,6 +119,7 @@ final class VideoQuality implements EntityInterface
     public function setHeight(int $height): VideoQuality
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -121,6 +139,7 @@ final class VideoQuality implements EntityInterface
     public function setCodec(string $codec): VideoQuality
     {
         $this->codec = $codec;
+
         return $this;
     }
 
@@ -140,6 +159,9 @@ final class VideoQuality implements EntityInterface
     public function setFileSize(?int $file_size): VideoQuality
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 }
+
+// endregion CLASS_VideoQuality

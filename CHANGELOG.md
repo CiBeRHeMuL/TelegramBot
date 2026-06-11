@@ -1,5 +1,12 @@
 # Change log of Telegram Bot Library
 
+## [Unreleased]
+
+### Added
+
+- Add semantic documentation markup across the entire codebase: `@moduleContract` PHPDoc blocks, `// region`/`// endregion` semantic tags, `GREP_SUMMARY`, and `STRUCTURE` mini block diagrams for all 686+ source files
+- Create 24+ `_module_contract.php` namespace contract files for all namespaces under `src/`
+
 # Version 4.6.1
 
 ### General

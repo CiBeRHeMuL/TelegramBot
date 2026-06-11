@@ -7,6 +7,20 @@ use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
+// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(8): Stream; TECH(9): PSR-7]
+/**
+ * @moduleContract
+ * @purpose Implement a read-only PSR-7 StreamInterface that concatenates multiple readable streams sequentially.
+ *
+ * @sees USES_API(8): Psr\Http\Message\StreamInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: AppendStream, composite stream, PSR-7, read-only
+// STRUCTURE: ┌StreamInterface[]┐ → ○ addStream (checks readable) → ○ read: loop streams until $remaining=0 → ○ seek: rewind all + skip-read
+
+// region CLASS_AppendStream
 class AppendStream implements StreamInterface
 {
     /** @var StreamInterface[] Streams being decorated */
@@ -42,6 +56,7 @@ class AppendStream implements StreamInterface
     {
         try {
             $this->rewind();
+
             return $this->getContents();
         } catch (Exception) {
             return '';
@@ -133,7 +148,7 @@ class AppendStream implements StreamInterface
 
         // Seek to the actual position by reading from each stream
         while ($this->pos < $offset && !$this->eof()) {
-            $result = $this->read(min(8096, $offset - $this->pos));
+            $result = $this->read(min(8_096, $offset - $this->pos));
             if ($result === '') {
                 break;
             }
@@ -174,7 +189,7 @@ class AppendStream implements StreamInterface
                 if ($this->current === $total) {
                     break;
                 }
-                $this->current++;
+                ++$this->current;
             }
 
             $result = $this->streams[$this->current]->read($remaining);
@@ -198,13 +213,14 @@ class AppendStream implements StreamInterface
     {
         $buffer = '';
         while (!$this->eof()) {
-            $buf = $this->read(1048576);
+            $buf = $this->read(1_048_576);
             // Using a loose equality here to match on '' and false.
             if ($buf == null) {
                 break;
             }
             $buffer .= $buf;
         }
+
         return $buffer;
     }
 
@@ -213,3 +229,4 @@ class AppendStream implements StreamInterface
         return $key ? null : [];
     }
 }
+// endregion CLASS_AppendStream

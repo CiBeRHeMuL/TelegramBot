@@ -2,19 +2,33 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes the position of a story area.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareaposition
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: StoryAreaPosition, Telegram, Bot API, DTO, storyareaposition
+// STRUCTURE: ▶ ┌x_percentage,y_percentage,width_percentage,height_percentage,rotation_angle,corner_radius_percentage┐ → ∑ StoryAreaPosition
+// region CLASS_StoryAreaPosition
+
 /**
  * Describes the position of a clickable area within a story.
  *
- * @link https://core.telegram.org/bots/api#storyareaposition
+ * @see https://core.telegram.org/bots/api#storyareaposition
  */
 final class StoryAreaPosition implements EntityInterface
 {
     /**
-     * @param float $x_percentage The abscissa of the area's center, as a percentage of the media width
-     * @param float $y_percentage The ordinate of the area's center, as a percentage of the media height
-     * @param float $width_percentage The width of the area's rectangle, as a percentage of the media width
-     * @param float $height_percentage The height of the area's rectangle, as a percentage of the media height
-     * @param float $rotation_angle The clockwise rotation angle of the rectangle, in degrees; 0-360
+     * @param float $x_percentage             The abscissa of the area's center, as a percentage of the media width
+     * @param float $y_percentage             The ordinate of the area's center, as a percentage of the media height
+     * @param float $width_percentage         The width of the area's rectangle, as a percentage of the media width
+     * @param float $height_percentage        The height of the area's rectangle, as a percentage of the media height
+     * @param float $rotation_angle           The clockwise rotation angle of the rectangle, in degrees; 0-360
      * @param float $corner_radius_percentage The radius of the rectangle corner rounding, as a percentage of the media width
      */
     public function __construct(
@@ -42,6 +56,7 @@ final class StoryAreaPosition implements EntityInterface
     public function setXPercentage(float $x_percentage): StoryAreaPosition
     {
         $this->x_percentage = $x_percentage;
+
         return $this;
     }
 
@@ -61,6 +76,7 @@ final class StoryAreaPosition implements EntityInterface
     public function setYPercentage(float $y_percentage): StoryAreaPosition
     {
         $this->y_percentage = $y_percentage;
+
         return $this;
     }
 
@@ -80,6 +96,7 @@ final class StoryAreaPosition implements EntityInterface
     public function setWidthPercentage(float $width_percentage): StoryAreaPosition
     {
         $this->width_percentage = $width_percentage;
+
         return $this;
     }
 
@@ -99,6 +116,7 @@ final class StoryAreaPosition implements EntityInterface
     public function setHeightPercentage(float $height_percentage): StoryAreaPosition
     {
         $this->height_percentage = $height_percentage;
+
         return $this;
     }
 
@@ -118,6 +136,7 @@ final class StoryAreaPosition implements EntityInterface
     public function setRotationAngle(float $rotation_angle): StoryAreaPosition
     {
         $this->rotation_angle = $rotation_angle;
+
         return $this;
     }
 
@@ -137,6 +156,9 @@ final class StoryAreaPosition implements EntityInterface
     public function setCornerRadiusPercentage(float $corner_radius_percentage): StoryAreaPosition
     {
         $this->corner_radius_percentage = $corner_radius_percentage;
+
         return $this;
     }
 }
+
+// endregion CLASS_StoryAreaPosition

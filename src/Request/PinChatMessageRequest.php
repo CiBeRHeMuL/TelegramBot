@@ -4,18 +4,34 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#pinchatmessage
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API pinChatMessage method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#pinchatmessage
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Pin, Chat, Message
+// STRUCTURE: ▶ ┌chat_id + message_id + disable_notification + business_connection_id┐ → ◇ construct → ⊕ → ∑ ⟦PinChatMessageRequest⟧
+
+// region CLASS_PinChatMessageRequest
+/**
+ * @see https://core.telegram.org/bots/api#pinchatmessage
  */
 class PinChatMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel in the format \@username
-     * @param int $message_id Identifier of a message to pin
-     * @param bool|null $disable_notification Pass True if it is not necessary to send a notification to all chat members about the
-     * new pinned message. Notifications are always disabled in channels and private chats.
+     * @param ChatId      $chat_id                Unique identifier for the target chat or username of the target channel in the format \@username
+     * @param int         $message_id             Identifier of a message to pin
+     * @param bool|null   $disable_notification   Pass True if it is not necessary to send a notification to all chat members about the
+     *                                            new pinned message. Notifications are always disabled in channels and private chats.
      * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
-     * be pinned
+     *                                            be pinned
      */
     public function __construct(
         private ChatId $chat_id,
@@ -32,6 +48,7 @@ class PinChatMessageRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): PinChatMessageRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -43,6 +60,7 @@ class PinChatMessageRequest implements RequestInterface
     public function setMessageId(int $message_id): PinChatMessageRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -54,6 +72,7 @@ class PinChatMessageRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): PinChatMessageRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -65,6 +84,8 @@ class PinChatMessageRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): PinChatMessageRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 }
+// endregion CLASS_PinChatMessageRequest

@@ -16,28 +16,41 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
  * an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead
  * of the video.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Video->value),
     new FieldCompareChecker('video_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a video file stored on the Telegram servers.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultCachedVideo, Telegram, Bot API, DTO, inlinequeryresultcachedvideo
+// STRUCTURE: ▶ ┌id,video_file_id,title┐ → ◇ caption,description → ∑ result
+// region CLASS_InlineQueryResultCachedVideo
 final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $video_file_id A valid file identifier for the video file
-     * @param string $title Title for the result
-     * @param string|null $caption Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param string|null $description Optional. Short description of the result
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * video
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the video caption. See formatting options
-     * for more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param string                           $id                       Unique identifier for this result, 1-64 bytes
+     * @param string                           $video_file_id            A valid file identifier for the video file
+     * @param string                           $title                    Title for the result
+     * @param string|null                      $caption                  Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                   specified instead of parse_mode
+     * @param string|null                      $description              Optional. Short description of the result
+     * @param AbstractInputMessageContent|null $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                   video
+     * @param TelegramParseModeEnum|null       $parse_mode               Optional. Mode for parsing entities in the video caption. See formatting options
+     *                                                                   for more details.
+     * @param InlineKeyboardMarkup|null        $reply_markup             Optional. Inline keyboard attached to the message
+     * @param bool|null                        $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -77,6 +90,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultCachedVideo
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -96,6 +110,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setVideoFileId(string $video_file_id): InlineQueryResultCachedVideo
     {
         $this->video_file_id = $video_file_id;
+
         return $this;
     }
 
@@ -115,6 +130,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultCachedVideo
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -134,6 +150,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultCachedVideo
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -153,6 +170,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedVideo
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -172,6 +190,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setDescription(?string $description): InlineQueryResultCachedVideo
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -191,6 +210,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedVideo
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -210,6 +230,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedVideo
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -229,6 +250,7 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedVideo
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -248,6 +270,9 @@ final class InlineQueryResultCachedVideo extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultCachedVideo
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultCachedVideo

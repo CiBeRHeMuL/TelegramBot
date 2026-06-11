@@ -7,19 +7,33 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#bot_command_scope_chat_member
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BotCommandScopeChatMember, Telegram, Bot API, DTO, bot_command_scope_chat_member
+// STRUCTURE: ▶ ┌chat_id,user_id┐ → ∑ BotCommandScopeChatMember
+// region CLASS_BotCommandScopeChatMember
+
 /**
  * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
  *
  * @see https://core.telegram.org/bots/api#botcommandscope scope
- * @link https://core.telegram.org/bots/api#botcommandscopechatmember
+ * @see https://core.telegram.org/bots/api#botcommandscopechatmember
  */
 #[BuildIf(new FieldIsChecker('type', BotCommandScopeTypeEnum::ChatMember))]
 final class BotCommandScopeChatMember extends AbstractBotCommandScope
 {
     /**
      * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username.
-     * Channel direct messages chats and channel chats aren't supported.
-     * @param int $user_id Unique identifier of the target user
+     *                        Channel direct messages chats and channel chats aren't supported.
+     * @param int    $user_id Unique identifier of the target user
      */
     public function __construct(
         protected ChatId $chat_id,
@@ -44,6 +58,7 @@ final class BotCommandScopeChatMember extends AbstractBotCommandScope
     public function setChatId(ChatId $chat_id): BotCommandScopeChatMember
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -63,6 +78,8 @@ final class BotCommandScopeChatMember extends AbstractBotCommandScope
     public function setUserId(int $user_id): BotCommandScopeChatMember
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 }
+// endregion CLASS_BotCommandScopeChatMember

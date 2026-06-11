@@ -2,18 +2,32 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the backdrop colors of a unique gift.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftbackdropcolors
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UniqueGiftBackdropColors, Telegram, Bot API, DTO, uniquegiftbackdropcolors
+// STRUCTURE: ▶ ┌center,edge,symbol,text_light,text_dark,accent_light,accent_dark,pattern_color,pattern_emoji┐ → ∑ colors
+// region CLASS_UniqueGiftBackdropColors
+
 /**
  * This object describes the colors of the backdrop of a unique gift.
  *
- * @link https://core.telegram.org/bots/api#uniquegiftbackdropcolors
+ * @see https://core.telegram.org/bots/api#uniquegiftbackdropcolors
  */
 final class UniqueGiftBackdropColors implements EntityInterface
 {
     /**
      * @param int $center_color The color in the center of the backdrop in RGB format
-     * @param int $edge_color The color on the edges of the backdrop in RGB format
+     * @param int $edge_color   The color on the edges of the backdrop in RGB format
      * @param int $symbol_color The color to be applied to the symbol in RGB format
-     * @param int $text_color The color for the text on the backdrop in RGB format
+     * @param int $text_color   The color for the text on the backdrop in RGB format
      */
     public function __construct(
         protected int $center_color,
@@ -38,6 +52,7 @@ final class UniqueGiftBackdropColors implements EntityInterface
     public function setCenterColor(int $center_color): UniqueGiftBackdropColors
     {
         $this->center_color = $center_color;
+
         return $this;
     }
 
@@ -57,6 +72,7 @@ final class UniqueGiftBackdropColors implements EntityInterface
     public function setEdgeColor(int $edge_color): UniqueGiftBackdropColors
     {
         $this->edge_color = $edge_color;
+
         return $this;
     }
 
@@ -76,6 +92,7 @@ final class UniqueGiftBackdropColors implements EntityInterface
     public function setSymbolColor(int $symbol_color): UniqueGiftBackdropColors
     {
         $this->symbol_color = $symbol_color;
+
         return $this;
     }
 
@@ -95,6 +112,9 @@ final class UniqueGiftBackdropColors implements EntityInterface
     public function setTextColor(int $text_color): UniqueGiftBackdropColors
     {
         $this->text_color = $text_color;
+
         return $this;
     }
 }
+
+// endregion CLASS_UniqueGiftBackdropColors

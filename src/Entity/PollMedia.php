@@ -4,25 +4,39 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains media to be attached to a poll question or explanation.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#pollmedia
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PollMedia, Telegram, Bot API, DTO, pollmedia
+// STRUCTURE: ▶ ┌media(InputFileStr)┐ → ◇ caption,parse_mode → ∑ PollMedia
+// region CLASS_PollMedia
+
 /**
  * At most one of the optional fields can be present in any given object.
  *
- * @link https://core.telegram.org/bots/api#pollmedia
+ * @see https://core.telegram.org/bots/api#pollmedia
  */
 final class PollMedia implements EntityInterface
 {
     /**
-     * @param Animation|null $animation Optional. Media is an animation, information about the animation
-     * @param Audio|null $audio Optional. Media is an audio file, information about the file; currently, can't be received in a poll
-     * option
-     * @param Document|null $document Optional. Media is a general file, information about the file; currently, can't be received
-     * in a poll option
-     * @param LivePhoto|null $live_photo Optional. Media is a live photo, information about the live photo
-     * @param Location|null $location Optional. Media is a shared location, information about the location
-     * @param PhotoSize[]|null $photo Optional. Media is a photo, available sizes of the photo
-     * @param Sticker|null $sticker Optional. Media is a sticker, information about the sticker; currently, for poll options only
-     * @param Venue|null $venue Optional. Media is a venue, information about the venue
-     * @param Video|null $video Optional. Media is a video, information about the video
+     * @param Animation|null   $animation  Optional. Media is an animation, information about the animation
+     * @param Audio|null       $audio      Optional. Media is an audio file, information about the file; currently, can't be received in a poll
+     *                                     option
+     * @param Document|null    $document   Optional. Media is a general file, information about the file; currently, can't be received
+     *                                     in a poll option
+     * @param LivePhoto|null   $live_photo Optional. Media is a live photo, information about the live photo
+     * @param Location|null    $location   Optional. Media is a shared location, information about the location
+     * @param PhotoSize[]|null $photo      Optional. Media is a photo, available sizes of the photo
+     * @param Sticker|null     $sticker    Optional. Media is a sticker, information about the sticker; currently, for poll options only
+     * @param Venue|null       $venue      Optional. Media is a venue, information about the venue
+     * @param Video|null       $video      Optional. Media is a video, information about the video
      *
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
@@ -63,6 +77,7 @@ final class PollMedia implements EntityInterface
     public function setAnimation(?Animation $animation): PollMedia
     {
         $this->animation = $animation;
+
         return $this;
     }
 
@@ -82,6 +97,7 @@ final class PollMedia implements EntityInterface
     public function setAudio(?Audio $audio): PollMedia
     {
         $this->audio = $audio;
+
         return $this;
     }
 
@@ -101,6 +117,7 @@ final class PollMedia implements EntityInterface
     public function setDocument(?Document $document): PollMedia
     {
         $this->document = $document;
+
         return $this;
     }
 
@@ -120,6 +137,7 @@ final class PollMedia implements EntityInterface
     public function setLivePhoto(?LivePhoto $live_photo): PollMedia
     {
         $this->live_photo = $live_photo;
+
         return $this;
     }
 
@@ -139,6 +157,7 @@ final class PollMedia implements EntityInterface
     public function setLocation(?Location $location): PollMedia
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -158,6 +177,7 @@ final class PollMedia implements EntityInterface
     public function setPhoto(?array $photo): PollMedia
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -177,6 +197,7 @@ final class PollMedia implements EntityInterface
     public function setSticker(?Sticker $sticker): PollMedia
     {
         $this->sticker = $sticker;
+
         return $this;
     }
 
@@ -196,6 +217,7 @@ final class PollMedia implements EntityInterface
     public function setVenue(?Venue $venue): PollMedia
     {
         $this->venue = $venue;
+
         return $this;
     }
 
@@ -215,6 +237,9 @@ final class PollMedia implements EntityInterface
     public function setVideo(?Video $video): PollMedia
     {
         $this->video = $video;
+
         return $this;
     }
 }
+
+// endregion CLASS_PollMedia

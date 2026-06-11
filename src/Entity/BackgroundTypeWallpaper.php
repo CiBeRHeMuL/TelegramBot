@@ -6,20 +6,34 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose The background is a wallpaper in the JPEG format.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#background_type_wallpaper
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BackgroundTypeWallpaper, Telegram, Bot API, DTO, background_type_wallpaper
+// STRUCTURE: ▶ ┌document,dark_theme_dimming,is_blurred,is_moving┐ → ∑ BackgroundTypeWallpaper
+// region CLASS_BackgroundTypeWallpaper
+
 /**
  * The background is a wallpaper in the JPEG format.
  *
- * @link https://core.telegram.org/bots/api#backgroundtypewallpaper
+ * @see https://core.telegram.org/bots/api#backgroundtypewallpaper
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Wallpaper->value))]
 final class BackgroundTypeWallpaper extends AbstractBackgroundType
 {
     /**
-     * @param Document $document Document with the wallpaper
-     * @param int $dark_theme_dimming Dimming of the background in dark themes, as a percentage; 0-100
-     * @param bool|null $is_blurred Optional. True, if the wallpaper is downscaled to fit in a 450x450 square and then box-blurred
-     * with radius 12
-     * @param bool|null $is_moving Optional. True, if the background moves slightly when the device is tilted
+     * @param Document  $document           Document with the wallpaper
+     * @param int       $dark_theme_dimming Dimming of the background in dark themes, as a percentage; 0-100
+     * @param bool|null $is_blurred         Optional. True, if the wallpaper is downscaled to fit in a 450x450 square and then box-blurred
+     *                                      with radius 12
+     * @param bool|null $is_moving          Optional. True, if the background moves slightly when the device is tilted
      *
      * @see https://core.telegram.org/bots/api#document Document
      */
@@ -48,6 +62,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function setDocument(Document $document): BackgroundTypeWallpaper
     {
         $this->document = $document;
+
         return $this;
     }
 
@@ -67,6 +82,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function setDarkThemeDimming(int $dark_theme_dimming): BackgroundTypeWallpaper
     {
         $this->dark_theme_dimming = $dark_theme_dimming;
+
         return $this;
     }
 
@@ -86,6 +102,7 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function setIsBlurred(?bool $is_blurred): BackgroundTypeWallpaper
     {
         $this->is_blurred = $is_blurred;
+
         return $this;
     }
 
@@ -105,6 +122,8 @@ final class BackgroundTypeWallpaper extends AbstractBackgroundType
     public function setIsMoving(?bool $is_moving): BackgroundTypeWallpaper
     {
         $this->is_moving = $is_moving;
+
         return $this;
     }
 }
+// endregion CLASS_BackgroundTypeWallpaper

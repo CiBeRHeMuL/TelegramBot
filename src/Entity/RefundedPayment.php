@@ -4,22 +4,36 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains basic information about a refunded payment.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#refundedpayment
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: RefundedPayment, Telegram, Bot API, DTO, refundedpayment
+// STRUCTURE: ▶ ┌currency,total_amount,invoice_payload,telegram_payment_charge_id┐ → ◇ ... → ∑ RefundedPayment
+// region CLASS_RefundedPayment
+
 /**
  * This object contains basic information about a refunded payment.
  *
- * @link https://core.telegram.org/bots/api#refundedpayment
+ * @see https://core.telegram.org/bots/api#refundedpayment
  */
 final class RefundedPayment implements EntityInterface
 {
     /**
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars. Currently,
-     * always “XTR”
-     * @param int $total_amount Total refunded price in the smallest units of the currency (integer, not float/double). For example,
-     * for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past
-     * the decimal point for each currency (2 for the majority of currencies).
-     * @param string $invoice_payload Bot-specified invoice payload
-     * @param string $telegram_payment_charge_id Telegram payment identifier
-     * @param string|null $provider_payment_charge_id Optional. Provider payment identifier
+     * @param CurrencyEnum $currency                   Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars. Currently,
+     *                                                 always “XTR”
+     * @param int          $total_amount               Total refunded price in the smallest units of the currency (integer, not float/double). For example,
+     *                                                 for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past
+     *                                                 the decimal point for each currency (2 for the majority of currencies).
+     * @param string       $invoice_payload            Bot-specified invoice payload
+     * @param string       $telegram_payment_charge_id Telegram payment identifier
+     * @param string|null  $provider_payment_charge_id Optional. Provider payment identifier
      *
      * @see https://core.telegram.org/bots/payments#supported-currencies currency
      * @see https://t.me/BotNews/90 Telegram Stars
@@ -49,6 +63,7 @@ final class RefundedPayment implements EntityInterface
     public function setCurrency(CurrencyEnum $currency): RefundedPayment
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -68,6 +83,7 @@ final class RefundedPayment implements EntityInterface
     public function setTotalAmount(int $total_amount): RefundedPayment
     {
         $this->total_amount = $total_amount;
+
         return $this;
     }
 
@@ -87,6 +103,7 @@ final class RefundedPayment implements EntityInterface
     public function setInvoicePayload(string $invoice_payload): RefundedPayment
     {
         $this->invoice_payload = $invoice_payload;
+
         return $this;
     }
 
@@ -106,6 +123,7 @@ final class RefundedPayment implements EntityInterface
     public function setTelegramPaymentChargeId(string $telegram_payment_charge_id): RefundedPayment
     {
         $this->telegram_payment_charge_id = $telegram_payment_charge_id;
+
         return $this;
     }
 
@@ -125,6 +143,9 @@ final class RefundedPayment implements EntityInterface
     public function setProviderPaymentChargeId(?string $provider_payment_charge_id): RefundedPayment
     {
         $this->provider_payment_charge_id = $provider_payment_charge_id;
+
         return $this;
     }
 }
+
+// endregion CLASS_RefundedPayment

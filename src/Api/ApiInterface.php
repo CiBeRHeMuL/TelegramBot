@@ -10,28 +10,49 @@ use AndrewGos\TelegramBot\Response\GetFileResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Log\LoggerInterface;
 
+// region MODULE_CONTRACT [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): HTTP]
+/**
+ * @moduleContract
+ * @purpose Define the complete contract for all 150+ Telegram Bot API methods.
+ * @scope Type-safe method signatures for every Telegram Bot API endpoint.
+ * @input Request DTOs per method
+ * @output Response DTOs per method
+ *
+ * @sees USES_API(10): Telegram Bot API https://core.telegram.org/bots/api
+ *
+ * @changes
+ * LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ApiInterface, Telegram Bot API, API methods, getUpdates, sendMessage, setWebhook, webhook, polling
+// STRUCTURE: ▶ 150+ methods ┌Request DTO → HTTP call → Response DTO┐ each mapping 1:1 to Telegram Bot API endpoint
+
+// region INTERFACE_ApiInterface [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
 interface ApiInterface
 {
     /**
-     * Will the api throw an exception if the request does not return 2xx response
+     * Will the api throw an exception if the request does not return 2xx response.
+     *
      * @return bool
      */
     public function isThrowOnErrorResponse(): bool;
 
     /**
-     * Current token used in requests
+     * Current token used in requests.
+     *
      * @return BotToken
      */
     public function getToken(): BotToken;
 
     /**
-     * Current logger
+     * Current logger.
+     *
      * @return LoggerInterface
      */
     public function getLogger(): LoggerInterface;
 
     /**
-     * Set current logger
+     * Set current logger.
      *
      * @param LoggerInterface $logger
      *
@@ -40,8 +61,10 @@ interface ApiInterface
     public function setLogger(LoggerInterface $logger): static;
 
     /**
-     * Version of used Telegram Bot Api
-     * @link https://core.telegram.org/bots/api
+     * Version of used Telegram Bot Api.
+     *
+     * @see https://core.telegram.org/bots/api
+     *
      * @return string
      */
     public function getVersion(): string;
@@ -56,7 +79,8 @@ interface ApiInterface
      * @param Req\GetUpdatesRequest $request
      *
      * @return Res\GetUpdatesResponse
-     * @link https://core.telegram.org/bots/api#getupdates
+     *
+     * @see https://core.telegram.org/bots/api#getupdates
      */
     public function getUpdates(Req\GetUpdatesRequest $request): Res\GetUpdatesResponse;
 
@@ -81,7 +105,8 @@ interface ApiInterface
      * @param Req\SetWebhookRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setwebhook
+     *
+     * @see https://core.telegram.org/bots/api#setwebhook
      */
     public function setWebhook(Req\SetWebhookRequest $request): Res\RawResponse;
 
@@ -91,7 +116,8 @@ interface ApiInterface
      * @param Req\DeleteWebhookRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletewebhook
+     *
+     * @see https://core.telegram.org/bots/api#deletewebhook
      */
     public function deleteWebhook(Req\DeleteWebhookRequest $request): Res\RawResponse;
 
@@ -100,7 +126,8 @@ interface ApiInterface
      * On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
      *
      * @return Res\GetWebhookInfoResponse
-     * @link https://core.telegram.org/bots/api#getwebhookinfo
+     *
+     * @see https://core.telegram.org/bots/api#getwebhookinfo
      */
     public function getWebhookInfo(): Res\GetWebhookInfoResponse;
 
@@ -109,8 +136,9 @@ interface ApiInterface
      * Requires no parameters. Returns basic information about the bot in form of a User object.
      *
      * @return Res\GetMeResponse
+     *
      * @see User
-     * @link https://core.telegram.org/bots/api#getme
+     * @see https://core.telegram.org/bots/api#getme
      */
     public function getMe(): Res\GetMeResponse;
 
@@ -122,7 +150,8 @@ interface ApiInterface
      * Returns True on success. Requires no parameters.
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#logout
+     *
+     * @see https://core.telegram.org/bots/api#logout
      */
     public function logOut(): Res\RawResponse;
 
@@ -133,7 +162,8 @@ interface ApiInterface
      * Returns True on success. Requires no parameters.
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#close
+     *
+     * @see https://core.telegram.org/bots/api#close
      */
     public function close(): Res\RawResponse;
 
@@ -143,8 +173,9 @@ interface ApiInterface
      * @param Req\SendMessageRequest $request
      *
      * @return Res\SendMessageResponse
-     * @link Message
-     * @link https://core.telegram.org/bots/api#sendmessage
+     *
+     * @see Message
+     * @see https://core.telegram.org/bots/api#sendmessage
      */
     public function sendMessage(Req\SendMessageRequest $request): Res\SendMessageResponse;
 
@@ -155,8 +186,9 @@ interface ApiInterface
      * @param Req\ForwardMessageRequest $request
      *
      * @return Res\ForwardMessageResponse
-     * @link Message
-     * @link https://core.telegram.org/bots/api#forwardmessage
+     *
+     * @see Message
+     * @see https://core.telegram.org/bots/api#forwardmessage
      */
     public function forwardMessage(Req\ForwardMessageRequest $request): Res\ForwardMessageResponse;
 
@@ -169,8 +201,9 @@ interface ApiInterface
      * @param Req\ForwardMessagesRequest $request
      *
      * @return Res\ForwardMessagesResponse
-     * @link MessageId
-     * @link https://core.telegram.org/bots/api#forwardmessages
+     *
+     * @see MessageId
+     * @see https://core.telegram.org/bots/api#forwardmessages
      */
     public function forwardMessages(Req\ForwardMessagesRequest $request): Res\ForwardMessagesResponse;
 
@@ -184,8 +217,9 @@ interface ApiInterface
      * @param Req\CopyMessageRequest $request
      *
      * @return Res\CopyMessageResponse
-     * @link MessageId
-     * @link https://core.telegram.org/bots/api#copymessage
+     *
+     * @see MessageId
+     * @see https://core.telegram.org/bots/api#copymessage
      */
     public function copyMessage(Req\CopyMessageRequest $request): Res\CopyMessageResponse;
 
@@ -200,7 +234,8 @@ interface ApiInterface
      * @param Req\CopyMessagesRequest $request
      *
      * @return Res\CopyMessagesResponse
-     * @link https://core.telegram.org/bots/api#copymessages
+     *
+     * @see https://core.telegram.org/bots/api#copymessages
      */
     public function copyMessages(Req\CopyMessagesRequest $request): Res\CopyMessagesResponse;
 
@@ -210,8 +245,9 @@ interface ApiInterface
      * @param Req\SendPhotoRequest $request
      *
      * @return Res\SendPhotoResponse
-     * @link Message
-     * @link https://core.telegram.org/bots/api#sendphoto
+     *
+     * @see Message
+     * @see https://core.telegram.org/bots/api#sendphoto
      */
     public function sendPhoto(Req\SendPhotoRequest $request): Res\SendPhotoResponse;
 
@@ -224,7 +260,8 @@ interface ApiInterface
      * @param Req\SendAudioRequest $request
      *
      * @return Res\SendAudioResponse
-     * @link https://core.telegram.org/bots/api#sendaudio
+     *
+     * @see https://core.telegram.org/bots/api#sendaudio
      */
     public function sendAudio(Req\SendAudioRequest $request): Res\SendAudioResponse;
 
@@ -236,7 +273,8 @@ interface ApiInterface
      * @param Req\SendDocumentRequest $request
      *
      * @return Res\SendDocumentResponse
-     * @link https://core.telegram.org/bots/api#senddocument
+     *
+     * @see https://core.telegram.org/bots/api#senddocument
      */
     public function sendDocument(Req\SendDocumentRequest $request): Res\SendDocumentResponse;
 
@@ -248,7 +286,8 @@ interface ApiInterface
      * @param Req\SendVideoRequest $request
      *
      * @return Res\SendVideoResponse
-     * @link https://core.telegram.org/bots/api#sendvideo
+     *
+     * @see https://core.telegram.org/bots/api#sendvideo
      */
     public function sendVideo(Req\SendVideoRequest $request): Res\SendVideoResponse;
 
@@ -260,7 +299,8 @@ interface ApiInterface
      * @param Req\SendAnimationRequest $request
      *
      * @return Res\SendAnimationResponse
-     * @link https://core.telegram.org/bots/api#sendanimation
+     *
+     * @see https://core.telegram.org/bots/api#sendanimation
      */
     public function sendAnimation(Req\SendAnimationRequest $request): Res\SendAnimationResponse;
 
@@ -274,7 +314,8 @@ interface ApiInterface
      * @param Req\SendVoiceRequest $request
      *
      * @return Res\SendVoiceResponse
-     * @link https://core.telegram.org/bots/api#sendvoice
+     *
+     * @see https://core.telegram.org/bots/api#sendvoice
      */
     public function sendVoice(Req\SendVoiceRequest $request): Res\SendVoiceResponse;
 
@@ -285,7 +326,8 @@ interface ApiInterface
      * @param Req\SendVideoNoteRequest $request
      *
      * @return Res\SendVideoNoteResponse
-     * @link https://core.telegram.org/bots/api#sendvideonote
+     *
+     * @see https://core.telegram.org/bots/api#sendvideonote
      */
     public function sendVideoNote(Req\SendVideoNoteRequest $request): Res\SendVideoNoteResponse;
 
@@ -297,7 +339,8 @@ interface ApiInterface
      * @param Req\SendMediaGroupRequest $request
      *
      * @return Res\SendMediaGroupResponse
-     * @link https://core.telegram.org/bots/api#sendmediagroup
+     *
+     * @see https://core.telegram.org/bots/api#sendmediagroup
      */
     public function sendMediaGroup(Req\SendMediaGroupRequest $request): Res\SendMediaGroupResponse;
 
@@ -307,7 +350,8 @@ interface ApiInterface
      * @param Req\SendLocationRequest $request
      *
      * @return Res\SendLocationResponse
-     * @link https://core.telegram.org/bots/api#sendlocation
+     *
+     * @see https://core.telegram.org/bots/api#sendlocation
      */
     public function sendLocation(Req\SendLocationRequest $request): Res\SendLocationResponse;
 
@@ -317,7 +361,8 @@ interface ApiInterface
      * @param Req\SendVenueRequest $request
      *
      * @return Res\SendVenueResponse
-     * @link https://core.telegram.org/bots/api#sendvenue
+     *
+     * @see https://core.telegram.org/bots/api#sendvenue
      */
     public function sendVenue(Req\SendVenueRequest $request): Res\SendVenueResponse;
 
@@ -327,7 +372,8 @@ interface ApiInterface
      * @param Req\SendContactRequest $request
      *
      * @return Res\SendContactResponse
-     * @link https://core.telegram.org/bots/api#sendcontact
+     *
+     * @see https://core.telegram.org/bots/api#sendcontact
      */
     public function sendContact(Req\SendContactRequest $request): Res\SendContactResponse;
 
@@ -337,7 +383,8 @@ interface ApiInterface
      * @param Req\SendPollRequest $request
      *
      * @return Res\SendPollResponse
-     * @link https://core.telegram.org/bots/api#sendpoll
+     *
+     * @see https://core.telegram.org/bots/api#sendpoll
      */
     public function sendPoll(Req\SendPollRequest $request): Res\SendPollResponse;
 
@@ -347,7 +394,8 @@ interface ApiInterface
      * @param Req\SendDiceRequest $request
      *
      * @return Res\SendDiceResponse
-     * @link https://core.telegram.org/bots/api#senddice
+     *
+     * @see https://core.telegram.org/bots/api#senddice
      */
     public function sendDice(Req\SendDiceRequest $request): Res\SendDiceResponse;
 
@@ -366,7 +414,8 @@ interface ApiInterface
      * @param Req\SendChatActionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#sendchataction
+     *
+     * @see https://core.telegram.org/bots/api#sendchataction
      */
     public function sendChatAction(Req\SendChatActionRequest $request): Res\RawResponse;
 
@@ -378,7 +427,8 @@ interface ApiInterface
      * @param Req\SetMessageReactionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#sendmessagereaction
+     *
+     * @see https://core.telegram.org/bots/api#sendmessagereaction
      */
     public function setMessageReaction(Req\SetMessageReactionRequest $request): Res\RawResponse;
 
@@ -388,7 +438,8 @@ interface ApiInterface
      * @param Req\GetUserProfilePhotosRequest $request
      *
      * @return Res\GetUserProfilePhotosResponse
-     * @link https://core.telegram.org/bots/api#getuserprofilephotos
+     *
+     * @see https://core.telegram.org/bots/api#getuserprofilephotos
      */
     public function getUserProfilePhotos(Req\GetUserProfilePhotosRequest $request): Res\GetUserProfilePhotosResponse;
 
@@ -404,10 +455,11 @@ interface ApiInterface
      *
      * @param Req\GetFileRequest $request
      *
-     * @return Res\GetFileResponse
-     * @link https://core.telegram.org/bots/api#getfile
+     * @return GetFileResponse
+     *
+     * @see https://core.telegram.org/bots/api#getfile
      */
-    public function getFile(Req\GetFileRequest $request): Res\GetFileResponse;
+    public function getFile(Req\GetFileRequest $request): GetFileResponse;
 
     /**
      * Use this method to ban a user in a group, a supergroup or a channel.
@@ -418,7 +470,8 @@ interface ApiInterface
      * @param Req\BanChatMemberRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#banchatmember
+     *
+     * @see https://core.telegram.org/bots/api#banchatmember
      */
     public function banChatMember(Req\BanChatMemberRequest $request): Res\RawResponse;
 
@@ -433,7 +486,8 @@ interface ApiInterface
      * @param Req\UnbanChatMemberRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unbanchatmember
+     *
+     * @see https://core.telegram.org/bots/api#unbanchatmember
      */
     public function unbanChatMember(Req\UnbanChatMemberRequest $request): Res\RawResponse;
 
@@ -445,7 +499,8 @@ interface ApiInterface
      * @param Req\RestrictChatMemberRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#restrictchatmember
+     *
+     * @see https://core.telegram.org/bots/api#restrictchatmember
      */
     public function restrictChatMember(Req\RestrictChatMemberRequest $request): Res\RawResponse;
 
@@ -457,7 +512,8 @@ interface ApiInterface
      * @param Req\PromoteChatMemberRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#promotechatmember
+     *
+     * @see https://core.telegram.org/bots/api#promotechatmember
      */
     public function promoteChatMember(Req\PromoteChatMemberRequest $request): Res\RawResponse;
 
@@ -467,7 +523,8 @@ interface ApiInterface
      * @param Req\SetChatAdministratorCustomTitleRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatadministratorcustomtitle
+     *
+     * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
      */
     public function setChatAdministratorCustomTitle(Req\SetChatAdministratorCustomTitleRequest $request): Res\RawResponse;
 
@@ -479,7 +536,8 @@ interface ApiInterface
      * @param Req\BanChatSenderChatRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#banchatsenderchat
+     *
+     * @see https://core.telegram.org/bots/api#banchatsenderchat
      */
     public function banChatSenderChat(Req\BanChatSenderChatRequest $request): Res\RawResponse;
 
@@ -490,7 +548,8 @@ interface ApiInterface
      * @param Req\UnbanChatSenderChatRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unbanchatsenderchat
+     *
+     * @see https://core.telegram.org/bots/api#unbanchatsenderchat
      */
     public function unbanChatSenderChat(Req\UnbanChatSenderChatRequest $request): Res\RawResponse;
 
@@ -501,7 +560,8 @@ interface ApiInterface
      * @param Req\SetChatPermissionsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatpermissions
+     *
+     * @see https://core.telegram.org/bots/api#setchatpermissions
      */
     public function setChatPermissions(Req\SetChatPermissionsRequest $request): Res\RawResponse;
 
@@ -519,7 +579,8 @@ interface ApiInterface
      * @param Req\ExportChatInviteLinkRequest $request
      *
      * @return Res\ExportChatInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#exportchatinvitelink
+     *
+     * @see https://core.telegram.org/bots/api#exportchatinvitelink
      */
     public function exportChatInviteLink(Req\ExportChatInviteLinkRequest $request): Res\ExportChatInviteLinkResponse;
 
@@ -531,7 +592,8 @@ interface ApiInterface
      * @param Req\CreateChatInviteLinkRequest $request
      *
      * @return Res\CreateChatInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#createchatinvitelink
+     *
+     * @see https://core.telegram.org/bots/api#createchatinvitelink
      */
     public function createChatInviteLink(Req\CreateChatInviteLinkRequest $request): Res\CreateChatInviteLinkResponse;
 
@@ -542,7 +604,8 @@ interface ApiInterface
      * @param Req\EditChatInviteLinkRequest $request
      *
      * @return Res\EditChatInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#editchatinvitelink
+     *
+     * @see https://core.telegram.org/bots/api#editchatinvitelink
      */
     public function editChatInviteLink(Req\EditChatInviteLinkRequest $request): Res\EditChatInviteLinkResponse;
 
@@ -554,7 +617,8 @@ interface ApiInterface
      * @param Req\RevokeChatInviteLinkRequest $request
      *
      * @return Res\RevokeChatInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#revokechatinvitelink
+     *
+     * @see https://core.telegram.org/bots/api#revokechatinvitelink
      */
     public function revokeChatInviteLink(Req\RevokeChatInviteLinkRequest $request): Res\RevokeChatInviteLinkResponse;
 
@@ -565,7 +629,8 @@ interface ApiInterface
      * @param Req\ApproveChatJoinRequestRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#approvechatjoinrequest
+     *
+     * @see https://core.telegram.org/bots/api#approvechatjoinrequest
      */
     public function approveChatJoinRequest(Req\ApproveChatJoinRequestRequest $request): Res\RawResponse;
 
@@ -576,7 +641,8 @@ interface ApiInterface
      * @param Req\DeclineChatJoinRequestRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#declinechatjoinrequest
+     *
+     * @see https://core.telegram.org/bots/api#declinechatjoinrequest
      */
     public function declineChatJoinRequest(Req\DeclineChatJoinRequestRequest $request): Res\RawResponse;
 
@@ -587,7 +653,8 @@ interface ApiInterface
      * @param Req\SetChatPhotoRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatphoto
+     *
+     * @see https://core.telegram.org/bots/api#setchatphoto
      */
     public function setChatPhoto(Req\SetChatPhotoRequest $request): Res\RawResponse;
 
@@ -598,7 +665,8 @@ interface ApiInterface
      * @param Req\DeleteChatPhotoRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletechatphoto
+     *
+     * @see https://core.telegram.org/bots/api#deletechatphoto
      */
     public function deleteChatPhoto(Req\DeleteChatPhotoRequest $request): Res\RawResponse;
 
@@ -609,7 +677,8 @@ interface ApiInterface
      * @param Req\SetChatTitleRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchattitle
+     *
+     * @see https://core.telegram.org/bots/api#setchattitle
      */
     public function setChatTitle(Req\SetChatTitleRequest $request): Res\RawResponse;
 
@@ -620,7 +689,8 @@ interface ApiInterface
      * @param Req\SetChatDescriptionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatdescription
+     *
+     * @see https://core.telegram.org/bots/api#setchatdescription
      */
     public function setChatDescription(Req\SetChatDescriptionRequest $request): Res\RawResponse;
 
@@ -632,7 +702,8 @@ interface ApiInterface
      * @param Req\PinChatMessageRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#pinchatmessage
+     *
+     * @see https://core.telegram.org/bots/api#pinchatmessage
      */
     public function pinChatMessage(Req\PinChatMessageRequest $request): Res\RawResponse;
 
@@ -644,7 +715,8 @@ interface ApiInterface
      * @param Req\UnpinChatMessageRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unpinchatmessage
+     *
+     * @see https://core.telegram.org/bots/api#unpinchatmessage
      */
     public function unpinChatMessage(Req\UnpinChatMessageRequest $request): Res\RawResponse;
 
@@ -656,7 +728,8 @@ interface ApiInterface
      * @param Req\UnpinAllChatMessagesRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unpinallchatmessages
+     *
+     * @see https://core.telegram.org/bots/api#unpinallchatmessages
      */
     public function unpinAllChatMessages(Req\UnpinAllChatMessagesRequest $request): Res\RawResponse;
 
@@ -666,7 +739,8 @@ interface ApiInterface
      * @param Req\LeaveChatRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#leavechat
+     *
+     * @see https://core.telegram.org/bots/api#leavechat
      */
     public function leaveChat(Req\LeaveChatRequest $request): Res\RawResponse;
 
@@ -676,7 +750,8 @@ interface ApiInterface
      * @param Req\GetChatRequest $request
      *
      * @return Res\GetChatResponse
-     * @link https://core.telegram.org/bots/api#getchat
+     *
+     * @see https://core.telegram.org/bots/api#getchat
      */
     public function getChat(Req\GetChatRequest $request): Res\GetChatResponse;
 
@@ -686,7 +761,8 @@ interface ApiInterface
      * @param Req\GetChatAdministratorsRequest $request
      *
      * @return Res\GetChatAdministratorsResponse
-     * @link https://core.telegram.org/bots/api#getchatadministrators
+     *
+     * @see https://core.telegram.org/bots/api#getchatadministrators
      */
     public function getChatAdministrators(Req\GetChatAdministratorsRequest $request): Res\GetChatAdministratorsResponse;
 
@@ -696,7 +772,8 @@ interface ApiInterface
      * @param Req\GetChatMemberCountRequest $request
      *
      * @return Res\GetChatMemberCountResponse
-     * @link https://core.telegram.org/bots/api#getchatmembercount
+     *
+     * @see https://core.telegram.org/bots/api#getchatmembercount
      */
     public function getChatMemberCount(Req\GetChatMemberCountRequest $request): Res\GetChatMemberCountResponse;
 
@@ -707,7 +784,8 @@ interface ApiInterface
      * @param Req\GetChatMemberRequest $request
      *
      * @return Res\GetChatMemberResponse
-     * @link https://core.telegram.org/bots/api#getchatmember
+     *
+     * @see https://core.telegram.org/bots/api#getchatmember
      */
     public function getChatMember(Req\GetChatMemberRequest $request): Res\GetChatMemberResponse;
 
@@ -719,7 +797,8 @@ interface ApiInterface
      * @param Req\SetChatStickerSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatstickerset
+     *
+     * @see https://core.telegram.org/bots/api#setchatstickerset
      */
     public function setChatStickerSet(Req\SetChatStickerSetRequest $request): Res\RawResponse;
 
@@ -731,7 +810,8 @@ interface ApiInterface
      * @param Req\DeleteChatStickerSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletechatstickerset
+     *
+     * @see https://core.telegram.org/bots/api#deletechatstickerset
      */
     public function deleteChatStickerSet(Req\DeleteChatStickerSetRequest $request): Res\RawResponse;
 
@@ -741,7 +821,8 @@ interface ApiInterface
      * Returns an Array of Sticker objects.
      *
      * @return Res\GetForumTopicIconStickers
-     * @link https://core.telegram.org/bots/api#getforumtopiciconstickers
+     *
+     * @see https://core.telegram.org/bots/api#getforumtopiciconstickers
      */
     public function getForumTopicIconStickers(): Res\GetForumTopicIconStickers;
 
@@ -752,7 +833,8 @@ interface ApiInterface
      * @param Req\CreateForumTopicRequest $request
      *
      * @return Res\CreateForumTopicResponse
-     * @link https://core.telegram.org/bots/api#createforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#createforumtopic
      */
     public function createForumTopic(Req\CreateForumTopicRequest $request): Res\CreateForumTopicResponse;
 
@@ -764,7 +846,8 @@ interface ApiInterface
      * @param Req\EditForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#editforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#editforumtopic
      */
     public function editForumTopic(Req\EditForumTopicRequest $request): Res\RawResponse;
 
@@ -775,7 +858,8 @@ interface ApiInterface
      * @param Req\CloseForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#closeforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#closeforumtopic
      */
     public function closeForumTopic(Req\CloseForumTopicRequest $request): Res\RawResponse;
 
@@ -786,7 +870,8 @@ interface ApiInterface
      * @param Req\ReopenForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#reopenforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#reopenforumtopic
      */
     public function reopenForumTopic(Req\ReopenForumTopicRequest $request): Res\RawResponse;
 
@@ -797,7 +882,8 @@ interface ApiInterface
      * @param Req\DeleteForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deleteforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#deleteforumtopic
      */
     public function deleteForumTopic(Req\DeleteForumTopicRequest $request): Res\RawResponse;
 
@@ -808,7 +894,8 @@ interface ApiInterface
      * @param Req\UnpinAllForumTopicMessagesRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unpinallforumtopicmessages
+     *
+     * @see https://core.telegram.org/bots/api#unpinallforumtopicmessages
      */
     public function unpinAllForumTopicMessages(Req\UnpinAllForumTopicMessagesRequest $request): Res\RawResponse;
 
@@ -819,7 +906,8 @@ interface ApiInterface
      * @param Req\EditGeneralForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#editgeneralforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#editgeneralforumtopic
      */
     public function editGeneralForumTopic(Req\EditGeneralForumTopicRequest $request): Res\RawResponse;
 
@@ -830,7 +918,8 @@ interface ApiInterface
      * @param Req\CloseGeneralForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#closegeneralforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#closegeneralforumtopic
      */
     public function closeGeneralForumTopic(Req\CloseGeneralForumTopicRequest $request): Res\RawResponse;
 
@@ -842,7 +931,8 @@ interface ApiInterface
      * @param Req\ReopenGeneralForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#reopengeneralforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#reopengeneralforumtopic
      */
     public function reopenGeneralForumTopic(Req\ReopenGeneralForumTopicRequest $request): Res\RawResponse;
 
@@ -854,7 +944,8 @@ interface ApiInterface
      * @param Req\HideGeneralForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#hidegeneralforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#hidegeneralforumtopic
      */
     public function hideGeneralForumTopic(Req\HideGeneralForumTopicRequest $request): Res\RawResponse;
 
@@ -865,7 +956,8 @@ interface ApiInterface
      * @param Req\UnhideGeneralForumTopicRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unhidegeneralforumtopic
+     *
+     * @see https://core.telegram.org/bots/api#unhidegeneralforumtopic
      */
     public function unhideGeneralForumTopic(Req\UnhideGeneralForumTopicRequest $request): Res\RawResponse;
 
@@ -876,7 +968,8 @@ interface ApiInterface
      * @param Req\UnpinAllGeneralForumTopicMessagesRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
+     *
+     * @see https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
      */
     public function unpinAllGeneralForumTopicMessages(Req\UnpinAllGeneralForumTopicMessagesRequest $request): Res\RawResponse;
 
@@ -891,7 +984,8 @@ interface ApiInterface
      * @param Req\AnswerCallbackQueryRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#answercallbackquery
+     *
+     * @see https://core.telegram.org/bots/api#answercallbackquery
      */
     public function answerCallbackQuery(Req\AnswerCallbackQueryRequest $request): Res\RawResponse;
 
@@ -902,7 +996,8 @@ interface ApiInterface
      * @param Req\GetUserChatBoostsRequest $request
      *
      * @return Res\GetUserChatBoostsResponse
-     * @link https://core.telegram.org/bots/api#getuserchatboosts
+     *
+     * @see https://core.telegram.org/bots/api#getuserchatboosts
      */
     public function getUserChatBoosts(Req\GetUserChatBoostsRequest $request): Res\GetUserChatBoostsResponse;
 
@@ -913,7 +1008,8 @@ interface ApiInterface
      * @param Req\GetBusinessConnectionRequest $request
      *
      * @return Res\GetBusinessConnectionResponse
-     * @link https://core.telegram.org/bots/api#getbusinessconnection
+     *
+     * @see https://core.telegram.org/bots/api#getbusinessconnection
      */
     public function getBusinessConnection(Req\GetBusinessConnectionRequest $request): Res\GetBusinessConnectionResponse;
 
@@ -924,8 +1020,9 @@ interface ApiInterface
      * @param Req\SetMyCommandsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmycommands
-     * @link https://core.telegram.org/bots/features#commands
+     *
+     * @see https://core.telegram.org/bots/api#setmycommands
+     * @see https://core.telegram.org/bots/features#commands
      */
     public function setMyCommands(Req\SetMyCommandsRequest $request): Res\RawResponse;
 
@@ -936,7 +1033,8 @@ interface ApiInterface
      * @param Req\DeleteMyCommandsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletemycommands
+     *
+     * @see https://core.telegram.org/bots/api#deletemycommands
      */
     public function deleteMyCommands(Req\DeleteMyCommandsRequest $request): Res\RawResponse;
 
@@ -947,7 +1045,8 @@ interface ApiInterface
      * @param Req\GetMyCommandsRequest $request
      *
      * @return Res\GetMyCommandsResponse
-     * @link https://core.telegram.org/bots/api#getmycommands
+     *
+     * @see https://core.telegram.org/bots/api#getmycommands
      */
     public function getMyCommands(Req\GetMyCommandsRequest $request): Res\GetMyCommandsResponse;
 
@@ -957,7 +1056,8 @@ interface ApiInterface
      * @param Req\SetMyNameRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmyname
+     *
+     * @see https://core.telegram.org/bots/api#setmyname
      */
     public function setMyName(Req\SetMyNameRequest $request): Res\RawResponse;
 
@@ -967,7 +1067,8 @@ interface ApiInterface
      * @param Req\GetMyNameRequest $request
      *
      * @return Res\GetMyNameResponse
-     * @link https://core.telegram.org/bots/api#getmyname
+     *
+     * @see https://core.telegram.org/bots/api#getmyname
      */
     public function getMyName(Req\GetMyNameRequest $request): Res\GetMyNameResponse;
 
@@ -978,7 +1079,8 @@ interface ApiInterface
      * @param Req\SetMyDescriptionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmydescription
+     *
+     * @see https://core.telegram.org/bots/api#setmydescription
      */
     public function setMyDescription(Req\SetMyDescriptionRequest $request): Res\RawResponse;
 
@@ -988,7 +1090,8 @@ interface ApiInterface
      * @param Req\GetMyDescriptionRequest $request
      *
      * @return Res\GetMyDescriptionResponse
-     * @link https://core.telegram.org/bots/api#getmydescription
+     *
+     * @see https://core.telegram.org/bots/api#getmydescription
      */
     public function getMyDescription(Req\GetMyDescriptionRequest $request): Res\GetMyDescriptionResponse;
 
@@ -999,7 +1102,8 @@ interface ApiInterface
      * @param Req\SetMyShortDescriptionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmyshortdescription
+     *
+     * @see https://core.telegram.org/bots/api#setmyshortdescription
      */
     public function setMyShortDescription(Req\SetMyShortDescriptionRequest $request): Res\RawResponse;
 
@@ -1009,7 +1113,8 @@ interface ApiInterface
      * @param Req\GetMyShortDescriptionRequest $request
      *
      * @return Res\GetMyShortDescriptionResponse
-     * @link https://core.telegram.org/bots/api#getmyshortdescription
+     *
+     * @see https://core.telegram.org/bots/api#getmyshortdescription
      */
     public function getMyShortDescription(Req\GetMyShortDescriptionRequest $request): Res\GetMyShortDescriptionResponse;
 
@@ -1019,7 +1124,8 @@ interface ApiInterface
      * @param Req\SetChatMenuButtonRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatmenubutton
+     *
+     * @see https://core.telegram.org/bots/api#setchatmenubutton
      */
     public function setChatMenuButton(Req\SetChatMenuButtonRequest $request): Res\RawResponse;
 
@@ -1030,7 +1136,8 @@ interface ApiInterface
      * @param Req\GetChatMenuButtonRequest $request
      *
      * @return Res\GetChatMenuButtonResponse
-     * @link https://core.telegram.org/bots/api#getchatmenubutton
+     *
+     * @see https://core.telegram.org/bots/api#getchatmenubutton
      */
     public function getChatMenuButton(Req\GetChatMenuButtonRequest $request): Res\GetChatMenuButtonResponse;
 
@@ -1042,7 +1149,8 @@ interface ApiInterface
      * @param Req\SetMyDefaultAdministratorRightsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmydefaultadministratorrights
+     *
+     * @see https://core.telegram.org/bots/api#setmydefaultadministratorrights
      */
     public function setMyDefaultAdministratorRights(Req\SetMyDefaultAdministratorRightsRequest $request): Res\RawResponse;
 
@@ -1052,7 +1160,8 @@ interface ApiInterface
      * @param Req\GetMyDefaultAdministratorRightsRequest $request
      *
      * @return Res\GetMyDefaultAdministratorRightsResponse
-     * @link https://core.telegram.org/bots/api#getmydefaultadministratorrights
+     *
+     * @see https://core.telegram.org/bots/api#getmydefaultadministratorrights
      */
     public function getMyDefaultAdministratorRights(Req\GetMyDefaultAdministratorRightsRequest $request): Res\GetMyDefaultAdministratorRightsResponse;
 
@@ -1065,7 +1174,8 @@ interface ApiInterface
      * @param Req\EditMessageTextRequest $request
      *
      * @return Res\EditMessageTextResponse
-     * @link https://core.telegram.org/bots/api#editmessagetext
+     *
+     * @see https://core.telegram.org/bots/api#editmessagetext
      */
     public function editMessageText(Req\EditMessageTextRequest $request): Res\EditMessageTextResponse;
 
@@ -1078,7 +1188,8 @@ interface ApiInterface
      * @param Req\EditMessageCaptionRequest $request
      *
      * @return Res\EditMessageCaptionResponse
-     * @link https://core.telegram.org/bots/api#editmessagecaption
+     *
+     * @see https://core.telegram.org/bots/api#editmessagecaption
      */
     public function editMessageCaption(Req\EditMessageCaptionRequest $request): Res\EditMessageCaptionResponse;
 
@@ -1093,7 +1204,8 @@ interface ApiInterface
      * @param Req\EditMessageMediaRequest $request
      *
      * @return Res\EditMessageMediaResponse
-     * @link https://core.telegram.org/bots/api#editmessagemedia
+     *
+     * @see https://core.telegram.org/bots/api#editmessagemedia
      */
     public function editMessageMedia(Req\EditMessageMediaRequest $request): Res\EditMessageMediaResponse;
 
@@ -1105,7 +1217,8 @@ interface ApiInterface
      * @param Req\EditMessageLiveLocationRequest $request
      *
      * @return Res\EditMessageLiveLocationResponse
-     * @link https://core.telegram.org/bots/api#editmessagelivelocation
+     *
+     * @see https://core.telegram.org/bots/api#editmessagelivelocation
      */
     public function editMessageLiveLocation(Req\EditMessageLiveLocationRequest $request): Res\EditMessageLiveLocationResponse;
 
@@ -1116,7 +1229,8 @@ interface ApiInterface
      * @param Req\StopMessageLiveLocationRequest $request
      *
      * @return Res\StopMessageLiveLocationResponse
-     * @link https://core.telegram.org/bots/api#stopmessagelivelocation
+     *
+     * @see https://core.telegram.org/bots/api#stopmessagelivelocation
      */
     public function stopMessageLiveLocation(Req\StopMessageLiveLocationRequest $request): Res\StopMessageLiveLocationResponse;
 
@@ -1129,7 +1243,8 @@ interface ApiInterface
      * @param Req\EditMessageReplyMarkupRequest $request
      *
      * @return Res\EditMessageReplyMarkupResponse
-     * @link https://core.telegram.org/bots/api#editmessagereplymarkup
+     *
+     * @see https://core.telegram.org/bots/api#editmessagereplymarkup
      */
     public function editMessageReplyMarkup(Req\EditMessageReplyMarkupRequest $request): Res\EditMessageReplyMarkupResponse;
 
@@ -1139,7 +1254,8 @@ interface ApiInterface
      * @param Req\StopPollRequest $request
      *
      * @return Res\StopPollResponse
-     * @link https://core.telegram.org/bots/api#stoppoll
+     *
+     * @see https://core.telegram.org/bots/api#stoppoll
      */
     public function stopPoll(Req\StopPollRequest $request): Res\StopPollResponse;
 
@@ -1155,7 +1271,8 @@ interface ApiInterface
      * @param Req\DeleteMessageRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletemessage
+     *
+     * @see https://core.telegram.org/bots/api#deletemessage
      */
     public function deleteMessage(Req\DeleteMessageRequest $request): Res\RawResponse;
 
@@ -1166,7 +1283,8 @@ interface ApiInterface
      * @param Req\DeleteMessagesRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletemessages
+     *
+     * @see https://core.telegram.org/bots/api#deletemessages
      */
     public function deleteMessages(Req\DeleteMessagesRequest $request): Res\RawResponse;
 
@@ -1176,7 +1294,8 @@ interface ApiInterface
      * @param Req\SendStickerRequest $request
      *
      * @return Res\SendStickerResponse
-     * @link https://core.telegram.org/bots/api#sendsticker
+     *
+     * @see https://core.telegram.org/bots/api#sendsticker
      */
     public function sendSticker(Req\SendStickerRequest $request): Res\SendStickerResponse;
 
@@ -1186,7 +1305,8 @@ interface ApiInterface
      * @param Req\GetStickerSetRequest $request
      *
      * @return Res\GetStickerSetResponse
-     * @link https://core.telegram.org/bots/api#getstickerset
+     *
+     * @see https://core.telegram.org/bots/api#getstickerset
      */
     public function getStickerSet(Req\GetStickerSetRequest $request): Res\GetStickerSetResponse;
 
@@ -1196,7 +1316,8 @@ interface ApiInterface
      * @param Req\GetCustomEmojiStickersRequest $request
      *
      * @return Res\GetCustomEmojiStickersResponse
-     * @link https://core.telegram.org/bots/api#getcustomemojistickers
+     *
+     * @see https://core.telegram.org/bots/api#getcustomemojistickers
      */
     public function getCustomEmojiStickers(Req\GetCustomEmojiStickersRequest $request): Res\GetCustomEmojiStickersResponse;
 
@@ -1207,7 +1328,8 @@ interface ApiInterface
      * @param Req\UploadStickerFileRequest $request
      *
      * @return Res\UploadStickerFileResponse
-     * @link https://core.telegram.org/bots/api#uploadstickerfile
+     *
+     * @see https://core.telegram.org/bots/api#uploadstickerfile
      */
     public function uploadStickerFile(Req\UploadStickerFileRequest $request): Res\UploadStickerFileResponse;
 
@@ -1218,7 +1340,8 @@ interface ApiInterface
      * @param Req\CreateNewStickerSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#createnewstickerset
+     *
+     * @see https://core.telegram.org/bots/api#createnewstickerset
      */
     public function createNewStickerSet(Req\CreateNewStickerSetRequest $request): Res\RawResponse;
 
@@ -1229,7 +1352,8 @@ interface ApiInterface
      * @param Req\AddStickerToSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#addstickertoset
+     *
+     * @see https://core.telegram.org/bots/api#addstickertoset
      */
     public function addStickerToSet(Req\AddStickerToSetRequest $request): Res\RawResponse;
 
@@ -1239,7 +1363,8 @@ interface ApiInterface
      * @param Req\SetStickerPositionInSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickerpositioninset
+     *
+     * @see https://core.telegram.org/bots/api#setstickerpositioninset
      */
     public function setStickerPositionInSet(Req\SetStickerPositionInSetRequest $request): Res\RawResponse;
 
@@ -1249,7 +1374,8 @@ interface ApiInterface
      * @param Req\DeleteStickerFromSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletestickerfromset
+     *
+     * @see https://core.telegram.org/bots/api#deletestickerfromset
      */
     public function deleteStickerFromSet(Req\DeleteStickerFromSetRequest $request): Res\RawResponse;
 
@@ -1260,7 +1386,8 @@ interface ApiInterface
      * @param Req\ReplaceStickerInSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#replacestickerinset
+     *
+     * @see https://core.telegram.org/bots/api#replacestickerinset
      */
     public function replaceStickerInSet(Req\ReplaceStickerInSetRequest $request): Res\RawResponse;
 
@@ -1271,7 +1398,8 @@ interface ApiInterface
      * @param Req\SetStickerEmojiListRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickeremojilist
+     *
+     * @see https://core.telegram.org/bots/api#setstickeremojilist
      */
     public function setStickerEmojiList(Req\SetStickerEmojiListRequest $request): Res\RawResponse;
 
@@ -1282,7 +1410,8 @@ interface ApiInterface
      * @param Req\SetStickerKeywordsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickerkeywords
+     *
+     * @see https://core.telegram.org/bots/api#setstickerkeywords
      */
     public function setStickerKeywords(Req\SetStickerKeywordsRequest $request): Res\RawResponse;
 
@@ -1293,7 +1422,8 @@ interface ApiInterface
      * @param Req\SetStickerMaskPositionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickermaskposition
+     *
+     * @see https://core.telegram.org/bots/api#setstickermaskposition
      */
     public function setStickerMaskPosition(Req\SetStickerMaskPositionRequest $request): Res\RawResponse;
 
@@ -1303,7 +1433,8 @@ interface ApiInterface
      * @param Req\SetStickerSetTitleRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickersettitle
+     *
+     * @see https://core.telegram.org/bots/api#setstickersettitle
      */
     public function setStickerSetTitle(Req\SetStickerSetTitleRequest $request): Res\RawResponse;
 
@@ -1314,7 +1445,8 @@ interface ApiInterface
      * @param Req\SetStickerSetThumbnailRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setstickersetthumbnail
+     *
+     * @see https://core.telegram.org/bots/api#setstickersetthumbnail
      */
     public function setStickerSetThumbnail(Req\SetStickerSetThumbnailRequest $request): Res\RawResponse;
 
@@ -1324,7 +1456,8 @@ interface ApiInterface
      * @param Req\SetCustomEmojiStickerSetThumbnailRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
+     *
+     * @see https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
      */
     public function setCustomEmojiStickerSetThumbnail(Req\SetCustomEmojiStickerSetThumbnailRequest $request): Res\RawResponse;
 
@@ -1334,7 +1467,8 @@ interface ApiInterface
      * @param Req\DeleteStickerSetRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletestickerset
+     *
+     * @see https://core.telegram.org/bots/api#deletestickerset
      */
     public function deleteStickerSet(Req\DeleteStickerSetRequest $request): Res\RawResponse;
 
@@ -1344,7 +1478,8 @@ interface ApiInterface
      * @param Req\AnswerInlineQueryRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#answerinlinequery
+     *
+     * @see https://core.telegram.org/bots/api#answerinlinequery
      */
     public function answerInlineQuery(Req\AnswerInlineQueryRequest $request): Res\RawResponse;
 
@@ -1355,7 +1490,8 @@ interface ApiInterface
      * @param Req\AnswerWebAppQueryRequest $request
      *
      * @return Res\AnswerWebAppQueryResponse
-     * @link https://core.telegram.org/bots/api#answerwebappquery
+     *
+     * @see https://core.telegram.org/bots/api#answerwebappquery
      */
     public function answerWebAppQuery(Req\AnswerWebAppQueryRequest $request): Res\AnswerWebAppQueryResponse;
 
@@ -1365,7 +1501,8 @@ interface ApiInterface
      * @param Req\SendInvoiceRequest $request
      *
      * @return Res\SendInvoiceResponse
-     * @link https://core.telegram.org/bots/api#sendinvoice
+     *
+     * @see https://core.telegram.org/bots/api#sendinvoice
      */
     public function sendInvoice(Req\SendInvoiceRequest $request): Res\SendInvoiceResponse;
 
@@ -1375,7 +1512,8 @@ interface ApiInterface
      * @param Req\CreateInvoiceLinkRequest $request
      *
      * @return Res\CreateInvoiceLinkResponse
-     * @link https://core.telegram.org/bots/api#createinvoicelink
+     *
+     * @see https://core.telegram.org/bots/api#createinvoicelink
      */
     public function createInvoiceLink(Req\CreateInvoiceLinkRequest $request): Res\CreateInvoiceLinkResponse;
 
@@ -1386,7 +1524,8 @@ interface ApiInterface
      * @param Req\AnswerShippingQueryRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#answershippingquery
+     *
+     * @see https://core.telegram.org/bots/api#answershippingquery
      */
     public function answerShippingQuery(Req\AnswerShippingQueryRequest $request): Res\RawResponse;
 
@@ -1398,7 +1537,8 @@ interface ApiInterface
      * @param Req\AnswerPreCheckoutQueryRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#answerprecheckoutquery
+     *
+     * @see https://core.telegram.org/bots/api#answerprecheckoutquery
      */
     public function answerPreCheckoutQuery(Req\AnswerPreCheckoutQueryRequest $request): Res\RawResponse;
 
@@ -1414,7 +1554,8 @@ interface ApiInterface
      * @param Req\SetPassportDataErrorsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setpassportdataerrors
+     *
+     * @see https://core.telegram.org/bots/api#setpassportdataerrors
      */
     public function setPassportDataErrors(Req\SetPassportDataErrorsRequest $request): Res\RawResponse;
 
@@ -1424,7 +1565,8 @@ interface ApiInterface
      * @param Req\SendGameRequest $request
      *
      * @return Res\SendGameResponse
-     * @link https://core.telegram.org/bots/api#sendgame
+     *
+     * @see https://core.telegram.org/bots/api#sendgame
      */
     public function sendGame(Req\SendGameRequest $request): Res\SendGameResponse;
 
@@ -1436,7 +1578,8 @@ interface ApiInterface
      * @param Req\SetGameScoreRequest $request
      *
      * @return Res\SetGameScoreResponse
-     * @link https://core.telegram.org/bots/api#setgamescore
+     *
+     * @see https://core.telegram.org/bots/api#setgamescore
      */
     public function setGameScore(Req\SetGameScoreRequest $request): Res\SetGameScoreResponse;
 
@@ -1450,7 +1593,8 @@ interface ApiInterface
      * @param Req\GetGameHighScoresRequest $request
      *
      * @return Res\GetGameHighScoresResponse
-     * @link https://core.telegram.org/bots/api#getgamehighscores
+     *
+     * @see https://core.telegram.org/bots/api#getgamehighscores
      */
     public function getGameHighScores(Req\GetGameHighScoresRequest $request): Res\GetGameHighScoresResponse;
 
@@ -1460,7 +1604,8 @@ interface ApiInterface
      * @param Req\RefundStarPaymentRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#refundstarpayment
+     *
+     * @see https://core.telegram.org/bots/api#refundstarpayment
      */
     public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse;
 
@@ -1470,7 +1615,8 @@ interface ApiInterface
      * @param Req\GetStarTransactionsRequest $request
      *
      * @return Res\GetStarTransactionsResponse
-     * @link https://core.telegram.org/bots/api#getstartransactions
+     *
+     * @see https://core.telegram.org/bots/api#getstartransactions
      */
     public function getStarTransactions(Req\GetStarTransactionsRequest $request): Res\GetStarTransactionsResponse;
 
@@ -1480,7 +1626,8 @@ interface ApiInterface
      * @param Req\SendPaidMediaRequest $request
      *
      * @return Res\SendPaidMediaResponse
-     * @link https://core.telegram.org/bots/api#sendpaidmedia
+     *
+     * @see https://core.telegram.org/bots/api#sendpaidmedia
      */
     public function sendPaidMedia(Req\SendPaidMediaRequest $request): Res\SendPaidMediaResponse;
 
@@ -1492,7 +1639,8 @@ interface ApiInterface
      * @param Req\CreateChatSubscriptionInviteLinkRequest $request
      *
      * @return Res\CreateChatSubscriptionInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
+     *
+     * @see https://core.telegram.org/bots/api#createchatsubscriptioninvitelink
      */
     public function createChatSubscriptionInviteLink(
         Req\CreateChatSubscriptionInviteLinkRequest $request,
@@ -1505,7 +1653,8 @@ interface ApiInterface
      * @param Req\EditChatSubscriptionInviteLinkRequest $request
      *
      * @return Res\EditChatSubscriptionInviteLinkResponse
-     * @link https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
+     *
+     * @see https://core.telegram.org/bots/api#editchatsubscriptioninvitelink
      */
     public function editChatSubscriptionInviteLink(Req\EditChatSubscriptionInviteLinkRequest $request): Res\EditChatSubscriptionInviteLinkResponse;
 
@@ -1515,7 +1664,8 @@ interface ApiInterface
      * @param Req\EditUserStarSubscriptionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     *
+     * @see https://core.telegram.org/bots/api#edituserstarsubscription
      */
     public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse;
 
@@ -1526,7 +1676,8 @@ interface ApiInterface
      * @param Req\SetUserEmojiStatusRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setuseremojistatus
+     *
+     * @see https://core.telegram.org/bots/api#setuseremojistatus
      */
     public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse;
 
@@ -1536,7 +1687,8 @@ interface ApiInterface
      * @param Req\SavePreparedInlineMessageRequest $request
      *
      * @return Res\SavePreparedInlineMessageResponse
-     * @link https://core.telegram.org/bots/api#savepreparedinlinemessage
+     *
+     * @see https://core.telegram.org/bots/api#savepreparedinlinemessage
      */
     public function savePreparedInlineMessage(Req\SavePreparedInlineMessageRequest $request): Res\SavePreparedInlineMessageResponse;
 
@@ -1545,7 +1697,8 @@ interface ApiInterface
      * object.
      *
      * @return Res\GetAvailableGiftsResponse
-     * @link https://core.telegram.org/bots/api#getavailablegifts
+     *
+     * @see https://core.telegram.org/bots/api#getavailablegifts
      */
     public function getAvailableGifts(): Res\GetAvailableGiftsResponse;
 
@@ -1556,7 +1709,8 @@ interface ApiInterface
      * @param Req\SendGiftRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#sendgift
+     *
+     * @see https://core.telegram.org/bots/api#sendgift
      */
     public function sendGift(Req\SendGiftRequest $request): Res\RawResponse;
 
@@ -1566,7 +1720,8 @@ interface ApiInterface
      * @param Req\VerifyUserRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#verifyuser
+     *
+     * @see https://core.telegram.org/bots/api#verifyuser
      */
     public function verifyUser(Req\VerifyUserRequest $request): Res\RawResponse;
 
@@ -1576,7 +1731,8 @@ interface ApiInterface
      * @param Req\VerifyChatRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#verifychat
+     *
+     * @see https://core.telegram.org/bots/api#verifychat
      */
     public function verifyChat(Req\VerifyChatRequest $request): Res\RawResponse;
 
@@ -1587,7 +1743,8 @@ interface ApiInterface
      * @param Req\RemoveUserVerificationRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#removeuserverification
+     *
+     * @see https://core.telegram.org/bots/api#removeuserverification
      */
     public function removeUserVerification(Req\RemoveUserVerificationRequest $request): Res\RawResponse;
 
@@ -1598,7 +1755,8 @@ interface ApiInterface
      * @param Req\RemoveChatVerificationRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#removechatverification
+     *
+     * @see https://core.telegram.org/bots/api#removechatverification
      */
     public function removeChatVerification(Req\RemoveChatVerificationRequest $request): Res\RawResponse;
 
@@ -1609,7 +1767,8 @@ interface ApiInterface
      * @param Req\ReadBusinessMessageRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#readbusinessmessage
+     *
+     * @see https://core.telegram.org/bots/api#readbusinessmessage
      */
     public function readBusinessMessage(Req\ReadBusinessMessageRequest $request): Res\RawResponse;
 
@@ -1620,7 +1779,8 @@ interface ApiInterface
      * @param Req\DeleteBusinessMessagesRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletebusinessmessages
+     *
+     * @see https://core.telegram.org/bots/api#deletebusinessmessages
      */
     public function deleteBusinessMessages(Req\DeleteBusinessMessagesRequest $request): Res\RawResponse;
 
@@ -1631,7 +1791,8 @@ interface ApiInterface
      * @param Req\SetBusinessAccountNameRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setbusinessaccountname
+     *
+     * @see https://core.telegram.org/bots/api#setbusinessaccountname
      */
     public function setBusinessAccountName(Req\SetBusinessAccountNameRequest $request): Res\RawResponse;
 
@@ -1641,7 +1802,8 @@ interface ApiInterface
      * @param Req\SetBusinessAccountUsernameRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setbusinessaccountusername
+     *
+     * @see https://core.telegram.org/bots/api#setbusinessaccountusername
      */
     public function setBusinessAccountUsername(Req\SetBusinessAccountUsernameRequest $request): Res\RawResponse;
 
@@ -1651,7 +1813,8 @@ interface ApiInterface
      * @param Req\SetBusinessAccountBioRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setbusinessaccountbio
+     *
+     * @see https://core.telegram.org/bots/api#setbusinessaccountbio
      */
     public function setBusinessAccountBio(Req\SetBusinessAccountBioRequest $request): Res\RawResponse;
 
@@ -1662,7 +1825,8 @@ interface ApiInterface
      * @param Req\SetBusinessAccountProfilePhotoRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
+     *
+     * @see https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
      */
     public function setBusinessAccountProfilePhoto(Req\SetBusinessAccountProfilePhotoRequest $request): Res\RawResponse;
 
@@ -1673,7 +1837,8 @@ interface ApiInterface
      * @param Req\RemoveBusinessAccountProfilePhotoRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#removebusinessaccountprofilephoto
+     *
+     * @see https://core.telegram.org/bots/api#removebusinessaccountprofilephoto
      */
     public function removeBusinessAccountProfilePhoto(Req\RemoveBusinessAccountProfilePhotoRequest $request): Res\RawResponse;
 
@@ -1684,7 +1849,8 @@ interface ApiInterface
      * @param Req\SetBusinessAccountGiftSettingsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
+     *
+     * @see https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
      */
     public function setBusinessAccountGiftSettings(Req\SetBusinessAccountGiftSettingsRequest $request): Res\RawResponse;
 
@@ -1695,7 +1861,8 @@ interface ApiInterface
      * @param Req\GetBusinessAccountStarBalanceRequest $request
      *
      * @return Res\GetBusinessAccountStarBalanceResponse
-     * @link https://core.telegram.org/bots/api#getbusinessaccountstarbalance
+     *
+     * @see https://core.telegram.org/bots/api#getbusinessaccountstarbalance
      */
     public function getBusinessAccountStarBalance(Req\GetBusinessAccountStarBalanceRequest $request): Res\GetBusinessAccountStarBalanceResponse;
 
@@ -1706,7 +1873,8 @@ interface ApiInterface
      * @param Req\TransferBusinessAccountStarsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#transferbusinessaccountstars
+     *
+     * @see https://core.telegram.org/bots/api#transferbusinessaccountstars
      */
     public function transferBusinessAccountStars(Req\TransferBusinessAccountStarsRequest $request): Res\RawResponse;
 
@@ -1717,7 +1885,8 @@ interface ApiInterface
      * @param Req\GetBusinessAccountGiftsRequest $request
      *
      * @return Res\GetBusinessAccountGiftsResponse
-     * @link https://core.telegram.org/bots/api#getbusinessaccountgifts
+     *
+     * @see https://core.telegram.org/bots/api#getbusinessaccountgifts
      */
     public function getBusinessAccountGifts(Req\GetBusinessAccountGiftsRequest $request): Res\GetBusinessAccountGiftsResponse;
 
@@ -1728,7 +1897,8 @@ interface ApiInterface
      * @param Req\ConvertGiftToStarsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#convertgifttostars
+     *
+     * @see https://core.telegram.org/bots/api#convertgifttostars
      */
     public function convertGiftToStars(Req\ConvertGiftToStarsRequest $request): Res\RawResponse;
 
@@ -1739,7 +1909,8 @@ interface ApiInterface
      * @param Req\UpgradeGiftRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#upgradegift
+     *
+     * @see https://core.telegram.org/bots/api#upgradegift
      */
     public function upgradeGift(Req\UpgradeGiftRequest $request): Res\RawResponse;
 
@@ -1750,7 +1921,8 @@ interface ApiInterface
      * @param Req\TransferGiftRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#transfergift
+     *
+     * @see https://core.telegram.org/bots/api#transfergift
      */
     public function transferGift(Req\TransferGiftRequest $request): Res\RawResponse;
 
@@ -1761,7 +1933,8 @@ interface ApiInterface
      * @param Req\PostStoryRequest $request
      *
      * @return Res\PostStoryResponse
-     * @link https://core.telegram.org/bots/api#poststory
+     *
+     * @see https://core.telegram.org/bots/api#poststory
      */
     public function postStory(Req\PostStoryRequest $request): Res\PostStoryResponse;
 
@@ -1772,7 +1945,8 @@ interface ApiInterface
      * @param Req\EditStoryRequest $request
      *
      * @return Res\EditStoryResponse
-     * @link https://core.telegram.org/bots/api#editstory
+     *
+     * @see https://core.telegram.org/bots/api#editstory
      */
     public function editStory(Req\EditStoryRequest $request): Res\EditStoryResponse;
 
@@ -1783,7 +1957,8 @@ interface ApiInterface
      * @param Req\DeleteStoryRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletestory
+     *
+     * @see https://core.telegram.org/bots/api#deletestory
      */
     public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse;
 
@@ -1793,7 +1968,8 @@ interface ApiInterface
      * @param Req\SendChecklistRequest $request
      *
      * @return Res\SendChecklistResponse
-     * @link https://core.telegram.org/bots/api#sendchecklist
+     *
+     * @see https://core.telegram.org/bots/api#sendchecklist
      */
     public function sendChecklist(Req\SendChecklistRequest $request): Res\SendChecklistResponse;
 
@@ -1803,7 +1979,8 @@ interface ApiInterface
      * @param Req\EditMessageChecklistRequest $request
      *
      * @return Res\EditMessageChecklistResponse
-     * @link https://core.telegram.org/bots/api#editmessagechecklist
+     *
+     * @see https://core.telegram.org/bots/api#editmessagechecklist
      */
     public function editMessageChecklist(Req\EditMessageChecklistRequest $request): Res\EditMessageChecklistResponse;
 
@@ -1813,7 +1990,8 @@ interface ApiInterface
      * @param Req\GetMyStarBalanceRequest $request
      *
      * @return Res\GetMyStarBalanceResponse
-     * @link https://core.telegram.org/bots/api#getmystarbalance
+     *
+     * @see https://core.telegram.org/bots/api#getmystarbalance
      */
     public function getMyStarBalance(Req\GetMyStarBalanceRequest $request): Res\GetMyStarBalanceResponse;
 
@@ -1823,7 +2001,8 @@ interface ApiInterface
      * @param Req\GiftPremiumSubscriptionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#giftpremiumsubscription
+     *
+     * @see https://core.telegram.org/bots/api#giftpremiumsubscription
      */
     public function giftPremiumSubscription(Req\GiftPremiumSubscriptionRequest $request): Res\RawResponse;
 
@@ -1834,7 +2013,8 @@ interface ApiInterface
      * @param Req\ApproveSuggestedPostRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#approvesuggestedpost
+     *
+     * @see https://core.telegram.org/bots/api#approvesuggestedpost
      */
     public function approveSuggestedPost(Req\ApproveSuggestedPostRequest $request): Res\RawResponse;
 
@@ -1845,7 +2025,8 @@ interface ApiInterface
      * @param Req\DeclineSuggestedPostRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#declinesuggestedpost
+     *
+     * @see https://core.telegram.org/bots/api#declinesuggestedpost
      */
     public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): Res\RawResponse;
 
@@ -1855,7 +2036,8 @@ interface ApiInterface
      * @param Req\GetUserGiftsRequest $request
      *
      * @return Res\GetUserGiftsResponse
-     * @link https://core.telegram.org/bots/api#getusergifts
+     *
+     * @see https://core.telegram.org/bots/api#getusergifts
      */
     public function getUserGifts(Req\GetUserGiftsRequest $request): Res\GetUserGiftsResponse;
 
@@ -1865,7 +2047,8 @@ interface ApiInterface
      * @param Req\GetChatGiftsRequest $request
      *
      * @return Res\GetChatGiftsResponse
-     * @link https://core.telegram.org/bots/api#getchatgifts
+     *
+     * @see https://core.telegram.org/bots/api#getchatgifts
      */
     public function getChatGifts(Req\GetChatGiftsRequest $request): Res\GetChatGiftsResponse;
 
@@ -1877,7 +2060,8 @@ interface ApiInterface
      * @param Req\RepostStoryRequest $request
      *
      * @return Res\RepostStoryResponse
-     * @link https://core.telegram.org/bots/api#repoststory
+     *
+     * @see https://core.telegram.org/bots/api#repoststory
      */
     public function repostStory(Req\RepostStoryRequest $request): Res\RepostStoryResponse;
 
@@ -1887,7 +2071,8 @@ interface ApiInterface
      * @param Req\GetUserProfileAudiosRequest $request
      *
      * @return Res\GetUserProfileAudiosResponse
-     * @link https://core.telegram.org/bots/api#getuserprofileaudios
+     *
+     * @see https://core.telegram.org/bots/api#getuserprofileaudios
      */
     public function getUserProfileAudios(Req\GetUserProfileAudiosRequest $request): Res\GetUserProfileAudiosResponse;
 
@@ -1897,7 +2082,8 @@ interface ApiInterface
      * @param Req\SetMyProfilePhotoRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmyprofilephoto
+     *
+     * @see https://core.telegram.org/bots/api#setmyprofilephoto
      */
     public function setMyProfilePhoto(Req\SetMyProfilePhotoRequest $request): Res\RawResponse;
 
@@ -1905,7 +2091,8 @@ interface ApiInterface
      * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#removemyprofilephoto
+     *
+     * @see https://core.telegram.org/bots/api#removemyprofilephoto
      */
     public function removeMyProfilePhoto(): Res\RawResponse;
 
@@ -1916,7 +2103,8 @@ interface ApiInterface
      * @param Req\SetChatMemberTagRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setchatmembertag
+     *
+     * @see https://core.telegram.org/bots/api#setchatmembertag
      */
     public function setChatMemberTag(Req\SetChatMemberTagRequest $request): Res\RawResponse;
 
@@ -1926,7 +2114,8 @@ interface ApiInterface
      * @param Req\GetManagedBotTokenRequest $request
      *
      * @return Res\GetManagedBotTokenResponse
-     * @link https://core.telegram.org/bots/api#getmanagedbottoken
+     *
+     * @see https://core.telegram.org/bots/api#getmanagedbottoken
      */
     public function getManagedBotToken(Req\GetManagedBotTokenRequest $request): Res\GetManagedBotTokenResponse;
 
@@ -1936,7 +2125,8 @@ interface ApiInterface
      * @param Req\ReplaceManagedBotTokenRequest $request
      *
      * @return Res\ReplaceManagedBotTokenResponse
-     * @link https://core.telegram.org/bots/api#replacemanagedbottoken
+     *
+     * @see https://core.telegram.org/bots/api#replacemanagedbottoken
      */
     public function replaceManagedBotToken(Req\ReplaceManagedBotTokenRequest $request): Res\ReplaceManagedBotTokenResponse;
 
@@ -1946,7 +2136,8 @@ interface ApiInterface
      * @param Req\SavePreparedKeyboardButtonRequest $request
      *
      * @return Res\SavePreparedKeyboardButtonResponse
-     * @link https://core.telegram.org/bots/api#savepreparedkeyboardbutton
+     *
+     * @see https://core.telegram.org/bots/api#savepreparedkeyboardbutton
      */
     public function savePreparedKeyboardButton(Req\SavePreparedKeyboardButtonRequest $request): Res\SavePreparedKeyboardButtonResponse;
 
@@ -1956,7 +2147,8 @@ interface ApiInterface
      * @param Req\SendLivePhotoRequest $request
      *
      * @return Res\SendLivePhotoResponse
-     * @link https://core.telegram.org/bots/api#sendlivephoto
+     *
+     * @see https://core.telegram.org/bots/api#sendlivephoto
      */
     public function sendLivePhoto(Req\SendLivePhotoRequest $request): Res\SendLivePhotoResponse;
 
@@ -1967,7 +2159,8 @@ interface ApiInterface
      * @param Req\GetUserPersonalChatMessagesRequest $request
      *
      * @return Res\GetUserPersonalChatMessagesResponse
-     * @link https://core.telegram.org/bots/api#getuserpersonalchatmessages
+     *
+     * @see https://core.telegram.org/bots/api#getuserpersonalchatmessages
      */
     public function getUserPersonalChatMessages(Req\GetUserPersonalChatMessagesRequest $request): Res\GetUserPersonalChatMessagesResponse;
 
@@ -1977,7 +2170,8 @@ interface ApiInterface
      * @param Req\AnswerGuestQueryRequest $request
      *
      * @return Res\AnswerGuestQueryResponse
-     * @link https://core.telegram.org/bots/api#answerguestquery
+     *
+     * @see https://core.telegram.org/bots/api#answerguestquery
      */
     public function answerGuestQuery(Req\AnswerGuestQueryRequest $request): Res\AnswerGuestQueryResponse;
 
@@ -1987,7 +2181,8 @@ interface ApiInterface
      * @param Req\GetManagedBotAccessSettingsRequest $request
      *
      * @return Res\GetManagedBotAccessSettingsResponse
-     * @link https://core.telegram.org/bots/api#getmanagedbotaccesssettings
+     *
+     * @see https://core.telegram.org/bots/api#getmanagedbotaccesssettings
      */
     public function getManagedBotAccessSettings(Req\GetManagedBotAccessSettingsRequest $request): Res\GetManagedBotAccessSettingsResponse;
 
@@ -1997,7 +2192,8 @@ interface ApiInterface
      * @param Req\SetManagedBotAccessSettingsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#setmanagedbotaccesssettings
+     *
+     * @see https://core.telegram.org/bots/api#setmanagedbotaccesssettings
      */
     public function setManagedBotAccessSettings(Req\SetManagedBotAccessSettingsRequest $request): Res\RawResponse;
 
@@ -2008,7 +2204,8 @@ interface ApiInterface
      * @param Req\DeleteMessageReactionRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deletemessagereaction
+     *
+     * @see https://core.telegram.org/bots/api#deletemessagereaction
      */
     public function deleteMessageReaction(Req\DeleteMessageReactionRequest $request): Res\RawResponse;
 
@@ -2019,29 +2216,30 @@ interface ApiInterface
      * @param Req\DeleteAllMessageReactionsRequest $request
      *
      * @return Res\RawResponse
-     * @link https://core.telegram.org/bots/api#deleteallmessagereactions
+     *
+     * @see https://core.telegram.org/bots/api#deleteallmessagereactions
      */
     public function deleteAllMessageReactions(Req\DeleteAllMessageReactionsRequest $request): Res\RawResponse;
 
     /**
-     * Download file to specific dir
+     * Download file to specific dir.
      *
      * @param Ent\File $file
-     * @param Fs\Dir $targetDir
-     * @param bool $overwrite
+     * @param Fs\Dir   $targetDir
+     * @param bool     $overwrite
      *
      * @return bool
      */
     public function downloadFileToDir(Ent\File $file, Fs\Dir $targetDir, bool $overwrite): bool;
 
     /**
-     * Download file by id to specific dir
+     * Download file by id to specific dir.
      *
-     * @param string $fileId
-     * @param Fs\Dir $targetDir
-     * @param bool $overwrite
+     * @param string               $fileId
+     * @param Fs\Dir               $targetDir
+     * @param bool                 $overwrite
      * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
-     *  you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *                                              you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
      *
      * @return bool
      */
@@ -2049,17 +2247,17 @@ interface ApiInterface
         string $fileId,
         Fs\Dir $targetDir,
         bool $overwrite = false,
-        ?Res\GetFileResponse &$getFileResponse = null,
+        ?GetFileResponse &$getFileResponse = null,
     ): bool;
 
     /**
-     * Download file by id to specific path
+     * Download file by id to specific path.
      *
-     * @param string $fileId
-     * @param Fs\File $targetFile
-     * @param bool $overwrite
+     * @param string               $fileId
+     * @param Fs\File              $targetFile
+     * @param bool                 $overwrite
      * @param GetFileResponse|null $getFileResponse getFile response from Telegram,
-     * you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
+     *                                              you can check errors of downloading file from Telegram in this response (if we can`t download file from Telegram)
      *
      * @return bool
      */
@@ -2067,17 +2265,18 @@ interface ApiInterface
         string $fileId,
         Fs\File $targetFile,
         bool $overwrite,
-        ?Res\GetFileResponse &$getFileResponse = null,
+        ?GetFileResponse &$getFileResponse = null,
     ): bool;
 
     /**
-     * Download file to specific path
+     * Download file to specific path.
      *
      * @param Ent\File $file
-     * @param Fs\File $targetFile
-     * @param bool $overwrite
+     * @param Fs\File  $targetFile
+     * @param bool     $overwrite
      *
      * @return bool
      */
     public function downloadFile(Ent\File $file, Fs\File $targetFile, bool $overwrite): bool;
 }
+// endregion INTERFACE_ApiInterface

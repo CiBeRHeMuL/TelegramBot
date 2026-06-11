@@ -4,15 +4,31 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#declinesuggestedpost
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API declineSuggestedPost method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#declinesuggestedpost
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Decline, Suggested, Post
+// STRUCTURE: ▶ ┌chat_id + message_id + comment┐ → ◇ construct → ⊕ → ∑ ⟦DeclineSuggestedPostRequest⟧
+
+// region CLASS_DeclineSuggestedPostRequest
+/**
+ * @see https://core.telegram.org/bots/api#declinesuggestedpost
  */
 class DeclineSuggestedPostRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target direct messages chat
-     * @param int $message_id Identifier of a suggested post message to decline
-     * @param string|null $comment Comment for the creator of the suggested post; 0-128 characters
+     * @param ChatId      $chat_id    Unique identifier for the target direct messages chat
+     * @param int         $message_id Identifier of a suggested post message to decline
+     * @param string|null $comment    Comment for the creator of the suggested post; 0-128 characters
      */
     public function __construct(
         private ChatId $chat_id,
@@ -28,6 +44,7 @@ class DeclineSuggestedPostRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): DeclineSuggestedPostRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -39,6 +56,7 @@ class DeclineSuggestedPostRequest implements RequestInterface
     public function setMessageId(int $message_id): DeclineSuggestedPostRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -50,6 +68,8 @@ class DeclineSuggestedPostRequest implements RequestInterface
     public function setComment(?string $comment): DeclineSuggestedPostRequest
     {
         $this->comment = $comment;
+
         return $this;
     }
 }
+// endregion CLASS_DeclineSuggestedPostRequest

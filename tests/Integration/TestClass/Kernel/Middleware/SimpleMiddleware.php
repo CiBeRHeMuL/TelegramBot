@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\Kernel\Response\Response;
 class SimpleMiddleware implements MiddlewareInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function process(Request $request, RequestHandlerInterface $handler): Response
     {
@@ -18,6 +18,7 @@ class SimpleMiddleware implements MiddlewareInterface
         if ($response->has('count')) {
             return $response->withAttribute('count', $response->get('count') + 1);
         }
+
         return $response->withAttribute('count', 1);
     }
 }

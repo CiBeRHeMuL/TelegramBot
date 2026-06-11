@@ -4,21 +4,35 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes a task in a checklist.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#checklist_task
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChecklistTask, Telegram, Bot API, DTO, checklist_task
+// STRUCTURE: ▶ ┌id,text,completed_by_user,completion_date┐ → ∑ ChecklistTask
+// region CLASS_ChecklistTask
+
 /**
  * Describes a task in a checklist.
  *
- * @link https://core.telegram.org/bots/api#checklisttask
+ * @see https://core.telegram.org/bots/api#checklisttask
  */
 final class ChecklistTask implements EntityInterface
 {
     /**
-     * @param int $id Unique identifier of the task
-     * @param string $text Text of the task
-     * @param User|null $completed_by_user Optional. User that completed the task; omitted if the task wasn't completed by a user
-     * @param int|null $completion_date Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't
-     * completed
-     * @param MessageEntity[]|null $text_entities Optional. Special entities that appear in the task text
-     * @param Chat|null $completed_by_chat Optional. Chat that completed the task; omitted if the task wasn't completed by a chat
+     * @param int                  $id                Unique identifier of the task
+     * @param string               $text              Text of the task
+     * @param User|null            $completed_by_user Optional. User that completed the task; omitted if the task wasn't completed by a user
+     * @param int|null             $completion_date   Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't
+     *                                                completed
+     * @param MessageEntity[]|null $text_entities     Optional. Special entities that appear in the task text
+     * @param Chat|null            $completed_by_chat Optional. Chat that completed the task; omitted if the task wasn't completed by a chat
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#user User
@@ -50,6 +64,7 @@ final class ChecklistTask implements EntityInterface
     public function setId(int $id): ChecklistTask
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -69,6 +84,7 @@ final class ChecklistTask implements EntityInterface
     public function setText(string $text): ChecklistTask
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -88,6 +104,7 @@ final class ChecklistTask implements EntityInterface
     public function setCompletedByUser(?User $completed_by_user): ChecklistTask
     {
         $this->completed_by_user = $completed_by_user;
+
         return $this;
     }
 
@@ -107,6 +124,7 @@ final class ChecklistTask implements EntityInterface
     public function setCompletionDate(?int $completion_date): ChecklistTask
     {
         $this->completion_date = $completion_date;
+
         return $this;
     }
 
@@ -126,6 +144,7 @@ final class ChecklistTask implements EntityInterface
     public function setTextEntities(?array $text_entities): ChecklistTask
     {
         $this->text_entities = $text_entities;
+
         return $this;
     }
 
@@ -145,6 +164,8 @@ final class ChecklistTask implements EntityInterface
     public function setCompletedByChat(?Chat $completed_by_chat): ChecklistTask
     {
         $this->completed_by_chat = $completed_by_chat;
+
         return $this;
     }
 }
+// endregion CLASS_ChecklistTask

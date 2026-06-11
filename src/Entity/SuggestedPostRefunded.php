@@ -4,19 +4,33 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\SuggestedPostRefundedReasonEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a refunded suggested post payment.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostrefunded
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: SuggestedPostRefunded, Telegram, Bot API, DTO, suggestedpostrefunded
+// STRUCTURE: ▶ ┌...┐ → ∑ refund
+// region CLASS_SuggestedPostRefunded
+
 /**
  * Describes a service message about a payment refund for a suggested post.
  *
- * @link https://core.telegram.org/bots/api#suggestedpostrefunded
+ * @see https://core.telegram.org/bots/api#suggestedpostrefunded
  */
 final class SuggestedPostRefunded implements EntityInterface
 {
     /**
-     * @param SuggestedPostRefundedReasonEnum $reason Reason for the refund. Currently, one of “post_deleted” if the post was
-     * deleted within 24 hours of being posted or removed from scheduled messages without being posted, or “payment_refunded”
-     * if the payer refunded their payment.
-     * @param Message|null $suggested_post_message Optional. Message containing the suggested post. Note that the Message object
-     * in this field will not contain the reply_to_message field even if it itself is a reply.
+     * @param SuggestedPostRefundedReasonEnum $reason                 Reason for the refund. Currently, one of “post_deleted” if the post was
+     *                                                                deleted within 24 hours of being posted or removed from scheduled messages without being posted, or “payment_refunded”
+     *                                                                if the payer refunded their payment.
+     * @param Message|null                    $suggested_post_message Optional. Message containing the suggested post. Note that the Message object
+     *                                                                in this field will not contain the reply_to_message field even if it itself is a reply.
      *
      * @see https://core.telegram.org/bots/api#message Message
      */
@@ -41,6 +55,7 @@ final class SuggestedPostRefunded implements EntityInterface
     public function setReason(SuggestedPostRefundedReasonEnum $reason): SuggestedPostRefunded
     {
         $this->reason = $reason;
+
         return $this;
     }
 
@@ -60,6 +75,9 @@ final class SuggestedPostRefunded implements EntityInterface
     public function setSuggestedPostMessage(?Message $suggested_post_message): SuggestedPostRefunded
     {
         $this->suggested_post_message = $suggested_post_message;
+
         return $this;
     }
 }
+
+// endregion CLASS_SuggestedPostRefunded

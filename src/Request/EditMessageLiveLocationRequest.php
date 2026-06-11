@@ -5,29 +5,45 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#editmessagelivelocation
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API editMessageLiveLocation method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#editmessagelivelocation
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Message, Live, Location
+// STRUCTURE: ▶ ┌latitude + longitude + chat_id + heading + horizontal_accuracy┐ → ◇ construct → ⊕ → ∑ ⟦EditMessageLiveLocationRequest⟧
+
+// region CLASS_EditMessageLiveLocationRequest
+/**
+ * @see https://core.telegram.org/bots/api#editmessagelivelocation
  */
 class EditMessageLiveLocationRequest implements RequestInterface
 {
     /**
-     * @param float $latitude Latitude of new location
-     * @param float $longitude Longitude of new location
-     * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username
-     * of the target bot, supergroup or channel in the format \@username.
-     * @param int|null $heading Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-     * @param float|null $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
-     * @param int|null $live_period New period in seconds during which the location can be updated, starting from the message send
-     * date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current
-     * live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified,
-     * then live_period remains unchanged
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param int|null $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in
-     * meters. Must be between 1 and 100000 if specified.
-     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
-     * be edited was sent
+     * @param float                     $latitude               Latitude of new location
+     * @param float                     $longitude              Longitude of new location
+     * @param ChatId|null               $chat_id                Required if inline_message_id is not specified. Unique identifier for the target chat or username
+     *                                                          of the target bot, supergroup or channel in the format \@username.
+     * @param int|null                  $heading                Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+     * @param float|null                $horizontal_accuracy    The radius of uncertainty for the location, measured in meters; 0-1500
+     * @param string|null               $inline_message_id      Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null                  $live_period            New period in seconds during which the location can be updated, starting from the message send
+     *                                                          date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current
+     *                                                          live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified,
+     *                                                          then live_period remains unchanged
+     * @param int|null                  $message_id             Required if inline_message_id is not specified. Identifier of the message to edit
+     * @param int|null                  $proximity_alert_radius The maximum distance for proximity alerts about approaching another chat member, in
+     *                                                          meters. Must be between 1 and 100000 if specified.
+     * @param InlineKeyboardMarkup|null $reply_markup           a JSON-serialized object for a new inline keyboard
+     * @param string|null               $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     *                                                          be edited was sent
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
@@ -54,6 +70,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setLatitude(float $latitude): EditMessageLiveLocationRequest
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -65,6 +82,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setLongitude(float $longitude): EditMessageLiveLocationRequest
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -76,6 +94,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setChatId(?ChatId $chat_id): EditMessageLiveLocationRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -87,6 +106,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setHeading(?int $heading): EditMessageLiveLocationRequest
     {
         $this->heading = $heading;
+
         return $this;
     }
 
@@ -98,6 +118,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setHorizontalAccuracy(?float $horizontal_accuracy): EditMessageLiveLocationRequest
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
+
         return $this;
     }
 
@@ -109,6 +130,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setInlineMessageId(?string $inline_message_id): EditMessageLiveLocationRequest
     {
         $this->inline_message_id = $inline_message_id;
+
         return $this;
     }
 
@@ -120,6 +142,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setLivePeriod(?int $live_period): EditMessageLiveLocationRequest
     {
         $this->live_period = $live_period;
+
         return $this;
     }
 
@@ -131,6 +154,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setMessageId(?int $message_id): EditMessageLiveLocationRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -142,6 +166,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setProximityAlertRadius(?int $proximity_alert_radius): EditMessageLiveLocationRequest
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
+
         return $this;
     }
 
@@ -153,6 +178,7 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageLiveLocationRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -164,6 +190,8 @@ class EditMessageLiveLocationRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): EditMessageLiveLocationRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 }
+// endregion CLASS_EditMessageLiveLocationRequest

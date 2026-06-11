@@ -7,19 +7,33 @@ use Psr\Http\Message\StreamInterface;
 use Random\RandomException;
 use Throwable;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): Stream; TECH(9): Multipart]
+/**
+ * @moduleContract
+ * @purpose Implement a PSR-7 StreamInterface for multipart/form-data bodies, used for Telegram file uploads.
+ *
+ * @sees USES_API(8): Psr\Http\Message\StreamInterface, MimeType, AppendStream
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: MultipartStream, multipart form-data, file upload, PSR-7, stream
+// STRUCTURE: ┌elements[] + boundary┐ → ○ createStream: build AppendStream with headers + body + trailing boundary for each element → ○ delegate PSR-7 methods to inner stream
+
+// region CLASS_MultipartStream
 class MultipartStream implements StreamInterface
 {
     private string $boundary;
     private StreamInterface $stream;
 
     /**
-     * @param array $elements Array of associative arrays, each containing a
-     * required "name" key mapping to the form field,
-     * name, a required "contents" key mapping to a
-     * StreamInterface/resource/string, an optional
-     * "headers" associative array of custom headers,
-     * and an optional "filename" key mapping to a
-     * string to send as the filename in the part.
+     * @param array       $elements array of associative arrays, each containing a
+     *                              required "name" key mapping to the form field,
+     *                              name, a required "contents" key mapping to a
+     *                              StreamInterface/resource/string, an optional
+     *                              "headers" associative array of custom headers,
+     *                              and an optional "filename" key mapping to a
+     *                              string to send as the filename in the part
      * @param string|null $boundary You can optionally provide a specific boundary
      *
      * @throws RandomException
@@ -42,6 +56,7 @@ class MultipartStream implements StreamInterface
 
     /**
      * @return string
+     *
      * @throws Throwable
      */
     public function __toString(): string
@@ -53,7 +68,7 @@ class MultipartStream implements StreamInterface
 
             return $this->getContents();
         } catch (Throwable $e) {
-            if (PHP_VERSION_ID >= 70400) {
+            if (PHP_VERSION_ID >= 70_400) {
                 throw $e;
             }
             trigger_error(sprintf('%s::__toString exception: %s', self::class, $e), E_USER_ERROR);
@@ -221,3 +236,4 @@ class MultipartStream implements StreamInterface
         return null;
     }
 }
+// endregion CLASS_MultipartStream

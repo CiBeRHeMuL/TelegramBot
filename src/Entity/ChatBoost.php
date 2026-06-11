@@ -2,19 +2,33 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object contains information about a chat boost.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_boost
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatBoost, Telegram, Bot API, DTO, chat_boost
+// STRUCTURE: ▶ ┌boost_id,add_date,expiration_date,source┐ → ∑ ChatBoost
+// region CLASS_ChatBoost
+
 /**
  * This object contains information about a chat boost.
  *
- * @link https://core.telegram.org/bots/api#chatboost
+ * @see https://core.telegram.org/bots/api#chatboost
  */
 final class ChatBoost implements EntityInterface
 {
     /**
-     * @param string $boost_id Unique identifier of the boost
-     * @param int $add_date Point in time (Unix timestamp) when the chat was boosted
-     * @param int $expiration_date Point in time (Unix timestamp) when the boost will automatically expire, unless the booster's
-     * Telegram Premium subscription is prolonged
-     * @param AbstractChatBoostSource $source Source of the added boost
+     * @param string                  $boost_id        Unique identifier of the boost
+     * @param int                     $add_date        Point in time (Unix timestamp) when the chat was boosted
+     * @param int                     $expiration_date Point in time (Unix timestamp) when the boost will automatically expire, unless the booster's
+     *                                                 Telegram Premium subscription is prolonged
+     * @param AbstractChatBoostSource $source          Source of the added boost
      *
      * @see https://core.telegram.org/bots/api#chatboostsource ChatBoostSource
      */
@@ -41,6 +55,7 @@ final class ChatBoost implements EntityInterface
     public function setBoostId(string $boost_id): ChatBoost
     {
         $this->boost_id = $boost_id;
+
         return $this;
     }
 
@@ -60,6 +75,7 @@ final class ChatBoost implements EntityInterface
     public function setAddDate(int $add_date): ChatBoost
     {
         $this->add_date = $add_date;
+
         return $this;
     }
 
@@ -79,6 +95,7 @@ final class ChatBoost implements EntityInterface
     public function setExpirationDate(int $expiration_date): ChatBoost
     {
         $this->expiration_date = $expiration_date;
+
         return $this;
     }
 
@@ -98,6 +115,8 @@ final class ChatBoost implements EntityInterface
     public function setSource(AbstractChatBoostSource $source): ChatBoost
     {
         $this->source = $source;
+
         return $this;
     }
 }
+// endregion CLASS_ChatBoost

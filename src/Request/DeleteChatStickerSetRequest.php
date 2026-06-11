@@ -4,8 +4,24 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#deletechatstickerset
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API deleteChatStickerSet method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#deletechatstickerset
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Delete, Chat, Sticker, Set
+// STRUCTURE: ▶ ┌chat_id┐ → ◇ construct → ⊕ → ∑ ⟦DeleteChatStickerSetRequest⟧
+
+// region CLASS_DeleteChatStickerSetRequest
+/**
+ * @see https://core.telegram.org/bots/api#deletechatstickerset
  */
 class DeleteChatStickerSetRequest implements RequestInterface
 {
@@ -24,6 +40,8 @@ class DeleteChatStickerSetRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): DeleteChatStickerSetRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 }
+// endregion CLASS_DeleteChatStickerSetRequest

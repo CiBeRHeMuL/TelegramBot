@@ -4,21 +4,37 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setgamescore
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setGameScore method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setgamescore
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Game, Score
+// STRUCTURE: ▶ ┌score + user_id + chat_id + disable_edit_message + force┐ → ◇ construct → ⊕ → ∑ ⟦SetGameScoreRequest⟧
+
+// region CLASS_SetGameScoreRequest
+/**
+ * @see https://core.telegram.org/bots/api#setgamescore
  */
 class SetGameScoreRequest implements RequestInterface
 {
     /**
-     * @param int $score New score, must be non-negative
-     * @param int $user_id User identifier
-     * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat
-     * @param bool|null $disable_edit_message Pass True if the game message should not be automatically edited to include the current
-     * scoreboard
-     * @param bool|null $force Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning
-     * cheaters
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the sent message
+     * @param int         $score                New score, must be non-negative
+     * @param int         $user_id              User identifier
+     * @param ChatId|null $chat_id              Required if inline_message_id is not specified. Unique identifier for the target chat
+     * @param bool|null   $disable_edit_message Pass True if the game message should not be automatically edited to include the current
+     *                                          scoreboard
+     * @param bool|null   $force                Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning
+     *                                          cheaters
+     * @param string|null $inline_message_id    Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null    $message_id           Required if inline_message_id is not specified. Identifier of the sent message
      */
     public function __construct(
         private int $score,
@@ -38,6 +54,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setScore(int $score): SetGameScoreRequest
     {
         $this->score = $score;
+
         return $this;
     }
 
@@ -49,6 +66,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setUserId(int $user_id): SetGameScoreRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -60,6 +78,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setChatId(?ChatId $chat_id): SetGameScoreRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -71,6 +90,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setDisableEditMessage(?bool $disable_edit_message): SetGameScoreRequest
     {
         $this->disable_edit_message = $disable_edit_message;
+
         return $this;
     }
 
@@ -82,6 +102,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setForce(?bool $force): SetGameScoreRequest
     {
         $this->force = $force;
+
         return $this;
     }
 
@@ -93,6 +114,7 @@ class SetGameScoreRequest implements RequestInterface
     public function setInlineMessageId(?string $inline_message_id): SetGameScoreRequest
     {
         $this->inline_message_id = $inline_message_id;
+
         return $this;
     }
 
@@ -104,6 +126,8 @@ class SetGameScoreRequest implements RequestInterface
     public function setMessageId(?int $message_id): SetGameScoreRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 }
+// endregion CLASS_SetGameScoreRequest

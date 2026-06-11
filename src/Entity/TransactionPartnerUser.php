@@ -8,33 +8,47 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 use AndrewGos\TelegramBot\Enum\TransactionTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a transaction partner that is a user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#transactionpartneruser
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: TransactionPartnerUser, Telegram, Bot API, DTO, transactionpartneruser
+// STRUCTURE: ▶ ┌type,user,gift/paid_media...┐ → ∑ partner
+// region CLASS_TransactionPartnerUser
+
 /**
  * Describes a transaction with a user.
  *
- * @link https://core.telegram.org/bots/api#transactionpartneruser
+ * @see https://core.telegram.org/bots/api#transactionpartneruser
  */
 #[BuildIf(new FieldIsChecker('type', TransactionPartnerTypeEnum::User->value))]
 final class TransactionPartnerUser extends AbstractTransactionPartner
 {
     /**
-     * @param User $user Information about the user
-     * @param TransactionTypeEnum $transaction_type Type of the transaction, currently one of “invoice_payment” for payments
-     * via invoices, “paid_media_payment” for payments for paid media, “gift_purchase” for gifts sent by the bot, “premium_purchase”
-     * for Telegram Premium subscriptions gifted by the bot, “business_account_transfer” for direct transfers from managed business
-     * accounts
-     * @param string|null $invoice_payload Optional. Bot-specified invoice payload. Can be available only for “invoice_payment”
-     * transactions.
-     * @param AbstractPaidMedia[]|null $paid_media Optional. Information about the paid media bought by the user; for “paid_media_payment”
-     * transactions only
-     * @param string|null $paid_media_payload Optional. Bot-specified paid media payload. Can be available only for “paid_media_payment”
-     * transactions.
-     * @param int|null $subscription_period Optional. The duration of the paid subscription. Can be available only for “invoice_payment”
-     * transactions.
-     * @param Gift|null $gift Optional. The gift sent to the user by the bot; for “gift_purchase” transactions only
-     * @param AffiliateInfo|null $affiliate Optional. Information about the affiliate that received a commission via this transaction.
-     * Can be available only for “invoice_payment” and “paid_media_payment” transactions.
-     * @param int|null $premium_subscription_duration Optional. Number of months the gifted Telegram Premium subscription will be
-     * active for; for “premium_purchase” transactions only
+     * @param User                     $user                          Information about the user
+     * @param TransactionTypeEnum      $transaction_type              Type of the transaction, currently one of “invoice_payment” for payments
+     *                                                                via invoices, “paid_media_payment” for payments for paid media, “gift_purchase” for gifts sent by the bot, “premium_purchase”
+     *                                                                for Telegram Premium subscriptions gifted by the bot, “business_account_transfer” for direct transfers from managed business
+     *                                                                accounts
+     * @param string|null              $invoice_payload               Optional. Bot-specified invoice payload. Can be available only for “invoice_payment”
+     *                                                                transactions.
+     * @param AbstractPaidMedia[]|null $paid_media                    Optional. Information about the paid media bought by the user; for “paid_media_payment”
+     *                                                                transactions only
+     * @param string|null              $paid_media_payload            Optional. Bot-specified paid media payload. Can be available only for “paid_media_payment”
+     *                                                                transactions.
+     * @param int|null                 $subscription_period           Optional. The duration of the paid subscription. Can be available only for “invoice_payment”
+     *                                                                transactions.
+     * @param Gift|null                $gift                          Optional. The gift sent to the user by the bot; for “gift_purchase” transactions only
+     * @param AffiliateInfo|null       $affiliate                     Optional. Information about the affiliate that received a commission via this transaction.
+     *                                                                Can be available only for “invoice_payment” and “paid_media_payment” transactions.
+     * @param int|null                 $premium_subscription_duration Optional. Number of months the gifted Telegram Premium subscription will be
+     *                                                                active for; for “premium_purchase” transactions only
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#affiliateinfo AffiliateInfo
@@ -72,6 +86,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setUser(User $user): TransactionPartnerUser
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -91,6 +106,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setTransactionType(TransactionTypeEnum $transaction_type): TransactionPartnerUser
     {
         $this->transaction_type = $transaction_type;
+
         return $this;
     }
 
@@ -110,6 +126,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setInvoicePayload(?string $invoice_payload): TransactionPartnerUser
     {
         $this->invoice_payload = $invoice_payload;
+
         return $this;
     }
 
@@ -129,6 +146,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setPaidMedia(?array $paid_media): TransactionPartnerUser
     {
         $this->paid_media = $paid_media;
+
         return $this;
     }
 
@@ -148,6 +166,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setPaidMediaPayload(?string $paid_media_payload): TransactionPartnerUser
     {
         $this->paid_media_payload = $paid_media_payload;
+
         return $this;
     }
 
@@ -167,6 +186,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setSubscriptionPeriod(?int $subscription_period): TransactionPartnerUser
     {
         $this->subscription_period = $subscription_period;
+
         return $this;
     }
 
@@ -186,6 +206,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setGift(?Gift $gift): TransactionPartnerUser
     {
         $this->gift = $gift;
+
         return $this;
     }
 
@@ -205,6 +226,7 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setAffiliate(?AffiliateInfo $affiliate): TransactionPartnerUser
     {
         $this->affiliate = $affiliate;
+
         return $this;
     }
 
@@ -224,6 +246,9 @@ final class TransactionPartnerUser extends AbstractTransactionPartner
     public function setPremiumSubscriptionDuration(?int $premium_subscription_duration): TransactionPartnerUser
     {
         $this->premium_subscription_duration = $premium_subscription_duration;
+
         return $this;
     }
 }
+
+// endregion CLASS_TransactionPartnerUser

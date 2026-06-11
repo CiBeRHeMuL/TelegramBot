@@ -5,21 +5,37 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\ChatPermissions;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#restrictchatmember
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API restrictChatMember method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#restrictchatmember
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Restrict, Chat, Member
+// STRUCTURE: ▶ ┌chat_id + permissions + user_id + until_date + use_independent_chat_permissions┐ → ◇ construct → ⊕ → ∑ ⟦RestrictChatMemberRequest⟧
+
+// region CLASS_RestrictChatMemberRequest
+/**
+ * @see https://core.telegram.org/bots/api#restrictchatmember
  */
 class RestrictChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username
-     * @param ChatPermissions $permissions A JSON-serialized object for new user permissions
-     * @param int $user_id Unique identifier of the target user
-     * @param int|null $until_date Date when restrictions will be lifted for the user; Unix time. If user is restricted for more
-     * than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
-     * @param bool|null $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages
-     * and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos,
-     * can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the
-     * can_send_messages permission.
+     * @param ChatId          $chat_id                          Unique identifier for the target chat or username of the target supergroup in the format \@username
+     * @param ChatPermissions $permissions                      A JSON-serialized object for new user permissions
+     * @param int             $user_id                          Unique identifier of the target user
+     * @param int|null        $until_date                       Date when restrictions will be lifted for the user; Unix time. If user is restricted for more
+     *                                                          than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+     * @param bool|null       $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages
+     *                                                          and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos,
+     *                                                          can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the
+     *                                                          can_send_messages permission.
      *
      * @see https://core.telegram.org/bots/api#chatpermissions ChatPermissions
      */
@@ -39,6 +55,7 @@ class RestrictChatMemberRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): RestrictChatMemberRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -50,6 +67,7 @@ class RestrictChatMemberRequest implements RequestInterface
     public function setPermissions(ChatPermissions $permissions): RestrictChatMemberRequest
     {
         $this->permissions = $permissions;
+
         return $this;
     }
 
@@ -61,6 +79,7 @@ class RestrictChatMemberRequest implements RequestInterface
     public function setUserId(int $user_id): RestrictChatMemberRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -72,6 +91,7 @@ class RestrictChatMemberRequest implements RequestInterface
     public function setUntilDate(?int $until_date): RestrictChatMemberRequest
     {
         $this->until_date = $until_date;
+
         return $this;
     }
 
@@ -83,6 +103,8 @@ class RestrictChatMemberRequest implements RequestInterface
     public function setUseIndependentChatPermissions(?bool $use_independent_chat_permissions): RestrictChatMemberRequest
     {
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
+
         return $this;
     }
 }
+// endregion CLASS_RestrictChatMemberRequest

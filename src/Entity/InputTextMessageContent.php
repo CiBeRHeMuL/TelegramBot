@@ -8,22 +8,36 @@ use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the content of a text message to be sent as the result of an inline query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputtextmessagecontent
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputTextMessageContent, Telegram, Bot API, DTO, inputtextmessagecontent
+// STRUCTURE: ▶ ┌message_text┐ → ◇ parse_mode,entities,link_preview → ∑ content
+// region CLASS_InputTextMessageContent
+
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent content
- * @link https://core.telegram.org/bots/api#inputtextmessagecontent
+ * @see https://core.telegram.org/bots/api#inputtextmessagecontent
  */
 #[BuildIf(new FieldCompareChecker('message_text', null, CompareOperatorEnum::StrictNotEqual))]
 final class InputTextMessageContent implements EntityInterface
 {
     /**
-     * @param string $message_text Text of the message to be sent, 1-4096 characters
-     * @param MessageEntity[]|null $entities Optional. List of special entities that appear in message text, which can be specified
-     * instead of parse_mode
-     * @param LinkPreviewOptions|null $link_preview_options Optional. Link preview generation options for the message
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the message text. See formatting options
-     * for more details.
+     * @param string                     $message_text         Text of the message to be sent, 1-4096 characters
+     * @param MessageEntity[]|null       $entities             Optional. List of special entities that appear in message text, which can be specified
+     *                                                         instead of parse_mode
+     * @param LinkPreviewOptions|null    $link_preview_options Optional. Link preview generation options for the message
+     * @param TelegramParseModeEnum|null $parse_mode           Optional. Mode for parsing entities in the message text. See formatting options
+     *                                                         for more details.
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -53,6 +67,7 @@ final class InputTextMessageContent implements EntityInterface
     public function setMessageText(string $message_text): InputTextMessageContent
     {
         $this->message_text = $message_text;
+
         return $this;
     }
 
@@ -72,6 +87,7 @@ final class InputTextMessageContent implements EntityInterface
     public function setEntities(?array $entities): InputTextMessageContent
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -91,6 +107,7 @@ final class InputTextMessageContent implements EntityInterface
     public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): InputTextMessageContent
     {
         $this->link_preview_options = $link_preview_options;
+
         return $this;
     }
 
@@ -110,6 +127,9 @@ final class InputTextMessageContent implements EntityInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InputTextMessageContent
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputTextMessageContent

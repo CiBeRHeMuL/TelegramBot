@@ -4,25 +4,39 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a live photo (video+photo pair).
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#livephoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: LivePhoto, Telegram, Bot API, DTO, livephoto
+// STRUCTURE: ▶ ┌file_id,file_unique_id┐ → ◇ video_file_id,video_file_unique_id → ∑ LivePhoto
+// region CLASS_LivePhoto
+
 /**
  * This object represents a live photo.
  *
- * @link https://core.telegram.org/bots/api#livephoto
+ * @see https://core.telegram.org/bots/api#livephoto
  */
 final class LivePhoto implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for the video file which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for the video file which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param int $width Video width as defined by the sender
-     * @param int $height Video height as defined by the sender
-     * @param int $duration Duration of the video in seconds as defined by the sender
-     * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
-     * difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
-     * float type are safe for storing this value.
-     * @param string|null $mime_type Optional. MIME type of the file as defined by the sender
-     * @param PhotoSize[]|null $photo Optional. Available sizes of the corresponding static photo
+     * @param string           $file_id        Identifier for the video file which can be used to download or reuse the file
+     * @param string           $file_unique_id Unique identifier for the video file which is supposed to be the same over time and for different
+     *                                         bots. Can't be used to download or reuse the file.
+     * @param int              $width          Video width as defined by the sender
+     * @param int              $height         Video height as defined by the sender
+     * @param int              $duration       Duration of the video in seconds as defined by the sender
+     * @param int|null         $file_size      Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
+     *                                         difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
+     *                                         float type are safe for storing this value.
+     * @param string|null      $mime_type      Optional. MIME type of the file as defined by the sender
+     * @param PhotoSize[]|null $photo          Optional. Available sizes of the corresponding static photo
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -54,6 +68,7 @@ final class LivePhoto implements EntityInterface
     public function setFileId(string $file_id): LivePhoto
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -73,6 +88,7 @@ final class LivePhoto implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): LivePhoto
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -92,6 +108,7 @@ final class LivePhoto implements EntityInterface
     public function setWidth(int $width): LivePhoto
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -111,6 +128,7 @@ final class LivePhoto implements EntityInterface
     public function setHeight(int $height): LivePhoto
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -130,6 +148,7 @@ final class LivePhoto implements EntityInterface
     public function setDuration(int $duration): LivePhoto
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -149,6 +168,7 @@ final class LivePhoto implements EntityInterface
     public function setFileSize(?int $file_size): LivePhoto
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 
@@ -168,6 +188,7 @@ final class LivePhoto implements EntityInterface
     public function setMimeType(?string $mime_type): LivePhoto
     {
         $this->mime_type = $mime_type;
+
         return $this;
     }
 
@@ -187,6 +208,9 @@ final class LivePhoto implements EntityInterface
     public function setPhoto(?array $photo): LivePhoto
     {
         $this->photo = $photo;
+
         return $this;
     }
 }
+
+// endregion CLASS_LivePhoto

@@ -6,18 +6,32 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a story area type that contains a location.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypelocation
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: StoryAreaTypeLocation, Telegram, Bot API, DTO, storyareatypelocation
+// STRUCTURE: ▶ ┌type,latitude,longitude,address┐ → ∑ StoryAreaTypeLocation
+// region CLASS_StoryAreaTypeLocation
+
 /**
  * Describes a story area pointing to a location. Currently, a story can have up to 10 location areas.
  *
- * @link https://core.telegram.org/bots/api#storyareatypelocation
+ * @see https://core.telegram.org/bots/api#storyareatypelocation
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::Location->value))]
 final class StoryAreaTypeLocation extends AbstractStoryAreaType
 {
     /**
-     * @param float $latitude Location latitude in degrees
-     * @param float $longitude Location longitude in degrees
-     * @param LocationAddress|null $address Optional. Address of the location
+     * @param float                $latitude  Location latitude in degrees
+     * @param float                $longitude Location longitude in degrees
+     * @param LocationAddress|null $address   Optional. Address of the location
      *
      * @see https://core.telegram.org/bots/api#locationaddress LocationAddress
      */
@@ -45,6 +59,7 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     public function setLatitude(float $latitude): StoryAreaTypeLocation
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -64,6 +79,7 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     public function setLongitude(float $longitude): StoryAreaTypeLocation
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -83,6 +99,9 @@ final class StoryAreaTypeLocation extends AbstractStoryAreaType
     public function setAddress(?LocationAddress $address): StoryAreaTypeLocation
     {
         $this->address = $address;
+
         return $this;
     }
 }
+
+// endregion CLASS_StoryAreaTypeLocation

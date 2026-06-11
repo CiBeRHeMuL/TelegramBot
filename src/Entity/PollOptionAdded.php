@@ -4,19 +4,33 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a new poll option added.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#polloptionadded
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PollOptionAdded, Telegram, Bot API, DTO, polloptionadded
+// STRUCTURE: ▶ ┌option: PollOption┐ → ∑ PollOptionAdded
+// region CLASS_PollOptionAdded
+
 /**
  * Describes a service message about an option added to a poll.
  *
- * @link https://core.telegram.org/bots/api#polloptionadded
+ * @see https://core.telegram.org/bots/api#polloptionadded
  */
 final class PollOptionAdded implements EntityInterface
 {
     /**
-     * @param string $option_persistent_id Unique identifier of the added option
-     * @param string $option_text Option text
-     * @param MessageEntity[]|null $option_text_entities Optional. Special entities that appear in the option_text
-     * @param AbstractMaybeInaccessibleMessage|null $poll_message Optional. Message containing the poll to which the option was added,
-     * if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
+     * @param string                                $option_persistent_id Unique identifier of the added option
+     * @param string                                $option_text          Option text
+     * @param MessageEntity[]|null                  $option_text_entities Optional. Special entities that appear in the option_text
+     * @param AbstractMaybeInaccessibleMessage|null $poll_message         Optional. Message containing the poll to which the option was added,
+     *                                                                    if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
      *
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#message Message
@@ -46,6 +60,7 @@ final class PollOptionAdded implements EntityInterface
     public function setOptionPersistentId(string $option_persistent_id): PollOptionAdded
     {
         $this->option_persistent_id = $option_persistent_id;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class PollOptionAdded implements EntityInterface
     public function setOptionText(string $option_text): PollOptionAdded
     {
         $this->option_text = $option_text;
+
         return $this;
     }
 
@@ -84,6 +100,7 @@ final class PollOptionAdded implements EntityInterface
     public function setOptionTextEntities(?array $option_text_entities): PollOptionAdded
     {
         $this->option_text_entities = $option_text_entities;
+
         return $this;
     }
 
@@ -103,6 +120,9 @@ final class PollOptionAdded implements EntityInterface
     public function setPollMessage(?AbstractMaybeInaccessibleMessage $poll_message): PollOptionAdded
     {
         $this->poll_message = $poll_message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PollOptionAdded

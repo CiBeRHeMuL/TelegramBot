@@ -10,3 +10,6 @@ local
 
 .php-cs-fixer.cache
 .php-cs-fixer.php
+
+/.kilocode
+/.kilo

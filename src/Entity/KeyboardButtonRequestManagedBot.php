@@ -2,18 +2,32 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a request to select a managed bot via a keyboard button.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: KeyboardButtonRequestManagedBot, Telegram, Bot API, DTO, keyboardbuttonrequestmanagedbot
+// STRUCTURE: ▶ ┌request_id┐ → ◇ bot_username → ∑ request
+// region CLASS_KeyboardButtonRequestManagedBot
+
 /**
  * This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with
  * the bot using the update managed_bot and a Message with the field managed_bot_created.
  *
  * @see https://core.telegram.org/bots/api#message Message
- * @link https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
+ * @see https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
  */
 final class KeyboardButtonRequestManagedBot implements EntityInterface
 {
     /**
-     * @param int $request_id Signed 32-bit identifier of the request. Must be unique within the message
-     * @param string|null $suggested_name Optional. Suggested name for the bot
+     * @param int         $request_id         Signed 32-bit identifier of the request. Must be unique within the message
+     * @param string|null $suggested_name     Optional. Suggested name for the bot
      * @param string|null $suggested_username Optional. Suggested username for the bot
      */
     public function __construct(
@@ -38,6 +52,7 @@ final class KeyboardButtonRequestManagedBot implements EntityInterface
     public function setRequestId(int $request_id): KeyboardButtonRequestManagedBot
     {
         $this->request_id = $request_id;
+
         return $this;
     }
 
@@ -57,6 +72,7 @@ final class KeyboardButtonRequestManagedBot implements EntityInterface
     public function setSuggestedName(?string $suggested_name): KeyboardButtonRequestManagedBot
     {
         $this->suggested_name = $suggested_name;
+
         return $this;
     }
 
@@ -76,6 +92,9 @@ final class KeyboardButtonRequestManagedBot implements EntityInterface
     public function setSuggestedUsername(?string $suggested_username): KeyboardButtonRequestManagedBot
     {
         $this->suggested_username = $suggested_username;
+
         return $this;
     }
 }
+
+// endregion CLASS_KeyboardButtonRequestManagedBot

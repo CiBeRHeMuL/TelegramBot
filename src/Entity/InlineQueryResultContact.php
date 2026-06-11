@@ -8,27 +8,41 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a contact with a phone number.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcontact
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultContact, Telegram, Bot API, DTO, inlinequeryresultcontact
+// STRUCTURE: ▶ ┌id,phone_number,first_name┐ → ◇ last_name,thumbnail → ∑ result
+// region CLASS_InlineQueryResultContact
+
 /**
  * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the contact.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcontact
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcontact
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Contact))]
 final class InlineQueryResultContact extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 Bytes
-     * @param Phone $phone_number Contact's phone number
-     * @param string $first_name Contact's first name
+     * @param string                           $id                    Unique identifier for this result, 1-64 Bytes
+     * @param Phone                            $phone_number          Contact's phone number
+     * @param string                           $first_name            Contact's first name
      * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * contact
-     * @param string|null $last_name Optional. Contact's last name
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $thumbnail_height Optional. Thumbnail height
-     * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
-     * @param int|null $thumbnail_width Optional. Thumbnail width
-     * @param string|null $vcard Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
+     *                                                                contact
+     * @param string|null                      $last_name             Optional. Contact's last name
+     * @param InlineKeyboardMarkup|null        $reply_markup          Optional. Inline keyboard attached to the message
+     * @param int|null                         $thumbnail_height      Optional. Thumbnail height
+     * @param Url|null                         $thumbnail_url         Optional. Url of the thumbnail for the result
+     * @param int|null                         $thumbnail_width       Optional. Thumbnail width
+     * @param string|null                      $vcard                 Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      *
      * @see https://en.wikipedia.org/wiki/VCard vCard
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
@@ -66,6 +80,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultContact
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -85,6 +100,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setPhoneNumber(Phone $phone_number): InlineQueryResultContact
     {
         $this->phone_number = $phone_number;
+
         return $this;
     }
 
@@ -104,6 +120,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setFirstName(string $first_name): InlineQueryResultContact
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -123,6 +140,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultContact
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -142,6 +160,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setLastName(?string $last_name): InlineQueryResultContact
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
@@ -161,6 +180,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultContact
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -180,6 +200,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultContact
     {
         $this->thumbnail_height = $thumbnail_height;
+
         return $this;
     }
 
@@ -199,6 +220,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultContact
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -218,6 +240,7 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultContact
     {
         $this->thumbnail_width = $thumbnail_width;
+
         return $this;
     }
 
@@ -237,6 +260,9 @@ final class InlineQueryResultContact extends AbstractInlineQueryResult
     public function setVcard(?string $vcard): InlineQueryResultContact
     {
         $this->vcard = $vcard;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultContact

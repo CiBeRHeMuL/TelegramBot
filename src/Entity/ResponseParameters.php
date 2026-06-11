@@ -2,20 +2,34 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes why a request was unsuccessful.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#responseparameters
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ResponseParameters, Telegram, Bot API, DTO, responseparameters
+// STRUCTURE: ▶ ◇ migrate_to_chat_id,retry_after → ∑ ResponseParameters
+// region CLASS_ResponseParameters
+
 /**
  * Describes why a request was unsuccessful.
  *
- * @link https://core.telegram.org/bots/api#responseparameters
+ * @see https://core.telegram.org/bots/api#responseparameters
  */
 final class ResponseParameters implements EntityInterface
 {
     /**
      * @param int|null $migrate_to_chat_id Optional. The group has been migrated to a supergroup with the specified identifier. This
-     * number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting
-     * it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing
-     * this identifier.
-     * @param int|null $retry_after Optional. In case of exceeding flood control, the number of seconds left to wait before the request
-     * can be repeated
+     *                                     number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting
+     *                                     it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing
+     *                                     this identifier.
+     * @param int|null $retry_after        Optional. In case of exceeding flood control, the number of seconds left to wait before the request
+     *                                     can be repeated
      */
     public function __construct(
         protected ?int $migrate_to_chat_id = null,
@@ -38,6 +52,7 @@ final class ResponseParameters implements EntityInterface
     public function setMigrateToChatId(?int $migrate_to_chat_id): ResponseParameters
     {
         $this->migrate_to_chat_id = $migrate_to_chat_id;
+
         return $this;
     }
 
@@ -57,6 +72,9 @@ final class ResponseParameters implements EntityInterface
     public function setRetryAfter(?int $retry_after): ResponseParameters
     {
         $this->retry_after = $retry_after;
+
         return $this;
     }
 }
+
+// endregion CLASS_ResponseParameters

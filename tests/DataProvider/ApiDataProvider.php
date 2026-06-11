@@ -16,6 +16,7 @@ class ApiDataProvider
     {
         $chatId = getenv('ANDREWGOS_TELEGRAM_BOT_TEST_CHAT_ID');
         $chatId = ctype_digit($chatId) ? (int) $chatId : $chatId;
+
         return [
             [
                 'token' => new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
@@ -43,6 +44,7 @@ class ApiDataProvider
     {
         $chatId = getenv('ANDREWGOS_TELEGRAM_BOT_TEST_CHAT_ID');
         $chatId = ctype_digit($chatId) ? (int) $chatId : $chatId;
+
         return [
             [
                 'token' => new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),

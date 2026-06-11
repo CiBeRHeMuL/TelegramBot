@@ -16,27 +16,40 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
  * this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the animation.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Mpeg4Gif->value),
     new FieldCompareChecker('mpeg4_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultCachedMpeg4Gif, Telegram, Bot API, DTO, inlinequeryresultcachedmpeg4gif
+// STRUCTURE: ▶ ┌id,mpeg4_file_id┐ → ◇ caption,title → ∑ result
+// region CLASS_InlineQueryResultCachedMpeg4Gif
 final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $mpeg4_file_id A valid file identifier for the MPEG4 file
-     * @param string|null $caption Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * video animation
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the caption. See formatting options for
-     * more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param string|null $title Optional. Title for the result
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param string                           $id                       Unique identifier for this result, 1-64 bytes
+     * @param string                           $mpeg4_file_id            A valid file identifier for the MPEG4 file
+     * @param string|null                      $caption                  Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                   specified instead of parse_mode
+     * @param AbstractInputMessageContent|null $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                   video animation
+     * @param TelegramParseModeEnum|null       $parse_mode               Optional. Mode for parsing entities in the caption. See formatting options for
+     *                                                                   more details.
+     * @param InlineKeyboardMarkup|null        $reply_markup             Optional. Inline keyboard attached to the message
+     * @param string|null                      $title                    Optional. Title for the result
+     * @param bool|null                        $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -75,6 +88,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultCachedMpeg4Gif
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -94,6 +108,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setMpeg4FileId(string $mpeg4_file_id): InlineQueryResultCachedMpeg4Gif
     {
         $this->mpeg4_file_id = $mpeg4_file_id;
+
         return $this;
     }
 
@@ -113,6 +128,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultCachedMpeg4Gif
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -132,6 +148,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedMpeg4Gif
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -151,6 +168,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedMpeg4Gif
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -170,6 +188,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedMpeg4Gif
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -189,6 +208,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedMpeg4Gif
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -208,6 +228,7 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setTitle(?string $title): InlineQueryResultCachedMpeg4Gif
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -227,6 +248,9 @@ final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultCachedMpeg4Gif
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultCachedMpeg4Gif

@@ -5,20 +5,36 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractReactionType;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setmessagereaction
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setMessageReaction method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setmessagereaction
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Message, Reaction
+// STRUCTURE: ▶ ┌chat_id + message_id + is_big + reaction┐ → ◇ construct → ⊕ → ∑ ⟦SetMessageReactionRequest⟧
+
+// region CLASS_SetMessageReactionRequest
+/**
+ * @see https://core.telegram.org/bots/api#setmessagereaction
  */
 class SetMessageReactionRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param int $message_id Identifier of the target message. If the message belongs to a media group, the reaction is set to the
-     * first non-deleted message in the group instead.
-     * @param bool|null $is_big Pass True to set the reaction with a big animation
-     * @param AbstractReactionType[]|null $reaction A JSON-serialized list of reaction types to set on the message. Currently, as
-     * non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already
-     * present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
+     * @param ChatId                      $chat_id    Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                \@username
+     * @param int                         $message_id Identifier of the target message. If the message belongs to a media group, the reaction is set to the
+     *                                                first non-deleted message in the group instead.
+     * @param bool|null                   $is_big     Pass True to set the reaction with a big animation
+     * @param AbstractReactionType[]|null $reaction   A JSON-serialized list of reaction types to set on the message. Currently, as
+     *                                                non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already
+     *                                                present on the message or explicitly allowed by chat administrators. Paid reactions can't be used by bots.
      *
      * @see https://core.telegram.org/bots/api#reactiontype ReactionType
      */
@@ -37,6 +53,7 @@ class SetMessageReactionRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SetMessageReactionRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -48,6 +65,7 @@ class SetMessageReactionRequest implements RequestInterface
     public function setMessageId(int $message_id): SetMessageReactionRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -59,6 +77,7 @@ class SetMessageReactionRequest implements RequestInterface
     public function setIsBig(?bool $is_big): SetMessageReactionRequest
     {
         $this->is_big = $is_big;
+
         return $this;
     }
 
@@ -70,6 +89,8 @@ class SetMessageReactionRequest implements RequestInterface
     public function setReaction(?array $reaction): SetMessageReactionRequest
     {
         $this->reaction = $reaction;
+
         return $this;
     }
 }
+// endregion CLASS_SetMessageReactionRequest

@@ -4,6 +4,20 @@ namespace AndrewGos\TelegramBot\Response;
 
 use AndrewGos\TelegramBot\Entity\Story;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
+/**
+ * @moduleContract
+ * @purpose Response DTO for Telegram Bot API repostStory method.
+ *
+ * @sees USES_API(7): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: repost story, response, Telegram Bot API
+// STRUCTURE: ▶ ┌ok + result┐ → ◇ isOk()? : ⊕ Story
+
+// region CLASS_RepostStoryResponse [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
 class RepostStoryResponse extends AbstractResponse
 {
     public function __construct(
@@ -18,3 +32,5 @@ class RepostStoryResponse extends AbstractResponse
         return $this->story;
     }
 }
+
+// endregion CLASS_RepostStoryResponse

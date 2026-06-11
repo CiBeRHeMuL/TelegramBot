@@ -5,23 +5,39 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InputSticker;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#createnewstickerset
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API createNewStickerSet method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#createnewstickerset
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Create, New, Sticker, Set
+// STRUCTURE: ▶ ┌name + stickers + title + user_id + needs_repainting┐ → ◇ construct → ⊕ → ∑ ⟦CreateNewStickerSetRequest⟧
+
+// region CLASS_CreateNewStickerSetRequest
+/**
+ * @see https://core.telegram.org/bots/api#createnewstickerset
  */
 class CreateNewStickerSetRequest implements RequestInterface
 {
     /**
-     * @param string $name Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only English
-     * letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in "_by_<bot_username>".
-     * <bot_username> is case insensitive. 1-64 characters.
-     * @param InputSticker[] $stickers A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
-     * @param string $title Sticker set title, 1-64 characters
-     * @param int $user_id User identifier of created sticker set owner
-     * @param bool|null $needs_repainting Pass True if stickers in the sticker set must be repainted to the color of text when used
-     * in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context;
-     * for custom emoji sticker sets only
-     * @param StickerTypeEnum|null $sticker_type Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
-     * By default, a regular sticker set is created.
+     * @param string               $name             Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only English
+     *                                               letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in "_by_<bot_username>".
+     *                                               <bot_username> is case insensitive. 1-64 characters.
+     * @param InputSticker[]       $stickers         A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
+     * @param string               $title            Sticker set title, 1-64 characters
+     * @param int                  $user_id          User identifier of created sticker set owner
+     * @param bool|null            $needs_repainting Pass True if stickers in the sticker set must be repainted to the color of text when used
+     *                                               in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context;
+     *                                               for custom emoji sticker sets only
+     * @param StickerTypeEnum|null $sticker_type     Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”.
+     *                                               By default, a regular sticker set is created.
      *
      * @see https://core.telegram.org/bots/api#inputsticker InputSticker
      */
@@ -42,6 +58,7 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setName(string $name): CreateNewStickerSetRequest
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -53,6 +70,7 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setStickers(array $stickers): CreateNewStickerSetRequest
     {
         $this->stickers = $stickers;
+
         return $this;
     }
 
@@ -64,6 +82,7 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setTitle(string $title): CreateNewStickerSetRequest
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -75,6 +94,7 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setUserId(int $user_id): CreateNewStickerSetRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -86,6 +106,7 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setNeedsRepainting(?bool $needs_repainting): CreateNewStickerSetRequest
     {
         $this->needs_repainting = $needs_repainting;
+
         return $this;
     }
 
@@ -97,6 +118,8 @@ class CreateNewStickerSetRequest implements RequestInterface
     public function setStickerType(?StickerTypeEnum $sticker_type): CreateNewStickerSetRequest
     {
         $this->sticker_type = $sticker_type;
+
         return $this;
     }
 }
+// endregion CLASS_CreateNewStickerSetRequest

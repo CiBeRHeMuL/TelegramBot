@@ -10,6 +10,20 @@ use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 use Throwable;
 
+// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(7): Stream; TECH(8): Utility]
+/**
+ * @moduleContract
+ * @purpose Provide static utility functions for stream operations: copy, create, open, and read streams safely.
+ *
+ * @sees USES_API(7): Psr\Http\Message\StreamInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Utils, stream utilities, copy, fopen, stream_get_contents, PSR-7
+// STRUCTURE: ┌variadic input┐ → ○ streamFor (string/resource/StreamInterface/Iterator/callable/null) → ⊕ Stream → ○ copyToString/tryFopen/tryGetContents → ⊕ string/resource
+
+// region CLASS_Utils
 final class Utils
 {
     /**
@@ -17,10 +31,10 @@ final class Utils
      * bytes have been read.
      *
      * @param StreamInterface $stream Stream to read
-     * @param int $maxLen Maximum number of bytes to read. Pass -1
-     * to read the entire stream.
+     * @param int             $maxLen Maximum number of bytes to read. Pass -1
+     *                                to read the entire stream.
      *
-     * @throws RuntimeException on error.
+     * @throws RuntimeException on error
      */
     public static function copyToString(StreamInterface $stream, int $maxLen = -1): string
     {
@@ -28,7 +42,7 @@ final class Utils
 
         if ($maxLen === -1) {
             while (!$stream->eof()) {
-                $buf = $stream->read(1048576);
+                $buf = $stream->read(1_048_576);
                 if ($buf === '') {
                     break;
                 }
@@ -81,9 +95,9 @@ final class Utils
      * buffered and used in subsequent reads.
      *
      * @param resource|string|int|float|bool|StreamInterface|callable|Iterator|null $resource Entity body data
-     * @param array{size?: int, metadata?: array} $options Additional options
+     * @param array{size?: int, metadata?: array}                                   $options  Additional options
      *
-     * @throws InvalidArgumentException if the $resource arg is not valid.
+     * @throws InvalidArgumentException if the $resource arg is not valid
      */
     public static function streamFor(mixed $resource = '', array $options = []): StreamInterface
     {
@@ -134,7 +148,7 @@ final class Utils
      * error handler that checks for errors and throws an exception instead.
      *
      * @param string $filename File to open
-     * @param string $mode Mode used to open the file
+     * @param string $mode     Mode used to open the file
      *
      * @return resource
      *
@@ -233,3 +247,4 @@ final class Utils
         return $contents;
     }
 }
+// endregion CLASS_Utils

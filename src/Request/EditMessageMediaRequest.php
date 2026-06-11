@@ -6,20 +6,36 @@ use AndrewGos\TelegramBot\Entity\AbstractInputMedia;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#editmessagemedia
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API editMessageMedia method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#editmessagemedia
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Message, Media
+// STRUCTURE: ▶ ┌media + chat_id + inline_message_id + message_id + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditMessageMediaRequest⟧
+
+// region CLASS_EditMessageMediaRequest
+/**
+ * @see https://core.telegram.org/bots/api#editmessagemedia
  */
 class EditMessageMediaRequest implements RequestInterface
 {
     /**
-     * @param AbstractInputMedia $media A JSON-serialized object for a new media content of the message
-     * @param ChatId|null $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username
-     * of the target bot, supergroup or channel in the format \@username.
-     * @param string|null $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
-     * @param int|null $message_id Required if inline_message_id is not specified. Identifier of the message to edit
-     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for a new inline keyboard.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message to
-     * be edited was sent
+     * @param AbstractInputMedia        $media                  A JSON-serialized object for a new media content of the message
+     * @param ChatId|null               $chat_id                Required if inline_message_id is not specified. Unique identifier for the target chat or username
+     *                                                          of the target bot, supergroup or channel in the format \@username.
+     * @param string|null               $inline_message_id      Required if chat_id and message_id are not specified. Identifier of the inline message
+     * @param int|null                  $message_id             Required if inline_message_id is not specified. Identifier of the message to edit
+     * @param InlineKeyboardMarkup|null $reply_markup           a JSON-serialized object for a new inline keyboard
+     * @param string|null               $business_connection_id Unique identifier of the business connection on behalf of which the message to
+     *                                                          be edited was sent
      *
      * @see https://core.telegram.org/bots/api#inputmedia InputMedia
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
@@ -42,6 +58,7 @@ class EditMessageMediaRequest implements RequestInterface
     public function setMedia(AbstractInputMedia $media): EditMessageMediaRequest
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -53,6 +70,7 @@ class EditMessageMediaRequest implements RequestInterface
     public function setChatId(?ChatId $chat_id): EditMessageMediaRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -64,6 +82,7 @@ class EditMessageMediaRequest implements RequestInterface
     public function setInlineMessageId(?string $inline_message_id): EditMessageMediaRequest
     {
         $this->inline_message_id = $inline_message_id;
+
         return $this;
     }
 
@@ -75,6 +94,7 @@ class EditMessageMediaRequest implements RequestInterface
     public function setMessageId(?int $message_id): EditMessageMediaRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -86,6 +106,7 @@ class EditMessageMediaRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageMediaRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -97,6 +118,8 @@ class EditMessageMediaRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): EditMessageMediaRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 }
+// endregion CLASS_EditMessageMediaRequest

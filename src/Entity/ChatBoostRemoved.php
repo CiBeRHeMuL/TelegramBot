@@ -2,18 +2,32 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object represents a boost removed from a chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_boost_removed
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatBoostRemoved, Telegram, Bot API, DTO, chat_boost_removed
+// STRUCTURE: ▶ ┌chat,boost_id,remove_date,source┐ → ∑ ChatBoostRemoved
+// region CLASS_ChatBoostRemoved
+
 /**
  * This object represents a boost removed from a chat.
  *
- * @link https://core.telegram.org/bots/api#chatboostremoved
+ * @see https://core.telegram.org/bots/api#chatboostremoved
  */
 final class ChatBoostRemoved implements EntityInterface
 {
     /**
-     * @param Chat $chat Chat which was boosted
-     * @param string $boost_id Unique identifier of the boost
-     * @param int $remove_date Point in time (Unix timestamp) when the boost was removed
-     * @param AbstractChatBoostSource $source Source of the removed boost
+     * @param Chat                    $chat        Chat which was boosted
+     * @param string                  $boost_id    Unique identifier of the boost
+     * @param int                     $remove_date Point in time (Unix timestamp) when the boost was removed
+     * @param AbstractChatBoostSource $source      Source of the removed boost
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#chatboostsource ChatBoostSource
@@ -41,6 +55,7 @@ final class ChatBoostRemoved implements EntityInterface
     public function setChat(Chat $chat): ChatBoostRemoved
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -60,6 +75,7 @@ final class ChatBoostRemoved implements EntityInterface
     public function setBoostId(string $boost_id): ChatBoostRemoved
     {
         $this->boost_id = $boost_id;
+
         return $this;
     }
 
@@ -79,6 +95,7 @@ final class ChatBoostRemoved implements EntityInterface
     public function setRemoveDate(int $remove_date): ChatBoostRemoved
     {
         $this->remove_date = $remove_date;
+
         return $this;
     }
 
@@ -98,6 +115,8 @@ final class ChatBoostRemoved implements EntityInterface
     public function setSource(AbstractChatBoostSource $source): ChatBoostRemoved
     {
         $this->source = $source;
+
         return $this;
     }
 }
+// endregion CLASS_ChatBoostRemoved

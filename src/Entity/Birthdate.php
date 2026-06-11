@@ -2,17 +2,31 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes the birthdate of a user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#birthdate
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Birthdate, Telegram, Bot API, DTO, birthdate
+// STRUCTURE: ▶ ┌day,month,year┐ → ∑ Birthdate
+// region CLASS_Birthdate
+
 /**
  * Describes the birthdate of a user.
  *
- * @link https://core.telegram.org/bots/api#birthdate
+ * @see https://core.telegram.org/bots/api#birthdate
  */
 final class Birthdate implements EntityInterface
 {
     /**
-     * @param int $day Day of the user's birth; 1-31
-     * @param int $month Month of the user's birth; 1-12
-     * @param int|null $year Optional. Year of the user's birth
+     * @param int      $day   Day of the user's birth; 1-31
+     * @param int      $month Month of the user's birth; 1-12
+     * @param int|null $year  Optional. Year of the user's birth
      */
     public function __construct(
         protected int $day,
@@ -36,6 +50,7 @@ final class Birthdate implements EntityInterface
     public function setDay(int $day): Birthdate
     {
         $this->day = $day;
+
         return $this;
     }
 
@@ -55,6 +70,7 @@ final class Birthdate implements EntityInterface
     public function setMonth(int $month): Birthdate
     {
         $this->month = $month;
+
         return $this;
     }
 
@@ -74,6 +90,8 @@ final class Birthdate implements EntityInterface
     public function setYear(?int $year): Birthdate
     {
         $this->year = $year;
+
         return $this;
     }
 }
+// endregion CLASS_Birthdate

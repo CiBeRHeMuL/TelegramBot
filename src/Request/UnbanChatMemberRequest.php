@@ -4,15 +4,31 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#unbanchatmember
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API unbanChatMember method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#unbanchatmember
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Unban, Chat, Member
+// STRUCTURE: ▶ ┌chat_id + user_id + only_if_banned┐ → ◇ construct → ⊕ → ∑ ⟦UnbanChatMemberRequest⟧
+
+// region CLASS_UnbanChatMemberRequest
+/**
+ * @see https://core.telegram.org/bots/api#unbanchatmember
  */
 class UnbanChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
-     * \@username
-     * @param int $user_id Unique identifier of the target user
+     * @param ChatId    $chat_id        Unique identifier for the target group or username of the target supergroup or channel in the format
+     *                                  \@username
+     * @param int       $user_id        Unique identifier of the target user
      * @param bool|null $only_if_banned Do nothing if the user is not banned
      */
     public function __construct(
@@ -29,6 +45,7 @@ class UnbanChatMemberRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): UnbanChatMemberRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -40,6 +57,7 @@ class UnbanChatMemberRequest implements RequestInterface
     public function setUserId(int $user_id): UnbanChatMemberRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -51,6 +69,8 @@ class UnbanChatMemberRequest implements RequestInterface
     public function setOnlyIfBanned(?bool $only_if_banned): UnbanChatMemberRequest
     {
         $this->only_if_banned = $only_if_banned;
+
         return $this;
     }
 }
+// endregion CLASS_UnbanChatMemberRequest

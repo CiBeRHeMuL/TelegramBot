@@ -4,19 +4,33 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an answer of a user in a non-anonymous poll.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#pollanswer
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PollAnswer, Telegram, Bot API, DTO, pollanswer
+// STRUCTURE: ▶ ┌poll_id,voter_chat/option_ids┐ → ∑ PollAnswer
+// region CLASS_PollAnswer
+
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  *
- * @link https://core.telegram.org/bots/api#pollanswer
+ * @see https://core.telegram.org/bots/api#pollanswer
  */
 final class PollAnswer implements EntityInterface
 {
     /**
-     * @param string $poll_id Unique poll identifier
-     * @param int[] $option_ids 0-based identifiers of chosen answer options. May be empty if the vote was retracted.
-     * @param string[] $option_persistent_ids Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
-     * @param User|null $user Optional. The user that changed the answer to the poll, if the voter isn't anonymous
-     * @param Chat|null $voter_chat Optional. The chat that changed the answer to the poll, if the voter is anonymous
+     * @param string    $poll_id               Unique poll identifier
+     * @param int[]     $option_ids            0-based identifiers of chosen answer options. May be empty if the vote was retracted.
+     * @param string[]  $option_persistent_ids Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
+     * @param User|null $user                  Optional. The user that changed the answer to the poll, if the voter isn't anonymous
+     * @param Chat|null $voter_chat            Optional. The chat that changed the answer to the poll, if the voter is anonymous
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -47,6 +61,7 @@ final class PollAnswer implements EntityInterface
     public function setPollId(string $poll_id): PollAnswer
     {
         $this->poll_id = $poll_id;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class PollAnswer implements EntityInterface
     public function setOptionIds(array $option_ids): PollAnswer
     {
         $this->option_ids = $option_ids;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class PollAnswer implements EntityInterface
     public function setOptionPersistentIds(array $option_persistent_ids): PollAnswer
     {
         $this->option_persistent_ids = $option_persistent_ids;
+
         return $this;
     }
 
@@ -104,6 +121,7 @@ final class PollAnswer implements EntityInterface
     public function setUser(?User $user): PollAnswer
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -123,6 +141,9 @@ final class PollAnswer implements EntityInterface
     public function setVoterChat(?Chat $voter_chat): PollAnswer
     {
         $this->voter_chat = $voter_chat;
+
         return $this;
     }
 }
+
+// endregion CLASS_PollAnswer

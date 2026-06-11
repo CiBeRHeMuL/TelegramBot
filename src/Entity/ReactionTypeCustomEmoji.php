@@ -6,10 +6,24 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ReactionTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a reaction type based on a custom emoji.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#reactiontypecustomemoji
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ReactionTypeCustomEmoji, Telegram, Bot API, DTO, reactiontypecustomemoji
+// STRUCTURE: ▶ ┌type,custom_emoji_id┐ → ∑ reaction
+// region CLASS_ReactionTypeCustomEmoji
+
 /**
  * The reaction is based on a custom emoji.
  *
- * @link https://core.telegram.org/bots/api#reactiontypecustomemoji
+ * @see https://core.telegram.org/bots/api#reactiontypecustomemoji
  */
 #[BuildIf(new FieldIsChecker('type', ReactionTypeEnum::CustomEmoji->value))]
 final class ReactionTypeCustomEmoji extends AbstractReactionType
@@ -39,6 +53,9 @@ final class ReactionTypeCustomEmoji extends AbstractReactionType
     public function setCustomEmojiId(string $custom_emoji_id): ReactionTypeCustomEmoji
     {
         $this->custom_emoji_id = $custom_emoji_id;
+
         return $this;
     }
 }
+
+// endregion CLASS_ReactionTypeCustomEmoji

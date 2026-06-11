@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents one size of a photo or a file/sticker thumbnail.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#photosize
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PhotoSize, Telegram, Bot API, DTO, photosize
+// STRUCTURE: ▶ ┌file_id,file_unique_id,width,height┐ → ◇ file_size → ∑ PhotoSize
+// region CLASS_PhotoSize
+
 /**
  * This object represents one size of a photo or a file / sticker thumbnail.
  *
  * @see https://core.telegram.org/bots/api#document file
  * @see https://core.telegram.org/bots/api#sticker sticker
- * @link https://core.telegram.org/bots/api#photosize
+ * @see https://core.telegram.org/bots/api#photosize
  */
 final class PhotoSize implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param int $width Photo width
-     * @param int $height Photo height
-     * @param int|null $file_size Optional. File size in bytes
+     * @param string   $file_id        Identifier for this file, which can be used to download or reuse the file
+     * @param string   $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
+     *                                 bots. Can't be used to download or reuse the file.
+     * @param int      $width          Photo width
+     * @param int      $height         Photo height
+     * @param int|null $file_size      Optional. File size in bytes
      */
     public function __construct(
         protected string $file_id,
@@ -43,6 +57,7 @@ final class PhotoSize implements EntityInterface
     public function setFileId(string $file_id): PhotoSize
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -62,6 +77,7 @@ final class PhotoSize implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): PhotoSize
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -81,6 +97,7 @@ final class PhotoSize implements EntityInterface
     public function setWidth(int $width): PhotoSize
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -100,6 +117,7 @@ final class PhotoSize implements EntityInterface
     public function setHeight(int $height): PhotoSize
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -119,6 +137,9 @@ final class PhotoSize implements EntityInterface
     public function setFileSize(?int $file_size): PhotoSize
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 }
+
+// endregion CLASS_PhotoSize

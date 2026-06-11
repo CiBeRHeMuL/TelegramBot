@@ -2,6 +2,19 @@
 
 namespace AndrewGos\TelegramBot\Enum;
 
+// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
+/**
+ * @moduleContract
+ * @purpose Enumeration of message entity types in Telegram Bot API.
+ *
+ * @sees USES_API(6): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: MessageEntityType, message, entity, type, Telegram, enum
+// STRUCTURE: ▶ BackedEnum(string): [case => value]
+// region ENUM_MessageEntityTypeEnum
 enum MessageEntityTypeEnum: string
 {
     case Mention = 'mention';
@@ -25,3 +38,4 @@ enum MessageEntityTypeEnum: string
     case ExpandableBlockquote = 'expandable_blockquote';
     case DateTime = 'date_time';
 }
+// endregion ENUM_MessageEntityTypeEnum

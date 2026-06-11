@@ -4,20 +4,34 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a quoted text part of a message.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#textquote
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: TextQuote, Telegram, Bot API, DTO, textquote
+// STRUCTURE: ▶ ┌text,position,is_manual┐ → ◇ entities → ∑ quote
+// region CLASS_TextQuote
+
 /**
  * This object contains information about the quoted part of a message that is replied to by the given message.
  *
- * @link https://core.telegram.org/bots/api#textquote
+ * @see https://core.telegram.org/bots/api#textquote
  */
 final class TextQuote implements EntityInterface
 {
     /**
-     * @param string $text Text of the quoted part of a message that is replied to by the given message
-     * @param int $position Approximate quote position in the original message in UTF-16 code units as specified by the sender
-     * @param MessageEntity[]|null $entities Optional. Special entities that appear in the quote. Currently, only bold, italic, underline,
-     * strikethrough, spoiler, custom_emoji, and date_time entities are kept in quotes.
-     * @param bool|null $is_manual Optional. True, if the quote was chosen manually by the message sender. Otherwise, the quote was
-     * added automatically by the server.
+     * @param string               $text      Text of the quoted part of a message that is replied to by the given message
+     * @param int                  $position  Approximate quote position in the original message in UTF-16 code units as specified by the sender
+     * @param MessageEntity[]|null $entities  Optional. Special entities that appear in the quote. Currently, only bold, italic, underline,
+     *                                        strikethrough, spoiler, custom_emoji, and date_time entities are kept in quotes.
+     * @param bool|null            $is_manual Optional. True, if the quote was chosen manually by the message sender. Otherwise, the quote was
+     *                                        added automatically by the server.
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
@@ -45,6 +59,7 @@ final class TextQuote implements EntityInterface
     public function setText(string $text): TextQuote
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -64,6 +79,7 @@ final class TextQuote implements EntityInterface
     public function setPosition(int $position): TextQuote
     {
         $this->position = $position;
+
         return $this;
     }
 
@@ -83,6 +99,7 @@ final class TextQuote implements EntityInterface
     public function setEntities(?array $entities): TextQuote
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -102,6 +119,9 @@ final class TextQuote implements EntityInterface
     public function setIsManual(?bool $is_manual): TextQuote
     {
         $this->is_manual = $is_manual;
+
         return $this;
     }
 }
+
+// endregion CLASS_TextQuote

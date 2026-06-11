@@ -4,21 +4,35 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\MaskPositionEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes the position on faces where a mask should be placed.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#maskposition
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: MaskPosition, Telegram, Bot API, DTO, maskposition
+// STRUCTURE: ▶ ┌point,x_shift,y_shift,scale┐ → ∑ MaskPosition
+// region CLASS_MaskPosition
+
 /**
  * This object describes the position on faces where a mask should be placed by default.
  *
- * @link https://core.telegram.org/bots/api#maskposition
+ * @see https://core.telegram.org/bots/api#maskposition
  */
 final class MaskPosition implements EntityInterface
 {
     /**
-     * @param MaskPositionEnum $point The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”,
-     * “mouth”, or “chin”.
-     * @param float $x_shift Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example,
-     * choosing -1.0 will place mask just to the left of the default mask position.
-     * @param float $y_shift Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example,
-     * 1.0 will place the mask just below the default mask position.
-     * @param float $scale Mask scaling coefficient. For example, 2.0 means double size.
+     * @param MaskPositionEnum $point   The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”,
+     *                                  “mouth”, or “chin”.
+     * @param float            $x_shift Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example,
+     *                                  choosing -1.0 will place mask just to the left of the default mask position.
+     * @param float            $y_shift Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example,
+     *                                  1.0 will place the mask just below the default mask position.
+     * @param float            $scale   Mask scaling coefficient. For example, 2.0 means double size.
      */
     public function __construct(
         protected MaskPositionEnum $point,
@@ -43,6 +57,7 @@ final class MaskPosition implements EntityInterface
     public function setPoint(MaskPositionEnum $point): MaskPosition
     {
         $this->point = $point;
+
         return $this;
     }
 
@@ -62,6 +77,7 @@ final class MaskPosition implements EntityInterface
     public function setXShift(float $x_shift): MaskPosition
     {
         $this->x_shift = $x_shift;
+
         return $this;
     }
 
@@ -81,6 +97,7 @@ final class MaskPosition implements EntityInterface
     public function setYShift(float $y_shift): MaskPosition
     {
         $this->y_shift = $y_shift;
+
         return $this;
     }
 
@@ -100,6 +117,9 @@ final class MaskPosition implements EntityInterface
     public function setScale(float $scale): MaskPosition
     {
         $this->scale = $scale;
+
         return $this;
     }
 }
+
+// endregion CLASS_MaskPosition

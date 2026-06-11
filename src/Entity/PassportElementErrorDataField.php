@@ -7,21 +7,35 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorDataFieldTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an error in a data field of a Telegram Passport element.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrordatafield
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorDataField, Telegram, Bot API, DTO, passportelementerrordatafield
+// STRUCTURE: ▶ ┌type,field_name,data_hash,message┐ → ∑ error
+// region CLASS_PassportElementErrorDataField
+
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's
  * value changes.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrordatafield
+ * @see https://core.telegram.org/bots/api#passportelementerrordatafield
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Data->value))]
 final class PassportElementErrorDataField extends AbstractPassportElementError
 {
     /**
-     * @param PassportElementErrorDataFieldTypeEnum $type The section of the user's Telegram Passport which has the error, one of
-     * “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
-     * @param string $field_name Name of the data field which has the error
-     * @param string $data_hash Base64-encoded data hash
-     * @param string $message Error message
+     * @param PassportElementErrorDataFieldTypeEnum $type       The section of the user's Telegram Passport which has the error, one of
+     *                                                          “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
+     * @param string                                $field_name Name of the data field which has the error
+     * @param string                                $data_hash  Base64-encoded data hash
+     * @param string                                $message    Error message
      */
     public function __construct(
         protected PassportElementErrorDataFieldTypeEnum $type,
@@ -48,6 +62,7 @@ final class PassportElementErrorDataField extends AbstractPassportElementError
     public function setType(PassportElementErrorDataFieldTypeEnum $type): PassportElementErrorDataField
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -67,6 +82,7 @@ final class PassportElementErrorDataField extends AbstractPassportElementError
     public function setFieldName(string $field_name): PassportElementErrorDataField
     {
         $this->field_name = $field_name;
+
         return $this;
     }
 
@@ -86,6 +102,7 @@ final class PassportElementErrorDataField extends AbstractPassportElementError
     public function setDataHash(string $data_hash): PassportElementErrorDataField
     {
         $this->data_hash = $data_hash;
+
         return $this;
     }
 
@@ -105,6 +122,9 @@ final class PassportElementErrorDataField extends AbstractPassportElementError
     public function setMessage(string $message): PassportElementErrorDataField
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorDataField

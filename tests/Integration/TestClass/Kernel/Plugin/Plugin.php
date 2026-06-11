@@ -15,7 +15,7 @@ readonly class Plugin implements PluginInterface
     ) {}
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getHandlerGroups(): iterable
     {

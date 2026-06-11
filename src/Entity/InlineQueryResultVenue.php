@@ -7,32 +7,46 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a venue.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultvenue
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultVenue, Telegram, Bot API, DTO, inlinequeryresultvenue
+// STRUCTURE: ▶ ┌id,latitude,longitude,title,address┐ → ◇ foursquare_id → ∑ result
+// region CLASS_InlineQueryResultVenue
+
 /**
  * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send
  * a message with the specified content instead of the venue.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultvenue
+ * @see https://core.telegram.org/bots/api#inlinequeryresultvenue
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Venue))]
 final class InlineQueryResultVenue extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 Bytes
-     * @param float $latitude Latitude of the venue location in degrees
-     * @param float $longitude Longitude of the venue location in degrees
-     * @param string $title Title of the venue
-     * @param string $address Address of the venue
-     * @param string|null $foursquare_id Optional. Foursquare identifier of the venue if known
-     * @param string|null $foursquare_type Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-     * “arts_entertainment/aquarium” or “food/icecream”.)
-     * @param string|null $google_place_id Optional. Google Places identifier of the venue
-     * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
+     * @param string                           $id                    Unique identifier for this result, 1-64 Bytes
+     * @param float                            $latitude              Latitude of the venue location in degrees
+     * @param float                            $longitude             Longitude of the venue location in degrees
+     * @param string                           $title                 Title of the venue
+     * @param string                           $address               Address of the venue
+     * @param string|null                      $foursquare_id         Optional. Foursquare identifier of the venue if known
+     * @param string|null                      $foursquare_type       Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+     *                                                                “arts_entertainment/aquarium” or “food/icecream”.)
+     * @param string|null                      $google_place_id       Optional. Google Places identifier of the venue
+     * @param string|null                      $google_place_type     Optional. Google Places type of the venue. (See supported types.)
      * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * venue
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $thumbnail_height Optional. Thumbnail height
-     * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
-     * @param int|null $thumbnail_width Optional. Thumbnail width
+     *                                                                venue
+     * @param InlineKeyboardMarkup|null        $reply_markup          Optional. Inline keyboard attached to the message
+     * @param int|null                         $thumbnail_height      Optional. Thumbnail height
+     * @param Url|null                         $thumbnail_url         Optional. Url of the thumbnail for the result
+     * @param int|null                         $thumbnail_width       Optional. Thumbnail width
      *
      * @see https://developers.google.com/places/web-service/supported_types supported types
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
@@ -74,6 +88,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultVenue
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -93,6 +108,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setLatitude(float $latitude): InlineQueryResultVenue
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -112,6 +128,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setLongitude(float $longitude): InlineQueryResultVenue
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -131,6 +148,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultVenue
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -150,6 +168,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setAddress(string $address): InlineQueryResultVenue
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -169,6 +188,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setFoursquareId(?string $foursquare_id): InlineQueryResultVenue
     {
         $this->foursquare_id = $foursquare_id;
+
         return $this;
     }
 
@@ -188,6 +208,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setFoursquareType(?string $foursquare_type): InlineQueryResultVenue
     {
         $this->foursquare_type = $foursquare_type;
+
         return $this;
     }
 
@@ -207,6 +228,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setGooglePlaceId(?string $google_place_id): InlineQueryResultVenue
     {
         $this->google_place_id = $google_place_id;
+
         return $this;
     }
 
@@ -226,6 +248,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setGooglePlaceType(?string $google_place_type): InlineQueryResultVenue
     {
         $this->google_place_type = $google_place_type;
+
         return $this;
     }
 
@@ -245,6 +268,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultVenue
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -264,6 +288,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultVenue
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -283,6 +308,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultVenue
     {
         $this->thumbnail_height = $thumbnail_height;
+
         return $this;
     }
 
@@ -302,6 +328,7 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultVenue
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -321,6 +348,9 @@ final class InlineQueryResultVenue extends AbstractInlineQueryResult
     public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultVenue
     {
         $this->thumbnail_width = $thumbnail_width;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultVenue

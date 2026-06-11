@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes the connection of the bot with a business account.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_connection
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BusinessConnection, Telegram, Bot API, DTO, business_connection
+// STRUCTURE: ▶ ┌id,user,user_chat_id,date,is_enabled┐ → ∑ BusinessConnection
+// region CLASS_BusinessConnection
+
 /**
  * Describes the connection of the bot with a business account.
  *
- * @link https://core.telegram.org/bots/api#businessconnection
+ * @see https://core.telegram.org/bots/api#businessconnection
  */
 final class BusinessConnection implements EntityInterface
 {
     /**
-     * @param string $id Unique identifier of the business connection
-     * @param User $user Business account user that created the business connection
-     * @param int $user_chat_id Identifier of a private chat with the user who created the business connection. This number may have
-     * more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it
-     * has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-     * @param int $date Date the connection was established in Unix time
-     * @param bool $is_enabled True, if the connection is active
-     * @param BusinessBotRights|null $rights Optional. Rights of the business bot
+     * @param string                 $id           Unique identifier of the business connection
+     * @param User                   $user         Business account user that created the business connection
+     * @param int                    $user_chat_id Identifier of a private chat with the user who created the business connection. This number may have
+     *                                             more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it
+     *                                             has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
+     * @param int                    $date         Date the connection was established in Unix time
+     * @param bool                   $is_enabled   True, if the connection is active
+     * @param BusinessBotRights|null $rights       Optional. Rights of the business bot
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#businessbotrights BusinessBotRights
@@ -47,6 +61,7 @@ final class BusinessConnection implements EntityInterface
     public function setId(string $id): BusinessConnection
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class BusinessConnection implements EntityInterface
     public function setUser(User $user): BusinessConnection
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class BusinessConnection implements EntityInterface
     public function setUserChatId(int $user_chat_id): BusinessConnection
     {
         $this->user_chat_id = $user_chat_id;
+
         return $this;
     }
 
@@ -104,6 +121,7 @@ final class BusinessConnection implements EntityInterface
     public function setDate(int $date): BusinessConnection
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -123,6 +141,7 @@ final class BusinessConnection implements EntityInterface
     public function setIsEnabled(bool $is_enabled): BusinessConnection
     {
         $this->is_enabled = $is_enabled;
+
         return $this;
     }
 
@@ -142,6 +161,8 @@ final class BusinessConnection implements EntityInterface
     public function setRights(?BusinessBotRights $rights): BusinessConnection
     {
         $this->rights = $rights;
+
         return $this;
     }
 }
+// endregion CLASS_BusinessConnection

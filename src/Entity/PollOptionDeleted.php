@@ -4,20 +4,34 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a poll option deleted.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#polloptiondeleted
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PollOptionDeleted, Telegram, Bot API, DTO, polloptiondeleted
+// STRUCTURE: ▶ ┌option: PollOption┐ → ∑ PollOptionDeleted
+// region CLASS_PollOptionDeleted
+
 /**
  * Describes a service message about an option deleted from a poll.
  *
- * @link https://core.telegram.org/bots/api#polloptiondeleted
+ * @see https://core.telegram.org/bots/api#polloptiondeleted
  */
 final class PollOptionDeleted implements EntityInterface
 {
     /**
-     * @param string $option_persistent_id Unique identifier of the deleted option
-     * @param string $option_text Option text
-     * @param MessageEntity[]|null $option_text_entities Optional. Special entities that appear in the option_text
-     * @param AbstractMaybeInaccessibleMessage|null $poll_message Optional. Message containing the poll from which the option was
-     * deleted, if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself
-     * is a reply.
+     * @param string                                $option_persistent_id Unique identifier of the deleted option
+     * @param string                                $option_text          Option text
+     * @param MessageEntity[]|null                  $option_text_entities Optional. Special entities that appear in the option_text
+     * @param AbstractMaybeInaccessibleMessage|null $poll_message         Optional. Message containing the poll from which the option was
+     *                                                                    deleted, if known. Note that the Message object in this field will not contain the reply_to_message field even if it itself
+     *                                                                    is a reply.
      *
      * @see https://core.telegram.org/bots/api#maybeinaccessiblemessage MaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#message Message
@@ -47,6 +61,7 @@ final class PollOptionDeleted implements EntityInterface
     public function setOptionPersistentId(string $option_persistent_id): PollOptionDeleted
     {
         $this->option_persistent_id = $option_persistent_id;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class PollOptionDeleted implements EntityInterface
     public function setOptionText(string $option_text): PollOptionDeleted
     {
         $this->option_text = $option_text;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class PollOptionDeleted implements EntityInterface
     public function setOptionTextEntities(?array $option_text_entities): PollOptionDeleted
     {
         $this->option_text_entities = $option_text_entities;
+
         return $this;
     }
 
@@ -104,6 +121,9 @@ final class PollOptionDeleted implements EntityInterface
     public function setPollMessage(?AbstractMaybeInaccessibleMessage $poll_message): PollOptionDeleted
     {
         $this->poll_message = $poll_message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PollOptionDeleted

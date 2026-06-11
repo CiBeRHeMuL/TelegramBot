@@ -2,26 +2,40 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a Telegram Star transaction.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#startransaction
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: StarTransaction, Telegram, Bot API, DTO, startransaction
+// STRUCTURE: ▶ ┌id,amount,date┐ → ◇ source/recipient → ∑ transaction
+// region CLASS_StarTransaction
+
 /**
  * Describes a Telegram Star transaction. Note that if the buyer initiates a chargeback with the payment provider from whom they
  * acquired Stars (e.g., Apple, Google) following this transaction, the refunded Stars will be deducted from the bot's balance.
  * This is outside of Telegram's control.
  *
- * @link https://core.telegram.org/bots/api#startransaction
+ * @see https://core.telegram.org/bots/api#startransaction
  */
 final class StarTransaction implements EntityInterface
 {
     /**
-     * @param string $id Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund
-     * transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
-     * @param int $amount Integer amount of Telegram Stars transferred by the transaction
-     * @param int $date Date the transaction was created in Unix time
-     * @param AbstractTransactionPartner|null $receiver Optional. Receiver of an outgoing transaction (e.g., a user for a purchase
-     * refund, Fragment for a withdrawal). Only for outgoing transactions
-     * @param AbstractTransactionPartner|null $source Optional. Source of an incoming transaction (e.g., a user purchasing goods
-     * or services, Fragment refunding a failed withdrawal). Only for incoming transactions
-     * @param int|null $nanostar_amount Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction;
-     * from 0 to 999999999
+     * @param string                          $id              Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund
+     *                                                         transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
+     * @param int                             $amount          Integer amount of Telegram Stars transferred by the transaction
+     * @param int                             $date            Date the transaction was created in Unix time
+     * @param AbstractTransactionPartner|null $receiver        Optional. Receiver of an outgoing transaction (e.g., a user for a purchase
+     *                                                         refund, Fragment for a withdrawal). Only for outgoing transactions
+     * @param AbstractTransactionPartner|null $source          Optional. Source of an incoming transaction (e.g., a user purchasing goods
+     *                                                         or services, Fragment refunding a failed withdrawal). Only for incoming transactions
+     * @param int|null                        $nanostar_amount Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction;
+     *                                                         from 0 to 999999999
      *
      * @see https://core.telegram.org/bots/api#transactionpartner TransactionPartner
      */
@@ -50,6 +64,7 @@ final class StarTransaction implements EntityInterface
     public function setId(string $id): StarTransaction
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -69,6 +84,7 @@ final class StarTransaction implements EntityInterface
     public function setAmount(int $amount): StarTransaction
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -88,6 +104,7 @@ final class StarTransaction implements EntityInterface
     public function setDate(int $date): StarTransaction
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -107,6 +124,7 @@ final class StarTransaction implements EntityInterface
     public function setReceiver(?AbstractTransactionPartner $receiver): StarTransaction
     {
         $this->receiver = $receiver;
+
         return $this;
     }
 
@@ -126,6 +144,7 @@ final class StarTransaction implements EntityInterface
     public function setSource(?AbstractTransactionPartner $source): StarTransaction
     {
         $this->source = $source;
+
         return $this;
     }
 
@@ -145,6 +164,9 @@ final class StarTransaction implements EntityInterface
     public function setNanostarAmount(?int $nanostar_amount): StarTransaction
     {
         $this->nanostar_amount = $nanostar_amount;
+
         return $this;
     }
 }
+
+// endregion CLASS_StarTransaction

@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object represents a chat photo.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_photo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatPhoto, Telegram, Bot API, DTO, chat_photo
+// STRUCTURE: ▶ ┌small_file_id,small_file_unique_id,big_file_id,big_file_unique_id┐ → ∑ ChatPhoto
+// region CLASS_ChatPhoto
+
 /**
  * This object represents a chat photo.
  *
- * @link https://core.telegram.org/bots/api#chatphoto
+ * @see https://core.telegram.org/bots/api#chatphoto
  */
 final class ChatPhoto implements EntityInterface
 {
     /**
-     * @param string $small_file_id File identifier of small (160x160) chat photo. This file_id can be used only for photo download
-     * and only for as long as the photo is not changed.
+     * @param string $small_file_id        File identifier of small (160x160) chat photo. This file_id can be used only for photo download
+     *                                     and only for as long as the photo is not changed.
      * @param string $small_file_unique_id Unique file identifier of small (160x160) chat photo, which is supposed to be the same
-     * over time and for different bots. Can't be used to download or reuse the file.
-     * @param string $big_file_id File identifier of big (640x640) chat photo. This file_id can be used only for photo download and
-     * only for as long as the photo is not changed.
-     * @param string $big_file_unique_id Unique file identifier of big (640x640) chat photo, which is supposed to be the same over
-     * time and for different bots. Can't be used to download or reuse the file.
+     *                                     over time and for different bots. Can't be used to download or reuse the file.
+     * @param string $big_file_id          File identifier of big (640x640) chat photo. This file_id can be used only for photo download and
+     *                                     only for as long as the photo is not changed.
+     * @param string $big_file_unique_id   Unique file identifier of big (640x640) chat photo, which is supposed to be the same over
+     *                                     time and for different bots. Can't be used to download or reuse the file.
      */
     public function __construct(
         protected string $small_file_id,
@@ -42,6 +56,7 @@ final class ChatPhoto implements EntityInterface
     public function setSmallFileId(string $small_file_id): ChatPhoto
     {
         $this->small_file_id = $small_file_id;
+
         return $this;
     }
 
@@ -61,6 +76,7 @@ final class ChatPhoto implements EntityInterface
     public function setSmallFileUniqueId(string $small_file_unique_id): ChatPhoto
     {
         $this->small_file_unique_id = $small_file_unique_id;
+
         return $this;
     }
 
@@ -80,6 +96,7 @@ final class ChatPhoto implements EntityInterface
     public function setBigFileId(string $big_file_id): ChatPhoto
     {
         $this->big_file_id = $big_file_id;
+
         return $this;
     }
 
@@ -99,6 +116,8 @@ final class ChatPhoto implements EntityInterface
     public function setBigFileUniqueId(string $big_file_unique_id): ChatPhoto
     {
         $this->big_file_unique_id = $big_file_unique_id;
+
         return $this;
     }
 }
+// endregion CLASS_ChatPhoto

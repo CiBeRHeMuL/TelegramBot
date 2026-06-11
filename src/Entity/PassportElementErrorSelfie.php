@@ -7,19 +7,33 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSelfieTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an error in the selfie of a Telegram Passport document.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrorselfie
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorSelfie, Telegram, Bot API, DTO, passportelementerrorselfie
+// STRUCTURE: ▶ ┌type,file_hash,message┐ → ∑ error
+// region CLASS_PassportElementErrorSelfie
+
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrorselfie
+ * @see https://core.telegram.org/bots/api#passportelementerrorselfie
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Selfie->value))]
 final class PassportElementErrorSelfie extends AbstractPassportElementError
 {
     /**
-     * @param PassportElementErrorSelfieTypeEnum $type The section of the user's Telegram Passport which has the issue, one of “passport”,
-     * “driver_license”, “identity_card”, “internal_passport”
-     * @param string $file_hash Base64-encoded hash of the file with the selfie
-     * @param string $message Error message
+     * @param PassportElementErrorSelfieTypeEnum $type      The section of the user's Telegram Passport which has the issue, one of “passport”,
+     *                                                      “driver_license”, “identity_card”, “internal_passport”
+     * @param string                             $file_hash Base64-encoded hash of the file with the selfie
+     * @param string                             $message   Error message
      */
     public function __construct(
         protected PassportElementErrorSelfieTypeEnum $type,
@@ -45,6 +59,7 @@ final class PassportElementErrorSelfie extends AbstractPassportElementError
     public function setType(PassportElementErrorSelfieTypeEnum $type): PassportElementErrorSelfie
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -64,6 +79,7 @@ final class PassportElementErrorSelfie extends AbstractPassportElementError
     public function setFileHash(string $file_hash): PassportElementErrorSelfie
     {
         $this->file_hash = $file_hash;
+
         return $this;
     }
 
@@ -83,6 +99,9 @@ final class PassportElementErrorSelfie extends AbstractPassportElementError
     public function setMessage(string $message): PassportElementErrorSelfie
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorSelfie

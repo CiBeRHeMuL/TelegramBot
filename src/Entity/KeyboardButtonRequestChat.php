@@ -2,37 +2,51 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a request to a chat for a keyboard button.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestchat
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: KeyboardButtonRequestChat, Telegram, Bot API, DTO, keyboardbuttonrequestchat
+// STRUCTURE: ▶ ┌request_id,chat_is_channel┐ → ◇ chat_is_forum,... → ∑ request
+// region CLASS_KeyboardButtonRequestChat
+
 /**
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with
  * the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More
  * about requesting chats ».
  *
  * @see https://core.telegram.org/bots/features#chat-and-user-selection More about requesting chats »
- * @link https://core.telegram.org/bots/api#keyboardbuttonrequestchat
+ * @see https://core.telegram.org/bots/api#keyboardbuttonrequestchat
  */
 final class KeyboardButtonRequestChat implements EntityInterface
 {
     /**
-     * @param int $request_id Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
-     * be unique within the message
-     * @param bool $chat_is_channel Pass True to request a channel chat, pass False to request a group or a supergroup chat.
-     * @param ChatAdministratorRights|null $bot_administrator_rights Optional. A JSON-serialized object listing the required administrator
-     * rights of the bot in the chat. The rights must be a subset of user_administrator_rights. If not specified, no additional restrictions
-     * are applied.
-     * @param bool|null $bot_is_member Optional. Pass True to request a chat with the bot as a member. Otherwise, no additional restrictions
-     * are applied.
-     * @param bool|null $chat_has_username Optional. Pass True to request a supergroup or a channel with a username, pass False to
-     * request a chat without a username. If not specified, no additional restrictions are applied.
-     * @param bool|null $chat_is_created Optional. Pass True to request a chat owned by the user. Otherwise, no additional restrictions
-     * are applied.
-     * @param bool|null $chat_is_forum Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat.
-     * If not specified, no additional restrictions are applied.
-     * @param bool|null $request_photo Optional. Pass True to request the chat's photo
-     * @param bool|null $request_title Optional. Pass True to request the chat's title
-     * @param bool|null $request_username Optional. Pass True to request the chat's username
+     * @param int                          $request_id                Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must
+     *                                                                be unique within the message
+     * @param bool                         $chat_is_channel           pass True to request a channel chat, pass False to request a group or a supergroup chat
+     * @param ChatAdministratorRights|null $bot_administrator_rights  Optional. A JSON-serialized object listing the required administrator
+     *                                                                rights of the bot in the chat. The rights must be a subset of user_administrator_rights. If not specified, no additional restrictions
+     *                                                                are applied.
+     * @param bool|null                    $bot_is_member             Optional. Pass True to request a chat with the bot as a member. Otherwise, no additional restrictions
+     *                                                                are applied.
+     * @param bool|null                    $chat_has_username         Optional. Pass True to request a supergroup or a channel with a username, pass False to
+     *                                                                request a chat without a username. If not specified, no additional restrictions are applied.
+     * @param bool|null                    $chat_is_created           Optional. Pass True to request a chat owned by the user. Otherwise, no additional restrictions
+     *                                                                are applied.
+     * @param bool|null                    $chat_is_forum             Optional. Pass True to request a forum supergroup, pass False to request a non-forum chat.
+     *                                                                If not specified, no additional restrictions are applied.
+     * @param bool|null                    $request_photo             Optional. Pass True to request the chat's photo
+     * @param bool|null                    $request_title             Optional. Pass True to request the chat's title
+     * @param bool|null                    $request_username          Optional. Pass True to request the chat's username
      * @param ChatAdministratorRights|null $user_administrator_rights Optional. A JSON-serialized object listing the required administrator
-     * rights of the user in the chat. The rights must be a superset of bot_administrator_rights. If not specified, no additional
-     * restrictions are applied.
+     *                                                                rights of the user in the chat. The rights must be a superset of bot_administrator_rights. If not specified, no additional
+     *                                                                restrictions are applied.
      *
      * @see https://core.telegram.org/bots/api#chatshared ChatShared
      * @see https://core.telegram.org/bots/api#chatadministratorrights ChatAdministratorRights
@@ -67,6 +81,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setRequestId(int $request_id): KeyboardButtonRequestChat
     {
         $this->request_id = $request_id;
+
         return $this;
     }
 
@@ -86,6 +101,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setChatIsChannel(bool $chat_is_channel): KeyboardButtonRequestChat
     {
         $this->chat_is_channel = $chat_is_channel;
+
         return $this;
     }
 
@@ -105,6 +121,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setBotAdministratorRights(?ChatAdministratorRights $bot_administrator_rights): KeyboardButtonRequestChat
     {
         $this->bot_administrator_rights = $bot_administrator_rights;
+
         return $this;
     }
 
@@ -124,6 +141,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setBotIsMember(?bool $bot_is_member): KeyboardButtonRequestChat
     {
         $this->bot_is_member = $bot_is_member;
+
         return $this;
     }
 
@@ -143,6 +161,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setChatHasUsername(?bool $chat_has_username): KeyboardButtonRequestChat
     {
         $this->chat_has_username = $chat_has_username;
+
         return $this;
     }
 
@@ -162,6 +181,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setChatIsCreated(?bool $chat_is_created): KeyboardButtonRequestChat
     {
         $this->chat_is_created = $chat_is_created;
+
         return $this;
     }
 
@@ -181,6 +201,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setChatIsForum(?bool $chat_is_forum): KeyboardButtonRequestChat
     {
         $this->chat_is_forum = $chat_is_forum;
+
         return $this;
     }
 
@@ -200,6 +221,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setRequestPhoto(?bool $request_photo): KeyboardButtonRequestChat
     {
         $this->request_photo = $request_photo;
+
         return $this;
     }
 
@@ -219,6 +241,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setRequestTitle(?bool $request_title): KeyboardButtonRequestChat
     {
         $this->request_title = $request_title;
+
         return $this;
     }
 
@@ -238,6 +261,7 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setRequestUsername(?bool $request_username): KeyboardButtonRequestChat
     {
         $this->request_username = $request_username;
+
         return $this;
     }
 
@@ -257,6 +281,9 @@ final class KeyboardButtonRequestChat implements EntityInterface
     public function setUserAdministratorRights(?ChatAdministratorRights $user_administrator_rights): KeyboardButtonRequestChat
     {
         $this->user_administrator_rights = $user_administrator_rights;
+
         return $this;
     }
 }
+
+// endregion CLASS_KeyboardButtonRequestChat

@@ -2,26 +2,39 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a general file (as opposed to photos, voice messages and audio files).
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#document
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Document, file, general file, Telegram Bot API
+// STRUCTURE: ┌file_id, file_unique_id┐ + optional thumbnail + optional file_name + optional mime_type + optional file_size → ∑ Document
+// region CLASS_Document
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  *
  * @see https://core.telegram.org/bots/api#photosize photos
  * @see https://core.telegram.org/bots/api#voice voice messages
  * @see https://core.telegram.org/bots/api#audio audio files
- * @link https://core.telegram.org/bots/api#document
+ * @see https://core.telegram.org/bots/api#document
  */
 final class Document implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param PhotoSize|null $thumbnail Optional. Document thumbnail as defined by the sender
-     * @param string|null $file_name Optional. Original filename as defined by the sender
-     * @param string|null $mime_type Optional. MIME type of the file as defined by the sender
-     * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
-     * difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
-     * float type are safe for storing this value.
+     * @param string         $file_id        Identifier for this file, which can be used to download or reuse the file
+     * @param string         $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
+     *                                       bots. Can't be used to download or reuse the file.
+     * @param PhotoSize|null $thumbnail      Optional. Document thumbnail as defined by the sender
+     * @param string|null    $file_name      Optional. Original filename as defined by the sender
+     * @param string|null    $mime_type      Optional. MIME type of the file as defined by the sender
+     * @param int|null       $file_size      Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
+     *                                       difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
+     *                                       float type are safe for storing this value.
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -50,6 +63,7 @@ final class Document implements EntityInterface
     public function setFileId(string $file_id): Document
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -69,6 +83,7 @@ final class Document implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): Document
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -88,6 +103,7 @@ final class Document implements EntityInterface
     public function setThumbnail(?PhotoSize $thumbnail): Document
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 
@@ -107,6 +123,7 @@ final class Document implements EntityInterface
     public function setFileName(?string $file_name): Document
     {
         $this->file_name = $file_name;
+
         return $this;
     }
 
@@ -126,6 +143,7 @@ final class Document implements EntityInterface
     public function setMimeType(?string $mime_type): Document
     {
         $this->mime_type = $mime_type;
+
         return $this;
     }
 
@@ -145,6 +163,8 @@ final class Document implements EntityInterface
     public function setFileSize(?int $file_size): Document
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 }
+// endregion CLASS_Document

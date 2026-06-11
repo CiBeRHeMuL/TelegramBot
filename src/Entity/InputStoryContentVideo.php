@@ -8,23 +8,37 @@ use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a video to be used as story content.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputstorycontentvideo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputStoryContentVideo, Telegram, Bot API, DTO, inputstorycontentvideo
+// STRUCTURE: ▶ ┌video(FileUrlStr)┐ → ◇ duration,width,height → ∑ InputStoryContentVideo
+// region CLASS_InputStoryContentVideo
+
 /**
  * Describes a video to post as a story.
  *
- * @link https://core.telegram.org/bots/api#inputstorycontentvideo
+ * @see https://core.telegram.org/bots/api#inputstorycontentvideo
  */
 #[BuildIf(new FieldIsChecker('type', InputStoryContentTypeEnum::Photo->value))]
 final class InputStoryContentVideo extends AbstractInputStoryContent
 {
     /**
-     * @param Filename|Url $video The video to post as a story. The video must be of the size 720x1280, streamable, encoded with
-     * H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and
-     * can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data
-     * under <file_attach_name>. More information on Sending Files »
-     * @param float|null $cover_frame_timestamp Optional. Timestamp in seconds of the frame that will be used as the static cover
-     * for the story. Defaults to 0.0.
-     * @param float|null $duration Optional. Precise duration of the video in seconds; 0-60
-     * @param bool|null $is_animation Optional. Pass True if the video has no sound
+     * @param Filename|Url $video                 The video to post as a story. The video must be of the size 720x1280, streamable, encoded with
+     *                                            H.265 codec, with key frames added each second in the MPEG4 format, and must not exceed 30 MB. The video can't be reused and
+     *                                            can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the video was uploaded using multipart/form-data
+     *                                            under <file_attach_name>. More information on Sending Files »
+     * @param float|null   $cover_frame_timestamp Optional. Timestamp in seconds of the frame that will be used as the static cover
+     *                                            for the story. Defaults to 0.0.
+     * @param float|null   $duration              Optional. Precise duration of the video in seconds; 0-60
+     * @param bool|null    $is_animation          Optional. Pass True if the video has no sound
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
@@ -53,6 +67,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     public function setVideo(Filename|Url $video): InputStoryContentVideo
     {
         $this->video = $video;
+
         return $this;
     }
 
@@ -72,6 +87,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     public function setCoverFrameTimestamp(?float $cover_frame_timestamp): InputStoryContentVideo
     {
         $this->cover_frame_timestamp = $cover_frame_timestamp;
+
         return $this;
     }
 
@@ -91,6 +107,7 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     public function setDuration(?float $duration): InputStoryContentVideo
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -110,6 +127,9 @@ final class InputStoryContentVideo extends AbstractInputStoryContent
     public function setIsAnimation(?bool $is_animation): InputStoryContentVideo
     {
         $this->is_animation = $is_animation;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputStoryContentVideo

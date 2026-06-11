@@ -6,10 +6,24 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose The background is taken directly from a built-in chat theme.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#backgroundtypechattheme
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BackgroundTypeChatTheme, Telegram Bot API, background, type, chat, theme, extends AbstractBackgroundType, DTO
+// STRUCTURE: ▶ ┌theme_name┐
+
+// region CLASS_BackgroundTypeChatTheme [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
 /**
  * The background is taken directly from a built-in chat theme.
  *
- * @link https://core.telegram.org/bots/api#backgroundtypechattheme
+ * @see https://core.telegram.org/bots/api#backgroundtypechattheme
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::ChatTheme->value))]
 final class BackgroundTypeChatTheme extends AbstractBackgroundType
@@ -39,6 +53,7 @@ final class BackgroundTypeChatTheme extends AbstractBackgroundType
     public function setThemeName(string $theme_name): BackgroundTypeChatTheme
     {
         $this->theme_name = $theme_name;
+
         return $this;
     }
 }

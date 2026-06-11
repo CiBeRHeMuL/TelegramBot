@@ -17,6 +17,7 @@ class UtilsTest extends TestCase
     {
         $this->assertSame($expected, Utils::normalize($input));
     }
+
     #[DataProviderExternal(UtilsProvider::class, 'splitProvider')]
     public function testSplit(string $input, array $expected): void
     {
@@ -28,8 +29,8 @@ class UtilsTest extends TestCase
     {
         // Emulate Unix
         if (is_string($input)) {
-            putenv("HOMEDRIVE=");
-            putenv("HOMEPATH=");
+            putenv('HOMEDRIVE=');
+            putenv('HOMEPATH=');
             putenv("HOME=$input");
             if (!$input) {
                 $this->expectException(RuntimeException::class);

@@ -7,20 +7,34 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFrontSideTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an error in the front side of a Telegram Passport document.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrorfrontside
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorFrontSide, Telegram, Bot API, DTO, passportelementerrorfrontside
+// STRUCTURE: ▶ ┌type,file_hash,message┐ → ∑ error
+// region CLASS_PassportElementErrorFrontSide
+
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side
  * of the document changes.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrorfrontside
+ * @see https://core.telegram.org/bots/api#passportelementerrorfrontside
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::FrontSide->value))]
 final class PassportElementErrorFrontSide extends AbstractPassportElementError
 {
     /**
-     * @param PassportElementErrorFrontSideTypeEnum $type The section of the user's Telegram Passport which has the issue, one of
-     * “passport”, “driver_license”, “identity_card”, “internal_passport”
-     * @param string $file_hash Base64-encoded hash of the file with the front side of the document
-     * @param string $message Error message
+     * @param PassportElementErrorFrontSideTypeEnum $type      The section of the user's Telegram Passport which has the issue, one of
+     *                                                         “passport”, “driver_license”, “identity_card”, “internal_passport”
+     * @param string                                $file_hash Base64-encoded hash of the file with the front side of the document
+     * @param string                                $message   Error message
      */
     public function __construct(
         protected PassportElementErrorFrontSideTypeEnum $type,
@@ -46,6 +60,7 @@ final class PassportElementErrorFrontSide extends AbstractPassportElementError
     public function setType(PassportElementErrorFrontSideTypeEnum $type): PassportElementErrorFrontSide
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class PassportElementErrorFrontSide extends AbstractPassportElementError
     public function setFileHash(string $file_hash): PassportElementErrorFrontSide
     {
         $this->file_hash = $file_hash;
+
         return $this;
     }
 
@@ -84,6 +100,9 @@ final class PassportElementErrorFrontSide extends AbstractPassportElementError
     public function setMessage(string $message): PassportElementErrorFrontSide
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorFrontSide

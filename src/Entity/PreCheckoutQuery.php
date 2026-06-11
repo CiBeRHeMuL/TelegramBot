@@ -4,23 +4,37 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about an incoming pre-checkout query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#precheckoutquery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PreCheckoutQuery, Telegram, Bot API, DTO, precheckoutquery
+// STRUCTURE: ▶ ┌id,from,currency,total_amount,invoice_payload┐ → ◇ ... → ∑ PreCheckoutQuery
+// region CLASS_PreCheckoutQuery
+
 /**
  * This object contains information about an incoming pre-checkout query.
  *
- * @link https://core.telegram.org/bots/api#precheckoutquery
+ * @see https://core.telegram.org/bots/api#precheckoutquery
  */
 final class PreCheckoutQuery implements EntityInterface
 {
     /**
-     * @param string $id Unique query identifier
-     * @param User $from User who sent the query
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars
-     * @param int $total_amount Total price in the smallest units of the currency (integer, not float/double). For example, for a
-     * price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal
-     * point for each currency (2 for the majority of currencies).
-     * @param string $invoice_payload Bot-specified invoice payload
-     * @param OrderInfo|null $order_info Optional. Order information provided by the user
-     * @param string|null $shipping_option_id Optional. Identifier of the shipping option chosen by the user
+     * @param string         $id                 Unique query identifier
+     * @param User           $from               User who sent the query
+     * @param CurrencyEnum   $currency           Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars
+     * @param int            $total_amount       Total price in the smallest units of the currency (integer, not float/double). For example, for a
+     *                                           price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal
+     *                                           point for each currency (2 for the majority of currencies).
+     * @param string         $invoice_payload    Bot-specified invoice payload
+     * @param OrderInfo|null $order_info         Optional. Order information provided by the user
+     * @param string|null    $shipping_option_id Optional. Identifier of the shipping option chosen by the user
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/payments#supported-currencies currency
@@ -54,6 +68,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setId(string $id): PreCheckoutQuery
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -73,6 +88,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setFrom(User $from): PreCheckoutQuery
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -92,6 +108,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setCurrency(CurrencyEnum $currency): PreCheckoutQuery
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -111,6 +128,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setTotalAmount(int $total_amount): PreCheckoutQuery
     {
         $this->total_amount = $total_amount;
+
         return $this;
     }
 
@@ -130,6 +148,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setInvoicePayload(string $invoice_payload): PreCheckoutQuery
     {
         $this->invoice_payload = $invoice_payload;
+
         return $this;
     }
 
@@ -149,6 +168,7 @@ final class PreCheckoutQuery implements EntityInterface
     public function setOrderInfo(?OrderInfo $order_info): PreCheckoutQuery
     {
         $this->order_info = $order_info;
+
         return $this;
     }
 
@@ -168,6 +188,9 @@ final class PreCheckoutQuery implements EntityInterface
     public function setShippingOptionId(?string $shipping_option_id): PreCheckoutQuery
     {
         $this->shipping_option_id = $shipping_option_id;
+
         return $this;
     }
 }
+
+// endregion CLASS_PreCheckoutQuery

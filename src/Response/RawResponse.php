@@ -6,12 +6,26 @@ use AndrewGos\TelegramBot\Entity\ResponseParameters;
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
+/**
+ * @moduleContract
+ * @purpose Untyped raw response DTO representing the direct JSON-decoded response from the Telegram Bot API.
+ *
+ * @sees USES_API(7): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: raw, untyped, response, Telegram Bot API
+// STRUCTURE: ▶ ┌ok + description + result + error_code + parameters┐ → ○ RawResponse → ⊕ typed getters
+
+// region CLASS_RawResponse [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
 class RawResponse
 {
     /**
-     * @param bool $ok
-     * @param string|null $description
-     * @param array|string|bool|null $result
+     * @param bool                    $ok
+     * @param string|null             $description
+     * @param array|string|bool|null  $result
      * @param HttpStatusCodeEnum|null $error_code
      * @param ResponseParameters|null $parameters
      *
@@ -39,6 +53,7 @@ class RawResponse
     public function setOk(bool $ok): RawResponse
     {
         $this->ok = $ok;
+
         return $this;
     }
 
@@ -50,6 +65,7 @@ class RawResponse
     public function setDescription(?string $description): RawResponse
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -61,6 +77,7 @@ class RawResponse
     public function setResult(array|bool|string|int|null $result): RawResponse
     {
         $this->result = $result;
+
         return $this;
     }
 
@@ -72,6 +89,7 @@ class RawResponse
     public function setErrorCode(?HttpStatusCodeEnum $error_code): RawResponse
     {
         $this->error_code = $error_code;
+
         return $this;
     }
 
@@ -83,6 +101,9 @@ class RawResponse
     public function setParameters(?ResponseParameters $parameters): RawResponse
     {
         $this->parameters = $parameters;
+
         return $this;
     }
 }
+
+// endregion CLASS_RawResponse

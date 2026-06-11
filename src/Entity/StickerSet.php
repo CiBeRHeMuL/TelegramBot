@@ -5,19 +5,33 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a sticker set.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#stickerset
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: StickerSet, Telegram, Bot API, DTO, stickerset
+// STRUCTURE: ▶ ┌name,title,sticker_type,stickers: Sticker[]┐ → ◇ thumbnail → ∑ StickerSet
+// region CLASS_StickerSet
+
 /**
  * This object represents a sticker set.
  *
- * @link https://core.telegram.org/bots/api#stickerset
+ * @see https://core.telegram.org/bots/api#stickerset
  */
 final class StickerSet implements EntityInterface
 {
     /**
-     * @param string $name Sticker set name
-     * @param string $title Sticker set title
+     * @param string          $name         Sticker set name
+     * @param string          $title        Sticker set title
      * @param StickerTypeEnum $sticker_type Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
-     * @param Sticker[] $stickers List of all set stickers
-     * @param PhotoSize|null $thumbnail Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
+     * @param Sticker[]       $stickers     List of all set stickers
+     * @param PhotoSize|null  $thumbnail    Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
      *
      * @see https://core.telegram.org/bots/api#sticker Sticker
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
@@ -47,6 +61,7 @@ final class StickerSet implements EntityInterface
     public function setName(string $name): StickerSet
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class StickerSet implements EntityInterface
     public function setTitle(string $title): StickerSet
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class StickerSet implements EntityInterface
     public function setStickerType(StickerTypeEnum $sticker_type): StickerSet
     {
         $this->sticker_type = $sticker_type;
+
         return $this;
     }
 
@@ -104,6 +121,7 @@ final class StickerSet implements EntityInterface
     public function setStickers(array $stickers): StickerSet
     {
         $this->stickers = $stickers;
+
         return $this;
     }
 
@@ -123,6 +141,9 @@ final class StickerSet implements EntityInterface
     public function setThumbnail(?PhotoSize $thumbnail): StickerSet
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 }
+
+// endregion CLASS_StickerSet

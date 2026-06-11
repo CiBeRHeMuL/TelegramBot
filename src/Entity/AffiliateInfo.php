@@ -2,23 +2,37 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about the affiliate that received a commission via this transaction.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#affiliateinfo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: AffiliateInfo, Telegram Bot API, affiliate, commission, transaction, DTO
+// STRUCTURE: ▶ ┌commission_per_mille, amount, affiliate_chat?, affiliate_user?┐
+
+// region CLASS_AffiliateInfo [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
 /**
  * Contains information about the affiliate that received a commission via this transaction.
  *
- * @link https://core.telegram.org/bots/api#affiliateinfo
+ * @see https://core.telegram.org/bots/api#affiliateinfo
  */
 final class AffiliateInfo implements EntityInterface
 {
     /**
-     * @param int $commission_per_mille The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received
-     * by the bot from referred users
-     * @param int $amount Integer amount of Telegram Stars received by the affiliate from the transaction, rounded to 0; can be negative
-     * for refunds
-     * @param Chat|null $affiliate_chat Optional. The chat that received an affiliate commission if it was received by a chat
-     * @param User|null $affiliate_user Optional. The bot or the user that received an affiliate commission if it was received by
-     * a bot or a user
-     * @param int|null $nanostar_amount Optional. The number of 1/1000000000 shares of Telegram Stars received by the affiliate;
-     * from -999999999 to 999999999; can be negative for refunds
+     * @param int       $commission_per_mille The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received
+     *                                        by the bot from referred users
+     * @param int       $amount               Integer amount of Telegram Stars received by the affiliate from the transaction, rounded to 0; can be negative
+     *                                        for refunds
+     * @param Chat|null $affiliate_chat       Optional. The chat that received an affiliate commission if it was received by a chat
+     * @param User|null $affiliate_user       Optional. The bot or the user that received an affiliate commission if it was received by
+     *                                        a bot or a user
+     * @param int|null  $nanostar_amount      Optional. The number of 1/1000000000 shares of Telegram Stars received by the affiliate;
+     *                                        from -999999999 to 999999999; can be negative for refunds
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#chat Chat
@@ -47,6 +61,7 @@ final class AffiliateInfo implements EntityInterface
     public function setCommissionPerMille(int $commission_per_mille): AffiliateInfo
     {
         $this->commission_per_mille = $commission_per_mille;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class AffiliateInfo implements EntityInterface
     public function setAmount(int $amount): AffiliateInfo
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -85,6 +101,7 @@ final class AffiliateInfo implements EntityInterface
     public function setAffiliateChat(?Chat $affiliate_chat): AffiliateInfo
     {
         $this->affiliate_chat = $affiliate_chat;
+
         return $this;
     }
 
@@ -104,6 +121,7 @@ final class AffiliateInfo implements EntityInterface
     public function setAffiliateUser(?User $affiliate_user): AffiliateInfo
     {
         $this->affiliate_user = $affiliate_user;
+
         return $this;
     }
 
@@ -123,6 +141,8 @@ final class AffiliateInfo implements EntityInterface
     public function setNanostarAmount(?int $nanostar_amount): AffiliateInfo
     {
         $this->nanostar_amount = $nanostar_amount;
+
         return $this;
     }
 }
+// endregion CLASS_AffiliateInfo

@@ -4,24 +4,38 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an incoming inline query from the user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQuery, Telegram, Bot API, DTO, inlinequery
+// STRUCTURE: ▶ ┌id,from,query,offset┐ → ◇ chat_type/location → ⊕ InlineQuery
+// region CLASS_InlineQuery
+
 /**
  * This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or
  * trending results.
  *
- * @link https://core.telegram.org/bots/api#inlinequery
+ * @see https://core.telegram.org/bots/api#inlinequery
  */
 final class InlineQuery implements EntityInterface
 {
     /**
-     * @param string $id Unique identifier for this query
-     * @param User $from Sender
-     * @param string $query Text of the query (up to 256 characters)
-     * @param string $offset Offset of the results to be returned, can be controlled by the bot
+     * @param string            $id        Unique identifier for this query
+     * @param User              $from      Sender
+     * @param string            $query     Text of the query (up to 256 characters)
+     * @param string            $offset    Offset of the results to be returned, can be controlled by the bot
      * @param ChatTypeEnum|null $chat_type Optional. Type of the chat from which the inline query was sent. Can be either “sender”
-     * for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”. The chat
-     * type should be always known for requests sent from official clients and most third-party clients, unless the request was sent
-     * from a secret chat
-     * @param Location|null $location Optional. Sender location, only for bots that request user location
+     *                                     for a private chat with the inline query sender, “private”, “group”, “supergroup”, or “channel”. The chat
+     *                                     type should be always known for requests sent from official clients and most third-party clients, unless the request was sent
+     *                                     from a secret chat
+     * @param Location|null     $location  Optional. Sender location, only for bots that request user location
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#location Location
@@ -51,6 +65,7 @@ final class InlineQuery implements EntityInterface
     public function setId(string $id): InlineQuery
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -70,6 +85,7 @@ final class InlineQuery implements EntityInterface
     public function setFrom(User $from): InlineQuery
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -89,6 +105,7 @@ final class InlineQuery implements EntityInterface
     public function setQuery(string $query): InlineQuery
     {
         $this->query = $query;
+
         return $this;
     }
 
@@ -108,6 +125,7 @@ final class InlineQuery implements EntityInterface
     public function setOffset(string $offset): InlineQuery
     {
         $this->offset = $offset;
+
         return $this;
     }
 
@@ -127,6 +145,7 @@ final class InlineQuery implements EntityInterface
     public function setChatType(?ChatTypeEnum $chat_type): InlineQuery
     {
         $this->chat_type = $chat_type;
+
         return $this;
     }
 
@@ -146,6 +165,9 @@ final class InlineQuery implements EntityInterface
     public function setLocation(?Location $location): InlineQuery
     {
         $this->location = $location;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQuery

@@ -4,14 +4,30 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#reopenforumtopic
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API reopenForumTopic method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#reopenforumtopic
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Reopen, Forum, Topic
+// STRUCTURE: ▶ ┌chat_id + message_thread_id┐ → ◇ construct → ⊕ → ∑ ⟦ReopenForumTopicRequest⟧
+
+// region CLASS_ReopenForumTopicRequest
+/**
+ * @see https://core.telegram.org/bots/api#reopenforumtopic
  */
 class ReopenForumTopicRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username
-     * @param int $message_thread_id Unique identifier for the target message thread of the forum topic
+     * @param ChatId $chat_id           Unique identifier for the target chat or username of the target supergroup in the format \@username
+     * @param int    $message_thread_id Unique identifier for the target message thread of the forum topic
      */
     public function __construct(
         private ChatId $chat_id,
@@ -26,6 +42,7 @@ class ReopenForumTopicRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): ReopenForumTopicRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -37,6 +54,8 @@ class ReopenForumTopicRequest implements RequestInterface
     public function setMessageThreadId(int $message_thread_id): ReopenForumTopicRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 }
+// endregion CLASS_ReopenForumTopicRequest

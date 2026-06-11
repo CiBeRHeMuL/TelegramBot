@@ -2,79 +2,93 @@
 
 namespace AndrewGos\TelegramBot\Enum;
 
+// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
+/**
+ * @moduleContract
+ * @purpose Enumeration of emoji characters used in Telegram Bot API.
+ *
+ * @sees USES_API(6): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Emoji, emoji, Telegram, enum
+// STRUCTURE: ▶ BackedEnum(string): [case => value]
+// region ENUM_EmojiEnum
 enum EmojiEnum: string
 {
-    case ThumbsUp = "👍";
-    case ThumbsDown = "👎";
-    case Heart = "❤";
-    case Fire = "🔥";
-    case HeartEyes = "🥰";
-    case ClappingHands = "👏";
-    case GrinningFace = "😁";
-    case ThinkingFace = "🤔";
-    case ExplodingHead = "🤯";
-    case ScreamingFace = "😱";
-    case FaceWithSymbolsOverMouth = "🤬";
-    case CryingFace = "😢";
-    case PartyPopper = "🎉";
-    case StarStruck = "🤩";
-    case VomitingFace = "🤮";
-    case Poop = "💩";
-    case FoldedHands = "🙏";
-    case OkHand = "👌";
-    case Dove = "🕊";
-    case ClownFace = "🤡";
-    case YawningFace = "🥱";
-    case FaceWithXXEyes = "🥴";
-    case HeartEyesCat = "😻";
-    case Penguin = "🐧";
-    case HeartOnFire = "❤️‍🔥";
-    case NewMoonFace = "🌚";
-    case HotDog = "🌭";
-    case HundredPoints = "💯";
-    case RollingOnTheFloorLaughing = "🤣";
-    case HighVoltage = "⚡";
-    case Banana = "🍌";
-    case Trophy = "🏆";
-    case BrokenHeart = "💔";
-    case ThinkingFaceAlt = "🤨";
-    case NeutralFace = "😐";
-    case Strawberry = "🍓";
-    case BottleWithPoppingCork = "🍾";
-    case KissMark = "💋";
-    case MiddleFinger = "🖕";
-    case SmilingFaceWithHorns = "😈";
-    case SleepingFace = "😴";
-    case CryingFaceAlt = "😭";
-    case NerdFace = "🤓";
-    case Ghost = "👻";
-    case ManTechnologist = "👨‍💻";
-    case Eyes = "👀";
-    case JackOLantern = "🎃";
-    case SeeNoEvilMonkey = "🙈";
-    case SmilingFaceWithHalo = "😇";
-    case FearfulFace = "😨";
-    case Handshake = "🤝";
-    case WritingHand = "✍";
-    case HuggingFace = "🤗";
-    case Brain = "🫡";
-    case SantaClaus = "🎅";
-    case ChristmasTree = "🎄";
-    case Snowman = "☃";
-    case NailPolish = "💅";
-    case FaceWithTongueWinkingEye = "🤪";
-    case Moai = "🗿";
-    case Cool = "🆒";
-    case HeartWithArrow = "💘";
-    case HearNoEvilMonkey = "🙉";
-    case UnicornFace = "🦄";
-    case FaceBlowingAKiss = "😘";
-    case Pill = "💊";
-    case SpeakingHead = "🙊";
-    case SmilingFaceWithSunglasses = "😎";
-    case AlienMonster = "👾";
-    case FaceWithRaisedEyebrowMan = "🤷‍♂";
-    case FaceWithRaisedEyebrow = "🤷";
-    case FaceWithRaisedEyebrowWoman = "🤷‍♀";
-    case PoutingFace = "😡";
+    case ThumbsUp = '👍';
+    case ThumbsDown = '👎';
+    case Heart = '❤';
+    case Fire = '🔥';
+    case HeartEyes = '🥰';
+    case ClappingHands = '👏';
+    case GrinningFace = '😁';
+    case ThinkingFace = '🤔';
+    case ExplodingHead = '🤯';
+    case ScreamingFace = '😱';
+    case FaceWithSymbolsOverMouth = '🤬';
+    case CryingFace = '😢';
+    case PartyPopper = '🎉';
+    case StarStruck = '🤩';
+    case VomitingFace = '🤮';
+    case Poop = '💩';
+    case FoldedHands = '🙏';
+    case OkHand = '👌';
+    case Dove = '🕊';
+    case ClownFace = '🤡';
+    case YawningFace = '🥱';
+    case FaceWithXXEyes = '🥴';
+    case HeartEyesCat = '😻';
+    case Penguin = '🐧';
+    case HeartOnFire = '❤️‍🔥';
+    case NewMoonFace = '🌚';
+    case HotDog = '🌭';
+    case HundredPoints = '💯';
+    case RollingOnTheFloorLaughing = '🤣';
+    case HighVoltage = '⚡';
+    case Banana = '🍌';
+    case Trophy = '🏆';
+    case BrokenHeart = '💔';
+    case ThinkingFaceAlt = '🤨';
+    case NeutralFace = '😐';
+    case Strawberry = '🍓';
+    case BottleWithPoppingCork = '🍾';
+    case KissMark = '💋';
+    case MiddleFinger = '🖕';
+    case SmilingFaceWithHorns = '😈';
+    case SleepingFace = '😴';
+    case CryingFaceAlt = '😭';
+    case NerdFace = '🤓';
+    case Ghost = '👻';
+    case ManTechnologist = '👨‍💻';
+    case Eyes = '👀';
+    case JackOLantern = '🎃';
+    case SeeNoEvilMonkey = '🙈';
+    case SmilingFaceWithHalo = '😇';
+    case FearfulFace = '😨';
+    case Handshake = '🤝';
+    case WritingHand = '✍';
+    case HuggingFace = '🤗';
+    case Brain = '🫡';
+    case SantaClaus = '🎅';
+    case ChristmasTree = '🎄';
+    case Snowman = '☃';
+    case NailPolish = '💅';
+    case FaceWithTongueWinkingEye = '🤪';
+    case Moai = '🗿';
+    case Cool = '🆒';
+    case HeartWithArrow = '💘';
+    case HearNoEvilMonkey = '🙉';
+    case UnicornFace = '🦄';
+    case FaceBlowingAKiss = '😘';
+    case Pill = '💊';
+    case SpeakingHead = '🙊';
+    case SmilingFaceWithSunglasses = '😎';
+    case AlienMonster = '👾';
+    case FaceWithRaisedEyebrowMan = '🤷‍♂';
+    case FaceWithRaisedEyebrow = '🤷';
+    case FaceWithRaisedEyebrowWoman = '🤷‍♀';
+    case PoutingFace = '😡';
 }
+// endregion ENUM_EmojiEnum

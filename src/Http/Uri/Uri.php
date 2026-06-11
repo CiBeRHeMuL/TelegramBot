@@ -5,6 +5,20 @@ namespace AndrewGos\TelegramBot\Http\Uri;
 use InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
+// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(7): HTTP; TECH(8): PSR-7]
+/**
+ * @moduleContract
+ * @purpose Implement PSR-7 UriInterface for parsing and manipulating URI components.
+ *
+ * @sees USES_API(8): Psr\Http\Message\UriInterface, parse_url
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Uri, PSR-7, URI, parsing, manipulation
+// STRUCTURE: ┌uri string┐ → ○ parse_url → ⊕ scheme/host/path/query/fragment/port → ○ immutable with* methods → ⊕ cloned instance
+
+// region CLASS_Uri
 class Uri implements UriInterface
 {
     private string $scheme = '';
@@ -73,42 +87,49 @@ class Uri implements UriInterface
     public function withScheme(string $scheme): UriInterface
     {
         $this->scheme = $scheme;
+
         return $this;
     }
 
     public function withUserInfo(string $user, ?string $password = null): UriInterface
     {
         $this->userInfo = $password === null ? $user : "$user:$password";
+
         return $this;
     }
 
     public function withHost(string $host): UriInterface
     {
         $this->host = $host;
+
         return $this;
     }
 
     public function withPort(?int $port): UriInterface
     {
         $this->port = $port;
+
         return $this;
     }
 
     public function withPath(string $path): UriInterface
     {
         $this->path = $path;
+
         return $this;
     }
 
     public function withQuery(string $query): UriInterface
     {
         $this->query = $query;
+
         return $this;
     }
 
     public function withFragment(string $fragment): UriInterface
     {
         $this->fragment = $fragment;
+
         return $this;
     }
 
@@ -160,3 +181,4 @@ class Uri implements UriInterface
         $this->fragment = $parsed['fragment'] ?? '';
     }
 }
+// endregion CLASS_Uri

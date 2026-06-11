@@ -14,6 +14,20 @@ use AndrewGos\TelegramBot\ValueObject as VO;
 use BackedEnum;
 use UnitEnum;
 
+// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(8): Serializer; TECH(8): Normalization]
+/**
+ * @moduleContract
+ * @purpose Create a pre-configured serializer for the Telegram Bot API with support for value objects, entities, enums, and requests.
+ *
+ * @sees USES_API(8): AndrewGos\Serializer\Serializer, TelegramNormalizer
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: SerializerFactory, serializer, normalization, Telegram, value objects
+// STRUCTURE: ┌BaseSerializer┐ → ○ addNormalizers (VO callables, TelegramNormalizer, Enum, object) → ⊕ configured Serializer
+
+// region CLASS_SerializerFactory
 class SerializerFactory
 {
     public static function getDefaultApiSerializer(): Serializer
@@ -39,6 +53,8 @@ class SerializerFactory
             BackedEnum::class => fn(BackedEnum $e) => $e->value,
             'object' => fn(object $e) => $serializer->normalize((array) $e),
         ]);
+
         return $serializer;
     }
 }
+// endregion CLASS_SerializerFactory

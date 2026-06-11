@@ -16,27 +16,40 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
  * by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content
  * instead of the animation.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcachedgif
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcachedgif
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Gif->value),
     new FieldCompareChecker('gif_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to an animated GIF file stored on the Telegram servers.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedgif
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultCachedGif, Telegram, Bot API, DTO, inlinequeryresultcachedgif
+// STRUCTURE: ▶ ┌id,gif_file_id┐ → ◇ caption,title → ∑ result
+// region CLASS_InlineQueryResultCachedGif
 final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $gif_file_id A valid file identifier for the GIF file
-     * @param string|null $caption Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * GIF animation
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the caption. See formatting options for
-     * more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param string|null $title Optional. Title for the result
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param string                           $id                       Unique identifier for this result, 1-64 bytes
+     * @param string                           $gif_file_id              A valid file identifier for the GIF file
+     * @param string|null                      $caption                  Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                   specified instead of parse_mode
+     * @param AbstractInputMessageContent|null $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                   GIF animation
+     * @param TelegramParseModeEnum|null       $parse_mode               Optional. Mode for parsing entities in the caption. See formatting options for
+     *                                                                   more details.
+     * @param InlineKeyboardMarkup|null        $reply_markup             Optional. Inline keyboard attached to the message
+     * @param string|null                      $title                    Optional. Title for the result
+     * @param bool|null                        $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -75,6 +88,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultCachedGif
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -94,6 +108,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setGifFileId(string $gif_file_id): InlineQueryResultCachedGif
     {
         $this->gif_file_id = $gif_file_id;
+
         return $this;
     }
 
@@ -113,6 +128,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultCachedGif
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -132,6 +148,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedGif
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -151,6 +168,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedGif
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -170,6 +188,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedGif
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -189,6 +208,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedGif
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -208,6 +228,7 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setTitle(?string $title): InlineQueryResultCachedGif
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -227,6 +248,9 @@ final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultCachedGif
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultCachedGif

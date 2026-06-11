@@ -5,23 +5,37 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_shared
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatShared, Telegram, Bot API, DTO, chat_shared
+// STRUCTURE: ▶ ┌request_id,chat_id┐ → ∑ ChatShared
+// region CLASS_ChatShared
+
 /**
  * This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
  *
  * @see https://core.telegram.org/bots/api#keyboardbuttonrequestchat KeyboardButtonRequestChat
- * @link https://core.telegram.org/bots/api#chatshared
+ * @see https://core.telegram.org/bots/api#chatshared
  */
 final class ChatShared implements EntityInterface
 {
     /**
-     * @param int $request_id Identifier of the request
-     * @param ChatId $chat_id Identifier of the shared chat. This number may have more than 32 significant bits and some programming
-     * languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer
-     * or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be
-     * unable to use this identifier, unless the chat is already known to the bot by some other means.
-     * @param PhotoSize[]|null $photo Optional. Available sizes of the chat photo, if the photo was requested by the bot
-     * @param string|null $title Optional. Title of the chat, if the title was requested by the bot.
-     * @param string|null $username Optional. Username of the chat, if the username was requested by the bot and available.
+     * @param int              $request_id Identifier of the request
+     * @param ChatId           $chat_id    Identifier of the shared chat. This number may have more than 32 significant bits and some programming
+     *                                     languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer
+     *                                     or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be
+     *                                     unable to use this identifier, unless the chat is already known to the bot by some other means.
+     * @param PhotoSize[]|null $photo      Optional. Available sizes of the chat photo, if the photo was requested by the bot
+     * @param string|null      $title      Optional. Title of the chat, if the title was requested by the bot.
+     * @param string|null      $username   Optional. Username of the chat, if the username was requested by the bot and available.
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -50,6 +64,7 @@ final class ChatShared implements EntityInterface
     public function setRequestId(int $request_id): ChatShared
     {
         $this->request_id = $request_id;
+
         return $this;
     }
 
@@ -69,6 +84,7 @@ final class ChatShared implements EntityInterface
     public function setChatId(ChatId $chat_id): ChatShared
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -88,6 +104,7 @@ final class ChatShared implements EntityInterface
     public function setPhoto(?array $photo): ChatShared
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -107,6 +124,7 @@ final class ChatShared implements EntityInterface
     public function setTitle(?string $title): ChatShared
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -126,6 +144,8 @@ final class ChatShared implements EntityInterface
     public function setUsername(?string $username): ChatShared
     {
         $this->username = $username;
+
         return $this;
     }
 }
+// endregion CLASS_ChatShared

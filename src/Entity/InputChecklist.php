@@ -5,24 +5,38 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a checklist to be sent as part of a message.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputchecklist
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputChecklist, Telegram, Bot API, DTO, inputchecklist
+// STRUCTURE: ▶ ┌checklist_tasks: InputChecklistTask[]┐ → ∑ InputChecklist
+// region CLASS_InputChecklist
+
 /**
  * Describes a checklist to create.
  *
- * @link https://core.telegram.org/bots/api#inputchecklist
+ * @see https://core.telegram.org/bots/api#inputchecklist
  */
 final class InputChecklist implements EntityInterface
 {
     /**
-     * @param string $title Title of the checklist; 1-255 characters after entities parsing
-     * @param InputChecklistTask[] $tasks List of 1-30 tasks in the checklist
-     * @param bool|null $others_can_add_tasks Optional. Pass True if other users can add tasks to the checklist
-     * @param bool|null $others_can_mark_tasks_as_done Optional. Pass True if other users can mark tasks as done or not done in the
-     * checklist
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the title. See formatting options for
-     * more details.
-     * @param MessageEntity[]|null $title_entities Optional. List of special entities that appear in the title, which can be specified
-     * instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities
-     * are allowed.
+     * @param string                     $title                         Title of the checklist; 1-255 characters after entities parsing
+     * @param InputChecklistTask[]       $tasks                         List of 1-30 tasks in the checklist
+     * @param bool|null                  $others_can_add_tasks          Optional. Pass True if other users can add tasks to the checklist
+     * @param bool|null                  $others_can_mark_tasks_as_done Optional. Pass True if other users can mark tasks as done or not done in the
+     *                                                                  checklist
+     * @param TelegramParseModeEnum|null $parse_mode                    Optional. Mode for parsing entities in the title. See formatting options for
+     *                                                                  more details.
+     * @param MessageEntity[]|null       $title_entities                Optional. List of special entities that appear in the title, which can be specified
+     *                                                                  instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities
+     *                                                                  are allowed.
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -55,6 +69,7 @@ final class InputChecklist implements EntityInterface
     public function setTitle(string $title): InputChecklist
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -74,6 +89,7 @@ final class InputChecklist implements EntityInterface
     public function setTasks(array $tasks): InputChecklist
     {
         $this->tasks = $tasks;
+
         return $this;
     }
 
@@ -93,6 +109,7 @@ final class InputChecklist implements EntityInterface
     public function setOthersCanAddTasks(?bool $others_can_add_tasks): InputChecklist
     {
         $this->others_can_add_tasks = $others_can_add_tasks;
+
         return $this;
     }
 
@@ -112,6 +129,7 @@ final class InputChecklist implements EntityInterface
     public function setOthersCanMarkTasksAsDone(?bool $others_can_mark_tasks_as_done): InputChecklist
     {
         $this->others_can_mark_tasks_as_done = $others_can_mark_tasks_as_done;
+
         return $this;
     }
 
@@ -131,6 +149,7 @@ final class InputChecklist implements EntityInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InputChecklist
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -150,6 +169,9 @@ final class InputChecklist implements EntityInterface
     public function setTitleEntities(?array $title_entities): InputChecklist
     {
         $this->title_entities = $title_entities;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputChecklist

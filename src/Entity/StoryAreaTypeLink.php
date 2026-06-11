@@ -7,10 +7,24 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a story area type that contains a link.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypelink
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: StoryAreaTypeLink, Telegram, Bot API, DTO, storyareatypelink
+// STRUCTURE: ▶ ┌type,url┐ → ∑ StoryAreaTypeLink
+// region CLASS_StoryAreaTypeLink
+
 /**
  * Describes a story area pointing to an HTTP or tg:// link. Currently, a story can have up to 3 link areas.
  *
- * @link https://core.telegram.org/bots/api#storyareatypelink
+ * @see https://core.telegram.org/bots/api#storyareatypelink
  */
 #[BuildIf(new FieldIsChecker('type', StoryAreaTypeTypeEnum::Link->value))]
 final class StoryAreaTypeLink extends AbstractStoryAreaType
@@ -40,6 +54,9 @@ final class StoryAreaTypeLink extends AbstractStoryAreaType
     public function setUrl(Url $url): StoryAreaTypeLink
     {
         $this->url = $url;
+
         return $this;
     }
 }
+
+// endregion CLASS_StoryAreaTypeLink

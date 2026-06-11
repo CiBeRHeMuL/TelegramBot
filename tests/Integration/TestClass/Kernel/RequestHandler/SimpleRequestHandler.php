@@ -10,7 +10,7 @@ use AndrewGos\TelegramBot\Kernel\Response\Response;
 class SimpleRequestHandler implements RequestHandlerInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function handle(Request $request): Response
     {

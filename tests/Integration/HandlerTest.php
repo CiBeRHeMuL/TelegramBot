@@ -128,8 +128,10 @@ class HandlerTest extends TestCase
         $handler->addHandlerGroup(
             new HandlerGroup(
                 new UpdateTypeChecker(UpdateTypeEnum::Message),
-                new class (1) implements RequestHandlerInterface {
-                    public function __construct(private int $index) {}
+                new class(1) implements RequestHandlerInterface {
+                    public function __construct(
+                        private int $index,
+                    ) {}
 
                     public function handle(Request $request): Response
                     {
@@ -142,8 +144,10 @@ class HandlerTest extends TestCase
         $handler->addHandlerGroup(
             new HandlerGroup(
                 new UpdateTypeChecker(UpdateTypeEnum::Message),
-                new class (2) implements RequestHandlerInterface {
-                    public function __construct(private int $index) {}
+                new class(2) implements RequestHandlerInterface {
+                    public function __construct(
+                        private int $index,
+                    ) {}
 
                     public function handle(Request $request): Response
                     {
@@ -160,7 +164,7 @@ class HandlerTest extends TestCase
         $this->assertArrayHasKey($update->getUpdateId(), $responses);
 
         $responses = iterator_to_array($responses[$update->getUpdateId()]);
-        /** @var Response[] $responses */
+        // @var Response[] $responses
         $this->assertCount(2, $responses);
 
         $this->assertSame(2, $responses[0]->get('index'));
@@ -179,8 +183,10 @@ class HandlerTest extends TestCase
         $handler->addHandlerGroup(
             new HandlerGroup(
                 new UpdateTypeChecker(UpdateTypeEnum::Message),
-                new class (2) implements RequestHandlerInterface {
-                    public function __construct(private int $index) {}
+                new class(2) implements RequestHandlerInterface {
+                    public function __construct(
+                        private int $index,
+                    ) {}
 
                     public function handle(Request $request): Response
                     {
@@ -197,8 +203,10 @@ class HandlerTest extends TestCase
         $handler->addHandlerGroup(
             new HandlerGroup(
                 new UpdateTypeChecker(UpdateTypeEnum::Message),
-                new class (1) implements RequestHandlerInterface {
-                    public function __construct(private int $index) {}
+                new class(1) implements RequestHandlerInterface {
+                    public function __construct(
+                        private int $index,
+                    ) {}
 
                     public function handle(Request $request): Response
                     {
@@ -215,7 +223,7 @@ class HandlerTest extends TestCase
         $this->assertArrayHasKey($update->getUpdateId(), $responses);
 
         $responses = iterator_to_array($responses[$update->getUpdateId()]);
-        /** @var Response[] $responses */
+        // @var Response[] $responses
         $this->assertCount(1, $responses);
 
         $this->assertSame(2, $responses[0]->get('index'));

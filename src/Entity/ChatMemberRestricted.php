@@ -6,37 +6,51 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a chat member that is under certain restrictions in the chat. Supergroups only.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_restricted
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatMemberRestricted, Telegram, Bot API, DTO, chat_member_restricted
+// STRUCTURE: ▶ ┌user,is_member,can_send_messages,can_send_audios,can_send_documents┐ → ∑ ChatMemberRestricted
+// region CLASS_ChatMemberRestricted
+
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  *
  * @see https://core.telegram.org/bots/api#chatmember chat member
- * @link https://core.telegram.org/bots/api#chatmemberrestricted
+ * @see https://core.telegram.org/bots/api#chatmemberrestricted
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Restricted->value))]
 final class ChatMemberRestricted extends AbstractChatMember
 {
     /**
-     * @param User $user Information about the user
-     * @param bool $is_member True, if the user is a member of the chat at the moment of the request
-     * @param bool $can_send_messages True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners,
-     * invoices, locations and venues
-     * @param bool $can_send_audios True, if the user is allowed to send audios
-     * @param bool $can_send_documents True, if the user is allowed to send documents
-     * @param bool $can_send_photos True, if the user is allowed to send photos
-     * @param bool $can_send_videos True, if the user is allowed to send videos
-     * @param bool $can_send_video_notes True, if the user is allowed to send video notes
-     * @param bool $can_send_voice_notes True, if the user is allowed to send voice notes
-     * @param bool $can_send_polls True, if the user is allowed to send polls and checklists
-     * @param bool $can_send_other_messages True, if the user is allowed to send animations, games, stickers and use inline bots
-     * @param bool $can_add_web_page_previews True, if the user is allowed to add web page previews to their messages
-     * @param bool $can_change_info True, if the user is allowed to change the chat title, photo and other settings
-     * @param bool $can_invite_users True, if the user is allowed to invite new users to the chat
-     * @param bool $can_pin_messages True, if the user is allowed to pin messages
-     * @param bool $can_manage_topics True, if the user is allowed to create forum topics
-     * @param int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
-     * @param bool $can_edit_tag True, if the user is allowed to edit their own tag
-     * @param bool $can_react_to_messages True, if the user is allowed to react to messages
-     * @param string|null $tag Optional. Tag of the member
+     * @param User        $user                      Information about the user
+     * @param bool        $is_member                 True, if the user is a member of the chat at the moment of the request
+     * @param bool        $can_send_messages         True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners,
+     *                                               invoices, locations and venues
+     * @param bool        $can_send_audios           True, if the user is allowed to send audios
+     * @param bool        $can_send_documents        True, if the user is allowed to send documents
+     * @param bool        $can_send_photos           True, if the user is allowed to send photos
+     * @param bool        $can_send_videos           True, if the user is allowed to send videos
+     * @param bool        $can_send_video_notes      True, if the user is allowed to send video notes
+     * @param bool        $can_send_voice_notes      True, if the user is allowed to send voice notes
+     * @param bool        $can_send_polls            True, if the user is allowed to send polls and checklists
+     * @param bool        $can_send_other_messages   True, if the user is allowed to send animations, games, stickers and use inline bots
+     * @param bool        $can_add_web_page_previews True, if the user is allowed to add web page previews to their messages
+     * @param bool        $can_change_info           True, if the user is allowed to change the chat title, photo and other settings
+     * @param bool        $can_invite_users          True, if the user is allowed to invite new users to the chat
+     * @param bool        $can_pin_messages          True, if the user is allowed to pin messages
+     * @param bool        $can_manage_topics         True, if the user is allowed to create forum topics
+     * @param int         $until_date                Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
+     * @param bool        $can_edit_tag              True, if the user is allowed to edit their own tag
+     * @param bool        $can_react_to_messages     True, if the user is allowed to react to messages
+     * @param string|null $tag                       Optional. Tag of the member
      *
      * @see https://core.telegram.org/bots/api#user User
      */
@@ -81,6 +95,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setUser(User $user): ChatMemberRestricted
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -100,6 +115,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setIsMember(bool $is_member): ChatMemberRestricted
     {
         $this->is_member = $is_member;
+
         return $this;
     }
 
@@ -119,6 +135,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendMessages(bool $can_send_messages): ChatMemberRestricted
     {
         $this->can_send_messages = $can_send_messages;
+
         return $this;
     }
 
@@ -138,6 +155,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendAudios(bool $can_send_audios): ChatMemberRestricted
     {
         $this->can_send_audios = $can_send_audios;
+
         return $this;
     }
 
@@ -157,6 +175,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendDocuments(bool $can_send_documents): ChatMemberRestricted
     {
         $this->can_send_documents = $can_send_documents;
+
         return $this;
     }
 
@@ -176,6 +195,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendPhotos(bool $can_send_photos): ChatMemberRestricted
     {
         $this->can_send_photos = $can_send_photos;
+
         return $this;
     }
 
@@ -195,6 +215,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendVideos(bool $can_send_videos): ChatMemberRestricted
     {
         $this->can_send_videos = $can_send_videos;
+
         return $this;
     }
 
@@ -214,6 +235,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendVideoNotes(bool $can_send_video_notes): ChatMemberRestricted
     {
         $this->can_send_video_notes = $can_send_video_notes;
+
         return $this;
     }
 
@@ -233,6 +255,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendVoiceNotes(bool $can_send_voice_notes): ChatMemberRestricted
     {
         $this->can_send_voice_notes = $can_send_voice_notes;
+
         return $this;
     }
 
@@ -252,6 +275,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendPolls(bool $can_send_polls): ChatMemberRestricted
     {
         $this->can_send_polls = $can_send_polls;
+
         return $this;
     }
 
@@ -271,6 +295,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanSendOtherMessages(bool $can_send_other_messages): ChatMemberRestricted
     {
         $this->can_send_other_messages = $can_send_other_messages;
+
         return $this;
     }
 
@@ -290,6 +315,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanAddWebPagePreviews(bool $can_add_web_page_previews): ChatMemberRestricted
     {
         $this->can_add_web_page_previews = $can_add_web_page_previews;
+
         return $this;
     }
 
@@ -309,6 +335,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanChangeInfo(bool $can_change_info): ChatMemberRestricted
     {
         $this->can_change_info = $can_change_info;
+
         return $this;
     }
 
@@ -328,6 +355,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanInviteUsers(bool $can_invite_users): ChatMemberRestricted
     {
         $this->can_invite_users = $can_invite_users;
+
         return $this;
     }
 
@@ -347,6 +375,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanPinMessages(bool $can_pin_messages): ChatMemberRestricted
     {
         $this->can_pin_messages = $can_pin_messages;
+
         return $this;
     }
 
@@ -366,6 +395,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanManageTopics(bool $can_manage_topics): ChatMemberRestricted
     {
         $this->can_manage_topics = $can_manage_topics;
+
         return $this;
     }
 
@@ -385,6 +415,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setUntilDate(int $until_date): ChatMemberRestricted
     {
         $this->until_date = $until_date;
+
         return $this;
     }
 
@@ -404,6 +435,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanEditTag(bool $can_edit_tag): ChatMemberRestricted
     {
         $this->can_edit_tag = $can_edit_tag;
+
         return $this;
     }
 
@@ -423,6 +455,7 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setCanReactToMessages(bool $can_react_to_messages): ChatMemberRestricted
     {
         $this->can_react_to_messages = $can_react_to_messages;
+
         return $this;
     }
 
@@ -442,6 +475,8 @@ final class ChatMemberRestricted extends AbstractChatMember
     public function setTag(?string $tag): ChatMemberRestricted
     {
         $this->tag = $tag;
+
         return $this;
     }
 }
+// endregion CLASS_ChatMemberRestricted

@@ -5,6 +5,19 @@ namespace AndrewGos\TelegramBot\ValueObject;
 use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
+// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
+/**
+ * @moduleContract
+ * @purpose Хранит и валидирует IPv4-адрес (с опциональной маской) по регулярному выражению.
+ *
+ * @sees USES_API(X): PHP preg_match
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: IpV4, Telegram, IP, address, IPv4, validation
+// STRUCTURE: ▶ ┌address┐ → ○ preg_match(IPV4_REGEX) → ◇ valid ? ✓ store : ✗ throw InvalidValueObjectConfigException → ∑ getAddress()
+// region CLASS_IpV4
 #[CanBeBuiltFromScalar]
 readonly class IpV4
 {
@@ -30,3 +43,4 @@ readonly class IpV4
         return $this->address;
     }
 }
+// endregion CLASS_IpV4

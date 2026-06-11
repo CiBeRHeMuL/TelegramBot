@@ -5,28 +5,41 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a message about a scheduled giveaway.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveaway
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Giveaway, giveaway, scheduled, Telegram Bot API
+// STRUCTURE: ┌chats[], winners_selection_date, winner_count┐ + optional only_new_members + has_public_winners + prize_description + country_codes + premium_subscription_month_count + prize_star_count → ∑ Giveaway
+// region CLASS_Giveaway
 /**
  * This object represents a message about a scheduled giveaway.
  *
- * @link https://core.telegram.org/bots/api#giveaway
+ * @see https://core.telegram.org/bots/api#giveaway
  */
 final class Giveaway implements EntityInterface
 {
     /**
-     * @param Chat[] $chats The list of chats which the user must join to participate in the giveaway
-     * @param int $winners_selection_date Point in time (Unix timestamp) when winners of the giveaway will be selected
-     * @param int $winner_count The number of users which are supposed to be selected as winners of the giveaway
-     * @param bool|null $only_new_members Optional. True, if only users who join the chats after the giveaway started should be eligible
-     * to win
-     * @param bool|null $has_public_winners Optional. True, if the list of giveaway winners will be visible to everyone
-     * @param string|null $prize_description Optional. Description of additional giveaway prize
-     * @param CountryCodeEnum[]|null $country_codes Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the
-     * countries from which eligible users for the giveaway must come. If empty, then all users can participate in the giveaway.
-     * Users with a phone number that was bought on Fragment can always participate in giveaways.
-     * @param int|null $premium_subscription_month_count Optional. The number of months the Telegram Premium subscription won from
-     * the giveaway will be active for; for Telegram Premium giveaways only
-     * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram
-     * Star giveaways only
+     * @param Chat[]                 $chats                            The list of chats which the user must join to participate in the giveaway
+     * @param int                    $winners_selection_date           Point in time (Unix timestamp) when winners of the giveaway will be selected
+     * @param int                    $winner_count                     The number of users which are supposed to be selected as winners of the giveaway
+     * @param bool|null              $only_new_members                 Optional. True, if only users who join the chats after the giveaway started should be eligible
+     *                                                                 to win
+     * @param bool|null              $has_public_winners               Optional. True, if the list of giveaway winners will be visible to everyone
+     * @param string|null            $prize_description                Optional. Description of additional giveaway prize
+     * @param CountryCodeEnum[]|null $country_codes                    Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the
+     *                                                                 countries from which eligible users for the giveaway must come. If empty, then all users can participate in the giveaway.
+     *                                                                 Users with a phone number that was bought on Fragment can always participate in giveaways.
+     * @param int|null               $premium_subscription_month_count Optional. The number of months the Telegram Premium subscription won from
+     *                                                                 the giveaway will be active for; for Telegram Premium giveaways only
+     * @param int|null               $prize_star_count                 Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram
+     *                                                                 Star giveaways only
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 ISO 3166-1 alpha-2
@@ -61,6 +74,7 @@ final class Giveaway implements EntityInterface
     public function setChats(array $chats): Giveaway
     {
         $this->chats = $chats;
+
         return $this;
     }
 
@@ -80,6 +94,7 @@ final class Giveaway implements EntityInterface
     public function setWinnersSelectionDate(int $winners_selection_date): Giveaway
     {
         $this->winners_selection_date = $winners_selection_date;
+
         return $this;
     }
 
@@ -99,6 +114,7 @@ final class Giveaway implements EntityInterface
     public function setWinnerCount(int $winner_count): Giveaway
     {
         $this->winner_count = $winner_count;
+
         return $this;
     }
 
@@ -118,6 +134,7 @@ final class Giveaway implements EntityInterface
     public function setOnlyNewMembers(?bool $only_new_members): Giveaway
     {
         $this->only_new_members = $only_new_members;
+
         return $this;
     }
 
@@ -137,6 +154,7 @@ final class Giveaway implements EntityInterface
     public function setHasPublicWinners(?bool $has_public_winners): Giveaway
     {
         $this->has_public_winners = $has_public_winners;
+
         return $this;
     }
 
@@ -156,6 +174,7 @@ final class Giveaway implements EntityInterface
     public function setPrizeDescription(?string $prize_description): Giveaway
     {
         $this->prize_description = $prize_description;
+
         return $this;
     }
 
@@ -175,6 +194,7 @@ final class Giveaway implements EntityInterface
     public function setCountryCodes(?array $country_codes): Giveaway
     {
         $this->country_codes = $country_codes;
+
         return $this;
     }
 
@@ -194,6 +214,7 @@ final class Giveaway implements EntityInterface
     public function setPremiumSubscriptionMonthCount(?int $premium_subscription_month_count): Giveaway
     {
         $this->premium_subscription_month_count = $premium_subscription_month_count;
+
         return $this;
     }
 
@@ -213,6 +234,8 @@ final class Giveaway implements EntityInterface
     public function setPrizeStarCount(?int $prize_star_count): Giveaway
     {
         $this->prize_star_count = $prize_star_count;
+
         return $this;
     }
 }
+// endregion CLASS_Giveaway

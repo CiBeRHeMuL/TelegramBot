@@ -2,17 +2,31 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the symbol of a unique gift.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftsymbol
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UniqueGiftSymbol, Telegram, Bot API, DTO, uniquegiftsymbol
+// STRUCTURE: ▶ ┌name,rarity_per_mille,sticker┐ → ∑ symbol
+// region CLASS_UniqueGiftSymbol
+
 /**
  * This object describes the symbol shown on the pattern of a unique gift.
  *
- * @link https://core.telegram.org/bots/api#uniquegiftsymbol
+ * @see https://core.telegram.org/bots/api#uniquegiftsymbol
  */
 final class UniqueGiftSymbol implements EntityInterface
 {
     /**
-     * @param string $name Name of the symbol
-     * @param Sticker $sticker The sticker that represents the unique gift
-     * @param int $rarity_per_mille The number of unique gifts that receive this model for every 1000 gifts upgraded
+     * @param string  $name             Name of the symbol
+     * @param Sticker $sticker          The sticker that represents the unique gift
+     * @param int     $rarity_per_mille The number of unique gifts that receive this model for every 1000 gifts upgraded
      *
      * @see https://core.telegram.org/bots/api#sticker Sticker
      */
@@ -38,6 +52,7 @@ final class UniqueGiftSymbol implements EntityInterface
     public function setName(string $name): UniqueGiftSymbol
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -57,6 +72,7 @@ final class UniqueGiftSymbol implements EntityInterface
     public function setSticker(Sticker $sticker): UniqueGiftSymbol
     {
         $this->sticker = $sticker;
+
         return $this;
     }
 
@@ -76,6 +92,9 @@ final class UniqueGiftSymbol implements EntityInterface
     public function setRarityPerMille(int $rarity_per_mille): UniqueGiftSymbol
     {
         $this->rarity_per_mille = $rarity_per_mille;
+
         return $this;
     }
 }
+
+// endregion CLASS_UniqueGiftSymbol

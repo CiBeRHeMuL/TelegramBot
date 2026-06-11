@@ -7,33 +7,47 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a location on a map.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultlocation
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultLocation, Telegram, Bot API, DTO, inlinequeryresultlocation
+// STRUCTURE: ▶ ┌id,latitude,longitude,title┐ → ◇ horizontal_accuracy,live_period → ∑ result
+// region CLASS_InlineQueryResultLocation
+
 /**
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the location.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultlocation
+ * @see https://core.telegram.org/bots/api#inlinequeryresultlocation
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Location))]
 final class InlineQueryResultLocation extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 Bytes
-     * @param float $latitude Location latitude in degrees
-     * @param float $longitude Location longitude in degrees
-     * @param string $title Location title
-     * @param int|null $heading Optional. For live locations, a direction in which the user is moving, in degrees. Must be between
-     * 1 and 360 if specified.
-     * @param float|null $horizontal_accuracy Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * location
-     * @param int|null $live_period Optional. Period in seconds during which the location can be updated, should be between 60 and
-     * 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-     * @param int|null $proximity_alert_radius Optional. For live locations, a maximum distance for proximity alerts about approaching
-     * another chat member, in meters. Must be between 1 and 100000 if specified.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $thumbnail_height Optional. Thumbnail height
-     * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
-     * @param int|null $thumbnail_width Optional. Thumbnail width
+     * @param string                           $id                     Unique identifier for this result, 1-64 Bytes
+     * @param float                            $latitude               Location latitude in degrees
+     * @param float                            $longitude              Location longitude in degrees
+     * @param string                           $title                  Location title
+     * @param int|null                         $heading                Optional. For live locations, a direction in which the user is moving, in degrees. Must be between
+     *                                                                 1 and 360 if specified.
+     * @param float|null                       $horizontal_accuracy    Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+     * @param AbstractInputMessageContent|null $input_message_content  Optional. Content of the message to be sent instead of the
+     *                                                                 location
+     * @param int|null                         $live_period            Optional. Period in seconds during which the location can be updated, should be between 60 and
+     *                                                                 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+     * @param int|null                         $proximity_alert_radius Optional. For live locations, a maximum distance for proximity alerts about approaching
+     *                                                                 another chat member, in meters. Must be between 1 and 100000 if specified.
+     * @param InlineKeyboardMarkup|null        $reply_markup           Optional. Inline keyboard attached to the message
+     * @param int|null                         $thumbnail_height       Optional. Thumbnail height
+     * @param Url|null                         $thumbnail_url          Optional. Url of the thumbnail for the result
+     * @param int|null                         $thumbnail_width        Optional. Thumbnail width
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
@@ -73,6 +87,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultLocation
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -92,6 +107,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setLatitude(float $latitude): InlineQueryResultLocation
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -111,6 +127,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setLongitude(float $longitude): InlineQueryResultLocation
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -130,6 +147,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultLocation
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -149,6 +167,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setHeading(?int $heading): InlineQueryResultLocation
     {
         $this->heading = $heading;
+
         return $this;
     }
 
@@ -168,6 +187,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setHorizontalAccuracy(?float $horizontal_accuracy): InlineQueryResultLocation
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
+
         return $this;
     }
 
@@ -187,6 +207,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultLocation
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -206,6 +227,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setLivePeriod(?int $live_period): InlineQueryResultLocation
     {
         $this->live_period = $live_period;
+
         return $this;
     }
 
@@ -225,6 +247,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setProximityAlertRadius(?int $proximity_alert_radius): InlineQueryResultLocation
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
+
         return $this;
     }
 
@@ -244,6 +267,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultLocation
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -263,6 +287,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultLocation
     {
         $this->thumbnail_height = $thumbnail_height;
+
         return $this;
     }
 
@@ -282,6 +307,7 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultLocation
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -301,6 +327,9 @@ final class InlineQueryResultLocation extends AbstractInlineQueryResult
     public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultLocation
     {
         $this->thumbnail_width = $thumbnail_width;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultLocation

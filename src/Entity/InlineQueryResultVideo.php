@@ -19,33 +19,47 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * content instead of the video.
  *
  * If an InlineQueryResultVideo message contains an embedded video (e.g., YouTube), you must replace its content using input_message_content.
- * @link https://core.telegram.org/bots/api#inlinequeryresultvideo
+ *
+ * @see https://core.telegram.org/bots/api#inlinequeryresultvideo
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Video->value),
     new FieldCompareChecker('video_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a page containing an embedded video player or a video file.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultvideo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultVideo, Telegram, Bot API, DTO, inlinequeryresultvideo
+// STRUCTURE: ▶ ┌id,video_url,mime_type,thumbnail_url,title┐ → ◇ video_width,video_height → ∑ result
+// region CLASS_InlineQueryResultVideo
 final class InlineQueryResultVideo extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param Url $video_url A valid URL for the embedded video player or video file
-     * @param InlineQueryResultVideoMimeTypeEnum $mime_type MIME type of the content of the video URL, “text/html” or “video/mp4”
-     * @param Url $thumbnail_url URL of the thumbnail (JPEG only) for the video
-     * @param string $title Title for the result
-     * @param string|null $caption Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param string|null $description Optional. Short description of the result
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the video caption. See formatting options
-     * for more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $video_duration Optional. Video duration in seconds
-     * @param int|null $video_height Optional. Video height
-     * @param int|null $video_width Optional. Video width
-     * @param bool|null $show_caption_above_media Optional. True, if the caption must be shown above the message media
+     * @param string                             $id                       Unique identifier for this result, 1-64 bytes
+     * @param Url                                $video_url                A valid URL for the embedded video player or video file
+     * @param InlineQueryResultVideoMimeTypeEnum $mime_type                MIME type of the content of the video URL, “text/html” or “video/mp4”
+     * @param Url                                $thumbnail_url            URL of the thumbnail (JPEG only) for the video
+     * @param string                             $title                    Title for the result
+     * @param string|null                        $caption                  Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null               $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                     specified instead of parse_mode
+     * @param string|null                        $description              Optional. Short description of the result
+     * @param AbstractInputMessageContent|null   $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                     video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
+     * @param TelegramParseModeEnum|null         $parse_mode               Optional. Mode for parsing entities in the video caption. See formatting options
+     *                                                                     for more details.
+     * @param InlineKeyboardMarkup|null          $reply_markup             Optional. Inline keyboard attached to the message
+     * @param int|null                           $video_duration           Optional. Video duration in seconds
+     * @param int|null                           $video_height             Optional. Video height
+     * @param int|null                           $video_width              Optional. Video width
+     * @param bool|null                          $show_caption_above_media Optional. True, if the caption must be shown above the message media
      */
     public function __construct(
         protected string $id,
@@ -76,6 +90,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultVideo
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -87,6 +102,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setVideoUrl(Url $video_url): InlineQueryResultVideo
     {
         $this->video_url = $video_url;
+
         return $this;
     }
 
@@ -98,6 +114,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setMimeType(InlineQueryResultVideoMimeTypeEnum $mime_type): InlineQueryResultVideo
     {
         $this->mime_type = $mime_type;
+
         return $this;
     }
 
@@ -109,6 +126,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setThumbnailUrl(Url $thumbnail_url): InlineQueryResultVideo
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -120,6 +138,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultVideo
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -131,6 +150,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultVideo
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -142,6 +162,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultVideo
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -153,6 +174,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setDescription(?string $description): InlineQueryResultVideo
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -164,6 +186,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultVideo
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -175,6 +198,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultVideo
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -186,6 +210,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultVideo
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -197,6 +222,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setVideoDuration(?int $video_duration): InlineQueryResultVideo
     {
         $this->video_duration = $video_duration;
+
         return $this;
     }
 
@@ -208,6 +234,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setVideoHeight(?int $video_height): InlineQueryResultVideo
     {
         $this->video_height = $video_height;
+
         return $this;
     }
 
@@ -219,6 +246,7 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setVideoWidth(?int $video_width): InlineQueryResultVideo
     {
         $this->video_width = $video_width;
+
         return $this;
     }
 
@@ -230,6 +258,9 @@ final class InlineQueryResultVideo extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultVideo
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultVideo

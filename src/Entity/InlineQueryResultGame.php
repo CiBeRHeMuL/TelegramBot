@@ -6,19 +6,33 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a Game.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultgame
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultGame, Telegram, Bot API, DTO, inlinequeryresultgame
+// STRUCTURE: ▶ ┌id,game_short_name┐ → ◇ reply_markup → ∑ result
+// region CLASS_InlineQueryResultGame
+
 /**
  * Represents a Game.
  *
  * @see https://core.telegram.org/bots/api#games Game
- * @link https://core.telegram.org/bots/api#inlinequeryresultgame
+ * @see https://core.telegram.org/bots/api#inlinequeryresultgame
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Game))]
 final class InlineQueryResultGame extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $game_short_name Short name of the game
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
+     * @param string                    $id              Unique identifier for this result, 1-64 bytes
+     * @param string                    $game_short_name Short name of the game
+     * @param InlineKeyboardMarkup|null $reply_markup    Optional. Inline keyboard attached to the message
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
@@ -47,6 +61,7 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultGame
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -66,6 +81,7 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     public function setGameShortName(string $game_short_name): InlineQueryResultGame
     {
         $this->game_short_name = $game_short_name;
+
         return $this;
     }
 
@@ -85,6 +101,9 @@ final class InlineQueryResultGame extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultGame
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultGame

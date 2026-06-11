@@ -7,8 +7,8 @@ class ChatIdProvider
     public static function validIdProvider(): array
     {
         return [
-            [123456789],
-            [-1001234567890],
+            [123_456_789],
+            [-1_001_234_567_890],
             ['@channelusername'],
             ['@supergroup123'],
         ];

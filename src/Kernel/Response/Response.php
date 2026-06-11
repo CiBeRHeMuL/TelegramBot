@@ -6,12 +6,26 @@ use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;
 use AndrewGos\TelegramBot\Exception\Container\AttributeNotFoundException;
 use Psr\Container\ContainerInterface;
 
+// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
+/**
+ * @moduleContract
+ * @purpose Kernel response DTO with stopPropagation flag.
+ *
+ * @sees USES_API(9): HttpStatusCodeEnum, ContainerInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Response, kernel response DTO, stop propagation
+// STRUCTURE: ▶ ┌statusCode + attributes + stopRequestPropagation┐ → ⊕ getters → ⊕ withAttribute() → ⊕ stopRequestPropagation()
+
+// region CLASS_Response [DOMAIN(8): Telegram; CONCEPT(7): Response; TECH(9): PHP]
 final readonly class Response implements ContainerInterface
 {
     /**
      * @param HttpStatusCodeEnum $statusCode
-     * @param array $attributes
-     * @param bool $stopRequestPropagation must update handler stop request propagation or not
+     * @param array              $attributes
+     * @param bool               $stopRequestPropagation must update handler stop request propagation or not
      */
     public function __construct(
         private HttpStatusCodeEnum $statusCode,
@@ -30,10 +44,10 @@ final readonly class Response implements ContainerInterface
     }
 
     /**
-     * Returns a new instance of this class with a specified attribute
+     * Returns a new instance of this class with a specified attribute.
      *
      * @param string $id
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return $this
      */
@@ -62,7 +76,8 @@ final readonly class Response implements ContainerInterface
     }
 
     /**
-     * Returns copy of current instance with `$stopRequestPropagation = true`
+     * Returns copy of current instance with `$stopRequestPropagation = true`.
+     *
      * @return self
      */
     public function stopRequestPropagation(): self
@@ -79,3 +94,4 @@ final readonly class Response implements ContainerInterface
         return $this->stopRequestPropagation;
     }
 }
+// endregion CLASS_Response

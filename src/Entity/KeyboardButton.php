@@ -4,40 +4,54 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\KeyboardButtonStyleEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents one button of the reply keyboard.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbutton
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: KeyboardButton, Telegram, Bot API, DTO, keyboardbutton
+// STRUCTURE: ▶ ┌text┐ → ◇ request_users/request_chat/request_contact → ∑ button
+// region CLASS_KeyboardButton
+
 /**
  * This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id,
  * and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object
  * to specify the button text.
  *
- * @link https://core.telegram.org/bots/api#keyboardbutton
+ * @see https://core.telegram.org/bots/api#keyboardbutton
  */
 final class KeyboardButton implements EntityInterface
 {
     /**
-     * @param string $text Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it
-     * will be sent as a message when the button is pressed
-     * @param KeyboardButtonRequestUsers|null $request_users Optional. If specified, pressing the button will open a list of suitable
-     * users. Identifiers of selected users will be sent to the bot in a “users_shared” service message. Available in private
-     * chats only.
-     * @param KeyboardButtonRequestChat|null $request_chat Optional. If specified, pressing the button will open a list of suitable
-     * chats. Tapping on a chat will send its identifier to the bot in a “chat_shared” service message. Available in private
-     * chats only.
-     * @param bool|null $request_contact Optional. If True, the user's phone number will be sent as a contact when the button is
-     * pressed. Available in private chats only.
-     * @param bool|null $request_location Optional. If True, the user's current location will be sent when the button is pressed.
-     * Available in private chats only.
-     * @param KeyboardButtonPollType|null $request_poll Optional. If specified, the user will be asked to create a poll and send
-     * it to the bot when the button is pressed. Available in private chats only.
-     * @param WebAppInfo|null $web_app Optional. If specified, the described Web App will be launched when the button is pressed.
-     * The Web App will be able to send a “web_app_data” service message. Available in private chats only.
-     * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown before the text of the button.
-     * Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private,
-     * group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
-     * @param KeyboardButtonStyleEnum|null $style Optional. Style of the button. Must be one of “danger” (red), “success”
-     * (green) or “primary” (blue). If omitted, then an app-specific style is used.
-     * @param KeyboardButtonRequestManagedBot|null $request_managed_bot Optional. If specified, pressing the button will ask the
-     * user to create and share a bot that will be managed by the current bot. Available for bots that enabled management of other
-     * bots in the \@BotFather Mini App. Available in private chats only.
+     * @param string                               $text                 Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it
+     *                                                                   will be sent as a message when the button is pressed
+     * @param KeyboardButtonRequestUsers|null      $request_users        Optional. If specified, pressing the button will open a list of suitable
+     *                                                                   users. Identifiers of selected users will be sent to the bot in a “users_shared” service message. Available in private
+     *                                                                   chats only.
+     * @param KeyboardButtonRequestChat|null       $request_chat         Optional. If specified, pressing the button will open a list of suitable
+     *                                                                   chats. Tapping on a chat will send its identifier to the bot in a “chat_shared” service message. Available in private
+     *                                                                   chats only.
+     * @param bool|null                            $request_contact      Optional. If True, the user's phone number will be sent as a contact when the button is
+     *                                                                   pressed. Available in private chats only.
+     * @param bool|null                            $request_location     Optional. If True, the user's current location will be sent when the button is pressed.
+     *                                                                   Available in private chats only.
+     * @param KeyboardButtonPollType|null          $request_poll         Optional. If specified, the user will be asked to create a poll and send
+     *                                                                   it to the bot when the button is pressed. Available in private chats only.
+     * @param WebAppInfo|null                      $web_app              Optional. If specified, the described Web App will be launched when the button is pressed.
+     *                                                                   The Web App will be able to send a “web_app_data” service message. Available in private chats only.
+     * @param string|null                          $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown before the text of the button.
+     *                                                                   Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private,
+     *                                                                   group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
+     * @param KeyboardButtonStyleEnum|null         $style                Optional. Style of the button. Must be one of “danger” (red), “success”
+     *                                                                   (green) or “primary” (blue). If omitted, then an app-specific style is used.
+     * @param KeyboardButtonRequestManagedBot|null $request_managed_bot  Optional. If specified, pressing the button will ask the
+     *                                                                   user to create and share a bot that will be managed by the current bot. Available for bots that enabled management of other
+     *                                                                   bots in the \@BotFather Mini App. Available in private chats only.
      *
      * @see https://fragment.com Fragment
      * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers KeyboardButtonRequestUsers
@@ -77,6 +91,7 @@ final class KeyboardButton implements EntityInterface
     public function setText(string $text): KeyboardButton
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -96,6 +111,7 @@ final class KeyboardButton implements EntityInterface
     public function setRequestUsers(?KeyboardButtonRequestUsers $request_users): KeyboardButton
     {
         $this->request_users = $request_users;
+
         return $this;
     }
 
@@ -115,6 +131,7 @@ final class KeyboardButton implements EntityInterface
     public function setRequestChat(?KeyboardButtonRequestChat $request_chat): KeyboardButton
     {
         $this->request_chat = $request_chat;
+
         return $this;
     }
 
@@ -134,6 +151,7 @@ final class KeyboardButton implements EntityInterface
     public function setRequestContact(?bool $request_contact): KeyboardButton
     {
         $this->request_contact = $request_contact;
+
         return $this;
     }
 
@@ -153,6 +171,7 @@ final class KeyboardButton implements EntityInterface
     public function setRequestLocation(?bool $request_location): KeyboardButton
     {
         $this->request_location = $request_location;
+
         return $this;
     }
 
@@ -172,6 +191,7 @@ final class KeyboardButton implements EntityInterface
     public function setRequestPoll(?KeyboardButtonPollType $request_poll): KeyboardButton
     {
         $this->request_poll = $request_poll;
+
         return $this;
     }
 
@@ -191,6 +211,7 @@ final class KeyboardButton implements EntityInterface
     public function setWebApp(?WebAppInfo $web_app): KeyboardButton
     {
         $this->web_app = $web_app;
+
         return $this;
     }
 
@@ -210,6 +231,7 @@ final class KeyboardButton implements EntityInterface
     public function setIconCustomEmojiId(?string $icon_custom_emoji_id): KeyboardButton
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
+
         return $this;
     }
 
@@ -229,6 +251,7 @@ final class KeyboardButton implements EntityInterface
     public function setStyle(?KeyboardButtonStyleEnum $style): KeyboardButton
     {
         $this->style = $style;
+
         return $this;
     }
 
@@ -248,6 +271,9 @@ final class KeyboardButton implements EntityInterface
     public function setRequestManagedBot(?KeyboardButtonRequestManagedBot $request_managed_bot): KeyboardButton
     {
         $this->request_managed_bot = $request_managed_bot;
+
         return $this;
     }
 }
+
+// endregion CLASS_KeyboardButton

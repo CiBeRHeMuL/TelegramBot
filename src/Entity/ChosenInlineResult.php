@@ -2,21 +2,34 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a result of an inline query that was chosen by the user and sent to their chat partner.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#choseninlineresult
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChosenInlineResult, inline query, chosen result, Telegram Bot API
+// STRUCTURE: ┌result_id, from, query┐ + optional inline_message_id + optional location → ∑ ChosenInlineResult
+// region CLASS_ChosenInlineResult
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresult result
- * @link https://core.telegram.org/bots/api#choseninlineresult
+ * @see https://core.telegram.org/bots/api#choseninlineresult
  */
 final class ChosenInlineResult implements EntityInterface
 {
     /**
-     * @param string $result_id The unique identifier for the result that was chosen
-     * @param User $from The user that chose the result
-     * @param string $query The query that was used to obtain the result
-     * @param string|null $inline_message_id Optional. Identifier of the sent inline message. Available only if there is an inline
-     * keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
-     * @param Location|null $location Optional. Sender location, only for bots that require user location
+     * @param string        $result_id         The unique identifier for the result that was chosen
+     * @param User          $from              The user that chose the result
+     * @param string        $query             The query that was used to obtain the result
+     * @param string|null   $inline_message_id Optional. Identifier of the sent inline message. Available only if there is an inline
+     *                                         keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
+     * @param Location|null $location          Optional. Sender location, only for bots that require user location
      *
      * @see https://core.telegram.org/bots/api#user User
      * @see https://core.telegram.org/bots/api#location Location
@@ -48,6 +61,7 @@ final class ChosenInlineResult implements EntityInterface
     public function setResultId(string $result_id): ChosenInlineResult
     {
         $this->result_id = $result_id;
+
         return $this;
     }
 
@@ -67,6 +81,7 @@ final class ChosenInlineResult implements EntityInterface
     public function setFrom(User $from): ChosenInlineResult
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -86,6 +101,7 @@ final class ChosenInlineResult implements EntityInterface
     public function setQuery(string $query): ChosenInlineResult
     {
         $this->query = $query;
+
         return $this;
     }
 
@@ -105,6 +121,7 @@ final class ChosenInlineResult implements EntityInterface
     public function setInlineMessageId(?string $inline_message_id): ChosenInlineResult
     {
         $this->inline_message_id = $inline_message_id;
+
         return $this;
     }
 
@@ -124,6 +141,8 @@ final class ChosenInlineResult implements EntityInterface
     public function setLocation(?Location $location): ChosenInlineResult
     {
         $this->location = $location;
+
         return $this;
     }
 }
+// endregion CLASS_ChosenInlineResult

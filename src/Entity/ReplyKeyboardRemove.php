@@ -2,6 +2,20 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Upon receiving a message with this object, Telegram clients will remove the current custom keyboard.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replykeyboardremove
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ReplyKeyboardRemove, Telegram, Bot API, DTO, replykeyboardremove
+// STRUCTURE: ▶ ◇ remove_keyboard,selective → ∑ ReplyKeyboardRemove
+// region CLASS_ReplyKeyboardRemove
+
 /**
  * Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default
  * letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for
@@ -9,18 +23,18 @@ namespace AndrewGos\TelegramBot\Entity;
  * channels and for messages sent on behalf of a business account.
  *
  * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
- * @link https://core.telegram.org/bots/api#replykeyboardremove
+ * @see https://core.telegram.org/bots/api#replykeyboardremove
  */
 final class ReplyKeyboardRemove implements EntityInterface
 {
     /**
-     * @param bool $remove_keyboard Requests clients to remove the custom keyboard (user will not be able to summon this keyboard;
-     * if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)
-     * @param bool|null $selective Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets:
-     * 1) users that are \@mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same
-     * chat and forum topic, sender of the original message.Example: A user votes in a poll, bot returns confirmation message in
-     * reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who
-     * haven't voted yet.
+     * @param bool      $remove_keyboard Requests clients to remove the custom keyboard (user will not be able to summon this keyboard;
+     *                                   if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)
+     * @param bool|null $selective       Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets:
+     *                                   1) users that are \@mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same
+     *                                   chat and forum topic, sender of the original message.Example: A user votes in a poll, bot returns confirmation message in
+     *                                   reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who
+     *                                   haven't voted yet.
      *
      * @see https://core.telegram.org/bots/api#replykeyboardmarkup ReplyKeyboardMarkup
      * @see https://core.telegram.org/bots/api#message Message
@@ -46,6 +60,7 @@ final class ReplyKeyboardRemove implements EntityInterface
     public function setRemoveKeyboard(bool $remove_keyboard): ReplyKeyboardRemove
     {
         $this->remove_keyboard = $remove_keyboard;
+
         return $this;
     }
 
@@ -65,6 +80,9 @@ final class ReplyKeyboardRemove implements EntityInterface
     public function setSelective(?bool $selective): ReplyKeyboardRemove
     {
         $this->selective = $selective;
+
         return $this;
     }
 }
+
+// endregion CLASS_ReplyKeyboardRemove

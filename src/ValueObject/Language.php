@@ -5,8 +5,21 @@ namespace AndrewGos\TelegramBot\ValueObject;
 use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
+// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
 /**
- * Описывает код языка в соответствии со спецификацией IETF
+ * @moduleContract
+ * @purpose Хранит и валидирует IETF-код языка (BCP 47) по регулярному выражению.
+ *
+ * @sees USES_API(X): IETF BCP 47 Language Tag
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Language, Telegram, IETF, BCP47, language, code, validation
+// STRUCTURE: ▶ ┌language┐ → ○ preg_match(LANGTAG|GRANDFATHERED|PRIVATEUSE) → ◇ valid ? ✓ store(strtolower) : ✗ throw → ∑ getLanguage()
+// region CLASS_Language
+/**
+ * Описывает код языка в соответствии со спецификацией IETF.
  */
 #[CanBeBuiltFromScalar]
 readonly class Language
@@ -45,7 +58,7 @@ readonly class Language
      */
     private const PRIVATEUSE_REGEX = '(x(-\w{1,8})+)';
     /**
-     * Нормальный языковой тег
+     * Нормальный языковой тег.
      */
     private const LANGTAG_REGEX
         = '('
@@ -62,7 +75,7 @@ readonly class Language
      * в противном случае не считались бы "правильно сформированными".
      * Все эти теги допустимы,
      * но большинство из них устарели в пользу более современных
-     * подзаголовков или комбинаций подзаголовков
+     * подзаголовков или комбинаций подзаголовков.
      */
     private const IRREGULAR_REGEX
         = '(i-ami|i-bnn|i-default|i-enochian'
@@ -75,11 +88,11 @@ readonly class Language
      * или вариантными подзаголовками: их значение
      * определяется их регистрацией, и все они устарели
      * в пользу более современных
-     * подзаголовков или последовательности подзаголовков
+     * подзаголовков или последовательности подзаголовков.
      */
     private const REGULAR_REGEX = '(art-lojban|cel-gaulish|no-bok|no-nyn|zh-guoyu|zh-hakka|zh-min|zh-min-nan|zh-xiang)';
     /**
-     * Избыточные теги, зарегистрированные в RFC 3066
+     * Избыточные теги, зарегистрированные в RFC 3066.
      */
     private const GRANDFATHERED_REGEX = '(' . self::IRREGULAR_REGEX . '|' . self::REGULAR_REGEX . ')';
 
@@ -109,3 +122,4 @@ readonly class Language
         return $this->language;
     }
 }
+// endregion CLASS_Language

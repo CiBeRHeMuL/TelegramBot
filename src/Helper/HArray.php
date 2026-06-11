@@ -4,15 +4,27 @@ namespace AndrewGos\TelegramBot\Helper;
 
 use Traversable;
 
+// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
+/**
+ * @moduleContract
+ * @purpose Утилитарный класс для работы с массивами: индексация, группировка, фильтрация.
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: HArray, Telegram, helper, array, utility, index, group, filter
+// STRUCTURE: ▶ Static methods: index → group → groupIndexing → groupExtended → indexExtended → filterRecursive
+// region CLASS_HArray
 class HArray
 {
     /**
-     * Index array by key or callable
+     * Index array by key or callable.
+     *
      * @template T
      * @template Key of string|int
      *
-     * @param iterable<T> $array
-     * @param string|int|(callable(T): Key) $key if callable, then must have signature: callable(array-element-type): string|int
+     * @param iterable<T>                   $array
+     * @param string|int|(callable(T): Key) $key   if callable, then must have signature: callable(array-element-type): string|int
      *
      * @return T[]
      */
@@ -30,17 +42,19 @@ class HArray
         foreach ($array as $i => $el) {
             $result[$key($el)] = $el;
         }
+
         return $result;
     }
 
     /**
-     * Group array elements by key or keys if key is array
+     * Group array elements by key or keys if key is array.
+     *
      * @template T
      * @template Key
      *
-     * @param iterable<T>|array<Key, T>|T[] $array
+     * @param iterable<T>|array<Key, T>|T[]               $array
      * @param string|int|callable|(int|string|callable)[] $key
-     * @param bool $preserveKeys
+     * @param bool                                        $preserveKeys
      *
      * @return ($key is array ? array : array<Key, T[]>|array)
      */
@@ -70,16 +84,18 @@ class HArray
                 $currentResultEl[] = $el;
             }
         }
+
         return $result;
     }
 
     /**
-     * Group array elements by key or keys if key is array
+     * Group array elements by key or keys if key is array.
+     *
      * @template T
      *
-     * @param iterable<T>|array<int|string, T>|T[] $array
+     * @param iterable<T>|array<int|string, T>|T[]        $array
      * @param string|int|callable|(int|string|callable)[] $key
-     * @param string|int|callable $index if callable, then must have signature: callable(array-element-type): string|int
+     * @param string|int|callable                         $index if callable, then must have signature: callable(array-element-type): string|int
      *
      * @return ($key is array ? array : array<int|string, T[]>|array)
      */
@@ -93,7 +109,6 @@ class HArray
             ? $k
             : fn($el) => $el[$k] ?? null;
         $key = (array) $key;
-
 
         $index = is_callable($index)
             ? $index
@@ -109,6 +124,7 @@ class HArray
             }
             $currentResultEl[$index($el)] = $el;
         }
+
         return $result;
     }
 
@@ -195,12 +211,12 @@ class HArray
      * @template TProj
      * @template TKeyFunc of callable(T, TKey=): TResKey
      *
-     * @param iterable<T>|array<TKey, T>|T[] $array
-     * @param TKey|TKeyFunc|(TKey|TKeyFunc)[] $key
+     * @param iterable<T>|array<TKey, T>|T[]          $array
+     * @param TKey|TKeyFunc|(TKey|TKeyFunc)[]         $key
      * @param TKey|(callable(T, TKey=): TResKey)|null $index
-     * @param (callable(T, TKey=): TProj)|null $projection
-     * @param bool $preserveKeys если необходимо сбросить ключи вложенных массивов, то надо установить в true
-     * @param TResKey|null $defaultIndex значение для индекса по умолчанию
+     * @param (callable(T, TKey=): TProj)|null        $projection
+     * @param bool                                    $preserveKeys если необходимо сбросить ключи вложенных массивов, то надо установить в true
+     * @param TResKey|null                            $defaultIndex значение для индекса по умолчанию
      *
      * @return ($projection is null
      *      ? ($key is array ? array : ($preserveKeys is false ? T[][] : array<TResKey, T[]>))
@@ -257,19 +273,20 @@ class HArray
                 $currentResultEl[] = $projection($el);
             }
         }
+
         return $result;
     }
 
     /**
-     * Indexing with projection
+     * Indexing with projection.
      *
      * @template T
      * @template Key
      * @template Proj
      *
-     * @param iterable<T> $array
+     * @param iterable<T>                 $array
      * @param string|int|callable(T): Key $key
-     * @param callable(T): Proj $projection
+     * @param callable(T): Proj           $projection
      *
      * @return array<Key, Proj>
      */
@@ -290,13 +307,14 @@ class HArray
         foreach ($array as $i => $el) {
             $result[$key($el)] = $projection($el);
         }
+
         return $result;
     }
 
     /**
-     * @param array $array
+     * @param array         $array
      * @param callable|null $callable
-     * @param int $mode
+     * @param int           $mode
      *
      * @return array
      */
@@ -312,8 +330,11 @@ class HArray
                     }
                 },
             );
+
             return $value;
         };
+
         return $filterFunc($array);
     }
 }
+// endregion CLASS_HArray

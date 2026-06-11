@@ -2,19 +2,35 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#answerprecheckoutquery
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API answerPreCheckoutQuery method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#answerprecheckoutquery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Answer, Pre, Checkout, Query
+// STRUCTURE: ▶ ┌ok + pre_checkout_query_id + error_message┐ → ◇ construct → ⊕ → ∑ ⟦AnswerPreCheckoutQueryRequest⟧
+
+// region CLASS_AnswerPreCheckoutQueryRequest
+/**
+ * @see https://core.telegram.org/bots/api#answerprecheckoutquery
  */
 class AnswerPreCheckoutQueryRequest implements RequestInterface
 {
     /**
-     * @param bool $ok Specify True if everything is alright (goods are available, etc.) and the bot is ready to proceed with the
-     * order. Use False if there are any problems.
-     * @param string $pre_checkout_query_id Unique identifier for the query to be answered
-     * @param string|null $error_message Required if ok is False. Error message in human readable form that explains the reason for
-     * failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were
-     * busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to
-     * the user.
+     * @param bool        $ok                    Specify True if everything is alright (goods are available, etc.) and the bot is ready to proceed with the
+     *                                           order. Use False if there are any problems.
+     * @param string      $pre_checkout_query_id Unique identifier for the query to be answered
+     * @param string|null $error_message         Required if ok is False. Error message in human readable form that explains the reason for
+     *                                           failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were
+     *                                           busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to
+     *                                           the user.
      */
     public function __construct(
         private bool $ok,
@@ -30,6 +46,7 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
     public function setOk(bool $ok): AnswerPreCheckoutQueryRequest
     {
         $this->ok = $ok;
+
         return $this;
     }
 
@@ -41,6 +58,7 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
     public function setPreCheckoutQueryId(string $pre_checkout_query_id): AnswerPreCheckoutQueryRequest
     {
         $this->pre_checkout_query_id = $pre_checkout_query_id;
+
         return $this;
     }
 
@@ -52,6 +70,8 @@ class AnswerPreCheckoutQueryRequest implements RequestInterface
     public function setErrorMessage(?string $error_message): AnswerPreCheckoutQueryRequest
     {
         $this->error_message = $error_message;
+
         return $this;
     }
 }
+// endregion CLASS_AnswerPreCheckoutQueryRequest

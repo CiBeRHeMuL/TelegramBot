@@ -4,20 +4,34 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes a checklist.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#checklist
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Checklist, Telegram, Bot API, DTO, checklist
+// STRUCTURE: ▶ ┌title┐ → ∑ Checklist
+// region CLASS_Checklist
+
 /**
  * Describes a checklist.
  *
- * @link https://core.telegram.org/bots/api#checklist
+ * @see https://core.telegram.org/bots/api#checklist
  */
 final class Checklist implements EntityInterface
 {
     /**
-     * @param string $title Title of the checklist
-     * @param ChecklistTask[] $tasks List of tasks in the checklist
-     * @param bool|null $others_can_add_tasks Optional. True, if users other than the creator of the list can add tasks to the list
-     * @param bool|null $others_can_mark_tasks_as_done Optional. True, if users other than the creator of the list can mark tasks
-     * as done or not done
-     * @param MessageEntity[]|null $title_entities Optional. Special entities that appear in the checklist title
+     * @param string               $title                         Title of the checklist
+     * @param ChecklistTask[]      $tasks                         List of tasks in the checklist
+     * @param bool|null            $others_can_add_tasks          Optional. True, if users other than the creator of the list can add tasks to the list
+     * @param bool|null            $others_can_mark_tasks_as_done Optional. True, if users other than the creator of the list can mark tasks
+     *                                                            as done or not done
+     * @param MessageEntity[]|null $title_entities                Optional. Special entities that appear in the checklist title
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#checklisttask ChecklistTask
@@ -48,6 +62,7 @@ final class Checklist implements EntityInterface
     public function setTitle(string $title): Checklist
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -67,6 +82,7 @@ final class Checklist implements EntityInterface
     public function setTasks(array $tasks): Checklist
     {
         $this->tasks = $tasks;
+
         return $this;
     }
 
@@ -86,6 +102,7 @@ final class Checklist implements EntityInterface
     public function setOthersCanAddTasks(?bool $others_can_add_tasks): Checklist
     {
         $this->others_can_add_tasks = $others_can_add_tasks;
+
         return $this;
     }
 
@@ -105,6 +122,7 @@ final class Checklist implements EntityInterface
     public function setOthersCanMarkTasksAsDone(?bool $others_can_mark_tasks_as_done): Checklist
     {
         $this->others_can_mark_tasks_as_done = $others_can_mark_tasks_as_done;
+
         return $this;
     }
 
@@ -124,6 +142,8 @@ final class Checklist implements EntityInterface
     public function setTitleEntities(?array $title_entities): Checklist
     {
         $this->title_entities = $title_entities;
+
         return $this;
     }
 }
+// endregion CLASS_Checklist

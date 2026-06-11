@@ -9,6 +9,7 @@ class DirProvider
     public static function constructorProvider(): array
     {
         $ds = DIRECTORY_SEPARATOR;
+
         return [
             'simple' => ['/a/b/c', "{$ds}a{$ds}b{$ds}c"],
             'mixed_slashes' => ['/a\\b/c', "{$ds}a{$ds}b{$ds}c"],
@@ -38,6 +39,7 @@ class DirProvider
     public static function fileProvider(): array
     {
         $ds = DIRECTORY_SEPARATOR;
+
         return [
             'simple' => ['/a/b/c', 'asdf.php', "{$ds}a{$ds}b{$ds}c" . $ds . 'asdf.php'],
             'mixed_slashes' => ['/a\\b/c', 'asdf.php', "{$ds}a{$ds}b{$ds}c" . $ds . 'asdf.php'],

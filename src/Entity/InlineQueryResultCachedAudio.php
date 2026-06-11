@@ -15,25 +15,38 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
  * Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Audio->value),
     new FieldCompareChecker('audio_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to an MP3 audio file stored on the Telegram servers.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultCachedAudio, Telegram, Bot API, DTO, inlinequeryresultcachedaudio
+// STRUCTURE: ▶ ┌id,audio_file_id┐ → ◇ caption,parse_mode → ∑ result
+// region CLASS_InlineQueryResultCachedAudio
 final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $audio_file_id A valid file identifier for the audio file
-     * @param string|null $caption Optional. Caption, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
+     * @param string                           $id                    Unique identifier for this result, 1-64 bytes
+     * @param string                           $audio_file_id         A valid file identifier for the audio file
+     * @param string|null                      $caption               Optional. Caption, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities      Optional. List of special entities that appear in the caption, which can be
+     *                                                                specified instead of parse_mode
      * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * audio
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the audio caption. See formatting options
-     * for more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
+     *                                                                audio
+     * @param TelegramParseModeEnum|null       $parse_mode            Optional. Mode for parsing entities in the audio caption. See formatting options
+     *                                                                for more details.
+     * @param InlineKeyboardMarkup|null        $reply_markup          Optional. Inline keyboard attached to the message
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -70,6 +83,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultCachedAudio
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -89,6 +103,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setAudioFileId(string $audio_file_id): InlineQueryResultCachedAudio
     {
         $this->audio_file_id = $audio_file_id;
+
         return $this;
     }
 
@@ -108,6 +123,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultCachedAudio
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -127,6 +143,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultCachedAudio
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -146,6 +163,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedAudio
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -165,6 +183,7 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultCachedAudio
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -184,6 +203,9 @@ final class InlineQueryResultCachedAudio extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedAudio
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultCachedAudio

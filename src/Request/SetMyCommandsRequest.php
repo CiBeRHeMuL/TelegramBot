@@ -6,18 +6,34 @@ use AndrewGos\TelegramBot\Entity\AbstractBotCommandScope;
 use AndrewGos\TelegramBot\Entity\BotCommand;
 use AndrewGos\TelegramBot\ValueObject\Language;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setmycommands
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setMyCommands method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setmycommands
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, My, Commands
+// STRUCTURE: ▶ ┌commands + language_code + scope┐ → ◇ construct → ⊕ → ∑ ⟦SetMyCommandsRequest⟧
+
+// region CLASS_SetMyCommandsRequest
+/**
+ * @see https://core.telegram.org/bots/api#setmycommands
  */
 class SetMyCommandsRequest implements RequestInterface
 {
     /**
-     * @param BotCommand[] $commands A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most
-     * 100 commands can be specified.
-     * @param Language|null $language_code A two-letter ISO 639-1 language code. If empty, commands will be applied to all users
-     * from the given scope, for whose language there are no dedicated commands
-     * @param AbstractBotCommandScope|null $scope A JSON-serialized object, describing scope of users for which the commands are
-     * relevant. Defaults to BotCommandScopeDefault.
+     * @param BotCommand[]                 $commands      A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most
+     *                                                    100 commands can be specified.
+     * @param Language|null                $language_code A two-letter ISO 639-1 language code. If empty, commands will be applied to all users
+     *                                                    from the given scope, for whose language there are no dedicated commands
+     * @param AbstractBotCommandScope|null $scope         A JSON-serialized object, describing scope of users for which the commands are
+     *                                                    relevant. Defaults to BotCommandScopeDefault.
      *
      * @see https://core.telegram.org/bots/api#botcommand BotCommand
      * @see https://core.telegram.org/bots/api#botcommandscope BotCommandScope
@@ -37,6 +53,7 @@ class SetMyCommandsRequest implements RequestInterface
     public function setCommands(array $commands): SetMyCommandsRequest
     {
         $this->commands = $commands;
+
         return $this;
     }
 
@@ -48,6 +65,7 @@ class SetMyCommandsRequest implements RequestInterface
     public function setLanguageCode(?Language $language_code): SetMyCommandsRequest
     {
         $this->language_code = $language_code;
+
         return $this;
     }
 
@@ -59,6 +77,8 @@ class SetMyCommandsRequest implements RequestInterface
     public function setScope(?AbstractBotCommandScope $scope): SetMyCommandsRequest
     {
         $this->scope = $scope;
+
         return $this;
     }
 }
+// endregion CLASS_SetMyCommandsRequest

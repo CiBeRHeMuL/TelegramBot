@@ -4,29 +4,42 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes a service message about a regular gift that was sent or received.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giftinfo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: GiftInfo, gift, service message, Telegram Bot API
+// STRUCTURE: ┌gift┐ + optional can_be_upgraded + convert_star_count + entities + is_private + owned_gift_id + prepaid_upgrade_star_count + text + is_upgrade_separate + unique_gift_number → ∑ GiftInfo
+// region CLASS_GiftInfo
 /**
  * Describes a service message about a regular gift that was sent or received.
  *
- * @link https://core.telegram.org/bots/api#giftinfo
+ * @see https://core.telegram.org/bots/api#giftinfo
  */
 final class GiftInfo implements EntityInterface
 {
     /**
-     * @param Gift $gift Information about the gift
-     * @param bool|null $can_be_upgraded Optional. True, if the gift can be upgraded to a unique gift
-     * @param int|null $convert_star_count Optional. Number of Telegram Stars that can be claimed by the receiver by converting the
-     * gift; omitted if conversion to Telegram Stars is impossible
-     * @param MessageEntity[]|null $entities Optional. Special entities that appear in the text
-     * @param bool|null $is_private Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone
-     * will be able to see them
-     * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received
-     * on behalf of business accounts
-     * @param int|null $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were prepaid for the ability to upgrade
-     * the gift
-     * @param string|null $text Optional. Text of the message that was added to the gift
-     * @param bool|null $is_upgrade_separate Optional. True, if the gift's upgrade was purchased after the gift was sent
-     * @param int|null $unique_gift_number Optional. Unique number reserved for this gift when upgraded. See the number field in
-     * UniqueGift
+     * @param Gift                 $gift                       Information about the gift
+     * @param bool|null            $can_be_upgraded            Optional. True, if the gift can be upgraded to a unique gift
+     * @param int|null             $convert_star_count         Optional. Number of Telegram Stars that can be claimed by the receiver by converting the
+     *                                                         gift; omitted if conversion to Telegram Stars is impossible
+     * @param MessageEntity[]|null $entities                   Optional. Special entities that appear in the text
+     * @param bool|null            $is_private                 Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone
+     *                                                         will be able to see them
+     * @param string|null          $owned_gift_id              Optional. Unique identifier of the received gift for the bot; only present for gifts received
+     *                                                         on behalf of business accounts
+     * @param int|null             $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were prepaid for the ability to upgrade
+     *                                                         the gift
+     * @param string|null          $text                       Optional. Text of the message that was added to the gift
+     * @param bool|null            $is_upgrade_separate        Optional. True, if the gift's upgrade was purchased after the gift was sent
+     * @param int|null             $unique_gift_number         Optional. Unique number reserved for this gift when upgraded. See the number field in
+     *                                                         UniqueGift
      *
      * @see https://core.telegram.org/bots/api#gift Gift
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -62,6 +75,7 @@ final class GiftInfo implements EntityInterface
     public function setGift(Gift $gift): GiftInfo
     {
         $this->gift = $gift;
+
         return $this;
     }
 
@@ -81,6 +95,7 @@ final class GiftInfo implements EntityInterface
     public function setCanBeUpgraded(?bool $can_be_upgraded): GiftInfo
     {
         $this->can_be_upgraded = $can_be_upgraded;
+
         return $this;
     }
 
@@ -100,6 +115,7 @@ final class GiftInfo implements EntityInterface
     public function setConvertStarCount(?int $convert_star_count): GiftInfo
     {
         $this->convert_star_count = $convert_star_count;
+
         return $this;
     }
 
@@ -119,6 +135,7 @@ final class GiftInfo implements EntityInterface
     public function setEntities(?array $entities): GiftInfo
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -138,6 +155,7 @@ final class GiftInfo implements EntityInterface
     public function setIsPrivate(?bool $is_private): GiftInfo
     {
         $this->is_private = $is_private;
+
         return $this;
     }
 
@@ -157,6 +175,7 @@ final class GiftInfo implements EntityInterface
     public function setOwnedGiftId(?string $owned_gift_id): GiftInfo
     {
         $this->owned_gift_id = $owned_gift_id;
+
         return $this;
     }
 
@@ -176,6 +195,7 @@ final class GiftInfo implements EntityInterface
     public function setPrepaidUpgradeStarCount(?int $prepaid_upgrade_star_count): GiftInfo
     {
         $this->prepaid_upgrade_star_count = $prepaid_upgrade_star_count;
+
         return $this;
     }
 
@@ -195,6 +215,7 @@ final class GiftInfo implements EntityInterface
     public function setText(?string $text): GiftInfo
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -214,6 +235,7 @@ final class GiftInfo implements EntityInterface
     public function setIsUpgradeSeparate(?bool $is_upgrade_separate): GiftInfo
     {
         $this->is_upgrade_separate = $is_upgrade_separate;
+
         return $this;
     }
 
@@ -233,6 +255,8 @@ final class GiftInfo implements EntityInterface
     public function setUniqueGiftNumber(?int $unique_gift_number): GiftInfo
     {
         $this->unique_gift_number = $unique_gift_number;
+
         return $this;
     }
 }
+// endregion CLASS_GiftInfo

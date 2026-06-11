@@ -40,6 +40,6 @@ class ApiTest extends TestCase
             $fileId,
             new Dir(new Path(__DIR__ . '/../files')),
         );
-        $this->assertEquals(true, $downloaded);
+        $this->assertTrue($downloaded);
     }
 }

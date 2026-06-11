@@ -2,10 +2,24 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object represents the bot's name.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#bot_name
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BotName, Telegram, Bot API, DTO, bot_name
+// STRUCTURE: ▶ ┌name┐ → ∑ BotName
+// region CLASS_BotName
+
 /**
  * This object represents the bot's name.
  *
- * @link https://core.telegram.org/bots/api#botname
+ * @see https://core.telegram.org/bots/api#botname
  */
 final class BotName implements EntityInterface
 {
@@ -32,6 +46,8 @@ final class BotName implements EntityInterface
     public function setName(string $name): BotName
     {
         $this->name = $name;
+
         return $this;
     }
 }
+// endregion CLASS_BotName

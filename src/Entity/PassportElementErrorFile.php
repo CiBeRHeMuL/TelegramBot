@@ -7,19 +7,33 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorFileTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an error in a file of a Telegram Passport element.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrorfile
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorFile, Telegram, Bot API, DTO, passportelementerrorfile
+// STRUCTURE: ▶ ┌type,file_hash,message┐ → ∑ error
+// region CLASS_PassportElementErrorFile
+
 /**
  * Represents an issue with a document scan. The error is considered resolved when the file with the document scan changes.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrorfile
+ * @see https://core.telegram.org/bots/api#passportelementerrorfile
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::File->value))]
 final class PassportElementErrorFile extends AbstractPassportElementError
 {
     /**
-     * @param PassportElementErrorFileTypeEnum $type The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
-     * “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
-     * @param string $file_hash Base64-encoded file hash
-     * @param string $message Error message
+     * @param PassportElementErrorFileTypeEnum $type      The section of the user's Telegram Passport which has the issue, one of “utility_bill”,
+     *                                                    “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+     * @param string                           $file_hash Base64-encoded file hash
+     * @param string                           $message   Error message
      */
     public function __construct(
         protected PassportElementErrorFileTypeEnum $type,
@@ -45,6 +59,7 @@ final class PassportElementErrorFile extends AbstractPassportElementError
     public function setType(PassportElementErrorFileTypeEnum $type): PassportElementErrorFile
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -64,6 +79,7 @@ final class PassportElementErrorFile extends AbstractPassportElementError
     public function setFileHash(string $file_hash): PassportElementErrorFile
     {
         $this->file_hash = $file_hash;
+
         return $this;
     }
 
@@ -83,6 +99,9 @@ final class PassportElementErrorFile extends AbstractPassportElementError
     public function setMessage(string $message): PassportElementErrorFile
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorFile

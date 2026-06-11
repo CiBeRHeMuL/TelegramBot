@@ -12,43 +12,59 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#copymessage
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API copyMessage method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#copymessage
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Copy, Message
+// STRUCTURE: ▶ ┌chat_id + from_chat_id + message_id + message_thread_id + caption┐ → ◇ construct → ⊕ → ∑ ⟦CopyMessageRequest⟧
+
+// region CLASS_CopyMessageRequest
+/**
+ * @see https://core.telegram.org/bots/api#copymessage
  */
 class CopyMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param ChatId $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target
-     * bot, supergroup or channel in the format \@username)
-     * @param int $message_id Message identifier in the chat specified in from_chat_id
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     * and private chats of bots with forum topic mode enabled only
-     * @param string|null $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original
-     * caption is kept
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the new caption. See formatting options for more
-     * details.
-     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the new caption, which
-     * can be specified instead of parse_mode
-     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
-     * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     * a reply from the user
-     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media. Ignored if a new
-     * caption isn't specified.
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null $video_start_timestamp New start timestamp for the copied video in the message
-     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
-     * if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     * post is automatically declined.
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; only available when
-     * copying to private chats
+     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                \@username
+     * @param ChatId                                                                       $from_chat_id              Unique identifier for the chat where the original message was sent (or username of the target
+     *                                                                                                                bot, supergroup or channel in the format \@username)
+     * @param int                                                                          $message_id                Message identifier in the chat specified in from_chat_id
+     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                and private chats of bots with forum topic mode enabled only
+     * @param string|null                                                                  $caption                   New caption for media, 0-1024 characters after entities parsing. If not specified, the original
+     *                                                                                                                caption is kept
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                Mode for parsing entities in the new caption. See formatting options for more
+     *                                                                                                                details.
+     * @param MessageEntity[]|null                                                         $caption_entities          A JSON-serialized list of special entities that appear in the new caption, which
+     *                                                                                                                can be specified instead of parse_mode
+     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
+     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
+     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                a reply from the user
+     * @param bool|null                                                                    $show_caption_above_media  Pass True, if the caption must be shown above the message media. Ignored if a new
+     *                                                                                                                caption isn't specified.
+     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $video_start_timestamp     New start timestamp for the copied video in the message
+     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                post is automatically declined.
+     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; only available when
+     *                                                                                                                copying to private chats
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -91,6 +107,7 @@ class CopyMessageRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): CopyMessageRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -102,6 +119,7 @@ class CopyMessageRequest implements RequestInterface
     public function setFromChatId(ChatId $from_chat_id): CopyMessageRequest
     {
         $this->from_chat_id = $from_chat_id;
+
         return $this;
     }
 
@@ -113,6 +131,7 @@ class CopyMessageRequest implements RequestInterface
     public function setMessageId(int $message_id): CopyMessageRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -124,6 +143,7 @@ class CopyMessageRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): CopyMessageRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 
@@ -135,6 +155,7 @@ class CopyMessageRequest implements RequestInterface
     public function setCaption(?string $caption): CopyMessageRequest
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -146,6 +167,7 @@ class CopyMessageRequest implements RequestInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): CopyMessageRequest
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -157,6 +179,7 @@ class CopyMessageRequest implements RequestInterface
     public function setCaptionEntities(?array $caption_entities): CopyMessageRequest
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -168,6 +191,7 @@ class CopyMessageRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): CopyMessageRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -179,6 +203,7 @@ class CopyMessageRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): CopyMessageRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -190,6 +215,7 @@ class CopyMessageRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): CopyMessageRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 
@@ -201,6 +227,7 @@ class CopyMessageRequest implements RequestInterface
     public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): CopyMessageRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -212,6 +239,7 @@ class CopyMessageRequest implements RequestInterface
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): CopyMessageRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 
@@ -223,6 +251,7 @@ class CopyMessageRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): CopyMessageRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
         return $this;
     }
 
@@ -234,6 +263,7 @@ class CopyMessageRequest implements RequestInterface
     public function setVideoStartTimestamp(?int $video_start_timestamp): CopyMessageRequest
     {
         $this->video_start_timestamp = $video_start_timestamp;
+
         return $this;
     }
 
@@ -245,6 +275,7 @@ class CopyMessageRequest implements RequestInterface
     public function setDirectMessagesTopicId(?int $direct_messages_topic_id): CopyMessageRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
+
         return $this;
     }
 
@@ -256,6 +287,7 @@ class CopyMessageRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): CopyMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
         return $this;
     }
 
@@ -267,6 +299,8 @@ class CopyMessageRequest implements RequestInterface
     public function setMessageEffectId(?string $message_effect_id): CopyMessageRequest
     {
         $this->message_effect_id = $message_effect_id;
+
         return $this;
     }
 }
+// endregion CLASS_CopyMessageRequest

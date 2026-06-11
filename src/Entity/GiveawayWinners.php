@@ -4,30 +4,43 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a message about the completion of a giveaway with public winners.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveawaywinners
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: GiveawayWinners, giveaway, winners, Telegram Bot API
+// STRUCTURE: ┌chat, giveaway_message_id, winners_selection_date, winner_count, winners[]┐ + optional additional_chat_count + premium_subscription_month_count + unclaimed_prize_count + only_new_members + was_refunded + prize_description + prize_star_count → ∑ GiveawayWinners
+// region CLASS_GiveawayWinners
 /**
  * This object represents a message about the completion of a giveaway with public winners.
  *
- * @link https://core.telegram.org/bots/api#giveawaywinners
+ * @see https://core.telegram.org/bots/api#giveawaywinners
  */
 final class GiveawayWinners implements EntityInterface
 {
     /**
-     * @param Chat $chat The chat that created the giveaway
-     * @param int $giveaway_message_id Identifier of the message with the giveaway in the chat
-     * @param int $winners_selection_date Point in time (Unix timestamp) when winners of the giveaway were selected
-     * @param int $winner_count Total number of winners in the giveaway
-     * @param User[] $winners List of up to 100 winners of the giveaway
-     * @param int|null $additional_chat_count Optional. The number of other chats the user had to join in order to be eligible for
-     * the giveaway
-     * @param int|null $premium_subscription_month_count Optional. The number of months the Telegram Premium subscription won from
-     * the giveaway will be active for; for Telegram Premium giveaways only
-     * @param int|null $unclaimed_prize_count Optional. Number of undistributed prizes
-     * @param bool|null $only_new_members Optional. True, if only users who had joined the chats after the giveaway started were
-     * eligible to win
-     * @param bool|null $was_refunded Optional. True, if the giveaway was canceled because the payment for it was refunded
-     * @param string|null $prize_description Optional. Description of additional giveaway prize
-     * @param int|null $prize_star_count Optional. The number of Telegram Stars that were split between giveaway winners; for Telegram
-     * Star giveaways only
+     * @param Chat        $chat                             The chat that created the giveaway
+     * @param int         $giveaway_message_id              Identifier of the message with the giveaway in the chat
+     * @param int         $winners_selection_date           Point in time (Unix timestamp) when winners of the giveaway were selected
+     * @param int         $winner_count                     Total number of winners in the giveaway
+     * @param User[]      $winners                          List of up to 100 winners of the giveaway
+     * @param int|null    $additional_chat_count            Optional. The number of other chats the user had to join in order to be eligible for
+     *                                                      the giveaway
+     * @param int|null    $premium_subscription_month_count Optional. The number of months the Telegram Premium subscription won from
+     *                                                      the giveaway will be active for; for Telegram Premium giveaways only
+     * @param int|null    $unclaimed_prize_count            Optional. Number of undistributed prizes
+     * @param bool|null   $only_new_members                 Optional. True, if only users who had joined the chats after the giveaway started were
+     *                                                      eligible to win
+     * @param bool|null   $was_refunded                     Optional. True, if the giveaway was canceled because the payment for it was refunded
+     * @param string|null $prize_description                Optional. Description of additional giveaway prize
+     * @param int|null    $prize_star_count                 Optional. The number of Telegram Stars that were split between giveaway winners; for Telegram
+     *                                                      Star giveaways only
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -64,6 +77,7 @@ final class GiveawayWinners implements EntityInterface
     public function setChat(Chat $chat): GiveawayWinners
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -83,6 +97,7 @@ final class GiveawayWinners implements EntityInterface
     public function setGiveawayMessageId(int $giveaway_message_id): GiveawayWinners
     {
         $this->giveaway_message_id = $giveaway_message_id;
+
         return $this;
     }
 
@@ -102,6 +117,7 @@ final class GiveawayWinners implements EntityInterface
     public function setWinnersSelectionDate(int $winners_selection_date): GiveawayWinners
     {
         $this->winners_selection_date = $winners_selection_date;
+
         return $this;
     }
 
@@ -121,6 +137,7 @@ final class GiveawayWinners implements EntityInterface
     public function setWinnerCount(int $winner_count): GiveawayWinners
     {
         $this->winner_count = $winner_count;
+
         return $this;
     }
 
@@ -140,6 +157,7 @@ final class GiveawayWinners implements EntityInterface
     public function setWinners(array $winners): GiveawayWinners
     {
         $this->winners = $winners;
+
         return $this;
     }
 
@@ -159,6 +177,7 @@ final class GiveawayWinners implements EntityInterface
     public function setAdditionalChatCount(?int $additional_chat_count): GiveawayWinners
     {
         $this->additional_chat_count = $additional_chat_count;
+
         return $this;
     }
 
@@ -178,6 +197,7 @@ final class GiveawayWinners implements EntityInterface
     public function setPremiumSubscriptionMonthCount(?int $premium_subscription_month_count): GiveawayWinners
     {
         $this->premium_subscription_month_count = $premium_subscription_month_count;
+
         return $this;
     }
 
@@ -197,6 +217,7 @@ final class GiveawayWinners implements EntityInterface
     public function setUnclaimedPrizeCount(?int $unclaimed_prize_count): GiveawayWinners
     {
         $this->unclaimed_prize_count = $unclaimed_prize_count;
+
         return $this;
     }
 
@@ -216,6 +237,7 @@ final class GiveawayWinners implements EntityInterface
     public function setOnlyNewMembers(?bool $only_new_members): GiveawayWinners
     {
         $this->only_new_members = $only_new_members;
+
         return $this;
     }
 
@@ -235,6 +257,7 @@ final class GiveawayWinners implements EntityInterface
     public function setWasRefunded(?bool $was_refunded): GiveawayWinners
     {
         $this->was_refunded = $was_refunded;
+
         return $this;
     }
 
@@ -254,6 +277,7 @@ final class GiveawayWinners implements EntityInterface
     public function setPrizeDescription(?string $prize_description): GiveawayWinners
     {
         $this->prize_description = $prize_description;
+
         return $this;
     }
 
@@ -273,6 +297,8 @@ final class GiveawayWinners implements EntityInterface
     public function setPrizeStarCount(?int $prize_star_count): GiveawayWinners
     {
         $this->prize_star_count = $prize_star_count;
+
         return $this;
     }
 }
+// endregion CLASS_GiveawayWinners

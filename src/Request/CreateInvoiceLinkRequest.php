@@ -6,56 +6,72 @@ use AndrewGos\TelegramBot\Entity\LabeledPrice;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#createinvoicelink
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API createInvoiceLink method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#createinvoicelink
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Create, Invoice, Link
+// STRUCTURE: ▶ ┌currency + description + payload + prices + title┐ → ◇ construct → ⊕ → ∑ ⟦CreateInvoiceLinkRequest⟧
+
+// region CLASS_CreateInvoiceLinkRequest
+/**
+ * @see https://core.telegram.org/bots/api#createinvoicelink
  */
 class CreateInvoiceLinkRequest implements RequestInterface
 {
     /**
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in
-     * Telegram Stars.
-     * @param string $description Product description, 1-255 characters
-     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal
-     * processes.
-     * @param LabeledPrice[] $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
-     * cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
-     * @param string $title Product name, 1-32 characters
-     * @param string|null $provider_token Payment provider token, obtained via \@BotFather. Pass an empty string for payments in
-     * Telegram Stars.
-     * @param bool|null $is_flexible Pass True if the final price depends on the shipping method. Ignored for payments in Telegram
-     * Stars.
-     * @param int|null $max_tip_amount The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
-     * For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the
-     * number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported
-     * for payments in Telegram Stars.
-     * @param bool|null $need_email Pass True if you require the user's email address to complete the order. Ignored for payments
-     * in Telegram Stars.
-     * @param bool|null $need_name Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram
-     * Stars.
-     * @param bool|null $need_phone_number Pass True if you require the user's phone number to complete the order. Ignored for payments
-     * in Telegram Stars.
-     * @param bool|null $need_shipping_address Pass True if you require the user's shipping address to complete the order. Ignored
-     * for payments in Telegram Stars.
-     * @param int|null $photo_height Photo height
-     * @param int|null $photo_size Photo size in bytes
-     * @param Url|null $photo_url URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for
-     * a service.
-     * @param int|null $photo_width Photo width
-     * @param string|null $provider_data JSON-serialized data about the invoice, which will be shared with the payment provider.
-     * A detailed description of required fields should be provided by the payment provider.
-     * @param bool|null $send_email_to_provider Pass True if the user's email address should be sent to the provider. Ignored for
-     * payments in Telegram Stars.
-     * @param bool|null $send_phone_number_to_provider Pass True if the user's phone number should be sent to the provider. Ignored
-     * for payments in Telegram Stars.
-     * @param int[]|null $suggested_tip_amounts A JSON-serialized array of suggested amounts of tips in the smallest units of the
-     * currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be
-     * positive, passed in a strictly increased order and must not exceed max_tip_amount.
-     * @param int|null $subscription_period The number of seconds the subscription will be active for before the next payment. The
-     * currency must be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days)
-     * if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions
-     * from the same user. Subscription price must no exceed 10000 Telegram Stars.
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the link will be
-     * created. For payments in Telegram Stars only.
+     * @param CurrencyEnum   $currency                      Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in
+     *                                                      Telegram Stars.
+     * @param string         $description                   Product description, 1-255 characters
+     * @param string         $payload                       Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal
+     *                                                      processes.
+     * @param LabeledPrice[] $prices                        Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
+     *                                                      cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
+     * @param string         $title                         Product name, 1-32 characters
+     * @param string|null    $provider_token                Payment provider token, obtained via \@BotFather. Pass an empty string for payments in
+     *                                                      Telegram Stars.
+     * @param bool|null      $is_flexible                   Pass True if the final price depends on the shipping method. Ignored for payments in Telegram
+     *                                                      Stars.
+     * @param int|null       $max_tip_amount                The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double).
+     *                                                      For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the
+     *                                                      number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported
+     *                                                      for payments in Telegram Stars.
+     * @param bool|null      $need_email                    Pass True if you require the user's email address to complete the order. Ignored for payments
+     *                                                      in Telegram Stars.
+     * @param bool|null      $need_name                     Pass True if you require the user's full name to complete the order. Ignored for payments in Telegram
+     *                                                      Stars.
+     * @param bool|null      $need_phone_number             Pass True if you require the user's phone number to complete the order. Ignored for payments
+     *                                                      in Telegram Stars.
+     * @param bool|null      $need_shipping_address         Pass True if you require the user's shipping address to complete the order. Ignored
+     *                                                      for payments in Telegram Stars.
+     * @param int|null       $photo_height                  Photo height
+     * @param int|null       $photo_size                    Photo size in bytes
+     * @param Url|null       $photo_url                     URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for
+     *                                                      a service.
+     * @param int|null       $photo_width                   Photo width
+     * @param string|null    $provider_data                 JSON-serialized data about the invoice, which will be shared with the payment provider.
+     *                                                      A detailed description of required fields should be provided by the payment provider.
+     * @param bool|null      $send_email_to_provider        Pass True if the user's email address should be sent to the provider. Ignored for
+     *                                                      payments in Telegram Stars.
+     * @param bool|null      $send_phone_number_to_provider Pass True if the user's phone number should be sent to the provider. Ignored
+     *                                                      for payments in Telegram Stars.
+     * @param int[]|null     $suggested_tip_amounts         A JSON-serialized array of suggested amounts of tips in the smallest units of the
+     *                                                      currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be
+     *                                                      positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     * @param int|null       $subscription_period           The number of seconds the subscription will be active for before the next payment. The
+     *                                                      currency must be set to “XTR” (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days)
+     *                                                      if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions
+     *                                                      from the same user. Subscription price must no exceed 10000 Telegram Stars.
+     * @param string|null    $business_connection_id        Unique identifier of the business connection on behalf of which the link will be
+     *                                                      created. For payments in Telegram Stars only.
      *
      * @see https://t.me/BotNews/90 Telegram Stars
      * @see https://t.me/botfather @BotFather
@@ -96,6 +112,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setCurrency(CurrencyEnum $currency): CreateInvoiceLinkRequest
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -107,6 +124,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setDescription(string $description): CreateInvoiceLinkRequest
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -118,6 +136,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPayload(string $payload): CreateInvoiceLinkRequest
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -129,6 +148,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPrices(array $prices): CreateInvoiceLinkRequest
     {
         $this->prices = $prices;
+
         return $this;
     }
 
@@ -140,6 +160,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setTitle(string $title): CreateInvoiceLinkRequest
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -151,6 +172,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setProviderToken(?string $provider_token): CreateInvoiceLinkRequest
     {
         $this->provider_token = $provider_token;
+
         return $this;
     }
 
@@ -162,6 +184,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setIsFlexible(?bool $is_flexible): CreateInvoiceLinkRequest
     {
         $this->is_flexible = $is_flexible;
+
         return $this;
     }
 
@@ -173,6 +196,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setMaxTipAmount(?int $max_tip_amount): CreateInvoiceLinkRequest
     {
         $this->max_tip_amount = $max_tip_amount;
+
         return $this;
     }
 
@@ -184,6 +208,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setNeedEmail(?bool $need_email): CreateInvoiceLinkRequest
     {
         $this->need_email = $need_email;
+
         return $this;
     }
 
@@ -195,6 +220,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setNeedName(?bool $need_name): CreateInvoiceLinkRequest
     {
         $this->need_name = $need_name;
+
         return $this;
     }
 
@@ -206,6 +232,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setNeedPhoneNumber(?bool $need_phone_number): CreateInvoiceLinkRequest
     {
         $this->need_phone_number = $need_phone_number;
+
         return $this;
     }
 
@@ -217,6 +244,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setNeedShippingAddress(?bool $need_shipping_address): CreateInvoiceLinkRequest
     {
         $this->need_shipping_address = $need_shipping_address;
+
         return $this;
     }
 
@@ -228,6 +256,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPhotoHeight(?int $photo_height): CreateInvoiceLinkRequest
     {
         $this->photo_height = $photo_height;
+
         return $this;
     }
 
@@ -239,6 +268,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPhotoSize(?int $photo_size): CreateInvoiceLinkRequest
     {
         $this->photo_size = $photo_size;
+
         return $this;
     }
 
@@ -250,6 +280,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPhotoUrl(?Url $photo_url): CreateInvoiceLinkRequest
     {
         $this->photo_url = $photo_url;
+
         return $this;
     }
 
@@ -261,6 +292,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setPhotoWidth(?int $photo_width): CreateInvoiceLinkRequest
     {
         $this->photo_width = $photo_width;
+
         return $this;
     }
 
@@ -272,6 +304,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setProviderData(?string $provider_data): CreateInvoiceLinkRequest
     {
         $this->provider_data = $provider_data;
+
         return $this;
     }
 
@@ -283,6 +316,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setSendEmailToProvider(?bool $send_email_to_provider): CreateInvoiceLinkRequest
     {
         $this->send_email_to_provider = $send_email_to_provider;
+
         return $this;
     }
 
@@ -294,6 +328,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setSendPhoneNumberToProvider(?bool $send_phone_number_to_provider): CreateInvoiceLinkRequest
     {
         $this->send_phone_number_to_provider = $send_phone_number_to_provider;
+
         return $this;
     }
 
@@ -305,6 +340,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setSuggestedTipAmounts(?array $suggested_tip_amounts): CreateInvoiceLinkRequest
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
+
         return $this;
     }
 
@@ -316,6 +352,7 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setSubscriptionPeriod(?int $subscription_period): CreateInvoiceLinkRequest
     {
         $this->subscription_period = $subscription_period;
+
         return $this;
     }
 
@@ -327,6 +364,8 @@ class CreateInvoiceLinkRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): CreateInvoiceLinkRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 }
+// endregion CLASS_CreateInvoiceLinkRequest

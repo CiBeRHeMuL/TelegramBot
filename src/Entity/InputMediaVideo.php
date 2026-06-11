@@ -10,38 +10,52 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a video to be sent.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediavideo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputMediaVideo, Telegram, Bot API, DTO, inputmediavideo
+// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ thumbnail,width,height,duration → ∑ InputMediaVideo
+// region CLASS_InputMediaVideo
+
 /**
  * Represents a video to be sent.
  *
- * @link https://core.telegram.org/bots/api#inputmediavideo
+ * @see https://core.telegram.org/bots/api#inputmediavideo
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Video->value))]
 final class InputMediaVideo extends AbstractInputMedia implements InputPollMediaInterface, InputPollOptionMediaInterface
 {
     /**
-     * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-     * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
-     * using multipart/form-data under <file_attach_name> name. More information on Sending Files »
-     * @param Filename|Url|string|null $thumbnail Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for
-     * the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width
-     * and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused
-     * and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using
-     * multipart/form-data under <file_attach_name>. More information on Sending Files »
-     * @param string|null $caption Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the video caption. See formatting options
-     * for more details.
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param int|null $width Optional. Video width
-     * @param int|null $height Optional. Video height
-     * @param int|null $duration Optional. Video duration in seconds
-     * @param bool|null $supports_streaming Optional. Pass True if the uploaded video is suitable for streaming
-     * @param bool|null $has_spoiler Optional. Pass True if the video needs to be covered with a spoiler animation
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
-     * @param Filename|Url|string|null $cover Optional. Cover for the video in the message. Pass a file_id to send a file that exists
-     * on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
-     * to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
-     * @param int|null $start_timestamp Optional. Start timestamp for the video in the message
+     * @param Filename|Url|string        $media                    File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     *                                                             pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
+     *                                                             using multipart/form-data under <file_attach_name> name. More information on Sending Files »
+     * @param Filename|Url|string|null   $thumbnail                Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for
+     *                                                             the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width
+     *                                                             and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused
+     *                                                             and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using
+     *                                                             multipart/form-data under <file_attach_name>. More information on Sending Files »
+     * @param string|null                $caption                  Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
+     * @param TelegramParseModeEnum|null $parse_mode               Optional. Mode for parsing entities in the video caption. See formatting options
+     *                                                             for more details.
+     * @param MessageEntity[]|null       $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                             specified instead of parse_mode
+     * @param int|null                   $width                    Optional. Video width
+     * @param int|null                   $height                   Optional. Video height
+     * @param int|null                   $duration                 Optional. Video duration in seconds
+     * @param bool|null                  $supports_streaming       Optional. Pass True if the uploaded video is suitable for streaming
+     * @param bool|null                  $has_spoiler              Optional. Pass True if the video needs to be covered with a spoiler animation
+     * @param bool|null                  $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param Filename|Url|string|null   $cover                    Optional. Cover for the video in the message. Pass a file_id to send a file that exists
+     *                                                             on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”
+     *                                                             to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
+     * @param int|null                   $start_timestamp          Optional. Start timestamp for the video in the message
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -82,6 +96,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setMedia(Filename|Url|string $media): InputMediaVideo
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -101,6 +116,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setThumbnail(Filename|Url|string|null $thumbnail): InputMediaVideo
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 
@@ -120,6 +136,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setCaption(?string $caption): InputMediaVideo
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -139,6 +156,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaVideo
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -158,6 +176,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setCaptionEntities(?array $caption_entities): InputMediaVideo
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -177,6 +196,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setWidth(?int $width): InputMediaVideo
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -196,6 +216,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setHeight(?int $height): InputMediaVideo
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -215,6 +236,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setDuration(?int $duration): InputMediaVideo
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -234,6 +256,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setSupportsStreaming(?bool $supports_streaming): InputMediaVideo
     {
         $this->supports_streaming = $supports_streaming;
+
         return $this;
     }
 
@@ -253,6 +276,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setHasSpoiler(?bool $has_spoiler): InputMediaVideo
     {
         $this->has_spoiler = $has_spoiler;
+
         return $this;
     }
 
@@ -272,6 +296,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InputMediaVideo
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 
@@ -291,6 +316,7 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setCover(Filename|Url|string|null $cover): InputMediaVideo
     {
         $this->cover = $cover;
+
         return $this;
     }
 
@@ -310,6 +336,9 @@ final class InputMediaVideo extends AbstractInputMedia implements InputPollMedia
     public function setStartTimestamp(?int $start_timestamp): InputMediaVideo
     {
         $this->start_timestamp = $start_timestamp;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputMediaVideo

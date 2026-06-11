@@ -8,6 +8,20 @@ use AndrewGos\TelegramBot\Exception\Container\AttributeNotFoundException;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 
+// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
+/**
+ * @moduleContract
+ * @purpose Kernel request DTO — Update + Api + Logger + attributes.
+ *
+ * @sees USES_API(9): Update, ApiInterface, LoggerInterface, ContainerInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Request, kernel request DTO, update container
+// STRUCTURE: ▶ ┌Update + Api + Logger + attributes┐ → ⊕ getters → ⊕ withAttribute() → ∑ has()/get()
+
+// region CLASS_Request [DOMAIN(8): Telegram; CONCEPT(7): Request; TECH(9): PHP]
 final readonly class Request implements ContainerInterface
 {
     public function __construct(
@@ -39,10 +53,10 @@ final readonly class Request implements ContainerInterface
     }
 
     /**
-     * Returns a new instance of this class with a specified attribute
+     * Returns a new instance of this class with a specified attribute.
      *
      * @param string $id
-     * @param mixed $value
+     * @param mixed  $value
      *
      * @return $this
      */
@@ -88,3 +102,4 @@ final readonly class Request implements ContainerInterface
         return $this->propagationStopped;
     }
 }
+// endregion CLASS_Request

@@ -4,6 +4,20 @@ namespace AndrewGos\TelegramBot\Http\Container;
 
 use AndrewGos\TelegramBot\Exception\Http\Container\NotFoundException;
 
+// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(6): HTTP; TECH(7): Headers]
+/**
+ * @moduleContract
+ * @purpose Implement an HTTP headers container that stores and manipulates header key-value pairs.
+ *
+ * @sees USES_API(6): HttpHeadersContainerInterface
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: HttpHeadersContainer, HTTP headers, container, PSR-11
+// STRUCTURE: ┌headers[]┐ → ○ has(name) ◇ → ○ get(name) → ⊕ array | NotFoundException → ○ set/add/unset → ⊕ mutate state
+
+// region CLASS_HttpHeadersContainer
 class HttpHeadersContainer implements HttpHeadersContainerInterface
 {
     private array $headers;
@@ -58,3 +72,4 @@ class HttpHeadersContainer implements HttpHeadersContainerInterface
         $this->headers[$name] = $value;
     }
 }
+// endregion CLASS_HttpHeadersContainer

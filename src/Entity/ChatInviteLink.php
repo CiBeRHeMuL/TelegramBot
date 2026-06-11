@@ -4,28 +4,42 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an invite link for a chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_invite_link
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatInviteLink, Telegram, Bot API, DTO, chat_invite_link
+// STRUCTURE: ▶ ┌invite_link,creator,creates_join_request,is_primary,is_revoked┐ → ∑ ChatInviteLink
+// region CLASS_ChatInviteLink
+
 /**
  * Represents an invite link for a chat.
  *
- * @link https://core.telegram.org/bots/api#chatinvitelink
+ * @see https://core.telegram.org/bots/api#chatinvitelink
  */
 final class ChatInviteLink implements EntityInterface
 {
     /**
-     * @param Url $invite_link The invite link. If the link was created by another chat administrator, then the second part of the
-     * link will be replaced with “…”.
-     * @param User $creator Creator of the link
-     * @param bool $creates_join_request True, if users joining the chat via the link need to be approved by chat administrators
-     * @param bool $is_primary True, if the link is primary
-     * @param bool $is_revoked True, if the link is revoked
-     * @param int|null $expire_date Optional. Point in time (Unix timestamp) when the link will expire or has been expired
-     * @param int|null $member_limit Optional. The maximum number of users that can be members of the chat simultaneously after joining
-     * the chat via this invite link; 1-99999
-     * @param string|null $name Optional. Invite link name
-     * @param int|null $pending_join_request_count Optional. Number of pending join requests created using this link
-     * @param int|null $subscription_period Optional. The number of seconds the subscription will be active for before the next payment
-     * @param int|null $subscription_price Optional. The amount of Telegram Stars a user must pay initially and after each subsequent
-     * subscription period to be a member of the chat using the link
+     * @param Url         $invite_link                The invite link. If the link was created by another chat administrator, then the second part of the
+     *                                                link will be replaced with “…”.
+     * @param User        $creator                    Creator of the link
+     * @param bool        $creates_join_request       True, if users joining the chat via the link need to be approved by chat administrators
+     * @param bool        $is_primary                 True, if the link is primary
+     * @param bool        $is_revoked                 True, if the link is revoked
+     * @param int|null    $expire_date                Optional. Point in time (Unix timestamp) when the link will expire or has been expired
+     * @param int|null    $member_limit               Optional. The maximum number of users that can be members of the chat simultaneously after joining
+     *                                                the chat via this invite link; 1-99999
+     * @param string|null $name                       Optional. Invite link name
+     * @param int|null    $pending_join_request_count Optional. Number of pending join requests created using this link
+     * @param int|null    $subscription_period        Optional. The number of seconds the subscription will be active for before the next payment
+     * @param int|null    $subscription_price         Optional. The amount of Telegram Stars a user must pay initially and after each subsequent
+     *                                                subscription period to be a member of the chat using the link
      *
      * @see https://core.telegram.org/bots/api#user User
      */
@@ -59,6 +73,7 @@ final class ChatInviteLink implements EntityInterface
     public function setInviteLink(Url $invite_link): ChatInviteLink
     {
         $this->invite_link = $invite_link;
+
         return $this;
     }
 
@@ -78,6 +93,7 @@ final class ChatInviteLink implements EntityInterface
     public function setCreator(User $creator): ChatInviteLink
     {
         $this->creator = $creator;
+
         return $this;
     }
 
@@ -97,6 +113,7 @@ final class ChatInviteLink implements EntityInterface
     public function setCreatesJoinRequest(bool $creates_join_request): ChatInviteLink
     {
         $this->creates_join_request = $creates_join_request;
+
         return $this;
     }
 
@@ -116,6 +133,7 @@ final class ChatInviteLink implements EntityInterface
     public function setIsPrimary(bool $is_primary): ChatInviteLink
     {
         $this->is_primary = $is_primary;
+
         return $this;
     }
 
@@ -135,6 +153,7 @@ final class ChatInviteLink implements EntityInterface
     public function setIsRevoked(bool $is_revoked): ChatInviteLink
     {
         $this->is_revoked = $is_revoked;
+
         return $this;
     }
 
@@ -154,6 +173,7 @@ final class ChatInviteLink implements EntityInterface
     public function setExpireDate(?int $expire_date): ChatInviteLink
     {
         $this->expire_date = $expire_date;
+
         return $this;
     }
 
@@ -173,6 +193,7 @@ final class ChatInviteLink implements EntityInterface
     public function setMemberLimit(?int $member_limit): ChatInviteLink
     {
         $this->member_limit = $member_limit;
+
         return $this;
     }
 
@@ -192,6 +213,7 @@ final class ChatInviteLink implements EntityInterface
     public function setName(?string $name): ChatInviteLink
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -211,6 +233,7 @@ final class ChatInviteLink implements EntityInterface
     public function setPendingJoinRequestCount(?int $pending_join_request_count): ChatInviteLink
     {
         $this->pending_join_request_count = $pending_join_request_count;
+
         return $this;
     }
 
@@ -230,6 +253,7 @@ final class ChatInviteLink implements EntityInterface
     public function setSubscriptionPeriod(?int $subscription_period): ChatInviteLink
     {
         $this->subscription_period = $subscription_period;
+
         return $this;
     }
 
@@ -249,6 +273,8 @@ final class ChatInviteLink implements EntityInterface
     public function setSubscriptionPrice(?int $subscription_price): ChatInviteLink
     {
         $this->subscription_price = $subscription_price;
+
         return $this;
     }
 }
+// endregion CLASS_ChatInviteLink

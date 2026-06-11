@@ -2,6 +2,19 @@
 
 namespace AndrewGos\TelegramBot\Enum;
 
+// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
+/**
+ * @moduleContract
+ * @purpose Enumeration of passport element error translation multiple files types in Telegram Bot API.
+ *
+ * @sees USES_API(6): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorTranslationFilesType, passport, error, translation, files, Telegram, enum
+// STRUCTURE: ▶ BackedEnum(string): [case => value]
+// region ENUM_PassportElementErrorTranslationFilesTypeEnum
 enum PassportElementErrorTranslationFilesTypeEnum: string
 {
     case Passport = 'passport';
@@ -14,3 +27,4 @@ enum PassportElementErrorTranslationFilesTypeEnum: string
     case PassportRegistration = 'passport_registration';
     case TemporaryRegistration = 'temporary_registration';
 }
+// endregion ENUM_PassportElementErrorTranslationFilesTypeEnum

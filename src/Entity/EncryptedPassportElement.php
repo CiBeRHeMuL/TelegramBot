@@ -7,39 +7,52 @@ use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes documents or other Telegram Passport elements shared with the bot by the user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#encryptedpassportelement
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: EncryptedPassportElement, passport, encrypted, element, Telegram Bot API
+// STRUCTURE: ┌type, hash┐ + optional data + optional phone_number + optional email + optional files + optional front_side + optional reverse_side + optional selfie + optional translation → ∑ EncryptedPassportElement
+// region CLASS_EncryptedPassportElement
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.
  *
- * @link https://core.telegram.org/bots/api#encryptedpassportelement
+ * @see https://core.telegram.org/bots/api#encryptedpassportelement
  */
 final class EncryptedPassportElement implements EntityInterface
 {
     /**
-     * @param EncryptedPassportElementTypeEnum $type Element type. One of “personal_details”, “passport”, “driver_license”,
-     * “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”,
-     * “passport_registration”, “temporary_registration”, “phone_number”, “email”.
-     * @param string $hash Base64-encoded element hash for using in PassportElementErrorUnspecified
-     * @param string|null $data Optional. Base64-encoded encrypted Telegram Passport element data provided by the user; available
-     * only for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address”
-     * types. Can be decrypted and verified using the accompanying EncryptedCredentials.
-     * @param Phone|null $phone_number Optional. User's verified phone number; available only for “phone_number” type
-     * @param Email|null $email Optional. User's verified email address; available only for “email” type
-     * @param PassportFile[]|null $files Optional. Array of encrypted files with documents provided by the user; available only for
-     * “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration”
-     * types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
-     * @param PassportFile|null $front_side Optional. Encrypted file with the front side of the document, provided by the user; available
-     * only for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted
-     * and verified using the accompanying EncryptedCredentials.
-     * @param PassportFile|null $reverse_side Optional. Encrypted file with the reverse side of the document, provided by the user;
-     * available only for “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying
-     * EncryptedCredentials.
-     * @param PassportFile|null $selfie Optional. Encrypted file with the selfie of the user holding a document, provided by the
-     * user; available if requested for “passport”, “driver_license”, “identity_card” and “internal_passport”. The
-     * file can be decrypted and verified using the accompanying EncryptedCredentials.
-     * @param PassportFile[]|null $translation Optional. Array of encrypted files with translated versions of documents provided
-     * by the user; available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”,
-     * “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration”
-     * types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+     * @param EncryptedPassportElementTypeEnum $type         Element type. One of “personal_details”, “passport”, “driver_license”,
+     *                                                       “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”,
+     *                                                       “passport_registration”, “temporary_registration”, “phone_number”, “email”.
+     * @param string                           $hash         Base64-encoded element hash for using in PassportElementErrorUnspecified
+     * @param string|null                      $data         Optional. Base64-encoded encrypted Telegram Passport element data provided by the user; available
+     *                                                       only for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address”
+     *                                                       types. Can be decrypted and verified using the accompanying EncryptedCredentials.
+     * @param Phone|null                       $phone_number Optional. User's verified phone number; available only for “phone_number” type
+     * @param Email|null                       $email        Optional. User's verified email address; available only for “email” type
+     * @param PassportFile[]|null              $files        Optional. Array of encrypted files with documents provided by the user; available only for
+     *                                                       “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration”
+     *                                                       types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+     * @param PassportFile|null                $front_side   Optional. Encrypted file with the front side of the document, provided by the user; available
+     *                                                       only for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted
+     *                                                       and verified using the accompanying EncryptedCredentials.
+     * @param PassportFile|null                $reverse_side Optional. Encrypted file with the reverse side of the document, provided by the user;
+     *                                                       available only for “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying
+     *                                                       EncryptedCredentials.
+     * @param PassportFile|null                $selfie       Optional. Encrypted file with the selfie of the user holding a document, provided by the
+     *                                                       user; available if requested for “passport”, “driver_license”, “identity_card” and “internal_passport”. The
+     *                                                       file can be decrypted and verified using the accompanying EncryptedCredentials.
+     * @param PassportFile[]|null              $translation  Optional. Array of encrypted files with translated versions of documents provided
+     *                                                       by the user; available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”,
+     *                                                       “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration”
+     *                                                       types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
      *
      * @see https://core.telegram.org/bots/api#encryptedcredentials EncryptedCredentials
      * @see https://core.telegram.org/bots/api#passportfile PassportFile
@@ -76,6 +89,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setType(EncryptedPassportElementTypeEnum $type): EncryptedPassportElement
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -95,6 +109,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setHash(string $hash): EncryptedPassportElement
     {
         $this->hash = $hash;
+
         return $this;
     }
 
@@ -114,6 +129,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setData(?string $data): EncryptedPassportElement
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -133,6 +149,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setPhoneNumber(?Phone $phone_number): EncryptedPassportElement
     {
         $this->phone_number = $phone_number;
+
         return $this;
     }
 
@@ -152,6 +169,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setEmail(?Email $email): EncryptedPassportElement
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -171,6 +189,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setFiles(?array $files): EncryptedPassportElement
     {
         $this->files = $files;
+
         return $this;
     }
 
@@ -190,6 +209,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setFrontSide(?PassportFile $front_side): EncryptedPassportElement
     {
         $this->front_side = $front_side;
+
         return $this;
     }
 
@@ -209,6 +229,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setReverseSide(?PassportFile $reverse_side): EncryptedPassportElement
     {
         $this->reverse_side = $reverse_side;
+
         return $this;
     }
 
@@ -228,6 +249,7 @@ final class EncryptedPassportElement implements EntityInterface
     public function setSelfie(?PassportFile $selfie): EncryptedPassportElement
     {
         $this->selfie = $selfie;
+
         return $this;
     }
 
@@ -247,6 +269,8 @@ final class EncryptedPassportElement implements EntityInterface
     public function setTranslation(?array $translation): EncryptedPassportElement
     {
         $this->translation = $translation;
+
         return $this;
     }
 }
+// endregion CLASS_EncryptedPassportElement

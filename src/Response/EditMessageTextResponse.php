@@ -4,6 +4,20 @@ namespace AndrewGos\TelegramBot\Response;
 
 use AndrewGos\TelegramBot\Entity\Message;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
+/**
+ * @moduleContract
+ * @purpose Response DTO for Telegram Bot API editMessageText method.
+ *
+ * @sees USES_API(7): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: edit message text, response, Telegram Bot API
+// STRUCTURE: ▶ ┌ok + result┐ → ◇ isOk()? : ⊕ Message|bool
+
+// region CLASS_EditMessageTextResponse [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
 class EditMessageTextResponse extends AbstractResponse
 {
     public function __construct(
@@ -18,3 +32,5 @@ class EditMessageTextResponse extends AbstractResponse
         return $this->message;
     }
 }
+
+// endregion CLASS_EditMessageTextResponse

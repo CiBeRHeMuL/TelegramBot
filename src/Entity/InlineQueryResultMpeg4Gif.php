@@ -18,33 +18,46 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified
  * content instead of the animation.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
+ * @see https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Mpeg4Gif->value),
     new FieldCompareChecker('mpeg4_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a video animation (H.264/MPEG-4 AVC video without sound).
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultMpeg4Gif, Telegram, Bot API, DTO, inlinequeryresultmpeg4gif
+// STRUCTURE: ▶ ┌id,mpeg4_url,thumbnail_url┐ → ◇ mpeg4_width,mpeg4_height → ∑ result
+// region CLASS_InlineQueryResultMpeg4Gif
 final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param Url $mpeg4_url A valid URL for the MPEG4 file
-     * @param Url $thumbnail_url URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
-     * @param string|null $caption Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * video animation
-     * @param int|null $mpeg4_duration Optional. Video duration in seconds
-     * @param int|null $mpeg4_height Optional. Video height
-     * @param int|null $mpeg4_width Optional. Video width
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the caption. See formatting options for
-     * more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one
-     * of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
-     * @param string|null $title Optional. Title for the result
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param string                                      $id                       Unique identifier for this result, 1-64 bytes
+     * @param Url                                         $mpeg4_url                A valid URL for the MPEG4 file
+     * @param Url                                         $thumbnail_url            URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+     * @param string|null                                 $caption                  Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null                        $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                              specified instead of parse_mode
+     * @param AbstractInputMessageContent|null            $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                              video animation
+     * @param int|null                                    $mpeg4_duration           Optional. Video duration in seconds
+     * @param int|null                                    $mpeg4_height             Optional. Video height
+     * @param int|null                                    $mpeg4_width              Optional. Video width
+     * @param TelegramParseModeEnum|null                  $parse_mode               Optional. Mode for parsing entities in the caption. See formatting options for
+     *                                                                              more details.
+     * @param InlineKeyboardMarkup|null                   $reply_markup             Optional. Inline keyboard attached to the message
+     * @param InlineQueryResultThumbnailMimeTypeEnum|null $thumbnail_mime_type      Optional. MIME type of the thumbnail, must be one
+     *                                                                              of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+     * @param string|null                                 $title                    Optional. Title for the result
+     * @param bool|null                                   $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -88,6 +101,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultMpeg4Gif
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -107,6 +121,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setMpeg4Url(Url $mpeg4_url): InlineQueryResultMpeg4Gif
     {
         $this->mpeg4_url = $mpeg4_url;
+
         return $this;
     }
 
@@ -126,6 +141,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setThumbnailUrl(Url $thumbnail_url): InlineQueryResultMpeg4Gif
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -145,6 +161,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultMpeg4Gif
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -164,6 +181,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultMpeg4Gif
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -183,6 +201,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultMpeg4Gif
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -202,6 +221,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setMpeg4Duration(?int $mpeg4_duration): InlineQueryResultMpeg4Gif
     {
         $this->mpeg4_duration = $mpeg4_duration;
+
         return $this;
     }
 
@@ -221,6 +241,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setMpeg4Height(?int $mpeg4_height): InlineQueryResultMpeg4Gif
     {
         $this->mpeg4_height = $mpeg4_height;
+
         return $this;
     }
 
@@ -240,6 +261,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setMpeg4Width(?int $mpeg4_width): InlineQueryResultMpeg4Gif
     {
         $this->mpeg4_width = $mpeg4_width;
+
         return $this;
     }
 
@@ -259,6 +281,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultMpeg4Gif
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -278,6 +301,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultMpeg4Gif
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -297,6 +321,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setThumbnailMimeType(?InlineQueryResultThumbnailMimeTypeEnum $thumbnail_mime_type): InlineQueryResultMpeg4Gif
     {
         $this->thumbnail_mime_type = $thumbnail_mime_type;
+
         return $this;
     }
 
@@ -316,6 +341,7 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setTitle(?string $title): InlineQueryResultMpeg4Gif
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -335,6 +361,9 @@ final class InlineQueryResultMpeg4Gif extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultMpeg4Gif
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultMpeg4Gif

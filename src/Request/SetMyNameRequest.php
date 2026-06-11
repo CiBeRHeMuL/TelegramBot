@@ -4,15 +4,31 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setmyname
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setMyName method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setmyname
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, My, Name
+// STRUCTURE: ▶ ┌language_code + name┐ → ◇ construct → ⊕ → ∑ ⟦SetMyNameRequest⟧
+
+// region CLASS_SetMyNameRequest
+/**
+ * @see https://core.telegram.org/bots/api#setmyname
  */
 class SetMyNameRequest implements RequestInterface
 {
     /**
      * @param Language|null $language_code A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for
-     * whose language there is no dedicated name.
-     * @param string|null $name New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
+     *                                     whose language there is no dedicated name.
+     * @param string|null   $name          New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
      */
     public function __construct(
         private ?Language $language_code = null,
@@ -27,6 +43,7 @@ class SetMyNameRequest implements RequestInterface
     public function setLanguageCode(?Language $language_code): SetMyNameRequest
     {
         $this->language_code = $language_code;
+
         return $this;
     }
 
@@ -38,6 +55,8 @@ class SetMyNameRequest implements RequestInterface
     public function setName(?string $name): SetMyNameRequest
     {
         $this->name = $name;
+
         return $this;
     }
 }
+// endregion CLASS_SetMyNameRequest

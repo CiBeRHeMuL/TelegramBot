@@ -4,16 +4,32 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AcceptedGiftTypes;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setBusinessAccountGiftSettings method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Business, Account, Gift, Settings
+// STRUCTURE: ▶ ┌accepted_gift_types + business_connection_id + show_gift_button┐ → ◇ construct → ⊕ → ∑ ⟦SetBusinessAccountGiftSettingsRequest⟧
+
+// region CLASS_SetBusinessAccountGiftSettingsRequest
+/**
+ * @see https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
  */
 class SetBusinessAccountGiftSettingsRequest implements RequestInterface
 {
     /**
-     * @param AcceptedGiftTypes $accepted_gift_types Types of gifts accepted by the business account
-     * @param string $business_connection_id Unique identifier of the business connection
-     * @param bool $show_gift_button Pass True, if a button for sending a gift to the user or by the business account must always
-     * be shown in the input field
+     * @param AcceptedGiftTypes $accepted_gift_types    Types of gifts accepted by the business account
+     * @param string            $business_connection_id Unique identifier of the business connection
+     * @param bool              $show_gift_button       Pass True, if a button for sending a gift to the user or by the business account must always
+     *                                                  be shown in the input field
      *
      * @see https://core.telegram.org/bots/api#acceptedgifttypes AcceptedGiftTypes
      */
@@ -31,6 +47,7 @@ class SetBusinessAccountGiftSettingsRequest implements RequestInterface
     public function setAcceptedGiftTypes(AcceptedGiftTypes $accepted_gift_types): SetBusinessAccountGiftSettingsRequest
     {
         $this->accepted_gift_types = $accepted_gift_types;
+
         return $this;
     }
 
@@ -42,6 +59,7 @@ class SetBusinessAccountGiftSettingsRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): SetBusinessAccountGiftSettingsRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -53,6 +71,8 @@ class SetBusinessAccountGiftSettingsRequest implements RequestInterface
     public function setShowGiftButton(bool $show_gift_button): SetBusinessAccountGiftSettingsRequest
     {
         $this->show_gift_button = $show_gift_button;
+
         return $this;
     }
 }
+// endregion CLASS_SetBusinessAccountGiftSettingsRequest

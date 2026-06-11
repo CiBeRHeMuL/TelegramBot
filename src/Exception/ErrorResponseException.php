@@ -8,6 +8,19 @@ use RuntimeException;
 use stdClass;
 use Throwable;
 
+// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
+/**
+ * @moduleContract
+ * @purpose Исключение, выбрасываемое при не-2xx HTTP-ответе от Telegram Bot API.
+ *
+ * @sees USES_API(X): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ErrorResponseException, Telegram, exception, error, response, API
+// STRUCTURE: ▶ ┌method, httpMethod, requestData, response┐ → ○ parent::__construct() → ∑ getters for all fields
+// region CLASS_ErrorResponseException
 class ErrorResponseException extends RuntimeException
 {
     public function __construct(
@@ -15,7 +28,7 @@ class ErrorResponseException extends RuntimeException
         private readonly HttpMethodEnum $httpMethod,
         private readonly array|stdClass $requestData,
         private readonly RawResponse $response,
-        string $message = "",
+        string $message = '',
         int $code = 0,
         ?Throwable $previous = null,
     ) {
@@ -42,3 +55,4 @@ class ErrorResponseException extends RuntimeException
         return $this->response;
     }
 }
+// endregion CLASS_ErrorResponseException

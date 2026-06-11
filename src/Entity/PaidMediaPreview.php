@@ -6,18 +6,32 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a preview of paid media.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#paidmediapreview
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PaidMediaPreview, Telegram, Bot API, DTO, paidmediapreview
+// STRUCTURE: ▶ ┌type┐ → ◇ width,height,duration → ∑ preview
+// region CLASS_PaidMediaPreview
+
 /**
  * The paid media isn't available before the payment.
  *
- * @link https://core.telegram.org/bots/api#paidmediapreview
+ * @see https://core.telegram.org/bots/api#paidmediapreview
  */
 #[BuildIf(new FieldIsChecker('type', PaidMediaTypeEnum::Preview->value))]
 final class PaidMediaPreview extends AbstractPaidMedia
 {
     /**
      * @param int|null $duration Optional. Duration of the media in seconds as defined by the sender
-     * @param int|null $height Optional. Media height as defined by the sender
-     * @param int|null $width Optional. Media width as defined by the sender
+     * @param int|null $height   Optional. Media height as defined by the sender
+     * @param int|null $width    Optional. Media width as defined by the sender
      */
     public function __construct(
         protected ?int $duration = null,
@@ -43,6 +57,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
     public function setDuration(?int $duration): PaidMediaPreview
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -62,6 +77,7 @@ final class PaidMediaPreview extends AbstractPaidMedia
     public function setHeight(?int $height): PaidMediaPreview
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -81,6 +97,9 @@ final class PaidMediaPreview extends AbstractPaidMedia
     public function setWidth(?int $width): PaidMediaPreview
     {
         $this->width = $width;
+
         return $this;
     }
 }
+
+// endregion CLASS_PaidMediaPreview

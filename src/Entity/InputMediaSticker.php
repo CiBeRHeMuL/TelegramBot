@@ -8,20 +8,34 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a sticker to be sent.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediasticker
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputMediaSticker, Telegram, Bot API, DTO, inputmediasticker
+// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode → ∑ InputMediaSticker
+// region CLASS_InputMediaSticker
+
 /**
  * Represents a sticker file to be sent.
  *
- * @link https://core.telegram.org/bots/api#inputmediasticker
+ * @see https://core.telegram.org/bots/api#inputmediasticker
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Sticker->value))]
 final class InputMediaSticker extends AbstractInputMedia implements InputPollOptionMediaInterface
 {
     /**
      * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-     * pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass “attach://<file_attach_name>” to upload
-     * a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files
-     * »
-     * @param string|null $emoji Optional. Emoji associated with the sticker; only for just uploaded stickers
+     *                                   pass an HTTP URL for Telegram to get a .WEBP sticker from the Internet, or pass “attach://<file_attach_name>” to upload
+     *                                   a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data under <file_attach_name> name. More information on Sending Files
+     *                                   »
+     * @param string|null         $emoji Optional. Emoji associated with the sticker; only for just uploaded stickers
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
@@ -50,6 +64,7 @@ final class InputMediaSticker extends AbstractInputMedia implements InputPollOpt
     public function setMedia(Filename|Url|string $media): InputMediaSticker
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -69,6 +84,9 @@ final class InputMediaSticker extends AbstractInputMedia implements InputPollOpt
     public function setEmoji(?string $emoji): InputMediaSticker
     {
         $this->emoji = $emoji;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputMediaSticker

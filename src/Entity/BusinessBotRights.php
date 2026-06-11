@@ -2,35 +2,49 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the rights of a business bot.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_bot_rights
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BusinessBotRights, Telegram, Bot API, DTO, business_bot_rights
+// STRUCTURE: ▶ ┌can_change_gift_settings,can_convert_gifts_to_stars,can_delete_all_messages,can_delete_sent_messages,can_edit_bio┐ → ∑ BusinessBotRights
+// region CLASS_BusinessBotRights
+
 /**
  * Represents the rights of a business bot.
  *
- * @link https://core.telegram.org/bots/api#businessbotrights
+ * @see https://core.telegram.org/bots/api#businessbotrights
  */
 final class BusinessBotRights implements EntityInterface
 {
     /**
-     * @param bool|null $can_change_gift_settings Optional. True, if the bot can change the privacy settings pertaining to gifts
-     * for the business account
-     * @param bool|null $can_convert_gifts_to_stars Optional. True, if the bot can convert regular gifts owned by the business account
-     * to Telegram Stars
-     * @param bool|null $can_delete_all_messages Optional. True, if the bot can delete all private messages in managed chats
-     * @param bool|null $can_delete_sent_messages Optional. True, if the bot can delete messages sent by the bot
-     * @param bool|null $can_edit_bio Optional. True, if the bot can edit the bio of the business account
-     * @param bool|null $can_edit_name Optional. True, if the bot can edit the first and last name of the business account
-     * @param bool|null $can_edit_profile_photo Optional. True, if the bot can edit the profile photo of the business account
-     * @param bool|null $can_edit_username Optional. True, if the bot can edit the username of the business account
-     * @param bool|null $can_manage_stories Optional. True, if the bot can post, edit and delete stories on behalf of the business
-     * account
-     * @param bool|null $can_read_messages Optional. True, if the bot can mark incoming private messages as read
-     * @param bool|null $can_reply Optional. True, if the bot can send and edit messages in the private chats that had incoming messages
-     * in the last 24 hours
+     * @param bool|null $can_change_gift_settings       Optional. True, if the bot can change the privacy settings pertaining to gifts
+     *                                                  for the business account
+     * @param bool|null $can_convert_gifts_to_stars     Optional. True, if the bot can convert regular gifts owned by the business account
+     *                                                  to Telegram Stars
+     * @param bool|null $can_delete_all_messages        Optional. True, if the bot can delete all private messages in managed chats
+     * @param bool|null $can_delete_sent_messages       Optional. True, if the bot can delete messages sent by the bot
+     * @param bool|null $can_edit_bio                   Optional. True, if the bot can edit the bio of the business account
+     * @param bool|null $can_edit_name                  Optional. True, if the bot can edit the first and last name of the business account
+     * @param bool|null $can_edit_profile_photo         Optional. True, if the bot can edit the profile photo of the business account
+     * @param bool|null $can_edit_username              Optional. True, if the bot can edit the username of the business account
+     * @param bool|null $can_manage_stories             Optional. True, if the bot can post, edit and delete stories on behalf of the business
+     *                                                  account
+     * @param bool|null $can_read_messages              Optional. True, if the bot can mark incoming private messages as read
+     * @param bool|null $can_reply                      Optional. True, if the bot can send and edit messages in the private chats that had incoming messages
+     *                                                  in the last 24 hours
      * @param bool|null $can_transfer_and_upgrade_gifts Optional. True, if the bot can transfer and upgrade gifts owned by the business
-     * account
-     * @param bool|null $can_transfer_stars Optional. True, if the bot can transfer Telegram Stars received by the business account
-     * to its own account, or use them to upgrade and transfer gifts
-     * @param bool|null $can_view_gifts_and_stars Optional. True, if the bot can view gifts and the amount of Telegram Stars owned
-     * by the business account
+     *                                                  account
+     * @param bool|null $can_transfer_stars             Optional. True, if the bot can transfer Telegram Stars received by the business account
+     *                                                  to its own account, or use them to upgrade and transfer gifts
+     * @param bool|null $can_view_gifts_and_stars       Optional. True, if the bot can view gifts and the amount of Telegram Stars owned
+     *                                                  by the business account
      */
     public function __construct(
         protected ?bool $can_change_gift_settings = null,
@@ -65,6 +79,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanChangeGiftSettings(?bool $can_change_gift_settings): BusinessBotRights
     {
         $this->can_change_gift_settings = $can_change_gift_settings;
+
         return $this;
     }
 
@@ -84,6 +99,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanConvertGiftsToStars(?bool $can_convert_gifts_to_stars): BusinessBotRights
     {
         $this->can_convert_gifts_to_stars = $can_convert_gifts_to_stars;
+
         return $this;
     }
 
@@ -103,6 +119,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanDeleteAllMessages(?bool $can_delete_all_messages): BusinessBotRights
     {
         $this->can_delete_all_messages = $can_delete_all_messages;
+
         return $this;
     }
 
@@ -122,6 +139,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanDeleteSentMessages(?bool $can_delete_sent_messages): BusinessBotRights
     {
         $this->can_delete_sent_messages = $can_delete_sent_messages;
+
         return $this;
     }
 
@@ -141,6 +159,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanEditBio(?bool $can_edit_bio): BusinessBotRights
     {
         $this->can_edit_bio = $can_edit_bio;
+
         return $this;
     }
 
@@ -160,6 +179,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanEditName(?bool $can_edit_name): BusinessBotRights
     {
         $this->can_edit_name = $can_edit_name;
+
         return $this;
     }
 
@@ -179,6 +199,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanEditProfilePhoto(?bool $can_edit_profile_photo): BusinessBotRights
     {
         $this->can_edit_profile_photo = $can_edit_profile_photo;
+
         return $this;
     }
 
@@ -198,6 +219,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanEditUsername(?bool $can_edit_username): BusinessBotRights
     {
         $this->can_edit_username = $can_edit_username;
+
         return $this;
     }
 
@@ -217,6 +239,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanManageStories(?bool $can_manage_stories): BusinessBotRights
     {
         $this->can_manage_stories = $can_manage_stories;
+
         return $this;
     }
 
@@ -236,6 +259,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanReadMessages(?bool $can_read_messages): BusinessBotRights
     {
         $this->can_read_messages = $can_read_messages;
+
         return $this;
     }
 
@@ -255,6 +279,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanReply(?bool $can_reply): BusinessBotRights
     {
         $this->can_reply = $can_reply;
+
         return $this;
     }
 
@@ -274,6 +299,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanTransferAndUpgradeGifts(?bool $can_transfer_and_upgrade_gifts): BusinessBotRights
     {
         $this->can_transfer_and_upgrade_gifts = $can_transfer_and_upgrade_gifts;
+
         return $this;
     }
 
@@ -293,6 +319,7 @@ final class BusinessBotRights implements EntityInterface
     public function setCanTransferStars(?bool $can_transfer_stars): BusinessBotRights
     {
         $this->can_transfer_stars = $can_transfer_stars;
+
         return $this;
     }
 
@@ -312,6 +339,8 @@ final class BusinessBotRights implements EntityInterface
     public function setCanViewGiftsAndStars(?bool $can_view_gifts_and_stars): BusinessBotRights
     {
         $this->can_view_gifts_and_stars = $can_view_gifts_and_stars;
+
         return $this;
     }
 }
+// endregion CLASS_BusinessBotRights

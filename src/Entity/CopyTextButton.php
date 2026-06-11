@@ -2,10 +2,23 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an inline keyboard button that copies specified text to the clipboard.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#copytextbutton
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: CopyTextButton, inline keyboard button, clipboard, Telegram Bot API
+// STRUCTURE: ┌text┐ → ∑ CopyTextButton
+// region CLASS_CopyTextButton
 /**
  * This object represents an inline keyboard button that copies specified text to the clipboard.
  *
- * @link https://core.telegram.org/bots/api#copytextbutton
+ * @see https://core.telegram.org/bots/api#copytextbutton
  */
 final class CopyTextButton implements EntityInterface
 {
@@ -23,15 +36,5 @@ final class CopyTextButton implements EntityInterface
     {
         return $this->text;
     }
-
-    /**
-     * @param string $text
-     *
-     * @return CopyTextButton
-     */
-    public function setText(string $text): CopyTextButton
-    {
-        $this->text = $text;
-        return $this;
-    }
 }
+// endregion CLASS_CopyTextButton

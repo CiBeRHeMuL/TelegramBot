@@ -2,16 +2,29 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about the creation of a scheduled giveaway.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveawaycreated
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: GiveawayCreated, giveaway, created, service message, Telegram Bot API
+// STRUCTURE: ┌prize_star_count┐ → ∑ GiveawayCreated
+// region CLASS_GiveawayCreated
 /**
  * This object represents a service message about the creation of a scheduled giveaway.
  *
- * @link https://core.telegram.org/bots/api#giveawaycreated
+ * @see https://core.telegram.org/bots/api#giveawaycreated
  */
 final class GiveawayCreated implements EntityInterface
 {
     /**
      * @param int|null $prize_star_count Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram
-     * Star giveaways only
+     *                                   Star giveaways only
      */
     public function __construct(
         protected ?int $prize_star_count = null,
@@ -24,15 +37,5 @@ final class GiveawayCreated implements EntityInterface
     {
         return $this->prize_star_count;
     }
-
-    /**
-     * @param int|null $prize_star_count
-     *
-     * @return GiveawayCreated
-     */
-    public function setPrizeStarCount(?int $prize_star_count): GiveawayCreated
-    {
-        $this->prize_star_count = $prize_star_count;
-        return $this;
-    }
 }
+// endregion CLASS_GiveawayCreated

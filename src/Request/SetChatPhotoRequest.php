@@ -6,14 +6,30 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setchatphoto
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setChatPhoto method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setchatphoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Chat, Photo
+// STRUCTURE: ▶ ┌chat_id + photo┐ → ◇ construct → ⊕ → ∑ ⟦SetChatPhotoRequest⟧
+
+// region CLASS_SetChatPhotoRequest
+/**
+ * @see https://core.telegram.org/bots/api#setchatphoto
  */
 class SetChatPhotoRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel in the format \@username
-     * @param Filename|Url $photo New chat photo, uploaded using multipart/form-data
+     * @param ChatId       $chat_id Unique identifier for the target chat or username of the target channel in the format \@username
+     * @param Filename|Url $photo   New chat photo, uploaded using multipart/form-data
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      */
@@ -30,6 +46,7 @@ class SetChatPhotoRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SetChatPhotoRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -41,6 +58,8 @@ class SetChatPhotoRequest implements RequestInterface
     public function setPhoto(Filename|Url $photo): SetChatPhotoRequest
     {
         $this->photo = $photo;
+
         return $this;
     }
 }
+// endregion CLASS_SetChatPhotoRequest

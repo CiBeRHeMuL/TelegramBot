@@ -10,7 +10,7 @@ class EntityFactory
     public static function createUser1(): Ent\User
     {
         return new Ent\User(
-            id: 123456789,
+            id: 123_456_789,
             is_bot: false,
             first_name: 'John',
             last_name: 'Doe',

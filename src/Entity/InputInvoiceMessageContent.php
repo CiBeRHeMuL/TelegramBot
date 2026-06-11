@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * Represents the content of an invoice message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent content
- * @link https://core.telegram.org/bots/api#inputinvoicemessagecontent
+ * @see https://core.telegram.org/bots/api#inputinvoicemessagecontent
  */
 #[BuildIf(new AndChecker([
     new FieldCompareChecker('title', null, CompareOperatorEnum::StrictNotEqual),
@@ -24,47 +24,60 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldCompareChecker('currency', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('prices', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the content of an invoice message to be sent as the result of an inline query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputinvoicemessagecontent
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputInvoiceMessageContent, Telegram, Bot API, DTO, inputinvoicemessagecontent
+// STRUCTURE: ▶ ┌title,description,payload,provider_token,currency,prices┐ → ◇ ... → ∑ content
+// region CLASS_InputInvoiceMessageContent
 final class InputInvoiceMessageContent extends AbstractInputMessageContent
 {
     /**
-     * @param string $title Product name, 1-32 characters
-     * @param string $description Product description, 1-255 characters
-     * @param string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal
-     * processes.
-     * @param CurrencyEnum $currency Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in
-     * Telegram Stars.
-     * @param LabeledPrice[] $prices Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
-     * cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
-     * @param string|null $provider_token Optional. Payment provider token, obtained via \@BotFather. Pass an empty string for payments
-     * in Telegram Stars.
-     * @param bool|null $is_flexible Optional. Pass True if the final price depends on the shipping method. Ignored for payments
-     * in Telegram Stars.
-     * @param int|null $max_tip_amount Optional. The maximum accepted amount for tips in the smallest units of the currency (integer,
-     * not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json,
-     * it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0.
-     * Not supported for payments in Telegram Stars.
-     * @param bool|null $need_email Optional. Pass True if you require the user's email address to complete the order. Ignored for
-     * payments in Telegram Stars.
-     * @param bool|null $need_name Optional. Pass True if you require the user's full name to complete the order. Ignored for payments
-     * in Telegram Stars.
-     * @param bool|null $need_phone_number Optional. Pass True if you require the user's phone number to complete the order. Ignored
-     * for payments in Telegram Stars.
-     * @param bool|null $need_shipping_address Optional. Pass True if you require the user's shipping address to complete the order.
-     * Ignored for payments in Telegram Stars.
-     * @param int|null $photo_height Optional. Photo height
-     * @param int|null $photo_size Optional. Photo size in bytes
-     * @param Url|null $photo_url Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing
-     * image for a service.
-     * @param int|null $photo_width Optional. Photo width
-     * @param string|null $provider_data Optional. A JSON-serialized object for data about the invoice, which will be shared with
-     * the payment provider. A detailed description of the required fields should be provided by the payment provider.
-     * @param bool|null $send_email_to_provider Optional. Pass True if the user's email address should be sent to the provider. Ignored
-     * for payments in Telegram Stars.
-     * @param bool|null $send_phone_number_to_provider Optional. Pass True if the user's phone number should be sent to the provider.
-     * Ignored for payments in Telegram Stars.
-     * @param int[]|null $suggested_tip_amounts Optional. A JSON-serialized array of suggested amounts of tip in the smallest units
-     * of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
-     * be positive, passed in a strictly increased order and must not exceed max_tip_amount.
+     * @param string         $title                         Product name, 1-32 characters
+     * @param string         $description                   Product description, 1-255 characters
+     * @param string         $payload                       Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal
+     *                                                      processes.
+     * @param CurrencyEnum   $currency                      Three-letter ISO 4217 currency code, see more on currencies. Pass “XTR” for payments in
+     *                                                      Telegram Stars.
+     * @param LabeledPrice[] $prices                        Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery
+     *                                                      cost, delivery tax, bonus, etc.). Must contain exactly one item for payments in Telegram Stars.
+     * @param string|null    $provider_token                Optional. Payment provider token, obtained via \@BotFather. Pass an empty string for payments
+     *                                                      in Telegram Stars.
+     * @param bool|null      $is_flexible                   Optional. Pass True if the final price depends on the shipping method. Ignored for payments
+     *                                                      in Telegram Stars.
+     * @param int|null       $max_tip_amount                Optional. The maximum accepted amount for tips in the smallest units of the currency (integer,
+     *                                                      not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json,
+     *                                                      it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0.
+     *                                                      Not supported for payments in Telegram Stars.
+     * @param bool|null      $need_email                    Optional. Pass True if you require the user's email address to complete the order. Ignored for
+     *                                                      payments in Telegram Stars.
+     * @param bool|null      $need_name                     Optional. Pass True if you require the user's full name to complete the order. Ignored for payments
+     *                                                      in Telegram Stars.
+     * @param bool|null      $need_phone_number             Optional. Pass True if you require the user's phone number to complete the order. Ignored
+     *                                                      for payments in Telegram Stars.
+     * @param bool|null      $need_shipping_address         Optional. Pass True if you require the user's shipping address to complete the order.
+     *                                                      Ignored for payments in Telegram Stars.
+     * @param int|null       $photo_height                  Optional. Photo height
+     * @param int|null       $photo_size                    Optional. Photo size in bytes
+     * @param Url|null       $photo_url                     Optional. URL of the product photo for the invoice. Can be a photo of the goods or a marketing
+     *                                                      image for a service.
+     * @param int|null       $photo_width                   Optional. Photo width
+     * @param string|null    $provider_data                 Optional. A JSON-serialized object for data about the invoice, which will be shared with
+     *                                                      the payment provider. A detailed description of the required fields should be provided by the payment provider.
+     * @param bool|null      $send_email_to_provider        Optional. Pass True if the user's email address should be sent to the provider. Ignored
+     *                                                      for payments in Telegram Stars.
+     * @param bool|null      $send_phone_number_to_provider Optional. Pass True if the user's phone number should be sent to the provider.
+     *                                                      Ignored for payments in Telegram Stars.
+     * @param int[]|null     $suggested_tip_amounts         Optional. A JSON-serialized array of suggested amounts of tip in the smallest units
+     *                                                      of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must
+     *                                                      be positive, passed in a strictly increased order and must not exceed max_tip_amount.
      *
      * @see https://t.me/botfather @BotFather
      * @see https://t.me/BotNews/90 Telegram Stars
@@ -113,6 +126,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setTitle(string $title): InputInvoiceMessageContent
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -132,6 +146,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setDescription(string $description): InputInvoiceMessageContent
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -151,6 +166,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPayload(string $payload): InputInvoiceMessageContent
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -170,6 +186,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setCurrency(CurrencyEnum $currency): InputInvoiceMessageContent
     {
         $this->currency = $currency;
+
         return $this;
     }
 
@@ -189,6 +206,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPrices(array $prices): InputInvoiceMessageContent
     {
         $this->prices = $prices;
+
         return $this;
     }
 
@@ -208,6 +226,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setProviderToken(?string $provider_token): InputInvoiceMessageContent
     {
         $this->provider_token = $provider_token;
+
         return $this;
     }
 
@@ -227,6 +246,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setIsFlexible(?bool $is_flexible): InputInvoiceMessageContent
     {
         $this->is_flexible = $is_flexible;
+
         return $this;
     }
 
@@ -246,6 +266,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setMaxTipAmount(?int $max_tip_amount): InputInvoiceMessageContent
     {
         $this->max_tip_amount = $max_tip_amount;
+
         return $this;
     }
 
@@ -265,6 +286,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setNeedEmail(?bool $need_email): InputInvoiceMessageContent
     {
         $this->need_email = $need_email;
+
         return $this;
     }
 
@@ -284,6 +306,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setNeedName(?bool $need_name): InputInvoiceMessageContent
     {
         $this->need_name = $need_name;
+
         return $this;
     }
 
@@ -303,6 +326,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setNeedPhoneNumber(?bool $need_phone_number): InputInvoiceMessageContent
     {
         $this->need_phone_number = $need_phone_number;
+
         return $this;
     }
 
@@ -322,6 +346,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setNeedShippingAddress(?bool $need_shipping_address): InputInvoiceMessageContent
     {
         $this->need_shipping_address = $need_shipping_address;
+
         return $this;
     }
 
@@ -341,6 +366,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPhotoHeight(?int $photo_height): InputInvoiceMessageContent
     {
         $this->photo_height = $photo_height;
+
         return $this;
     }
 
@@ -360,6 +386,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPhotoSize(?int $photo_size): InputInvoiceMessageContent
     {
         $this->photo_size = $photo_size;
+
         return $this;
     }
 
@@ -379,6 +406,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPhotoUrl(?Url $photo_url): InputInvoiceMessageContent
     {
         $this->photo_url = $photo_url;
+
         return $this;
     }
 
@@ -398,6 +426,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setPhotoWidth(?int $photo_width): InputInvoiceMessageContent
     {
         $this->photo_width = $photo_width;
+
         return $this;
     }
 
@@ -417,6 +446,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setProviderData(?string $provider_data): InputInvoiceMessageContent
     {
         $this->provider_data = $provider_data;
+
         return $this;
     }
 
@@ -436,6 +466,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setSendEmailToProvider(?bool $send_email_to_provider): InputInvoiceMessageContent
     {
         $this->send_email_to_provider = $send_email_to_provider;
+
         return $this;
     }
 
@@ -455,6 +486,7 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setSendPhoneNumberToProvider(?bool $send_phone_number_to_provider): InputInvoiceMessageContent
     {
         $this->send_phone_number_to_provider = $send_phone_number_to_provider;
+
         return $this;
     }
 
@@ -474,6 +506,9 @@ final class InputInvoiceMessageContent extends AbstractInputMessageContent
     public function setSuggestedTipAmounts(?array $suggested_tip_amounts): InputInvoiceMessageContent
     {
         $this->suggested_tip_amounts = $suggested_tip_amounts;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputInvoiceMessageContent

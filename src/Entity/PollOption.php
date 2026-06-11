@@ -4,26 +4,40 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about one answer option in a poll.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#polloption
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PollOption, Telegram, Bot API, DTO, polloption
+// STRUCTURE: ▶ ┌text,voter_count┐ → ∑ PollOption
+// region CLASS_PollOption
+
 /**
  * This object contains information about one answer option in a poll.
  *
- * @link https://core.telegram.org/bots/api#polloption
+ * @see https://core.telegram.org/bots/api#polloption
  */
 final class PollOption implements EntityInterface
 {
     /**
-     * @param string $text Option text, 1-100 characters
-     * @param int $voter_count Number of users who voted for this option; may be 0 if unknown
-     * @param string $persistent_id Unique identifier of the option, persistent on option addition and deletion
+     * @param string               $text          Option text, 1-100 characters
+     * @param int                  $voter_count   Number of users who voted for this option; may be 0 if unknown
+     * @param string               $persistent_id Unique identifier of the option, persistent on option addition and deletion
      * @param MessageEntity[]|null $text_entities Optional. Special entities that appear in the option text. Currently, only custom
-     * emoji entities are allowed in poll option texts
-     * @param User|null $added_by_user Optional. User who added the option; omitted if the option wasn't added by a user after poll
-     * creation
-     * @param Chat|null $added_by_chat Optional. Chat that added the option; omitted if the option wasn't added by a chat after poll
-     * creation
-     * @param int|null $addition_date Optional. Point in time (Unix timestamp) when the option was added; omitted if the option existed
-     * in the original poll
-     * @param PollMedia|null $media Optional. Media added to the poll option
+     *                                            emoji entities are allowed in poll option texts
+     * @param User|null            $added_by_user Optional. User who added the option; omitted if the option wasn't added by a user after poll
+     *                                            creation
+     * @param Chat|null            $added_by_chat Optional. Chat that added the option; omitted if the option wasn't added by a chat after poll
+     *                                            creation
+     * @param int|null             $addition_date Optional. Point in time (Unix timestamp) when the option was added; omitted if the option existed
+     *                                            in the original poll
+     * @param PollMedia|null       $media         Optional. Media added to the poll option
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#pollmedia PollMedia
@@ -58,6 +72,7 @@ final class PollOption implements EntityInterface
     public function setText(string $text): PollOption
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -77,6 +92,7 @@ final class PollOption implements EntityInterface
     public function setVoterCount(int $voter_count): PollOption
     {
         $this->voter_count = $voter_count;
+
         return $this;
     }
 
@@ -96,6 +112,7 @@ final class PollOption implements EntityInterface
     public function setPersistentId(string $persistent_id): PollOption
     {
         $this->persistent_id = $persistent_id;
+
         return $this;
     }
 
@@ -115,6 +132,7 @@ final class PollOption implements EntityInterface
     public function setTextEntities(?array $text_entities): PollOption
     {
         $this->text_entities = $text_entities;
+
         return $this;
     }
 
@@ -134,6 +152,7 @@ final class PollOption implements EntityInterface
     public function setAddedByUser(?User $added_by_user): PollOption
     {
         $this->added_by_user = $added_by_user;
+
         return $this;
     }
 
@@ -153,6 +172,7 @@ final class PollOption implements EntityInterface
     public function setAddedByChat(?Chat $added_by_chat): PollOption
     {
         $this->added_by_chat = $added_by_chat;
+
         return $this;
     }
 
@@ -172,6 +192,7 @@ final class PollOption implements EntityInterface
     public function setAdditionDate(?int $addition_date): PollOption
     {
         $this->addition_date = $addition_date;
+
         return $this;
     }
 
@@ -191,6 +212,9 @@ final class PollOption implements EntityInterface
     public function setMedia(?PollMedia $media): PollOption
     {
         $this->media = $media;
+
         return $this;
     }
 }
+
+// endregion CLASS_PollOption

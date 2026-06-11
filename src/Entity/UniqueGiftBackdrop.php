@@ -2,17 +2,31 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the backdrop of a unique gift.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftbackdrop
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UniqueGiftBackdrop, Telegram, Bot API, DTO, uniquegiftbackdrop
+// STRUCTURE: ▶ ┌name,colors: UniqueGiftBackdropColors,rarity_per_mille┐ → ∑ backdrop
+// region CLASS_UniqueGiftBackdrop
+
 /**
  * This object describes the backdrop of a unique gift.
  *
- * @link https://core.telegram.org/bots/api#uniquegiftbackdrop
+ * @see https://core.telegram.org/bots/api#uniquegiftbackdrop
  */
 final class UniqueGiftBackdrop implements EntityInterface
 {
     /**
-     * @param string $name Name of the backdrop
-     * @param UniqueGiftBackdropColors $colors Colors of the backdrop
-     * @param int $rarity_per_mille The number of unique gifts that receive this backdrop for every 1000 gifts upgraded
+     * @param string                   $name             Name of the backdrop
+     * @param UniqueGiftBackdropColors $colors           Colors of the backdrop
+     * @param int                      $rarity_per_mille The number of unique gifts that receive this backdrop for every 1000 gifts upgraded
      *
      * @see https://core.telegram.org/bots/api#uniquegiftbackdropcolors UniqueGiftBackdropColors
      */
@@ -38,6 +52,7 @@ final class UniqueGiftBackdrop implements EntityInterface
     public function setName(string $name): UniqueGiftBackdrop
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -57,6 +72,7 @@ final class UniqueGiftBackdrop implements EntityInterface
     public function setColors(UniqueGiftBackdropColors $colors): UniqueGiftBackdrop
     {
         $this->colors = $colors;
+
         return $this;
     }
 
@@ -76,6 +92,9 @@ final class UniqueGiftBackdrop implements EntityInterface
     public function setRarityPerMille(int $rarity_per_mille): UniqueGiftBackdrop
     {
         $this->rarity_per_mille = $rarity_per_mille;
+
         return $this;
     }
 }
+
+// endregion CLASS_UniqueGiftBackdrop

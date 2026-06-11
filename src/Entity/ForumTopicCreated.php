@@ -2,19 +2,32 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a service message about a new forum topic created in the chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#forumtopiccreated
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ForumTopicCreated, forum topic, created, service message, Telegram Bot API
+// STRUCTURE: ┌name, icon_color┐ + optional icon_custom_emoji_id + optional is_name_implicit → ∑ ForumTopicCreated
+// region CLASS_ForumTopicCreated
 /**
  * This object represents a service message about a new forum topic created in the chat.
  *
- * @link https://core.telegram.org/bots/api#forumtopiccreated
+ * @see https://core.telegram.org/bots/api#forumtopiccreated
  */
 final class ForumTopicCreated implements EntityInterface
 {
     /**
-     * @param string $name Name of the topic
-     * @param int $icon_color Color of the topic icon in RGB format
+     * @param string      $name                 Name of the topic
+     * @param int         $icon_color           Color of the topic icon in RGB format
      * @param string|null $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown as the topic icon
-     * @param bool|null $is_name_implicit Optional. True, if the name of the topic wasn't specified explicitly by its creator and
-     * likely needs to be changed by the bot
+     * @param bool|null   $is_name_implicit     Optional. True, if the name of the topic wasn't specified explicitly by its creator and
+     *                                          likely needs to be changed by the bot
      */
     public function __construct(
         protected string $name,
@@ -39,6 +52,7 @@ final class ForumTopicCreated implements EntityInterface
     public function setName(string $name): ForumTopicCreated
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -58,6 +72,7 @@ final class ForumTopicCreated implements EntityInterface
     public function setIconColor(int $icon_color): ForumTopicCreated
     {
         $this->icon_color = $icon_color;
+
         return $this;
     }
 
@@ -77,6 +92,7 @@ final class ForumTopicCreated implements EntityInterface
     public function setIconCustomEmojiId(?string $icon_custom_emoji_id): ForumTopicCreated
     {
         $this->icon_custom_emoji_id = $icon_custom_emoji_id;
+
         return $this;
     }
 
@@ -96,6 +112,8 @@ final class ForumTopicCreated implements EntityInterface
     public function setIsNameImplicit(?bool $is_name_implicit): ForumTopicCreated
     {
         $this->is_name_implicit = $is_name_implicit;
+
         return $this;
     }
 }
+// endregion CLASS_ForumTopicCreated

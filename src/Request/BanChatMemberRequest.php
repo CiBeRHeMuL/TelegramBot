@@ -4,20 +4,36 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#banchatmember
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API banChatMember method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#banchatmember
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Ban, Chat, Member
+// STRUCTURE: ▶ ┌chat_id + user_id + revoke_messages + until_date┐ → ◇ construct → ⊕ → ∑ ⟦BanChatMemberRequest⟧
+
+// region CLASS_BanChatMemberRequest
+/**
+ * @see https://core.telegram.org/bots/api#banchatmember
  */
 class BanChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target group or username of the target supergroup or channel in the format
-     * \@username
-     * @param int $user_id Unique identifier of the target user
+     * @param ChatId    $chat_id         Unique identifier for the target group or username of the target supergroup or channel in the format
+     *                                   \@username
+     * @param int       $user_id         Unique identifier of the target user
      * @param bool|null $revoke_messages Pass True to delete all messages from the chat for the user that is being removed. If False,
-     * the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups
-     * and channels.
-     * @param int|null $until_date Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less
-     * than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
+     *                                   the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups
+     *                                   and channels.
+     * @param int|null  $until_date      Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less
+     *                                   than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
      */
     public function __construct(
         private ChatId $chat_id,
@@ -34,6 +50,7 @@ class BanChatMemberRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): BanChatMemberRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -45,6 +62,7 @@ class BanChatMemberRequest implements RequestInterface
     public function setUserId(int $user_id): BanChatMemberRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -56,6 +74,7 @@ class BanChatMemberRequest implements RequestInterface
     public function setRevokeMessages(?bool $revoke_messages): BanChatMemberRequest
     {
         $this->revoke_messages = $revoke_messages;
+
         return $this;
     }
 
@@ -67,6 +86,8 @@ class BanChatMemberRequest implements RequestInterface
     public function setUntilDate(?int $until_date): BanChatMemberRequest
     {
         $this->until_date = $until_date;
+
         return $this;
     }
 }
+// endregion CLASS_BanChatMemberRequest

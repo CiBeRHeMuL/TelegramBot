@@ -4,10 +4,23 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a list of gifts.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#gifts
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Gifts, gift, list, Telegram Bot API
+// STRUCTURE: ┌gifts[]┐ → ∑ Gifts
+// region CLASS_Gifts
 /**
  * This object represent a list of gifts.
  *
- * @link https://core.telegram.org/bots/api#gifts
+ * @see https://core.telegram.org/bots/api#gifts
  */
 final class Gifts implements EntityInterface
 {
@@ -28,15 +41,5 @@ final class Gifts implements EntityInterface
     {
         return $this->gifts;
     }
-
-    /**
-     * @param Gift[] $gifts
-     *
-     * @return Gifts
-     */
-    public function setGifts(array $gifts): Gifts
-    {
-        $this->gifts = $gifts;
-        return $this;
-    }
 }
+// endregion CLASS_Gifts

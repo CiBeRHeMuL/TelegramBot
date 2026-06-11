@@ -6,18 +6,32 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a chat member that owns the chat and has all administrator privileges.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_owner
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatMemberOwner, Telegram, Bot API, DTO, chat_member_owner
+// STRUCTURE: ▶ ┌user,is_anonymous,custom_title┐ → ∑ ChatMemberOwner
+// region CLASS_ChatMemberOwner
+
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
  *
  * @see https://core.telegram.org/bots/api#chatmember chat member
- * @link https://core.telegram.org/bots/api#chatmemberowner
+ * @see https://core.telegram.org/bots/api#chatmemberowner
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Creator->value))]
 final class ChatMemberOwner extends AbstractChatMember
 {
     /**
-     * @param User $user Information about the user
-     * @param bool $is_anonymous True, if the user's presence in the chat is hidden
+     * @param User        $user         Information about the user
+     * @param bool        $is_anonymous True, if the user's presence in the chat is hidden
      * @param string|null $custom_title Optional. Custom title for this user
      *
      * @see https://core.telegram.org/bots/api#user User
@@ -46,6 +60,7 @@ final class ChatMemberOwner extends AbstractChatMember
     public function setUser(User $user): ChatMemberOwner
     {
         $this->user = $user;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class ChatMemberOwner extends AbstractChatMember
     public function setIsAnonymous(bool $is_anonymous): ChatMemberOwner
     {
         $this->is_anonymous = $is_anonymous;
+
         return $this;
     }
 
@@ -84,6 +100,8 @@ final class ChatMemberOwner extends AbstractChatMember
     public function setCustomTitle(?string $custom_title): ChatMemberOwner
     {
         $this->custom_title = $custom_title;
+
         return $this;
     }
 }
+// endregion CLASS_ChatMemberOwner

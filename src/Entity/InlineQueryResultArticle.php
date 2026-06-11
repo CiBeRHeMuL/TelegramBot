@@ -7,24 +7,38 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to an article or web page.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultarticle
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultArticle, Telegram, Bot API, DTO, inlinequeryresultarticle
+// STRUCTURE: ▶ ┌id,title,input_message_content┐ → ◇ description,thumbnail,url → ∑ result
+// region CLASS_InlineQueryResultArticle
+
 /**
  * Represents a link to an article or web page.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultarticle
+ * @see https://core.telegram.org/bots/api#inlinequeryresultarticle
  */
 #[BuildIf(new FieldIsChecker('type', InlineQueryResultTypeEnum::Article->value))]
 final class InlineQueryResultArticle extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 Bytes
-     * @param string $title Title of the result
+     * @param string                      $id                    Unique identifier for this result, 1-64 Bytes
+     * @param string                      $title                 Title of the result
      * @param AbstractInputMessageContent $input_message_content Content of the message to be sent
-     * @param string|null $description Optional. Short description of the result
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $thumbnail_height Optional. Thumbnail height
-     * @param Url|null $thumbnail_url Optional. Url of the thumbnail for the result
-     * @param int|null $thumbnail_width Optional. Thumbnail width
-     * @param Url|null $url Optional. URL of the result
+     * @param string|null                 $description           Optional. Short description of the result
+     * @param InlineKeyboardMarkup|null   $reply_markup          Optional. Inline keyboard attached to the message
+     * @param int|null                    $thumbnail_height      Optional. Thumbnail height
+     * @param Url|null                    $thumbnail_url         Optional. Url of the thumbnail for the result
+     * @param int|null                    $thumbnail_width       Optional. Thumbnail width
+     * @param Url|null                    $url                   Optional. URL of the result
      *
      * @see https://core.telegram.org/bots/api#inputmessagecontent InputMessageContent
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
@@ -60,6 +74,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultArticle
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -79,6 +94,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultArticle
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -98,6 +114,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setInputMessageContent(AbstractInputMessageContent $input_message_content): InlineQueryResultArticle
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -117,6 +134,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setDescription(?string $description): InlineQueryResultArticle
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -136,6 +154,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultArticle
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -155,6 +174,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultArticle
     {
         $this->thumbnail_height = $thumbnail_height;
+
         return $this;
     }
 
@@ -174,6 +194,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultArticle
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -193,6 +214,7 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultArticle
     {
         $this->thumbnail_width = $thumbnail_width;
+
         return $this;
     }
 
@@ -212,6 +234,9 @@ final class InlineQueryResultArticle extends AbstractInlineQueryResult
     public function setUrl(?Url $url): InlineQueryResultArticle
     {
         $this->url = $url;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultArticle

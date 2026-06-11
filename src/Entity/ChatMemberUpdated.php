@@ -2,24 +2,38 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object represents changes in the status of a chat member.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_updated
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatMemberUpdated, Telegram, Bot API, DTO, chat_member_updated
+// STRUCTURE: ▶ ┌chat,from,date,old_chat_member,new_chat_member┐ → ∑ ChatMemberUpdated
+// region CLASS_ChatMemberUpdated
+
 /**
  * This object represents changes in the status of a chat member.
  *
- * @link https://core.telegram.org/bots/api#chatmemberupdated
+ * @see https://core.telegram.org/bots/api#chatmemberupdated
  */
 final class ChatMemberUpdated implements EntityInterface
 {
     /**
-     * @param Chat $chat Chat the user belongs to
-     * @param User $from Performer of the action, which resulted in the change
-     * @param int $date Date the change was done in Unix time
-     * @param AbstractChatMember $old_chat_member Previous information about the chat member
-     * @param AbstractChatMember $new_chat_member New information about the chat member
-     * @param ChatInviteLink|null $invite_link Optional. Chat invite link, which was used by the user to join the chat; for joining
-     * by invite link events only.
-     * @param bool|null $via_chat_folder_invite_link Optional. True, if the user joined the chat via a chat folder invite link
-     * @param bool|null $via_join_request Optional. True, if the user joined the chat after sending a direct join request without
-     * using an invite link and being approved by an administrator
+     * @param Chat                $chat                        Chat the user belongs to
+     * @param User                $from                        Performer of the action, which resulted in the change
+     * @param int                 $date                        Date the change was done in Unix time
+     * @param AbstractChatMember  $old_chat_member             Previous information about the chat member
+     * @param AbstractChatMember  $new_chat_member             New information about the chat member
+     * @param ChatInviteLink|null $invite_link                 Optional. Chat invite link, which was used by the user to join the chat; for joining
+     *                                                         by invite link events only.
+     * @param bool|null           $via_chat_folder_invite_link Optional. True, if the user joined the chat via a chat folder invite link
+     * @param bool|null           $via_join_request            Optional. True, if the user joined the chat after sending a direct join request without
+     *                                                         using an invite link and being approved by an administrator
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -53,6 +67,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setChat(Chat $chat): ChatMemberUpdated
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -72,6 +87,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setFrom(User $from): ChatMemberUpdated
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -91,6 +107,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setDate(int $date): ChatMemberUpdated
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -110,6 +127,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setOldChatMember(AbstractChatMember $old_chat_member): ChatMemberUpdated
     {
         $this->old_chat_member = $old_chat_member;
+
         return $this;
     }
 
@@ -129,6 +147,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setNewChatMember(AbstractChatMember $new_chat_member): ChatMemberUpdated
     {
         $this->new_chat_member = $new_chat_member;
+
         return $this;
     }
 
@@ -148,6 +167,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setInviteLink(?ChatInviteLink $invite_link): ChatMemberUpdated
     {
         $this->invite_link = $invite_link;
+
         return $this;
     }
 
@@ -167,6 +187,7 @@ final class ChatMemberUpdated implements EntityInterface
     public function setViaChatFolderInviteLink(?bool $via_chat_folder_invite_link): ChatMemberUpdated
     {
         $this->via_chat_folder_invite_link = $via_chat_folder_invite_link;
+
         return $this;
     }
 
@@ -186,6 +207,8 @@ final class ChatMemberUpdated implements EntityInterface
     public function setViaJoinRequest(?bool $via_join_request): ChatMemberUpdated
     {
         $this->via_join_request = $via_join_request;
+
         return $this;
     }
 }
+// endregion CLASS_ChatMemberUpdated

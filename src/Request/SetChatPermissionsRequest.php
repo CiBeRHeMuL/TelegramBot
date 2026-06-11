@@ -5,18 +5,34 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\ChatPermissions;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setchatpermissions
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setChatPermissions method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setchatpermissions
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Chat, Permissions
+// STRUCTURE: ▶ ┌chat_id + permissions + use_independent_chat_permissions┐ → ◇ construct → ⊕ → ∑ ⟦SetChatPermissionsRequest⟧
+
+// region CLASS_SetChatPermissionsRequest
+/**
+ * @see https://core.telegram.org/bots/api#setchatpermissions
  */
 class SetChatPermissionsRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target supergroup in the format \@username
-     * @param ChatPermissions $permissions A JSON-serialized object for new default chat permissions
-     * @param bool|null $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages
-     * and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos,
-     * can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the
-     * can_send_messages permission.
+     * @param ChatId          $chat_id                          Unique identifier for the target chat or username of the target supergroup in the format \@username
+     * @param ChatPermissions $permissions                      A JSON-serialized object for new default chat permissions
+     * @param bool|null       $use_independent_chat_permissions Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages
+     *                                                          and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos,
+     *                                                          can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the
+     *                                                          can_send_messages permission.
      *
      * @see https://core.telegram.org/bots/api#chatpermissions ChatPermissions
      */
@@ -34,6 +50,7 @@ class SetChatPermissionsRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SetChatPermissionsRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -45,6 +62,7 @@ class SetChatPermissionsRequest implements RequestInterface
     public function setPermissions(ChatPermissions $permissions): SetChatPermissionsRequest
     {
         $this->permissions = $permissions;
+
         return $this;
     }
 
@@ -56,6 +74,8 @@ class SetChatPermissionsRequest implements RequestInterface
     public function setUseIndependentChatPermissions(?bool $use_independent_chat_permissions): SetChatPermissionsRequest
     {
         $this->use_independent_chat_permissions = $use_independent_chat_permissions;
+
         return $this;
     }
 }
+// endregion CLASS_SetChatPermissionsRequest

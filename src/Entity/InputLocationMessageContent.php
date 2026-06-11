@@ -11,25 +11,38 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
  * Represents the content of a location message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent content
- * @link https://core.telegram.org/bots/api#inputlocationmessagecontent
+ * @see https://core.telegram.org/bots/api#inputlocationmessagecontent
  */
 #[BuildIf(new AndChecker([
     new FieldCompareChecker('latitude', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('longitude', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('horizontal_accuracy', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the content of a location message to be sent as the result of an inline query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputlocationmessagecontent
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputLocationMessageContent, Telegram, Bot API, DTO, inputlocationmessagecontent
+// STRUCTURE: ▶ ┌latitude,longitude┐ → ◇ horizontal_accuracy,live_period → ∑ content
+// region CLASS_InputLocationMessageContent
 final class InputLocationMessageContent extends AbstractInputMessageContent
 {
     /**
-     * @param float $latitude Latitude of the location in degrees
-     * @param float $longitude Longitude of the location in degrees
-     * @param int|null $heading Optional. For live locations, a direction in which the user is moving, in degrees. Must be between
-     * 1 and 360 if specified.
-     * @param float|null $horizontal_accuracy Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param int|null $live_period Optional. Period in seconds during which the location can be updated, should be between 60 and
-     * 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-     * @param int|null $proximity_alert_radius Optional. For live locations, a maximum distance for proximity alerts about approaching
-     * another chat member, in meters. Must be between 1 and 100000 if specified.
+     * @param float      $latitude               Latitude of the location in degrees
+     * @param float      $longitude              Longitude of the location in degrees
+     * @param int|null   $heading                Optional. For live locations, a direction in which the user is moving, in degrees. Must be between
+     *                                           1 and 360 if specified.
+     * @param float|null $horizontal_accuracy    Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+     * @param int|null   $live_period            Optional. Period in seconds during which the location can be updated, should be between 60 and
+     *                                           86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
+     * @param int|null   $proximity_alert_radius Optional. For live locations, a maximum distance for proximity alerts about approaching
+     *                                           another chat member, in meters. Must be between 1 and 100000 if specified.
      */
     public function __construct(
         protected float $latitude,
@@ -56,6 +69,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setLatitude(float $latitude): InputLocationMessageContent
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -75,6 +89,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setLongitude(float $longitude): InputLocationMessageContent
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -94,6 +109,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setHeading(?int $heading): InputLocationMessageContent
     {
         $this->heading = $heading;
+
         return $this;
     }
 
@@ -113,6 +129,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setHorizontalAccuracy(?float $horizontal_accuracy): InputLocationMessageContent
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
+
         return $this;
     }
 
@@ -132,6 +149,7 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setLivePeriod(?int $live_period): InputLocationMessageContent
     {
         $this->live_period = $live_period;
+
         return $this;
     }
 
@@ -151,6 +169,9 @@ final class InputLocationMessageContent extends AbstractInputMessageContent
     public function setProximityAlertRadius(?int $proximity_alert_radius): InputLocationMessageContent
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputLocationMessageContent

@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a video message (round video).
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#videonote
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: VideoNote, Telegram, Bot API, DTO, videonote
+// STRUCTURE: ▶ ┌file_id,file_unique_id,length,duration┐ → ◇ thumbnail,file_size → ∑ VideoNote
+// region CLASS_VideoNote
+
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  *
  * @see https://telegram.org/blog/video-messages-and-telescope v.4.0
- * @link https://core.telegram.org/bots/api#videonote
+ * @see https://core.telegram.org/bots/api#videonote
  */
 final class VideoNote implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param int $length Video width and height (diameter of the video message) as defined by the sender
-     * @param int $duration Duration of the video in seconds as defined by the sender
-     * @param PhotoSize|null $thumbnail Optional. Video thumbnail
-     * @param int|null $file_size Optional. File size in bytes
+     * @param string         $file_id        Identifier for this file, which can be used to download or reuse the file
+     * @param string         $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
+     *                                       bots. Can't be used to download or reuse the file.
+     * @param int            $length         Video width and height (diameter of the video message) as defined by the sender
+     * @param int            $duration       Duration of the video in seconds as defined by the sender
+     * @param PhotoSize|null $thumbnail      Optional. Video thumbnail
+     * @param int|null       $file_size      Optional. File size in bytes
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -46,6 +60,7 @@ final class VideoNote implements EntityInterface
     public function setFileId(string $file_id): VideoNote
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class VideoNote implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): VideoNote
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -84,6 +100,7 @@ final class VideoNote implements EntityInterface
     public function setLength(int $length): VideoNote
     {
         $this->length = $length;
+
         return $this;
     }
 
@@ -103,6 +120,7 @@ final class VideoNote implements EntityInterface
     public function setDuration(int $duration): VideoNote
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -122,6 +140,7 @@ final class VideoNote implements EntityInterface
     public function setThumbnail(?PhotoSize $thumbnail): VideoNote
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 
@@ -141,6 +160,9 @@ final class VideoNote implements EntityInterface
     public function setFileSize(?int $file_size): VideoNote
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 }
+
+// endregion CLASS_VideoNote

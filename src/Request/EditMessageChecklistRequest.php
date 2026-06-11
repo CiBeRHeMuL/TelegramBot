@@ -6,18 +6,34 @@ use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\InputChecklist;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#editmessagechecklist
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API editMessageChecklist method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#editmessagechecklist
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Message, Checklist
+// STRUCTURE: ▶ ┌business_connection_id + chat_id + checklist + message_id + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditMessageChecklistRequest⟧
+
+// region CLASS_EditMessageChecklistRequest
+/**
+ * @see https://core.telegram.org/bots/api#editmessagechecklist
  */
 class EditMessageChecklistRequest implements RequestInterface
 {
     /**
-     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be
-     * sent
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot in the format \@username
-     * @param InputChecklist $checklist A JSON-serialized object for the new checklist
-     * @param int $message_id Unique identifier for the target message
-     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for the new inline keyboard for the message
+     * @param string                    $business_connection_id Unique identifier of the business connection on behalf of which the message will be
+     *                                                          sent
+     * @param ChatId                    $chat_id                Unique identifier for the target chat or username of the target bot in the format \@username
+     * @param InputChecklist            $checklist              A JSON-serialized object for the new checklist
+     * @param int                       $message_id             Unique identifier for the target message
+     * @param InlineKeyboardMarkup|null $reply_markup           A JSON-serialized object for the new inline keyboard for the message
      *
      * @see https://core.telegram.org/bots/api#inputchecklist InputChecklist
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
@@ -39,6 +55,7 @@ class EditMessageChecklistRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): EditMessageChecklistRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -50,6 +67,7 @@ class EditMessageChecklistRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): EditMessageChecklistRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -61,6 +79,7 @@ class EditMessageChecklistRequest implements RequestInterface
     public function setChecklist(InputChecklist $checklist): EditMessageChecklistRequest
     {
         $this->checklist = $checklist;
+
         return $this;
     }
 
@@ -72,6 +91,7 @@ class EditMessageChecklistRequest implements RequestInterface
     public function setMessageId(int $message_id): EditMessageChecklistRequest
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -83,6 +103,8 @@ class EditMessageChecklistRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditMessageChecklistRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 }
+// endregion CLASS_EditMessageChecklistRequest

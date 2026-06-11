@@ -2,26 +2,40 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#animation
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Animation, Telegram Bot API, animation, file, media, DTO
+// STRUCTURE: ▶ ┌file_id, file_unique_id, width, height, duration┐
+
+// region CLASS_Animation [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
 /**
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
  *
- * @link https://core.telegram.org/bots/api#animation
+ * @see https://core.telegram.org/bots/api#animation
  */
 final class Animation implements EntityInterface
 {
     /**
-     * @param string $file_id Identifier for this file, which can be used to download or reuse the file
-     * @param string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
-     * bots. Can't be used to download or reuse the file.
-     * @param int $width Video width as defined by the sender
-     * @param int $height Video height as defined by the sender
-     * @param int $duration Duration of the video in seconds as defined by the sender
-     * @param PhotoSize|null $thumbnail Optional. Animation thumbnail as defined by the sender
-     * @param string|null $file_name Optional. Original animation filename as defined by the sender
-     * @param string|null $mime_type Optional. MIME type of the file as defined by the sender
-     * @param int|null $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
-     * difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
-     * float type are safe for storing this value.
+     * @param string         $file_id        Identifier for this file, which can be used to download or reuse the file
+     * @param string         $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different
+     *                                       bots. Can't be used to download or reuse the file.
+     * @param int            $width          Video width as defined by the sender
+     * @param int            $height         Video height as defined by the sender
+     * @param int            $duration       Duration of the video in seconds as defined by the sender
+     * @param PhotoSize|null $thumbnail      Optional. Animation thumbnail as defined by the sender
+     * @param string|null    $file_name      Optional. Original animation filename as defined by the sender
+     * @param string|null    $mime_type      Optional. MIME type of the file as defined by the sender
+     * @param int|null       $file_size      Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have
+     *                                       difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision
+     *                                       float type are safe for storing this value.
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -53,6 +67,7 @@ final class Animation implements EntityInterface
     public function setFileId(string $file_id): Animation
     {
         $this->file_id = $file_id;
+
         return $this;
     }
 
@@ -72,6 +87,7 @@ final class Animation implements EntityInterface
     public function setFileUniqueId(string $file_unique_id): Animation
     {
         $this->file_unique_id = $file_unique_id;
+
         return $this;
     }
 
@@ -91,6 +107,7 @@ final class Animation implements EntityInterface
     public function setWidth(int $width): Animation
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -110,6 +127,7 @@ final class Animation implements EntityInterface
     public function setHeight(int $height): Animation
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -129,6 +147,7 @@ final class Animation implements EntityInterface
     public function setDuration(int $duration): Animation
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -148,6 +167,7 @@ final class Animation implements EntityInterface
     public function setThumbnail(?PhotoSize $thumbnail): Animation
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 
@@ -167,6 +187,7 @@ final class Animation implements EntityInterface
     public function setFileName(?string $file_name): Animation
     {
         $this->file_name = $file_name;
+
         return $this;
     }
 
@@ -186,6 +207,7 @@ final class Animation implements EntityInterface
     public function setMimeType(?string $mime_type): Animation
     {
         $this->mime_type = $mime_type;
+
         return $this;
     }
 
@@ -205,6 +227,8 @@ final class Animation implements EntityInterface
     public function setFileSize(?int $file_size): Animation
     {
         $this->file_size = $file_size;
+
         return $this;
     }
 }
+// endregion CLASS_Animation

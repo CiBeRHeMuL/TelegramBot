@@ -19,11 +19,11 @@ class FilesystemTest extends TestCase
         $newDirName = $tmp . '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0700);
+        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newDirName));
         $this->assertTrue(is_dir($newDirName));
-        $this->assertSame(0700, fileperms($newDirName) & 0777);
+        $this->assertSame(0o700, fileperms($newDirName) & 0o777);
     }
 
     public function testMkDirExists(): void
@@ -32,17 +32,17 @@ class FilesystemTest extends TestCase
         $newDirName = $tmp . '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0700);
+        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newDirName));
         $this->assertTrue(is_dir($newDirName));
-        $this->assertSame(0700, fileperms($newDirName) & 0777);
+        $this->assertSame(0o700, fileperms($newDirName) & 0o777);
 
-        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0700);
+        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newDirName));
         $this->assertTrue(is_dir($newDirName));
-        $this->assertSame(0700, fileperms($newDirName) & 0777);
+        $this->assertSame(0o700, fileperms($newDirName) & 0o777);
     }
 
     public function testMkDirNotExistsInvalidMode(): void
@@ -50,7 +50,7 @@ class FilesystemTest extends TestCase
         $newDirName = '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0444);
+        $result = $fs->mkdir(new Dir(new Path($newDirName)), 0o444);
         $this->assertFalse($result);
     }
 
@@ -61,7 +61,7 @@ class FilesystemTest extends TestCase
 
         $fs = new Filesystem();
         $childDir = $newDirName . '/child/child1';
-        $result = $fs->mkdir(new Dir(new Path($childDir)), 0700);
+        $result = $fs->mkdir(new Dir(new Path($childDir)), 0o700);
         $this->assertFalse($result);
         $this->assertFalse(file_exists($childDir));
     }
@@ -73,11 +73,11 @@ class FilesystemTest extends TestCase
 
         $fs = new Filesystem();
         $childDir = $newDirName . '/child/child1';
-        $result = $fs->mkdir(new Dir(new Path($childDir)), 0700, true);
+        $result = $fs->mkdir(new Dir(new Path($childDir)), 0o700, true);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($childDir));
         $this->assertTrue(is_dir($childDir));
-        $this->assertSame(0700, fileperms($childDir) & 0777);
+        $this->assertSame(0o700, fileperms($childDir) & 0o777);
     }
 
     public function testCreate(): void
@@ -86,11 +86,11 @@ class FilesystemTest extends TestCase
         $newFileName = $tmp . '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->create(new File(new Path($newFileName)), 0700);
+        $result = $fs->create(new File(new Path($newFileName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newFileName));
         $this->assertFalse(is_dir($newFileName));
-        $this->assertSame(0700, fileperms($newFileName) & 0777);
+        $this->assertSame(0o700, fileperms($newFileName) & 0o777);
     }
 
     public function testSaveWithoutOverwrite(): void
@@ -99,11 +99,11 @@ class FilesystemTest extends TestCase
         $newFileName = $tmp . '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->create(new File(new Path($newFileName)), 0700);
+        $result = $fs->create(new File(new Path($newFileName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newFileName));
         $this->assertFalse(is_dir($newFileName));
-        $this->assertSame(0700, fileperms($newFileName) & 0777);
+        $this->assertSame(0o700, fileperms($newFileName) & 0o777);
 
         $stringContent = 'test';
         $result = $fs->save(new File(new Path($newFileName)), $stringContent);
@@ -116,11 +116,11 @@ class FilesystemTest extends TestCase
         $newFileName = $tmp . '/' . uniqid();
 
         $fs = new Filesystem();
-        $result = $fs->create(new File(new Path($newFileName)), 0700);
+        $result = $fs->create(new File(new Path($newFileName)), 0o700);
         $this->assertTrue($result);
         $this->assertTrue(file_exists($newFileName));
         $this->assertFalse(is_dir($newFileName));
-        $this->assertSame(0700, fileperms($newFileName) & 0777);
+        $this->assertSame(0o700, fileperms($newFileName) & 0o777);
 
         $stringContent = 'test';
         $result = $fs->save(new File(new Path($newFileName)), $stringContent, true);

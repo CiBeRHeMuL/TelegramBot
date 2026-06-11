@@ -12,19 +12,32 @@ use AndrewGos\TelegramBot\ValueObject\Phone;
  * Represents the content of a contact message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent content
- * @link https://core.telegram.org/bots/api#inputcontactmessagecontent
+ * @see https://core.telegram.org/bots/api#inputcontactmessagecontent
  */
 #[BuildIf(new AndChecker([
     new FieldCompareChecker('phone_number', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('first_name', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the content of a contact message to be sent as the result of an inline query.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputcontactmessagecontent
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputContactMessageContent, Telegram, Bot API, DTO, inputcontactmessagecontent
+// STRUCTURE: ▶ ┌phone_number,first_name┐ → ◇ last_name,vcard → ∑ content
+// region CLASS_InputContactMessageContent
 final class InputContactMessageContent extends AbstractInputMessageContent
 {
     /**
-     * @param Phone $phone_number Contact's phone number
-     * @param string $first_name Contact's first name
-     * @param string|null $last_name Optional. Contact's last name
-     * @param string|null $vcard Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
+     * @param Phone       $phone_number Contact's phone number
+     * @param string      $first_name   Contact's first name
+     * @param string|null $last_name    Optional. Contact's last name
+     * @param string|null $vcard        Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
      *
      * @see https://en.wikipedia.org/wiki/VCard vCard
      */
@@ -51,6 +64,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     public function setPhoneNumber(Phone $phone_number): InputContactMessageContent
     {
         $this->phone_number = $phone_number;
+
         return $this;
     }
 
@@ -70,6 +84,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     public function setFirstName(string $first_name): InputContactMessageContent
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -89,6 +104,7 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     public function setLastName(?string $last_name): InputContactMessageContent
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
@@ -108,6 +124,9 @@ final class InputContactMessageContent extends AbstractInputMessageContent
     public function setVcard(?string $vcard): InputContactMessageContent
     {
         $this->vcard = $vcard;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputContactMessageContent

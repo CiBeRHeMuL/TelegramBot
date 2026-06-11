@@ -2,20 +2,34 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains a user rating.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#userrating
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UserRating, Telegram, Bot API, DTO, userrating
+// STRUCTURE: ▶ ┌user: User,rating: float┐ → ∑ rating
+// region CLASS_UserRating
+
 /**
  * This object describes the rating of a user based on their Telegram Star spendings.
  *
- * @link https://core.telegram.org/bots/api#userrating
+ * @see https://core.telegram.org/bots/api#userrating
  */
 final class UserRating implements EntityInterface
 {
     /**
-     * @param int $level Current level of the user, indicating their reliability when purchasing digital goods and services. A higher
-     * level suggests a more trustworthy customer; a negative level is likely reason for concern.
-     * @param int $rating Numerical value of the user's rating; the higher the rating, the better
-     * @param int $current_level_rating The rating value required to get the current level
-     * @param int|null $next_level_rating Optional. The rating value required to get to the next level; omitted if the maximum level
-     * was reached
+     * @param int      $level                Current level of the user, indicating their reliability when purchasing digital goods and services. A higher
+     *                                       level suggests a more trustworthy customer; a negative level is likely reason for concern.
+     * @param int      $rating               Numerical value of the user's rating; the higher the rating, the better
+     * @param int      $current_level_rating The rating value required to get the current level
+     * @param int|null $next_level_rating    Optional. The rating value required to get to the next level; omitted if the maximum level
+     *                                       was reached
      */
     public function __construct(
         protected int $level,
@@ -40,6 +54,7 @@ final class UserRating implements EntityInterface
     public function setLevel(int $level): UserRating
     {
         $this->level = $level;
+
         return $this;
     }
 
@@ -59,6 +74,7 @@ final class UserRating implements EntityInterface
     public function setRating(int $rating): UserRating
     {
         $this->rating = $rating;
+
         return $this;
     }
 
@@ -78,6 +94,7 @@ final class UserRating implements EntityInterface
     public function setCurrentLevelRating(int $current_level_rating): UserRating
     {
         $this->current_level_rating = $current_level_rating;
+
         return $this;
     }
 
@@ -97,6 +114,9 @@ final class UserRating implements EntityInterface
     public function setNextLevelRating(?int $next_level_rating): UserRating
     {
         $this->next_level_rating = $next_level_rating;
+
         return $this;
     }
 }
+
+// endregion CLASS_UserRating

@@ -4,6 +4,20 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Http\Stream;
 
+// region MODULE_CONTRACT [DOMAIN(4): Telegram; CONCEPT(5): Stream; TECH(6): MIME]
+/**
+ * @moduleContract
+ * @purpose Provide MIME type detection from file extensions using a static lookup map.
+ *
+ * @sees USES_API(5): fromFilename
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: MimeType, MIME, file extension, content type detection
+// STRUCTURE: ┌filename┐ → ○ extract extension → ○ lookup in MIME_TYPES map → ⊕ string | null
+
+// region CLASS_MimeType
 final class MimeType
 {
     private const MIME_TYPES = [
@@ -1257,3 +1271,4 @@ final class MimeType
         return self::MIME_TYPES[strtolower($extension)] ?? null;
     }
 }
+// endregion CLASS_MimeType

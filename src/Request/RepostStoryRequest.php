@@ -4,19 +4,35 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#repoststory
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API repostStory method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#repoststory
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Repost, Story
+// STRUCTURE: ▶ ┌active_period + business_connection_id + from_chat_id + from_story_id + post_to_chat_page┐ → ◇ construct → ⊕ → ∑ ⟦RepostStoryRequest⟧
+
+// region CLASS_RepostStoryRequest
+/**
+ * @see https://core.telegram.org/bots/api#repoststory
  */
 class RepostStoryRequest implements RequestInterface
 {
     /**
-     * @param int $active_period Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 *
-     * 3600, 86400, or 2 * 86400
-     * @param string $business_connection_id Unique identifier of the business connection
-     * @param ChatId $from_chat_id Unique identifier of the chat which posted the story that should be reposted
-     * @param int $from_story_id Unique identifier of the story that should be reposted
-     * @param bool|null $post_to_chat_page Pass True to keep the story accessible after it expires
-     * @param bool|null $protect_content Pass True if the content of the story must be protected from forwarding and screenshotting
+     * @param int       $active_period          Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 *
+     *                                          3600, 86400, or 2 * 86400
+     * @param string    $business_connection_id Unique identifier of the business connection
+     * @param ChatId    $from_chat_id           Unique identifier of the chat which posted the story that should be reposted
+     * @param int       $from_story_id          Unique identifier of the story that should be reposted
+     * @param bool|null $post_to_chat_page      Pass True to keep the story accessible after it expires
+     * @param bool|null $protect_content        Pass True if the content of the story must be protected from forwarding and screenshotting
      */
     public function __construct(
         private int $active_period,
@@ -35,6 +51,7 @@ class RepostStoryRequest implements RequestInterface
     public function setActivePeriod(int $active_period): RepostStoryRequest
     {
         $this->active_period = $active_period;
+
         return $this;
     }
 
@@ -46,6 +63,7 @@ class RepostStoryRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): RepostStoryRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -57,6 +75,7 @@ class RepostStoryRequest implements RequestInterface
     public function setFromChatId(ChatId $from_chat_id): RepostStoryRequest
     {
         $this->from_chat_id = $from_chat_id;
+
         return $this;
     }
 
@@ -68,6 +87,7 @@ class RepostStoryRequest implements RequestInterface
     public function setFromStoryId(int $from_story_id): RepostStoryRequest
     {
         $this->from_story_id = $from_story_id;
+
         return $this;
     }
 
@@ -79,6 +99,7 @@ class RepostStoryRequest implements RequestInterface
     public function setPostToChatPage(?bool $post_to_chat_page): RepostStoryRequest
     {
         $this->post_to_chat_page = $post_to_chat_page;
+
         return $this;
     }
 
@@ -90,6 +111,8 @@ class RepostStoryRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): RepostStoryRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 }
+// endregion CLASS_RepostStoryRequest

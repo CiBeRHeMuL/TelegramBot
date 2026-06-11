@@ -6,11 +6,25 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_left
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatMemberLeft, Telegram, Bot API, DTO, chat_member_left
+// STRUCTURE: ▶ ┌user┐ → ∑ ChatMemberLeft
+// region CLASS_ChatMemberLeft
+
 /**
  * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
  *
  * @see https://core.telegram.org/bots/api#chatmember chat member
- * @link https://core.telegram.org/bots/api#chatmemberleft
+ * @see https://core.telegram.org/bots/api#chatmemberleft
  */
 #[BuildIf(new FieldIsChecker('status', ChatMemberStatusEnum::Left->value))]
 final class ChatMemberLeft extends AbstractChatMember
@@ -42,6 +56,8 @@ final class ChatMemberLeft extends AbstractChatMember
     public function setUser(User $user): ChatMemberLeft
     {
         $this->user = $user;
+
         return $this;
     }
 }
+// endregion CLASS_ChatMemberLeft

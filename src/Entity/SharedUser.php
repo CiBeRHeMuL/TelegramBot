@@ -4,23 +4,37 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about a user that was shared with the bot.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#shareduser
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: SharedUser, Telegram, Bot API, DTO, shareduser
+// STRUCTURE: ▶ ┌user_id┐ → ◇ first_name,last_name,username,photo → ∑ SharedUser
+// region CLASS_SharedUser
+
 /**
  * This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUsers button.
  *
  * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers KeyboardButtonRequestUsers
- * @link https://core.telegram.org/bots/api#shareduser
+ * @see https://core.telegram.org/bots/api#shareduser
  */
 final class SharedUser implements EntityInterface
 {
     /**
-     * @param int $user_id Identifier of the shared user. This number may have more than 32 significant bits and some programming
-     * languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so 64-bit integers
-     * or double-precision float types are safe for storing these identifiers. The bot may not have access to the user and could
-     * be unable to use this identifier, unless the user is already known to the bot by some other means.
-     * @param string|null $first_name Optional. First name of the user, if the name was requested by the bot
-     * @param string|null $last_name Optional. Last name of the user, if the name was requested by the bot
-     * @param PhotoSize[]|null $photo Optional. Available sizes of the chat photo, if the photo was requested by the bot
-     * @param string|null $username Optional. Username of the user, if the username was requested by the bot
+     * @param int              $user_id    Identifier of the shared user. This number may have more than 32 significant bits and some programming
+     *                                     languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so 64-bit integers
+     *                                     or double-precision float types are safe for storing these identifiers. The bot may not have access to the user and could
+     *                                     be unable to use this identifier, unless the user is already known to the bot by some other means.
+     * @param string|null      $first_name Optional. First name of the user, if the name was requested by the bot
+     * @param string|null      $last_name  Optional. Last name of the user, if the name was requested by the bot
+     * @param PhotoSize[]|null $photo      Optional. Available sizes of the chat photo, if the photo was requested by the bot
+     * @param string|null      $username   Optional. Username of the user, if the username was requested by the bot
      *
      * @see https://core.telegram.org/bots/api#photosize PhotoSize
      */
@@ -49,6 +63,7 @@ final class SharedUser implements EntityInterface
     public function setUserId(int $user_id): SharedUser
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -68,6 +83,7 @@ final class SharedUser implements EntityInterface
     public function setFirstName(?string $first_name): SharedUser
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -87,6 +103,7 @@ final class SharedUser implements EntityInterface
     public function setLastName(?string $last_name): SharedUser
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
@@ -106,6 +123,7 @@ final class SharedUser implements EntityInterface
     public function setPhoto(?array $photo): SharedUser
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -125,6 +143,9 @@ final class SharedUser implements EntityInterface
     public function setUsername(?string $username): SharedUser
     {
         $this->username = $username;
+
         return $this;
     }
 }
+
+// endregion CLASS_SharedUser

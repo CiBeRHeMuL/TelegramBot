@@ -4,19 +4,35 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\ShippingOption;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#answershippingquery
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API answerShippingQuery method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#answershippingquery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Answer, Shipping, Query
+// STRUCTURE: ▶ ┌ok + shipping_query_id + error_message + shipping_options┐ → ◇ construct → ⊕ → ∑ ⟦AnswerShippingQueryRequest⟧
+
+// region CLASS_AnswerShippingQueryRequest
+/**
+ * @see https://core.telegram.org/bots/api#answershippingquery
  */
 class AnswerShippingQueryRequest implements RequestInterface
 {
     /**
-     * @param bool $ok Pass True if delivery to the specified address is possible and False if there are any problems (for example,
-     * if delivery to the specified address is not possible)
-     * @param string $shipping_query_id Unique identifier for the query to be answered
-     * @param string|null $error_message Required if ok is False. Error message in human readable form that explains why it is impossible
-     * to complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram will display this message
-     * to the user.
-     * @param ShippingOption[]|null $shipping_options Required if ok is True. A JSON-serialized array of available shipping options.
+     * @param bool                  $ok                Pass True if delivery to the specified address is possible and False if there are any problems (for example,
+     *                                                 if delivery to the specified address is not possible)
+     * @param string                $shipping_query_id Unique identifier for the query to be answered
+     * @param string|null           $error_message     Required if ok is False. Error message in human readable form that explains why it is impossible
+     *                                                 to complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram will display this message
+     *                                                 to the user.
+     * @param ShippingOption[]|null $shipping_options  Required if ok is True. A JSON-serialized array of available shipping options.
      *
      * @see https://core.telegram.org/bots/api#shippingoption ShippingOption
      */
@@ -35,6 +51,7 @@ class AnswerShippingQueryRequest implements RequestInterface
     public function setOk(bool $ok): AnswerShippingQueryRequest
     {
         $this->ok = $ok;
+
         return $this;
     }
 
@@ -46,6 +63,7 @@ class AnswerShippingQueryRequest implements RequestInterface
     public function setShippingQueryId(string $shipping_query_id): AnswerShippingQueryRequest
     {
         $this->shipping_query_id = $shipping_query_id;
+
         return $this;
     }
 
@@ -57,6 +75,7 @@ class AnswerShippingQueryRequest implements RequestInterface
     public function setErrorMessage(?string $error_message): AnswerShippingQueryRequest
     {
         $this->error_message = $error_message;
+
         return $this;
     }
 
@@ -68,6 +87,8 @@ class AnswerShippingQueryRequest implements RequestInterface
     public function setShippingOptions(?array $shipping_options): AnswerShippingQueryRequest
     {
         $this->shipping_options = $shipping_options;
+
         return $this;
     }
 }
+// endregion CLASS_AnswerShippingQueryRequest

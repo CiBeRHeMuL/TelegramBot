@@ -6,11 +6,26 @@ use AndrewGos\TelegramBot\Enum\HttpVersionEnum;
 use AndrewGos\TelegramBot\Http\Container\HttpHeadersContainer;
 use AndrewGos\TelegramBot\Http\Message\HttpResponse;
 use AndrewGos\TelegramBot\Http\Stream\Stream;
+use CurlHandle;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use RuntimeException;
 
+// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): HTTP; TECH(8): cURL]
+/**
+ * @moduleContract
+ * @purpose Provide a PSR-18 HTTP client implementation using cURL to send requests to the Telegram API.
+ *
+ * @sees USES_API(8): curl_init, curl_exec, curl_getinfo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: HttpClient, PSR-18, HTTP client, cURL, Telegram API
+// STRUCTURE: ┌RequestInterface┐ → ○ curl_init → ○ curl_setopt (URL, method, headers, body) → ○ curl_exec → ◇ success? ⊕ HttpResponse → ⎋ RuntimeException
+
+// region CLASS_HttpClient
 class HttpClient implements ClientInterface
 {
     private int $timeout;
@@ -50,12 +65,11 @@ class HttpClient implements ClientInterface
         }
 
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $response = $this->createResponse($statusCode, $responseBody, $ch);
 
-        return $response;
+        return $this->createResponse($statusCode, $responseBody, $ch);
     }
 
-    private function createResponse(int $statusCode, string $body, \CurlHandle $ch): ResponseInterface
+    private function createResponse(int $statusCode, string $body, CurlHandle $ch): ResponseInterface
     {
         $stream = fopen('php://temp', 'r+');
         fwrite($stream, $body);
@@ -69,3 +83,4 @@ class HttpClient implements ClientInterface
         );
     }
 }
+// endregion CLASS_HttpClient

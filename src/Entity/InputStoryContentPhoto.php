@@ -8,18 +8,32 @@ use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a photo to be used as story content.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputstorycontentphoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputStoryContentPhoto, Telegram, Bot API, DTO, inputstorycontentphoto
+// STRUCTURE: ▶ ┌photo(FileUrlStr)┐ → ∑ InputStoryContentPhoto
+// region CLASS_InputStoryContentPhoto
+
 /**
  * Describes a photo to post as a story.
  *
- * @link https://core.telegram.org/bots/api#inputstorycontentphoto
+ * @see https://core.telegram.org/bots/api#inputstorycontentphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputStoryContentTypeEnum::Photo->value))]
 final class InputStoryContentPhoto extends AbstractInputStoryContent
 {
     /**
      * @param Filename|Url $photo The photo to post as a story. The photo must be of the size 1080x1920 and must not exceed 10 MB.
-     * The photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
-     * photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
+     *                            The photo can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
+     *                            photo was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      */
@@ -45,6 +59,9 @@ final class InputStoryContentPhoto extends AbstractInputStoryContent
     public function setPhoto(Filename|Url $photo): InputStoryContentPhoto
     {
         $this->photo = $photo;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputStoryContentPhoto

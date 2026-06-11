@@ -2,18 +2,32 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains parameters for a suggested channel post.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostparameters
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: SuggestedPostParameters, Telegram, Bot API, DTO, suggestedpostparameters
+// STRUCTURE: ▶ ┌price: SuggestedPostPrice┐ → ◇ is_for_direct_messages... → ∑ params
+// region CLASS_SuggestedPostParameters
+
 /**
  * Contains parameters of a post that is being suggested by the bot.
  *
- * @link https://core.telegram.org/bots/api#suggestedpostparameters
+ * @see https://core.telegram.org/bots/api#suggestedpostparameters
  */
 final class SuggestedPostParameters implements EntityInterface
 {
     /**
-     * @param SuggestedPostPrice|null $price Optional. Proposed price for the post. If the field is omitted, then the post is unpaid.
-     * @param int|null $send_date Optional. Proposed send date of the post. If specified, then the date must be between 300 second
-     * and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30
-     * days at the sole discretion of the user who approves it.
+     * @param SuggestedPostPrice|null $price     Optional. Proposed price for the post. If the field is omitted, then the post is unpaid.
+     * @param int|null                $send_date Optional. Proposed send date of the post. If specified, then the date must be between 300 second
+     *                                           and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30
+     *                                           days at the sole discretion of the user who approves it.
      *
      * @see https://core.telegram.org/bots/api#suggestedpostprice SuggestedPostPrice
      */
@@ -38,6 +52,7 @@ final class SuggestedPostParameters implements EntityInterface
     public function setPrice(?SuggestedPostPrice $price): SuggestedPostParameters
     {
         $this->price = $price;
+
         return $this;
     }
 
@@ -57,6 +72,9 @@ final class SuggestedPostParameters implements EntityInterface
     public function setSendDate(?int $send_date): SuggestedPostParameters
     {
         $this->send_date = $send_date;
+
         return $this;
     }
 }
+
+// endregion CLASS_SuggestedPostParameters

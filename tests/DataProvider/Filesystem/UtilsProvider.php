@@ -9,6 +9,7 @@ class UtilsProvider
     public static function normalizePathProvider(): array
     {
         $ds = DIRECTORY_SEPARATOR;
+
         return [
             'simple' => ['/a/b/c', "{$ds}a{$ds}b{$ds}c"],
             'mixed_slashes' => ['/a\\b/c', "{$ds}a{$ds}b{$ds}c"],
@@ -25,9 +26,10 @@ class UtilsProvider
     public static function splitProvider(): array
     {
         $ds = DIRECTORY_SEPARATOR;
+
         return [
             'simple' => ['/a/b/c', [$ds, "a{$ds}b{$ds}c"]],
-            'mixed_slashes' => ["/a\\b/c", [$ds, "a\\b{$ds}c"]],
+            'mixed_slashes' => ['/a\\b/c', [$ds, "a\\b{$ds}c"]],
             'dots' => ['/a/./b/../c', [$ds, "a{$ds}.{$ds}b{$ds}..{$ds}c"]],
             'empty' => ['', ['', '']],
             'scheme' => ['https://a/b/c', ['https://', "a{$ds}b{$ds}c"]],
@@ -39,14 +41,15 @@ class UtilsProvider
     public static function homeDirProvider(): array
     {
         $ds = DIRECTORY_SEPARATOR;
+
         return [
             // Unix
             'simple' => ['/a/b/c', "{$ds}a{$ds}b{$ds}c"],
-            'mixed_slashes' => ["/a\\b/c", "{$ds}a{$ds}b{$ds}c"],
+            'mixed_slashes' => ['/a\\b/c', "{$ds}a{$ds}b{$ds}c"],
 
             // Windows
-            'windows' => [["C:", '/a/b/c'], "C:{$ds}{$ds}a{$ds}b{$ds}c"],
-            'windows_slashes' => [["C:", '\\a\\b\\c'], "C:{$ds}{$ds}a{$ds}b{$ds}c"],
+            'windows' => [['C:', '/a/b/c'], "C:{$ds}{$ds}a{$ds}b{$ds}c"],
+            'windows_slashes' => [['C:', '\\a\\b\\c'], "C:{$ds}{$ds}a{$ds}b{$ds}c"],
 
             // Error
             'error' => ['', ''],

@@ -2,29 +2,43 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a unique gift.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegift
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UniqueGift, Telegram, Bot API, DTO, uniquegift
+// STRUCTURE: ▶ ┌title,name,number,model,type,backdrop,symbol┐ → ∑ UniqueGift
+// region CLASS_UniqueGift
+
 /**
  * This object describes a unique gift that was upgraded from a regular gift.
  *
- * @link https://core.telegram.org/bots/api#uniquegift
+ * @see https://core.telegram.org/bots/api#uniquegift
  */
 final class UniqueGift implements EntityInterface
 {
     /**
-     * @param string $base_name Human-readable name of the regular gift from which this unique gift was upgraded
-     * @param string $name Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas
-     * @param int $number Unique number of the upgraded gift among gifts upgraded from the same regular gift
-     * @param UniqueGiftModel $model Model of the gift
-     * @param UniqueGiftSymbol $symbol Symbol of the gift
-     * @param UniqueGiftBackdrop $backdrop Backdrop of the gift
-     * @param string $gift_id Identifier of the regular gift from which the gift was upgraded
-     * @param Chat|null $publisher_chat Optional. Information about the chat that published the gift
-     * @param bool|null $is_premium Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium
-     * subscribers
-     * @param bool|null $is_from_blockchain Optional. True, if the gift is assigned from the TON blockchain and can't be resold or
-     * transferred in Telegram
-     * @param UniqueGiftColors|null $colors Optional. The color scheme that can be used by the gift's owner for the chat's name,
-     * replies to messages and link previews; for business account gifts and gifts that are currently on sale only
-     * @param bool|null $is_burned Optional. True, if the gift was used to craft another gift and isn't available anymore
+     * @param string                $base_name          Human-readable name of the regular gift from which this unique gift was upgraded
+     * @param string                $name               Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas
+     * @param int                   $number             Unique number of the upgraded gift among gifts upgraded from the same regular gift
+     * @param UniqueGiftModel       $model              Model of the gift
+     * @param UniqueGiftSymbol      $symbol             Symbol of the gift
+     * @param UniqueGiftBackdrop    $backdrop           Backdrop of the gift
+     * @param string                $gift_id            Identifier of the regular gift from which the gift was upgraded
+     * @param Chat|null             $publisher_chat     Optional. Information about the chat that published the gift
+     * @param bool|null             $is_premium         Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium
+     *                                                  subscribers
+     * @param bool|null             $is_from_blockchain Optional. True, if the gift is assigned from the TON blockchain and can't be resold or
+     *                                                  transferred in Telegram
+     * @param UniqueGiftColors|null $colors             Optional. The color scheme that can be used by the gift's owner for the chat's name,
+     *                                                  replies to messages and link previews; for business account gifts and gifts that are currently on sale only
+     * @param bool|null             $is_burned          Optional. True, if the gift was used to craft another gift and isn't available anymore
      *
      * @see https://core.telegram.org/bots/api#uniquegiftmodel UniqueGiftModel
      * @see https://core.telegram.org/bots/api#uniquegiftsymbol UniqueGiftSymbol
@@ -63,6 +77,7 @@ final class UniqueGift implements EntityInterface
     public function setBaseName(string $base_name): UniqueGift
     {
         $this->base_name = $base_name;
+
         return $this;
     }
 
@@ -82,6 +97,7 @@ final class UniqueGift implements EntityInterface
     public function setName(string $name): UniqueGift
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -101,6 +117,7 @@ final class UniqueGift implements EntityInterface
     public function setNumber(int $number): UniqueGift
     {
         $this->number = $number;
+
         return $this;
     }
 
@@ -120,6 +137,7 @@ final class UniqueGift implements EntityInterface
     public function setModel(UniqueGiftModel $model): UniqueGift
     {
         $this->model = $model;
+
         return $this;
     }
 
@@ -139,6 +157,7 @@ final class UniqueGift implements EntityInterface
     public function setSymbol(UniqueGiftSymbol $symbol): UniqueGift
     {
         $this->symbol = $symbol;
+
         return $this;
     }
 
@@ -158,6 +177,7 @@ final class UniqueGift implements EntityInterface
     public function setBackdrop(UniqueGiftBackdrop $backdrop): UniqueGift
     {
         $this->backdrop = $backdrop;
+
         return $this;
     }
 
@@ -177,6 +197,7 @@ final class UniqueGift implements EntityInterface
     public function setGiftId(string $gift_id): UniqueGift
     {
         $this->gift_id = $gift_id;
+
         return $this;
     }
 
@@ -196,6 +217,7 @@ final class UniqueGift implements EntityInterface
     public function setPublisherChat(?Chat $publisher_chat): UniqueGift
     {
         $this->publisher_chat = $publisher_chat;
+
         return $this;
     }
 
@@ -215,6 +237,7 @@ final class UniqueGift implements EntityInterface
     public function setIsPremium(?bool $is_premium): UniqueGift
     {
         $this->is_premium = $is_premium;
+
         return $this;
     }
 
@@ -234,6 +257,7 @@ final class UniqueGift implements EntityInterface
     public function setIsFromBlockchain(?bool $is_from_blockchain): UniqueGift
     {
         $this->is_from_blockchain = $is_from_blockchain;
+
         return $this;
     }
 
@@ -253,6 +277,7 @@ final class UniqueGift implements EntityInterface
     public function setColors(?UniqueGiftColors $colors): UniqueGift
     {
         $this->colors = $colors;
+
         return $this;
     }
 
@@ -272,6 +297,9 @@ final class UniqueGift implements EntityInterface
     public function setIsBurned(?bool $is_burned): UniqueGift
     {
         $this->is_burned = $is_burned;
+
         return $this;
     }
 }
+
+// endregion CLASS_UniqueGift

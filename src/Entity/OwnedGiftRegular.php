@@ -7,37 +7,51 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a regular gift owned by a user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#ownedgiftregular
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: OwnedGiftRegular, Telegram, Bot API, DTO, ownedgiftregular
+// STRUCTURE: ▶ ┌type,sticker/star_count┐ → ◇ ... → ∑ OwnedGiftRegular
+// region CLASS_OwnedGiftRegular
+
 /**
  * Describes a regular gift owned by a user or a chat.
  *
- * @link https://core.telegram.org/bots/api#ownedgiftregular
+ * @see https://core.telegram.org/bots/api#ownedgiftregular
  */
 #[BuildIf(new FieldIsChecker('type', OwnedGiftTypeEnum::Regular->value))]
 final class OwnedGiftRegular extends AbstractOwnedGift
 {
     /**
-     * @param Gift $gift Information about the regular gift
-     * @param int $send_date Date the gift was sent in Unix time
-     * @param bool|null $can_be_upgraded Optional. True, if the gift can be upgraded to a unique gift; for gifts received on behalf
-     * of business accounts only
-     * @param int|null $convert_star_count Optional. Number of Telegram Stars that can be claimed by the receiver instead of the
-     * gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
-     * @param MessageEntity[]|null $entities Optional. Special entities that appear in the text
-     * @param bool|null $is_private Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone
-     * will be able to see them
-     * @param bool|null $is_saved Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf
-     * of business accounts only
-     * @param string|null $owned_gift_id Optional. Unique identifier of the gift for the bot; for gifts received on behalf of business
-     * accounts only
-     * @param int|null $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were paid for the ability to upgrade the
-     * gift
-     * @param User|null $sender_user Optional. Sender of the gift if it is a known user
-     * @param string|null $text Optional. Text of the message that was added to the gift
-     * @param bool|null $was_refunded Optional. True, if the gift was refunded and isn't available anymore
-     * @param bool|null $is_upgrade_separate Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts
-     * received on behalf of business accounts only
-     * @param int|null $unique_gift_number Optional. Unique number reserved for this gift when upgraded. See the number field in
-     * UniqueGift
+     * @param Gift                 $gift                       Information about the regular gift
+     * @param int                  $send_date                  Date the gift was sent in Unix time
+     * @param bool|null            $can_be_upgraded            Optional. True, if the gift can be upgraded to a unique gift; for gifts received on behalf
+     *                                                         of business accounts only
+     * @param int|null             $convert_star_count         Optional. Number of Telegram Stars that can be claimed by the receiver instead of the
+     *                                                         gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
+     * @param MessageEntity[]|null $entities                   Optional. Special entities that appear in the text
+     * @param bool|null            $is_private                 Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone
+     *                                                         will be able to see them
+     * @param bool|null            $is_saved                   Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf
+     *                                                         of business accounts only
+     * @param string|null          $owned_gift_id              Optional. Unique identifier of the gift for the bot; for gifts received on behalf of business
+     *                                                         accounts only
+     * @param int|null             $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were paid for the ability to upgrade the
+     *                                                         gift
+     * @param User|null            $sender_user                Optional. Sender of the gift if it is a known user
+     * @param string|null          $text                       Optional. Text of the message that was added to the gift
+     * @param bool|null            $was_refunded               Optional. True, if the gift was refunded and isn't available anymore
+     * @param bool|null            $is_upgrade_separate        Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts
+     *                                                         received on behalf of business accounts only
+     * @param int|null             $unique_gift_number         Optional. Unique number reserved for this gift when upgraded. See the number field in
+     *                                                         UniqueGift
      *
      * @see https://core.telegram.org/bots/api#gift Gift
      * @see https://core.telegram.org/bots/api#user User
@@ -80,6 +94,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setGift(Gift $gift): OwnedGiftRegular
     {
         $this->gift = $gift;
+
         return $this;
     }
 
@@ -99,6 +114,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setSendDate(int $send_date): OwnedGiftRegular
     {
         $this->send_date = $send_date;
+
         return $this;
     }
 
@@ -118,6 +134,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setCanBeUpgraded(?bool $can_be_upgraded): OwnedGiftRegular
     {
         $this->can_be_upgraded = $can_be_upgraded;
+
         return $this;
     }
 
@@ -137,6 +154,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setConvertStarCount(?int $convert_star_count): OwnedGiftRegular
     {
         $this->convert_star_count = $convert_star_count;
+
         return $this;
     }
 
@@ -156,6 +174,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setEntities(?array $entities): OwnedGiftRegular
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -175,6 +194,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setIsPrivate(?bool $is_private): OwnedGiftRegular
     {
         $this->is_private = $is_private;
+
         return $this;
     }
 
@@ -194,6 +214,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setIsSaved(?bool $is_saved): OwnedGiftRegular
     {
         $this->is_saved = $is_saved;
+
         return $this;
     }
 
@@ -213,6 +234,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setOwnedGiftId(?string $owned_gift_id): OwnedGiftRegular
     {
         $this->owned_gift_id = $owned_gift_id;
+
         return $this;
     }
 
@@ -232,6 +254,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setPrepaidUpgradeStarCount(?int $prepaid_upgrade_star_count): OwnedGiftRegular
     {
         $this->prepaid_upgrade_star_count = $prepaid_upgrade_star_count;
+
         return $this;
     }
 
@@ -251,6 +274,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setSenderUser(?User $sender_user): OwnedGiftRegular
     {
         $this->sender_user = $sender_user;
+
         return $this;
     }
 
@@ -270,6 +294,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setText(?string $text): OwnedGiftRegular
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -289,6 +314,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setWasRefunded(?bool $was_refunded): OwnedGiftRegular
     {
         $this->was_refunded = $was_refunded;
+
         return $this;
     }
 
@@ -308,6 +334,7 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setIsUpgradeSeparate(?bool $is_upgrade_separate): OwnedGiftRegular
     {
         $this->is_upgrade_separate = $is_upgrade_separate;
+
         return $this;
     }
 
@@ -327,6 +354,9 @@ final class OwnedGiftRegular extends AbstractOwnedGift
     public function setUniqueGiftNumber(?int $unique_gift_number): OwnedGiftRegular
     {
         $this->unique_gift_number = $unique_gift_number;
+
         return $this;
     }
 }
+
+// endregion CLASS_OwnedGiftRegular

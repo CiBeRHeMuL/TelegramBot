@@ -17,27 +17,40 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the
  * the voice message.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultvoice
+ * @see https://core.telegram.org/bots/api#inlinequeryresultvoice
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Voice->value),
     new FieldCompareChecker('voice_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a voice recording in an .OGG container encoded with OPUS.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultvoice
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultVoice, Telegram, Bot API, DTO, inlinequeryresultvoice
+// STRUCTURE: ▶ ┌id,voice_url,title┐ → ◇ caption,caption_entities → ∑ result
+// region CLASS_InlineQueryResultVoice
 final class InlineQueryResultVoice extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param Url $voice_url A valid URL for the voice recording
-     * @param string $title Recording title
-     * @param string|null $caption Optional. Caption, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
+     * @param string                           $id                    Unique identifier for this result, 1-64 bytes
+     * @param Url                              $voice_url             A valid URL for the voice recording
+     * @param string                           $title                 Recording title
+     * @param string|null                      $caption               Optional. Caption, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities      Optional. List of special entities that appear in the caption, which can be
+     *                                                                specified instead of parse_mode
      * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * voice recording
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the voice message caption. See formatting
-     * options for more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $voice_duration Optional. Recording duration in seconds
+     *                                                                voice recording
+     * @param TelegramParseModeEnum|null       $parse_mode            Optional. Mode for parsing entities in the voice message caption. See formatting
+     *                                                                options for more details.
+     * @param InlineKeyboardMarkup|null        $reply_markup          Optional. Inline keyboard attached to the message
+     * @param int|null                         $voice_duration        Optional. Recording duration in seconds
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -76,6 +89,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultVoice
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -95,6 +109,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setVoiceUrl(Url $voice_url): InlineQueryResultVoice
     {
         $this->voice_url = $voice_url;
+
         return $this;
     }
 
@@ -114,6 +129,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultVoice
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -133,6 +149,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultVoice
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -152,6 +169,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultVoice
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -171,6 +189,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultVoice
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -190,6 +209,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultVoice
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -209,6 +229,7 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultVoice
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -228,6 +249,9 @@ final class InlineQueryResultVoice extends AbstractInlineQueryResult
     public function setVoiceDuration(?int $voice_duration): InlineQueryResultVoice
     {
         $this->voice_duration = $voice_duration;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultVoice

@@ -8,21 +8,35 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorTranslationFilesTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an error in a list of translation files of a Telegram Passport document.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrortranslationfiles
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorTranslationFiles, Telegram, Bot API, DTO, passportelementerrortranslationfiles
+// STRUCTURE: ▶ ┌type,file_hashes[],message┐ → ∑ error
+// region CLASS_PassportElementErrorTranslationFiles
+
 /**
  * Represents an issue with the translated version of a document. The error is considered resolved when a file with the document
  * translation change.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrortranslationfiles
+ * @see https://core.telegram.org/bots/api#passportelementerrortranslationfiles
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::TranslationFiles->value))]
 final class PassportElementErrorTranslationFiles extends AbstractPassportElementError
 {
     /**
-     * @param PassportElementErrorTranslationFilesTypeEnum $type Type of element of the user's Telegram Passport which has the issue,
-     * one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”,
-     * “rental_agreement”, “passport_registration”, “temporary_registration”
-     * @param string[] $file_hashes List of base64-encoded file hashes
-     * @param string $message Error message
+     * @param PassportElementErrorTranslationFilesTypeEnum $type        Type of element of the user's Telegram Passport which has the issue,
+     *                                                                  one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”,
+     *                                                                  “rental_agreement”, “passport_registration”, “temporary_registration”
+     * @param string[]                                     $file_hashes List of base64-encoded file hashes
+     * @param string                                       $message     Error message
      */
     public function __construct(
         protected PassportElementErrorTranslationFilesTypeEnum $type,
@@ -49,6 +63,7 @@ final class PassportElementErrorTranslationFiles extends AbstractPassportElement
     public function setType(PassportElementErrorTranslationFilesTypeEnum $type): PassportElementErrorTranslationFiles
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -68,6 +83,7 @@ final class PassportElementErrorTranslationFiles extends AbstractPassportElement
     public function setFileHashes(array $file_hashes): PassportElementErrorTranslationFiles
     {
         $this->file_hashes = $file_hashes;
+
         return $this;
     }
 
@@ -87,6 +103,9 @@ final class PassportElementErrorTranslationFiles extends AbstractPassportElement
     public function setMessage(string $message): PassportElementErrorTranslationFiles
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorTranslationFiles

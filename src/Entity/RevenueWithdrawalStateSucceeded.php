@@ -7,17 +7,31 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RevenueWithdrawalStateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a successful revenue withdrawal state.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: RevenueWithdrawalStateSucceeded, Telegram, Bot API, DTO, revenuewithdrawalstatesucceeded
+// STRUCTURE: ▶ ┌type,date,url┐ → ∑ RevenueWithdrawalStateSucceeded
+// region CLASS_RevenueWithdrawalStateSucceeded
+
 /**
  * The withdrawal succeeded.
  *
- * @link https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
+ * @see https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
  */
 #[BuildIf(new FieldIsChecker('type', RevenueWithdrawalStateTypeEnum::Succeeded->value))]
 final class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalState
 {
     /**
      * @param int $date Date the withdrawal was completed in Unix time
-     * @param Url $url An HTTPS URL that can be used to see transaction details
+     * @param Url $url  An HTTPS URL that can be used to see transaction details
      */
     public function __construct(
         protected int $date,
@@ -42,6 +56,7 @@ final class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalSta
     public function setDate(int $date): RevenueWithdrawalStateSucceeded
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -61,6 +76,9 @@ final class RevenueWithdrawalStateSucceeded extends AbstractRevenueWithdrawalSta
     public function setUrl(Url $url): RevenueWithdrawalStateSucceeded
     {
         $this->url = $url;
+
         return $this;
     }
 }
+
+// endregion CLASS_RevenueWithdrawalStateSucceeded

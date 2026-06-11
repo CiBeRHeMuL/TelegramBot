@@ -2,22 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a point on the map.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#location
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Location, Telegram, Bot API, DTO, location
+// STRUCTURE: ▶ ┌latitude,longitude┐ → ◇ horizontal_accuracy,live_period → ∑ Location
+// region CLASS_Location
+
 /**
  * This object represents a point on the map.
  *
- * @link https://core.telegram.org/bots/api#location
+ * @see https://core.telegram.org/bots/api#location
  */
 final class Location implements EntityInterface
 {
     /**
-     * @param float $latitude Latitude as defined by the sender
-     * @param float $longitude Longitude as defined by the sender
-     * @param float|null $horizontal_accuracy Optional. The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param int|null $live_period Optional. Time relative to the message sending date, during which the location can be updated;
-     * in seconds. For active live locations only.
-     * @param int|null $heading Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
-     * @param int|null $proximity_alert_radius Optional. The maximum distance for proximity alerts about approaching another chat
-     * member, in meters. For sent live locations only.
+     * @param float      $latitude               Latitude as defined by the sender
+     * @param float      $longitude              Longitude as defined by the sender
+     * @param float|null $horizontal_accuracy    Optional. The radius of uncertainty for the location, measured in meters; 0-1500
+     * @param int|null   $live_period            Optional. Time relative to the message sending date, during which the location can be updated;
+     *                                           in seconds. For active live locations only.
+     * @param int|null   $heading                Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
+     * @param int|null   $proximity_alert_radius Optional. The maximum distance for proximity alerts about approaching another chat
+     *                                           member, in meters. For sent live locations only.
      */
     public function __construct(
         protected float $latitude,
@@ -44,6 +58,7 @@ final class Location implements EntityInterface
     public function setLatitude(float $latitude): Location
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 
@@ -63,6 +78,7 @@ final class Location implements EntityInterface
     public function setLongitude(float $longitude): Location
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -82,6 +98,7 @@ final class Location implements EntityInterface
     public function setHorizontalAccuracy(?float $horizontal_accuracy): Location
     {
         $this->horizontal_accuracy = $horizontal_accuracy;
+
         return $this;
     }
 
@@ -101,6 +118,7 @@ final class Location implements EntityInterface
     public function setLivePeriod(?int $live_period): Location
     {
         $this->live_period = $live_period;
+
         return $this;
     }
 
@@ -120,6 +138,7 @@ final class Location implements EntityInterface
     public function setHeading(?int $heading): Location
     {
         $this->heading = $heading;
+
         return $this;
     }
 
@@ -139,6 +158,9 @@ final class Location implements EntityInterface
     public function setProximityAlertRadius(?int $proximity_alert_radius): Location
     {
         $this->proximity_alert_radius = $proximity_alert_radius;
+
         return $this;
     }
 }
+
+// endregion CLASS_Location

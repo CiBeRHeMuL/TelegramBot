@@ -6,23 +6,39 @@ use AndrewGos\TelegramBot\Enum\StickerFormatEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#setstickersetthumbnail
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API setStickerSetThumbnail method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#setstickersetthumbnail
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Set, Sticker, Set, Thumbnail
+// STRUCTURE: ▶ ┌format + name + user_id + thumbnail┐ → ◇ construct → ⊕ → ∑ ⟦SetStickerSetThumbnailRequest⟧
+
+// region CLASS_SetStickerSetThumbnailRequest
+/**
+ * @see https://core.telegram.org/bots/api#setstickersetthumbnail
  */
 class SetStickerSetThumbnailRequest implements RequestInterface
 {
     /**
-     * @param StickerFormatEnum $format Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated”
-     * for a .TGS animation, or “video” for a .WEBM video
-     * @param string $name Sticker set name
-     * @param int $user_id User identifier of the sticker set owner
+     * @param StickerFormatEnum        $format    Format of the thumbnail, must be one of “static” for a .WEBP or .PNG image, “animated”
+     *                                            for a .TGS animation, or “video” for a .WEBM video
+     * @param string                   $name      Sticker set name
+     * @param int                      $user_id   User identifier of the sticker set owner
      * @param Filename|Url|string|null $thumbnail A .WEBP or .PNG image with the thumbnail, must be up to 128 kilobytes in size and
-     * have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements
-     * for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements
-     * for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers,
-     * pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
-     * More information on Sending Files ». Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted,
-     * then the thumbnail is dropped and the first sticker is used as the thumbnail.
+     *                                            have a width and height of exactly 100px, or a .TGS animation with a thumbnail up to 32 kilobytes in size (see https://core.telegram.org/stickers#animation-requirements
+     *                                            for animated sticker technical requirements), or a .WEBM video with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/stickers#video-requirements
+     *                                            for video sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers,
+     *                                            pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data.
+     *                                            More information on Sending Files ». Animated and video sticker set thumbnails can't be uploaded via HTTP URL. If omitted,
+     *                                            then the thumbnail is dropped and the first sticker is used as the thumbnail.
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/stickers#animation-requirements https://core.telegram.org/stickers#animation-requirements
@@ -44,6 +60,7 @@ class SetStickerSetThumbnailRequest implements RequestInterface
     public function setFormat(StickerFormatEnum $format): SetStickerSetThumbnailRequest
     {
         $this->format = $format;
+
         return $this;
     }
 
@@ -55,6 +72,7 @@ class SetStickerSetThumbnailRequest implements RequestInterface
     public function setName(string $name): SetStickerSetThumbnailRequest
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -66,6 +84,7 @@ class SetStickerSetThumbnailRequest implements RequestInterface
     public function setUserId(int $user_id): SetStickerSetThumbnailRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -77,6 +96,8 @@ class SetStickerSetThumbnailRequest implements RequestInterface
     public function setThumbnail(Filename|Url|string|null $thumbnail): SetStickerSetThumbnailRequest
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 }
+// endregion CLASS_SetStickerSetThumbnailRequest

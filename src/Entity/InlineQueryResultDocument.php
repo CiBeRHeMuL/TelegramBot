@@ -18,32 +18,45 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP
  * files can be sent using this method.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultdocument
+ * @see https://core.telegram.org/bots/api#inlinequeryresultdocument
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Document->value),
     new FieldCompareChecker('document_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a file.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultdocument
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultDocument, Telegram, Bot API, DTO, inlinequeryresultdocument
+// STRUCTURE: ▶ ┌id,title,document_url,mime_type┐ → ◇ caption,description → ∑ result
+// region CLASS_InlineQueryResultDocument
 final class InlineQueryResultDocument extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $title Title for the result
-     * @param Url $document_url A valid URL for the file
-     * @param InlineQueryResultDocumentMimeTypeEnum $mime_type MIME type of the content of the file, either “application/pdf”
-     * or “application/zip”
-     * @param string|null $caption Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param string|null $description Optional. Short description of the result
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * file
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the document caption. See formatting
-     * options for more details.
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param int|null $thumbnail_height Optional. Thumbnail height
-     * @param Url|null $thumbnail_url Optional. URL of the thumbnail (JPEG only) for the file
-     * @param int|null $thumbnail_width Optional. Thumbnail width
+     * @param string                                $id                    Unique identifier for this result, 1-64 bytes
+     * @param string                                $title                 Title for the result
+     * @param Url                                   $document_url          A valid URL for the file
+     * @param InlineQueryResultDocumentMimeTypeEnum $mime_type             MIME type of the content of the file, either “application/pdf”
+     *                                                                     or “application/zip”
+     * @param string|null                           $caption               Optional. Caption of the document to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null                  $caption_entities      Optional. List of special entities that appear in the caption, which can be
+     *                                                                     specified instead of parse_mode
+     * @param string|null                           $description           Optional. Short description of the result
+     * @param AbstractInputMessageContent|null      $input_message_content Optional. Content of the message to be sent instead of the
+     *                                                                     file
+     * @param TelegramParseModeEnum|null            $parse_mode            Optional. Mode for parsing entities in the document caption. See formatting
+     *                                                                     options for more details.
+     * @param InlineKeyboardMarkup|null             $reply_markup          Optional. Inline keyboard attached to the message
+     * @param int|null                              $thumbnail_height      Optional. Thumbnail height
+     * @param Url|null                              $thumbnail_url         Optional. URL of the thumbnail (JPEG only) for the file
+     * @param int|null                              $thumbnail_width       Optional. Thumbnail width
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -86,6 +99,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultDocument
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -105,6 +119,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setTitle(string $title): InlineQueryResultDocument
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -124,6 +139,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setDocumentUrl(Url $document_url): InlineQueryResultDocument
     {
         $this->document_url = $document_url;
+
         return $this;
     }
 
@@ -143,6 +159,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setMimeType(InlineQueryResultDocumentMimeTypeEnum $mime_type): InlineQueryResultDocument
     {
         $this->mime_type = $mime_type;
+
         return $this;
     }
 
@@ -162,6 +179,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultDocument
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -181,6 +199,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultDocument
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -200,6 +219,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setDescription(?string $description): InlineQueryResultDocument
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -219,6 +239,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultDocument
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -238,6 +259,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultDocument
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -257,6 +279,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultDocument
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -276,6 +299,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setThumbnailHeight(?int $thumbnail_height): InlineQueryResultDocument
     {
         $this->thumbnail_height = $thumbnail_height;
+
         return $this;
     }
 
@@ -295,6 +319,7 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setThumbnailUrl(?Url $thumbnail_url): InlineQueryResultDocument
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -314,6 +339,9 @@ final class InlineQueryResultDocument extends AbstractInlineQueryResult
     public function setThumbnailWidth(?int $thumbnail_width): InlineQueryResultDocument
     {
         $this->thumbnail_width = $thumbnail_width;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultDocument

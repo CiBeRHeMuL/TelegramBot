@@ -13,39 +13,55 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#sendmessage
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API sendMessage method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#sendmessage
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Send, Message
+// STRUCTURE: ▶ ┌chat_id + text + business_connection_id + disable_notification + entities┐ → ◇ construct → ⊕ → ∑ ⟦SendMessageRequest⟧
+
+// region CLASS_SendMessageRequest
+/**
+ * @see https://core.telegram.org/bots/api#sendmessage
  */
 class SendMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param string $text Text of the message to be sent, 1-4096 characters after entities parsing
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
-     * be sent
-     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param MessageEntity[]|null $entities A JSON-serialized list of special entities that appear in message text, which can be
-     * specified instead of parse_mode
-     * @param LinkPreviewOptions|null $link_preview_options Link preview generation options for the message
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     * and private chats of bots with forum topic mode enabled only
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the message text. See formatting options for more
-     * details.
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
-     * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     * a reply from the user
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
-     * only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
-     * if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     * post is automatically declined.
+     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                \@username
+     * @param string                                                                       $text                      Text of the message to be sent, 1-4096 characters after entities parsing
+     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                be sent
+     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
+     * @param MessageEntity[]|null                                                         $entities                  A JSON-serialized list of special entities that appear in message text, which can be
+     *                                                                                                                specified instead of parse_mode
+     * @param LinkPreviewOptions|null                                                      $link_preview_options      Link preview generation options for the message
+     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                and private chats of bots with forum topic mode enabled only
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                Mode for parsing entities in the message text. See formatting options for more
+     *                                                                                                                details.
+     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
+     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                a reply from the user
+     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
+     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                only
+     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -87,6 +103,7 @@ class SendMessageRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SendMessageRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -98,6 +115,7 @@ class SendMessageRequest implements RequestInterface
     public function setText(string $text): SendMessageRequest
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -109,6 +127,7 @@ class SendMessageRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): SendMessageRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -120,6 +139,7 @@ class SendMessageRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): SendMessageRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -131,6 +151,7 @@ class SendMessageRequest implements RequestInterface
     public function setEntities(?array $entities): SendMessageRequest
     {
         $this->entities = $entities;
+
         return $this;
     }
 
@@ -142,6 +163,7 @@ class SendMessageRequest implements RequestInterface
     public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): SendMessageRequest
     {
         $this->link_preview_options = $link_preview_options;
+
         return $this;
     }
 
@@ -153,6 +175,7 @@ class SendMessageRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): SendMessageRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 
@@ -164,6 +187,7 @@ class SendMessageRequest implements RequestInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): SendMessageRequest
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -175,6 +199,7 @@ class SendMessageRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): SendMessageRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -186,6 +211,7 @@ class SendMessageRequest implements RequestInterface
     public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): SendMessageRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -197,6 +223,7 @@ class SendMessageRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): SendMessageRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 
@@ -208,6 +235,7 @@ class SendMessageRequest implements RequestInterface
     public function setMessageEffectId(?string $message_effect_id): SendMessageRequest
     {
         $this->message_effect_id = $message_effect_id;
+
         return $this;
     }
 
@@ -219,6 +247,7 @@ class SendMessageRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendMessageRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
         return $this;
     }
 
@@ -230,6 +259,7 @@ class SendMessageRequest implements RequestInterface
     public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendMessageRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
+
         return $this;
     }
 
@@ -241,6 +271,8 @@ class SendMessageRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendMessageRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
         return $this;
     }
 }
+// endregion CLASS_SendMessageRequest

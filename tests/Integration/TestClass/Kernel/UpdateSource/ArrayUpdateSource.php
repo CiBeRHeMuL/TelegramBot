@@ -15,7 +15,7 @@ readonly class ArrayUpdateSource implements UpdateSourceInterface
     ) {}
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getUpdates(): iterable
     {

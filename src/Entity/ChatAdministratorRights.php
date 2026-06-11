@@ -2,42 +2,56 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents the rights of an administrator in a chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_administrator_rights
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatAdministratorRights, Telegram, Bot API, DTO, chat_administrator_rights
+// STRUCTURE: ▶ ┌is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members┐ → ∑ ChatAdministratorRights
+// region CLASS_ChatAdministratorRights
+
 /**
  * Represents the rights of an administrator in a chat.
  *
- * @link https://core.telegram.org/bots/api#chatadministratorrights
+ * @see https://core.telegram.org/bots/api#chatadministratorrights
  */
 final class ChatAdministratorRights implements EntityInterface
 {
     /**
-     * @param bool $is_anonymous True, if the user's presence in the chat is hidden
-     * @param bool $can_manage_chat True, if the administrator can access the chat event log, get boost list, see hidden supergroup
-     * and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars.
-     * Implied by any other administrator privilege.
-     * @param bool $can_delete_messages True, if the administrator can delete messages of other users
-     * @param bool $can_manage_video_chats True, if the administrator can manage video chats
-     * @param bool $can_restrict_members True, if the administrator can restrict, ban or unban chat members, or access supergroup
-     * statistics
-     * @param bool $can_promote_members True, if the administrator can add new administrators with a subset of their own privileges
-     * or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by
-     * the user)
-     * @param bool $can_change_info True, if the user is allowed to change the chat title, photo and other settings
-     * @param bool $can_invite_users True, if the user is allowed to invite new users to the chat
-     * @param bool $can_post_stories True, if the administrator can post stories to the chat
-     * @param bool $can_edit_stories True, if the administrator can edit stories posted by other users, post stories to the chat
-     * page, pin chat stories, and access the chat's story archive
-     * @param bool $can_delete_stories True, if the administrator can delete stories posted by other users
-     * @param bool|null $can_edit_messages Optional. True, if the administrator can edit messages of other users and can pin messages;
-     * for channels only
-     * @param bool|null $can_manage_topics Optional. True, if the user is allowed to create, rename, close, and reopen forum topics;
-     * for supergroups only
-     * @param bool|null $can_pin_messages Optional. True, if the user is allowed to pin messages; for groups and supergroups only
-     * @param bool|null $can_post_messages Optional. True, if the administrator can post messages in the channel, approve suggested
-     * posts, or access channel statistics; for channels only
+     * @param bool      $is_anonymous               True, if the user's presence in the chat is hidden
+     * @param bool      $can_manage_chat            True, if the administrator can access the chat event log, get boost list, see hidden supergroup
+     *                                              and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars.
+     *                                              Implied by any other administrator privilege.
+     * @param bool      $can_delete_messages        True, if the administrator can delete messages of other users
+     * @param bool      $can_manage_video_chats     True, if the administrator can manage video chats
+     * @param bool      $can_restrict_members       True, if the administrator can restrict, ban or unban chat members, or access supergroup
+     *                                              statistics
+     * @param bool      $can_promote_members        True, if the administrator can add new administrators with a subset of their own privileges
+     *                                              or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by
+     *                                              the user)
+     * @param bool      $can_change_info            True, if the user is allowed to change the chat title, photo and other settings
+     * @param bool      $can_invite_users           True, if the user is allowed to invite new users to the chat
+     * @param bool      $can_post_stories           True, if the administrator can post stories to the chat
+     * @param bool      $can_edit_stories           True, if the administrator can edit stories posted by other users, post stories to the chat
+     *                                              page, pin chat stories, and access the chat's story archive
+     * @param bool      $can_delete_stories         True, if the administrator can delete stories posted by other users
+     * @param bool|null $can_edit_messages          Optional. True, if the administrator can edit messages of other users and can pin messages;
+     *                                              for channels only
+     * @param bool|null $can_manage_topics          Optional. True, if the user is allowed to create, rename, close, and reopen forum topics;
+     *                                              for supergroups only
+     * @param bool|null $can_pin_messages           Optional. True, if the user is allowed to pin messages; for groups and supergroups only
+     * @param bool|null $can_post_messages          Optional. True, if the administrator can post messages in the channel, approve suggested
+     *                                              posts, or access channel statistics; for channels only
      * @param bool|null $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel
-     * and decline suggested posts; for channels only
-     * @param bool|null $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and
-     * supergroups only. If omitted defaults to the value of can_pin_messages.
+     *                                              and decline suggested posts; for channels only
+     * @param bool|null $can_manage_tags            Optional. True, if the administrator can edit the tags of regular members; for groups and
+     *                                              supergroups only. If omitted defaults to the value of can_pin_messages.
      */
     public function __construct(
         protected bool $is_anonymous,
@@ -75,6 +89,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setIsAnonymous(bool $is_anonymous): ChatAdministratorRights
     {
         $this->is_anonymous = $is_anonymous;
+
         return $this;
     }
 
@@ -94,6 +109,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageChat(bool $can_manage_chat): ChatAdministratorRights
     {
         $this->can_manage_chat = $can_manage_chat;
+
         return $this;
     }
 
@@ -113,6 +129,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanDeleteMessages(bool $can_delete_messages): ChatAdministratorRights
     {
         $this->can_delete_messages = $can_delete_messages;
+
         return $this;
     }
 
@@ -132,6 +149,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageVideoChats(bool $can_manage_video_chats): ChatAdministratorRights
     {
         $this->can_manage_video_chats = $can_manage_video_chats;
+
         return $this;
     }
 
@@ -151,6 +169,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanRestrictMembers(bool $can_restrict_members): ChatAdministratorRights
     {
         $this->can_restrict_members = $can_restrict_members;
+
         return $this;
     }
 
@@ -170,6 +189,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanPromoteMembers(bool $can_promote_members): ChatAdministratorRights
     {
         $this->can_promote_members = $can_promote_members;
+
         return $this;
     }
 
@@ -189,6 +209,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanChangeInfo(bool $can_change_info): ChatAdministratorRights
     {
         $this->can_change_info = $can_change_info;
+
         return $this;
     }
 
@@ -208,6 +229,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanInviteUsers(bool $can_invite_users): ChatAdministratorRights
     {
         $this->can_invite_users = $can_invite_users;
+
         return $this;
     }
 
@@ -227,6 +249,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanPostStories(bool $can_post_stories): ChatAdministratorRights
     {
         $this->can_post_stories = $can_post_stories;
+
         return $this;
     }
 
@@ -246,6 +269,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanEditStories(bool $can_edit_stories): ChatAdministratorRights
     {
         $this->can_edit_stories = $can_edit_stories;
+
         return $this;
     }
 
@@ -265,6 +289,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanDeleteStories(bool $can_delete_stories): ChatAdministratorRights
     {
         $this->can_delete_stories = $can_delete_stories;
+
         return $this;
     }
 
@@ -284,6 +309,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanEditMessages(?bool $can_edit_messages): ChatAdministratorRights
     {
         $this->can_edit_messages = $can_edit_messages;
+
         return $this;
     }
 
@@ -303,6 +329,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageTopics(?bool $can_manage_topics): ChatAdministratorRights
     {
         $this->can_manage_topics = $can_manage_topics;
+
         return $this;
     }
 
@@ -322,6 +349,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanPinMessages(?bool $can_pin_messages): ChatAdministratorRights
     {
         $this->can_pin_messages = $can_pin_messages;
+
         return $this;
     }
 
@@ -341,6 +369,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanPostMessages(?bool $can_post_messages): ChatAdministratorRights
     {
         $this->can_post_messages = $can_post_messages;
+
         return $this;
     }
 
@@ -360,6 +389,7 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageDirectMessages(?bool $can_manage_direct_messages): ChatAdministratorRights
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
+
         return $this;
     }
 
@@ -379,6 +409,8 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageTags(?bool $can_manage_tags): ChatAdministratorRights
     {
         $this->can_manage_tags = $can_manage_tags;
+
         return $this;
     }
 }
+// endregion CLASS_ChatAdministratorRights

@@ -5,6 +5,20 @@ namespace AndrewGos\TelegramBot\Kernel\UpdateSource;
 use AndrewGos\TelegramBot\Api\ApiInterface;
 use AndrewGos\TelegramBot\Request\GetUpdatesRequest;
 
+// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
+/**
+ * @moduleContract
+ * @purpose Long-polling via getUpdates API method.
+ *
+ * @sees USES_API(9): ApiInterface, UpdateSourceInterface, GetUpdatesRequest
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: GetUpdatesUpdateSource, long polling, getUpdates
+// STRUCTURE: ▶ getUpdates() → ○ api->getUpdates() → ◇ offset → ○ yield update → ⊕ lastUpdateId++
+
+// region CLASS_GetUpdatesUpdateSource [DOMAIN(8): Telegram; CONCEPT(7): UpdateSource; TECH(9): PHP]
 class GetUpdatesUpdateSource implements UpdateSourceInterface
 {
     private ?int $lastUpdateId = null;
@@ -32,3 +46,4 @@ class GetUpdatesUpdateSource implements UpdateSourceInterface
         }
     }
 }
+// endregion CLASS_GetUpdatesUpdateSource

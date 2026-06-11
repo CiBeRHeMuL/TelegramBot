@@ -6,32 +6,46 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes reply parameters for a message.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replyparameters
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ReplyParameters, Telegram, Bot API, DTO, replyparameters
+// STRUCTURE: ▶ ┌message_id┐ → ◇ chat_id,allow_sending_without_reply,quote → ∑ params
+// region CLASS_ReplyParameters
+
 /**
  * Describes reply parameters for the message that is being sent.
  *
- * @link https://core.telegram.org/bots/api#replyparameters
+ * @see https://core.telegram.org/bots/api#replyparameters
  */
 final class ReplyParameters implements EntityInterface
 {
     /**
-     * @param int $message_id Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it
-     * is specified
-     * @param ChatId|null $chat_id Optional. If the message to be replied to is from a different chat, unique identifier for the
-     * chat or username of the bot, supergroup or channel in the format \@username. Not supported for messages sent on behalf of
-     * a business account and messages from channel direct messages chats.
-     * @param bool|null $allow_sending_without_reply Optional. Pass True if the message should be sent even if the specified message
-     * to be replied to is not found. Always False for replies in another chat or forum topic. Always True for messages sent on behalf
-     * of a business account.
-     * @param string|null $quote Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing.
-     * The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler,
-     * custom_emoji, and date_time entities. The message will fail to send if the quote isn't found in the original message.
-     * @param TelegramParseModeEnum|null $quote_parse_mode Optional. Mode for parsing entities in the quote. See formatting options
-     * for more details.
-     * @param MessageEntity[]|null $quote_entities Optional. A JSON-serialized list of special entities that appear in the quote.
-     * It can be specified instead of quote_parse_mode.
-     * @param int|null $quote_position Optional. Position of the quote in the original message in UTF-16 code units
-     * @param int|null $checklist_task_id Optional. Identifier of the specific checklist task to be replied to
-     * @param string|null $poll_option_id Optional. Persistent identifier of the specific poll option to be replied to
+     * @param int                        $message_id                  Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it
+     *                                                                is specified
+     * @param ChatId|null                $chat_id                     Optional. If the message to be replied to is from a different chat, unique identifier for the
+     *                                                                chat or username of the bot, supergroup or channel in the format \@username. Not supported for messages sent on behalf of
+     *                                                                a business account and messages from channel direct messages chats.
+     * @param bool|null                  $allow_sending_without_reply Optional. Pass True if the message should be sent even if the specified message
+     *                                                                to be replied to is not found. Always False for replies in another chat or forum topic. Always True for messages sent on behalf
+     *                                                                of a business account.
+     * @param string|null                $quote                       Optional. Quoted part of the message to be replied to; 0-1024 characters after entities parsing.
+     *                                                                The quote must be an exact substring of the message to be replied to, including bold, italic, underline, strikethrough, spoiler,
+     *                                                                custom_emoji, and date_time entities. The message will fail to send if the quote isn't found in the original message.
+     * @param TelegramParseModeEnum|null $quote_parse_mode            Optional. Mode for parsing entities in the quote. See formatting options
+     *                                                                for more details.
+     * @param MessageEntity[]|null       $quote_entities              Optional. A JSON-serialized list of special entities that appear in the quote.
+     *                                                                It can be specified instead of quote_parse_mode.
+     * @param int|null                   $quote_position              Optional. Position of the quote in the original message in UTF-16 code units
+     * @param int|null                   $checklist_task_id           Optional. Identifier of the specific checklist task to be replied to
+     * @param string|null                $poll_option_id              Optional. Persistent identifier of the specific poll option to be replied to
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -65,6 +79,7 @@ final class ReplyParameters implements EntityInterface
     public function setMessageId(int $message_id): ReplyParameters
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -84,6 +99,7 @@ final class ReplyParameters implements EntityInterface
     public function setChatId(?ChatId $chat_id): ReplyParameters
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -103,6 +119,7 @@ final class ReplyParameters implements EntityInterface
     public function setAllowSendingWithoutReply(?bool $allow_sending_without_reply): ReplyParameters
     {
         $this->allow_sending_without_reply = $allow_sending_without_reply;
+
         return $this;
     }
 
@@ -122,6 +139,7 @@ final class ReplyParameters implements EntityInterface
     public function setQuote(?string $quote): ReplyParameters
     {
         $this->quote = $quote;
+
         return $this;
     }
 
@@ -141,6 +159,7 @@ final class ReplyParameters implements EntityInterface
     public function setQuoteParseMode(?TelegramParseModeEnum $quote_parse_mode): ReplyParameters
     {
         $this->quote_parse_mode = $quote_parse_mode;
+
         return $this;
     }
 
@@ -160,6 +179,7 @@ final class ReplyParameters implements EntityInterface
     public function setQuoteEntities(?array $quote_entities): ReplyParameters
     {
         $this->quote_entities = $quote_entities;
+
         return $this;
     }
 
@@ -179,6 +199,7 @@ final class ReplyParameters implements EntityInterface
     public function setQuotePosition(?int $quote_position): ReplyParameters
     {
         $this->quote_position = $quote_position;
+
         return $this;
     }
 
@@ -198,6 +219,7 @@ final class ReplyParameters implements EntityInterface
     public function setChecklistTaskId(?int $checklist_task_id): ReplyParameters
     {
         $this->checklist_task_id = $checklist_task_id;
+
         return $this;
     }
 
@@ -217,6 +239,9 @@ final class ReplyParameters implements EntityInterface
     public function setPollOptionId(?string $poll_option_id): ReplyParameters
     {
         $this->poll_option_id = $poll_option_id;
+
         return $this;
     }
 }
+
+// endregion CLASS_ReplyParameters

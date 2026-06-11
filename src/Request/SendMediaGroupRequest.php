@@ -10,29 +10,45 @@ use AndrewGos\TelegramBot\Entity\InputMediaVideo;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#sendmediagroup
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API sendMediaGroup method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#sendmediagroup
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Send, Media, Group
+// STRUCTURE: ▶ ┌chat_id + media + business_connection_id + disable_notification + message_thread_id┐ → ◇ construct → ⊕ → ∑ ⟦SendMediaGroupRequest⟧
+
+// region CLASS_SendMediaGroupRequest
+/**
+ * @see https://core.telegram.org/bots/api#sendmediagroup
  */
 class SendMediaGroupRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param (InputMediaAudio|InputMediaDocument|InputMediaLivePhoto|InputMediaPhoto|InputMediaVideo)[] $media A JSON-serialized
-     * array describing messages to be sent, must include 2-10 items
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
-     * be sent
-     * @param bool|null $disable_notification Sends messages silently. Users will receive a notification with no sound.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     * and private chats of bots with forum topic mode enabled only
-     * @param bool|null $protect_content Protects the contents of the sent messages from forwarding and saving
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
-     * only
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
-     * if the messages are sent to a direct messages chat
+     * @param ChatId                                                                                     $chat_id                  Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                             \@username
+     * @param (InputMediaAudio|InputMediaDocument|InputMediaLivePhoto|InputMediaPhoto|InputMediaVideo)[] $media                    A JSON-serialized
+     *                                                                                                                             array describing messages to be sent, must include 2-10 items
+     * @param string|null                                                                                $business_connection_id   Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                             be sent
+     * @param bool|null                                                                                  $disable_notification     Sends messages silently. Users will receive a notification with no sound.
+     * @param int|null                                                                                   $message_thread_id        Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                             and private chats of bots with forum topic mode enabled only
+     * @param bool|null                                                                                  $protect_content          Protects the contents of the sent messages from forwarding and saving
+     * @param ReplyParameters|null                                                                       $reply_parameters         Description of the message to reply to
+     * @param string|null                                                                                $message_effect_id        Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                             only
+     * @param bool|null                                                                                  $allow_paid_broadcast     Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                             a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                                   $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required
+     *                                                                                                                             if the messages are sent to a direct messages chat
      *
      * @see https://core.telegram.org/bots/api#inputmediaaudio InputMediaAudio
      * @see https://core.telegram.org/bots/api#inputmediadocument InputMediaDocument
@@ -64,6 +80,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SendMediaGroupRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -75,6 +92,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setMedia(array $media): SendMediaGroupRequest
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -86,6 +104,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): SendMediaGroupRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -97,6 +116,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): SendMediaGroupRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -108,6 +128,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): SendMediaGroupRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 
@@ -119,6 +140,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): SendMediaGroupRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -130,6 +152,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): SendMediaGroupRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 
@@ -141,6 +164,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setMessageEffectId(?string $message_effect_id): SendMediaGroupRequest
     {
         $this->message_effect_id = $message_effect_id;
+
         return $this;
     }
 
@@ -152,6 +176,7 @@ class SendMediaGroupRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendMediaGroupRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
         return $this;
     }
 
@@ -163,6 +188,8 @@ class SendMediaGroupRequest implements RequestInterface
     public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendMediaGroupRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
+
         return $this;
     }
 }
+// endregion CLASS_SendMediaGroupRequest

@@ -6,11 +6,25 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose The boost was obtained by the creation of Telegram Premium gift codes to boost a chat. Each such code boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_boost_source_gift_code
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatBoostSourceGiftCode, Telegram, Bot API, DTO, chat_boost_source_gift_code
+// STRUCTURE: ▶ ┌user┐ → ∑ ChatBoostSourceGiftCode
+// region CLASS_ChatBoostSourceGiftCode
+
 /**
  * The boost was obtained by the creation of Telegram Premium gift codes to boost a chat. Each such code boosts the chat 4 times
  * for the duration of the corresponding Telegram Premium subscription.
  *
- * @link https://core.telegram.org/bots/api#chatboostsourcegiftcode
+ * @see https://core.telegram.org/bots/api#chatboostsourcegiftcode
  */
 #[BuildIf(new FieldIsChecker('source', ChatBoostSourceEnum::GiftCode->value))]
 final class ChatBoostSourceGiftCode extends AbstractChatBoostSource
@@ -42,6 +56,8 @@ final class ChatBoostSourceGiftCode extends AbstractChatBoostSource
     public function setUser(User $user): ChatBoostSourceGiftCode
     {
         $this->user = $user;
+
         return $this;
     }
 }
+// endregion CLASS_ChatBoostSourceGiftCode

@@ -4,21 +4,35 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a change in the reactions on a message.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#messagereactionupdated
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: MessageReactionUpdated, Telegram, Bot API, DTO, messagereactionupdated
+// STRUCTURE: ▶ ┌chat,message_id,date,actor_chat/actor_user,old/new_reaction[]┐ → ∑ reaction_updated
+// region CLASS_MessageReactionUpdated
+
 /**
  * This object represents a change of a reaction on a message performed by a user.
  *
- * @link https://core.telegram.org/bots/api#messagereactionupdated
+ * @see https://core.telegram.org/bots/api#messagereactionupdated
  */
 final class MessageReactionUpdated implements EntityInterface
 {
     /**
-     * @param Chat $chat The chat containing the message the user reacted to
-     * @param int $message_id Unique identifier of the message inside the chat
-     * @param int $date Date of the change in Unix time
+     * @param Chat                   $chat         The chat containing the message the user reacted to
+     * @param int                    $message_id   Unique identifier of the message inside the chat
+     * @param int                    $date         Date of the change in Unix time
      * @param AbstractReactionType[] $old_reaction Previous list of reaction types that were set by the user
      * @param AbstractReactionType[] $new_reaction New list of reaction types that have been set by the user
-     * @param Chat|null $actor_chat Optional. The chat on behalf of which the reaction was changed, if the user is anonymous
-     * @param User|null $user Optional. The user that changed the reaction, if the user isn't anonymous
+     * @param Chat|null              $actor_chat   Optional. The chat on behalf of which the reaction was changed, if the user is anonymous
+     * @param User|null              $user         Optional. The user that changed the reaction, if the user isn't anonymous
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -52,6 +66,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setChat(Chat $chat): MessageReactionUpdated
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -71,6 +86,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setMessageId(int $message_id): MessageReactionUpdated
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -90,6 +106,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setDate(int $date): MessageReactionUpdated
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -109,6 +126,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setOldReaction(array $old_reaction): MessageReactionUpdated
     {
         $this->old_reaction = $old_reaction;
+
         return $this;
     }
 
@@ -128,6 +146,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setNewReaction(array $new_reaction): MessageReactionUpdated
     {
         $this->new_reaction = $new_reaction;
+
         return $this;
     }
 
@@ -147,6 +166,7 @@ final class MessageReactionUpdated implements EntityInterface
     public function setActorChat(?Chat $actor_chat): MessageReactionUpdated
     {
         $this->actor_chat = $actor_chat;
+
         return $this;
     }
 
@@ -166,6 +186,9 @@ final class MessageReactionUpdated implements EntityInterface
     public function setUser(?User $user): MessageReactionUpdated
     {
         $this->user = $user;
+
         return $this;
     }
 }
+
+// endregion CLASS_MessageReactionUpdated

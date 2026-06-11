@@ -10,25 +10,39 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a photo to be sent.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediaphoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InputMediaPhoto, Telegram, Bot API, DTO, inputmediaphoto
+// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode,has_spoiler → ∑ InputMediaPhoto
+// region CLASS_InputMediaPhoto
+
 /**
  * Represents a photo to be sent.
  *
- * @link https://core.telegram.org/bots/api#inputmediaphoto
+ * @see https://core.telegram.org/bots/api#inputmediaphoto
  */
 #[BuildIf(new FieldIsChecker('type', InputMediaTypeEnum::Photo->value))]
 final class InputMediaPhoto extends AbstractInputMedia implements InputPollMediaInterface, InputPollOptionMediaInterface
 {
     /**
-     * @param Filename|Url|string $media File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
-     * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
-     * using multipart/form-data under <file_attach_name> name. More information on Sending Files »
-     * @param string|null $caption Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the photo caption. See formatting options
-     * for more details.
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param bool|null $has_spoiler Optional. Pass True if the photo needs to be covered with a spoiler animation
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param Filename|Url|string        $media                    File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
+     *                                                             pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one
+     *                                                             using multipart/form-data under <file_attach_name> name. More information on Sending Files »
+     * @param string|null                $caption                  Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
+     * @param TelegramParseModeEnum|null $parse_mode               Optional. Mode for parsing entities in the photo caption. See formatting options
+     *                                                             for more details.
+     * @param MessageEntity[]|null       $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                             specified instead of parse_mode
+     * @param bool|null                  $has_spoiler              Optional. Pass True if the photo needs to be covered with a spoiler animation
+     * @param bool|null                  $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -62,6 +76,7 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setMedia(Filename|Url|string $media): InputMediaPhoto
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -81,6 +96,7 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setCaption(?string $caption): InputMediaPhoto
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -100,6 +116,7 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InputMediaPhoto
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -119,6 +136,7 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setCaptionEntities(?array $caption_entities): InputMediaPhoto
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -138,6 +156,7 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setHasSpoiler(?bool $has_spoiler): InputMediaPhoto
     {
         $this->has_spoiler = $has_spoiler;
+
         return $this;
     }
 
@@ -157,6 +176,9 @@ final class InputMediaPhoto extends AbstractInputMedia implements InputPollMedia
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InputMediaPhoto
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InputMediaPhoto

@@ -16,17 +16,37 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
+// region MODULE_CONTRACT [DOMAIN(9): Telegram Bot; CONCEPT(9): Factory; TECH(7): DI]
+/**
+ * @moduleContract
+ * @purpose Provide static factory methods to create pre-configured Telegram instances for webhook and polling modes.
+ * @scope Full DI wiring: Api, HttpClient, Serializer, UpdateHandler, UpdateSource construction.
+ * @input BotToken, optional EventDispatcher, Logger
+ * @output Fully configured Telegram instance
+ *
+ * @sees USES(8): Api, Serializer, Http, Filesystem, Kernel; USES_API(5): PSR-14 EventDispatcher
+ *
+ * @changes
+ * LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: TelegramFactory, factory, webhook, polling, getUpdates, PhpInputUpdateSource, GetUpdatesUpdateSource
+// STRUCTURE: ▶ getDefaultTelegram → ┌ClassBuilder + Api + HttpClient + PhpInputUpdateSource┐ → ⊕ Telegram
+// ▶ getGetUpdatesTelegram → ┌ClassBuilder + Api + HttpClient + GetUpdatesUpdateSource┐ → ⊕ Telegram
+
+// region CLASS_TelegramFactory [DOMAIN(9): Telegram Bot; CONCEPT(9): Factory]
 class TelegramFactory
 {
     /**
-     * Create telegram instance with default webhook client (client with PhpInputUpdateSource)
+     * Create telegram instance with default webhook client (client with PhpInputUpdateSource).
      *
-     * @param BotToken $token
-     * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
+     * @param BotToken                      $token
+     * @param bool                          $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      * @param EventDispatcherInterface|null $eventDispatcher
-     * @param LoggerInterface $logger
+     * @param LoggerInterface               $logger
      *
      * @return Telegram
+     *
      * @see PhpInputUpdateSource
      */
     public static function getDefaultTelegram(
@@ -46,6 +66,7 @@ class TelegramFactory
             $throwOnErrorResponse,
             SerializerFactory::getDefaultApiSerializer(),
         );
+
         return new Telegram(
             $token,
             $api,
@@ -59,16 +80,17 @@ class TelegramFactory
     }
 
     /**
-     * Create telegram instance with listening client (client with GetUpdatesUpdateSource)
+     * Create telegram instance with listening client (client with GetUpdatesUpdateSource).
      *
-     * @param BotToken $token
-     * @param bool $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
+     * @param BotToken                      $token
+     * @param bool                          $throwOnErrorResponse Will the api throw an exception if the request does not return 2xx response
      * @param EventDispatcherInterface|null $eventDispatcher
-     * @param LoggerInterface $logger
-     * @param int|null $limit limit for getUpdates API method (count of updates getting in one time)
-     * @param int|null $timeout timeout for getUpdates API method
+     * @param LoggerInterface               $logger
+     * @param int|null                      $limit                limit for getUpdates API method (count of updates getting in one time)
+     * @param int|null                      $timeout              timeout for getUpdates API method
      *
      * @return Telegram
+     *
      * @see GetUpdatesUpdateSource
      */
     public static function getGetUpdatesTelegram(
@@ -90,6 +112,7 @@ class TelegramFactory
             $throwOnErrorResponse,
             SerializerFactory::getDefaultApiSerializer(),
         );
+
         return new Telegram(
             $token,
             $api,
@@ -106,3 +129,4 @@ class TelegramFactory
         );
     }
 }
+// endregion CLASS_TelegramFactory

@@ -13,20 +13,33 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
  * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively,
  * you can use input_message_content to send a message with the specified content instead of the sticker.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
+ * @see https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Sticker->value),
     new FieldCompareChecker('sticker_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a sticker stored on the Telegram servers.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultCachedSticker, Telegram, Bot API, DTO, inlinequeryresultcachedsticker
+// STRUCTURE: ▶ ┌id,sticker_file_id┐ → ◇ reply_markup → ∑ result
+// region CLASS_InlineQueryResultCachedSticker
 final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param string $sticker_file_id A valid file identifier of the sticker
+     * @param string                           $id                    Unique identifier for this result, 1-64 bytes
+     * @param string                           $sticker_file_id       A valid file identifier of the sticker
      * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * sticker
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
+     *                                                                sticker
+     * @param InlineKeyboardMarkup|null        $reply_markup          Optional. Inline keyboard attached to the message
      *
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards Inline keyboard
@@ -57,6 +70,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultCachedSticker
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -76,6 +90,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     public function setStickerFileId(string $sticker_file_id): InlineQueryResultCachedSticker
     {
         $this->sticker_file_id = $sticker_file_id;
+
         return $this;
     }
 
@@ -95,6 +110,7 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultCachedSticker
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -114,6 +130,9 @@ final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultCachedSticker
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultCachedSticker

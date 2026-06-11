@@ -7,21 +7,37 @@ use AndrewGos\TelegramBot\Entity\InputChecklist;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#sendchecklist
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API sendChecklist method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#sendchecklist
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Send, Checklist
+// STRUCTURE: ▶ ┌business_connection_id + chat_id + checklist + disable_notification + message_effect_id┐ → ◇ construct → ⊕ → ∑ ⟦SendChecklistRequest⟧
+
+// region CLASS_SendChecklistRequest
+/**
+ * @see https://core.telegram.org/bots/api#sendchecklist
  */
 class SendChecklistRequest implements RequestInterface
 {
     /**
-     * @param string $business_connection_id Unique identifier of the business connection on behalf of which the message will be
-     * sent
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot in the format \@username
-     * @param InputChecklist $checklist A JSON-serialized object for the checklist to send
-     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param InlineKeyboardMarkup|null $reply_markup A JSON-serialized object for an inline keyboard
-     * @param ReplyParameters|null $reply_parameters A JSON-serialized object for description of the message to reply to
+     * @param string                    $business_connection_id Unique identifier of the business connection on behalf of which the message will be
+     *                                                          sent
+     * @param ChatId                    $chat_id                Unique identifier for the target chat or username of the target bot in the format \@username
+     * @param InputChecklist            $checklist              A JSON-serialized object for the checklist to send
+     * @param bool|null                 $disable_notification   Sends the message silently. Users will receive a notification with no sound.
+     * @param string|null               $message_effect_id      Unique identifier of the message effect to be added to the message
+     * @param bool|null                 $protect_content        Protects the contents of the sent message from forwarding and saving
+     * @param InlineKeyboardMarkup|null $reply_markup           A JSON-serialized object for an inline keyboard
+     * @param ReplyParameters|null      $reply_parameters       A JSON-serialized object for description of the message to reply to
      *
      * @see https://core.telegram.org/bots/api#inputchecklist InputChecklist
      * @see https://core.telegram.org/bots/api#replyparameters ReplyParameters
@@ -47,6 +63,7 @@ class SendChecklistRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): SendChecklistRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -58,6 +75,7 @@ class SendChecklistRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SendChecklistRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -69,6 +87,7 @@ class SendChecklistRequest implements RequestInterface
     public function setChecklist(InputChecklist $checklist): SendChecklistRequest
     {
         $this->checklist = $checklist;
+
         return $this;
     }
 
@@ -80,6 +99,7 @@ class SendChecklistRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): SendChecklistRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -91,6 +111,7 @@ class SendChecklistRequest implements RequestInterface
     public function setMessageEffectId(?string $message_effect_id): SendChecklistRequest
     {
         $this->message_effect_id = $message_effect_id;
+
         return $this;
     }
 
@@ -102,6 +123,7 @@ class SendChecklistRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): SendChecklistRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -113,6 +135,7 @@ class SendChecklistRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): SendChecklistRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -124,6 +147,8 @@ class SendChecklistRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): SendChecklistRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 }
+// endregion CLASS_SendChecklistRequest

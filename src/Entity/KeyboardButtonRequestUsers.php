@@ -2,26 +2,40 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a request to select users via a keyboard button.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestusers
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: KeyboardButtonRequestUsers, Telegram, Bot API, DTO, keyboardbuttonrequestusers
+// STRUCTURE: ▶ ┌request_id┐ → ◇ user_is_bot,... → ∑ request
+// region CLASS_KeyboardButtonRequestUsers
+
 /**
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with
- * the bot when the corresponding button is pressed. More about requesting users »
+ * the bot when the corresponding button is pressed. More about requesting users ».
  *
  * @see https://core.telegram.org/bots/features#chat-and-user-selection More about requesting users »
- * @link https://core.telegram.org/bots/api#keyboardbuttonrequestusers
+ * @see https://core.telegram.org/bots/api#keyboardbuttonrequestusers
  */
 final class KeyboardButtonRequestUsers implements EntityInterface
 {
     /**
-     * @param int $request_id Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must
-     * be unique within the message
-     * @param int|null $max_quantity Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
-     * @param bool|null $request_name Optional. Pass True to request the users' first and last names
-     * @param bool|null $request_photo Optional. Pass True to request the users' photos
+     * @param int       $request_id       Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must
+     *                                    be unique within the message
+     * @param int|null  $max_quantity     Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
+     * @param bool|null $request_name     Optional. Pass True to request the users' first and last names
+     * @param bool|null $request_photo    Optional. Pass True to request the users' photos
      * @param bool|null $request_username Optional. Pass True to request the users' usernames
-     * @param bool|null $user_is_bot Optional. Pass True to request bots, pass False to request regular users. If not specified,
-     * no additional restrictions are applied.
-     * @param bool|null $user_is_premium Optional. Pass True to request premium users, pass False to request non-premium users. If
-     * not specified, no additional restrictions are applied.
+     * @param bool|null $user_is_bot      Optional. Pass True to request bots, pass False to request regular users. If not specified,
+     *                                    no additional restrictions are applied.
+     * @param bool|null $user_is_premium  Optional. Pass True to request premium users, pass False to request non-premium users. If
+     *                                    not specified, no additional restrictions are applied.
      *
      * @see https://core.telegram.org/bots/api#usersshared UsersShared
      */
@@ -51,6 +65,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setRequestId(int $request_id): KeyboardButtonRequestUsers
     {
         $this->request_id = $request_id;
+
         return $this;
     }
 
@@ -70,6 +85,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setMaxQuantity(?int $max_quantity): KeyboardButtonRequestUsers
     {
         $this->max_quantity = $max_quantity;
+
         return $this;
     }
 
@@ -89,6 +105,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setRequestName(?bool $request_name): KeyboardButtonRequestUsers
     {
         $this->request_name = $request_name;
+
         return $this;
     }
 
@@ -108,6 +125,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setRequestPhoto(?bool $request_photo): KeyboardButtonRequestUsers
     {
         $this->request_photo = $request_photo;
+
         return $this;
     }
 
@@ -127,6 +145,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setRequestUsername(?bool $request_username): KeyboardButtonRequestUsers
     {
         $this->request_username = $request_username;
+
         return $this;
     }
 
@@ -146,6 +165,7 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setUserIsBot(?bool $user_is_bot): KeyboardButtonRequestUsers
     {
         $this->user_is_bot = $user_is_bot;
+
         return $this;
     }
 
@@ -165,6 +185,9 @@ final class KeyboardButtonRequestUsers implements EntityInterface
     public function setUserIsPremium(?bool $user_is_premium): KeyboardButtonRequestUsers
     {
         $this->user_is_premium = $user_is_premium;
+
         return $this;
     }
 }
+
+// endregion CLASS_KeyboardButtonRequestUsers

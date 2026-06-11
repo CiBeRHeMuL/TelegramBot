@@ -4,29 +4,43 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\UniqueGiftInfoOriginEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about a unique gift.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftinfo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: UniqueGiftInfo, Telegram, Bot API, DTO, uniquegiftinfo
+// STRUCTURE: ▶ ┌gift: UniqueGift,origin,owned_gift_id┐ → ◇ transfer_star_count → ∑ info
+// region CLASS_UniqueGiftInfo
+
 /**
  * Describes a service message about a unique gift that was sent or received.
  *
- * @link https://core.telegram.org/bots/api#uniquegiftinfo
+ * @see https://core.telegram.org/bots/api#uniquegiftinfo
  */
 final class UniqueGiftInfo implements EntityInterface
 {
     /**
-     * @param UniqueGift $gift Information about the gift
-     * @param UniqueGiftInfoOriginEnum $origin Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular
-     * gifts, “transfer” for gifts transferred from other users or channels, “resale” for gifts bought from other users,
-     * “gifted_upgrade” for upgrades purchased after the gift was sent, or “offer” for gifts bought or sold through gift
-     * purchase offers
-     * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received
-     * on behalf of business accounts
-     * @param int|null $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
-     * the bot cannot transfer the gift
-     * @param int|null $next_transfer_date Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
-     * the past, then the gift can be transferred now
-     * @param string|null $last_resale_currency Optional. For gifts bought from other users, the currency in which the payment for
-     * the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.
-     * @param int|null $last_resale_amount Optional. For gifts bought from other users, the price paid for the gift in either Telegram
-     * Stars or nanotoncoins
+     * @param UniqueGift               $gift                 Information about the gift
+     * @param UniqueGiftInfoOriginEnum $origin               Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular
+     *                                                       gifts, “transfer” for gifts transferred from other users or channels, “resale” for gifts bought from other users,
+     *                                                       “gifted_upgrade” for upgrades purchased after the gift was sent, or “offer” for gifts bought or sold through gift
+     *                                                       purchase offers
+     * @param string|null              $owned_gift_id        Optional. Unique identifier of the received gift for the bot; only present for gifts received
+     *                                                       on behalf of business accounts
+     * @param int|null                 $transfer_star_count  Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
+     *                                                       the bot cannot transfer the gift
+     * @param int|null                 $next_transfer_date   Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
+     *                                                       the past, then the gift can be transferred now
+     * @param string|null              $last_resale_currency Optional. For gifts bought from other users, the currency in which the payment for
+     *                                                       the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.
+     * @param int|null                 $last_resale_amount   Optional. For gifts bought from other users, the price paid for the gift in either Telegram
+     *                                                       Stars or nanotoncoins
      *
      * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
      */
@@ -56,6 +70,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setGift(UniqueGift $gift): UniqueGiftInfo
     {
         $this->gift = $gift;
+
         return $this;
     }
 
@@ -75,6 +90,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setOrigin(UniqueGiftInfoOriginEnum $origin): UniqueGiftInfo
     {
         $this->origin = $origin;
+
         return $this;
     }
 
@@ -94,6 +110,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setOwnedGiftId(?string $owned_gift_id): UniqueGiftInfo
     {
         $this->owned_gift_id = $owned_gift_id;
+
         return $this;
     }
 
@@ -113,6 +130,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setTransferStarCount(?int $transfer_star_count): UniqueGiftInfo
     {
         $this->transfer_star_count = $transfer_star_count;
+
         return $this;
     }
 
@@ -132,6 +150,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setNextTransferDate(?int $next_transfer_date): UniqueGiftInfo
     {
         $this->next_transfer_date = $next_transfer_date;
+
         return $this;
     }
 
@@ -151,6 +170,7 @@ final class UniqueGiftInfo implements EntityInterface
     public function setLastResaleCurrency(?string $last_resale_currency): UniqueGiftInfo
     {
         $this->last_resale_currency = $last_resale_currency;
+
         return $this;
     }
 
@@ -170,6 +190,9 @@ final class UniqueGiftInfo implements EntityInterface
     public function setLastResaleAmount(?int $last_resale_amount): UniqueGiftInfo
     {
         $this->last_resale_amount = $last_resale_amount;
+
         return $this;
     }
 }
+
+// endregion CLASS_UniqueGiftInfo

@@ -7,18 +7,32 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents an unspecified error in a Telegram Passport element.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrorunspecified
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: PassportElementErrorUnspecified, Telegram, Bot API, DTO, passportelementerrorunspecified
+// STRUCTURE: ▶ ┌type,element_hash,message┐ → ∑ error
+// region CLASS_PassportElementErrorUnspecified
+
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  *
- * @link https://core.telegram.org/bots/api#passportelementerrorunspecified
+ * @see https://core.telegram.org/bots/api#passportelementerrorunspecified
  */
 #[BuildIf(new FieldIsChecker('source', PassportElementErrorSourceEnum::Unspecified->value))]
 final class PassportElementErrorUnspecified extends AbstractPassportElementError
 {
     /**
-     * @param EncryptedPassportElementTypeEnum $type Type of element of the user's Telegram Passport which has the issue
-     * @param string $element_hash Base64-encoded element hash
-     * @param string $message Error message
+     * @param EncryptedPassportElementTypeEnum $type         Type of element of the user's Telegram Passport which has the issue
+     * @param string                           $element_hash Base64-encoded element hash
+     * @param string                           $message      Error message
      */
     public function __construct(
         protected EncryptedPassportElementTypeEnum $type,
@@ -44,6 +58,7 @@ final class PassportElementErrorUnspecified extends AbstractPassportElementError
     public function setType(EncryptedPassportElementTypeEnum $type): PassportElementErrorUnspecified
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -63,6 +78,7 @@ final class PassportElementErrorUnspecified extends AbstractPassportElementError
     public function setElementHash(string $element_hash): PassportElementErrorUnspecified
     {
         $this->element_hash = $element_hash;
+
         return $this;
     }
 
@@ -82,6 +98,9 @@ final class PassportElementErrorUnspecified extends AbstractPassportElementError
     public function setMessage(string $message): PassportElementErrorUnspecified
     {
         $this->message = $message;
+
         return $this;
     }
 }
+
+// endregion CLASS_PassportElementErrorUnspecified

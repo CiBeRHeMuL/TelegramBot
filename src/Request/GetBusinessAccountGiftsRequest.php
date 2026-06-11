@@ -2,27 +2,43 @@
 
 namespace AndrewGos\TelegramBot\Request;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#getbusinessaccountgifts
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API getBusinessAccountGifts method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#getbusinessaccountgifts
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Get, Business, Account, Gifts
+// STRUCTURE: ▶ ┌business_connection_id + exclude_saved + exclude_unique + exclude_unlimited + exclude_unsaved┐ → ◇ construct → ⊕ → ∑ ⟦GetBusinessAccountGiftsRequest⟧
+
+// region CLASS_GetBusinessAccountGiftsRequest
+/**
+ * @see https://core.telegram.org/bots/api#getbusinessaccountgifts
  */
 class GetBusinessAccountGiftsRequest implements RequestInterface
 {
     /**
-     * @param string $business_connection_id Unique identifier of the business connection
-     * @param bool|null $exclude_saved Pass True to exclude gifts that are saved to the account's profile page
-     * @param bool|null $exclude_unique Pass True to exclude unique gifts
-     * @param bool|null $exclude_unlimited Pass True to exclude gifts that can be purchased an unlimited number of times
-     * @param bool|null $exclude_unsaved Pass True to exclude gifts that aren't saved to the account's profile page
-     * @param int|null $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
-     * @param string|null $offset Offset of the first entry to return as received from the previous request; use empty string to
-     * get the first chunk of results
-     * @param bool|null $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
-     * @param bool|null $exclude_limited_upgradable Pass True to exclude gifts that can be purchased a limited number of times and
-     * can be upgraded to unique
-     * @param bool|null $exclude_limited_non_upgradable Pass True to exclude gifts that can be purchased a limited number of times
-     * and can't be upgraded to unique
-     * @param bool|null $exclude_from_blockchain Pass True to exclude gifts that were assigned from the TON blockchain and can't
-     * be resold or transferred in Telegram
+     * @param string      $business_connection_id         Unique identifier of the business connection
+     * @param bool|null   $exclude_saved                  Pass True to exclude gifts that are saved to the account's profile page
+     * @param bool|null   $exclude_unique                 Pass True to exclude unique gifts
+     * @param bool|null   $exclude_unlimited              Pass True to exclude gifts that can be purchased an unlimited number of times
+     * @param bool|null   $exclude_unsaved                Pass True to exclude gifts that aren't saved to the account's profile page
+     * @param int|null    $limit                          The maximum number of gifts to be returned; 1-100. Defaults to 100
+     * @param string|null $offset                         Offset of the first entry to return as received from the previous request; use empty string to
+     *                                                    get the first chunk of results
+     * @param bool|null   $sort_by_price                  Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+     * @param bool|null   $exclude_limited_upgradable     Pass True to exclude gifts that can be purchased a limited number of times and
+     *                                                    can be upgraded to unique
+     * @param bool|null   $exclude_limited_non_upgradable Pass True to exclude gifts that can be purchased a limited number of times
+     *                                                    and can't be upgraded to unique
+     * @param bool|null   $exclude_from_blockchain        Pass True to exclude gifts that were assigned from the TON blockchain and can't
+     *                                                    be resold or transferred in Telegram
      */
     public function __construct(
         private string $business_connection_id,
@@ -46,6 +62,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setBusinessConnectionId(string $business_connection_id): GetBusinessAccountGiftsRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -57,6 +74,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeSaved(?bool $exclude_saved): GetBusinessAccountGiftsRequest
     {
         $this->exclude_saved = $exclude_saved;
+
         return $this;
     }
 
@@ -68,6 +86,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeUnique(?bool $exclude_unique): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unique = $exclude_unique;
+
         return $this;
     }
 
@@ -79,6 +98,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeUnlimited(?bool $exclude_unlimited): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unlimited = $exclude_unlimited;
+
         return $this;
     }
 
@@ -90,6 +110,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeUnsaved(?bool $exclude_unsaved): GetBusinessAccountGiftsRequest
     {
         $this->exclude_unsaved = $exclude_unsaved;
+
         return $this;
     }
 
@@ -101,6 +122,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setLimit(?int $limit): GetBusinessAccountGiftsRequest
     {
         $this->limit = $limit;
+
         return $this;
     }
 
@@ -112,6 +134,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setOffset(?string $offset): GetBusinessAccountGiftsRequest
     {
         $this->offset = $offset;
+
         return $this;
     }
 
@@ -123,6 +146,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setSortByPrice(?bool $sort_by_price): GetBusinessAccountGiftsRequest
     {
         $this->sort_by_price = $sort_by_price;
+
         return $this;
     }
 
@@ -134,6 +158,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeLimitedUpgradable(?bool $exclude_limited_upgradable): GetBusinessAccountGiftsRequest
     {
         $this->exclude_limited_upgradable = $exclude_limited_upgradable;
+
         return $this;
     }
 
@@ -145,6 +170,7 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeLimitedNonUpgradable(?bool $exclude_limited_non_upgradable): GetBusinessAccountGiftsRequest
     {
         $this->exclude_limited_non_upgradable = $exclude_limited_non_upgradable;
+
         return $this;
     }
 
@@ -156,6 +182,8 @@ class GetBusinessAccountGiftsRequest implements RequestInterface
     public function setExcludeFromBlockchain(?bool $exclude_from_blockchain): GetBusinessAccountGiftsRequest
     {
         $this->exclude_from_blockchain = $exclude_from_blockchain;
+
         return $this;
     }
 }
+// endregion CLASS_GetBusinessAccountGiftsRequest

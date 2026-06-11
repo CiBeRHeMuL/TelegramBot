@@ -5,93 +5,107 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose This object contains full information about a chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_full_info
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatFullInfo, Telegram, Bot API, DTO, chat_full_info
+// STRUCTURE: ▶ ┌id,type,accent_color_id,max_reaction_count,accepted_gift_types┐ → ∑ ChatFullInfo
+// region CLASS_ChatFullInfo
+
 /**
  * This object contains full information about a chat.
  *
- * @link https://core.telegram.org/bots/api#chatfullinfo
+ * @see https://core.telegram.org/bots/api#chatfullinfo
  */
 final class ChatFullInfo implements EntityInterface
 {
     /**
-     * @param int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
-     * may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
-     * or double-precision float type are safe for storing this identifier.
-     * @param ChatTypeEnum $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
-     * @param int $accent_color_id Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
-     * and link preview. See accent colors for more details.
-     * @param int $max_reaction_count The maximum number of reactions that can be set on a message in the chat
-     * @param AcceptedGiftTypes $accepted_gift_types Information about types of gifts that are accepted by the chat or by the corresponding
-     * user for private chats
-     * @param string[]|null $active_usernames Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups
-     * and channels
-     * @param AbstractReactionType[]|null $available_reactions Optional. List of available reactions allowed in the chat. If omitted,
-     * then all emoji reactions are allowed.
-     * @param string|null $background_custom_emoji_id Optional. Custom emoji identifier of the emoji chosen by the chat for the reply
-     * header and link preview background
-     * @param string|null $bio Optional. Bio of the other party in a private chat
-     * @param Birthdate|null $birthdate Optional. For private chats, the date of birth of the user
-     * @param BusinessIntro|null $business_intro Optional. For private chats with business accounts, the intro of the business
-     * @param BusinessLocation|null $business_location Optional. For private chats with business accounts, the location of the business
-     * @param BusinessOpeningHours|null $business_opening_hours Optional. For private chats with business accounts, the opening hours
-     * of the business
-     * @param bool|null $can_set_sticker_set Optional. True, if the bot can change the group sticker set
-     * @param string|null $custom_emoji_sticker_set_name Optional. For supergroups, the name of the group's custom emoji sticker
-     * set. Custom emoji from this set can be used by all users and bots in the group.
-     * @param string|null $description Optional. Description, for groups, supergroups and channel chats
-     * @param string|null $emoji_status_custom_emoji_id Optional. Custom emoji identifier of the emoji status of the chat or the
-     * other party in a private chat
-     * @param int|null $emoji_status_expiration_date Optional. Expiration date of the emoji status of the chat or the other party
-     * in a private chat, in Unix time, if any
-     * @param string|null $first_name Optional. First name of the other party in a private chat
-     * @param bool|null $has_aggressive_anti_spam_enabled Optional. True, if aggressive anti-spam checks are enabled in the supergroup.
-     * The field is only available to chat administrators.
-     * @param bool|null $has_hidden_members Optional. True, if non-administrators can only get the list of bots and administrators
-     * in the chat
-     * @param bool|null $has_private_forwards Optional. True, if privacy settings of the other party in the private chat allows to
-     * use tg://user?id=<user_id> links only in chats with the user
-     * @param bool|null $has_protected_content Optional. True, if messages from the chat can't be forwarded to other chats
-     * @param bool|null $has_restricted_voice_and_video_messages Optional. True, if the privacy settings of the other party restrict
-     * sending voice and video note messages in the private chat
-     * @param bool|null $has_visible_history Optional. True, if new chat members will have access to old messages; available only
-     * to chat administrators
-     * @param string|null $invite_link Optional. Primary invite link, for groups, supergroups and channel chats
-     * @param bool|null $is_forum Optional. True, if the supergroup chat is a forum (has topics enabled)
-     * @param bool|null $join_by_request Optional. True, if all users directly joining the supergroup without using an invite link
-     * need to be approved by supergroup administrators
-     * @param bool|null $join_to_send_messages Optional. True, if users need to join the supergroup before they can send messages
-     * @param string|null $last_name Optional. Last name of the other party in a private chat
-     * @param int|null $linked_chat_id Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for
-     * a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming
-     * languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer
-     * or double-precision float type are safe for storing this identifier.
-     * @param ChatLocation|null $location Optional. For supergroups, the location to which the supergroup is connected
-     * @param int|null $message_auto_delete_time Optional. The time after which all messages sent to the chat will be automatically
-     * deleted; in seconds
-     * @param ChatPermissions|null $permissions Optional. Default chat member permissions, for groups and supergroups
-     * @param Chat|null $personal_chat Optional. For private chats, the personal channel of the user
-     * @param ChatPhoto|null $photo Optional. Chat photo
-     * @param Message|null $pinned_message Optional. The most recent pinned message (by sending date)
-     * @param int|null $profile_accent_color_id Optional. Identifier of the accent color for the chat's profile background. See profile
-     * accent colors for more details.
-     * @param string|null $profile_background_custom_emoji_id Optional. Custom emoji identifier of the emoji chosen by the chat for
-     * its profile background
-     * @param int|null $slow_mode_delay Optional. For supergroups, the minimum allowed delay between consecutive messages sent by
-     * each unprivileged user; in seconds
-     * @param string|null $sticker_set_name Optional. For supergroups, name of the group sticker set
-     * @param string|null $title Optional. Title, for supergroups, channels and group chats
-     * @param int|null $unrestrict_boost_count Optional. For supergroups, the minimum number of boosts that a non-administrator user
-     * needs to add in order to ignore slow mode and chat permissions
-     * @param string|null $username Optional. Username, for private chats, supergroups and channels if available
-     * @param bool|null $can_send_paid_media Optional. True, if paid media messages can be sent or forwarded to the channel chat.
-     * The field is available only for channel chats.
-     * @param bool|null $is_direct_messages Optional. True, if the chat is the direct messages chat of a channel
-     * @param Chat|null $parent_chat Optional. Information about the corresponding channel chat; for direct messages chats only
-     * @param UserRating|null $rating Optional. For private chats, the rating of the user if any
-     * @param UniqueGiftColors|null $unique_gift_colors Optional. The color scheme based on a unique gift that must be used for the
-     * chat's name, message replies and link previews
-     * @param int|null $paid_message_star_count Optional. The number of Telegram Stars a general user have to pay to send a message
-     * to the chat
-     * @param Audio|null $first_profile_audio Optional. For private chats, the first audio added to the profile of the user
+     * @param int                         $id                                      Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages
+     *                                                                             may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer
+     *                                                                             or double-precision float type are safe for storing this identifier.
+     * @param ChatTypeEnum                $type                                    Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
+     * @param int                         $accent_color_id                         Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header,
+     *                                                                             and link preview. See accent colors for more details.
+     * @param int                         $max_reaction_count                      The maximum number of reactions that can be set on a message in the chat
+     * @param AcceptedGiftTypes           $accepted_gift_types                     Information about types of gifts that are accepted by the chat or by the corresponding
+     *                                                                             user for private chats
+     * @param string[]|null               $active_usernames                        Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups
+     *                                                                             and channels
+     * @param AbstractReactionType[]|null $available_reactions                     Optional. List of available reactions allowed in the chat. If omitted,
+     *                                                                             then all emoji reactions are allowed.
+     * @param string|null                 $background_custom_emoji_id              Optional. Custom emoji identifier of the emoji chosen by the chat for the reply
+     *                                                                             header and link preview background
+     * @param string|null                 $bio                                     Optional. Bio of the other party in a private chat
+     * @param Birthdate|null              $birthdate                               Optional. For private chats, the date of birth of the user
+     * @param BusinessIntro|null          $business_intro                          Optional. For private chats with business accounts, the intro of the business
+     * @param BusinessLocation|null       $business_location                       Optional. For private chats with business accounts, the location of the business
+     * @param BusinessOpeningHours|null   $business_opening_hours                  Optional. For private chats with business accounts, the opening hours
+     *                                                                             of the business
+     * @param bool|null                   $can_set_sticker_set                     Optional. True, if the bot can change the group sticker set
+     * @param string|null                 $custom_emoji_sticker_set_name           Optional. For supergroups, the name of the group's custom emoji sticker
+     *                                                                             set. Custom emoji from this set can be used by all users and bots in the group.
+     * @param string|null                 $description                             Optional. Description, for groups, supergroups and channel chats
+     * @param string|null                 $emoji_status_custom_emoji_id            Optional. Custom emoji identifier of the emoji status of the chat or the
+     *                                                                             other party in a private chat
+     * @param int|null                    $emoji_status_expiration_date            Optional. Expiration date of the emoji status of the chat or the other party
+     *                                                                             in a private chat, in Unix time, if any
+     * @param string|null                 $first_name                              Optional. First name of the other party in a private chat
+     * @param bool|null                   $has_aggressive_anti_spam_enabled        Optional. True, if aggressive anti-spam checks are enabled in the supergroup.
+     *                                                                             The field is only available to chat administrators.
+     * @param bool|null                   $has_hidden_members                      Optional. True, if non-administrators can only get the list of bots and administrators
+     *                                                                             in the chat
+     * @param bool|null                   $has_private_forwards                    Optional. True, if privacy settings of the other party in the private chat allows to
+     *                                                                             use tg://user?id=<user_id> links only in chats with the user
+     * @param bool|null                   $has_protected_content                   Optional. True, if messages from the chat can't be forwarded to other chats
+     * @param bool|null                   $has_restricted_voice_and_video_messages Optional. True, if the privacy settings of the other party restrict
+     *                                                                             sending voice and video note messages in the private chat
+     * @param bool|null                   $has_visible_history                     Optional. True, if new chat members will have access to old messages; available only
+     *                                                                             to chat administrators
+     * @param string|null                 $invite_link                             Optional. Primary invite link, for groups, supergroups and channel chats
+     * @param bool|null                   $is_forum                                Optional. True, if the supergroup chat is a forum (has topics enabled)
+     * @param bool|null                   $join_by_request                         Optional. True, if all users directly joining the supergroup without using an invite link
+     *                                                                             need to be approved by supergroup administrators
+     * @param bool|null                   $join_to_send_messages                   Optional. True, if users need to join the supergroup before they can send messages
+     * @param string|null                 $last_name                               Optional. Last name of the other party in a private chat
+     * @param int|null                    $linked_chat_id                          Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for
+     *                                                                             a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming
+     *                                                                             languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer
+     *                                                                             or double-precision float type are safe for storing this identifier.
+     * @param ChatLocation|null           $location                                Optional. For supergroups, the location to which the supergroup is connected
+     * @param int|null                    $message_auto_delete_time                Optional. The time after which all messages sent to the chat will be automatically
+     *                                                                             deleted; in seconds
+     * @param ChatPermissions|null        $permissions                             Optional. Default chat member permissions, for groups and supergroups
+     * @param Chat|null                   $personal_chat                           Optional. For private chats, the personal channel of the user
+     * @param ChatPhoto|null              $photo                                   Optional. Chat photo
+     * @param Message|null                $pinned_message                          Optional. The most recent pinned message (by sending date)
+     * @param int|null                    $profile_accent_color_id                 Optional. Identifier of the accent color for the chat's profile background. See profile
+     *                                                                             accent colors for more details.
+     * @param string|null                 $profile_background_custom_emoji_id      Optional. Custom emoji identifier of the emoji chosen by the chat for
+     *                                                                             its profile background
+     * @param int|null                    $slow_mode_delay                         Optional. For supergroups, the minimum allowed delay between consecutive messages sent by
+     *                                                                             each unprivileged user; in seconds
+     * @param string|null                 $sticker_set_name                        Optional. For supergroups, name of the group sticker set
+     * @param string|null                 $title                                   Optional. Title, for supergroups, channels and group chats
+     * @param int|null                    $unrestrict_boost_count                  Optional. For supergroups, the minimum number of boosts that a non-administrator user
+     *                                                                             needs to add in order to ignore slow mode and chat permissions
+     * @param string|null                 $username                                Optional. Username, for private chats, supergroups and channels if available
+     * @param bool|null                   $can_send_paid_media                     Optional. True, if paid media messages can be sent or forwarded to the channel chat.
+     *                                                                             The field is available only for channel chats.
+     * @param bool|null                   $is_direct_messages                      Optional. True, if the chat is the direct messages chat of a channel
+     * @param Chat|null                   $parent_chat                             Optional. Information about the corresponding channel chat; for direct messages chats only
+     * @param UserRating|null             $rating                                  Optional. For private chats, the rating of the user if any
+     * @param UniqueGiftColors|null       $unique_gift_colors                      Optional. The color scheme based on a unique gift that must be used for the
+     *                                                                             chat's name, message replies and link previews
+     * @param int|null                    $paid_message_star_count                 Optional. The number of Telegram Stars a general user have to pay to send a message
+     *                                                                             to the chat
+     * @param Audio|null                  $first_profile_audio                     Optional. For private chats, the first audio added to the profile of the user
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -185,6 +199,7 @@ final class ChatFullInfo implements EntityInterface
     public function setId(int $id): ChatFullInfo
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -204,6 +219,7 @@ final class ChatFullInfo implements EntityInterface
     public function setType(ChatTypeEnum $type): ChatFullInfo
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -223,6 +239,7 @@ final class ChatFullInfo implements EntityInterface
     public function setAccentColorId(int $accent_color_id): ChatFullInfo
     {
         $this->accent_color_id = $accent_color_id;
+
         return $this;
     }
 
@@ -242,6 +259,7 @@ final class ChatFullInfo implements EntityInterface
     public function setMaxReactionCount(int $max_reaction_count): ChatFullInfo
     {
         $this->max_reaction_count = $max_reaction_count;
+
         return $this;
     }
 
@@ -261,6 +279,7 @@ final class ChatFullInfo implements EntityInterface
     public function setAcceptedGiftTypes(AcceptedGiftTypes $accepted_gift_types): ChatFullInfo
     {
         $this->accepted_gift_types = $accepted_gift_types;
+
         return $this;
     }
 
@@ -280,6 +299,7 @@ final class ChatFullInfo implements EntityInterface
     public function setActiveUsernames(?array $active_usernames): ChatFullInfo
     {
         $this->active_usernames = $active_usernames;
+
         return $this;
     }
 
@@ -299,6 +319,7 @@ final class ChatFullInfo implements EntityInterface
     public function setAvailableReactions(?array $available_reactions): ChatFullInfo
     {
         $this->available_reactions = $available_reactions;
+
         return $this;
     }
 
@@ -318,6 +339,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBackgroundCustomEmojiId(?string $background_custom_emoji_id): ChatFullInfo
     {
         $this->background_custom_emoji_id = $background_custom_emoji_id;
+
         return $this;
     }
 
@@ -337,6 +359,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBio(?string $bio): ChatFullInfo
     {
         $this->bio = $bio;
+
         return $this;
     }
 
@@ -356,6 +379,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBirthdate(?Birthdate $birthdate): ChatFullInfo
     {
         $this->birthdate = $birthdate;
+
         return $this;
     }
 
@@ -375,6 +399,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBusinessIntro(?BusinessIntro $business_intro): ChatFullInfo
     {
         $this->business_intro = $business_intro;
+
         return $this;
     }
 
@@ -394,6 +419,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBusinessLocation(?BusinessLocation $business_location): ChatFullInfo
     {
         $this->business_location = $business_location;
+
         return $this;
     }
 
@@ -413,6 +439,7 @@ final class ChatFullInfo implements EntityInterface
     public function setBusinessOpeningHours(?BusinessOpeningHours $business_opening_hours): ChatFullInfo
     {
         $this->business_opening_hours = $business_opening_hours;
+
         return $this;
     }
 
@@ -432,6 +459,7 @@ final class ChatFullInfo implements EntityInterface
     public function setCanSetStickerSet(?bool $can_set_sticker_set): ChatFullInfo
     {
         $this->can_set_sticker_set = $can_set_sticker_set;
+
         return $this;
     }
 
@@ -451,6 +479,7 @@ final class ChatFullInfo implements EntityInterface
     public function setCustomEmojiStickerSetName(?string $custom_emoji_sticker_set_name): ChatFullInfo
     {
         $this->custom_emoji_sticker_set_name = $custom_emoji_sticker_set_name;
+
         return $this;
     }
 
@@ -470,6 +499,7 @@ final class ChatFullInfo implements EntityInterface
     public function setDescription(?string $description): ChatFullInfo
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -489,6 +519,7 @@ final class ChatFullInfo implements EntityInterface
     public function setEmojiStatusCustomEmojiId(?string $emoji_status_custom_emoji_id): ChatFullInfo
     {
         $this->emoji_status_custom_emoji_id = $emoji_status_custom_emoji_id;
+
         return $this;
     }
 
@@ -508,6 +539,7 @@ final class ChatFullInfo implements EntityInterface
     public function setEmojiStatusExpirationDate(?int $emoji_status_expiration_date): ChatFullInfo
     {
         $this->emoji_status_expiration_date = $emoji_status_expiration_date;
+
         return $this;
     }
 
@@ -527,6 +559,7 @@ final class ChatFullInfo implements EntityInterface
     public function setFirstName(?string $first_name): ChatFullInfo
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -546,6 +579,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasAggressiveAntiSpamEnabled(?bool $has_aggressive_anti_spam_enabled): ChatFullInfo
     {
         $this->has_aggressive_anti_spam_enabled = $has_aggressive_anti_spam_enabled;
+
         return $this;
     }
 
@@ -565,6 +599,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasHiddenMembers(?bool $has_hidden_members): ChatFullInfo
     {
         $this->has_hidden_members = $has_hidden_members;
+
         return $this;
     }
 
@@ -584,6 +619,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasPrivateForwards(?bool $has_private_forwards): ChatFullInfo
     {
         $this->has_private_forwards = $has_private_forwards;
+
         return $this;
     }
 
@@ -603,6 +639,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasProtectedContent(?bool $has_protected_content): ChatFullInfo
     {
         $this->has_protected_content = $has_protected_content;
+
         return $this;
     }
 
@@ -622,6 +659,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasRestrictedVoiceAndVideoMessages(?bool $has_restricted_voice_and_video_messages): ChatFullInfo
     {
         $this->has_restricted_voice_and_video_messages = $has_restricted_voice_and_video_messages;
+
         return $this;
     }
 
@@ -641,6 +679,7 @@ final class ChatFullInfo implements EntityInterface
     public function setHasVisibleHistory(?bool $has_visible_history): ChatFullInfo
     {
         $this->has_visible_history = $has_visible_history;
+
         return $this;
     }
 
@@ -660,6 +699,7 @@ final class ChatFullInfo implements EntityInterface
     public function setInviteLink(?string $invite_link): ChatFullInfo
     {
         $this->invite_link = $invite_link;
+
         return $this;
     }
 
@@ -679,6 +719,7 @@ final class ChatFullInfo implements EntityInterface
     public function setIsForum(?bool $is_forum): ChatFullInfo
     {
         $this->is_forum = $is_forum;
+
         return $this;
     }
 
@@ -698,6 +739,7 @@ final class ChatFullInfo implements EntityInterface
     public function setJoinByRequest(?bool $join_by_request): ChatFullInfo
     {
         $this->join_by_request = $join_by_request;
+
         return $this;
     }
 
@@ -717,6 +759,7 @@ final class ChatFullInfo implements EntityInterface
     public function setJoinToSendMessages(?bool $join_to_send_messages): ChatFullInfo
     {
         $this->join_to_send_messages = $join_to_send_messages;
+
         return $this;
     }
 
@@ -736,6 +779,7 @@ final class ChatFullInfo implements EntityInterface
     public function setLastName(?string $last_name): ChatFullInfo
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
@@ -755,6 +799,7 @@ final class ChatFullInfo implements EntityInterface
     public function setLinkedChatId(?int $linked_chat_id): ChatFullInfo
     {
         $this->linked_chat_id = $linked_chat_id;
+
         return $this;
     }
 
@@ -774,6 +819,7 @@ final class ChatFullInfo implements EntityInterface
     public function setLocation(?ChatLocation $location): ChatFullInfo
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -793,6 +839,7 @@ final class ChatFullInfo implements EntityInterface
     public function setMessageAutoDeleteTime(?int $message_auto_delete_time): ChatFullInfo
     {
         $this->message_auto_delete_time = $message_auto_delete_time;
+
         return $this;
     }
 
@@ -812,6 +859,7 @@ final class ChatFullInfo implements EntityInterface
     public function setPermissions(?ChatPermissions $permissions): ChatFullInfo
     {
         $this->permissions = $permissions;
+
         return $this;
     }
 
@@ -831,6 +879,7 @@ final class ChatFullInfo implements EntityInterface
     public function setPersonalChat(?Chat $personal_chat): ChatFullInfo
     {
         $this->personal_chat = $personal_chat;
+
         return $this;
     }
 
@@ -850,6 +899,7 @@ final class ChatFullInfo implements EntityInterface
     public function setPhoto(?ChatPhoto $photo): ChatFullInfo
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -869,6 +919,7 @@ final class ChatFullInfo implements EntityInterface
     public function setPinnedMessage(?Message $pinned_message): ChatFullInfo
     {
         $this->pinned_message = $pinned_message;
+
         return $this;
     }
 
@@ -888,6 +939,7 @@ final class ChatFullInfo implements EntityInterface
     public function setProfileAccentColorId(?int $profile_accent_color_id): ChatFullInfo
     {
         $this->profile_accent_color_id = $profile_accent_color_id;
+
         return $this;
     }
 
@@ -907,6 +959,7 @@ final class ChatFullInfo implements EntityInterface
     public function setProfileBackgroundCustomEmojiId(?string $profile_background_custom_emoji_id): ChatFullInfo
     {
         $this->profile_background_custom_emoji_id = $profile_background_custom_emoji_id;
+
         return $this;
     }
 
@@ -926,6 +979,7 @@ final class ChatFullInfo implements EntityInterface
     public function setSlowModeDelay(?int $slow_mode_delay): ChatFullInfo
     {
         $this->slow_mode_delay = $slow_mode_delay;
+
         return $this;
     }
 
@@ -945,6 +999,7 @@ final class ChatFullInfo implements EntityInterface
     public function setStickerSetName(?string $sticker_set_name): ChatFullInfo
     {
         $this->sticker_set_name = $sticker_set_name;
+
         return $this;
     }
 
@@ -964,6 +1019,7 @@ final class ChatFullInfo implements EntityInterface
     public function setTitle(?string $title): ChatFullInfo
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -983,6 +1039,7 @@ final class ChatFullInfo implements EntityInterface
     public function setUnrestrictBoostCount(?int $unrestrict_boost_count): ChatFullInfo
     {
         $this->unrestrict_boost_count = $unrestrict_boost_count;
+
         return $this;
     }
 
@@ -1002,6 +1059,7 @@ final class ChatFullInfo implements EntityInterface
     public function setUsername(?string $username): ChatFullInfo
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -1021,6 +1079,7 @@ final class ChatFullInfo implements EntityInterface
     public function setCanSendPaidMedia(?bool $can_send_paid_media): ChatFullInfo
     {
         $this->can_send_paid_media = $can_send_paid_media;
+
         return $this;
     }
 
@@ -1040,6 +1099,7 @@ final class ChatFullInfo implements EntityInterface
     public function setIsDirectMessages(?bool $is_direct_messages): ChatFullInfo
     {
         $this->is_direct_messages = $is_direct_messages;
+
         return $this;
     }
 
@@ -1059,6 +1119,7 @@ final class ChatFullInfo implements EntityInterface
     public function setParentChat(?Chat $parent_chat): ChatFullInfo
     {
         $this->parent_chat = $parent_chat;
+
         return $this;
     }
 
@@ -1078,6 +1139,7 @@ final class ChatFullInfo implements EntityInterface
     public function setRating(?UserRating $rating): ChatFullInfo
     {
         $this->rating = $rating;
+
         return $this;
     }
 
@@ -1097,6 +1159,7 @@ final class ChatFullInfo implements EntityInterface
     public function setUniqueGiftColors(?UniqueGiftColors $unique_gift_colors): ChatFullInfo
     {
         $this->unique_gift_colors = $unique_gift_colors;
+
         return $this;
     }
 
@@ -1116,6 +1179,7 @@ final class ChatFullInfo implements EntityInterface
     public function setPaidMessageStarCount(?int $paid_message_star_count): ChatFullInfo
     {
         $this->paid_message_star_count = $paid_message_star_count;
+
         return $this;
     }
 
@@ -1135,6 +1199,8 @@ final class ChatFullInfo implements EntityInterface
     public function setFirstProfileAudio(?Audio $first_profile_audio): ChatFullInfo
     {
         $this->first_profile_audio = $first_profile_audio;
+
         return $this;
     }
 }
+// endregion CLASS_ChatFullInfo

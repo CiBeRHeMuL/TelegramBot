@@ -4,18 +4,34 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
+/**
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API answerCallbackQuery method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#answercallbackquery
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Answer, Callback, Query
+// STRUCTURE: ▶ ┌callback_query_id + cache_time + show_alert + text + url┐ → ◇ construct → ⊕ → ∑ ⟦AnswerCallbackQueryRequest⟧
+
+// region CLASS_AnswerCallbackQueryRequest
 class AnswerCallbackQueryRequest implements RequestInterface
 {
     /**
-     * @param string $callback_query_id Unique identifier for the query to be answered
-     * @param int|null $cache_time The maximum amount of time in seconds that the result of the callback query may be cached client-side.
-     * Telegram apps will support caching starting in version 3.14. Defaults to 0.
-     * @param bool|null $show_alert If True, an alert will be shown by the client instead of a notification at the top of the chat
-     * screen. Defaults to false.
-     * @param string|null $text Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
-     * @param Url|null $url URL that will be opened by the user's client. If you have created a Game and accepted the conditions
-     * via \@BotFather, specify the URL that opens your game - note that this will only work if the query comes from a callback_game
-     * button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
+     * @param string      $callback_query_id Unique identifier for the query to be answered
+     * @param int|null    $cache_time        The maximum amount of time in seconds that the result of the callback query may be cached client-side.
+     *                                       Telegram apps will support caching starting in version 3.14. Defaults to 0.
+     * @param bool|null   $show_alert        If True, an alert will be shown by the client instead of a notification at the top of the chat
+     *                                       screen. Defaults to false.
+     * @param string|null $text              Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters
+     * @param Url|null    $url               URL that will be opened by the user's client. If you have created a Game and accepted the conditions
+     *                                       via \@BotFather, specify the URL that opens your game - note that this will only work if the query comes from a callback_game
+     *                                       button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
      */
     public function __construct(
         private string $callback_query_id,
@@ -33,6 +49,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
     public function setCallbackQueryId(string $callback_query_id): AnswerCallbackQueryRequest
     {
         $this->callback_query_id = $callback_query_id;
+
         return $this;
     }
 
@@ -44,6 +61,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
     public function setCacheTime(?int $cache_time): AnswerCallbackQueryRequest
     {
         $this->cache_time = $cache_time;
+
         return $this;
     }
 
@@ -55,6 +73,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
     public function setShowAlert(?bool $show_alert): AnswerCallbackQueryRequest
     {
         $this->show_alert = $show_alert;
+
         return $this;
     }
 
@@ -66,6 +85,7 @@ class AnswerCallbackQueryRequest implements RequestInterface
     public function setText(?string $text): AnswerCallbackQueryRequest
     {
         $this->text = $text;
+
         return $this;
     }
 
@@ -77,6 +97,8 @@ class AnswerCallbackQueryRequest implements RequestInterface
     public function setUrl(?Url $url): AnswerCallbackQueryRequest
     {
         $this->url = $url;
+
         return $this;
     }
 }
+// endregion CLASS_AnswerCallbackQueryRequest

@@ -13,42 +13,58 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#sendpaidmedia
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API sendPaidMedia method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#sendpaidmedia
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Send, Paid, Media
+// STRUCTURE: ▶ ┌chat_id + media + star_count + caption + caption_entities┐ → ◇ construct → ⊕ → ∑ ⟦SendPaidMediaRequest⟧
+
+// region CLASS_SendPaidMediaRequest
+/**
+ * @see https://core.telegram.org/bots/api#sendpaidmedia
  */
 class SendPaidMediaRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise,
-     * they will be credited to the bot's balance.
-     * @param AbstractInputPaidMedia[] $media A JSON-serialized array describing the media to be sent; up to 10 items
-     * @param int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
-     * @param string|null $caption Media caption, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which
-     * can be specified instead of parse_mode
-     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the media caption. See formatting options for more
-     * details.
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
-     * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     * a reply from the user
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
-     * be sent
-     * @param string|null $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for
-     * your internal processes.
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     * and private chats of bots with forum topic mode enabled only
-     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
-     * if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     * post is automatically declined.
+     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                \@username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise,
+     *                                                                                                                they will be credited to the bot's balance.
+     * @param AbstractInputPaidMedia[]                                                     $media                     A JSON-serialized array describing the media to be sent; up to 10 items
+     * @param int                                                                          $star_count                The number of Telegram Stars that must be paid to buy access to the media; 1-25000
+     * @param string|null                                                                  $caption                   Media caption, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null                                                         $caption_entities          A JSON-serialized list of special entities that appear in the caption, which
+     *                                                                                                                can be specified instead of parse_mode
+     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                Mode for parsing entities in the media caption. See formatting options for more
+     *                                                                                                                details.
+     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
+     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                a reply from the user
+     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
+     * @param bool|null                                                                    $show_caption_above_media  Pass True, if the caption must be shown above the message media
+     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                be sent
+     * @param string|null                                                                  $payload                   Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for
+     *                                                                                                                your internal processes.
+     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                and private chats of bots with forum topic mode enabled only
+     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#inputpaidmedia InputPaidMedia
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -92,6 +108,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SendPaidMediaRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -103,6 +120,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setMedia(array $media): SendPaidMediaRequest
     {
         $this->media = $media;
+
         return $this;
     }
 
@@ -114,6 +132,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setStarCount(int $star_count): SendPaidMediaRequest
     {
         $this->star_count = $star_count;
+
         return $this;
     }
 
@@ -125,6 +144,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setCaption(?string $caption): SendPaidMediaRequest
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -136,6 +156,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setCaptionEntities(?array $caption_entities): SendPaidMediaRequest
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -147,6 +168,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): SendPaidMediaRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -158,6 +180,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): SendPaidMediaRequest
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -169,6 +192,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): SendPaidMediaRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -180,6 +204,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): SendPaidMediaRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -191,6 +216,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): SendPaidMediaRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 
@@ -202,6 +228,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): SendPaidMediaRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 
@@ -213,6 +240,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): SendPaidMediaRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -224,6 +252,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setPayload(?string $payload): SendPaidMediaRequest
     {
         $this->payload = $payload;
+
         return $this;
     }
 
@@ -235,6 +264,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendPaidMediaRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
         return $this;
     }
 
@@ -246,6 +276,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): SendPaidMediaRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 
@@ -257,6 +288,7 @@ class SendPaidMediaRequest implements RequestInterface
     public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendPaidMediaRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
+
         return $this;
     }
 
@@ -268,6 +300,8 @@ class SendPaidMediaRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendPaidMediaRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
         return $this;
     }
 }
+// endregion CLASS_SendPaidMediaRequest

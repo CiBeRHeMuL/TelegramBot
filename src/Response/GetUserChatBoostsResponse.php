@@ -4,6 +4,20 @@ namespace AndrewGos\TelegramBot\Response;
 
 use AndrewGos\TelegramBot\Entity\UserChatBoosts;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
+/**
+ * @moduleContract
+ * @purpose Response DTO for Telegram Bot API getUserChatBoosts method.
+ *
+ * @sees USES_API(7): Telegram Bot API
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: get user chat boosts, response, Telegram Bot API
+// STRUCTURE: ▶ ┌ok + result┐ → ◇ isOk()? : ⊕ UserChatBoosts
+
+// region CLASS_GetUserChatBoostsResponse [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Response]
 class GetUserChatBoostsResponse extends AbstractResponse
 {
     public function __construct(
@@ -18,3 +32,5 @@ class GetUserChatBoostsResponse extends AbstractResponse
         return $this->userChatBoosts;
     }
 }
+
+// endregion CLASS_GetUserChatBoostsResponse

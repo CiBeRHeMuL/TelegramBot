@@ -4,23 +4,37 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Describes the options used for link preview generation.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#linkpreviewoptions
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: LinkPreviewOptions, Telegram, Bot API, DTO, linkpreviewoptions
+// STRUCTURE: ▶ ◇ is_disabled,url,prefer_small_media → ∑ options
+// region CLASS_LinkPreviewOptions
+
 /**
  * Describes the options used for link preview generation.
  *
- * @link https://core.telegram.org/bots/api#linkpreviewoptions
+ * @see https://core.telegram.org/bots/api#linkpreviewoptions
  */
 final class LinkPreviewOptions implements EntityInterface
 {
     /**
-     * @param bool|null $is_disabled Optional. True, if the link preview is disabled
-     * @param Url|null $url Optional. URL to use for the link preview. If empty, then the first URL found in the message text will
-     * be used
+     * @param bool|null $is_disabled        Optional. True, if the link preview is disabled
+     * @param Url|null  $url                Optional. URL to use for the link preview. If empty, then the first URL found in the message text will
+     *                                      be used
      * @param bool|null $prefer_small_media Optional. True, if the media in the link preview is supposed to be shrunk; ignored if
-     * the URL isn't explicitly specified or media size change isn't supported for the preview
+     *                                      the URL isn't explicitly specified or media size change isn't supported for the preview
      * @param bool|null $prefer_large_media Optional. True, if the media in the link preview is supposed to be enlarged; ignored
-     * if the URL isn't explicitly specified or media size change isn't supported for the preview
-     * @param bool|null $show_above_text Optional. True, if the link preview must be shown above the message text; otherwise, the
-     * link preview will be shown below the message text
+     *                                      if the URL isn't explicitly specified or media size change isn't supported for the preview
+     * @param bool|null $show_above_text    Optional. True, if the link preview must be shown above the message text; otherwise, the
+     *                                      link preview will be shown below the message text
      */
     public function __construct(
         protected ?bool $is_disabled = null,
@@ -46,6 +60,7 @@ final class LinkPreviewOptions implements EntityInterface
     public function setIsDisabled(?bool $is_disabled): LinkPreviewOptions
     {
         $this->is_disabled = $is_disabled;
+
         return $this;
     }
 
@@ -65,6 +80,7 @@ final class LinkPreviewOptions implements EntityInterface
     public function setUrl(?Url $url): LinkPreviewOptions
     {
         $this->url = $url;
+
         return $this;
     }
 
@@ -84,6 +100,7 @@ final class LinkPreviewOptions implements EntityInterface
     public function setPreferSmallMedia(?bool $prefer_small_media): LinkPreviewOptions
     {
         $this->prefer_small_media = $prefer_small_media;
+
         return $this;
     }
 
@@ -103,6 +120,7 @@ final class LinkPreviewOptions implements EntityInterface
     public function setPreferLargeMedia(?bool $prefer_large_media): LinkPreviewOptions
     {
         $this->prefer_large_media = $prefer_large_media;
+
         return $this;
     }
 
@@ -122,6 +140,9 @@ final class LinkPreviewOptions implements EntityInterface
     public function setShowAboveText(?bool $show_above_text): LinkPreviewOptions
     {
         $this->show_above_text = $show_above_text;
+
         return $this;
     }
 }
+
+// endregion CLASS_LinkPreviewOptions

@@ -16,31 +16,44 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can
  * use input_message_content to send a message with the specified content instead of the photo.
  *
- * @link https://core.telegram.org/bots/api#inlinequeryresultphoto
+ * @see https://core.telegram.org/bots/api#inlinequeryresultphoto
  */
 #[BuildIf(new AndChecker([
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Photo->value),
     new FieldCompareChecker('photo_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a link to a photo.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultphoto
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: InlineQueryResultPhoto, Telegram, Bot API, DTO, inlinequeryresultphoto
+// STRUCTURE: ▶ ┌id,photo_url,thumbnail_url┐ → ◇ photo_width,photo_height,title → ∑ result
+// region CLASS_InlineQueryResultPhoto
 final class InlineQueryResultPhoto extends AbstractInlineQueryResult
 {
     /**
-     * @param string $id Unique identifier for this result, 1-64 bytes
-     * @param Url $photo_url A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
-     * @param Url $thumbnail_url URL of the thumbnail for the photo
-     * @param string|null $caption Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
-     * @param MessageEntity[]|null $caption_entities Optional. List of special entities that appear in the caption, which can be
-     * specified instead of parse_mode
-     * @param string|null $description Optional. Short description of the result
-     * @param AbstractInputMessageContent|null $input_message_content Optional. Content of the message to be sent instead of the
-     * photo
-     * @param TelegramParseModeEnum|null $parse_mode Optional. Mode for parsing entities in the photo caption. See formatting options
-     * for more details.
-     * @param int|null $photo_height Optional. Height of the photo
-     * @param int|null $photo_width Optional. Width of the photo
-     * @param InlineKeyboardMarkup|null $reply_markup Optional. Inline keyboard attached to the message
-     * @param string|null $title Optional. Title for the result
-     * @param bool|null $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+     * @param string                           $id                       Unique identifier for this result, 1-64 bytes
+     * @param Url                              $photo_url                A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
+     * @param Url                              $thumbnail_url            URL of the thumbnail for the photo
+     * @param string|null                      $caption                  Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
+     * @param MessageEntity[]|null             $caption_entities         Optional. List of special entities that appear in the caption, which can be
+     *                                                                   specified instead of parse_mode
+     * @param string|null                      $description              Optional. Short description of the result
+     * @param AbstractInputMessageContent|null $input_message_content    Optional. Content of the message to be sent instead of the
+     *                                                                   photo
+     * @param TelegramParseModeEnum|null       $parse_mode               Optional. Mode for parsing entities in the photo caption. See formatting options
+     *                                                                   for more details.
+     * @param int|null                         $photo_height             Optional. Height of the photo
+     * @param int|null                         $photo_width              Optional. Width of the photo
+     * @param InlineKeyboardMarkup|null        $reply_markup             Optional. Inline keyboard attached to the message
+     * @param string|null                      $title                    Optional. Title for the result
+     * @param bool|null                        $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -83,6 +96,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setId(string $id): InlineQueryResultPhoto
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -102,6 +116,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setPhotoUrl(Url $photo_url): InlineQueryResultPhoto
     {
         $this->photo_url = $photo_url;
+
         return $this;
     }
 
@@ -121,6 +136,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setThumbnailUrl(Url $thumbnail_url): InlineQueryResultPhoto
     {
         $this->thumbnail_url = $thumbnail_url;
+
         return $this;
     }
 
@@ -140,6 +156,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setCaption(?string $caption): InlineQueryResultPhoto
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -159,6 +176,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setCaptionEntities(?array $caption_entities): InlineQueryResultPhoto
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -178,6 +196,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setDescription(?string $description): InlineQueryResultPhoto
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -197,6 +216,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setInputMessageContent(?AbstractInputMessageContent $input_message_content): InlineQueryResultPhoto
     {
         $this->input_message_content = $input_message_content;
+
         return $this;
     }
 
@@ -216,6 +236,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setParseMode(?TelegramParseModeEnum $parse_mode): InlineQueryResultPhoto
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -235,6 +256,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setPhotoHeight(?int $photo_height): InlineQueryResultPhoto
     {
         $this->photo_height = $photo_height;
+
         return $this;
     }
 
@@ -254,6 +276,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setPhotoWidth(?int $photo_width): InlineQueryResultPhoto
     {
         $this->photo_width = $photo_width;
+
         return $this;
     }
 
@@ -273,6 +296,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): InlineQueryResultPhoto
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -292,6 +316,7 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setTitle(?string $title): InlineQueryResultPhoto
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -311,6 +336,9 @@ final class InlineQueryResultPhoto extends AbstractInlineQueryResult
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): InlineQueryResultPhoto
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 }
+
+// endregion CLASS_InlineQueryResultPhoto

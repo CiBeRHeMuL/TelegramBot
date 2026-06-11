@@ -4,42 +4,58 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#promotechatmember
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API promoteChatMember method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#promotechatmember
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Promote, Chat, Member
+// STRUCTURE: ▶ ┌chat_id + user_id + can_change_info + can_delete_messages + can_delete_stories┐ → ◇ construct → ⊕ → ∑ ⟦PromoteChatMemberRequest⟧
+
+// region CLASS_PromoteChatMemberRequest
+/**
+ * @see https://core.telegram.org/bots/api#promotechatmember
  */
 class PromoteChatMemberRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target channel in the format \@username
-     * @param int $user_id Unique identifier of the target user
-     * @param bool|null $can_change_info Pass True if the administrator can change chat title, photo and other settings
-     * @param bool|null $can_delete_messages Pass True if the administrator can delete messages of other users
-     * @param bool|null $can_delete_stories Pass True if the administrator can delete stories posted by other users
-     * @param bool|null $can_edit_messages Pass True if the administrator can edit messages of other users and can pin messages;
-     * for channels only
-     * @param bool|null $can_edit_stories Pass True if the administrator can edit stories posted by other users, post stories to
-     * the chat page, pin chat stories, and access the chat's story archive
-     * @param bool|null $can_invite_users Pass True if the administrator can invite new users to the chat
-     * @param bool|null $can_manage_chat Pass True if the administrator can access the chat event log, get boost list, see hidden
-     * supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram
-     * Stars. Implied by any other administrator privilege.
-     * @param bool|null $can_manage_topics Pass True if the user is allowed to create, rename, close, and reopen forum topics; for
-     * supergroups only
-     * @param bool|null $can_manage_video_chats Pass True if the administrator can manage video chats
-     * @param bool|null $can_pin_messages Pass True if the administrator can pin messages; for supergroups only
-     * @param bool|null $can_post_messages Pass True if the administrator can post messages in the channel, approve suggested posts,
-     * or access channel statistics; for channels only
-     * @param bool|null $can_post_stories Pass True if the administrator can post stories to the chat
-     * @param bool|null $can_promote_members Pass True if the administrator can add new administrators with a subset of their own
-     * privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were
-     * appointed by him)
-     * @param bool|null $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
-     * statistics. For backward compatibility, defaults to True for promotions of channel administrators
-     * @param bool|null $is_anonymous Pass True if the administrator's presence in the chat is hidden
+     * @param ChatId    $chat_id                    Unique identifier for the target chat or username of the target channel in the format \@username
+     * @param int       $user_id                    Unique identifier of the target user
+     * @param bool|null $can_change_info            Pass True if the administrator can change chat title, photo and other settings
+     * @param bool|null $can_delete_messages        Pass True if the administrator can delete messages of other users
+     * @param bool|null $can_delete_stories         Pass True if the administrator can delete stories posted by other users
+     * @param bool|null $can_edit_messages          Pass True if the administrator can edit messages of other users and can pin messages;
+     *                                              for channels only
+     * @param bool|null $can_edit_stories           Pass True if the administrator can edit stories posted by other users, post stories to
+     *                                              the chat page, pin chat stories, and access the chat's story archive
+     * @param bool|null $can_invite_users           Pass True if the administrator can invite new users to the chat
+     * @param bool|null $can_manage_chat            Pass True if the administrator can access the chat event log, get boost list, see hidden
+     *                                              supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram
+     *                                              Stars. Implied by any other administrator privilege.
+     * @param bool|null $can_manage_topics          Pass True if the user is allowed to create, rename, close, and reopen forum topics; for
+     *                                              supergroups only
+     * @param bool|null $can_manage_video_chats     Pass True if the administrator can manage video chats
+     * @param bool|null $can_pin_messages           Pass True if the administrator can pin messages; for supergroups only
+     * @param bool|null $can_post_messages          Pass True if the administrator can post messages in the channel, approve suggested posts,
+     *                                              or access channel statistics; for channels only
+     * @param bool|null $can_post_stories           Pass True if the administrator can post stories to the chat
+     * @param bool|null $can_promote_members        Pass True if the administrator can add new administrators with a subset of their own
+     *                                              privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were
+     *                                              appointed by him)
+     * @param bool|null $can_restrict_members       Pass True if the administrator can restrict, ban or unban chat members, or access supergroup
+     *                                              statistics. For backward compatibility, defaults to True for promotions of channel administrators
+     * @param bool|null $is_anonymous               Pass True if the administrator's presence in the chat is hidden
      * @param bool|null $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel
-     * and decline suggested posts; for channels only
-     * @param bool|null $can_manage_tags Pass True if the administrator can edit the tags of regular members; for groups and supergroups
-     * only
+     *                                              and decline suggested posts; for channels only
+     * @param bool|null $can_manage_tags            Pass True if the administrator can edit the tags of regular members; for groups and supergroups
+     *                                              only
      */
     public function __construct(
         private ChatId $chat_id,
@@ -71,6 +87,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): PromoteChatMemberRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -82,6 +99,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setUserId(int $user_id): PromoteChatMemberRequest
     {
         $this->user_id = $user_id;
+
         return $this;
     }
 
@@ -93,6 +111,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanChangeInfo(?bool $can_change_info): PromoteChatMemberRequest
     {
         $this->can_change_info = $can_change_info;
+
         return $this;
     }
 
@@ -104,6 +123,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanDeleteMessages(?bool $can_delete_messages): PromoteChatMemberRequest
     {
         $this->can_delete_messages = $can_delete_messages;
+
         return $this;
     }
 
@@ -115,6 +135,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanDeleteStories(?bool $can_delete_stories): PromoteChatMemberRequest
     {
         $this->can_delete_stories = $can_delete_stories;
+
         return $this;
     }
 
@@ -126,6 +147,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanEditMessages(?bool $can_edit_messages): PromoteChatMemberRequest
     {
         $this->can_edit_messages = $can_edit_messages;
+
         return $this;
     }
 
@@ -137,6 +159,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanEditStories(?bool $can_edit_stories): PromoteChatMemberRequest
     {
         $this->can_edit_stories = $can_edit_stories;
+
         return $this;
     }
 
@@ -148,6 +171,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanInviteUsers(?bool $can_invite_users): PromoteChatMemberRequest
     {
         $this->can_invite_users = $can_invite_users;
+
         return $this;
     }
 
@@ -159,6 +183,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageChat(?bool $can_manage_chat): PromoteChatMemberRequest
     {
         $this->can_manage_chat = $can_manage_chat;
+
         return $this;
     }
 
@@ -170,6 +195,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageTopics(?bool $can_manage_topics): PromoteChatMemberRequest
     {
         $this->can_manage_topics = $can_manage_topics;
+
         return $this;
     }
 
@@ -181,6 +207,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageVideoChats(?bool $can_manage_video_chats): PromoteChatMemberRequest
     {
         $this->can_manage_video_chats = $can_manage_video_chats;
+
         return $this;
     }
 
@@ -192,6 +219,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanPinMessages(?bool $can_pin_messages): PromoteChatMemberRequest
     {
         $this->can_pin_messages = $can_pin_messages;
+
         return $this;
     }
 
@@ -203,6 +231,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanPostMessages(?bool $can_post_messages): PromoteChatMemberRequest
     {
         $this->can_post_messages = $can_post_messages;
+
         return $this;
     }
 
@@ -214,6 +243,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanPostStories(?bool $can_post_stories): PromoteChatMemberRequest
     {
         $this->can_post_stories = $can_post_stories;
+
         return $this;
     }
 
@@ -225,6 +255,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanPromoteMembers(?bool $can_promote_members): PromoteChatMemberRequest
     {
         $this->can_promote_members = $can_promote_members;
+
         return $this;
     }
 
@@ -236,6 +267,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanRestrictMembers(?bool $can_restrict_members): PromoteChatMemberRequest
     {
         $this->can_restrict_members = $can_restrict_members;
+
         return $this;
     }
 
@@ -247,6 +279,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setIsAnonymous(?bool $is_anonymous): PromoteChatMemberRequest
     {
         $this->is_anonymous = $is_anonymous;
+
         return $this;
     }
 
@@ -258,6 +291,7 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageDirectMessages(?bool $can_manage_direct_messages): PromoteChatMemberRequest
     {
         $this->can_manage_direct_messages = $can_manage_direct_messages;
+
         return $this;
     }
 
@@ -269,6 +303,8 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageTags(?bool $can_manage_tags): PromoteChatMemberRequest
     {
         $this->can_manage_tags = $can_manage_tags;
+
         return $this;
     }
 }
+// endregion CLASS_PromoteChatMemberRequest

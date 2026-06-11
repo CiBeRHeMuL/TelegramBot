@@ -6,28 +6,42 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a unique gift owned by a user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#ownedgiftunique
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: OwnedGiftUnique, Telegram, Bot API, DTO, ownedgiftunique
+// STRUCTURE: ▶ ┌type,gift┐ → ◇ ... → ∑ OwnedGiftUnique
+// region CLASS_OwnedGiftUnique
+
 /**
  * Describes a unique gift received and owned by a user or a chat.
  *
- * @link https://core.telegram.org/bots/api#ownedgiftunique
+ * @see https://core.telegram.org/bots/api#ownedgiftunique
  */
 #[BuildIf(new FieldIsChecker('type', OwnedGiftTypeEnum::Unique->value))]
 final class OwnedGiftUnique extends AbstractOwnedGift
 {
     /**
-     * @param UniqueGift $gift Information about the unique gift
-     * @param int $send_date Date the gift was sent in Unix time
-     * @param bool|null $can_be_transferred Optional. True, if the gift can be transferred to another owner; for gifts received on
-     * behalf of business accounts only
-     * @param bool|null $is_saved Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf
-     * of business accounts only
-     * @param string|null $owned_gift_id Optional. Unique identifier of the received gift for the bot; for gifts received on behalf
-     * of business accounts only
-     * @param User|null $sender_user Optional. Sender of the gift if it is a known user
-     * @param int|null $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
-     * the bot cannot transfer the gift
-     * @param int|null $next_transfer_date Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
-     * the past, then the gift can be transferred now
+     * @param UniqueGift  $gift                Information about the unique gift
+     * @param int         $send_date           Date the gift was sent in Unix time
+     * @param bool|null   $can_be_transferred  Optional. True, if the gift can be transferred to another owner; for gifts received on
+     *                                         behalf of business accounts only
+     * @param bool|null   $is_saved            Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf
+     *                                         of business accounts only
+     * @param string|null $owned_gift_id       Optional. Unique identifier of the received gift for the bot; for gifts received on behalf
+     *                                         of business accounts only
+     * @param User|null   $sender_user         Optional. Sender of the gift if it is a known user
+     * @param int|null    $transfer_star_count Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if
+     *                                         the bot cannot transfer the gift
+     * @param int|null    $next_transfer_date  Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in
+     *                                         the past, then the gift can be transferred now
      *
      * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
      * @see https://core.telegram.org/bots/api#user User
@@ -61,6 +75,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setGift(UniqueGift $gift): OwnedGiftUnique
     {
         $this->gift = $gift;
+
         return $this;
     }
 
@@ -80,6 +95,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setSendDate(int $send_date): OwnedGiftUnique
     {
         $this->send_date = $send_date;
+
         return $this;
     }
 
@@ -99,6 +115,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setCanBeTransferred(?bool $can_be_transferred): OwnedGiftUnique
     {
         $this->can_be_transferred = $can_be_transferred;
+
         return $this;
     }
 
@@ -118,6 +135,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setIsSaved(?bool $is_saved): OwnedGiftUnique
     {
         $this->is_saved = $is_saved;
+
         return $this;
     }
 
@@ -137,6 +155,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setOwnedGiftId(?string $owned_gift_id): OwnedGiftUnique
     {
         $this->owned_gift_id = $owned_gift_id;
+
         return $this;
     }
 
@@ -156,6 +175,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setSenderUser(?User $sender_user): OwnedGiftUnique
     {
         $this->sender_user = $sender_user;
+
         return $this;
     }
 
@@ -175,6 +195,7 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setTransferStarCount(?int $transfer_star_count): OwnedGiftUnique
     {
         $this->transfer_star_count = $transfer_star_count;
+
         return $this;
     }
 
@@ -194,6 +215,9 @@ final class OwnedGiftUnique extends AbstractOwnedGift
     public function setNextTransferDate(?int $next_transfer_date): OwnedGiftUnique
     {
         $this->next_transfer_date = $next_transfer_date;
+
         return $this;
     }
 }
+
+// endregion CLASS_OwnedGiftUnique

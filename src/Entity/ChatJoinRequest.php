@@ -2,24 +2,38 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a join request sent to a chat.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_join_request
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ChatJoinRequest, Telegram, Bot API, DTO, chat_join_request
+// STRUCTURE: ▶ ┌chat,from,user_chat_id,date,bio┐ → ∑ ChatJoinRequest
+// region CLASS_ChatJoinRequest
+
 /**
  * Represents a join request sent to a chat.
  *
- * @link https://core.telegram.org/bots/api#chatjoinrequest
+ * @see https://core.telegram.org/bots/api#chatjoinrequest
  */
 final class ChatJoinRequest implements EntityInterface
 {
     /**
-     * @param Chat $chat Chat to which the request was sent
-     * @param User $from User that sent the join request
-     * @param int $user_chat_id Identifier of a private chat with the user who sent the join request. This number may have more than
-     * 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most
-     * 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can
-     * use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted
-     * the user.
-     * @param int $date Date the request was sent in Unix time
-     * @param string|null $bio Optional. Bio of the user.
-     * @param ChatInviteLink|null $invite_link Optional. Chat invite link that was used by the user to send the join request
+     * @param Chat                $chat         Chat to which the request was sent
+     * @param User                $from         User that sent the join request
+     * @param int                 $user_chat_id Identifier of a private chat with the user who sent the join request. This number may have more than
+     *                                          32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most
+     *                                          52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can
+     *                                          use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted
+     *                                          the user.
+     * @param int                 $date         Date the request was sent in Unix time
+     * @param string|null         $bio          Optional. Bio of the user.
+     * @param ChatInviteLink|null $invite_link  Optional. Chat invite link that was used by the user to send the join request
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -50,6 +64,7 @@ final class ChatJoinRequest implements EntityInterface
     public function setChat(Chat $chat): ChatJoinRequest
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -69,6 +84,7 @@ final class ChatJoinRequest implements EntityInterface
     public function setFrom(User $from): ChatJoinRequest
     {
         $this->from = $from;
+
         return $this;
     }
 
@@ -88,6 +104,7 @@ final class ChatJoinRequest implements EntityInterface
     public function setUserChatId(int $user_chat_id): ChatJoinRequest
     {
         $this->user_chat_id = $user_chat_id;
+
         return $this;
     }
 
@@ -107,6 +124,7 @@ final class ChatJoinRequest implements EntityInterface
     public function setDate(int $date): ChatJoinRequest
     {
         $this->date = $date;
+
         return $this;
     }
 
@@ -126,6 +144,7 @@ final class ChatJoinRequest implements EntityInterface
     public function setBio(?string $bio): ChatJoinRequest
     {
         $this->bio = $bio;
+
         return $this;
     }
 
@@ -145,6 +164,8 @@ final class ChatJoinRequest implements EntityInterface
     public function setInviteLink(?ChatInviteLink $invite_link): ChatJoinRequest
     {
         $this->invite_link = $invite_link;
+
         return $this;
     }
 }
+// endregion CLASS_ChatJoinRequest

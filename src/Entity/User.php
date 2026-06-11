@@ -4,38 +4,52 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a Telegram user or bot.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#user
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: User, Telegram, Bot API, DTO, user
+// STRUCTURE: ▶ ┌id,is_bot,first_name┐ → ◇ last_name,username,language_code → ∑ User
+// region CLASS_User
+
 /**
  * This object represents a Telegram user or bot.
  *
- * @link https://core.telegram.org/bots/api#user
+ * @see https://core.telegram.org/bots/api#user
  */
 final class User implements EntityInterface
 {
     /**
-     * @param int $id Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming
-     * languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer
-     * or double-precision float type are safe for storing this identifier.
-     * @param bool $is_bot True, if this user is a bot
-     * @param string $first_name User's or bot's first name
-     * @param string|null $last_name Optional. User's or bot's last name
-     * @param string|null $username Optional. User's or bot's username
-     * @param Language|null $language_code Optional. IETF language tag of the user's language
-     * @param bool|null $is_premium Optional. True, if this user is a Telegram Premium user
-     * @param bool|null $added_to_attachment_menu Optional. True, if this user added the bot to the attachment menu
-     * @param bool|null $can_join_groups Optional. True, if the bot can be invited to groups. Returned only in getMe.
-     * @param bool|null $can_read_all_group_messages Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
-     * @param bool|null $supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
-     * @param bool|null $can_connect_to_business Optional. True, if the bot can be connected to a user account to manage it. Returned
-     * only in getMe.
-     * @param bool|null $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
-     * @param bool|null $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only
-     * in getMe.
-     * @param bool|null $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private
-     * chats. Returned only in getMe.
-     * @param bool|null $can_manage_bots Optional. True, if other bots can be created to be controlled by the bot. Returned only
-     * in getMe.
-     * @param bool|null $supports_guest_queries Optional. True, if the bot supports guest queries from chats it is not a member of.
-     * Returned only in getMe.
+     * @param int           $id                            Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming
+     *                                                     languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer
+     *                                                     or double-precision float type are safe for storing this identifier.
+     * @param bool          $is_bot                        True, if this user is a bot
+     * @param string        $first_name                    User's or bot's first name
+     * @param string|null   $last_name                     Optional. User's or bot's last name
+     * @param string|null   $username                      Optional. User's or bot's username
+     * @param Language|null $language_code                 Optional. IETF language tag of the user's language
+     * @param bool|null     $is_premium                    Optional. True, if this user is a Telegram Premium user
+     * @param bool|null     $added_to_attachment_menu      Optional. True, if this user added the bot to the attachment menu
+     * @param bool|null     $can_join_groups               Optional. True, if the bot can be invited to groups. Returned only in getMe.
+     * @param bool|null     $can_read_all_group_messages   Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
+     * @param bool|null     $supports_inline_queries       Optional. True, if the bot supports inline queries. Returned only in getMe.
+     * @param bool|null     $can_connect_to_business       Optional. True, if the bot can be connected to a user account to manage it. Returned
+     *                                                     only in getMe.
+     * @param bool|null     $has_main_web_app              Optional. True, if the bot has a main Web App. Returned only in getMe.
+     * @param bool|null     $has_topics_enabled            Optional. True, if the bot has forum topic mode enabled in private chats. Returned only
+     *                                                     in getMe.
+     * @param bool|null     $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private
+     *                                                     chats. Returned only in getMe.
+     * @param bool|null     $can_manage_bots               Optional. True, if other bots can be created to be controlled by the bot. Returned only
+     *                                                     in getMe.
+     * @param bool|null     $supports_guest_queries        Optional. True, if the bot supports guest queries from chats it is not a member of.
+     *                                                     Returned only in getMe.
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
      * @see https://core.telegram.org/bots/api#getme getMe
@@ -77,6 +91,7 @@ final class User implements EntityInterface
     public function setId(int $id): User
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -96,6 +111,7 @@ final class User implements EntityInterface
     public function setIsBot(bool $is_bot): User
     {
         $this->is_bot = $is_bot;
+
         return $this;
     }
 
@@ -115,6 +131,7 @@ final class User implements EntityInterface
     public function setFirstName(string $first_name): User
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -134,6 +151,7 @@ final class User implements EntityInterface
     public function setLastName(?string $last_name): User
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
@@ -153,6 +171,7 @@ final class User implements EntityInterface
     public function setUsername(?string $username): User
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -172,6 +191,7 @@ final class User implements EntityInterface
     public function setLanguageCode(?Language $language_code): User
     {
         $this->language_code = $language_code;
+
         return $this;
     }
 
@@ -191,6 +211,7 @@ final class User implements EntityInterface
     public function setIsPremium(?bool $is_premium): User
     {
         $this->is_premium = $is_premium;
+
         return $this;
     }
 
@@ -210,6 +231,7 @@ final class User implements EntityInterface
     public function setAddedToAttachmentMenu(?bool $added_to_attachment_menu): User
     {
         $this->added_to_attachment_menu = $added_to_attachment_menu;
+
         return $this;
     }
 
@@ -229,6 +251,7 @@ final class User implements EntityInterface
     public function setCanJoinGroups(?bool $can_join_groups): User
     {
         $this->can_join_groups = $can_join_groups;
+
         return $this;
     }
 
@@ -248,6 +271,7 @@ final class User implements EntityInterface
     public function setCanReadAllGroupMessages(?bool $can_read_all_group_messages): User
     {
         $this->can_read_all_group_messages = $can_read_all_group_messages;
+
         return $this;
     }
 
@@ -267,6 +291,7 @@ final class User implements EntityInterface
     public function setSupportsInlineQueries(?bool $supports_inline_queries): User
     {
         $this->supports_inline_queries = $supports_inline_queries;
+
         return $this;
     }
 
@@ -286,6 +311,7 @@ final class User implements EntityInterface
     public function setCanConnectToBusiness(?bool $can_connect_to_business): User
     {
         $this->can_connect_to_business = $can_connect_to_business;
+
         return $this;
     }
 
@@ -305,6 +331,7 @@ final class User implements EntityInterface
     public function setHasMainWebApp(?bool $has_main_web_app): User
     {
         $this->has_main_web_app = $has_main_web_app;
+
         return $this;
     }
 
@@ -324,6 +351,7 @@ final class User implements EntityInterface
     public function setHasTopicsEnabled(?bool $has_topics_enabled): User
     {
         $this->has_topics_enabled = $has_topics_enabled;
+
         return $this;
     }
 
@@ -343,6 +371,7 @@ final class User implements EntityInterface
     public function setAllowsUsersToCreateTopics(?bool $allows_users_to_create_topics): User
     {
         $this->allows_users_to_create_topics = $allows_users_to_create_topics;
+
         return $this;
     }
 
@@ -362,6 +391,7 @@ final class User implements EntityInterface
     public function setCanManageBots(?bool $can_manage_bots): User
     {
         $this->can_manage_bots = $can_manage_bots;
+
         return $this;
     }
 
@@ -381,6 +411,9 @@ final class User implements EntityInterface
     public function setSupportsGuestQueries(?bool $supports_guest_queries): User
     {
         $this->supports_guest_queries = $supports_guest_queries;
+
         return $this;
     }
 }
+
+// endregion CLASS_User

@@ -2,23 +2,36 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Upon receiving a message with this object, Telegram clients will display a reply interface to the user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#forcereply
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ForceReply, reply, interface, Telegram Bot API
+// STRUCTURE: ┌force_reply┐ + optional input_field_placeholder + optional selective → ∑ ForceReply
+// region CLASS_ForceReply
 /**
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user
  * has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step
  * interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a user account.
  *
  * @see https://core.telegram.org/bots/features#privacy-mode privacy mode
- * @link https://core.telegram.org/bots/api#forcereply
+ * @see https://core.telegram.org/bots/api#forcereply
  */
 final class ForceReply implements EntityInterface
 {
     /**
-     * @param bool $force_reply Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
+     * @param bool        $force_reply             Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
      * @param string|null $input_field_placeholder Optional. The placeholder to be shown in the input field when the reply is active;
-     * 1-64 characters
-     * @param bool|null $selective Optional. Use this parameter if you want to force reply from specific users only. Targets: 1)
-     * users that are \@mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same
-     * chat and forum topic, sender of the original message.
+     *                                             1-64 characters
+     * @param bool|null   $selective               Optional. Use this parameter if you want to force reply from specific users only. Targets: 1)
+     *                                             users that are \@mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same
+     *                                             chat and forum topic, sender of the original message.
      *
      * @see https://core.telegram.org/bots/api#message Message
      */
@@ -44,6 +57,7 @@ final class ForceReply implements EntityInterface
     public function setForceReply(bool $force_reply): ForceReply
     {
         $this->force_reply = $force_reply;
+
         return $this;
     }
 
@@ -63,6 +77,7 @@ final class ForceReply implements EntityInterface
     public function setInputFieldPlaceholder(?string $input_field_placeholder): ForceReply
     {
         $this->input_field_placeholder = $input_field_placeholder;
+
         return $this;
     }
 
@@ -82,6 +97,8 @@ final class ForceReply implements EntityInterface
     public function setSelective(?bool $selective): ForceReply
     {
         $this->selective = $selective;
+
         return $this;
     }
 }
+// endregion CLASS_ForceReply

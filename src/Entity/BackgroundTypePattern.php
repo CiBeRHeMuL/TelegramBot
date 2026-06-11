@@ -6,22 +6,36 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined with the background fill chosen by the user.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#background_type_pattern
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: BackgroundTypePattern, Telegram, Bot API, DTO, background_type_pattern
+// STRUCTURE: ▶ ┌document,fill,intensity,is_inverted,is_moving┐ → ∑ BackgroundTypePattern
+// region CLASS_BackgroundTypePattern
+
 /**
  * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined
  * with the background fill chosen by the user.
  *
- * @link https://core.telegram.org/bots/api#backgroundtypepattern
+ * @see https://core.telegram.org/bots/api#backgroundtypepattern
  */
 #[BuildIf(new FieldIsChecker('type', BackgroundTypeTypeEnum::Pattern->value))]
 final class BackgroundTypePattern extends AbstractBackgroundType
 {
     /**
-     * @param Document $document Document with the pattern
-     * @param AbstractBackgroundFill $fill The background fill that is combined with the pattern
-     * @param int $intensity Intensity of the pattern when it is shown above the filled background; 0-100
-     * @param bool|null $is_inverted Optional. True, if the background fill must be applied only to the pattern itself. All other
-     * pixels are black in this case. For dark themes only
-     * @param bool|null $is_moving Optional. True, if the background moves slightly when the device is tilted
+     * @param Document               $document    Document with the pattern
+     * @param AbstractBackgroundFill $fill        The background fill that is combined with the pattern
+     * @param int                    $intensity   Intensity of the pattern when it is shown above the filled background; 0-100
+     * @param bool|null              $is_inverted Optional. True, if the background fill must be applied only to the pattern itself. All other
+     *                                            pixels are black in this case. For dark themes only
+     * @param bool|null              $is_moving   Optional. True, if the background moves slightly when the device is tilted
      *
      * @see https://core.telegram.org/bots/api#document Document
      * @see https://core.telegram.org/bots/api#backgroundfill BackgroundFill
@@ -52,6 +66,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     public function setDocument(Document $document): BackgroundTypePattern
     {
         $this->document = $document;
+
         return $this;
     }
 
@@ -71,6 +86,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     public function setFill(AbstractBackgroundFill $fill): BackgroundTypePattern
     {
         $this->fill = $fill;
+
         return $this;
     }
 
@@ -90,6 +106,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     public function setIntensity(int $intensity): BackgroundTypePattern
     {
         $this->intensity = $intensity;
+
         return $this;
     }
 
@@ -109,6 +126,7 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     public function setIsInverted(?bool $is_inverted): BackgroundTypePattern
     {
         $this->is_inverted = $is_inverted;
+
         return $this;
     }
 
@@ -128,6 +146,8 @@ final class BackgroundTypePattern extends AbstractBackgroundType
     public function setIsMoving(?bool $is_moving): BackgroundTypePattern
     {
         $this->is_moving = $is_moving;
+
         return $this;
     }
 }
+// endregion CLASS_BackgroundTypePattern

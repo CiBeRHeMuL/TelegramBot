@@ -4,43 +4,56 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about a message that is being replied to, which may come from another chat or forum topic.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#externalreplyinfo
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: ExternalReplyInfo, reply, message, chat, forum topic, Telegram Bot API
+// STRUCTURE: ┌origin┐ + optional chat + optional message_id + optional link_preview_options + optional media fields → ∑ ExternalReplyInfo
+// region CLASS_ExternalReplyInfo
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  *
- * @link https://core.telegram.org/bots/api#externalreplyinfo
+ * @see https://core.telegram.org/bots/api#externalreplyinfo
  */
 final class ExternalReplyInfo implements EntityInterface
 {
     /**
-     * @param AbstractMessageOrigin $origin Origin of the message replied to by the given message
-     * @param Chat|null $chat Optional. Chat the original message belongs to. Available only if the chat is a supergroup or a channel.
-     * @param int|null $message_id Optional. Unique message identifier inside the original chat. Available only if the original chat
-     * is a supergroup or a channel.
+     * @param AbstractMessageOrigin   $origin               Origin of the message replied to by the given message
+     * @param Chat|null               $chat                 Optional. Chat the original message belongs to. Available only if the chat is a supergroup or a channel.
+     * @param int|null                $message_id           Optional. Unique message identifier inside the original chat. Available only if the original chat
+     *                                                      is a supergroup or a channel.
      * @param LinkPreviewOptions|null $link_preview_options Optional. Options used for link preview generation for the original message,
-     * if it is a text message
-     * @param Animation|null $animation Optional. Message is an animation, information about the animation
-     * @param Audio|null $audio Optional. Message is an audio file, information about the file
-     * @param Document|null $document Optional. Message is a general file, information about the file
-     * @param PhotoSize[]|null $photo Optional. Message is a photo, available sizes of the photo
-     * @param Sticker|null $sticker Optional. Message is a sticker, information about the sticker
-     * @param Story|null $story Optional. Message is a forwarded story
-     * @param Video|null $video Optional. Message is a video, information about the video
-     * @param VideoNote|null $video_note Optional. Message is a video note, information about the video message
-     * @param Voice|null $voice Optional. Message is a voice message, information about the file
-     * @param bool|null $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
-     * @param Contact|null $contact Optional. Message is a shared contact, information about the contact
-     * @param Dice|null $dice Optional. Message is a dice with random value
-     * @param Game|null $game Optional. Message is a game, information about the game. More about games »
-     * @param Giveaway|null $giveaway Optional. Message is a scheduled giveaway, information about the giveaway
-     * @param GiveawayWinners|null $giveaway_winners Optional. A giveaway with public winners was completed
-     * @param Invoice|null $invoice Optional. Message is an invoice for a payment, information about the invoice. More about payments
-     * »
-     * @param Location|null $location Optional. Message is a shared location, information about the location
-     * @param Poll|null $poll Optional. Message is a native poll, information about the poll
-     * @param Venue|null $venue Optional. Message is a venue, information about the venue
-     * @param PaidMediaInfo|null $paid_media Optional. Message contains paid media; information about the paid media
-     * @param Checklist|null $checklist Optional. Message is a checklist
-     * @param LivePhoto|null $live_photo Optional. Message is a live photo, information about the live photo
+     *                                                      if it is a text message
+     * @param Animation|null          $animation            Optional. Message is an animation, information about the animation
+     * @param Audio|null              $audio                Optional. Message is an audio file, information about the file
+     * @param Document|null           $document             Optional. Message is a general file, information about the file
+     * @param PhotoSize[]|null        $photo                Optional. Message is a photo, available sizes of the photo
+     * @param Sticker|null            $sticker              Optional. Message is a sticker, information about the sticker
+     * @param Story|null              $story                Optional. Message is a forwarded story
+     * @param Video|null              $video                Optional. Message is a video, information about the video
+     * @param VideoNote|null          $video_note           Optional. Message is a video note, information about the video message
+     * @param Voice|null              $voice                Optional. Message is a voice message, information about the file
+     * @param bool|null               $has_media_spoiler    Optional. True, if the message media is covered by a spoiler animation
+     * @param Contact|null            $contact              Optional. Message is a shared contact, information about the contact
+     * @param Dice|null               $dice                 Optional. Message is a dice with random value
+     * @param Game|null               $game                 Optional. Message is a game, information about the game. More about games »
+     * @param Giveaway|null           $giveaway             Optional. Message is a scheduled giveaway, information about the giveaway
+     * @param GiveawayWinners|null    $giveaway_winners     Optional. A giveaway with public winners was completed
+     * @param Invoice|null            $invoice              Optional. Message is an invoice for a payment, information about the invoice. More about payments
+     *                                                      »
+     * @param Location|null           $location             Optional. Message is a shared location, information about the location
+     * @param Poll|null               $poll                 Optional. Message is a native poll, information about the poll
+     * @param Venue|null              $venue                Optional. Message is a venue, information about the venue
+     * @param PaidMediaInfo|null      $paid_media           Optional. Message contains paid media; information about the paid media
+     * @param Checklist|null          $checklist            Optional. Message is a checklist
+     * @param LivePhoto|null          $live_photo           Optional. Message is a live photo, information about the live photo
      *
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
      * @see https://core.telegram.org/bots/api#chat Chat
@@ -116,6 +129,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setOrigin(AbstractMessageOrigin $origin): ExternalReplyInfo
     {
         $this->origin = $origin;
+
         return $this;
     }
 
@@ -135,6 +149,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setChat(?Chat $chat): ExternalReplyInfo
     {
         $this->chat = $chat;
+
         return $this;
     }
 
@@ -154,6 +169,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setMessageId(?int $message_id): ExternalReplyInfo
     {
         $this->message_id = $message_id;
+
         return $this;
     }
 
@@ -173,6 +189,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setLinkPreviewOptions(?LinkPreviewOptions $link_preview_options): ExternalReplyInfo
     {
         $this->link_preview_options = $link_preview_options;
+
         return $this;
     }
 
@@ -192,6 +209,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setAnimation(?Animation $animation): ExternalReplyInfo
     {
         $this->animation = $animation;
+
         return $this;
     }
 
@@ -211,6 +229,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setAudio(?Audio $audio): ExternalReplyInfo
     {
         $this->audio = $audio;
+
         return $this;
     }
 
@@ -230,6 +249,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setDocument(?Document $document): ExternalReplyInfo
     {
         $this->document = $document;
+
         return $this;
     }
 
@@ -249,6 +269,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setPhoto(?array $photo): ExternalReplyInfo
     {
         $this->photo = $photo;
+
         return $this;
     }
 
@@ -268,6 +289,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setSticker(?Sticker $sticker): ExternalReplyInfo
     {
         $this->sticker = $sticker;
+
         return $this;
     }
 
@@ -287,6 +309,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setStory(?Story $story): ExternalReplyInfo
     {
         $this->story = $story;
+
         return $this;
     }
 
@@ -306,6 +329,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setVideo(?Video $video): ExternalReplyInfo
     {
         $this->video = $video;
+
         return $this;
     }
 
@@ -325,6 +349,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setVideoNote(?VideoNote $video_note): ExternalReplyInfo
     {
         $this->video_note = $video_note;
+
         return $this;
     }
 
@@ -344,6 +369,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setVoice(?Voice $voice): ExternalReplyInfo
     {
         $this->voice = $voice;
+
         return $this;
     }
 
@@ -363,6 +389,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setHasMediaSpoiler(?bool $has_media_spoiler): ExternalReplyInfo
     {
         $this->has_media_spoiler = $has_media_spoiler;
+
         return $this;
     }
 
@@ -382,6 +409,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setContact(?Contact $contact): ExternalReplyInfo
     {
         $this->contact = $contact;
+
         return $this;
     }
 
@@ -401,6 +429,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setDice(?Dice $dice): ExternalReplyInfo
     {
         $this->dice = $dice;
+
         return $this;
     }
 
@@ -420,6 +449,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setGame(?Game $game): ExternalReplyInfo
     {
         $this->game = $game;
+
         return $this;
     }
 
@@ -439,6 +469,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setGiveaway(?Giveaway $giveaway): ExternalReplyInfo
     {
         $this->giveaway = $giveaway;
+
         return $this;
     }
 
@@ -458,6 +489,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setGiveawayWinners(?GiveawayWinners $giveaway_winners): ExternalReplyInfo
     {
         $this->giveaway_winners = $giveaway_winners;
+
         return $this;
     }
 
@@ -477,6 +509,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setInvoice(?Invoice $invoice): ExternalReplyInfo
     {
         $this->invoice = $invoice;
+
         return $this;
     }
 
@@ -496,6 +529,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setLocation(?Location $location): ExternalReplyInfo
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -515,6 +549,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setPoll(?Poll $poll): ExternalReplyInfo
     {
         $this->poll = $poll;
+
         return $this;
     }
 
@@ -534,6 +569,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setVenue(?Venue $venue): ExternalReplyInfo
     {
         $this->venue = $venue;
+
         return $this;
     }
 
@@ -553,6 +589,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setPaidMedia(?PaidMediaInfo $paid_media): ExternalReplyInfo
     {
         $this->paid_media = $paid_media;
+
         return $this;
     }
 
@@ -572,6 +609,7 @@ final class ExternalReplyInfo implements EntityInterface
     public function setChecklist(?Checklist $checklist): ExternalReplyInfo
     {
         $this->checklist = $checklist;
+
         return $this;
     }
 
@@ -591,6 +629,8 @@ final class ExternalReplyInfo implements EntityInterface
     public function setLivePhoto(?LivePhoto $live_photo): ExternalReplyInfo
     {
         $this->live_photo = $live_photo;
+
         return $this;
     }
 }
+// endregion CLASS_ExternalReplyInfo

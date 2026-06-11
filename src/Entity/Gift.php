@@ -2,33 +2,46 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a gift that can be sent by the bot.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#gift
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Gift, gift, Telegram Bot API
+// STRUCTURE: ┌id, sticker, star_count┐ + optional remaining_count + total_count + upgrade_star_count + publisher_chat + is_premium + has_colors + personal_total_count + personal_remaining_count + background + unique_gift_variant_count → ∑ Gift
+// region CLASS_Gift
 /**
  * This object represents a gift that can be sent by the bot.
  *
- * @link https://core.telegram.org/bots/api#gift
+ * @see https://core.telegram.org/bots/api#gift
  */
 final class Gift implements EntityInterface
 {
     /**
-     * @param string $id Unique identifier of the gift
-     * @param Sticker $sticker The sticker that represents the gift
-     * @param int $star_count The number of Telegram Stars that must be paid to send the sticker
-     * @param int|null $remaining_count Optional. The number of remaining gifts of this type that can be sent by all users; for limited
-     * gifts only
-     * @param int|null $total_count Optional. The total number of gifts of this type that can be sent by all users; for limited gifts
-     * only
-     * @param int|null $upgrade_star_count Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique
-     * one
-     * @param Chat|null $publisher_chat Optional. Information about the chat that published the gift
-     * @param bool|null $is_premium Optional. True, if the gift can only be purchased by Telegram Premium subscribers
-     * @param bool|null $has_colors Optional. True, if the gift can be used (after being upgraded) to customize a user's appearance
-     * @param int|null $personal_total_count Optional. The total number of gifts of this type that can be sent by the bot; for limited
-     * gifts only
-     * @param int|null $personal_remaining_count Optional. The number of remaining gifts of this type that can be sent by the bot;
-     * for limited gifts only
-     * @param GiftBackground|null $background Optional. Background of the gift
-     * @param int|null $unique_gift_variant_count Optional. The total number of different unique gifts that can be obtained by upgrading
-     * the gift
+     * @param string              $id                        Unique identifier of the gift
+     * @param Sticker             $sticker                   The sticker that represents the gift
+     * @param int                 $star_count                The number of Telegram Stars that must be paid to send the sticker
+     * @param int|null            $remaining_count           Optional. The number of remaining gifts of this type that can be sent by all users; for limited
+     *                                                       gifts only
+     * @param int|null            $total_count               Optional. The total number of gifts of this type that can be sent by all users; for limited gifts
+     *                                                       only
+     * @param int|null            $upgrade_star_count        Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique
+     *                                                       one
+     * @param Chat|null           $publisher_chat            Optional. Information about the chat that published the gift
+     * @param bool|null           $is_premium                Optional. True, if the gift can only be purchased by Telegram Premium subscribers
+     * @param bool|null           $has_colors                Optional. True, if the gift can be used (after being upgraded) to customize a user's appearance
+     * @param int|null            $personal_total_count      Optional. The total number of gifts of this type that can be sent by the bot; for limited
+     *                                                       gifts only
+     * @param int|null            $personal_remaining_count  Optional. The number of remaining gifts of this type that can be sent by the bot;
+     *                                                       for limited gifts only
+     * @param GiftBackground|null $background                Optional. Background of the gift
+     * @param int|null            $unique_gift_variant_count Optional. The total number of different unique gifts that can be obtained by upgrading
+     *                                                       the gift
      *
      * @see https://core.telegram.org/bots/api#sticker Sticker
      * @see https://core.telegram.org/bots/api#giftbackground GiftBackground
@@ -66,6 +79,7 @@ final class Gift implements EntityInterface
     public function setId(string $id): Gift
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -85,6 +99,7 @@ final class Gift implements EntityInterface
     public function setSticker(Sticker $sticker): Gift
     {
         $this->sticker = $sticker;
+
         return $this;
     }
 
@@ -104,6 +119,7 @@ final class Gift implements EntityInterface
     public function setStarCount(int $star_count): Gift
     {
         $this->star_count = $star_count;
+
         return $this;
     }
 
@@ -123,6 +139,7 @@ final class Gift implements EntityInterface
     public function setRemainingCount(?int $remaining_count): Gift
     {
         $this->remaining_count = $remaining_count;
+
         return $this;
     }
 
@@ -142,6 +159,7 @@ final class Gift implements EntityInterface
     public function setTotalCount(?int $total_count): Gift
     {
         $this->total_count = $total_count;
+
         return $this;
     }
 
@@ -161,6 +179,7 @@ final class Gift implements EntityInterface
     public function setUpgradeStarCount(?int $upgrade_star_count): Gift
     {
         $this->upgrade_star_count = $upgrade_star_count;
+
         return $this;
     }
 
@@ -180,6 +199,7 @@ final class Gift implements EntityInterface
     public function setPublisherChat(?Chat $publisher_chat): Gift
     {
         $this->publisher_chat = $publisher_chat;
+
         return $this;
     }
 
@@ -199,6 +219,7 @@ final class Gift implements EntityInterface
     public function setIsPremium(?bool $is_premium): Gift
     {
         $this->is_premium = $is_premium;
+
         return $this;
     }
 
@@ -218,6 +239,7 @@ final class Gift implements EntityInterface
     public function setHasColors(?bool $has_colors): Gift
     {
         $this->has_colors = $has_colors;
+
         return $this;
     }
 
@@ -237,6 +259,7 @@ final class Gift implements EntityInterface
     public function setPersonalTotalCount(?int $personal_total_count): Gift
     {
         $this->personal_total_count = $personal_total_count;
+
         return $this;
     }
 
@@ -256,6 +279,7 @@ final class Gift implements EntityInterface
     public function setPersonalRemainingCount(?int $personal_remaining_count): Gift
     {
         $this->personal_remaining_count = $personal_remaining_count;
+
         return $this;
     }
 
@@ -275,6 +299,7 @@ final class Gift implements EntityInterface
     public function setBackground(?GiftBackground $background): Gift
     {
         $this->background = $background;
+
         return $this;
     }
 
@@ -294,6 +319,8 @@ final class Gift implements EntityInterface
     public function setUniqueGiftVariantCount(?int $unique_gift_variant_count): Gift
     {
         $this->unique_gift_variant_count = $unique_gift_variant_count;
+
         return $this;
     }
 }
+// endregion CLASS_Gift

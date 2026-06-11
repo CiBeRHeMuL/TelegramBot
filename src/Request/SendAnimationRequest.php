@@ -14,52 +14,68 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
 /**
- * @link https://core.telegram.org/bots/api#sendanimation
+ * @moduleContract
+ * @purpose Request DTO for Telegram Bot API sendAnimation method.
+ *
+ * @links USES_API(7): Telegram Bot API
+ *
+ * @see https://core.telegram.org/bots/api#sendanimation
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Telegram, Bot API, Request, Send, Animation
+// STRUCTURE: ▶ ┌chat_id + animation + business_connection_id + message_thread_id + duration┐ → ◇ construct → ⊕ → ∑ ⟦SendAnimationRequest⟧
+
+// region CLASS_SendAnimationRequest
+/**
+ * @see https://core.telegram.org/bots/api#sendanimation
  */
 class SendAnimationRequest implements RequestInterface
 {
     /**
-     * @param ChatId $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     * \@username
-     * @param Filename|Url|string $animation Animation to send. Pass a file_id as String to send an animation that exists on the
-     * Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload
-     * a new animation using multipart/form-data. More information on Sending Files »
-     * @param string|null $business_connection_id Unique identifier of the business connection on behalf of which the message will
-     * be sent
-     * @param int|null $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     * and private chats of bots with forum topic mode enabled only
-     * @param int|null $duration Duration of sent animation in seconds
-     * @param int|null $width Animation width
-     * @param int|null $height Animation height
-     * @param Filename|Url|string|null $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file
-     * is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height
-     * should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be
-     * only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-     * under <file_attach_name>. More information on Sending Files »
-     * @param string|null $caption Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
-     * entities parsing
-     * @param TelegramParseModeEnum|null $parse_mode Mode for parsing entities in the animation caption. See formatting options for
-     * more details.
-     * @param MessageEntity[]|null $caption_entities A JSON-serialized list of special entities that appear in the caption, which
-     * can be specified instead of parse_mode
-     * @param bool|null $has_spoiler Pass True if the animation needs to be covered with a spoiler animation
-     * @param bool|null $disable_notification Sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null $protect_content Protects the contents of the sent message from forwarding and saving
-     * @param ReplyParameters|null $reply_parameters Description of the message to reply to
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup Additional interface options.
-     * A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     * a reply from the user
-     * @param string|null $message_effect_id Unique identifier of the message effect to be added to the message; for private chats
-     * only
-     * @param bool|null $show_caption_above_media Pass True, if the caption must be shown above the message media
-     * @param bool|null $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     * a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required
-     * if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     * post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     * post is automatically declined.
+     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                \@username
+     * @param Filename|Url|string                                                          $animation                 Animation to send. Pass a file_id as String to send an animation that exists on the
+     *                                                                                                                Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload
+     *                                                                                                                a new animation using multipart/form-data. More information on Sending Files »
+     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                be sent
+     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                and private chats of bots with forum topic mode enabled only
+     * @param int|null                                                                     $duration                  Duration of sent animation in seconds
+     * @param int|null                                                                     $width                     Animation width
+     * @param int|null                                                                     $height                    Animation height
+     * @param Filename|Url|string|null                                                     $thumbnail                 Thumbnail of the file sent; can be ignored if thumbnail generation for the file
+     *                                                                                                                is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height
+     *                                                                                                                should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be
+     *                                                                                                                only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
+     *                                                                                                                under <file_attach_name>. More information on Sending Files »
+     * @param string|null                                                                  $caption                   Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
+     *                                                                                                                entities parsing
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                Mode for parsing entities in the animation caption. See formatting options for
+     *                                                                                                                more details.
+     * @param MessageEntity[]|null                                                         $caption_entities          A JSON-serialized list of special entities that appear in the caption, which
+     *                                                                                                                can be specified instead of parse_mode
+     * @param bool|null                                                                    $has_spoiler               Pass True if the animation needs to be covered with a spoiler animation
+     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
+     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
+     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                a reply from the user
+     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                only
+     * @param bool|null                                                                    $show_caption_above_media  Pass True, if the caption must be shown above the message media
+     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                post is automatically declined.
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
@@ -108,6 +124,7 @@ class SendAnimationRequest implements RequestInterface
     public function setChatId(ChatId $chat_id): SendAnimationRequest
     {
         $this->chat_id = $chat_id;
+
         return $this;
     }
 
@@ -119,6 +136,7 @@ class SendAnimationRequest implements RequestInterface
     public function setAnimation(Filename|Url|string $animation): SendAnimationRequest
     {
         $this->animation = $animation;
+
         return $this;
     }
 
@@ -130,6 +148,7 @@ class SendAnimationRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): SendAnimationRequest
     {
         $this->business_connection_id = $business_connection_id;
+
         return $this;
     }
 
@@ -141,6 +160,7 @@ class SendAnimationRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): SendAnimationRequest
     {
         $this->message_thread_id = $message_thread_id;
+
         return $this;
     }
 
@@ -152,6 +172,7 @@ class SendAnimationRequest implements RequestInterface
     public function setDuration(?int $duration): SendAnimationRequest
     {
         $this->duration = $duration;
+
         return $this;
     }
 
@@ -163,6 +184,7 @@ class SendAnimationRequest implements RequestInterface
     public function setWidth(?int $width): SendAnimationRequest
     {
         $this->width = $width;
+
         return $this;
     }
 
@@ -174,6 +196,7 @@ class SendAnimationRequest implements RequestInterface
     public function setHeight(?int $height): SendAnimationRequest
     {
         $this->height = $height;
+
         return $this;
     }
 
@@ -185,6 +208,7 @@ class SendAnimationRequest implements RequestInterface
     public function setThumbnail(Filename|Url|string|null $thumbnail): SendAnimationRequest
     {
         $this->thumbnail = $thumbnail;
+
         return $this;
     }
 
@@ -196,6 +220,7 @@ class SendAnimationRequest implements RequestInterface
     public function setCaption(?string $caption): SendAnimationRequest
     {
         $this->caption = $caption;
+
         return $this;
     }
 
@@ -207,6 +232,7 @@ class SendAnimationRequest implements RequestInterface
     public function setParseMode(?TelegramParseModeEnum $parse_mode): SendAnimationRequest
     {
         $this->parse_mode = $parse_mode;
+
         return $this;
     }
 
@@ -218,6 +244,7 @@ class SendAnimationRequest implements RequestInterface
     public function setCaptionEntities(?array $caption_entities): SendAnimationRequest
     {
         $this->caption_entities = $caption_entities;
+
         return $this;
     }
 
@@ -229,6 +256,7 @@ class SendAnimationRequest implements RequestInterface
     public function setHasSpoiler(?bool $has_spoiler): SendAnimationRequest
     {
         $this->has_spoiler = $has_spoiler;
+
         return $this;
     }
 
@@ -240,6 +268,7 @@ class SendAnimationRequest implements RequestInterface
     public function setDisableNotification(?bool $disable_notification): SendAnimationRequest
     {
         $this->disable_notification = $disable_notification;
+
         return $this;
     }
 
@@ -251,6 +280,7 @@ class SendAnimationRequest implements RequestInterface
     public function setProtectContent(?bool $protect_content): SendAnimationRequest
     {
         $this->protect_content = $protect_content;
+
         return $this;
     }
 
@@ -262,6 +292,7 @@ class SendAnimationRequest implements RequestInterface
     public function setReplyParameters(?ReplyParameters $reply_parameters): SendAnimationRequest
     {
         $this->reply_parameters = $reply_parameters;
+
         return $this;
     }
 
@@ -273,6 +304,7 @@ class SendAnimationRequest implements RequestInterface
     public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): SendAnimationRequest
     {
         $this->reply_markup = $reply_markup;
+
         return $this;
     }
 
@@ -284,6 +316,7 @@ class SendAnimationRequest implements RequestInterface
     public function setMessageEffectId(?string $message_effect_id): SendAnimationRequest
     {
         $this->message_effect_id = $message_effect_id;
+
         return $this;
     }
 
@@ -295,6 +328,7 @@ class SendAnimationRequest implements RequestInterface
     public function setShowCaptionAboveMedia(?bool $show_caption_above_media): SendAnimationRequest
     {
         $this->show_caption_above_media = $show_caption_above_media;
+
         return $this;
     }
 
@@ -306,6 +340,7 @@ class SendAnimationRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendAnimationRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
         return $this;
     }
 
@@ -317,6 +352,7 @@ class SendAnimationRequest implements RequestInterface
     public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendAnimationRequest
     {
         $this->direct_messages_topic_id = $direct_messages_topic_id;
+
         return $this;
     }
 
@@ -328,6 +364,8 @@ class SendAnimationRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendAnimationRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
         return $this;
     }
 }
+// endregion CLASS_SendAnimationRequest

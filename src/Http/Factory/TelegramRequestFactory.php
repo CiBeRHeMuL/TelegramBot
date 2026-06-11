@@ -14,18 +14,33 @@ use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Http\Message\RequestInterface;
 use Random\RandomException;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): HTTP; TECH(9): PSR-7]
+/**
+ * @moduleContract
+ * @purpose Create PSR-7 Request instances for Telegram Bot API calls, supporting both JSON and multipart form data.
+ *
+ * @sees USES_API(8): TelegramRequestFactoryInterface, MultipartStream, HttpRequest
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: TelegramRequestFactory, request factory, Telegram API, multipart, PSR-7
+// STRUCTURE: ┌token + method + data┐ → ○ array_walk detect Stream resources → ◇ has resource? ⊕ MultipartStream : ⊕ json body → ⊕ HttpRequest
+
+// region CLASS_TelegramRequestFactory
 final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 {
     public const TELEGRAM_API_BASE_URL = 'https://api.telegram.org/';
     public const TELEGRAM_API_BASE_FILE_URL = 'https://api.telegram.org/file/';
 
     /**
-     * @param BotToken $token
-     * @param string $method
-     * @param array $data
+     * @param BotToken       $token
+     * @param string         $method
+     * @param array          $data
      * @param HttpMethodEnum $httpMethod
      *
      * @return RequestInterface
+     *
      * @throws RandomException
      */
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface
@@ -47,6 +62,7 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
         $body = $hasResource
             ? new MultipartStream($multipart)
             : Utils::streamFor(json_encode($data));
+
         return new HttpRequest(
             $httpMethod,
             new Uri(self::TELEGRAM_API_BASE_URL . "bot{$token->getToken()}/" . $method),
@@ -80,6 +96,8 @@ final class TelegramRequestFactory implements TelegramRequestFactoryInterface
                 $hasResource = true;
             }
         }
+
         return $array;
     }
 }
+// endregion CLASS_TelegramRequestFactory

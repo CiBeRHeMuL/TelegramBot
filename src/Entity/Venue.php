@@ -2,21 +2,35 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Represents a venue.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#venue
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Venue, Telegram, Bot API, DTO, venue
+// STRUCTURE: ▶ ┌location: Location,title,address,foursquare_id,foursquare_type┐ → ◇ ... → ∑ Venue
+// region CLASS_Venue
+
 /**
  * This object represents a venue.
  *
- * @link https://core.telegram.org/bots/api#venue
+ * @see https://core.telegram.org/bots/api#venue
  */
 final class Venue implements EntityInterface
 {
     /**
-     * @param Location $location Venue location. Can't be a live location
-     * @param string $title Name of the venue
-     * @param string $address Address of the venue
-     * @param string|null $foursquare_id Optional. Foursquare identifier of the venue
-     * @param string|null $foursquare_type Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”,
-     * “arts_entertainment/aquarium” or “food/icecream”.)
-     * @param string|null $google_place_id Optional. Google Places identifier of the venue
+     * @param Location    $location          Venue location. Can't be a live location
+     * @param string      $title             Name of the venue
+     * @param string      $address           Address of the venue
+     * @param string|null $foursquare_id     Optional. Foursquare identifier of the venue
+     * @param string|null $foursquare_type   Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”,
+     *                                       “arts_entertainment/aquarium” or “food/icecream”.)
+     * @param string|null $google_place_id   Optional. Google Places identifier of the venue
      * @param string|null $google_place_type Optional. Google Places type of the venue. (See supported types.)
      *
      * @see https://core.telegram.org/bots/api#location Location
@@ -48,6 +62,7 @@ final class Venue implements EntityInterface
     public function setLocation(Location $location): Venue
     {
         $this->location = $location;
+
         return $this;
     }
 
@@ -67,6 +82,7 @@ final class Venue implements EntityInterface
     public function setTitle(string $title): Venue
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -86,6 +102,7 @@ final class Venue implements EntityInterface
     public function setAddress(string $address): Venue
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -105,6 +122,7 @@ final class Venue implements EntityInterface
     public function setFoursquareId(?string $foursquare_id): Venue
     {
         $this->foursquare_id = $foursquare_id;
+
         return $this;
     }
 
@@ -124,6 +142,7 @@ final class Venue implements EntityInterface
     public function setFoursquareType(?string $foursquare_type): Venue
     {
         $this->foursquare_type = $foursquare_type;
+
         return $this;
     }
 
@@ -143,6 +162,7 @@ final class Venue implements EntityInterface
     public function setGooglePlaceId(?string $google_place_id): Venue
     {
         $this->google_place_id = $google_place_id;
+
         return $this;
     }
 
@@ -162,6 +182,9 @@ final class Venue implements EntityInterface
     public function setGooglePlaceType(?string $google_place_type): Venue
     {
         $this->google_place_type = $google_place_type;
+
         return $this;
     }
 }
+
+// endregion CLASS_Venue

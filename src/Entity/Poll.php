@@ -6,42 +6,56 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 
+// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+/**
+ * @moduleContract
+ * @purpose Contains information about a poll.
+ *
+ * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#poll
+ *
+ * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ */
+// endregion MODULE_CONTRACT
+// GREP_SUMMARY: Poll, Telegram, Bot API, DTO, poll
+// STRUCTURE: ▶ ┌id,question,options[],total_voter_count,is_closed,is_anonymous,type,allows_multiple_answers┐ → ◇ ... → ∑ Poll
+// region CLASS_Poll
+
 /**
  * This object contains information about a poll.
  *
- * @link https://core.telegram.org/bots/api#poll
+ * @see https://core.telegram.org/bots/api#poll
  */
 final class Poll implements EntityInterface
 {
     /**
-     * @param string $id Unique poll identifier
-     * @param string $question Poll question, 1-300 characters
-     * @param PollOption[] $options List of poll options
-     * @param int $total_voter_count Total number of users that voted in the poll
-     * @param bool $is_closed True, if the poll is closed
-     * @param bool $is_anonymous True, if the poll is anonymous
-     * @param PollTypeEnum $type Poll type, currently can be “regular” or “quiz”
-     * @param bool $allows_multiple_answers True, if the poll allows multiple answers
-     * @param bool $allows_revoting True, if the poll allows to change the chosen answer options
-     * @param bool $members_only True if voting is limited to users who have been members of the chat where the poll was originally
-     * sent for more than 24 hours
-     * @param MessageEntity[]|null $question_entities Optional. Special entities that appear in the question. Currently, only custom
-     * emoji entities are allowed in poll questions
-     * @param string|null $explanation Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon
-     * in a quiz-style poll, 0-200 characters
-     * @param MessageEntity[]|null $explanation_entities Optional. Special entities like usernames, URLs, bot commands, etc. that
-     * appear in the explanation
-     * @param int|null $open_period Optional. Amount of time in seconds the poll will be active after creation
-     * @param int|null $close_date Optional. Point in time (Unix timestamp) when the poll will be automatically closed
-     * @param int[]|null $correct_option_ids Optional. Array of 0-based identifiers of the correct answer options. Available only
-     * for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
-     * @param string|null $description Optional. Description of the poll; for polls inside the Message object only
-     * @param MessageEntity[]|null $description_entities Optional. Special entities like usernames, URLs, bot commands, etc. that
-     * appear in the description
-     * @param CountryCodeEnum[]|null $country_codes Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the
-     * countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll.
-     * @param PollMedia|null $explanation_media Optional. Media added to the quiz explanation
-     * @param PollMedia|null $media Optional. Media added to the poll description; for polls inside the Message object only
+     * @param string                 $id                      Unique poll identifier
+     * @param string                 $question                Poll question, 1-300 characters
+     * @param PollOption[]           $options                 List of poll options
+     * @param int                    $total_voter_count       Total number of users that voted in the poll
+     * @param bool                   $is_closed               True, if the poll is closed
+     * @param bool                   $is_anonymous            True, if the poll is anonymous
+     * @param PollTypeEnum           $type                    Poll type, currently can be “regular” or “quiz”
+     * @param bool                   $allows_multiple_answers True, if the poll allows multiple answers
+     * @param bool                   $allows_revoting         True, if the poll allows to change the chosen answer options
+     * @param bool                   $members_only            True if voting is limited to users who have been members of the chat where the poll was originally
+     *                                                        sent for more than 24 hours
+     * @param MessageEntity[]|null   $question_entities       Optional. Special entities that appear in the question. Currently, only custom
+     *                                                        emoji entities are allowed in poll questions
+     * @param string|null            $explanation             Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon
+     *                                                        in a quiz-style poll, 0-200 characters
+     * @param MessageEntity[]|null   $explanation_entities    Optional. Special entities like usernames, URLs, bot commands, etc. that
+     *                                                        appear in the explanation
+     * @param int|null               $open_period             Optional. Amount of time in seconds the poll will be active after creation
+     * @param int|null               $close_date              Optional. Point in time (Unix timestamp) when the poll will be automatically closed
+     * @param int[]|null             $correct_option_ids      Optional. Array of 0-based identifiers of the correct answer options. Available only
+     *                                                        for polls in quiz mode which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
+     * @param string|null            $description             Optional. Description of the poll; for polls inside the Message object only
+     * @param MessageEntity[]|null   $description_entities    Optional. Special entities like usernames, URLs, bot commands, etc. that
+     *                                                        appear in the description
+     * @param CountryCodeEnum[]|null $country_codes           Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the
+     *                                                        countries from which users can vote in the poll. If omitted, then users from any country can participate in the poll.
+     * @param PollMedia|null         $explanation_media       Optional. Media added to the quiz explanation
+     * @param PollMedia|null         $media                   Optional. Media added to the poll description; for polls inside the Message object only
      *
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#polloption PollOption
@@ -95,6 +109,7 @@ final class Poll implements EntityInterface
     public function setId(string $id): Poll
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -114,6 +129,7 @@ final class Poll implements EntityInterface
     public function setQuestion(string $question): Poll
     {
         $this->question = $question;
+
         return $this;
     }
 
@@ -133,6 +149,7 @@ final class Poll implements EntityInterface
     public function setOptions(array $options): Poll
     {
         $this->options = $options;
+
         return $this;
     }
 
@@ -152,6 +169,7 @@ final class Poll implements EntityInterface
     public function setTotalVoterCount(int $total_voter_count): Poll
     {
         $this->total_voter_count = $total_voter_count;
+
         return $this;
     }
 
@@ -171,6 +189,7 @@ final class Poll implements EntityInterface
     public function setIsClosed(bool $is_closed): Poll
     {
         $this->is_closed = $is_closed;
+
         return $this;
     }
 
@@ -190,6 +209,7 @@ final class Poll implements EntityInterface
     public function setIsAnonymous(bool $is_anonymous): Poll
     {
         $this->is_anonymous = $is_anonymous;
+
         return $this;
     }
 
@@ -209,6 +229,7 @@ final class Poll implements EntityInterface
     public function setType(PollTypeEnum $type): Poll
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -228,6 +249,7 @@ final class Poll implements EntityInterface
     public function setAllowsMultipleAnswers(bool $allows_multiple_answers): Poll
     {
         $this->allows_multiple_answers = $allows_multiple_answers;
+
         return $this;
     }
 
@@ -247,6 +269,7 @@ final class Poll implements EntityInterface
     public function setAllowsRevoting(bool $allows_revoting): Poll
     {
         $this->allows_revoting = $allows_revoting;
+
         return $this;
     }
 
@@ -266,6 +289,7 @@ final class Poll implements EntityInterface
     public function setMembersOnly(bool $members_only): Poll
     {
         $this->members_only = $members_only;
+
         return $this;
     }
 
@@ -285,6 +309,7 @@ final class Poll implements EntityInterface
     public function setQuestionEntities(?array $question_entities): Poll
     {
         $this->question_entities = $question_entities;
+
         return $this;
     }
 
@@ -304,6 +329,7 @@ final class Poll implements EntityInterface
     public function setExplanation(?string $explanation): Poll
     {
         $this->explanation = $explanation;
+
         return $this;
     }
 
@@ -323,6 +349,7 @@ final class Poll implements EntityInterface
     public function setExplanationEntities(?array $explanation_entities): Poll
     {
         $this->explanation_entities = $explanation_entities;
+
         return $this;
     }
 
@@ -342,6 +369,7 @@ final class Poll implements EntityInterface
     public function setOpenPeriod(?int $open_period): Poll
     {
         $this->open_period = $open_period;
+
         return $this;
     }
 
@@ -361,6 +389,7 @@ final class Poll implements EntityInterface
     public function setCloseDate(?int $close_date): Poll
     {
         $this->close_date = $close_date;
+
         return $this;
     }
 
@@ -380,6 +409,7 @@ final class Poll implements EntityInterface
     public function setCorrectOptionIds(?array $correct_option_ids): Poll
     {
         $this->correct_option_ids = $correct_option_ids;
+
         return $this;
     }
 
@@ -399,6 +429,7 @@ final class Poll implements EntityInterface
     public function setDescription(?string $description): Poll
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -418,6 +449,7 @@ final class Poll implements EntityInterface
     public function setDescriptionEntities(?array $description_entities): Poll
     {
         $this->description_entities = $description_entities;
+
         return $this;
     }
 
@@ -437,6 +469,7 @@ final class Poll implements EntityInterface
     public function setCountryCodes(?array $country_codes): Poll
     {
         $this->country_codes = $country_codes;
+
         return $this;
     }
 
@@ -456,6 +489,7 @@ final class Poll implements EntityInterface
     public function setExplanationMedia(?PollMedia $explanation_media): Poll
     {
         $this->explanation_media = $explanation_media;
+
         return $this;
     }
 
@@ -475,6 +509,9 @@ final class Poll implements EntityInterface
     public function setMedia(?PollMedia $media): Poll
     {
         $this->media = $media;
+
         return $this;
     }
 }
+
+// endregion CLASS_Poll
