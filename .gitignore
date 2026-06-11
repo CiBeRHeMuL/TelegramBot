@@ -13,3 +13,5 @@ local
 
 /.kilocode
 /.kilo
+
+/.phpunit.coverage
