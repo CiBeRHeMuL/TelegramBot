@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Model every Telegram Bot API response as a typed PHP DTO, one class per API method response.

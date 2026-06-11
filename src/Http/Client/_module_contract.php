@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Implement a PSR-18 HTTP client for sending Telegram Bot API requests.

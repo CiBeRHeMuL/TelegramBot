@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Provide a PSR-18-compatible HTTP client with PSR-7 message abstractions, stream handling, URI parsing, and request/response factories.

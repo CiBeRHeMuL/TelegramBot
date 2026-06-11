@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Construct PSR-7 Request objects for Telegram Bot API calls with proper serialization.

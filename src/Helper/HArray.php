@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Helper;
 
 use Traversable;
@@ -50,13 +52,12 @@ class HArray
      * Group array elements by key or keys if key is array.
      *
      * @template T
-     * @template Key
      *
-     * @param iterable<T>|array<Key, T>|T[]               $array
+     * @param iterable<T>|T[]                             $array
      * @param string|int|callable|(int|string|callable)[] $key
      * @param bool                                        $preserveKeys
      *
-     * @return ($key is array ? array : array<Key, T[]>|array)
+     * @return ($key is array ? array : array<int|string, T[]>|array)
      */
     public static function group(iterable $array, string|int|callable|array $key, bool $preserveKeys = true): array
     {
@@ -206,17 +207,15 @@ class HArray
      * ```
      *
      * @template T
-     * @template TKey of int|string
      * @template TResKey of int|string
      * @template TProj
-     * @template TKeyFunc of callable(T, TKey=): TResKey
      *
-     * @param iterable<T>|array<TKey, T>|T[]          $array
-     * @param TKey|TKeyFunc|(TKey|TKeyFunc)[]         $key
-     * @param TKey|(callable(T, TKey=): TResKey)|null $index
-     * @param (callable(T, TKey=): TProj)|null        $projection
-     * @param bool                                    $preserveKeys если необходимо сбросить ключи вложенных массивов, то надо установить в true
-     * @param TResKey|null                            $defaultIndex значение для индекса по умолчанию
+     * @param iterable<T>|T[]                        $array
+     * @param int|string|callable|array              $key
+     * @param int|string|callable|null               $index
+     * @param (callable(T, int|string=): TProj)|null $projection
+     * @param bool                                   $preserveKeys если необходимо сбросить ключи вложенных массивов, то надо установить в true
+     * @param TResKey|null                           $defaultIndex значение для индекса по умолчанию
      *
      * @return ($projection is null
      *      ? ($key is array ? array : ($preserveKeys is false ? T[][] : array<TResKey, T[]>))
@@ -320,11 +319,11 @@ class HArray
      */
     public static function filterRecursive(array $array, ?callable $callable = null, int $mode = 0): array
     {
-        $filterFunc = function (array $value) use (&$filterFunc, &$callable, &$mode) {
+        $filterFunc = function (array $value) use (&$filterFunc, $callable, $mode) {
             $value = array_filter($value, $callable, $mode);
             array_walk(
                 $value,
-                function (&$val) use (&$filterFunc, &$callable, &$mode) {
+                function (&$val) use (&$filterFunc) {
                     if (is_array($val)) {
                         $val = $filterFunc($val);
                     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Filesystem;
 
 // region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(6): Filesystem; TECH(5): ValueObject]

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Define all Telegram Bot API enumerations as PHP backed enums for type-safe API interaction.

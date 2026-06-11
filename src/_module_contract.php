@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Provide the root facade (Telegram) and static factory (TelegramFactory) for the entire Telegram bot library.

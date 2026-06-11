@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Define plugin interface and implementations for extending kernel behavior with pre-configured handler groups.

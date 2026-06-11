@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Implement PSR-7 StreamInterface and additional stream abstractions for HTTP message bodies.

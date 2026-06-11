@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Configure and provide serializer instances for Telegram Bot API data (requests, responses, entities).

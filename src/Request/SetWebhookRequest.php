@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;

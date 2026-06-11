@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Entity;
 
 // region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]

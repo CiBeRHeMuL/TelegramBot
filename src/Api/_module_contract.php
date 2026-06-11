@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Define the contract and HTTP implementation for all Telegram Bot API methods.

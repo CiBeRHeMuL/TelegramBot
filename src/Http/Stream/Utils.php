@@ -170,6 +170,9 @@ final class Utils
             return true;
         });
 
+        $handle = false;
+        $ex = null;
+
         try {
             /** @var resource $handle */
             $handle = fopen($filename, $mode);
@@ -188,7 +191,7 @@ final class Utils
 
         restore_error_handler();
 
-        if ($ex) {
+        if ($ex !== null) {
             throw $ex;
         }
 
@@ -220,6 +223,9 @@ final class Utils
             return true;
         });
 
+        $contents = false;
+        $ex = null;
+
         try {
             /** @var string|false $contents */
             $contents = stream_get_contents($stream);
@@ -240,7 +246,7 @@ final class Utils
 
         restore_error_handler();
 
-        if ($ex) {
+        if ($ex !== null) {
             throw $ex;
         }
 

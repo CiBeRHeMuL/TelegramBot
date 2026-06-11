@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Kernel\Request;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;

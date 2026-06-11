@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Api;
 
 use AndrewGos\ClassBuilder\ClassBuilderInterface;
@@ -82,7 +84,7 @@ class Api implements ApiInterface
      */
     public function getVersion(): string
     {
-        return static::TELEGRAM_BOT_API_VERSION;
+        return self::TELEGRAM_BOT_API_VERSION;
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Model all Telegram Bot API entity types as PHP DTOs with full type safety and deserialization support.

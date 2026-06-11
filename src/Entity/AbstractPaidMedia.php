@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
@@ -35,9 +37,6 @@ use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
 ])]
 abstract class AbstractPaidMedia implements EntityInterface
 {
-    /**
-     * @var PaidMediaTypeEnum
-     */
     public function __construct(
         protected readonly PaidMediaTypeEnum $type,
     ) {}

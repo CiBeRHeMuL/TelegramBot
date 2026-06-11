@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Http\Factory;
 
 use AndrewGos\TelegramBot\Enum\ContentTypeEnum;

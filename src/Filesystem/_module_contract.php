@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Abstract filesystem operations: file/dir/path handling, filesystem interface.

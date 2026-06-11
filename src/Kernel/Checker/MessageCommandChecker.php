@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Kernel\Checker;
 
 use AndrewGos\TelegramBot\Entity\Update;
@@ -30,15 +32,18 @@ readonly class MessageCommandChecker implements CheckerInterface
 
     public function check(Update $update): bool
     {
-        return $update->getType() === UpdateTypeEnum::Message
-            && (
-                substr(
-                    $update->getMessage()->getText(),
-                    0,
-                    strpos($update->getMessage()->getText(), ' '),
-                ) === "/$this->expectedCommand"
-                || $update->getMessage()->getText() === "/$this->expectedCommand"
-            );
+        if ($update->getType() !== UpdateTypeEnum::Message) {
+            return false;
+        }
+
+        $text = $update->getMessage()->getText();
+        $spacePos = strpos($text, ' ');
+
+        if ($spacePos !== false && substr($text, 0, $spacePos) === "/$this->expectedCommand") {
+            return true;
+        }
+
+        return $text === "/$this->expectedCommand";
     }
 }
 // endregion CLASS_MessageCommandChecker

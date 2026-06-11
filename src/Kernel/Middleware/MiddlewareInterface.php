@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Kernel\Middleware;
 
 use AndrewGos\TelegramBot\Kernel\Request\Request;

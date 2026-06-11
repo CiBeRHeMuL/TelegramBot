@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\MaskPositionEnum;

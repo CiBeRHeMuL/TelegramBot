@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Kernel\EventDispatcher\Event;
 
 use AndrewGos\TelegramBot\Entity\Update;

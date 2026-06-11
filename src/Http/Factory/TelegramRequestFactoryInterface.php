@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Http\Factory;
 
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;
@@ -28,7 +30,7 @@ interface TelegramRequestFactoryInterface
      * @param array          $data
      * @param HttpMethodEnum $httpMethod
      *
-     * @return mixed
+     * @return RequestInterface
      */
     public function createRequest(BotToken $token, string $method, array $data, HttpMethodEnum $httpMethod): RequestInterface;
 

@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Implement PSR-7 MessageInterface (Request and Response) for HTTP transport.

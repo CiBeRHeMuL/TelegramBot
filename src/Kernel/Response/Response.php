@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot\Kernel\Response;
 
 use AndrewGos\TelegramBot\Enum\HttpStatusCodeEnum;

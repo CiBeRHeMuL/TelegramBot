@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Define checker interface and implementations that determine whether a HandlerGroup should process an update.

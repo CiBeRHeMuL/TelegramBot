@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Define update source interface and implementations for receiving Telegram updates from various inputs.

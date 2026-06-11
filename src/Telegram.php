@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AndrewGos\TelegramBot;
 
 use AndrewGos\TelegramBot\Api\ApiInterface;
@@ -102,7 +104,7 @@ class Telegram
 
     public function getVersion(): string
     {
-        return static::VERSION;
+        return self::VERSION;
     }
 
     public function setLogger(LoggerInterface $logger): static

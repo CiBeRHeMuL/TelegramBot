@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
  * @moduleContract
  * @purpose Orchestrate incoming Telegram update processing through a pipeline of checkers, middlewares, handler groups, and plugins.

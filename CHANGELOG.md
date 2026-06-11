@@ -6,6 +6,18 @@
 
 - Add semantic documentation markup across the entire codebase: `@moduleContract` PHPDoc blocks, `// region`/`// endregion` semantic tags, `GREP_SUMMARY`, and `STRUCTURE` mini block diagrams for all 686+ source files
 - Create 24+ `_module_contract.php` namespace contract files for all namespaces under `src/`
+- Add semantic markup to `src/Request/RequestInterface.php`
+- Add PHPStan static analysis config (`phpstan.neon`, level 2) as dev dependency
+
+### Changed
+
+- Add `declare(strict_types=1)` to all 710 source files without it (now 100% coverage)
+- Update dependencies: phpunit 11.5.46→11.5.55 (CVE fix), php-cs-fixer 3.95.2→3.95.5, class-builder 1.3.3→1.3.4, serializer 1.3.0→1.3.1
+
+### Fixed
+
+- Fix strict_types regression in `MessageCommandChecker`: `strpos()` returning `false` passed to `substr($length)`
+- Fix PHPStan level 2 errors: `static::` private constant access, misplaced `@var` PHPDoc, HArray generics cleanup, `@return mixed` mismatch, undefined variables in `Utils.php` try/catch blocks
 
 # Version 4.6.1
 
