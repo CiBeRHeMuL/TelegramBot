@@ -35,6 +35,7 @@
     "ext-curl": "*",
     "andrew-gos/class-builder": "^1.3.3",
     "andrew-gos/serializer": "^1.3",
+    "giggsey/libphonenumber-for-php": "^9.0",
     "psr/container": "^2.0",
     "psr/event-dispatcher": "^1.0",
     "psr/http-client": "^1.0",

@@ -13,6 +13,7 @@
 
 - Add `declare(strict_types=1)` to all 710 source files without it (now 100% coverage)
 - Update dependencies: phpunit 11.5.46→11.5.55 (CVE fix), php-cs-fixer 3.95.2→3.95.5, class-builder 1.3.3→1.3.4, serializer 1.3.0→1.3.1
+- Replace regex-based phone validation with `giggsey/libphonenumber-for-php` in `Phone` value object. Now accepts any readable format, normalizes to E.164. Country-specific validity delegated to Telegram API.
 
 ### Fixed
 
