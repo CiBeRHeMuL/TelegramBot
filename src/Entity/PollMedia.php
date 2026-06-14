@@ -39,6 +39,7 @@ final class PollMedia implements EntityInterface
      * @param Sticker|null     $sticker    Optional. Media is a sticker, information about the sticker; currently, for poll options only
      * @param Venue|null       $venue      Optional. Media is a venue, information about the venue
      * @param Video|null       $video      Optional. Media is a video, information about the video
+     * @param Link|null        $link       Optional. Media is a link, information about the link
      *
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
@@ -61,6 +62,7 @@ final class PollMedia implements EntityInterface
         protected ?Sticker $sticker = null,
         protected ?Venue $venue = null,
         protected ?Video $video = null,
+        protected ?Link $link = null,
     ) {}
 
     /**
@@ -239,6 +241,26 @@ final class PollMedia implements EntityInterface
     public function setVideo(?Video $video): PollMedia
     {
         $this->video = $video;
+
+        return $this;
+    }
+
+    /**
+     * @return Link|null
+     */
+    public function getLink(): ?Link
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param Link|null $link
+     *
+     * @return PollMedia
+     */
+    public function setLink(?Link $link): PollMedia
+    {
+        $this->link = $link;
 
         return $this;
     }

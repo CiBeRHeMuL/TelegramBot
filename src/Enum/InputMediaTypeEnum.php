@@ -28,5 +28,7 @@ enum InputMediaTypeEnum: string
     case Location = 'location';
     case Sticker = 'sticker';
     case Venue = 'venue';
+    /** @purpose Link */
+    case Link = 'link';
 }
 // endregion ENUM_InputMediaTypeEnum

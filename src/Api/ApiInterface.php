@@ -2280,5 +2280,52 @@ interface ApiInterface
      * @return bool
      */
     public function downloadFile(Ent\File $file, Fs\File $targetFile, bool $overwrite): bool;
+
+    /**
+     * Use this method to send rich messages. If the message contains a block with a media element, then the bot must have the right
+     * to send the media to the chat. On success, the sent Message is returned.
+     *
+     * @param Req\SendRichMessageRequest $request
+     *
+     * @return Res\SendRichMessageResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessage
+     */
+    public function sendRichMessage(Req\SendRichMessageRequest $request): Res\SendRichMessageResponse;
+
+    /**
+     * Use this method to stream a partial rich message to a user while the message is being generated.
+     * Returns True on success.
+     *
+     * @param Req\SendRichMessageDraftRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessagedraft
+     */
+    public function sendRichMessageDraft(Req\SendRichMessageDraftRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to process a received chat join request query. Returns True on success.
+     *
+     * @param Req\AnswerChatJoinRequestQueryRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#answerchatjoinrequestquery
+     */
+    public function answerChatJoinRequestQuery(Req\AnswerChatJoinRequestQueryRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome.
+     * Returns True on success.
+     *
+     * @param Req\SendChatJoinRequestWebAppRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
+     */
+    public function sendChatJoinRequestWebApp(Req\SendChatJoinRequestWebAppRequest $request): Res\RawResponse;
 }
 // endregion INTERFACE_ApiInterface

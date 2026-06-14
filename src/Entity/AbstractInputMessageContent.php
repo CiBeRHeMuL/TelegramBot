@@ -34,6 +34,7 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
     InputVenueMessageContent::class,
     InputContactMessageContent::class,
     InputInvoiceMessageContent::class,
+    InputRichMessageContent::class,
 ])]
 abstract class AbstractInputMessageContent implements EntityInterface {}
 // endregion CLASS_AbstractInputMessageContent

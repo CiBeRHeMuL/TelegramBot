@@ -52,6 +52,7 @@ final class User implements EntityInterface
      *                                                     in getMe.
      * @param bool|null     $supports_guest_queries        Optional. True, if the bot supports guest queries from chats it is not a member of.
      *                                                     Returned only in getMe.
+     * @param bool|null     $supports_join_request_queries Optional. True, if the bot supports join request queries. Returned only in getMe.
      *
      * @see https://en.wikipedia.org/wiki/IETF_language_tag IETF language tag
      * @see https://core.telegram.org/bots/api#getme getMe
@@ -75,6 +76,7 @@ final class User implements EntityInterface
         protected ?bool $allows_users_to_create_topics = null,
         protected ?bool $can_manage_bots = null,
         protected ?bool $supports_guest_queries = null,
+        protected ?bool $supports_join_request_queries = null,
     ) {}
 
     /**
@@ -413,6 +415,26 @@ final class User implements EntityInterface
     public function setSupportsGuestQueries(?bool $supports_guest_queries): User
     {
         $this->supports_guest_queries = $supports_guest_queries;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getSupportsJoinRequestQueries(): ?bool
+    {
+        return $this->supports_join_request_queries;
+    }
+
+    /**
+     * @param bool|null $supports_join_request_queries
+     *
+     * @return User
+     */
+    public function setSupportsJoinRequestQueries(?bool $supports_join_request_queries): User
+    {
+        $this->supports_join_request_queries = $supports_join_request_queries;
 
         return $this;
     }

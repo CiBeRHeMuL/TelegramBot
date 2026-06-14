@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
+use AndrewGos\TelegramBot\Entity\InputRichMessage;
 use AndrewGos\TelegramBot\Entity\LinkPreviewOptions;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
@@ -32,7 +33,8 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class EditMessageTextRequest implements RequestInterface
 {
     /**
-     * @param string                     $text                   New text of the message, 1-4096 characters after entities parsing
+     * @param string|null                $text                   New text of the message, 1-4096 characters after entities parsing.
+     *                                                           Required if rich_message isn't specified.
      * @param ChatId|null                $chat_id                Required if inline_message_id is not specified. Unique identifier for the target chat or username
      *                                                           of the target bot, supergroup or channel in the format \@username.
      * @param MessageEntity[]|null       $entities               A JSON-serialized list of special entities that appear in message text, which can be
@@ -45,6 +47,7 @@ class EditMessageTextRequest implements RequestInterface
      * @param InlineKeyboardMarkup|null  $reply_markup           a JSON-serialized object for an inline keyboard
      * @param string|null                $business_connection_id Unique identifier of the business connection on behalf of which the message to
      *                                                           be edited was sent
+     * @param InputRichMessage|null      $rich_message           Optional. New rich content of the message; required if text isn't specified
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -53,7 +56,7 @@ class EditMessageTextRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
      */
     public function __construct(
-        private string $text,
+        private ?string $text = null,
         private ?ChatId $chat_id = null,
         private ?array $entities = null,
         private ?string $inline_message_id = null,
@@ -62,14 +65,15 @@ class EditMessageTextRequest implements RequestInterface
         private ?TelegramParseModeEnum $parse_mode = null,
         private ?InlineKeyboardMarkup $reply_markup = null,
         private ?string $business_connection_id = null,
+        private ?InputRichMessage $rich_message = null,
     ) {}
 
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string $text): EditMessageTextRequest
+    public function setText(?string $text): EditMessageTextRequest
     {
         $this->text = $text;
 
@@ -168,6 +172,26 @@ class EditMessageTextRequest implements RequestInterface
     public function setBusinessConnectionId(?string $business_connection_id): EditMessageTextRequest
     {
         $this->business_connection_id = $business_connection_id;
+
+        return $this;
+    }
+
+    /**
+     * @return InputRichMessage|null
+     */
+    public function getRichMessage(): ?InputRichMessage
+    {
+        return $this->rich_message;
+    }
+
+    /**
+     * @param InputRichMessage|null $rich_message
+     *
+     * @return EditMessageTextRequest
+     */
+    public function setRichMessage(?InputRichMessage $rich_message): EditMessageTextRequest
+    {
+        $this->rich_message = $rich_message;
 
         return $this;
     }

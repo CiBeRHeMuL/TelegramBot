@@ -52,7 +52,7 @@ use Throwable;
 // region CLASS_Api [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '10.0';
+    private const TELEGRAM_BOT_API_VERSION = '10.1';
 
     public function __construct(
         private readonly BotToken $token,
@@ -3313,5 +3313,80 @@ class Api implements ApiInterface
             return null;
         }
     }
+
+    // region METHOD_sendRichMessage [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Send rich messages to a chat.
+     *
+     * @using send()
+     *
+     * @param Req\SendRichMessageRequest $request
+     *
+     * @return Res\SendRichMessageResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessage
+     */
+    public function sendRichMessage(Req\SendRichMessageRequest $request): Res\SendRichMessageResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+
+        return new Res\SendRichMessageResponse($rawResponse, $message);
+    }
+    // endregion METHOD_sendRichMessage
+
+    // region METHOD_sendRichMessageDraft [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Stream a partial rich message to a user.
+     *
+     * @using send()
+     *
+     * @param Req\SendRichMessageDraftRequest $request
+     *
+     * @return RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendrichmessagedraft
+     */
+    public function sendRichMessageDraft(Req\SendRichMessageDraftRequest $request): RawResponse
+    {
+        return $this->send(__FUNCTION__, $request);
+    }
+    // endregion METHOD_sendRichMessageDraft
+
+    // region METHOD_answerChatJoinRequestQuery [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Process a received chat join request query.
+     *
+     * @using send()
+     *
+     * @param Req\AnswerChatJoinRequestQueryRequest $request
+     *
+     * @return RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#answerchatjoinrequestquery
+     */
+    public function answerChatJoinRequestQuery(Req\AnswerChatJoinRequestQueryRequest $request): RawResponse
+    {
+        return $this->send(__FUNCTION__, $request);
+    }
+    // endregion METHOD_answerChatJoinRequestQuery
+
+    // region METHOD_sendChatJoinRequestWebApp [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Process a chat join request query by showing a Mini App.
+     *
+     * @using send()
+     *
+     * @param Req\SendChatJoinRequestWebAppRequest $request
+     *
+     * @return RawResponse
+     *
+     * @see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
+     */
+    public function sendChatJoinRequestWebApp(Req\SendChatJoinRequestWebAppRequest $request): RawResponse
+    {
+        return $this->send(__FUNCTION__, $request);
+    }
+    // endregion METHOD_sendChatJoinRequestWebApp
 }
 // endregion CLASS_Api

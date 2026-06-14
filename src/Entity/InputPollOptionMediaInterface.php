@@ -19,6 +19,7 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
     InputMediaSticker::class,
     InputMediaVenue::class,
     InputMediaVideo::class,
+    InputMediaLink::class,
 ])]
 // region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
 /**

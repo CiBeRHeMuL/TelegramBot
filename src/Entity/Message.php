@@ -208,6 +208,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *                                                                                 triggered the bot's response
      * @param LivePhoto|null                        $live_photo                        Optional. Message is a live photo, information about the live photo. For backward compatibility,
      *                                                                                 when this field is set, the photo field will also be set
+     * @param RichMessage|null                      $rich_message                      Optional. Rich formatted message
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -409,6 +410,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?User $guest_bot_caller_user = null,
         protected ?Chat $guest_bot_caller_chat = null,
         protected ?LivePhoto $live_photo = null,
+        protected ?RichMessage $rich_message = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2692,5 +2694,26 @@ final class Message extends AbstractMaybeInaccessibleMessage
 
         return $this;
     }
+
+    /**
+     * @return RichMessage|null
+     */
+    public function getRichMessage(): ?RichMessage
+    {
+        return $this->rich_message;
+    }
+
+    /**
+     * @param RichMessage|null $rich_message
+     *
+     * @return Message
+     */
+    public function setRichMessage(?RichMessage $rich_message): Message
+    {
+        $this->rich_message = $rich_message;
+
+        return $this;
+    }
 }
+
 // endregion CLASS_Message

@@ -4,6 +4,12 @@
 
 ### Added
 
+- Add Bot API 10.1 support: 6 new enums (RichTextTypeEnum, RichBlockTypeEnum, ChatJoinRequestResultEnum, RichBlockTableCellAlignEnum, RichBlockTableCellVerticalAlignEnum, RichBlockListItemTypeEnum)
+- Add 2 abstract base classes (AbstractRichText, AbstractRichBlock) and ~55 concrete entity classes for rich messages
+- Add 4 request/response classes (SendRichMessageRequest/Response, SendRichMessageDraftRequest, AnswerChatJoinRequestQueryRequest, SendChatJoinRequestWebAppRequest)
+- Add 4 new API methods (sendRichMessage, sendRichMessageDraft, answerChatJoinRequestQuery, sendChatJoinRequestWebApp)
+- Add fields to existing entities: Message.rich_message, User.supports_join_request_queries, ChatFullInfo.guard_bot, ChatJoinRequest.query_id, PollMedia.link, EditMessageTextRequest.rich_message
+- Add InputRichMessageContent to AbstractInputMessageContent inheritors, InputMediaLink to InputPollOptionMediaInterface inheritors
 - Add semantic documentation markup across the entire codebase: `@moduleContract` PHPDoc blocks, `// region`/`// endregion` semantic tags, `GREP_SUMMARY`, and `STRUCTURE` mini block diagrams for all 686+ source files
 - Create 24+ `_module_contract.php` namespace contract files for all namespaces under `src/`
 - Add semantic markup to `src/Request/RequestInterface.php`

@@ -108,6 +108,8 @@ final class ChatFullInfo implements EntityInterface
      * @param int|null                    $paid_message_star_count                 Optional. The number of Telegram Stars a general user have to pay to send a message
      *                                                                             to the chat
      * @param Audio|null                  $first_profile_audio                     Optional. For private chats, the first audio added to the profile of the user
+     * @param User|null                   $guard_bot                               Optional. The bot that processes join request queries
+     *                                                                             in the chat. The field is only available to chat administrators.
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -183,6 +185,7 @@ final class ChatFullInfo implements EntityInterface
         protected ?UniqueGiftColors $unique_gift_colors = null,
         protected ?int $paid_message_star_count = null,
         protected ?Audio $first_profile_audio = null,
+        protected ?User $guard_bot = null,
     ) {}
 
     /**
@@ -1201,6 +1204,26 @@ final class ChatFullInfo implements EntityInterface
     public function setFirstProfileAudio(?Audio $first_profile_audio): ChatFullInfo
     {
         $this->first_profile_audio = $first_profile_audio;
+
+        return $this;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getGuardBot(): ?User
+    {
+        return $this->guard_bot;
+    }
+
+    /**
+     * @param User|null $guard_bot
+     *
+     * @return ChatFullInfo
+     */
+    public function setGuardBot(?User $guard_bot): ChatFullInfo
+    {
+        $this->guard_bot = $guard_bot;
 
         return $this;
     }

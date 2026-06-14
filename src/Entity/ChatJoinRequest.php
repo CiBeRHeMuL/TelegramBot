@@ -36,6 +36,7 @@ final class ChatJoinRequest implements EntityInterface
      * @param int                 $date         Date the request was sent in Unix time
      * @param string|null         $bio          Optional. Bio of the user.
      * @param ChatInviteLink|null $invite_link  Optional. Chat invite link that was used by the user to send the join request
+     * @param string|null         $query_id     Optional. Unique identifier of the join request query to be processed
      *
      * @see https://core.telegram.org/bots/api#chat Chat
      * @see https://core.telegram.org/bots/api#user User
@@ -48,6 +49,7 @@ final class ChatJoinRequest implements EntityInterface
         protected int $date,
         protected ?string $bio = null,
         protected ?ChatInviteLink $invite_link = null,
+        protected ?string $query_id = null,
     ) {}
 
     /**
@@ -166,6 +168,26 @@ final class ChatJoinRequest implements EntityInterface
     public function setInviteLink(?ChatInviteLink $invite_link): ChatJoinRequest
     {
         $this->invite_link = $invite_link;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getQueryId(): ?string
+    {
+        return $this->query_id;
+    }
+
+    /**
+     * @param string|null $query_id
+     *
+     * @return ChatJoinRequest
+     */
+    public function setQueryId(?string $query_id): ChatJoinRequest
+    {
+        $this->query_id = $query_id;
 
         return $this;
     }
