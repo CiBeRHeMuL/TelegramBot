@@ -16,6 +16,15 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $token = getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN');
+        if ($token === false || $token === 'YOUR_SECRET_API_KEY') {
+            $this->markTestSkipped('Integration tests require a real Telegram Bot API token.');
+        }
+    }
+
     #[DataProviderExternal(ApiDataProvider::class, 'generate')]
     public function testApi(BotToken $token, string $method, RequestInterface $request, string $responseClass): void
     {

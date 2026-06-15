@@ -4,6 +4,16 @@
 
 ### Added
 
+- Add full test suite infrastructure: TestHttpClient (PSR-18 mock), shared BaseFixtureGenerator, reflection-based generators for Entity/Request/Response/API fixtures
+- Add 295 EntityDeserializationTest, 173 RequestConstructionTest, 84 ResponseConstructionTest via AbstractFixtureConstructionTest
+- Add ApiUnitTest with DataProvider covering 177 API methods via TestHttpClient pipeline
+- Add EntityComplexFixturesTest with real Telegram API responses: 28 Message entities (7 overlapping groups), 43 RichMessage blocks (all types, deep nesting to 4 levels)
+- Add ValueObject tests for EncodedJson, CallbackData, IpV4, IpV6, Filename, Language (all 11 ValueObjects covered)
+- Add Kernel unit tests: Request, LogMiddleware, LogPlugin, LogRequestHandler, Events, UpdateSources (Array, CustomInput)
+- Add CI/CD pipeline (.github/workflows/ci.yml): PHP 8.2/8.3/8.4 matrix, cs-check, phpstan, phpunit+clover, codecov upload
+- Add coverage configuration to phpunit.xml.dist (Clover + HTML reports, exclude Entity/Request/Response/Enum/HttpClient)
+- Add README/COVERAGE.md with P0-P4 priority strategy
+- Add CI and Codecov badges to README.md
 - Add Bot API 10.1 support: 6 new enums (RichTextTypeEnum, RichBlockTypeEnum, ChatJoinRequestResultEnum, RichBlockTableCellAlignEnum, RichBlockTableCellVerticalAlignEnum, RichBlockListItemTypeEnum)
 - Add 2 abstract base classes (AbstractRichText, AbstractRichBlock) and ~55 concrete entity classes for rich messages
 - Add 4 request/response classes (SendRichMessageRequest/Response, SendRichMessageDraftRequest, AnswerChatJoinRequestQueryRequest, SendChatJoinRequestWebAppRequest)

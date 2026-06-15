@@ -3,6 +3,8 @@
 [![Latest Stable Version](https://poser.pugx.org/andrew-gos/telegram-bot/v/stable)](https://packagist.org/packages/andrew-gos/telegram-bot)
 [![License](https://poser.pugx.org/andrew-gos/telegram-bot/license)](https://packagist.org/packages/andrew-gos/telegram-bot)
 [![PHP Version Require](http://poser.pugx.org/andrew-gos/telegram-bot/require/php)](https://packagist.org/packages/andrew-gos/telegram-bot)
+[![CI](https://github.com/CiBeRHeMuL/TelegramBot/actions/workflows/ci.yml/badge.svg)](https://github.com/CiBeRHeMuL/TelegramBot/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/CiBeRHeMuL/TelegramBot/branch/master/graph/badge.svg)](https://codecov.io/gh/CiBeRHeMuL/TelegramBot)
 
 ### 🌟 Overview
 
@@ -20,7 +22,7 @@ exceptional modularity and extensibility.
 * **🧩 Modern Architecture:** A flexible update handling system using `HandlerGroup`, `Checker`, and `Middleware`.
 * **🔌 Extensibility:** Easily integrate your own logic through plugins and middleware.
 * **🤝 PSR Compliant:** Effortless integration with any modern framework.
-* **🧪 Thoroughly Tested:** High test coverage ensures stability and reliability.
+* **🧪 Under Active Test Development:** 891+ tests, 1300+ assertions. Core components + Entity deserialization + API via HTTP mock. Full coverage strategy — see [Coverage Strategy](README/COVERAGE.md).
 
 ### 📦 Installation
 

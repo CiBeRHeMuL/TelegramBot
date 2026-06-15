@@ -15,3 +15,6 @@ local
 /.kilo
 
 /.phpunit.coverage
+
+coverage.xml
+coverage-report/

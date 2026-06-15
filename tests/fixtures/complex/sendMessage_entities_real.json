@@ -1,0 +1,173 @@
+{
+  "ok": true,
+  "result": {
+    "message_id": 185,
+    "from": {
+      "id": 123,
+      "is_bot": true,
+      "first_name": "TestMaiSurveyBot",
+      "username": "test_7564243964_mai_survey_bot"
+    },
+    "chat": {
+      "id": 234,
+      "first_name": "Андрей",
+      "last_name": "Гостев",
+      "username": "andrewgostev",
+      "type": "private"
+    },
+    "date": 1781472126,
+    "text": "bold *text\nitalic *text\nunderline\nstrikethrough\nspoiler\nbold italic bold italic bold strikethrough italic bold strikethrough spoiler underline italic bold bold\ninline URL\ninline mention of a user\n👍\n22:45 tomorrow\n22:45 tomorrow\n22:45 tomorrow\n22:45 tomorrow\ninline fixed-width code\npre-formatted fixed-width code block\n\npre-formatted fixed-width code block written in the Python programming language\n\nBlock quotation started\nBlock quotation continued\nBlock quotation continued\nBlock quotation continued\nThe last line of the block quotation\nThe expandable block quotation started right after the previous block quotation\nIt is separated from the previous block quotation by an empty bold entity\nExpandable block quotation continued\nHidden by default part of the expandable block quotation started\nExpandable block quotation continued\nThe last line of the expandable block quotation with the expandability mark",
+    "entities": [
+      {
+        "offset": 0,
+        "length": 10,
+        "type": "bold"
+      },
+      {
+        "offset": 11,
+        "length": 12,
+        "type": "italic"
+      },
+      {
+        "offset": 24,
+        "length": 9,
+        "type": "underline"
+      },
+      {
+        "offset": 34,
+        "length": 13,
+        "type": "strikethrough"
+      },
+      {
+        "offset": 48,
+        "length": 7,
+        "type": "spoiler"
+      },
+      {
+        "offset": 56,
+        "length": 5,
+        "type": "bold"
+      },
+      {
+        "offset": 61,
+        "length": 12,
+        "type": "bold"
+      },
+      {
+        "offset": 61,
+        "length": 12,
+        "type": "italic"
+      },
+      {
+        "offset": 73,
+        "length": 26,
+        "type": "bold"
+      },
+      {
+        "offset": 73,
+        "length": 26,
+        "type": "italic"
+      },
+      {
+        "offset": 73,
+        "length": 26,
+        "type": "strikethrough"
+      },
+      {
+        "offset": 99,
+        "length": 34,
+        "type": "bold"
+      },
+      {
+        "offset": 99,
+        "length": 34,
+        "type": "italic"
+      },
+      {
+        "offset": 99,
+        "length": 33,
+        "type": "strikethrough"
+      },
+      {
+        "offset": 99,
+        "length": 33,
+        "type": "spoiler"
+      },
+      {
+        "offset": 133,
+        "length": 26,
+        "type": "bold"
+      },
+      {
+        "offset": 133,
+        "length": 21,
+        "type": "italic"
+      },
+      {
+        "offset": 133,
+        "length": 21,
+        "type": "underline"
+      },
+      {
+        "offset": 160,
+        "length": 10,
+        "type": "text_link",
+        "url": "http://www.example.com/"
+      },
+      {
+        "offset": 199,
+        "length": 14,
+        "type": "date_time",
+        "unix_time": 1647531900,
+        "date_time_format": "wDT"
+      },
+      {
+        "offset": 214,
+        "length": 14,
+        "type": "date_time",
+        "unix_time": 1647531900,
+        "date_time_format": "t"
+      },
+      {
+        "offset": 229,
+        "length": 14,
+        "type": "date_time",
+        "unix_time": 1647531900,
+        "date_time_format": "r"
+      },
+      {
+        "offset": 244,
+        "length": 14,
+        "type": "date_time",
+        "unix_time": 1647531900,
+        "date_time_format": ""
+      },
+      {
+        "offset": 259,
+        "length": 23,
+        "type": "code"
+      },
+      {
+        "offset": 283,
+        "length": 37,
+        "type": "pre"
+      },
+      {
+        "offset": 321,
+        "length": 80,
+        "type": "pre",
+        "language": "python"
+      },
+      {
+        "offset": 402,
+        "length": 139,
+        "type": "blockquote"
+      },
+      {
+        "offset": 541,
+        "length": 368,
+        "type": "expandable_blockquote"
+      }
+    ]
+  }
+}

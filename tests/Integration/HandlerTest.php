@@ -25,7 +25,7 @@ class HandlerTest extends TestCase
         $update = EntityFactory::createMessageUpdate();
 
         $telegram = TelegramFactory::getDefaultTelegram(
-            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+            new BotToken('123456789:ABCDEF1234ghiklABCDEF1234ghiklABCDE'),
         );
         $handler = $telegram->getUpdateHandler();
         $handler->setUpdateSource(new ArrayUpdateSource([$update]));
@@ -52,7 +52,7 @@ class HandlerTest extends TestCase
         $update = EntityFactory::createMessageUpdate();
 
         $telegram = TelegramFactory::getDefaultTelegram(
-            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+            new BotToken('123456789:ABCDEF1234ghiklABCDEF1234ghiklABCDE'),
         );
         $handler = $telegram->getUpdateHandler();
         $handler->setUpdateSource(new ArrayUpdateSource([$update]));
@@ -83,7 +83,7 @@ class HandlerTest extends TestCase
         $update = EntityFactory::createMessageUpdate();
 
         $telegram = TelegramFactory::getDefaultTelegram(
-            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+            new BotToken('123456789:ABCDEF1234ghiklABCDEF1234ghiklABCDE'),
         );
         $handler = $telegram->getUpdateHandler();
         $handler->setUpdateSource(new ArrayUpdateSource([$update]));
@@ -121,7 +121,7 @@ class HandlerTest extends TestCase
         $update = EntityFactory::createMessageUpdate();
 
         $telegram = TelegramFactory::getDefaultTelegram(
-            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+            new BotToken('123456789:ABCDEF1234ghiklABCDEF1234ghiklABCDE'),
         );
         $handler = $telegram->getUpdateHandler();
         $handler->setUpdateSource(new ArrayUpdateSource([$update]));
@@ -176,7 +176,7 @@ class HandlerTest extends TestCase
         $update = EntityFactory::createMessageUpdate();
 
         $telegram = TelegramFactory::getDefaultTelegram(
-            new BotToken(getenv('ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN')),
+            new BotToken('123456789:ABCDEF1234ghiklABCDEF1234ghiklABCDE'),
         );
         $handler = $telegram->getUpdateHandler();
         $handler->setUpdateSource(new ArrayUpdateSource([$update]));

@@ -1,0 +1,1133 @@
+{
+  "ok": true,
+  "result": {
+    "message_id": 184,
+    "from": {
+      "id": 123,
+      "is_bot": true,
+      "first_name": "TestMaiSurveyBot",
+      "username": "test_7564243964_mai_survey_bot"
+    },
+    "chat": {
+      "id": 234,
+      "first_name": "Андрей",
+      "last_name": "Гостев",
+      "username": "andrewgostev",
+      "type": "private"
+    },
+    "date": 1781471692,
+    "rich_message": {
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": [
+            {
+              "type": "bold",
+              "text": "bold text"
+            },
+            " ",
+            {
+              "type": "bold",
+              "text": "bold text"
+            },
+            " ",
+            {
+              "type": "italic",
+              "text": "italic text"
+            },
+            " ",
+            {
+              "type": "italic",
+              "text": "italic text"
+            },
+            " ",
+            {
+              "type": "strikethrough",
+              "text": "strikethrough text"
+            },
+            " ",
+            {
+              "type": "code",
+              "text": "inline fixed-width code"
+            },
+            " ",
+            {
+              "type": "marked",
+              "text": "marked text"
+            },
+            " ",
+            {
+              "type": "spoiler",
+              "text": "spoiler"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": [
+            {
+              "type": "url",
+              "text": "inline URL",
+              "url": "https://t.me/"
+            },
+            " ",
+            {
+              "type": "email_address",
+              "text": "inline e-mail",
+              "email_address": "user@example.com"
+            },
+            " ",
+            {
+              "type": "phone_number",
+              "text": "inline phone number",
+              "phone_number": "+123456789"
+            },
+            " inline mention of a user ",
+            "👍",
+            " ",
+            {
+              "type": "date_time",
+              "text": "22:45 tomorrow",
+              "unix_time": 1647531900,
+              "date_time_format": "wDT"
+            },
+            " ",
+            {
+              "type": "mathematical_expression",
+              "expression": "x^2 + y^2"
+            },
+            " ",
+            {
+              "type": "hashtag",
+              "text": "#hashtag",
+              "hashtag": "hashtag"
+            },
+            " ",
+            {
+              "type": "cashtag",
+              "text": "$USD",
+              "cashtag": "USD"
+            },
+            " ",
+            {
+              "type": "phone_number",
+              "text": "+12345678901",
+              "phone_number": "+12345678901"
+            },
+            ", card: 4242 4242 4242 4242, ",
+            {
+              "type": "url",
+              "text": "https://t.me",
+              "url": "https://t.me"
+            },
+            " ",
+            {
+              "type": "url",
+              "text": "t.me",
+              "url": "t.me"
+            },
+            " ",
+            {
+              "type": "email_address",
+              "text": "a@t.me",
+              "email_address": "a@t.me"
+            },
+            " ",
+            {
+              "type": "bot_command",
+              "text": "/command",
+              "bot_command": "command"
+            },
+            " ",
+            {
+              "type": "mention",
+              "text": "@username",
+              "username": "username"
+            },
+            " all the text above was on the same line"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Heading 1",
+          "size": 1
+        },
+        {
+          "type": "heading",
+          "text": "Heading 2",
+          "size": 2
+        },
+        {
+          "type": "heading",
+          "text": "Heading 3",
+          "size": 3
+        },
+        {
+          "type": "heading",
+          "text": "Heading 4",
+          "size": 4
+        },
+        {
+          "type": "heading",
+          "text": "Heading 5",
+          "size": 5
+        },
+        {
+          "type": "heading",
+          "text": "Heading 6",
+          "size": 6
+        },
+        {
+          "type": "paragraph",
+          "text": "Paragraph text"
+        },
+        {
+          "type": "pre",
+          "text": "  print('pre-formatted fixed-width code block written in the Python programming language')",
+          "language": "python"
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "unordered list item"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "unordered list item"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "unordered list item"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "1.",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "ordered list item"
+                }
+              ],
+              "type": "1",
+              "value": 1
+            },
+            {
+              "label": "2.",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "ordered list item"
+                }
+              ],
+              "type": "1",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "task list item"
+                }
+              ],
+              "has_checkbox": true
+            },
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": "completed task list item"
+                }
+              ],
+              "has_checkbox": true,
+              "is_checked": true
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": "Block quotation started"
+            },
+            {
+              "type": "paragraph",
+              "text": "Block quotation continued on the next line Block quotation continued on the same line"
+            },
+            {
+              "type": "paragraph",
+              "text": "The last line of the block quotation"
+            }
+          ]
+        },
+        {
+          "type": "photo",
+          "photo": [
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3MAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF4",
+              "file_size": 1081,
+              "width": 90,
+              "height": 51
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA20AAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVFy",
+              "file_size": 13004,
+              "width": 320,
+              "height": 180
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3gAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF9",
+              "file_size": 55714,
+              "width": 800,
+              "height": 450
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3kAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF-",
+              "file_size": 118930,
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3cAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF8",
+              "file_size": 202060,
+              "width": 1920,
+              "height": 1080
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "video": {
+            "duration": 44,
+            "width": 1280,
+            "height": 720,
+            "file_name": "video.mp4",
+            "mime_type": "video/mp4",
+            "thumbnail": {
+              "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+              "file_unique_id": "AQADwgoAAo7ybVFy",
+              "file_size": 8374,
+              "width": 320,
+              "height": 180
+            },
+            "thumb": {
+              "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+              "file_unique_id": "AQADwgoAAo7ybVFy",
+              "file_size": 8374,
+              "width": 320,
+              "height": 180
+            },
+            "file_id": "BAACAgQAAxUAAWovGcxLufvHWQzcoivwfMie0xcpAALCCgACjvJtURgE8icUTTR7PAQ",
+            "file_unique_id": "AgADwgoAAo7ybVE",
+            "file_size": 7271495
+          }
+        },
+        {
+          "type": "audio",
+          "audio": {
+            "duration": 43,
+            "file_name": "audio.mp3",
+            "mime_type": "audio/mpeg",
+            "file_id": "CQACAgQAAxUAAWovGcy4R3GKKRi-Jy_cfQ55GWs_AALuCgACf1tsUZ7BigZtw2r2PAQ",
+            "file_unique_id": "AgAD7goAAn9bbFE",
+            "file_size": 689133
+          }
+        },
+        {
+          "type": "voice_note",
+          "voice_note": {
+            "duration": 43,
+            "mime_type": "audio/ogg",
+            "file_id": "AwACAgQAAxUAAWovGcyT8hcl0IZlhHrDWOJSfF07AAKOCgACpBZsUZp90ZYWEtLvPAQ",
+            "file_unique_id": "AgADjgoAAqQWbFE",
+            "file_size": 554181
+          }
+        },
+        {
+          "type": "animation",
+          "animation": {
+            "file_name": "animation.gif.mp4",
+            "mime_type": "video/mp4",
+            "duration": 5,
+            "width": 320,
+            "height": 180,
+            "thumbnail": {
+              "file_id": "AAMCBAADFQABai8ZzIN_NH4-Dw8sE2ZjsemA94IAAmULAALCMWxRmcCk5UrxPQ8BAAdtAAM8BA",
+              "file_unique_id": "AQADZQsAAsIxbFFy",
+              "file_size": 9656,
+              "width": 320,
+              "height": 180
+            },
+            "thumb": {
+              "file_id": "AAMCBAADFQABai8ZzIN_NH4-Dw8sE2ZjsemA94IAAmULAALCMWxRmcCk5UrxPQ8BAAdtAAM8BA",
+              "file_unique_id": "AQADZQsAAsIxbFFy",
+              "file_size": 9656,
+              "width": 320,
+              "height": 180
+            },
+            "file_id": "CgACAgQAAxUAAWovGcyDfzR-Pg8PLBNmY7HpgPeCAAJlCwACwjFsUZnApOVK8T0PPAQ",
+            "file_unique_id": "AgADZQsAAsIxbFE",
+            "file_size": 100854
+          },
+          "need_autoplay": true
+        },
+        {
+          "type": "photo",
+          "photo": [
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3MAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF4",
+              "file_size": 1081,
+              "width": 90,
+              "height": 51
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA20AAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVFy",
+              "file_size": 13004,
+              "width": 320,
+              "height": 180
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3gAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF9",
+              "file_size": 55714,
+              "width": 800,
+              "height": 450
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3kAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF-",
+              "file_size": 118930,
+              "width": 1280,
+              "height": 720
+            },
+            {
+              "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3cAAzwE",
+              "file_unique_id": "AQAD4A1rG4xifVF8",
+              "file_size": 202060,
+              "width": 1920,
+              "height": 1080
+            }
+          ],
+          "caption": {
+            "text": "Photo caption"
+          }
+        },
+        {
+          "type": "video",
+          "video": {
+            "duration": 44,
+            "width": 1280,
+            "height": 720,
+            "file_name": "video.mp4",
+            "mime_type": "video/mp4",
+            "thumbnail": {
+              "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+              "file_unique_id": "AQADwgoAAo7ybVFy",
+              "file_size": 8374,
+              "width": 320,
+              "height": 180
+            },
+            "thumb": {
+              "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+              "file_unique_id": "AQADwgoAAo7ybVFy",
+              "file_size": 8374,
+              "width": 320,
+              "height": 180
+            },
+            "file_id": "BAACAgQAAxUAAWovGcxLufvHWQzcoivwfMie0xcpAALCCgACjvJtURgE8icUTTR7PAQ",
+            "file_unique_id": "AgADwgoAAo7ybVE",
+            "file_size": 7271495
+          },
+          "caption": {
+            "text": "Video caption"
+          }
+        },
+        {
+          "type": "audio",
+          "audio": {
+            "duration": 43,
+            "file_name": "audio.mp3",
+            "mime_type": "audio/mpeg",
+            "file_id": "CQACAgQAAxUAAWovGcy4R3GKKRi-Jy_cfQ55GWs_AALuCgACf1tsUZ7BigZtw2r2PAQ",
+            "file_unique_id": "AgAD7goAAn9bbFE",
+            "file_size": 689133
+          },
+          "caption": {
+            "text": "Audio caption"
+          }
+        },
+        {
+          "type": "voice_note",
+          "voice_note": {
+            "duration": 43,
+            "mime_type": "audio/ogg",
+            "file_id": "AwACAgQAAxUAAWovGcyT8hcl0IZlhHrDWOJSfF07AAKOCgACpBZsUZp90ZYWEtLvPAQ",
+            "file_unique_id": "AgADjgoAAqQWbFE",
+            "file_size": 554181
+          },
+          "caption": {
+            "text": "Voice note caption"
+          }
+        },
+        {
+          "type": "animation",
+          "animation": {
+            "file_name": "animation.gif.mp4",
+            "mime_type": "video/mp4",
+            "duration": 5,
+            "width": 320,
+            "height": 180,
+            "thumbnail": {
+              "file_id": "AAMCBAADFQABai8ZzIN_NH4-Dw8sE2ZjsemA94IAAmULAALCMWxRmcCk5UrxPQ8BAAdtAAM8BA",
+              "file_unique_id": "AQADZQsAAsIxbFFy",
+              "file_size": 9656,
+              "width": 320,
+              "height": 180
+            },
+            "thumb": {
+              "file_id": "AAMCBAADFQABai8ZzIN_NH4-Dw8sE2ZjsemA94IAAmULAALCMWxRmcCk5UrxPQ8BAAdtAAM8BA",
+              "file_unique_id": "AQADZQsAAsIxbFFy",
+              "file_size": 9656,
+              "width": 320,
+              "height": 180
+            },
+            "file_id": "CgACAgQAAxUAAWovGcyDfzR-Pg8PLBNmY7HpgPeCAAJlCwACwjFsUZnApOVK8T0PPAQ",
+            "file_unique_id": "AgADZQsAAsIxbFE",
+            "file_size": 100854
+          },
+          "caption": {
+            "text": "Animation caption"
+          },
+          "need_autoplay": true
+        },
+        {
+          "type": "table",
+          "cells": [
+            [
+              {
+                "text": "Header 1",
+                "is_header": true,
+                "align": "left",
+                "valign": "middle"
+              },
+              {
+                "text": "Header 2",
+                "is_header": true,
+                "align": "center",
+                "valign": "middle"
+              }
+            ],
+            [
+              {
+                "text": "left",
+                "align": "left",
+                "valign": "middle"
+              },
+              {
+                "text": "center",
+                "align": "center",
+                "valign": "middle"
+              }
+            ]
+          ],
+          "is_bordered": true,
+          "is_striped": true
+        },
+        {
+          "type": "paragraph",
+          "text": [
+            "Text with a reference",
+            {
+              "type": "superscript",
+              "text": [
+                {
+                  "type": "anchor",
+                  "name": "fnref-id1-1"
+                },
+                {
+                  "type": "reference_link",
+                  "text": "1",
+                  "reference_name": "fn-id1"
+                }
+              ]
+            },
+            " and another one",
+            {
+              "type": "superscript",
+              "text": [
+                {
+                  "type": "anchor",
+                  "name": "fnref-id2-1"
+                },
+                {
+                  "type": "reference_link",
+                  "text": "2",
+                  "reference_name": "fn-id2"
+                }
+              ]
+            },
+            "."
+          ]
+        },
+        {
+          "type": "mathematical_expression",
+          "expression": "E = mc^2"
+        },
+        {
+          "type": "mathematical_expression",
+          "expression": "E = mc^2"
+        },
+        {
+          "type": "heading",
+          "text": [
+            "Example Nested Syntax Report for ",
+            {
+              "type": "italic",
+              "text": "Q1"
+            }
+          ],
+          "size": 2
+        },
+        {
+          "type": "paragraph",
+          "text": [
+            "Intro with ",
+            {
+              "type": "underline",
+              "text": "underlined text"
+            },
+            ", ",
+            {
+              "type": "marked",
+              "text": "marked text"
+            },
+            ", and ",
+            {
+              "type": "mathematical_expression",
+              "expression": "x^2 + y^2"
+            },
+            ". ",
+            {
+              "type": "bold",
+              "text": [
+                "Bold ",
+                {
+                  "type": "italic",
+                  "text": [
+                    "italic ",
+                    {
+                      "type": "underline",
+                      "text": "underlined italic bold"
+                    },
+                    " italic"
+                  ]
+                },
+                " bold"
+              ]
+            },
+            " ",
+            {
+              "type": "underline",
+              "text": [
+                "In inline tags, nested ",
+                {
+                  "type": "bold",
+                  "text": "markdown"
+                },
+                " is parsed"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "text": [
+                "Quote with ",
+                {
+                  "type": "bold",
+                  "text": [
+                    "bold text, ",
+                    {
+                      "type": "strikethrough",
+                      "text": [
+                        "strikethrough, and ",
+                        {
+                          "type": "spoiler",
+                          "text": "spoiler"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                ", plus ",
+                {
+                  "type": "url",
+                  "text": "a link",
+                  "url": "https://t.me/"
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": [
+                    "List item with ",
+                    {
+                      "type": "code",
+                      "text": "code"
+                    },
+                    ", ",
+                    {
+                      "type": "superscript",
+                      "text": "superscript"
+                    },
+                    ", ",
+                    {
+                      "type": "subscript",
+                      "text": "subscript"
+                    },
+                    ", and a footnote",
+                    {
+                      "type": "superscript",
+                      "text": [
+                        {
+                          "type": "anchor",
+                          "name": "fnref-note-1"
+                        },
+                        {
+                          "type": "reference_link",
+                          "text": "3",
+                          "reference_name": "fn-note"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": [
+                    "Another item with ",
+                    {
+                      "type": "bold",
+                      "text": "bold "
+                    },
+                    {
+                      "type": "code",
+                      "text": "spoiler code"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "label": "•",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "text": [
+                    "Another item with ",
+                    {
+                      "type": "strikethrough",
+                      "text": [
+                        "strikethrough and ",
+                        {
+                          "type": "underline",
+                          "text": "inserted text"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "cells": [
+            [
+              {
+                "text": "Metric",
+                "is_header": true,
+                "align": "left",
+                "valign": "middle"
+              },
+              {
+                "text": "Value",
+                "is_header": true,
+                "align": "right",
+                "valign": "middle"
+              }
+            ],
+            [
+              {
+                "text": "Speed",
+                "align": "left",
+                "valign": "middle"
+              },
+              {
+                "text": [
+                  {
+                    "type": "bold",
+                    "text": "42"
+                  },
+                  " ",
+                  {
+                    "type": "superscript",
+                    "text": "ms"
+                  }
+                ],
+                "align": "right",
+                "valign": "middle"
+              }
+            ],
+            [
+              {
+                "text": "Status",
+                "align": "left",
+                "valign": "middle"
+              },
+              {
+                "text": {
+                  "type": "spoiler",
+                  "text": "ready"
+                },
+                "align": "right",
+                "valign": "middle"
+              }
+            ]
+          ],
+          "is_bordered": true,
+          "is_striped": true
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "heading",
+          "text": "Details blocks can contain Markdown content:",
+          "size": 1
+        },
+        {
+          "type": "details",
+          "summary": [
+            "Summary with ",
+            {
+              "type": "bold",
+              "text": "bold text"
+            }
+          ],
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Details heading",
+              "size": 3
+            },
+            {
+              "type": "list",
+              "items": [
+                {
+                  "label": "•",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "text": [
+                        "List item with ",
+                        {
+                          "type": "italic",
+                          "text": "italic text"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "label": "•",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "text": [
+                        "List item with ",
+                        {
+                          "type": "spoiler",
+                          "text": "spoiler"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "is_open": true
+        },
+        {
+          "type": "heading",
+          "text": "Collages and slideshows can contain Markdown media blocks:",
+          "size": 1
+        },
+        {
+          "type": "collage",
+          "blocks": [
+            {
+              "type": "photo",
+              "photo": [
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3MAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF4",
+                  "file_size": 1081,
+                  "width": 90,
+                  "height": 51
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA20AAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVFy",
+                  "file_size": 13004,
+                  "width": 320,
+                  "height": 180
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3gAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF9",
+                  "file_size": 55714,
+                  "width": 800,
+                  "height": 450
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3kAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF-",
+                  "file_size": 118930,
+                  "width": 1280,
+                  "height": 720
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3cAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF8",
+                  "file_size": 202060,
+                  "width": 1920,
+                  "height": 1080
+                }
+              ]
+            },
+            {
+              "type": "video",
+              "video": {
+                "duration": 44,
+                "width": 1280,
+                "height": 720,
+                "file_name": "video.mp4",
+                "mime_type": "video/mp4",
+                "thumbnail": {
+                  "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+                  "file_unique_id": "AQADwgoAAo7ybVFy",
+                  "file_size": 8374,
+                  "width": 320,
+                  "height": 180
+                },
+                "thumb": {
+                  "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+                  "file_unique_id": "AQADwgoAAo7ybVFy",
+                  "file_size": 8374,
+                  "width": 320,
+                  "height": 180
+                },
+                "file_id": "BAACAgQAAxUAAWovGcxLufvHWQzcoivwfMie0xcpAALCCgACjvJtURgE8icUTTR7PAQ",
+                "file_unique_id": "AgADwgoAAo7ybVE",
+                "file_size": 7271495
+              }
+            }
+          ]
+        },
+        {
+          "type": "slideshow",
+          "blocks": [
+            {
+              "type": "photo",
+              "photo": [
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3MAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF4",
+                  "file_size": 1081,
+                  "width": 90,
+                  "height": 51
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA20AAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVFy",
+                  "file_size": 13004,
+                  "width": 320,
+                  "height": 180
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3gAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF9",
+                  "file_size": 55714,
+                  "width": 800,
+                  "height": 450
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3kAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF-",
+                  "file_size": 118930,
+                  "width": 1280,
+                  "height": 720
+                },
+                {
+                  "file_id": "AgACAgQAAxUAAWovGcxe2Wvszh5Ze0iUAAFDBwEBJwAC4A1rG4xifVGL2Bl722P3mQEAAwIAA3cAAzwE",
+                  "file_unique_id": "AQAD4A1rG4xifVF8",
+                  "file_size": 202060,
+                  "width": 1920,
+                  "height": 1080
+                }
+              ]
+            },
+            {
+              "type": "video",
+              "video": {
+                "duration": 44,
+                "width": 1280,
+                "height": 720,
+                "file_name": "video.mp4",
+                "mime_type": "video/mp4",
+                "thumbnail": {
+                  "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+                  "file_unique_id": "AQADwgoAAo7ybVFy",
+                  "file_size": 8374,
+                  "width": 320,
+                  "height": 180
+                },
+                "thumb": {
+                  "file_id": "AAMCBAADFQABai8ZzEu5-8dZDNyiK_B8yJ7TFykAAsIKAAKO8m1RGATyJxRNNHsBAAdtAAM8BA",
+                  "file_unique_id": "AQADwgoAAo7ybVFy",
+                  "file_size": 8374,
+                  "width": 320,
+                  "height": 180
+                },
+                "file_id": "BAACAgQAAxUAAWovGcxLufvHWQzcoivwfMie0xcpAALCCgACjvJtURgE8icUTTR7PAQ",
+                "file_unique_id": "AgADwgoAAo7ybVE",
+                "file_size": 7271495
+              }
+            }
+          ]
+        },
+        {
+          "type": "footer",
+          "text": [
+            "1. ",
+            {
+              "type": "reference",
+              "text": "Definition of the first footnote.",
+              "name": "fn-id1"
+            },
+            " ",
+            {
+              "type": "anchor_link",
+              "text": "↩",
+              "anchor_name": "fnref-id1-1"
+            },
+            "\n2. ",
+            {
+              "type": "reference",
+              "text": "Definition of the second footnote.",
+              "name": "fn-id2"
+            },
+            " ",
+            {
+              "type": "anchor_link",
+              "text": "↩",
+              "anchor_name": "fnref-id2-1"
+            },
+            "\n3. ",
+            {
+              "type": "reference",
+              "text": [
+                "Footnote with ",
+                {
+                  "type": "italic",
+                  "text": "italic text"
+                },
+                " and ",
+                {
+                  "type": "underline",
+                  "text": "HTML underline"
+                },
+                "."
+              ],
+              "name": "fn-note"
+            },
+            " ",
+            {
+              "type": "anchor_link",
+              "text": "↩",
+              "anchor_name": "fnref-note-1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -4,18 +4,34 @@
          bootstrap="tests/bootstrap.php"
          backupGlobals="true"
          cacheResult="false"
-         processIsolation="true"
+         processIsolation="false"
          colors="true">
     <testsuites>
         <testsuite name="TelegramBot Test Suite">
             <directory>tests</directory>
+            <exclude>tests/AbstractFixtureConstructionTest.php</exclude>
         </testsuite>
     </testsuites>
     <source>
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">src/Entity</directory>
+            <directory suffix=".php">src/Request</directory>
+            <directory suffix=".php">src/Response</directory>
+            <directory suffix=".php">src/Http/Client</directory>
+            <directory suffix=".php">src/Enum</directory>
+        </exclude>
     </source>
+    <coverage includeUncoveredFiles="true"
+              ignoreDeprecatedCodeUnits="true"
+              disableCodeCoverageIgnore="true">
+        <report>
+            <clover outputFile="coverage.xml"/>
+            <html outputDirectory="coverage-report"/>
+        </report>
+    </coverage>
     <php>
         <env name="ANDREWGOS_TELEGRAM_BOT_TEST_TOKEN" value="YOUR_SECRET_API_KEY"/>
         <env name="ANDREWGOS_TELEGRAM_BOT_TEST_CHAT_ID" value="YOUR_SECRET_CHAT_ID"/>
