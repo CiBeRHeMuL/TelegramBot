@@ -1,6 +1,6 @@
 # Change log of Telegram Bot Library
 
-## [Unreleased]
+## [4.7.0]
 
 ### Added
 
@@ -214,7 +214,8 @@
 ### Changed
 - Small cosmetic fixes
 
-[Unreleased]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.6.1...HEAD
+[Unreleased]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.7.0...HEAD
+[4.7.0]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.6.1...v4.7.0
 [4.6.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.6.1
 [4.6.0]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.6.0
 [4.5.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.5.1
