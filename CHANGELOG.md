@@ -37,171 +37,211 @@
 - Fix PHPStan level 2 errors: `static::` private constant access, misplaced `@var` PHPDoc, HArray generics cleanup, `@return mixed` mismatch, undefined variables in `Utils.php` try/catch blocks
 - Fix `Url` value object to normalize scheme-less URLs (e.g., `t.me/path` → `https://t.me/path`) in `Url::normalize()`
 
-# Version 4.6.1
+## [4.6.1]
 
-### General
-+ Fix http client implementation
+### Fixed
+- Fix http client implementation
 
-## Version 4.6.0
+## [4.6.0]
 
-### General
-+ Add Bot Api 10.0 (May 8, 2026)
+### Added
+- Add Bot Api 10.0 (May 8, 2026)
 
-## Version 4.5.1
+## [4.5.1]
 
-### General
-+ Add \AndrewGos\TelegramBot\Kernel\UpdateSource\ArrayUpdateSource update source
+### Added
+- Add \AndrewGos\TelegramBot\Kernel\UpdateSource\ArrayUpdateSource update source
 
-## Version 4.5.0
+## [4.5.0]
 
-### General
-+ Add Bot Api 9.6 (April 3, 2026) functionality
+### Added
+- Add Bot Api 9.6 (April 3, 2026) functionality
 
-## Version 4.4.1
+## [4.4.1]
 
-### General
-+ Remove deprecations
-+ Make $serializer parameter in Api required
+### Changed
+- Make $serializer parameter in Api required
 
-## Version 4.4
+### Removed
+- Remove deprecations
 
-### General
-+ Add Bot Api 9.5 (March 1, 2026) functionality
+## [4.4]
 
-## Version 4.3
+### Added
+- Add Bot Api 9.5 (March 1, 2026) functionality
 
-### General
-+ Add Bot Api 9.4 (February 9, 2026) functionality
+## [4.3]
 
-## Version 4.2
+### Added
+- Add Bot Api 9.4 (February 9, 2026) functionality
 
-### General
-+ Add functionality that allows you to stop request propagation
+## [4.2]
 
-## Version 4.1
+### Added
+- Add functionality that allows you to stop request propagation
 
-### General
-+ Add Bot Api 9.3 (December 31, 2025) functionality
+## [4.1]
 
-## Version 3.1
+### Added
+- Add Bot Api 9.3 (December 31, 2025) functionality
 
-### General
-+ Connect andrew-gos/serializer package for requests and entities serialization
-+ Drop all toArray methods from entities and requests
-+ Remove AbstractEntity class to improve performance
+## [3.1]
 
-## Version 3.0
+### Added
+- Connect andrew-gos/serializer package for requests and entities serialization
 
-### General
-+ Add Bot Api 9.2 (August 15, 2025) functionality
-+ Fix descriptions of classes and their parameters
-+ Drop AndrewGos\TelegramBot\ValueObject\RequestId class
-+ Rename has_protected_forwards property of ChatFullInfo to has_private_forwards
-+ Sync all models with documentation
-+ Add null as default value for all responses constructors
+### Removed
+- Drop all toArray methods from entities and requests
+- Remove AbstractEntity class to improve performance
 
-## Version 2.2
+## [3.0]
 
-### General
-+ Add Bot Api 9.1 (July 3, 2025) functionality
-+ Fix comments on some entities
+### Added
+- Add Bot Api 9.2 (August 15, 2025) functionality
 
-## Version 2.1.1
+### Changed
+- Rename has_protected_forwards property of ChatFullInfo to has_private_forwards
+- Sync all models with documentation
+- Add null as default value for all responses constructors
 
-### General
-+ Add error throw on non 2xx responses
+### Fixed
+- Fix descriptions of classes and their parameters
 
-## Version 2.1.0.1
+### Removed
+- Drop AndrewGos\TelegramBot\ValueObject\RequestId class
 
-### General
-+ Fix documentation
+## [2.2]
 
-## Version 2.1
+### Added
+- Add Bot Api 9.1 (July 3, 2025) functionality
 
-### General
-+ Add setters for api and update handler for Telegram class
-+ Add setter for api for UpdateHandler class
+### Fixed
+- Fix comments on some entities
 
-## Version 2.0
+## [2.1.1]
 
-### General
-+ Change update processors, fixes
+### Added
+- Add error throw on non 2xx responses
 
-## Version 1.4.11
+## [2.1.0.1]
 
-### General
-+ Fix purchased_paid_media update
+### Fixed
+- Fix documentation
 
-## Version 1.4.10
+## [2.1]
 
-### General
-+ Add Bot Api 9.0 (April 11, 2025) functionality
+### Added
+- Add setters for api and update handler for Telegram class
+- Add setter for api for UpdateHandler class
 
-## Version 1.4.9
+## [2.0]
 
-### General
-+ Add Bot Api 8.3 (February 12, 2025) functionality
+### Changed
+- Change update processors, fixes
 
-## Version 1.4.8
+## [1.4.11]
 
-### General
-+ Add Bot Api 8.2 (January 1, 2025) functionality
+### Fixed
+- Fix purchased_paid_media update
 
-## Version 1.4.7
+## [1.4.10]
 
-### General
-+ Add Bot Api 8.1 (December 4, 2024) functionality
+### Added
+- Add Bot Api 9.0 (April 11, 2025) functionality
 
-## Version 1.4.6
+## [1.4.9]
 
-### General
-+ Add Bot Api 8.0 (November 17, 2024) functionality
+### Added
+- Add Bot Api 8.3 (February 12, 2025) functionality
 
-## Version 1.4.5
+## [1.4.8]
 
-### General
-+ Add Bot Api 7.11 (October 31, 2024) functionality
+### Added
+- Add Bot Api 8.2 (January 1, 2025) functionality
 
-## Version 1.4.4
+## [1.4.7]
 
-### General
-+ Add Bot Api 7.10 (September 6, 2024) functionality
+### Added
+- Add Bot Api 8.1 (December 4, 2024) functionality
 
-### Other
-+ Allow IpV4 to be used with mask (like 127.0.0.1/32)
+## [1.4.6]
 
-## Version 1.4.3
+### Added
+- Add Bot Api 8.0 (November 17, 2024) functionality
 
-### General
-+ Add Bot Api 7.9 (August 14, 2024) functionality
+## [1.4.5]
 
-## Version 1.4.2
+### Added
+- Add Bot Api 7.11 (October 31, 2024) functionality
 
-### General
-+ Add Bot Api 7.8 (July 31, 2024) functionality
+## [1.4.4]
 
-## Version 1.4.1
+### Added
+- Add Bot Api 7.10 (September 6, 2024) functionality
+- Allow IpV4 to be used with mask (like 127.0.0.1/32)
 
-### General
-+ Small cosmetic fixes
+## [1.4.3]
 
-## Version 1.4
+### Added
+- Add Bot Api 7.9 (August 14, 2024) functionality
 
-### General
-+ Add Bot Api 7.7 (July 7, 2024) functionality
+## [1.4.2]
 
-## Version 1.3
+### Added
+- Add Bot Api 7.8 (July 31, 2024) functionality
 
-### General
-+ Move ClassBuilder to external package
+## [1.4.1]
 
-### Other
-+ Some cleaning and small fixes
+### Changed
+- Small cosmetic fixes
 
-## Version 1.2
+## [1.4]
 
-### General
-+ Add Bot Api 7.6 (July 1, 2024) functionality
+### Added
+- Add Bot Api 7.7 (July 7, 2024) functionality
 
-### Other
-+ Small cosmetic fixes
+## [1.3]
+
+### Changed
+- Move ClassBuilder to external package
+- Some cleaning and small fixes
+
+## [1.2]
+
+### Added
+- Add Bot Api 7.6 (July 1, 2024) functionality
+
+### Changed
+- Small cosmetic fixes
+
+[Unreleased]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.6.1...HEAD
+[4.6.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.6.1
+[4.6.0]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.6.0
+[4.5.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.5.1
+[4.5.0]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.5.0
+[4.4.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.4.1
+[4.4]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.4
+[4.3]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.3
+[4.2]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.2
+[4.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v4.1
+[3.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v3.1
+[3.0]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v3.0
+[2.2]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v2.2
+[2.1.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v2.1.1
+[2.1.0.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v2.1.0.1
+[2.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v2.1
+[2.0]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v2.0
+[1.4.11]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.11
+[1.4.10]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.10
+[1.4.9]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.9
+[1.4.8]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.8
+[1.4.7]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.7
+[1.4.6]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.6
+[1.4.5]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.5
+[1.4.4]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.4
+[1.4.3]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.3
+[1.4.2]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.2
+[1.4.1]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4.1
+[1.4]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.4
+[1.3]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.3
+[1.2]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/v1.2
