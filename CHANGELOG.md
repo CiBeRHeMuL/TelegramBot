@@ -25,6 +25,7 @@
 
 - Fix strict_types regression in `MessageCommandChecker`: `strpos()` returning `false` passed to `substr($length)`
 - Fix PHPStan level 2 errors: `static::` private constant access, misplaced `@var` PHPDoc, HArray generics cleanup, `@return mixed` mismatch, undefined variables in `Utils.php` try/catch blocks
+- Fix `Url` value object to normalize scheme-less URLs (e.g., `t.me/path` → `https://t.me/path`) in `Url::normalize()`
 
 # Version 4.6.1
 

@@ -13,10 +13,10 @@ use PHPUnit\Framework\TestCase;
 class UrlTest extends TestCase
 {
     #[DataProviderExternal(UrlProvider::class, 'validUrlProvider')]
-    public function testValidUrl(string $url): void
+    public function testValidUrl(string $input, string $expected): void
     {
-        $urlVo = new Url($url);
-        $this->assertSame($url, $urlVo->getUrl());
+        $urlVo = new Url($input);
+        $this->assertSame($expected, $urlVo->getUrl());
     }
 
     #[DataProviderExternal(UrlProvider::class, 'invalidUrlProvider')]
