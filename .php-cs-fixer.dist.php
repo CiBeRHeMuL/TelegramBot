@@ -77,7 +77,7 @@ return (new PhpCsFixer\Config())
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
         'native_function_casing' => true,
         'native_type_declaration_casing' => true,
-        'new_expression_parentheses' => true,
+        'new_expression_parentheses' => false,
         'no_alias_language_construct_call' => true,
         'no_alternative_syntax' => true,
         'no_binary_string' => true,
