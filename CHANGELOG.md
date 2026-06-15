@@ -1,5 +1,13 @@
 # Change log of Telegram Bot Library
 
+## [Unreleased]
+
+## [4.7.1] - 2026-06-15
+
+### Fixed
+
+- Disable `new_expression_parentheses` PHP-CS-Fixer rule entirely to prevent false positives across all PHP versions
+
 ## [4.7.0]
 
 ### Added
