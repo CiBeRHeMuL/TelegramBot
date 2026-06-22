@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Add null guard in `MessageCommandChecker::check()` to prevent `TypeError` when `Message::getText()` returns `null`
+
 ## [4.7.2] - 2026-06-22
 
 ### Changed

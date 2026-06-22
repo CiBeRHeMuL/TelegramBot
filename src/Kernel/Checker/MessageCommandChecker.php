@@ -14,11 +14,11 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  *
  * @sees USES_API(9): UpdateTypeEnum, Update entity, CheckerInterface
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Added null guard for Message::getText() null return
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: MessageCommandChecker, bot command, message check
-// STRUCTURE: ▶ check() → ◇ $update->getType() === Message → ◇ text === /command → ⊕ bool
+// STRUCTURE: ▶ check() → ◇ $update->getType() === Message → ◇ text === null → false → ◇ text === /command → ⊕ bool
 
 // region CLASS_MessageCommandChecker [DOMAIN(8): Telegram; CONCEPT(7): Checker; TECH(9): PHP]
 /**
@@ -37,6 +37,10 @@ readonly class MessageCommandChecker implements CheckerInterface
         }
 
         $text = $update->getMessage()->getText();
+        if ($text === null) {
+            return false;
+        }
+
         $spacePos = strpos($text, ' ');
 
         if ($spacePos !== false && substr($text, 0, $spacePos) === "/$this->expectedCommand") {

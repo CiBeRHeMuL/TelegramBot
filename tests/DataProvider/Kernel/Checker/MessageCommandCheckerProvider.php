@@ -46,6 +46,11 @@ class MessageCommandCheckerProvider
                 'start',
                 false,
             ],
+            'null_text' => [
+                $factory->createMessageUpdate(null),
+                'start',
+                false,
+            ],
         ];
     }
 }
