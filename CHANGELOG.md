@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Change `Api::send()` visibility from `private` to `protected` to allow method overriding in subclasses
+
 ## [4.7.1] - 2026-06-15
 
 ### Fixed

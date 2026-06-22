@@ -3207,7 +3207,7 @@ class Api implements ApiInterface
      *
      * @throws ErrorResponseException When throwOnErrorResponse is true and API response is not ok
      */
-    private function send(string $method, ?RequestInterface $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): RawResponse
+    protected function send(string $method, ?RequestInterface $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): RawResponse
     {
         $code = 200;
         $prevException = null;
