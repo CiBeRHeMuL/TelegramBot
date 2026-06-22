@@ -32,7 +32,7 @@ class EntityFactory
             date: time(),
             chat: self::createChat1(),
             from: self::createUser1(),
-            text: $text ?? 'Hello, world!',
+            text: $text,
         );
     }
 
