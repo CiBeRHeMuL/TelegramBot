@@ -15,11 +15,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replyparameters
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - message_id now optional, added ephemeral_message_id
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ReplyParameters, Telegram, Bot API, DTO, replyparameters
-// STRUCTURE: ▶ ┌message_id┐ → ◇ chat_id,allow_sending_without_reply,quote → ∑ params
+// STRUCTURE: ▶ ┌message_id,ephemeral_message_id┐ → ◇ chat_id,allow_sending_without_reply,quote → ∑ params
 // region CLASS_ReplyParameters
 
 /**
@@ -30,7 +30,7 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 final class ReplyParameters implements EntityInterface
 {
     /**
-     * @param int                        $message_id                  Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it
+     * @param int|null                   $message_id                  Optional. Identifier of the message that will be replied to in the current chat, or in the chat chat_id if it
      *                                                                is specified
      * @param ChatId|null                $chat_id                     Optional. If the message to be replied to is from a different chat, unique identifier for the
      *                                                                chat or username of the bot, supergroup or channel in the format \@username. Not supported for messages sent on behalf of
@@ -48,12 +48,13 @@ final class ReplyParameters implements EntityInterface
      * @param int|null                   $quote_position              Optional. Position of the quote in the original message in UTF-16 code units
      * @param int|null                   $checklist_task_id           Optional. Identifier of the specific checklist task to be replied to
      * @param string|null                $poll_option_id              Optional. Persistent identifier of the specific poll option to be replied to
+     * @param int|null                   $ephemeral_message_id        Optional. Identifier of the ephemeral message to reply to
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
     public function __construct(
-        protected int $message_id,
+        protected ?int $message_id = null,
         protected ?ChatId $chat_id = null,
         protected ?bool $allow_sending_without_reply = null,
         protected ?string $quote = null,
@@ -63,22 +64,23 @@ final class ReplyParameters implements EntityInterface
         protected ?int $quote_position = null,
         protected ?int $checklist_task_id = null,
         protected ?string $poll_option_id = null,
+        protected ?int $ephemeral_message_id = null,
     ) {}
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getMessageId(): int
+    public function getMessageId(): ?int
     {
         return $this->message_id;
     }
 
     /**
-     * @param int $message_id
+     * @param int|null $message_id
      *
      * @return ReplyParameters
      */
-    public function setMessageId(int $message_id): ReplyParameters
+    public function setMessageId(?int $message_id): ReplyParameters
     {
         $this->message_id = $message_id;
 
@@ -241,6 +243,26 @@ final class ReplyParameters implements EntityInterface
     public function setPollOptionId(?string $poll_option_id): ReplyParameters
     {
         $this->poll_option_id = $poll_option_id;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEphemeralMessageId(): ?int
+    {
+        return $this->ephemeral_message_id;
+    }
+
+    /**
+     * @param int|null $ephemeral_message_id
+     *
+     * @return ReplyParameters
+     */
+    public function setEphemeralMessageId(?int $ephemeral_message_id): ReplyParameters
+    {
+        $this->ephemeral_message_id = $ephemeral_message_id;
 
         return $this;
     }

@@ -11,7 +11,7 @@ namespace AndrewGos\TelegramBot\Enum;
  *
  * @sees USES_API(6): Telegram Bot API
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added Subscription case
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: UpdateType, update, type, Telegram, enum
@@ -44,5 +44,6 @@ enum UpdateTypeEnum: string
     case PurchasedPaidMedia = 'purchased_paid_media';
     case ManagedBot = 'managed_bot';
     case GuestMessage = 'guest_message';
+    case Subscription = 'subscription';
 }
 // endregion ENUM_UpdateTypeEnum

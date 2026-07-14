@@ -30,5 +30,7 @@ enum InputMediaTypeEnum: string
     case Venue = 'venue';
     /** @purpose Link */
     case Link = 'link';
+    /** @purpose Voice note */
+    case VoiceNote = 'voice_note';
 }
 // endregion ENUM_InputMediaTypeEnum

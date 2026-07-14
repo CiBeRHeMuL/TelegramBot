@@ -13,7 +13,7 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#update
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added subscription
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Update, Telegram, Bot API, DTO, update
@@ -79,6 +79,7 @@ final class Update implements EntityInterface
      *                                                                    a managed bot was changed
      * @param Message|null                     $guest_message             Optional. New guest message. The bot can use the field Message.guest_query_id and the method
      *                                                                    answerGuestQuery to send a message in response.
+     * @param BotSubscriptionUpdated|null      $subscription              Optional. New subscription update
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
@@ -130,6 +131,7 @@ final class Update implements EntityInterface
         protected ?PaidMediaPurchased $purchased_paid_media = null,
         protected ?ManagedBotUpdated $managed_bot = null,
         protected ?Message $guest_message = null,
+        protected ?BotSubscriptionUpdated $subscription = null,
     ) {}
 
     /**
@@ -652,6 +654,26 @@ final class Update implements EntityInterface
         return $this;
     }
 
+    /**
+     * @return BotSubscriptionUpdated|null
+     */
+    public function getSubscription(): ?BotSubscriptionUpdated
+    {
+        return $this->subscription;
+    }
+
+    /**
+     * @param BotSubscriptionUpdated|null $subscription
+     *
+     * @return Update
+     */
+    public function setSubscription(?BotSubscriptionUpdated $subscription): Update
+    {
+        $this->subscription = $subscription;
+
+        return $this;
+    }
+
     public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
@@ -680,6 +702,7 @@ final class Update implements EntityInterface
             $this->getPurchasedPaidmedia() !== null => UpdateTypeEnum::PurchasedPaidMedia,
             $this->getManagedBot() !== null => UpdateTypeEnum::ManagedBot,
             $this->getGuestMessage() !== null => UpdateTypeEnum::GuestMessage,
+            $this->getSubscription() !== null => UpdateTypeEnum::Subscription,
             default => null,
         };
     }

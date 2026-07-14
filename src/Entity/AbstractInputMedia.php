@@ -17,7 +17,7 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
  * @changes LAST_CHANGE: Initial creation with semantic documentation markup
  *
  * @modulemap
- * CLASS 5[Input media types] => InputMediaVenue, InputMediaSticker, InputMediaLivePhoto, InputMediaLocation, InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo
+ * CLASS 5[Input media types] => InputMediaVenue, InputMediaSticker, InputMediaLivePhoto, InputMediaLocation, InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo, InputMediaVoiceNote
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: AbstractInputMedia, Telegram Bot API, abstract, input, media, DTO
@@ -39,6 +39,7 @@ use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
     InputMediaAudio::class,
     InputMediaPhoto::class,
     InputMediaVideo::class,
+    InputMediaVoiceNote::class,
 ])]
 abstract class AbstractInputMedia implements EntityInterface
 {

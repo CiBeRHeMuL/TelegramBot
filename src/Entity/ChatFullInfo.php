@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_full_info
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added community
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ChatFullInfo, Telegram, Bot API, DTO, chat_full_info
@@ -110,6 +110,7 @@ final class ChatFullInfo implements EntityInterface
      * @param Audio|null                  $first_profile_audio                     Optional. For private chats, the first audio added to the profile of the user
      * @param User|null                   $guard_bot                               Optional. The bot that processes join request queries
      *                                                                             in the chat. The field is only available to chat administrators.
+     * @param Community|null              $community                               Optional. Information about the community of the chat
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -186,6 +187,7 @@ final class ChatFullInfo implements EntityInterface
         protected ?int $paid_message_star_count = null,
         protected ?Audio $first_profile_audio = null,
         protected ?User $guard_bot = null,
+        protected ?Community $community = null,
     ) {}
 
     /**
@@ -1224,6 +1226,26 @@ final class ChatFullInfo implements EntityInterface
     public function setGuardBot(?User $guard_bot): ChatFullInfo
     {
         $this->guard_bot = $guard_bot;
+
+        return $this;
+    }
+
+    /**
+     * @return Community|null
+     */
+    public function getCommunity(): ?Community
+    {
+        return $this->community;
+    }
+
+    /**
+     * @param Community|null $community
+     *
+     * @return ChatFullInfo
+     */
+    public function setCommunity(?Community $community): ChatFullInfo
+    {
+        $this->community = $community;
 
         return $this;
     }

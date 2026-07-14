@@ -21,11 +21,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#sendvenue
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Venue
-// STRUCTURE: ▶ ┌address + chat_id + latitude + longitude + title┐ → ◇ construct → ⊕ → ∑ ⟦SendVenueRequest⟧
+// STRUCTURE: ▶ ┌address + chat_id + latitude + longitude + title + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendVenueRequest⟧
 
 // region CLASS_SendVenueRequest
 /**
@@ -64,6 +64,8 @@ class SendVenueRequest implements RequestInterface
      * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
      *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      *                                                                                                                post is automatically declined.
+     * @param int|null                                                                     $receiver_user_id          Optional. Identifier of the user that will receive the ephemeral message
+     * @param string|null                                                                  $callback_query_id         Optional. Identifier of a callback query, for callback query handling
      *
      * @see https://developers.google.com/places/web-service/supported_types supported types
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -97,6 +99,8 @@ class SendVenueRequest implements RequestInterface
         private ?bool $allow_paid_broadcast = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
+        private ?int $receiver_user_id = null,
+        private ?string $callback_query_id = null,
     ) {}
 
     public function getAddress(): string
@@ -323,6 +327,30 @@ class SendVenueRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendVenueRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
+        return $this;
+    }
+
+    public function getReceiverUserId(): ?int
+    {
+        return $this->receiver_user_id;
+    }
+
+    public function setReceiverUserId(?int $receiver_user_id): SendVenueRequest
+    {
+        $this->receiver_user_id = $receiver_user_id;
+
+        return $this;
+    }
+
+    public function getCallbackQueryId(): ?string
+    {
+        return $this->callback_query_id;
+    }
+
+    public function setCallbackQueryId(?string $callback_query_id): SendVenueRequest
+    {
+        $this->callback_query_id = $callback_query_id;
 
         return $this;
     }

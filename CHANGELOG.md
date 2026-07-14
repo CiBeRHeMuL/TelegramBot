@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+### Added
+
+- Update to Bot API 10.2: Rich Messages v2, Ephemeral Messages, Communities, BotSubscriptionUpdated
+- Add 23 InputRichBlock* entity classes (Paragraph, SectionHeading, Preformatted, Footer, Divider, MathematicalExpression, Anchor, List, BlockQuotation, PullQuotation, Collage, Slideshow, Table, Details, Map, Animation, Audio, Photo, Video, VoiceNote, Thinking) + AbstractInputRichBlock base
+- Add InputRichBlockListItem, InputRichMessageMedia, InputRichMessageContent entities
+- Add InputMediaVoiceNote entity (extending AbstractInputMedia)
+- Add Community, CommunityChatAdded, CommunityChatRemoved, BotSubscriptionUpdated entities
+- Add receiver_user, ephemeral_message_id, community_chat_added, community_chat_removed fields to Message entity
+- Add subscription field to Update entity + Subscription case to UpdateTypeEnum
+- Add community field to ChatFullInfo entity
+- Add is_ephemeral field to BotCommand entity
+- Add ephemeral_message_id to ReplyParameters; message_id made optional (int → ?int)
+- Add media and blocks fields to InputRichMessage entity
+- Add 5 ephemeral message API methods (editEphemeralMessageText/Media/Caption/ReplyMarkup, deleteEphemeralMessage) with Request/Response DTOs
+- Add receiver_user_id and callback_query_id to all 12 Send* Request classes
+
+### Changed
+
+- Bump TELEGRAM_BOT_API_VERSION from '10.1' to '10.2'
+
 ## [4.7.3] - 2026-06-22
 
 ### Fixed

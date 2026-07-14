@@ -23,11 +23,11 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @see https://core.telegram.org/bots/api#sendvideonote
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Video, Note
-// STRUCTURE: ▶ ┌chat_id + video_note + business_connection_id + disable_notification + duration┐ → ◇ construct → ⊕ → ∑ ⟦SendVideoNoteRequest⟧
+// STRUCTURE: ▶ ┌chat_id + video_note + business_connection_id + disable_notification + duration + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendVideoNoteRequest⟧
 
 // region CLASS_SendVideoNoteRequest
 /**
@@ -67,6 +67,8 @@ class SendVideoNoteRequest implements RequestInterface
      * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
      *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      *                                                                                                                post is automatically declined.
+     * @param int|null                                                                     $receiver_user_id          Optional. Identifier of the user that will receive the ephemeral message
+     * @param string|null                                                                  $callback_query_id         Optional. Identifier of a callback query, for callback query handling
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
@@ -97,6 +99,8 @@ class SendVideoNoteRequest implements RequestInterface
         private ?bool $allow_paid_broadcast = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
+        private ?int $receiver_user_id = null,
+        private ?string $callback_query_id = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -275,6 +279,30 @@ class SendVideoNoteRequest implements RequestInterface
     public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendVideoNoteRequest
     {
         $this->suggested_post_parameters = $suggested_post_parameters;
+
+        return $this;
+    }
+
+    public function getReceiverUserId(): ?int
+    {
+        return $this->receiver_user_id;
+    }
+
+    public function setReceiverUserId(?int $receiver_user_id): SendVideoNoteRequest
+    {
+        $this->receiver_user_id = $receiver_user_id;
+
+        return $this;
+    }
+
+    public function getCallbackQueryId(): ?string
+    {
+        return $this->callback_query_id;
+    }
+
+    public function setCallbackQueryId(?string $callback_query_id): SendVideoNoteRequest
+    {
+        $this->callback_query_id = $callback_query_id;
 
         return $this;
     }

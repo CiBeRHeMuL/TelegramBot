@@ -270,5 +270,20 @@ class ResponseFixtures
         yield 'UploadStickerFileResponse' => [Response\UploadStickerFileResponse::class, [
             'rawResponse' => new RawResponse(true, result: true),
         ]];
+        yield 'EditEphemeralMessageTextResponse' => [Response\EditEphemeralMessageTextResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageMediaResponse' => [Response\EditEphemeralMessageMediaResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageCaptionResponse' => [Response\EditEphemeralMessageCaptionResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageReplyMarkupResponse' => [Response\EditEphemeralMessageReplyMarkupResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'DeleteEphemeralMessageResponse' => [Response\DeleteEphemeralMessageResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
     }
 }

@@ -93,6 +93,15 @@ class EntityFixtures
             'command' => 'test_command',
             'description' => 'test_description',
         ]];
+        yield 'BotSubscriptionUpdated' => [Entity\BotSubscriptionUpdated::class, [
+            'user' => new Entity\User(
+                id: 123_456_789,
+                is_bot: true,
+                first_name: 'test_first_name',
+            ),
+            'invoice_payload' => 'test_invoice_payload',
+            'state' => \AndrewGos\TelegramBot\Enum\BotSubscriptionStateEnum::Active,
+        ]];
         yield 'BotCommandScopeChat' => [Entity\BotCommandScopeChat::class, [
             'chat_id' => new ChatId(123_456_789),
         ]];
@@ -257,6 +266,20 @@ class EntityFixtures
                 premium_subscription: true,
                 gifts_from_channels: true,
             ),
+        ]];
+        yield 'Community' => [Entity\Community::class, [
+            'id' => 123_456_789,
+            'name' => 'test_name',
+        ]];
+        yield 'CommunityChatAdded' => [Entity\CommunityChatAdded::class, [
+            'community' => new Entity\Community(
+                id: 123_456_789,
+                name: 'test_name',
+            ),
+        ]];
+        yield 'CommunityChatRemoved' => [Entity\CommunityChatRemoved::class, [
+            'name' => 'test_name',
+            'icon_color' => 123_456_789,
         ]];
         yield 'ChatInviteLink' => [Entity\ChatInviteLink::class, [
             'invite_link' => new Url('https://example.com'),
@@ -1789,6 +1812,98 @@ class EntityFixtures
             'url' => new Url('https://example.com'),
             'has_custom_certificate' => true,
             'pending_update_count' => 123_456_789,
+        ]];
+        yield 'InputMediaVoiceNote' => [Entity\InputMediaVoiceNote::class, [
+            'media' => 'test_media',
+        ]];
+        yield 'InputRichBlockAnchor' => [Entity\InputRichBlockAnchor::class, [
+            'name' => 'test_name',
+        ]];
+        yield 'InputRichBlockAnimation' => [Entity\InputRichBlockAnimation::class, [
+            'animation' => new Entity\InputMediaAnimation(
+                media: 'test_media',
+            ),
+        ]];
+        yield 'InputRichBlockAudio' => [Entity\InputRichBlockAudio::class, [
+            'audio' => new Entity\InputMediaAudio(
+                media: 'test_media',
+            ),
+        ]];
+        yield 'InputRichBlockBlockQuotation' => [Entity\InputRichBlockBlockQuotation::class, [
+            'blocks' => [],
+        ]];
+        yield 'InputRichBlockCollage' => [Entity\InputRichBlockCollage::class, [
+            'blocks' => [],
+        ]];
+        yield 'InputRichBlockDetails' => [Entity\InputRichBlockDetails::class, [
+            'summary' => 'test_summary',
+            'blocks' => [],
+        ]];
+        yield 'InputRichBlockDivider' => [Entity\InputRichBlockDivider::class, [
+        ]];
+        yield 'InputRichBlockFooter' => [Entity\InputRichBlockFooter::class, [
+            'text' => 'test_text',
+        ]];
+        yield 'InputRichBlockList' => [Entity\InputRichBlockList::class, [
+            'items' => [],
+        ]];
+        yield 'InputRichBlockListItem' => [Entity\InputRichBlockListItem::class, [
+            'blocks' => [],
+        ]];
+        yield 'InputRichBlockMap' => [Entity\InputRichBlockMap::class, [
+            'location' => new Entity\Location(
+                latitude: 1.5,
+                longitude: 1.5,
+            ),
+            'zoom' => 123_456_789,
+            'width' => 123_456_789,
+            'height' => 123_456_789,
+        ]];
+        yield 'InputRichBlockMathematicalExpression' => [Entity\InputRichBlockMathematicalExpression::class, [
+            'expression' => 'test_expression',
+        ]];
+        yield 'InputRichBlockParagraph' => [Entity\InputRichBlockParagraph::class, [
+            'text' => 'test_text',
+        ]];
+        yield 'InputRichBlockPhoto' => [Entity\InputRichBlockPhoto::class, [
+            'photo' => new Entity\InputMediaPhoto(
+                media: 'test_media',
+            ),
+        ]];
+        yield 'InputRichBlockPreformatted' => [Entity\InputRichBlockPreformatted::class, [
+            'text' => 'test_text',
+        ]];
+        yield 'InputRichBlockPullQuotation' => [Entity\InputRichBlockPullQuotation::class, [
+            'text' => 'test_text',
+        ]];
+        yield 'InputRichBlockSectionHeading' => [Entity\InputRichBlockSectionHeading::class, [
+            'text' => 'test_text',
+            'size' => 123_456_789,
+        ]];
+        yield 'InputRichBlockSlideshow' => [Entity\InputRichBlockSlideshow::class, [
+            'blocks' => [],
+        ]];
+        yield 'InputRichBlockTable' => [Entity\InputRichBlockTable::class, [
+            'cells' => [],
+        ]];
+        yield 'InputRichBlockThinking' => [Entity\InputRichBlockThinking::class, [
+            'text' => 'test_text',
+        ]];
+        yield 'InputRichBlockVideo' => [Entity\InputRichBlockVideo::class, [
+            'video' => new Entity\InputMediaVideo(
+                media: 'test_media',
+            ),
+        ]];
+        yield 'InputRichBlockVoiceNote' => [Entity\InputRichBlockVoiceNote::class, [
+            'voice_note' => new Entity\InputMediaVoiceNote(
+                media: 'test_media',
+            ),
+        ]];
+        yield 'InputRichMessageMedia' => [Entity\InputRichMessageMedia::class, [
+            'id' => 'test_id',
+            'media' => new Entity\InputMediaPhoto(
+                media: 'test_media',
+            ),
         ]];
     }
 }

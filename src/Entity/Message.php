@@ -16,11 +16,11 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#message
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user, ephemeral_message_id, community_chat_added, community_chat_removed
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Message, Telegram, Bot API, DTO, message
-// STRUCTURE: ▶ ┌message_id,date,chat,message_thread_id,from┐ → ∑ Message
+// STRUCTURE: ▶ ┌message_id,date,chat,message_thread_id,from,receiver_user,ephemeral_message_id,community_chat_added,community_chat_removed┐ → ∑ Message
 // region CLASS_Message
 
 /**
@@ -209,6 +209,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param LivePhoto|null                        $live_photo                        Optional. Message is a live photo, information about the live photo. For backward compatibility,
      *                                                                                 when this field is set, the photo field will also be set
      * @param RichMessage|null                      $rich_message                      Optional. Rich formatted message
+     * @param User|null                             $receiver_user                     Optional. The user that receives the message
+     * @param int|null                              $ephemeral_message_id              Optional. Unique identifier of the ephemeral message
+     * @param CommunityChatAdded|null               $community_chat_added              Optional. Service message: a chat was added to a community
+     * @param CommunityChatRemoved|null             $community_chat_removed            Optional. Service message: a chat was removed from a community
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -411,6 +415,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?Chat $guest_bot_caller_chat = null,
         protected ?LivePhoto $live_photo = null,
         protected ?RichMessage $rich_message = null,
+        protected ?User $receiver_user = null,
+        protected ?int $ephemeral_message_id = null,
+        protected ?CommunityChatAdded $community_chat_added = null,
+        protected ?CommunityChatRemoved $community_chat_removed = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2711,6 +2719,86 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setRichMessage(?RichMessage $rich_message): Message
     {
         $this->rich_message = $rich_message;
+
+        return $this;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getReceiverUser(): ?User
+    {
+        return $this->receiver_user;
+    }
+
+    /**
+     * @param User|null $receiver_user
+     *
+     * @return Message
+     */
+    public function setReceiverUser(?User $receiver_user): Message
+    {
+        $this->receiver_user = $receiver_user;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEphemeralMessageId(): ?int
+    {
+        return $this->ephemeral_message_id;
+    }
+
+    /**
+     * @param int|null $ephemeral_message_id
+     *
+     * @return Message
+     */
+    public function setEphemeralMessageId(?int $ephemeral_message_id): Message
+    {
+        $this->ephemeral_message_id = $ephemeral_message_id;
+
+        return $this;
+    }
+
+    /**
+     * @return CommunityChatAdded|null
+     */
+    public function getCommunityChatAdded(): ?CommunityChatAdded
+    {
+        return $this->community_chat_added;
+    }
+
+    /**
+     * @param CommunityChatAdded|null $community_chat_added
+     *
+     * @return Message
+     */
+    public function setCommunityChatAdded(?CommunityChatAdded $community_chat_added): Message
+    {
+        $this->community_chat_added = $community_chat_added;
+
+        return $this;
+    }
+
+    /**
+     * @return CommunityChatRemoved|null
+     */
+    public function getCommunityChatRemoved(): ?CommunityChatRemoved
+    {
+        return $this->community_chat_removed;
+    }
+
+    /**
+     * @param CommunityChatRemoved|null $community_chat_removed
+     *
+     * @return Message
+     */
+    public function setCommunityChatRemoved(?CommunityChatRemoved $community_chat_removed): Message
+    {
+        $this->community_chat_removed = $community_chat_removed;
 
         return $this;
     }

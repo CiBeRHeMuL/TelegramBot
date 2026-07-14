@@ -41,7 +41,7 @@ use Throwable;
  * - ErrorResponseException thrown when throwOnErrorResponse is true and response is not ok
  *
  * @changes
- * LAST_CHANGE: Initial creation with semantic documentation markup
+ * LAST_CHANGE: Updated for Bot API 10.2 - added 5 ephemeral message methods, bumped version to 10.2
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Api, Telegram API implementation, HTTP client, send, getUpdates, setWebhook, file download, ClassBuilder
@@ -52,7 +52,7 @@ use Throwable;
 // region CLASS_Api [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '10.1';
+    private const TELEGRAM_BOT_API_VERSION = '10.2';
 
     public function __construct(
         private readonly BotToken $token,
@@ -3388,5 +3388,130 @@ class Api implements ApiInterface
         return $this->send(__FUNCTION__, $request);
     }
     // endregion METHOD_sendChatJoinRequestWebApp
+
+    // region METHOD_editEphemeralMessageText [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Edit ephemeral message text.
+     *
+     * @using send()
+     *
+     * @param Req\EditEphemeralMessageTextRequest $request
+     *
+     * @return Res\EditEphemeralMessageTextResponse
+     *
+     * @see https://core.telegram.org/bots/api#editispersistentmenubutton
+     */
+    public function editEphemeralMessageText(Req\EditEphemeralMessageTextRequest $request): Res\EditEphemeralMessageTextResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = null;
+        if ($rawResponse->getResult() === true) {
+            $message = true;
+        } else {
+            $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        }
+
+        return new Res\EditEphemeralMessageTextResponse($rawResponse, $message);
+    }
+    // endregion METHOD_editEphemeralMessageText
+
+    // region METHOD_editEphemeralMessageMedia [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Edit ephemeral message media.
+     *
+     * @using send()
+     *
+     * @param Req\EditEphemeralMessageMediaRequest $request
+     *
+     * @return Res\EditEphemeralMessageMediaResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagemedia
+     */
+    public function editEphemeralMessageMedia(Req\EditEphemeralMessageMediaRequest $request): Res\EditEphemeralMessageMediaResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = null;
+        if ($rawResponse->getResult() === true) {
+            $message = true;
+        } else {
+            $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        }
+
+        return new Res\EditEphemeralMessageMediaResponse($rawResponse, $message);
+    }
+    // endregion METHOD_editEphemeralMessageMedia
+
+    // region METHOD_editEphemeralMessageCaption [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Edit ephemeral message caption.
+     *
+     * @using send()
+     *
+     * @param Req\EditEphemeralMessageCaptionRequest $request
+     *
+     * @return Res\EditEphemeralMessageCaptionResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagecaption
+     */
+    public function editEphemeralMessageCaption(Req\EditEphemeralMessageCaptionRequest $request): Res\EditEphemeralMessageCaptionResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = null;
+        if ($rawResponse->getResult() === true) {
+            $message = true;
+        } else {
+            $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        }
+
+        return new Res\EditEphemeralMessageCaptionResponse($rawResponse, $message);
+    }
+    // endregion METHOD_editEphemeralMessageCaption
+
+    // region METHOD_editEphemeralMessageReplyMarkup [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Edit ephemeral message reply markup.
+     *
+     * @using send()
+     *
+     * @param Req\EditEphemeralMessageReplyMarkupRequest $request
+     *
+     * @return Res\EditEphemeralMessageReplyMarkupResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagereplymarkup
+     */
+    public function editEphemeralMessageReplyMarkup(Req\EditEphemeralMessageReplyMarkupRequest $request): Res\EditEphemeralMessageReplyMarkupResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = null;
+        if ($rawResponse->getResult() === true) {
+            $message = true;
+        } else {
+            $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+        }
+
+        return new Res\EditEphemeralMessageReplyMarkupResponse($rawResponse, $message);
+    }
+    // endregion METHOD_editEphemeralMessageReplyMarkup
+
+    // region METHOD_deleteEphemeralMessage [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    /**
+     * @purpose Delete an ephemeral message.
+     *
+     * @using send()
+     *
+     * @param Req\DeleteEphemeralMessageRequest $request
+     *
+     * @return Res\DeleteEphemeralMessageResponse
+     *
+     * @see https://core.telegram.org/bots/api#deleteephemeralmessage
+     */
+    public function deleteEphemeralMessage(Req\DeleteEphemeralMessageRequest $request): Res\DeleteEphemeralMessageResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $result = $rawResponse->getResult() === true;
+
+        return new Res\DeleteEphemeralMessageResponse($rawResponse, $result);
+    }
+    // endregion METHOD_deleteEphemeralMessage
 }
 // endregion CLASS_Api

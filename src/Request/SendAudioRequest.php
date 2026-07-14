@@ -24,11 +24,11 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @see https://core.telegram.org/bots/api#sendaudio
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Audio
-// STRUCTURE: ▶ ┌chat_id + audio + business_connection_id + message_thread_id + caption┐ → ◇ construct → ⊕ → ∑ ⟦SendAudioRequest⟧
+// STRUCTURE: ▶ ┌chat_id + audio + business_connection_id + message_thread_id + caption + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendAudioRequest⟧
 
 // region CLASS_SendAudioRequest
 class SendAudioRequest implements RequestInterface
@@ -66,6 +66,8 @@ class SendAudioRequest implements RequestInterface
      * @param string|null                $message_effect_id      Unique identifier of the message effect to be added to the message; for private chats only
      * @param bool|null                  $allow_paid_broadcast   Pass True to allow up to 1000 messages per second,
      *                                                           ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null                   $receiver_user_id       Optional. Identifier of the user that will receive the ephemeral message
+     * @param string|null                $callback_query_id      Optional. Identifier of a callback query, for callback query handling
      *
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
@@ -87,6 +89,8 @@ class SendAudioRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ?string $message_effect_id = null,
         private ?bool $allow_paid_broadcast = null,
+        private ?int $receiver_user_id = null,
+        private ?string $callback_query_id = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -289,6 +293,30 @@ class SendAudioRequest implements RequestInterface
     public function setAllowPaidBroadcast(?bool $allow_paid_broadcast): SendAudioRequest
     {
         $this->allow_paid_broadcast = $allow_paid_broadcast;
+
+        return $this;
+    }
+
+    public function getReceiverUserId(): ?int
+    {
+        return $this->receiver_user_id;
+    }
+
+    public function setReceiverUserId(?int $receiver_user_id): SendAudioRequest
+    {
+        $this->receiver_user_id = $receiver_user_id;
+
+        return $this;
+    }
+
+    public function getCallbackQueryId(): ?string
+    {
+        return $this->callback_query_id;
+    }
+
+    public function setCallbackQueryId(?string $callback_query_id): SendAudioRequest
+    {
+        $this->callback_query_id = $callback_query_id;
 
         return $this;
     }

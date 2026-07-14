@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
+
 // region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
 /**
  * @moduleContract
@@ -11,11 +13,11 @@ namespace AndrewGos\TelegramBot\Entity;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichmessage
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.2 - added media and blocks
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: InputRichMessage, Telegram, Bot API, DTO, Input Rich Message
-// STRUCTURE: ▶ ┌html,markdown,is_rtl,skip_entity_detection┐ → ∑ InputRichMessage
+// STRUCTURE: ▶ ┌html,markdown,is_rtl,skip_entity_detection,media,blocks┐ → ∑ InputRichMessage
 // region CLASS_InputRichMessage
 /**
  * Describes a rich message to be sent. Exactly one of the fields html or markdown must be used.
@@ -25,10 +27,12 @@ namespace AndrewGos\TelegramBot\Entity;
 final class InputRichMessage implements EntityInterface
 {
     /**
-     * @param string|null $html                  Optional. Content of the rich message to send described using HTML formatting. See rich message formatting options for more details.
-     * @param string|null $markdown              Optional. Content of the rich message to send described using Markdown formatting. See rich message formatting options for more details.
-     * @param bool|null   $is_rtl                Optional. Pass True if the rich message must be shown right-to-left
-     * @param bool|null   $skip_entity_detection Optional. Pass True to skip automatic detection of entities (e.g., URLs, email addresses, username mentions, hashtags, cashtags, bot commands, or phone numbers) in the text
+     * @param string|null                   $html                  Optional. Content of the rich message to send described using HTML formatting. See rich message formatting options for more details.
+     * @param string|null                   $markdown              Optional. Content of the rich message to send described using Markdown formatting. See rich message formatting options for more details.
+     * @param bool|null                     $is_rtl                Optional. Pass True if the rich message must be shown right-to-left
+     * @param bool|null                     $skip_entity_detection Optional. Pass True to skip automatic detection of entities (e.g., URLs, email addresses, username mentions, hashtags, cashtags, bot commands, or phone numbers) in the text
+     * @param InputRichMessageMedia[]|null  $media                 Optional. A JSON-serialized array of media to include in the rich message
+     * @param AbstractInputRichBlock[]|null $blocks                Optional. A JSON-serialized array of blocks to include in the rich message
      *
      * @see https://core.telegram.org/bots/api#rich-message-formatting-options rich message formatting options
      */
@@ -37,6 +41,10 @@ final class InputRichMessage implements EntityInterface
         protected ?string $markdown = null,
         protected ?bool $is_rtl = null,
         protected ?bool $skip_entity_detection = null,
+        #[ArrayType(InputRichMessageMedia::class)]
+        protected ?array $media = null,
+        #[ArrayType(AbstractInputRichBlock::class)]
+        protected ?array $blocks = null,
     ) {}
 
     /**
@@ -115,6 +123,46 @@ final class InputRichMessage implements EntityInterface
     public function setSkipEntityDetection(?bool $skip_entity_detection): InputRichMessage
     {
         $this->skip_entity_detection = $skip_entity_detection;
+
+        return $this;
+    }
+
+    /**
+     * @return InputRichMessageMedia[]|null
+     */
+    public function getMedia(): ?array
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param InputRichMessageMedia[]|null $media
+     *
+     * @return InputRichMessage
+     */
+    public function setMedia(?array $media): InputRichMessage
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * @return AbstractInputRichBlock[]|null
+     */
+    public function getBlocks(): ?array
+    {
+        return $this->blocks;
+    }
+
+    /**
+     * @param AbstractInputRichBlock[]|null $blocks
+     *
+     * @return InputRichMessage
+     */
+    public function setBlocks(?array $blocks): InputRichMessage
+    {
+        $this->blocks = $blocks;
 
         return $this;
     }

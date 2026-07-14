@@ -23,7 +23,7 @@ use Psr\Log\LoggerInterface;
  * @sees USES_API(10): Telegram Bot API https://core.telegram.org/bots/api
  *
  * @changes
- * LAST_CHANGE: Initial creation with semantic documentation markup
+ * LAST_CHANGE: Updated for Bot API 10.2 - added 5 ephemeral message methods
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ApiInterface, Telegram Bot API, API methods, getUpdates, sendMessage, setWebhook, webhook, polling
@@ -2327,5 +2327,64 @@ interface ApiInterface
      * @see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
      */
     public function sendChatJoinRequestWebApp(Req\SendChatJoinRequestWebAppRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to edit the text of an ephemeral message. On success, if the edited message is not an inline message,
+     * the edited Message is returned, otherwise True is returned.
+     *
+     * @param Req\EditEphemeralMessageTextRequest $request
+     *
+     * @return Res\EditEphemeralMessageTextResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagetext
+     */
+    public function editEphemeralMessageText(Req\EditEphemeralMessageTextRequest $request): Res\EditEphemeralMessageTextResponse;
+
+    /**
+     * Use this method to edit the media of an ephemeral message. On success, if the edited message is not an inline message,
+     * the edited Message is returned, otherwise True is returned.
+     *
+     * @param Req\EditEphemeralMessageMediaRequest $request
+     *
+     * @return Res\EditEphemeralMessageMediaResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagemedia
+     */
+    public function editEphemeralMessageMedia(Req\EditEphemeralMessageMediaRequest $request): Res\EditEphemeralMessageMediaResponse;
+
+    /**
+     * Use this method to edit the caption of an ephemeral message. On success, if the edited message is not an inline message,
+     * the edited Message is returned, otherwise True is returned.
+     *
+     * @param Req\EditEphemeralMessageCaptionRequest $request
+     *
+     * @return Res\EditEphemeralMessageCaptionResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagecaption
+     */
+    public function editEphemeralMessageCaption(Req\EditEphemeralMessageCaptionRequest $request): Res\EditEphemeralMessageCaptionResponse;
+
+    /**
+     * Use this method to edit the reply markup of an ephemeral message. On success, if the edited message is not an inline message,
+     * the edited Message is returned, otherwise True is returned.
+     *
+     * @param Req\EditEphemeralMessageReplyMarkupRequest $request
+     *
+     * @return Res\EditEphemeralMessageReplyMarkupResponse
+     *
+     * @see https://core.telegram.org/bots/api#editephemeralmessagereplymarkup
+     */
+    public function editEphemeralMessageReplyMarkup(Req\EditEphemeralMessageReplyMarkupRequest $request): Res\EditEphemeralMessageReplyMarkupResponse;
+
+    /**
+     * Use this method to delete an ephemeral message. Returns True on success.
+     *
+     * @param Req\DeleteEphemeralMessageRequest $request
+     *
+     * @return Res\DeleteEphemeralMessageResponse
+     *
+     * @see https://core.telegram.org/bots/api#deleteephemeralmessage
+     */
+    public function deleteEphemeralMessage(Req\DeleteEphemeralMessageRequest $request): Res\DeleteEphemeralMessageResponse;
 }
 // endregion INTERFACE_ApiInterface
