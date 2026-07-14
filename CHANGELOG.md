@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.8.0] - 2026-07-14
+
 ### Added
 
 - Update to Bot API 10.2: Rich Messages v2, Ephemeral Messages, Communities, BotSubscriptionUpdated
