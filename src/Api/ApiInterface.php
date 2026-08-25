@@ -23,7 +23,7 @@ use Psr\Log\LoggerInterface;
  * @sees USES_API(10): Telegram Bot API https://core.telegram.org/bots/api
  *
  * @changes
- * LAST_CHANGE: Updated for Bot API 10.2 - added 5 ephemeral message methods
+ * LAST_CHANGE: Updated for Bot API 10.3
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ApiInterface, Telegram Bot API, API methods, getUpdates, sendMessage, setWebhook, webhook, polling

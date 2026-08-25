@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtext
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added RichTextButton
  *
  * @modulemap
  * CLASS 5[RichText types] => AbstractRichText
@@ -55,6 +55,7 @@ use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
     RichTextAnchorLink::class,
     RichTextReference::class,
     RichTextReferenceLink::class,
+    RichTextButton::class,
 ])]
 abstract class AbstractRichText implements EntityInterface
 {

@@ -18,11 +18,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#editephemeralmessagecaption
  *
- * @changes LAST_CHANGE: Added in Bot API 10.2
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added show_caption_above_media
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Edit, Ephemeral, Message, Caption
-// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + caption + parse_mode + caption_entities + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageCaptionRequest⟧
+// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + caption + parse_mode + caption_entities + show_caption_above_media + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageCaptionRequest⟧
 
 // region CLASS_EditEphemeralMessageCaptionRequest
 /**
@@ -31,13 +31,14 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class EditEphemeralMessageCaptionRequest implements RequestInterface
 {
     /**
-     * @param ChatId                     $chat_id              Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
-     * @param int                        $receiver_user_id     Identifier of the user who received the message; required if the message is an ephemeral message
-     * @param int                        $ephemeral_message_id Identifier of the ephemeral message to edit
-     * @param string|null                $caption              Optional. New caption of the message, 0-1024 characters after entities parsing
-     * @param TelegramParseModeEnum|null $parse_mode           Optional. Mode for parsing entities in the message caption. See formatting options for more details.
-     * @param MessageEntity[]|null       $caption_entities     Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-     * @param InlineKeyboardMarkup|null  $reply_markup         Optional. A JSON-serialized object for an inline keyboard
+     * @param ChatId                     $chat_id                  Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
+     * @param int                        $receiver_user_id         Identifier of the user who received the message; required if the message is an ephemeral message
+     * @param int                        $ephemeral_message_id     Identifier of the ephemeral message to edit
+     * @param string|null                $caption                  Optional. New caption of the message, 0-1024 characters after entities parsing
+     * @param TelegramParseModeEnum|null $parse_mode               Optional. Mode for parsing entities in the message caption. See formatting options for more details.
+     * @param MessageEntity[]|null       $caption_entities         Optional. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+     * @param InlineKeyboardMarkup|null  $reply_markup             Optional. A JSON-serialized object for an inline keyboard
+     * @param bool|null                  $show_caption_above_media Optional. Pass True if the caption must be shown above the message media
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
@@ -52,6 +53,7 @@ class EditEphemeralMessageCaptionRequest implements RequestInterface
         private ?TelegramParseModeEnum $parse_mode = null,
         private ?array $caption_entities = null,
         private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?bool $show_caption_above_media = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -122,6 +124,18 @@ class EditEphemeralMessageCaptionRequest implements RequestInterface
     public function setCaptionEntities(?array $caption_entities): EditEphemeralMessageCaptionRequest
     {
         $this->caption_entities = $caption_entities;
+
+        return $this;
+    }
+
+    public function getShowCaptionAboveMedia(): ?bool
+    {
+        return $this->show_caption_above_media;
+    }
+
+    public function setShowCaptionAboveMedia(?bool $show_caption_above_media): EditEphemeralMessageCaptionRequest
+    {
+        $this->show_caption_above_media = $show_caption_above_media;
 
         return $this;
     }

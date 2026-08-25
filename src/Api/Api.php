@@ -41,7 +41,7 @@ use Throwable;
  * - ErrorResponseException thrown when throwOnErrorResponse is true and response is not ok
  *
  * @changes
- * LAST_CHANGE: Updated for Bot API 10.2 - added 5 ephemeral message methods, bumped version to 10.2
+ * LAST_CHANGE: Updated for Bot API 10.3 - bumped version to 10.3
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Api, Telegram API implementation, HTTP client, send, getUpdates, setWebhook, file download, ClassBuilder
@@ -52,7 +52,7 @@ use Throwable;
 // region CLASS_Api [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '10.2';
+    private const TELEGRAM_BOT_API_VERSION = '10.3';
 
     public function __construct(
         private readonly BotToken $token,

@@ -74,5 +74,7 @@ enum RichTextTypeEnum: string
     case Reference = 'reference';
     /** @purpose Link to a reference */
     case ReferenceLink = 'reference_link';
+    /** @purpose Button inside rich text */
+    case Button = 'button';
 }
 // endregion ENUM_RichTextTypeEnum

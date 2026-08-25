@@ -32,6 +32,16 @@ class UpdateTypeCheckerProvider
                 UpdateTypeEnum::Message,
                 false,
             ],
+            'stopped_message_generation' => [
+                $factory->createStoppedMessageGenerationUpdate(),
+                UpdateTypeEnum::StoppedMessageGeneration,
+                true,
+            ],
+            'stopped_message_generation_vs_message' => [
+                $factory->createStoppedMessageGenerationUpdate(),
+                UpdateTypeEnum::Message,
+                false,
+            ],
         ];
     }
 }

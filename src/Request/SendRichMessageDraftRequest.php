@@ -14,11 +14,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#sendrichmessagedraft
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_stop, keep_on_stop
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: SendRichMessageDraftRequest, Telegram, Bot API, DTO, send Rich Message Draft
-// STRUCTURE: ▶ ┌fields┐ → ∑ SendRichMessageDraftRequest
+// STRUCTURE: ▶ ┌fields + can_stop + keep_on_stop┐ → ∑ SendRichMessageDraftRequest
 // region CLASS_SendRichMessageDraftRequest
 
 /**
@@ -31,8 +31,12 @@ class SendRichMessageDraftRequest implements RequestInterface
     /**
      * @param ChatId           $chat_id           Unique identifier for the target private chat
      * @param int              $draft_id          Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
-     * @param InputRichMessage $rich_message      The partial message to be streamed
+     * @param InputRichMessage $rich_message      The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL isn't supported.
      * @param int|null         $message_thread_id Optional. unique identifier for the target message thread
+     * @param bool|null        $can_stop          Optional. Pass True to show the user a button to stop further drafts. The bot will receive an
+     *                                            Update “stopped_message_generation” if the user presses the button.
+     * @param bool|null        $keep_on_stop      Optional. Pass True to keep the draft in the chat when the button is pressed. The draft will still
+     *                                            disappear after a short time or if the bot sends a message.
      *
      * @see https://core.telegram.org/bots/api#inputrichmessage InputRichMessage
      */
@@ -41,6 +45,8 @@ class SendRichMessageDraftRequest implements RequestInterface
         private int $draft_id,
         private InputRichMessage $rich_message,
         private ?int $message_thread_id = null,
+        private ?bool $can_stop = null,
+        private ?bool $keep_on_stop = null,
     ) {}
 
     /**
@@ -119,6 +125,46 @@ class SendRichMessageDraftRequest implements RequestInterface
     public function setMessageThreadId(?int $message_thread_id): SendRichMessageDraftRequest
     {
         $this->message_thread_id = $message_thread_id;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanStop(): ?bool
+    {
+        return $this->can_stop;
+    }
+
+    /**
+     * @param bool|null $can_stop
+     *
+     * @return SendRichMessageDraftRequest
+     */
+    public function setCanStop(?bool $can_stop): SendRichMessageDraftRequest
+    {
+        $this->can_stop = $can_stop;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getKeepOnStop(): ?bool
+    {
+        return $this->keep_on_stop;
+    }
+
+    /**
+     * @param bool|null $keep_on_stop
+     *
+     * @return SendRichMessageDraftRequest
+     */
+    public function setKeepOnStop(?bool $keep_on_stop): SendRichMessageDraftRequest
+    {
+        $this->keep_on_stop = $keep_on_stop;
 
         return $this;
     }

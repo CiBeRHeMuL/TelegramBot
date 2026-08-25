@@ -15,11 +15,10 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#promotechatmember
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_send_welcome_messages
  */
 // endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Promote, Chat, Member
-// STRUCTURE: ▶ ┌chat_id + user_id + can_change_info + can_delete_messages + can_delete_stories┐ → ◇ construct → ⊕ → ∑ ⟦PromoteChatMemberRequest⟧
+// STRUCTURE: ▶ ┌chat_id + user_id + can_change_info + can_delete_messages + can_delete_stories + can_send_welcome_messages┐ → ◇ construct → ⊕ → ∑ ⟦PromoteChatMemberRequest⟧
 
 // region CLASS_PromoteChatMemberRequest
 /**
@@ -58,6 +57,7 @@ class PromoteChatMemberRequest implements RequestInterface
      *                                              and decline suggested posts; for channels only
      * @param bool|null $can_manage_tags            Pass True if the administrator can edit the tags of regular members; for groups and supergroups
      *                                              only
+     * @param bool|null $can_send_welcome_messages  Pass True if the administrator can send welcome messages in the chat
      */
     public function __construct(
         private ChatId $chat_id,
@@ -79,6 +79,7 @@ class PromoteChatMemberRequest implements RequestInterface
         private ?bool $is_anonymous = null,
         private ?bool $can_manage_direct_messages = null,
         private ?bool $can_manage_tags = null,
+        private ?bool $can_send_welcome_messages = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -305,6 +306,18 @@ class PromoteChatMemberRequest implements RequestInterface
     public function setCanManageTags(?bool $can_manage_tags): PromoteChatMemberRequest
     {
         $this->can_manage_tags = $can_manage_tags;
+
+        return $this;
+    }
+
+    public function getCanSendWelcomeMessages(): ?bool
+    {
+        return $this->can_send_welcome_messages;
+    }
+
+    public function setCanSendWelcomeMessages(?bool $can_send_welcome_messages): PromoteChatMemberRequest
+    {
+        $this->can_send_welcome_messages = $can_send_welcome_messages;
 
         return $this;
     }

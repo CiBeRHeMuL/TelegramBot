@@ -14,7 +14,7 @@ use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblock
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added RichBlockButtons, RichBlockExpandableBlockQuotation, RichBlockDocument
  *
  * @modulemap
  * CLASS 5[RichBlock types] => AbstractRichBlock
@@ -51,6 +51,9 @@ use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
     RichBlockVideo::class,
     RichBlockVoiceNote::class,
     RichBlockThinking::class,
+    RichBlockButtons::class,
+    RichBlockExpandableBlockQuotation::class,
+    RichBlockDocument::class,
 ])]
 abstract class AbstractRichBlock implements EntityInterface
 {

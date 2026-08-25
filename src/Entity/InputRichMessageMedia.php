@@ -11,11 +11,11 @@ namespace AndrewGos\TelegramBot\Entity;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichmessagemedia
  *
- * @changes LAST_CHANGE: Added in Bot API 10.2
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added InputMediaDocument to the media union
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: InputRichMessageMedia, Telegram, Bot API, DTO, Input Rich Message Media
-// STRUCTURE: ▶ ┌id,media(IAudio|IVideo|IPhoto|IAnimation|IVoiceNote)┐ → ∑ InputRichMessageMedia
+// STRUCTURE: ▶ ┌id,media(IAudio|IVideo|IPhoto|IAnimation|IVoiceNote|IDocument)┐ → ∑ InputRichMessageMedia
 // region CLASS_InputRichMessageMedia
 
 /**
@@ -26,18 +26,19 @@ namespace AndrewGos\TelegramBot\Entity;
 final class InputRichMessageMedia implements EntityInterface
 {
     /**
-     * @param string                                                                                  $id    Unique identifier for the media in the rich message
-     * @param InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media Media to be sent
+     * @param string                                                                                                     $id    Unique identifier for the media in the rich message
+     * @param InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media Media to be sent
      *
      * @see https://core.telegram.org/bots/api#inputmediaanimation InputMediaAnimation
      * @see https://core.telegram.org/bots/api#inputmediaaudio InputMediaAudio
+     * @see https://core.telegram.org/bots/api#inputmediadocument InputMediaDocument
      * @see https://core.telegram.org/bots/api#inputmediaphoto InputMediaPhoto
      * @see https://core.telegram.org/bots/api#inputmediavideo InputMediaVideo
      * @see https://core.telegram.org/bots/api#inputmediavoicenote InputMediaVoiceNote
      */
     public function __construct(
         protected string $id,
-        protected InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media,
+        protected InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media,
     ) {}
 
     /**
@@ -61,20 +62,20 @@ final class InputRichMessageMedia implements EntityInterface
     }
 
     /**
-     * @return InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote
+     * @return InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote
      */
-    public function getMedia(): InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote
+    public function getMedia(): InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote
     {
         return $this->media;
     }
 
     /**
-     * @param InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media
+     * @param InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media
      *
      * @return InputRichMessageMedia
      */
     public function setMedia(
-        InputMediaAnimation|InputMediaAudio|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media,
+        InputMediaAnimation|InputMediaAudio|InputMediaDocument|InputMediaPhoto|InputMediaVideo|InputMediaVoiceNote $media,
     ): InputRichMessageMedia {
         $this->media = $media;
 

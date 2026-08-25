@@ -15,11 +15,11 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinekeyboardbutton
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added disabled
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: InlineKeyboardButton, Telegram, Bot API, DTO, inlinekeyboardbutton
-// STRUCTURE: ▶ ┌text┐ → ○ ◇ callback_data / url / ... → ⊕ result button
+// STRUCTURE: ▶ ┌text┐ → ○ ◇ callback_data / url / disabled / ... → ⊕ result button
 // region CLASS_InlineKeyboardButton
 
 /**
@@ -65,6 +65,7 @@ final class InlineKeyboardButton implements EntityInterface
      *                                                                           group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
      * @param KeyboardButtonStyleEnum|null     $style                            Optional. Style of the button. Must be one of “danger” (red), “success”
      *                                                                           (green) or “primary” (blue). If omitted, then an app-specific style is used.
+     * @param DisabledButton|null              $disabled                         Optional. If set, then the button is disabled and does nothing
      *
      * @see https://fragment.com Fragment
      * @see https://core.telegram.org/bots/api#callbackquery callback query
@@ -76,6 +77,7 @@ final class InlineKeyboardButton implements EntityInterface
      * @see https://core.telegram.org/bots/api#switchinlinequerychosenchat SwitchInlineQueryChosenChat
      * @see https://core.telegram.org/bots/api#copytextbutton CopyTextButton
      * @see https://core.telegram.org/bots/api#callbackgame CallbackGame
+     * @see https://core.telegram.org/bots/api#disabledbutton DisabledButton
      * @see https://core.telegram.org/bots/api#payments Pay button
      */
     public function __construct(
@@ -92,6 +94,7 @@ final class InlineKeyboardButton implements EntityInterface
         protected ?CopyTextButton $copy_text = null,
         protected ?string $icon_custom_emoji_id = null,
         protected ?KeyboardButtonStyleEnum $style = null,
+        protected ?DisabledButton $disabled = null,
     ) {}
 
     /**
@@ -350,6 +353,26 @@ final class InlineKeyboardButton implements EntityInterface
     public function setStyle(?KeyboardButtonStyleEnum $style): InlineKeyboardButton
     {
         $this->style = $style;
+
+        return $this;
+    }
+
+    /**
+     * @return DisabledButton|null
+     */
+    public function getDisabled(): ?DisabledButton
+    {
+        return $this->disabled;
+    }
+
+    /**
+     * @param DisabledButton|null $disabled
+     *
+     * @return InlineKeyboardButton
+     */
+    public function setDisabled(?DisabledButton $disabled): InlineKeyboardButton
+    {
+        $this->disabled = $disabled;
 
         return $this;
     }

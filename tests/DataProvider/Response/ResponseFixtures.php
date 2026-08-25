@@ -45,10 +45,25 @@ class ResponseFixtures
         yield 'CreateInvoiceLinkResponse' => [Response\CreateInvoiceLinkResponse::class, [
             'rawResponse' => new RawResponse(true, result: true),
         ]];
+        yield 'DeleteEphemeralMessageResponse' => [Response\DeleteEphemeralMessageResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
         yield 'EditChatInviteLinkResponse' => [Response\EditChatInviteLinkResponse::class, [
             'response' => new RawResponse(true, result: true),
         ]];
         yield 'EditChatSubscriptionInviteLinkResponse' => [Response\EditChatSubscriptionInviteLinkResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageCaptionResponse' => [Response\EditEphemeralMessageCaptionResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageMediaResponse' => [Response\EditEphemeralMessageMediaResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageReplyMarkupResponse' => [Response\EditEphemeralMessageReplyMarkupResponse::class, [
+            'rawResponse' => new RawResponse(true, result: true),
+        ]];
+        yield 'EditEphemeralMessageTextResponse' => [Response\EditEphemeralMessageTextResponse::class, [
             'rawResponse' => new RawResponse(true, result: true),
         ]];
         yield 'EditMessageCaptionResponse' => [Response\EditMessageCaptionResponse::class, [
@@ -268,21 +283,6 @@ class ResponseFixtures
             'rawResponse' => new RawResponse(true, result: true),
         ]];
         yield 'UploadStickerFileResponse' => [Response\UploadStickerFileResponse::class, [
-            'rawResponse' => new RawResponse(true, result: true),
-        ]];
-        yield 'EditEphemeralMessageTextResponse' => [Response\EditEphemeralMessageTextResponse::class, [
-            'rawResponse' => new RawResponse(true, result: true),
-        ]];
-        yield 'EditEphemeralMessageMediaResponse' => [Response\EditEphemeralMessageMediaResponse::class, [
-            'rawResponse' => new RawResponse(true, result: true),
-        ]];
-        yield 'EditEphemeralMessageCaptionResponse' => [Response\EditEphemeralMessageCaptionResponse::class, [
-            'rawResponse' => new RawResponse(true, result: true),
-        ]];
-        yield 'EditEphemeralMessageReplyMarkupResponse' => [Response\EditEphemeralMessageReplyMarkupResponse::class, [
-            'rawResponse' => new RawResponse(true, result: true),
-        ]];
-        yield 'DeleteEphemeralMessageResponse' => [Response\DeleteEphemeralMessageResponse::class, [
             'rawResponse' => new RawResponse(true, result: true),
         ]];
     }

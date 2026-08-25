@@ -11,7 +11,7 @@ namespace AndrewGos\TelegramBot\Entity;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_administrator_rights
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_send_welcome_messages
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ChatAdministratorRights, Telegram, Bot API, DTO, chat_administrator_rights
@@ -54,6 +54,7 @@ final class ChatAdministratorRights implements EntityInterface
      *                                              and decline suggested posts; for channels only
      * @param bool|null $can_manage_tags            Optional. True, if the administrator can edit the tags of regular members; for groups and
      *                                              supergroups only. If omitted defaults to the value of can_pin_messages.
+     * @param bool|null $can_send_welcome_messages  True, if the administrator can send welcome messages in the chat
      */
     public function __construct(
         protected bool $is_anonymous,
@@ -73,6 +74,7 @@ final class ChatAdministratorRights implements EntityInterface
         protected ?bool $can_post_messages = null,
         protected ?bool $can_manage_direct_messages = null,
         protected ?bool $can_manage_tags = null,
+        protected ?bool $can_send_welcome_messages = null,
     ) {}
 
     /**
@@ -411,6 +413,26 @@ final class ChatAdministratorRights implements EntityInterface
     public function setCanManageTags(?bool $can_manage_tags): ChatAdministratorRights
     {
         $this->can_manage_tags = $can_manage_tags;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanSendWelcomeMessages(): ?bool
+    {
+        return $this->can_send_welcome_messages;
+    }
+
+    /**
+     * @param bool|null $can_send_welcome_messages
+     *
+     * @return ChatAdministratorRights
+     */
+    public function setCanSendWelcomeMessages(?bool $can_send_welcome_messages): ChatAdministratorRights
+    {
+        $this->can_send_welcome_messages = $can_send_welcome_messages;
 
         return $this;
     }

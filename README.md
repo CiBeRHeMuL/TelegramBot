@@ -17,7 +17,7 @@ exceptional modularity and extensibility.
 
 ### ✨ Key Features
 
-* **💯 Full API Coverage:** Supports all methods and types of the Telegram Bot API (currently version **10.1**).
+* **💯 Full API Coverage:** Supports all methods and types of the Telegram Bot API (currently version **10.3**).
 * **🔒 Strict Typing:** Maximum code reliability and excellent IDE support.
 * **🧩 Modern Architecture:** A flexible update handling system using `HandlerGroup`, `Checker`, and `Middleware`.
 * **🔌 Extensibility:** Easily integrate your own logic through plugins and middleware.
@@ -31,6 +31,18 @@ To install the library, use Composer:
 ```sh
 composer require andrew-gos/telegram-bot
 ```
+
+### 🔄 Versioning & Backward Compatibility
+
+The library follows **Semantic Versioning**, but the guarantee is split by layer:
+
+1. **Bot API mirror layer** (`src/Entity`, `src/Request`, `src/Response`, `src/Enum`). These classes are a strict 1:1 mirror of the Telegram Bot API.
+   Fields and parameters removed by Telegram itself are removed in the library in the same (minor) release and are always listed in the
+   `Removed` section of the [CHANGELOG.md](CHANGELOG.md), together with a migration recipe.
+2. **Library's own API layer** (`Api`/`ApiInterface`, `Telegram`, `Kernel`, `ValueObject`, `Serializer`, `Http`). This layer follows strict SemVer:
+   removals and incompatible changes are only introduced in a major release.
+
+Release tags are published **without a `v` prefix** (e.g. `4.9.0`). The only `v`-prefixed tag (`v4.8.0`) is a historical accident and will not be renamed.
 
 ### 📚 Documentation
 

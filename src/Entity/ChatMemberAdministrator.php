@@ -15,7 +15,7 @@ use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_administrator
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_send_welcome_messages
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ChatMemberAdministrator, Telegram, Bot API, DTO, chat_member_administrator
@@ -63,6 +63,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
      *                                                and decline suggested posts; for channels only
      * @param bool|null   $can_manage_tags            Optional. True, if the administrator can edit the tags of regular members; for groups and
      *                                                supergroups only. If omitted defaults to the value of can_pin_messages.
+     * @param bool|null   $can_send_welcome_messages  True, if the administrator can send welcome messages in the chat
      *
      * @see https://core.telegram.org/bots/api#user User
      */
@@ -87,6 +88,7 @@ final class ChatMemberAdministrator extends AbstractChatMember
         protected ?string $custom_title = null,
         protected ?bool $can_manage_direct_messages = null,
         protected ?bool $can_manage_tags = null,
+        protected ?bool $can_send_welcome_messages = null,
     ) {
         parent::__construct(ChatMemberStatusEnum::Administrator);
     }
@@ -487,6 +489,26 @@ final class ChatMemberAdministrator extends AbstractChatMember
     public function setCanManageTags(?bool $can_manage_tags): ChatMemberAdministrator
     {
         $this->can_manage_tags = $can_manage_tags;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getCanSendWelcomeMessages(): ?bool
+    {
+        return $this->can_send_welcome_messages;
+    }
+
+    /**
+     * @param bool|null $can_send_welcome_messages
+     *
+     * @return ChatMemberAdministrator
+     */
+    public function setCanSendWelcomeMessages(?bool $can_send_welcome_messages): ChatMemberAdministrator
+    {
+        $this->can_send_welcome_messages = $can_send_welcome_messages;
 
         return $this;
     }

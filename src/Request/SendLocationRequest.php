@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\Entity\EphemeralMessageParameters;
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
@@ -21,11 +22,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#sendlocation
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Location
-// STRUCTURE: ▶ ┌chat_id + latitude + longitude + business_connection_id + disable_notification + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendLocationRequest⟧
+// STRUCTURE: ▶ ┌chat_id + latitude + longitude + business_connection_id + disable_notification + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendLocationRequest⟧
 
 // region CLASS_SendLocationRequest
 /**
@@ -34,38 +35,37 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendLocationRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     *                                                                                                                \@username
-     * @param float                                                                        $latitude                  Latitude of the location
-     * @param float                                                                        $longitude                 Longitude of the location
-     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
-     *                                                                                                                be sent
-     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
-     * @param int|null                                                                     $heading                   For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
-     *                                                                                                                if specified.
-     * @param float|null                                                                   $horizontal_accuracy       The radius of uncertainty for the location, measured in meters; 0-1500
-     * @param int|null                                                                     $live_period               period in seconds during which the location will be updated (see Live Locations, should be between
-     *                                                                                                                60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
-     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     *                                                                                                                and private chats of bots with forum topic mode enabled only
-     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
-     * @param int|null                                                                     $proximity_alert_radius    For live locations, a maximum distance for proximity alerts about approaching another
-     *                                                                                                                chat member, in meters. Must be between 1 and 100000 if specified.
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
-     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     *                                                                                                                a reply from the user
-     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
-     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; for private chats
-     *                                                                                                                only
-     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
-     *                                                                                                                if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     *                                                                                                                post is automatically declined.
-     * @param int|null                                                                     $receiver_user_id          Optional. Identifier of the user that will receive the ephemeral message
-     * @param string|null                                                                  $callback_query_id         Optional. Identifier of a callback query, for callback query handling
+     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                   \@username
+     * @param float                                                                        $latitude                     Latitude of the location
+     * @param float                                                                        $longitude                    Longitude of the location
+     * @param string|null                                                                  $business_connection_id       Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                   be sent
+     * @param bool|null                                                                    $disable_notification         Sends the message silently. Users will receive a notification with no sound.
+     * @param int|null                                                                     $heading                      For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360
+     *                                                                                                                   if specified.
+     * @param float|null                                                                   $horizontal_accuracy          The radius of uncertainty for the location, measured in meters; 0-1500
+     * @param int|null                                                                     $live_period                  period in seconds during which the location will be updated (see Live Locations, should be between
+     *                                                                                                                   60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
+     * @param int|null                                                                     $message_thread_id            Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                   and private chats of bots with forum topic mode enabled only
+     * @param bool|null                                                                    $protect_content              Protects the contents of the sent message from forwarding and saving
+     * @param int|null                                                                     $proximity_alert_radius       For live locations, a maximum distance for proximity alerts about approaching another
+     *                                                                                                                   chat member, in meters. Must be between 1 and 100000 if specified.
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options.
+     *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                   a reply from the user
+     * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
+     * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                   only
+     * @param bool|null                                                                    $allow_paid_broadcast         Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                   a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $direct_messages_topic_id     Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                   if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                   post is automatically declined.
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
      *
      * @see https://telegram.org/blog/live-locations Live Locations
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -97,8 +97,7 @@ class SendLocationRequest implements RequestInterface
         private ?bool $allow_paid_broadcast = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
-        private ?int $receiver_user_id = null,
-        private ?string $callback_query_id = null,
+        private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -305,26 +304,22 @@ class SendLocationRequest implements RequestInterface
         return $this;
     }
 
-    public function getReceiverUserId(): ?int
+    /**
+     * @return EphemeralMessageParameters|null
+     */
+    public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
-        return $this->receiver_user_id;
+        return $this->ephemeral_message_parameters;
     }
 
-    public function setReceiverUserId(?int $receiver_user_id): SendLocationRequest
+    /**
+     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
+     *
+     * @return SendLocationRequest
+     */
+    public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendLocationRequest
     {
-        $this->receiver_user_id = $receiver_user_id;
-
-        return $this;
-    }
-
-    public function getCallbackQueryId(): ?string
-    {
-        return $this->callback_query_id;
-    }
-
-    public function setCallbackQueryId(?string $callback_query_id): SendLocationRequest
-    {
-        $this->callback_query_id = $callback_query_id;
+        $this->ephemeral_message_parameters = $ephemeral_message_parameters;
 
         return $this;
     }

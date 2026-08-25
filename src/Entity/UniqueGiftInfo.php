@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\UniqueGiftInfoOriginEnum;
 
 // region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
@@ -13,10 +14,10 @@ use AndrewGos\TelegramBot\Enum\UniqueGiftInfoOriginEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftinfo
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added text, entities, is_private
  */
 // endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftInfo, Telegram, Bot API, DTO, uniquegiftinfo
+// GREP_SUMMARY: UniqueGiftInfo, Telegram, Bot API, DTO, Unique Gift Info
 // STRUCTURE: ▶ ┌gift: UniqueGift,origin,owned_gift_id┐ → ◇ transfer_star_count → ∑ info
 // region CLASS_UniqueGiftInfo
 
@@ -43,8 +44,13 @@ final class UniqueGiftInfo implements EntityInterface
      *                                                       the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins.
      * @param int|null                 $last_resale_amount   Optional. For gifts bought from other users, the price paid for the gift in either Telegram
      *                                                       Stars or nanotoncoins
+     * @param string|null              $text                 Optional. Text of the message that was added to the gift
+     * @param MessageEntity[]|null     $entities             Optional. Special entities that appear in the text
+     * @param bool|null                $is_private           Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise,
+     *                                                       everyone will be able to see them
      *
      * @see https://core.telegram.org/bots/api#uniquegift UniqueGift
+     * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      */
     public function __construct(
         protected UniqueGift $gift,
@@ -54,6 +60,10 @@ final class UniqueGiftInfo implements EntityInterface
         protected ?int $next_transfer_date = null,
         protected ?string $last_resale_currency = null,
         protected ?int $last_resale_amount = null,
+        protected ?string $text = null,
+        #[ArrayType(MessageEntity::class)]
+        protected ?array $entities = null,
+        protected ?bool $is_private = null,
     ) {}
 
     /**
@@ -192,6 +202,66 @@ final class UniqueGiftInfo implements EntityInterface
     public function setLastResaleAmount(?int $last_resale_amount): UniqueGiftInfo
     {
         $this->last_resale_amount = $last_resale_amount;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param string|null $text
+     *
+     * @return UniqueGiftInfo
+     */
+    public function setText(?string $text): UniqueGiftInfo
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return MessageEntity[]|null
+     */
+    public function getEntities(): ?array
+    {
+        return $this->entities;
+    }
+
+    /**
+     * @param MessageEntity[]|null $entities
+     *
+     * @return UniqueGiftInfo
+     */
+    public function setEntities(?array $entities): UniqueGiftInfo
+    {
+        $this->entities = $entities;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsPrivate(): ?bool
+    {
+        return $this->is_private;
+    }
+
+    /**
+     * @param bool|null $is_private
+     *
+     * @return UniqueGiftInfo
+     */
+    public function setIsPrivate(?bool $is_private): UniqueGiftInfo
+    {
+        $this->is_private = $is_private;
 
         return $this;
     }

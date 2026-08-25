@@ -1,0 +1,124 @@
+{
+    "ok": true,
+    "result": {
+        "message_id": 300,
+        "from": {
+            "id": 123,
+            "is_bot": true,
+            "first_name": "TestMaiSurveyBot",
+            "username": "test_7564243964_mai_survey_bot"
+        },
+        "chat": {
+            "id": 234,
+            "first_name": "Андрей",
+            "last_name": "Гостев",
+            "username": "andrewgostev",
+            "type": "private"
+        },
+        "date": 1782123456,
+        "rich_message": {
+            "blocks": [
+                {
+                    "type": "buttons",
+                    "align": "center",
+                    "buttons": [
+                        {
+                            "text": "Open",
+                            "style": "primary",
+                            "url": "https://example.com"
+                        },
+                        {
+                            "text": "Buy",
+                            "callback_data": "buy_now"
+                        }
+                    ]
+                },
+                {
+                    "type": "paragraph",
+                    "text": [
+                        "Check out ",
+                        {
+                            "type": "bold",
+                            "text": "this"
+                        },
+                        " ",
+                        {
+                            "type": "button",
+                            "button": {
+                                "text": "Action",
+                                "callback_data": "act"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "expandable_blockquote",
+                    "text": [
+                        {
+                            "type": "italic",
+                            "text": "Expandable"
+                        },
+                        " quote content"
+                    ],
+                    "credit": "Author"
+                },
+                {
+                    "type": "document",
+                    "document": {
+                        "file_id": "file_id_123",
+                        "file_unique_id": "file_unique_123",
+                        "file_name": "report.pdf",
+                        "mime_type": "application/pdf",
+                        "file_size": 1024
+                    },
+                    "caption": {
+                        "text": "Document caption"
+                    }
+                },
+                {
+                    "type": "table",
+                    "cells": [
+                        [
+                            {
+                                "align": "left",
+                                "valign": "middle",
+                                "text": "A1",
+                                "is_header": true
+                            },
+                            {
+                                "align": "right",
+                                "valign": "top",
+                                "text": "B1"
+                            }
+                        ],
+                        [
+                            {
+                                "align": "center",
+                                "valign": "bottom",
+                                "text": "A2"
+                            },
+                            {
+                                "align": "left",
+                                "valign": "middle",
+                                "text": "B2"
+                            }
+                        ]
+                    ],
+                    "is_bordered": true,
+                    "is_striped": false,
+                    "is_compact": true
+                }
+            ]
+        },
+        "reply_markup": {
+            "inline_keyboard": [
+                [
+                    {
+                        "text": "Disabled",
+                        "disabled": {}
+                    }
+                ]
+            ]
+        }
+    }
+}

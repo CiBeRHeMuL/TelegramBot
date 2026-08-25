@@ -60,4 +60,15 @@ class EntityFactory
             callback_query: self::createCallbackQuery(),
         );
     }
+
+    public static function createStoppedMessageGenerationUpdate(): Ent\Update
+    {
+        return new Ent\Update(
+            update_id: 3,
+            stopped_message_generation: new Ent\MessageGenerationStopped(
+                chat: self::createChat1(),
+                draft_id: 10,
+            ),
+        );
+    }
 }

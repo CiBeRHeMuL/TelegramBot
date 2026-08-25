@@ -13,11 +13,11 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replykeyboardmarkup
  *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added force_reply
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: ReplyKeyboardMarkup, Telegram, Bot API, DTO, replykeyboardmarkup
-// STRUCTURE: ▶ ┌keyboard: KeyboardButton[][]┐ → ◇ resize_keyboard,one_time_keyboard → ∑ markup
+// STRUCTURE: ▶ ┌keyboard: KeyboardButton[][]┐ → ◇ resize_keyboard,one_time_keyboard,force_reply → ∑ markup
 // region CLASS_ReplyKeyboardMarkup
 
 /**
@@ -45,6 +45,8 @@ final class ReplyKeyboardMarkup implements EntityInterface
      *                                                    1) users that are \@mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same
      *                                                    chat and forum topic, sender of the original message.Example: A user requests to change the bot's language, bot replies to
      *                                                    the request with a keyboard to select the new language. Other users in the group don't see the keyboard.
+     * @param bool|null          $force_reply             Optional. Pass True if the reply interface must be shown to the user, as if they had
+     *                                                    manually selected the bot's message and tapped 'Reply'
      *
      * @see https://core.telegram.org/bots/api#keyboardbutton KeyboardButton
      * @see https://core.telegram.org/bots/api#message Message
@@ -57,6 +59,7 @@ final class ReplyKeyboardMarkup implements EntityInterface
         protected ?bool $one_time_keyboard = null,
         protected ?string $input_field_placeholder = null,
         protected ?bool $selective = null,
+        protected ?bool $force_reply = null,
     ) {}
 
     /**
@@ -175,6 +178,26 @@ final class ReplyKeyboardMarkup implements EntityInterface
     public function setSelective(?bool $selective): ReplyKeyboardMarkup
     {
         $this->selective = $selective;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getForceReply(): ?bool
+    {
+        return $this->force_reply;
+    }
+
+    /**
+     * @param bool|null $force_reply
+     *
+     * @return ReplyKeyboardMarkup
+     */
+    public function setForceReply(?bool $force_reply): ReplyKeyboardMarkup
+    {
+        $this->force_reply = $force_reply;
 
         return $this;
     }

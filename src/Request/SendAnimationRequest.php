@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\Entity\EphemeralMessageParameters;
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
@@ -25,11 +26,11 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @see https://core.telegram.org/bots/api#sendanimation
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Animation
-// STRUCTURE: ▶ ┌chat_id + animation + business_connection_id + message_thread_id + duration + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendAnimationRequest⟧
+// STRUCTURE: ▶ ┌chat_id + animation + business_connection_id + message_thread_id + duration + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendAnimationRequest⟧
 
 // region CLASS_SendAnimationRequest
 /**
@@ -38,48 +39,47 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 class SendAnimationRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     *                                                                                                                \@username
-     * @param Filename|Url|string                                                          $animation                 Animation to send. Pass a file_id as String to send an animation that exists on the
-     *                                                                                                                Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload
-     *                                                                                                                a new animation using multipart/form-data. More information on Sending Files »
-     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
-     *                                                                                                                be sent
-     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     *                                                                                                                and private chats of bots with forum topic mode enabled only
-     * @param int|null                                                                     $duration                  Duration of sent animation in seconds
-     * @param int|null                                                                     $width                     Animation width
-     * @param int|null                                                                     $height                    Animation height
-     * @param Filename|Url|string|null                                                     $thumbnail                 Thumbnail of the file sent; can be ignored if thumbnail generation for the file
-     *                                                                                                                is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height
-     *                                                                                                                should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be
-     *                                                                                                                only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
-     *                                                                                                                under <file_attach_name>. More information on Sending Files »
-     * @param string|null                                                                  $caption                   Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
-     *                                                                                                                entities parsing
-     * @param TelegramParseModeEnum|null                                                   $parse_mode                Mode for parsing entities in the animation caption. See formatting options for
-     *                                                                                                                more details.
-     * @param MessageEntity[]|null                                                         $caption_entities          A JSON-serialized list of special entities that appear in the caption, which
-     *                                                                                                                can be specified instead of parse_mode
-     * @param bool|null                                                                    $has_spoiler               Pass True if the animation needs to be covered with a spoiler animation
-     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
-     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
-     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     *                                                                                                                a reply from the user
-     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; for private chats
-     *                                                                                                                only
-     * @param bool|null                                                                    $show_caption_above_media  Pass True, if the caption must be shown above the message media
-     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
-     *                                                                                                                if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     *                                                                                                                post is automatically declined.
-     * @param int|null                                                                     $receiver_user_id          Optional. Identifier of the user that will receive the ephemeral message
-     * @param string|null                                                                  $callback_query_id         Optional. Identifier of a callback query, for callback query handling
+     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                   \@username
+     * @param Filename|Url|string                                                          $animation                    Animation to send. Pass a file_id as String to send an animation that exists on the
+     *                                                                                                                   Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload
+     *                                                                                                                   a new animation using multipart/form-data. More information on Sending Files »
+     * @param string|null                                                                  $business_connection_id       Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                   be sent
+     * @param int|null                                                                     $message_thread_id            Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                   and private chats of bots with forum topic mode enabled only
+     * @param int|null                                                                     $duration                     Duration of sent animation in seconds
+     * @param int|null                                                                     $width                        Animation width
+     * @param int|null                                                                     $height                       Animation height
+     * @param Filename|Url|string|null                                                     $thumbnail                    Thumbnail of the file sent; can be ignored if thumbnail generation for the file
+     *                                                                                                                   is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height
+     *                                                                                                                   should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be
+     *                                                                                                                   only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data
+     *                                                                                                                   under <file_attach_name>. More information on Sending Files »
+     * @param string|null                                                                  $caption                      Animation caption (may also be used when resending animation by file_id), 0-1024 characters after
+     *                                                                                                                   entities parsing
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                   Mode for parsing entities in the animation caption. See formatting options for
+     *                                                                                                                   more details.
+     * @param MessageEntity[]|null                                                         $caption_entities             A JSON-serialized list of special entities that appear in the caption, which
+     *                                                                                                                   can be specified instead of parse_mode
+     * @param bool|null                                                                    $has_spoiler                  Pass True if the animation needs to be covered with a spoiler animation
+     * @param bool|null                                                                    $disable_notification         Sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null                                                                    $protect_content              Protects the contents of the sent message from forwarding and saving
+     * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options.
+     *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                   a reply from the user
+     * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                   only
+     * @param bool|null                                                                    $show_caption_above_media     Pass True, if the caption must be shown above the message media
+     * @param bool|null                                                                    $allow_paid_broadcast         Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                   a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $direct_messages_topic_id     Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                   if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                   post is automatically declined.
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
      *
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
@@ -118,8 +118,7 @@ class SendAnimationRequest implements RequestInterface
         private ?bool $allow_paid_broadcast = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
-        private ?int $receiver_user_id = null,
-        private ?string $callback_query_id = null,
+        private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -374,26 +373,22 @@ class SendAnimationRequest implements RequestInterface
         return $this;
     }
 
-    public function getReceiverUserId(): ?int
+    /**
+     * @return EphemeralMessageParameters|null
+     */
+    public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
-        return $this->receiver_user_id;
+        return $this->ephemeral_message_parameters;
     }
 
-    public function setReceiverUserId(?int $receiver_user_id): SendAnimationRequest
+    /**
+     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
+     *
+     * @return SendAnimationRequest
+     */
+    public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendAnimationRequest
     {
-        $this->receiver_user_id = $receiver_user_id;
-
-        return $this;
-    }
-
-    public function getCallbackQueryId(): ?string
-    {
-        return $this->callback_query_id;
-    }
-
-    public function setCallbackQueryId(?string $callback_query_id): SendAnimationRequest
-    {
-        $this->callback_query_id = $callback_query_id;
+        $this->ephemeral_message_parameters = $ephemeral_message_parameters;
 
         return $this;
     }

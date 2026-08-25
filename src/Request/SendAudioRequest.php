@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\Entity\EphemeralMessageParameters;
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardRemove;
 use AndrewGos\TelegramBot\Entity\ReplyParameters;
+use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
@@ -24,50 +26,49 @@ use AndrewGos\TelegramBot\ValueObject\Url;
  *
  * @see https://core.telegram.org/bots/api#sendaudio
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Audio
-// STRUCTURE: ▶ ┌chat_id + audio + business_connection_id + message_thread_id + caption + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendAudioRequest⟧
+// STRUCTURE: ▶ ┌chat_id + audio + business_connection_id + message_thread_id + caption + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendAudioRequest⟧
 
 // region CLASS_SendAudioRequest
 class SendAudioRequest implements RequestInterface
 {
     /**
-     * @param ChatId                     $chat_id                Unique identifier for the target chat or username of the target channel (in the format
-     * @param string|Filename|Url        $audio                  Audio file to send. Pass a file_id as String to send an audio file that exists on
-     *                                                           the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
-     *                                                           Internet, or upload a new one using multipart/form-data.
-     * @param string|null                $business_connection_id unique identifier of the business connection on behalf of which the
-     *                                                           message will be sent
-     * @param int|null                   $message_thread_id      unique identifier for the target message thread (topic) of the forum; for forum
-     *                                                           supergroups only
-     * @param string|null                $caption                audio caption, 0-1024 characters after entities parsing
-     * @param TelegramParseModeEnum|null $parse_mode             Mode for parsing entities in the audio caption. See formatting options for more
-     *                                                           details.
-     * @param MessageEntity[]|null       $caption_entities       a JSON-serialized list of special entities that appear in the caption, which
-     *                                                           can be specified instead of parse_mode
-     * @param int|null                   $duration               duration of the audio in seconds
-     * @param string|null                $performer              performer
-     * @param string|null                $title                  track name
-     * @param string|Filename|Url|null   $thumbnail              Thumbnail of the file sent; can be ignored if thumbnail generation for the
-     *                                                           file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
-     *                                                           width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails
-     *                                                           can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
-     *                                                           thumbnail was uploaded using multipart/form-data under <file_attach_name>.
-     * @param bool|null                  $disable_notification   Sends the message silently. Users will receive a notification with no
-     *                                                           sound.
-     * @param bool|null                  $protect_content        protects the contents of the sent message from forwarding and saving
-     * @param ReplyParameters|null       $reply_parameters       description of the message to reply to
-     * @param                            $reply_markup           InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
-     *                                                          Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
-     *                                                          to remove a reply keyboard or to force a reply from the user.
-     *                                                          \@channelusername).
-     * @param string|null                $message_effect_id      Unique identifier of the message effect to be added to the message; for private chats only
-     * @param bool|null                  $allow_paid_broadcast   Pass True to allow up to 1000 messages per second,
-     *                                                           ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
-     * @param int|null                   $receiver_user_id       Optional. Identifier of the user that will receive the ephemeral message
-     * @param string|null                $callback_query_id      Optional. Identifier of a callback query, for callback query handling
+     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target channel (in the format
+     * @param string|Filename|Url                                                          $audio                        Audio file to send. Pass a file_id as String to send an audio file that exists on
+     *                                                                                                                   the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the
+     *                                                                                                                   Internet, or upload a new one using multipart/form-data.
+     * @param string|null                                                                  $business_connection_id       unique identifier of the business connection on behalf of which the
+     *                                                                                                                   message will be sent
+     * @param int|null                                                                     $message_thread_id            unique identifier for the target message thread (topic) of the forum; for forum
+     *                                                                                                                   supergroups only
+     * @param string|null                                                                  $caption                      audio caption, 0-1024 characters after entities parsing
+     * @param TelegramParseModeEnum|null                                                   $parse_mode                   Mode for parsing entities in the audio caption. See formatting options for more
+     *                                                                                                                   details.
+     * @param MessageEntity[]|null                                                         $caption_entities             a JSON-serialized list of special entities that appear in the caption, which
+     *                                                                                                                   can be specified instead of parse_mode
+     * @param int|null                                                                     $duration                     duration of the audio in seconds
+     * @param string|null                                                                  $performer                    performer
+     * @param string|null                                                                  $title                        track name
+     * @param string|Filename|Url|null                                                     $thumbnail                    Thumbnail of the file sent; can be ignored if thumbnail generation for the
+     *                                                                                                                   file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's
+     *                                                                                                                   width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails
+     *                                                                                                                   can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the
+     *                                                                                                                   thumbnail was uploaded using multipart/form-data under <file_attach_name>.
+     * @param bool|null                                                                    $disable_notification         Sends the message silently. Users will receive a notification with no
+     *                                                                                                                   sound.
+     * @param bool|null                                                                    $protect_content              protects the contents of the sent message from forwarding and saving
+     * @param ReplyParameters|null                                                         $reply_parameters             description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions
+     *                                                                                                                   to remove a reply keyboard or to force a reply from the user.
+     * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats only
+     * @param bool|null                                                                    $allow_paid_broadcast         Pass True to allow up to 1000 messages per second,
+     *                                                                                                                   ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+     * @param int|null                                                                     $direct_messages_topic_id     Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
      *
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
      */
@@ -89,8 +90,9 @@ class SendAudioRequest implements RequestInterface
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
         private ?string $message_effect_id = null,
         private ?bool $allow_paid_broadcast = null,
-        private ?int $receiver_user_id = null,
-        private ?string $callback_query_id = null,
+        private ?int $direct_messages_topic_id = null,
+        private ?SuggestedPostParameters $suggested_post_parameters = null,
+        private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -297,26 +299,46 @@ class SendAudioRequest implements RequestInterface
         return $this;
     }
 
-    public function getReceiverUserId(): ?int
+    public function getDirectMessagesTopicId(): ?int
     {
-        return $this->receiver_user_id;
+        return $this->direct_messages_topic_id;
     }
 
-    public function setReceiverUserId(?int $receiver_user_id): SendAudioRequest
+    public function setDirectMessagesTopicId(?int $direct_messages_topic_id): SendAudioRequest
     {
-        $this->receiver_user_id = $receiver_user_id;
+        $this->direct_messages_topic_id = $direct_messages_topic_id;
 
         return $this;
     }
 
-    public function getCallbackQueryId(): ?string
+    public function getSuggestedPostParameters(): ?SuggestedPostParameters
     {
-        return $this->callback_query_id;
+        return $this->suggested_post_parameters;
     }
 
-    public function setCallbackQueryId(?string $callback_query_id): SendAudioRequest
+    public function setSuggestedPostParameters(?SuggestedPostParameters $suggested_post_parameters): SendAudioRequest
     {
-        $this->callback_query_id = $callback_query_id;
+        $this->suggested_post_parameters = $suggested_post_parameters;
+
+        return $this;
+    }
+
+    /**
+     * @return EphemeralMessageParameters|null
+     */
+    public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
+    {
+        return $this->ephemeral_message_parameters;
+    }
+
+    /**
+     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
+     *
+     * @return SendAudioRequest
+     */
+    public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendAudioRequest
+    {
+        $this->ephemeral_message_parameters = $ephemeral_message_parameters;
 
         return $this;
     }

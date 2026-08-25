@@ -16,11 +16,11 @@ use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblocktable
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added is_compact
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: RichBlockTable, Telegram, Bot API, DTO, Rich Block Table
-// STRUCTURE: ▶ ┌type,cells,is_bordered,is_striped,caption┐ → ∑ RichBlockTable
+// STRUCTURE: ▶ ┌type,cells,is_bordered,is_striped,is_compact,caption┐ → ∑ RichBlockTable
 // region CLASS_RichBlockTable
 /**
  * A table, corresponding to the HTML tag <table>.
@@ -35,6 +35,7 @@ final class RichBlockTable extends AbstractRichBlock
      * @param bool|null                          $is_bordered Optional. True, if the table has borders
      * @param bool|null                          $is_striped  Optional. True, if the table is striped
      * @param AbstractRichText|string|array|null $caption     Optional. Caption of the table
+     * @param bool|null                          $is_compact  Optional. True, if table cells have smaller indents
      *
      * @see https://core.telegram.org/bots/api#richblocktablecell RichBlockTableCell
      * @see https://core.telegram.org/bots/api#richtext RichText
@@ -46,6 +47,7 @@ final class RichBlockTable extends AbstractRichBlock
         protected ?bool $is_striped = null,
         #[ArrayType(['string', AbstractRichText::class])]
         protected AbstractRichText|string|array|null $caption = null,
+        protected ?bool $is_compact = null,
     ) {
         parent::__construct(RichBlockTypeEnum::Table);
     }
@@ -106,6 +108,26 @@ final class RichBlockTable extends AbstractRichBlock
     public function setIsStriped(?bool $is_striped): RichBlockTable
     {
         $this->is_striped = $is_striped;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsCompact(): ?bool
+    {
+        return $this->is_compact;
+    }
+
+    /**
+     * @param bool|null $is_compact
+     *
+     * @return RichBlockTable
+     */
+    public function setIsCompact(?bool $is_compact): RichBlockTable
+    {
+        $this->is_compact = $is_compact;
 
         return $this;
     }

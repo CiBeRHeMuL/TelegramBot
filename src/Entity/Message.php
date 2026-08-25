@@ -16,11 +16,11 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#message
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user, ephemeral_message_id, community_chat_added, community_chat_removed
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added community_chat_joined
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Message, Telegram, Bot API, DTO, message
-// STRUCTURE: ▶ ┌message_id,date,chat,message_thread_id,from,receiver_user,ephemeral_message_id,community_chat_added,community_chat_removed┐ → ∑ Message
+// STRUCTURE: ▶ ┌message_id,date,chat,message_thread_id,from,receiver_user,ephemeral_message_id,community_chat_added,community_chat_removed,community_chat_joined┐ → ∑ Message
 // region CLASS_Message
 
 /**
@@ -213,6 +213,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param int|null                              $ephemeral_message_id              Optional. Unique identifier of the ephemeral message
      * @param CommunityChatAdded|null               $community_chat_added              Optional. Service message: a chat was added to a community
      * @param CommunityChatRemoved|null             $community_chat_removed            Optional. Service message: a chat was removed from a community
+     * @param CommunityChatJoined|null              $community_chat_joined             Optional. Service message: a chat was joined by a user from a community
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -419,6 +420,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?int $ephemeral_message_id = null,
         protected ?CommunityChatAdded $community_chat_added = null,
         protected ?CommunityChatRemoved $community_chat_removed = null,
+        protected ?CommunityChatJoined $community_chat_joined = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2799,6 +2801,26 @@ final class Message extends AbstractMaybeInaccessibleMessage
     public function setCommunityChatRemoved(?CommunityChatRemoved $community_chat_removed): Message
     {
         $this->community_chat_removed = $community_chat_removed;
+
+        return $this;
+    }
+
+    /**
+     * @return CommunityChatJoined|null
+     */
+    public function getCommunityChatJoined(): ?CommunityChatJoined
+    {
+        return $this->community_chat_joined;
+    }
+
+    /**
+     * @param CommunityChatJoined|null $community_chat_joined
+     *
+     * @return Message
+     */
+    public function setCommunityChatJoined(?CommunityChatJoined $community_chat_joined): Message
+    {
+        $this->community_chat_joined = $community_chat_joined;
 
         return $this;
     }

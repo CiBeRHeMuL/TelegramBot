@@ -60,8 +60,8 @@ function createNestedEntityString(string $className, int $depth = 0): ?string
         }
         $resolved = resolveType($type, $param, $paramName);
         if ($resolved === '__ENTITY__') {
-            $namedType = $type instanceof ReflectionNamedType ? $type : null;
-            if ($namedType) {
+            $namedType = flattenUnion($type);
+            if ($namedType instanceof ReflectionNamedType) {
                 $inner = createNestedEntityString($namedType->getName(), $depth + 1);
                 if ($inner !== null) {
                     $args[] = "{$paramName}: {$inner}";
@@ -95,8 +95,8 @@ foreach ($classes as $class) {
         }
         $resolved = resolveType($type, $param, $paramName);
         if ($resolved === '__ENTITY__') {
-            $namedType = $type instanceof ReflectionNamedType ? $type : null;
-            if ($namedType) {
+            $namedType = flattenUnion($type);
+            if ($namedType instanceof ReflectionNamedType) {
                 $inner = createNestedEntityString($namedType->getName(), 0);
                 if ($inner !== null) {
                     $fixtureParams[$paramName] = $inner;

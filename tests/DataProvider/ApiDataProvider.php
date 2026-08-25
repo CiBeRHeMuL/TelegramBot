@@ -1592,6 +1592,56 @@ class ApiDataProvider
                 Response\RawResponse::class,
                 ['ok' => true, 'result' => 0],
             ],
+            [
+                'editEphemeralMessageText',
+                new Request\EditEphemeralMessageTextRequest(
+                    chat_id: new ChatId(123_456_789),
+                    receiver_user_id: 123_456_789,
+                    ephemeral_message_id: 123_456_789,
+                ),
+                Response\EditEphemeralMessageTextResponse::class,
+                ['ok' => true, 'result' => 0],
+            ],
+            [
+                'editEphemeralMessageMedia',
+                new Request\EditEphemeralMessageMediaRequest(
+                    chat_id: new ChatId(123_456_789),
+                    receiver_user_id: 123_456_789,
+                    ephemeral_message_id: 123_456_789,
+                ),
+                Response\EditEphemeralMessageMediaResponse::class,
+                ['ok' => true, 'result' => 0],
+            ],
+            [
+                'editEphemeralMessageCaption',
+                new Request\EditEphemeralMessageCaptionRequest(
+                    chat_id: new ChatId(123_456_789),
+                    receiver_user_id: 123_456_789,
+                    ephemeral_message_id: 123_456_789,
+                ),
+                Response\EditEphemeralMessageCaptionResponse::class,
+                ['ok' => true, 'result' => 0],
+            ],
+            [
+                'editEphemeralMessageReplyMarkup',
+                new Request\EditEphemeralMessageReplyMarkupRequest(
+                    chat_id: new ChatId(123_456_789),
+                    receiver_user_id: 123_456_789,
+                    ephemeral_message_id: 123_456_789,
+                ),
+                Response\EditEphemeralMessageReplyMarkupResponse::class,
+                ['ok' => true, 'result' => 0],
+            ],
+            [
+                'deleteEphemeralMessage',
+                new Request\DeleteEphemeralMessageRequest(
+                    chat_id: new ChatId(123_456_789),
+                    receiver_user_id: 123_456_789,
+                    ephemeral_message_id: 123_456_789,
+                ),
+                Response\DeleteEphemeralMessageResponse::class,
+                ['ok' => true, 'result' => 0],
+            ],
         ];
     }
 

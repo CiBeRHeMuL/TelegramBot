@@ -148,6 +148,11 @@ class RequestFixtures
         yield 'DeleteChatStickerSetRequest' => [Request\DeleteChatStickerSetRequest::class, [
             'chat_id' => new ChatId(123_456_789),
         ]];
+        yield 'DeleteEphemeralMessageRequest' => [Request\DeleteEphemeralMessageRequest::class, [
+            'chat_id' => new ChatId(123_456_789),
+            'receiver_user_id' => 123_456_789,
+            'ephemeral_message_id' => 123_456_789,
+        ]];
         yield 'DeleteForumTopicRequest' => [Request\DeleteForumTopicRequest::class, [
             'chat_id' => new ChatId(123_456_789),
             'message_thread_id' => 123_456_789,
@@ -185,6 +190,26 @@ class RequestFixtures
         yield 'EditChatSubscriptionInviteLinkRequest' => [Request\EditChatSubscriptionInviteLinkRequest::class, [
             'chat_id' => new ChatId(123_456_789),
             'invite_link' => new Url('https://example.com'),
+        ]];
+        yield 'EditEphemeralMessageCaptionRequest' => [Request\EditEphemeralMessageCaptionRequest::class, [
+            'chat_id' => new ChatId(123_456_789),
+            'receiver_user_id' => 123_456_789,
+            'ephemeral_message_id' => 123_456_789,
+        ]];
+        yield 'EditEphemeralMessageMediaRequest' => [Request\EditEphemeralMessageMediaRequest::class, [
+            'chat_id' => new ChatId(123_456_789),
+            'receiver_user_id' => 123_456_789,
+            'ephemeral_message_id' => 123_456_789,
+        ]];
+        yield 'EditEphemeralMessageReplyMarkupRequest' => [Request\EditEphemeralMessageReplyMarkupRequest::class, [
+            'chat_id' => new ChatId(123_456_789),
+            'receiver_user_id' => 123_456_789,
+            'ephemeral_message_id' => 123_456_789,
+        ]];
+        yield 'EditEphemeralMessageTextRequest' => [Request\EditEphemeralMessageTextRequest::class, [
+            'chat_id' => new ChatId(123_456_789),
+            'receiver_user_id' => 123_456_789,
+            'ephemeral_message_id' => 123_456_789,
         ]];
         yield 'EditForumTopicRequest' => [Request\EditForumTopicRequest::class, [
             'chat_id' => new ChatId(123_456_789),
@@ -708,32 +733,6 @@ class RequestFixtures
         ]];
         yield 'VerifyUserRequest' => [Request\VerifyUserRequest::class, [
             'user_id' => 123_456_789,
-        ]];
-        yield 'EditEphemeralMessageTextRequest' => [Request\EditEphemeralMessageTextRequest::class, [
-            'chat_id' => new ChatId(123_456_789),
-            'receiver_user_id' => 123_456_789,
-            'ephemeral_message_id' => 123_456_789,
-            'text' => 'test_text',
-        ]];
-        yield 'EditEphemeralMessageMediaRequest' => [Request\EditEphemeralMessageMediaRequest::class, [
-            'chat_id' => new ChatId(123_456_789),
-            'receiver_user_id' => 123_456_789,
-            'ephemeral_message_id' => 123_456_789,
-        ]];
-        yield 'EditEphemeralMessageCaptionRequest' => [Request\EditEphemeralMessageCaptionRequest::class, [
-            'chat_id' => new ChatId(123_456_789),
-            'receiver_user_id' => 123_456_789,
-            'ephemeral_message_id' => 123_456_789,
-        ]];
-        yield 'EditEphemeralMessageReplyMarkupRequest' => [Request\EditEphemeralMessageReplyMarkupRequest::class, [
-            'chat_id' => new ChatId(123_456_789),
-            'receiver_user_id' => 123_456_789,
-            'ephemeral_message_id' => 123_456_789,
-        ]];
-        yield 'DeleteEphemeralMessageRequest' => [Request\DeleteEphemeralMessageRequest::class, [
-            'chat_id' => new ChatId(123_456_789),
-            'receiver_user_id' => 123_456_789,
-            'ephemeral_message_id' => 123_456_789,
         ]];
     }
 }

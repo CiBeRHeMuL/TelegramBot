@@ -207,4 +207,120 @@ class EntityComplexFixturesTest extends TestCase
         // Footer with footnotes
         $this->assertInstanceOf(Ent\RichBlockFooter::class, $blocks[42]);
     }
+
+    public function testRichMessage103FeaturesDeserialization(): void
+    {
+        $json = file_get_contents(__DIR__ . '/../fixtures/complex/sendRichMessage_10_3.json');
+        $data = json_decode($json, true, flags: JSON_THROW_ON_ERROR);
+
+        $message = $this->classBuilder->build(Ent\Message::class, $data['result']);
+
+        $this->assertSame(300, $message->getMessageId());
+        $richMessage = $message->getRichMessage();
+        $this->assertInstanceOf(Ent\RichMessage::class, $richMessage);
+
+        $blocks = $richMessage->getBlocks();
+        $this->assertCount(5, $blocks);
+
+        // Block 0: RichBlockButtons with align + RichMessageButton variants
+        $buttons = $blocks[0];
+        $this->assertInstanceOf(Ent\RichBlockButtons::class, $buttons);
+        $this->assertSame(Enums\RichBlockButtonsAlignEnum::Center, $buttons->getAlign());
+        $this->assertCount(2, $buttons->getButtons());
+        $this->assertSame(Enums\RichMessageButtonStyleEnum::Primary, $buttons->getButtons()[0]->getStyle());
+        $this->assertSame('https://example.com', $buttons->getButtons()[0]->getUrl()?->getUrl());
+        $this->assertSame('buy_now', $buttons->getButtons()[1]->getCallbackData()?->getData());
+
+        // Block 1: RichBlockParagraph containing a RichTextButton
+        $paragraph = $blocks[1];
+        $this->assertInstanceOf(Ent\RichBlockParagraph::class, $paragraph);
+        $this->assertCount(4, $paragraph->getText());
+        $this->assertInstanceOf(Ent\RichTextBold::class, $paragraph->getText()[1]);
+        $richTextButton = $paragraph->getText()[3];
+        $this->assertInstanceOf(Ent\RichTextButton::class, $richTextButton);
+        $this->assertSame('Action', $richTextButton->getButton()->getText());
+        $this->assertSame('act', $richTextButton->getButton()->getCallbackData()?->getData());
+
+        // Block 2: RichBlockExpandableBlockQuotation with text (RichText) and credit
+        $expandable = $blocks[2];
+        $this->assertInstanceOf(Ent\RichBlockExpandableBlockQuotation::class, $expandable);
+        $this->assertCount(2, $expandable->getText());
+        $this->assertInstanceOf(Ent\RichTextItalic::class, $expandable->getText()[0]);
+        $this->assertSame(' quote content', $expandable->getText()[1]);
+        $this->assertSame('Author', $expandable->getCredit());
+
+        // Block 3: RichBlockDocument with Document and caption
+        $documentBlock = $blocks[3];
+        $this->assertInstanceOf(Ent\RichBlockDocument::class, $documentBlock);
+        $this->assertSame('file_id_123', $documentBlock->getDocument()->getFileId());
+        $this->assertSame('report.pdf', $documentBlock->getDocument()->getFileName());
+        $this->assertSame('Document caption', $documentBlock->getCaption()?->getText());
+
+        // Block 4: RichBlockTable with is_compact
+        $table = $blocks[4];
+        $this->assertInstanceOf(Ent\RichBlockTable::class, $table);
+        $this->assertTrue($table->getIsBordered());
+        $this->assertFalse($table->getIsStriped());
+        $this->assertTrue($table->getIsCompact());
+        $this->assertCount(2, $table->getCells());
+        $this->assertSame(Enums\RichBlockTableCellAlignEnum::Left, $table->getCells()[0][0]->getAlign());
+        $this->assertTrue($table->getCells()[0][0]->getIsHeader());
+
+        // reply_markup with a disabled InlineKeyboardButton.
+        // Note: the DisabledButton is an empty object ({}); the class-builder resolves
+        // nullable empty-object fields to null (same limitation as CallbackGame), so
+        // only the button itself is asserted here. Wire serialization of DisabledButton
+        // is covered by SerializerFactoryTest::testDisabledButtonSerializesToEmptyObject.
+        $replyMarkup = $message->getReplyMarkup();
+        $this->assertInstanceOf(Ent\InlineKeyboardMarkup::class, $replyMarkup);
+        $this->assertSame('Disabled', $replyMarkup->getInlineKeyboard()[0][0]->getText());
+    }
+
+    public function testUpdateStoppedMessageGenerationDeserialization(): void
+    {
+        $update = $this->classBuilder->build(Ent\Update::class, [
+            'update_id' => 3,
+            'stopped_message_generation' => [
+                'chat' => ['id' => 234, 'type' => 'private'],
+                'message_thread_id' => 5,
+                'draft_id' => 10,
+            ],
+        ]);
+
+        $this->assertSame(Enums\UpdateTypeEnum::StoppedMessageGeneration, $update->getType());
+
+        $expected = new Ent\Update(
+            update_id: 3,
+            stopped_message_generation: new Ent\MessageGenerationStopped(
+                chat: new Ent\Chat(id: 234, type: Enums\ChatTypeEnum::Private),
+                draft_id: 10,
+                message_thread_id: 5,
+            ),
+        );
+        $this->assertEquals($expected, $update);
+    }
+
+    public function testMessageCommunityChatJoinedDeserialization(): void
+    {
+        $message = $this->classBuilder->build(Ent\Message::class, [
+            'message_id' => 1,
+            'date' => 1_782_123_456,
+            'chat' => ['id' => 234, 'type' => 'private'],
+            'from' => ['id' => 123, 'is_bot' => true, 'first_name' => 'TestMaiSurveyBot'],
+            'community_chat_joined' => [
+                'community' => ['id' => 99, 'name' => 'Test Community'],
+            ],
+        ]);
+
+        $expected = new Ent\Message(
+            message_id: 1,
+            date: 1_782_123_456,
+            chat: new Ent\Chat(id: 234, type: Enums\ChatTypeEnum::Private),
+            from: new Ent\User(id: 123, is_bot: true, first_name: 'TestMaiSurveyBot'),
+            community_chat_joined: new Ent\CommunityChatJoined(
+                community: new Ent\Community(id: 99, name: 'Test Community'),
+            ),
+        );
+        $this->assertEquals($expected, $message);
+    }
 }

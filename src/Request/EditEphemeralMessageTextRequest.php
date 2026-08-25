@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
+use AndrewGos\TelegramBot\Entity\InputRichMessage;
 use AndrewGos\TelegramBot\Entity\LinkPreviewOptions;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
@@ -19,11 +20,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#editephemeralmessagetext
  *
- * @changes LAST_CHANGE: Added in Bot API 10.2
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - made text optional; added rich_message
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Edit, Ephemeral, Message, Text
-// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + text + parse_mode┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageTextRequest⟧
+// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + text + rich_message┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageTextRequest⟧
 
 // region CLASS_EditEphemeralMessageTextRequest
 /**
@@ -35,14 +36,16 @@ class EditEphemeralMessageTextRequest implements RequestInterface
      * @param ChatId                     $chat_id              Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
      * @param int                        $receiver_user_id     Identifier of the user who received the message; required if the message is an ephemeral message
      * @param int                        $ephemeral_message_id Identifier of the ephemeral message to edit
-     * @param string                     $text                 New text of the message, 1-4096 characters after entities parsing
+     * @param string|null                $text                 New text of the message, 1-4096 characters after entities parsing; required if rich_message isn't specified
      * @param TelegramParseModeEnum|null $parse_mode           Optional. Mode for parsing entities in the message text. See formatting options for more details.
      * @param MessageEntity[]|null       $entities             Optional. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
      * @param LinkPreviewOptions|null    $link_preview_options Optional. Link preview generation options for the message
      * @param InlineKeyboardMarkup|null  $reply_markup         Optional. A JSON-serialized object for an inline keyboard
+     * @param InputRichMessage|null      $rich_message         Optional. New rich content of the message; required if text isn't specified
      *
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
+     * @see https://core.telegram.org/bots/api#inputrichmessage InputRichMessage
      * @see https://core.telegram.org/bots/api#linkpreviewoptions LinkPreviewOptions
      * @see https://core.telegram.org/bots/api#inlinekeyboardmarkup InlineKeyboardMarkup
      * @see https://core.telegram.org/bots/features#inline-keyboards inline keyboard
@@ -51,11 +54,12 @@ class EditEphemeralMessageTextRequest implements RequestInterface
         private ChatId $chat_id,
         private int $receiver_user_id,
         private int $ephemeral_message_id,
-        private string $text,
+        private ?string $text = null,
         private ?TelegramParseModeEnum $parse_mode = null,
         private ?array $entities = null,
         private ?LinkPreviewOptions $link_preview_options = null,
         private ?InlineKeyboardMarkup $reply_markup = null,
+        private ?InputRichMessage $rich_message = null,
     ) {}
 
     public function getChatId(): ChatId
@@ -94,12 +98,12 @@ class EditEphemeralMessageTextRequest implements RequestInterface
         return $this;
     }
 
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string $text): EditEphemeralMessageTextRequest
+    public function setText(?string $text): EditEphemeralMessageTextRequest
     {
         $this->text = $text;
 
@@ -150,6 +154,26 @@ class EditEphemeralMessageTextRequest implements RequestInterface
     public function setReplyMarkup(?InlineKeyboardMarkup $reply_markup): EditEphemeralMessageTextRequest
     {
         $this->reply_markup = $reply_markup;
+
+        return $this;
+    }
+
+    /**
+     * @return InputRichMessage|null
+     */
+    public function getRichMessage(): ?InputRichMessage
+    {
+        return $this->rich_message;
+    }
+
+    /**
+     * @param InputRichMessage|null $rich_message
+     *
+     * @return EditEphemeralMessageTextRequest
+     */
+    public function setRichMessage(?InputRichMessage $rich_message): EditEphemeralMessageTextRequest
+    {
+        $this->rich_message = $rich_message;
 
         return $this;
     }

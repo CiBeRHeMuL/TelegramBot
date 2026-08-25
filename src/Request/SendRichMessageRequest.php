@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\Entity\EphemeralMessageParameters;
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\InputRichMessage;
@@ -20,11 +21,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#sendrichmessage
  *
- * @changes LAST_CHANGE: Added in Bot API 10.1
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added ephemeral_message_parameters
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: SendRichMessageRequest, Telegram, Bot API, DTO, send Rich Message
-// STRUCTURE: ▶ ┌fields┐ → ∑ SendRichMessageRequest
+// STRUCTURE: ▶ ┌fields + ephemeral_message_parameters┐ → ∑ SendRichMessageRequest
 // region CLASS_SendRichMessageRequest
 
 /**
@@ -35,18 +36,19 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendRichMessageRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format \@username
-     * @param InputRichMessage                                                             $rich_message              The message to be sent
-     * @param string|null                                                                  $business_connection_id    Optional. unique identifier of the business connection on behalf of which the message will be sent
-     * @param int|null                                                                     $message_thread_id         Optional. unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-     * @param int|null                                                                     $direct_messages_topic_id  Optional. identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-     * @param bool|null                                                                    $disable_notification      Optional. sends the message silently. Users will receive a notification with no sound.
-     * @param bool|null                                                                    $protect_content           Optional. protects the contents of the sent message from forwarding and saving
-     * @param bool|null                                                                    $allow_paid_broadcast      Optional. pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param string|null                                                                  $message_effect_id         Optional. unique identifier of the message effect to be added to the message; for private chats only
-     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters Optional. a JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-     * @param ReplyParameters|null                                                         $reply_parameters          Optional. description of the message to reply to
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Optional. additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
+     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format \@username
+     * @param InputRichMessage                                                             $rich_message                 The message to be sent
+     * @param string|null                                                                  $business_connection_id       Optional. unique identifier of the business connection on behalf of which the message will be sent
+     * @param int|null                                                                     $message_thread_id            Optional. unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
+     * @param int|null                                                                     $direct_messages_topic_id     Optional. identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+     * @param bool|null                                                                    $disable_notification         Optional. sends the message silently. Users will receive a notification with no sound.
+     * @param bool|null                                                                    $protect_content              Optional. protects the contents of the sent message from forwarding and saving
+     * @param bool|null                                                                    $allow_paid_broadcast         Optional. pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param string|null                                                                  $message_effect_id            Optional. unique identifier of the message effect to be added to the message; for private chats only
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    Optional. a JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+     * @param ReplyParameters|null                                                         $reply_parameters             Optional. description of the message to reply to
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Optional. additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
      *
      * @see https://core.telegram.org/bots/api#inputrichmessage InputRichMessage
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -73,6 +75,7 @@ class SendRichMessageRequest implements RequestInterface
         private ?SuggestedPostParameters $suggested_post_parameters = null,
         private ?ReplyParameters $reply_parameters = null,
         private InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup = null,
+        private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
     /**
@@ -311,6 +314,26 @@ class SendRichMessageRequest implements RequestInterface
     public function setReplyMarkup(InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup): SendRichMessageRequest
     {
         $this->reply_markup = $reply_markup;
+
+        return $this;
+    }
+
+    /**
+     * @return EphemeralMessageParameters|null
+     */
+    public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
+    {
+        return $this->ephemeral_message_parameters;
+    }
+
+    /**
+     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
+     *
+     * @return SendRichMessageRequest
+     */
+    public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendRichMessageRequest
+    {
+        $this->ephemeral_message_parameters = $ephemeral_message_parameters;
 
         return $this;
     }

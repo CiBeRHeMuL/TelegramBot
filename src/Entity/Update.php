@@ -13,11 +13,11 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
  *
  * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#update
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added subscription
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - added stopped_message_generation
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Update, Telegram, Bot API, DTO, update
-// STRUCTURE: ▶ ┌update_id┐ → ◇ message,edited_message,channel_post,callback_query,... → ∑ Update
+// STRUCTURE: ▶ ┌update_id┐ → ◇ message,edited_message,channel_post,callback_query,stopped_message_generation,... → ∑ Update
 // region CLASS_Update
 
 /**
@@ -29,57 +29,58 @@ use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 final class Update implements EntityInterface
 {
     /**
-     * @param int                              $update_id                 The update's unique identifier. Update identifiers start from a certain positive number and increase
-     *                                                                    sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates
-     *                                                                    or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
-     *                                                                    then identifier of the next update will be chosen randomly instead of sequentially.
-     * @param BusinessConnection|null          $business_connection       Optional. The bot was connected to or disconnected from a business account,
-     *                                                                    or a user edited an existing connection with the bot
-     * @param Message|null                     $business_message          Optional. New message from a connected business account
-     * @param CallbackQuery|null               $callback_query            Optional. New incoming callback query
-     * @param Message|null                     $channel_post              Optional. New incoming channel post of any kind - text, photo, sticker, etc.
-     * @param ChatBoostUpdated|null            $chat_boost                Optional. A chat boost was added or changed. The bot must be an administrator in
-     *                                                                    the chat to receive these updates.
-     * @param ChatJoinRequest|null             $chat_join_request         Optional. A request to join the chat has been sent. The bot must have the can_invite_users
-     *                                                                    administrator right in the chat to receive these updates.
-     * @param ChatMemberUpdated|null           $chat_member               Optional. A chat member's status was updated in a chat. The bot must be an administrator
-     *                                                                    in the chat and must explicitly specify "chat_member" in the list of allowed_updates to receive these updates.
-     * @param ChosenInlineResult|null          $chosen_inline_result      Optional. The result of an inline query that was chosen by a user and
-     *                                                                    sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates
-     *                                                                    for your bot.
-     * @param BusinessMessagesDeleted|null     $deleted_business_messages Optional. Messages were deleted from a connected business account
-     * @param Message|null                     $edited_business_message   Optional. New version of a message from a connected business account
-     * @param Message|null                     $edited_channel_post       Optional. New version of a channel post that is known to the bot and was edited.
-     *                                                                    This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your
-     *                                                                    bot.
-     * @param Message|null                     $edited_message            Optional. New version of a message that is known to the bot and was edited. This update
-     *                                                                    may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
-     * @param InlineQuery|null                 $inline_query              Optional. New incoming inline query
-     * @param Message|null                     $message                   Optional. New incoming message of any kind - text, photo, sticker, etc.
-     * @param MessageReactionUpdated|null      $message_reaction          Optional. A reaction to a message was changed by a user. The bot must
-     *                                                                    be an administrator in the chat and must explicitly specify "message_reaction" in the list of allowed_updates to receive these
-     *                                                                    updates. The update isn't received for reactions set by bots.
-     * @param MessageReactionCountUpdated|null $message_reaction_count    Optional. Reactions to a message with anonymous reactions
-     *                                                                    were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list
-     *                                                                    of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
-     * @param ChatMemberUpdated|null           $my_chat_member            Optional. The bot's chat member status was updated in a chat. For private chats,
-     *                                                                    this update is received only when the bot is blocked or unblocked by the user.
-     * @param Poll|null                        $poll                      Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are
-     *                                                                    sent by the bot
-     * @param PollAnswer|null                  $poll_answer               Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes
-     *                                                                    only in polls that were sent by the bot itself.
-     * @param PreCheckoutQuery|null            $pre_checkout_query        Optional. New incoming pre-checkout query. Contains full information about
-     *                                                                    checkout
-     * @param ChatBoostRemoved|null            $removed_chat_boost        Optional. A boost was removed from a chat. The bot must be an administrator
-     *                                                                    in the chat to receive these updates.
-     * @param ShippingQuery|null               $shipping_query            Optional. New incoming shipping query. Only for invoices with flexible price
-     * @param PaidMediaPurchased|null          $purchased_paid_media      Optional. A user purchased paid media with a non-empty payload sent by
-     *                                                                    the bot in a non-channel chat
-     * @param ManagedBotUpdated|null           $managed_bot               Optional. A new bot was created to be managed by the bot, or token or owner of
-     *                                                                    a managed bot was changed
-     * @param Message|null                     $guest_message             Optional. New guest message. The bot can use the field Message.guest_query_id and the method
-     *                                                                    answerGuestQuery to send a message in response.
-     * @param BotSubscriptionUpdated|null      $subscription              Optional. New subscription update
+     * @param int                              $update_id                  The update's unique identifier. Update identifiers start from a certain positive number and increase
+     *                                                                     sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates
+     *                                                                     or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week,
+     *                                                                     then identifier of the next update will be chosen randomly instead of sequentially.
+     * @param BusinessConnection|null          $business_connection        Optional. The bot was connected to or disconnected from a business account,
+     *                                                                     or a user edited an existing connection with the bot
+     * @param Message|null                     $business_message           Optional. New message from a connected business account
+     * @param CallbackQuery|null               $callback_query             Optional. New incoming callback query
+     * @param Message|null                     $channel_post               Optional. New incoming channel post of any kind - text, photo, sticker, etc.
+     * @param ChatBoostUpdated|null            $chat_boost                 Optional. A chat boost was added or changed. The bot must be an administrator in
+     *                                                                     the chat to receive these updates.
+     * @param ChatJoinRequest|null             $chat_join_request          Optional. A request to join the chat has been sent. The bot must have the can_invite_users
+     *                                                                     administrator right in the chat to receive these updates.
+     * @param ChatMemberUpdated|null           $chat_member                Optional. A chat member's status was updated in a chat. The bot must be an administrator
+     *                                                                     in the chat and must explicitly specify "chat_member" in the list of allowed_updates to receive these updates.
+     * @param ChosenInlineResult|null          $chosen_inline_result       Optional. The result of an inline query that was chosen by a user and
+     *                                                                     sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates
+     *                                                                     for your bot.
+     * @param BusinessMessagesDeleted|null     $deleted_business_messages  Optional. Messages were deleted from a connected business account
+     * @param Message|null                     $edited_business_message    Optional. New version of a message from a connected business account
+     * @param Message|null                     $edited_channel_post        Optional. New version of a channel post that is known to the bot and was edited.
+     *                                                                     This update may at times be triggered by changes to message fields that are either unavailable or not actively used by your
+     *                                                                     bot.
+     * @param Message|null                     $edited_message             Optional. New version of a message that is known to the bot and was edited. This update
+     *                                                                     may at times be triggered by changes to message fields that are either unavailable or not actively used by your bot.
+     * @param InlineQuery|null                 $inline_query               Optional. New incoming inline query
+     * @param Message|null                     $message                    Optional. New incoming message of any kind - text, photo, sticker, etc.
+     * @param MessageReactionUpdated|null      $message_reaction           Optional. A reaction to a message was changed by a user. The bot must
+     *                                                                     be an administrator in the chat and must explicitly specify "message_reaction" in the list of allowed_updates to receive these
+     *                                                                     updates. The update isn't received for reactions set by bots.
+     * @param MessageReactionCountUpdated|null $message_reaction_count     Optional. Reactions to a message with anonymous reactions
+     *                                                                     were changed. The bot must be an administrator in the chat and must explicitly specify "message_reaction_count" in the list
+     *                                                                     of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes.
+     * @param ChatMemberUpdated|null           $my_chat_member             Optional. The bot's chat member status was updated in a chat. For private chats,
+     *                                                                     this update is received only when the bot is blocked or unblocked by the user.
+     * @param Poll|null                        $poll                       Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are
+     *                                                                     sent by the bot
+     * @param PollAnswer|null                  $poll_answer                Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes
+     *                                                                     only in polls that were sent by the bot itself.
+     * @param PreCheckoutQuery|null            $pre_checkout_query         Optional. New incoming pre-checkout query. Contains full information about
+     *                                                                     checkout
+     * @param ChatBoostRemoved|null            $removed_chat_boost         Optional. A boost was removed from a chat. The bot must be an administrator
+     *                                                                     in the chat to receive these updates.
+     * @param ShippingQuery|null               $shipping_query             Optional. New incoming shipping query. Only for invoices with flexible price
+     * @param PaidMediaPurchased|null          $purchased_paid_media       Optional. A user purchased paid media with a non-empty payload sent by
+     *                                                                     the bot in a non-channel chat
+     * @param ManagedBotUpdated|null           $managed_bot                Optional. A new bot was created to be managed by the bot, or token or owner of
+     *                                                                     a managed bot was changed
+     * @param Message|null                     $guest_message              Optional. New guest message. The bot can use the field Message.guest_query_id and the method
+     *                                                                     answerGuestQuery to send a message in response.
+     * @param BotSubscriptionUpdated|null      $subscription               Optional. New subscription update
+     * @param MessageGenerationStopped|null    $stopped_message_generation Optional. A user stopped message generation
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
@@ -132,6 +133,7 @@ final class Update implements EntityInterface
         protected ?ManagedBotUpdated $managed_bot = null,
         protected ?Message $guest_message = null,
         protected ?BotSubscriptionUpdated $subscription = null,
+        protected ?MessageGenerationStopped $stopped_message_generation = null,
     ) {}
 
     /**
@@ -674,6 +676,26 @@ final class Update implements EntityInterface
         return $this;
     }
 
+    /**
+     * @return MessageGenerationStopped|null
+     */
+    public function getStoppedMessageGeneration(): ?MessageGenerationStopped
+    {
+        return $this->stopped_message_generation;
+    }
+
+    /**
+     * @param MessageGenerationStopped|null $stopped_message_generation
+     *
+     * @return Update
+     */
+    public function setStoppedMessageGeneration(?MessageGenerationStopped $stopped_message_generation): Update
+    {
+        $this->stopped_message_generation = $stopped_message_generation;
+
+        return $this;
+    }
+
     public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
@@ -703,6 +725,7 @@ final class Update implements EntityInterface
             $this->getManagedBot() !== null => UpdateTypeEnum::ManagedBot,
             $this->getGuestMessage() !== null => UpdateTypeEnum::GuestMessage,
             $this->getSubscription() !== null => UpdateTypeEnum::Subscription,
+            $this->getStoppedMessageGeneration() !== null => UpdateTypeEnum::StoppedMessageGeneration,
             default => null,
         };
     }

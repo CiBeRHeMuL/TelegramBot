@@ -66,5 +66,11 @@ enum RichBlockTypeEnum: string
     case VoiceNote = 'voice_note';
     /** @purpose Thinking placeholder (<tg-thinking>) */
     case Thinking = 'thinking';
+    /** @purpose Expandable block quotation, corresponding to the HTML tag <blockquote> with details */
+    case ExpandableBlockquote = 'expandable_blockquote';
+    /** @purpose Row of buttons (<tg-button-row>) */
+    case Buttons = 'buttons';
+    /** @purpose Document block (<tg-document>) */
+    case Document = 'document';
 }
 // endregion ENUM_RichBlockTypeEnum

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
+use AndrewGos\TelegramBot\Entity\EphemeralMessageParameters;
 use AndrewGos\TelegramBot\Entity\ForceReply;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\Entity\ReplyKeyboardMarkup;
@@ -21,11 +22,11 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
  *
  * @see https://core.telegram.org/bots/api#sendvenue
  *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added receiver_user_id, callback_query_id
+ * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
  */
 // endregion MODULE_CONTRACT
 // GREP_SUMMARY: Telegram, Bot API, Request, Send, Venue
-// STRUCTURE: ▶ ┌address + chat_id + latitude + longitude + title + receiver_user_id + callback_query_id┐ → ◇ construct → ⊕ → ∑ ⟦SendVenueRequest⟧
+// STRUCTURE: ▶ ┌address + chat_id + latitude + longitude + title + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendVenueRequest⟧
 
 // region CLASS_SendVenueRequest
 /**
@@ -34,38 +35,37 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 class SendVenueRequest implements RequestInterface
 {
     /**
-     * @param string                                                                       $address                   Address of the venue
-     * @param ChatId                                                                       $chat_id                   Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     *                                                                                                                \@username
-     * @param float                                                                        $latitude                  Latitude of the venue
-     * @param float                                                                        $longitude                 Longitude of the venue
-     * @param string                                                                       $title                     Name of the venue
-     * @param string|null                                                                  $business_connection_id    Unique identifier of the business connection on behalf of which the message will
-     *                                                                                                                be sent
-     * @param bool|null                                                                    $disable_notification      Sends the message silently. Users will receive a notification with no sound.
-     * @param string|null                                                                  $foursquare_id             Foursquare identifier of the venue
-     * @param string|null                                                                  $foursquare_type           Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
-     *                                                                                                                “arts_entertainment/aquarium” or “food/icecream”.)
-     * @param string|null                                                                  $google_place_id           Google Places identifier of the venue
-     * @param string|null                                                                  $google_place_type         Google Places type of the venue. (See supported types.)
-     * @param int|null                                                                     $message_thread_id         Unique identifier for the target message thread (topic) of a forum; for forum supergroups
-     *                                                                                                                and private chats of bots with forum topic mode enabled only
-     * @param bool|null                                                                    $protect_content           Protects the contents of the sent message from forwarding and saving
-     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup              Additional interface options.
-     *                                                                                                                A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     *                                                                                                                a reply from the user
-     * @param ReplyParameters|null                                                         $reply_parameters          Description of the message to reply to
-     * @param string|null                                                                  $message_effect_id         Unique identifier of the message effect to be added to the message; for private chats
-     *                                                                                                                only
-     * @param bool|null                                                                    $allow_paid_broadcast      Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
-     *                                                                                                                a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
-     * @param int|null                                                                     $direct_messages_topic_id  Identifier of the direct messages topic to which the message will be sent; required
-     *                                                                                                                if the message is sent to a direct messages chat
-     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested
-     *                                                                                                                post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
-     *                                                                                                                post is automatically declined.
-     * @param int|null                                                                     $receiver_user_id          Optional. Identifier of the user that will receive the ephemeral message
-     * @param string|null                                                                  $callback_query_id         Optional. Identifier of a callback query, for callback query handling
+     * @param string                                                                       $address                      Address of the venue
+     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
+     *                                                                                                                   \@username
+     * @param float                                                                        $latitude                     Latitude of the venue
+     * @param float                                                                        $longitude                    Longitude of the venue
+     * @param string                                                                       $title                        Name of the venue
+     * @param string|null                                                                  $business_connection_id       Unique identifier of the business connection on behalf of which the message will
+     *                                                                                                                   be sent
+     * @param bool|null                                                                    $disable_notification         Sends the message silently. Users will receive a notification with no sound.
+     * @param string|null                                                                  $foursquare_id                Foursquare identifier of the venue
+     * @param string|null                                                                  $foursquare_type              Foursquare type of the venue, if known. (For example, “arts_entertainment/default”,
+     *                                                                                                                   “arts_entertainment/aquarium” or “food/icecream”.)
+     * @param string|null                                                                  $google_place_id              Google Places identifier of the venue
+     * @param string|null                                                                  $google_place_type            Google Places type of the venue. (See supported types.)
+     * @param int|null                                                                     $message_thread_id            Unique identifier for the target message thread (topic) of a forum; for forum supergroups
+     *                                                                                                                   and private chats of bots with forum topic mode enabled only
+     * @param bool|null                                                                    $protect_content              Protects the contents of the sent message from forwarding and saving
+     * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options.
+     *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
+     *                                                                                                                   a reply from the user
+     * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
+     * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats
+     *                                                                                                                   only
+     * @param bool|null                                                                    $allow_paid_broadcast         Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for
+     *                                                                                                                   a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+     * @param int|null                                                                     $direct_messages_topic_id     Identifier of the direct messages topic to which the message will be sent; required
+     *                                                                                                                   if the message is sent to a direct messages chat
+     * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
+     *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
+     *                                                                                                                   post is automatically declined.
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
      *
      * @see https://developers.google.com/places/web-service/supported_types supported types
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
@@ -99,8 +99,7 @@ class SendVenueRequest implements RequestInterface
         private ?bool $allow_paid_broadcast = null,
         private ?int $direct_messages_topic_id = null,
         private ?SuggestedPostParameters $suggested_post_parameters = null,
-        private ?int $receiver_user_id = null,
-        private ?string $callback_query_id = null,
+        private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
     public function getAddress(): string
@@ -331,26 +330,22 @@ class SendVenueRequest implements RequestInterface
         return $this;
     }
 
-    public function getReceiverUserId(): ?int
+    /**
+     * @return EphemeralMessageParameters|null
+     */
+    public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
-        return $this->receiver_user_id;
+        return $this->ephemeral_message_parameters;
     }
 
-    public function setReceiverUserId(?int $receiver_user_id): SendVenueRequest
+    /**
+     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
+     *
+     * @return SendVenueRequest
+     */
+    public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendVenueRequest
     {
-        $this->receiver_user_id = $receiver_user_id;
-
-        return $this;
-    }
-
-    public function getCallbackQueryId(): ?string
-    {
-        return $this->callback_query_id;
-    }
-
-    public function setCallbackQueryId(?string $callback_query_id): SendVenueRequest
-    {
-        $this->callback_query_id = $callback_query_id;
+        $this->ephemeral_message_parameters = $ephemeral_message_parameters;
 
         return $this;
     }
