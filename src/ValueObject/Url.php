@@ -6,6 +6,8 @@ namespace AndrewGos\TelegramBot\ValueObject;
 
 use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
+use Throwable;
+use Uri\WhatWg\Url as WhatWgUrl;
 
 // region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
 /**
@@ -43,16 +45,20 @@ readonly class Url
 
     private function normalize(string $url): string
     {
-        if (filter_var($url, FILTER_VALIDATE_URL)) {
-            return $url;
+        // Check that url has schema
+        if (!preg_match('/^[A-Za-z][A-Za-z0-9+.-]*:\/\//u', $url)) {
+            $url = 'https://' . $url;
         }
 
-        $normalized = 'https://' . $url;
-        if (filter_var($normalized, FILTER_VALIDATE_URL)) {
-            $host = parse_url($normalized, PHP_URL_HOST);
+        try {
+            $parsed = new WhatWgUrl($url);
+
+            $host = $parsed->getAsciiHost();
+            // Use behavior from "filter_var" branch
             if ($host !== null && $host !== '' && str_contains($host, '.')) {
-                return $normalized;
+                return $url;
             }
+        } catch (Throwable) {
         }
 
         throw new InvalidValueObjectConfigException(self::class, 'invalid url representation');
