@@ -17,6 +17,7 @@ class UrlProvider
             ['example.com', 'https://example.com'],
             ['t.me/path', 'https://t.me/path'],
             ['telegram.org?start=123', 'https://telegram.org?start=123'],
+            ['telegram.org?start=кириллица', 'https://telegram.org?start=кириллица'],
         ];
     }
 
