@@ -2,14 +2,14 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+// region CLASS_Update
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
-// region CLASS_Update
 /**
  * This object represents an incoming update.At most one of the optional fields can be present in any given update.
  *
  * @see https://core.telegram.org/bots/api#available-types object
- * @see https://core.telegram.org/bots/api#update
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#update
  */
 final class Update implements EntityInterface
 {
@@ -50,22 +50,25 @@ final class Update implements EntityInterface
      * @param ChatMemberUpdated|null           $my_chat_member             Optional. The bot's chat member status was updated in a chat. For private chats,
      *                                                                     this update is received only when the bot is blocked or unblocked by the user.
      * @param Poll|null                        $poll                       Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are
-     *                                                                     sent by the bot
+     *                                                                     sent by the bot.
      * @param PollAnswer|null                  $poll_answer                Optional. A user changed their answer in a non-anonymous poll. Bots receive new votes
      *                                                                     only in polls that were sent by the bot itself.
      * @param PreCheckoutQuery|null            $pre_checkout_query         Optional. New incoming pre-checkout query. Contains full information about
-     *                                                                     checkout
+     *                                                                     checkout.
      * @param ChatBoostRemoved|null            $removed_chat_boost         Optional. A boost was removed from a chat. The bot must be an administrator
      *                                                                     in the chat to receive these updates.
-     * @param ShippingQuery|null               $shipping_query             Optional. New incoming shipping query. Only for invoices with flexible price
+     * @param ShippingQuery|null               $shipping_query             Optional. New incoming shipping query. Only for invoices with flexible price.
      * @param PaidMediaPurchased|null          $purchased_paid_media       Optional. A user purchased paid media with a non-empty payload sent by
      *                                                                     the bot in a non-channel chat
      * @param ManagedBotUpdated|null           $managed_bot                Optional. A new bot was created to be managed by the bot, or token or owner of
      *                                                                     a managed bot was changed
      * @param Message|null                     $guest_message              Optional. New guest message. The bot can use the field Message.guest_query_id and the method
      *                                                                     answerGuestQuery to send a message in response.
-     * @param BotSubscriptionUpdated|null      $subscription               Optional. New subscription update
-     * @param MessageGenerationStopped|null    $stopped_message_generation Optional. A user stopped message generation
+     * @param BotSubscriptionUpdated|null      $subscription               Optional. User payment subscription has changed
+     * @param MessageGenerationStopped|null    $stopped_message_generation Optional. A user asked the bot to stop the generation of
+     *                                                                     a message
+     * @param WidgetQuery|null                 $widget_query               Optional. New incoming query from a widget in a message sent by the bot or via the bot
+     * @param SharedWidgetQuery|null           $shared_widget_query        Optional. New incoming query from a forwarded message with a shared widget
      *
      * @see https://core.telegram.org/bots/api#setwebhook webhooks
      * @see https://core.telegram.org/bots/api#message Message
@@ -79,6 +82,8 @@ final class Update implements EntityInterface
      * @see https://core.telegram.org/bots/api#choseninlineresult ChosenInlineResult
      * @see https://core.telegram.org/bots/inline#collecting-feedback feedback collecting
      * @see https://core.telegram.org/bots/api#callbackquery CallbackQuery
+     * @see https://core.telegram.org/bots/api#widgetquery WidgetQuery
+     * @see https://core.telegram.org/bots/api#sharedwidgetquery SharedWidgetQuery
      * @see https://core.telegram.org/bots/api#shippingquery ShippingQuery
      * @see https://core.telegram.org/bots/api#precheckoutquery PreCheckoutQuery
      * @see https://core.telegram.org/bots/api#paidmediapurchased PaidMediaPurchased
@@ -89,6 +94,8 @@ final class Update implements EntityInterface
      * @see https://core.telegram.org/bots/api#chatboostupdated ChatBoostUpdated
      * @see https://core.telegram.org/bots/api#chatboostremoved ChatBoostRemoved
      * @see https://core.telegram.org/bots/api#managedbotupdated ManagedBotUpdated
+     * @see https://core.telegram.org/bots/api#botsubscriptionupdated BotSubscriptionUpdated
+     * @see https://core.telegram.org/bots/api#messagegenerationstopped MessageGenerationStopped
      */
     public function __construct(
         protected int $update_id,
@@ -119,6 +126,8 @@ final class Update implements EntityInterface
         protected ?Message $guest_message = null,
         protected ?BotSubscriptionUpdated $subscription = null,
         protected ?MessageGenerationStopped $stopped_message_generation = null,
+        protected ?WidgetQuery $widget_query = null,
+        protected ?SharedWidgetQuery $shared_widget_query = null,
     ) {}
 
     /**
@@ -681,6 +690,46 @@ final class Update implements EntityInterface
         return $this;
     }
 
+    /**
+     * @return WidgetQuery|null
+     */
+    public function getWidgetQuery(): ?WidgetQuery
+    {
+        return $this->widget_query;
+    }
+
+    /**
+     * @param WidgetQuery|null $widget_query
+     *
+     * @return Update
+     */
+    public function setWidgetQuery(?WidgetQuery $widget_query): Update
+    {
+        $this->widget_query = $widget_query;
+
+        return $this;
+    }
+
+    /**
+     * @return SharedWidgetQuery|null
+     */
+    public function getSharedWidgetQuery(): ?SharedWidgetQuery
+    {
+        return $this->shared_widget_query;
+    }
+
+    /**
+     * @param SharedWidgetQuery|null $shared_widget_query
+     *
+     * @return Update
+     */
+    public function setSharedWidgetQuery(?SharedWidgetQuery $shared_widget_query): Update
+    {
+        $this->shared_widget_query = $shared_widget_query;
+
+        return $this;
+    }
+
     public function getType(): ?UpdateTypeEnum
     {
         return match (true) {
@@ -711,9 +760,10 @@ final class Update implements EntityInterface
             $this->getGuestMessage() !== null => UpdateTypeEnum::GuestMessage,
             $this->getSubscription() !== null => UpdateTypeEnum::Subscription,
             $this->getStoppedMessageGeneration() !== null => UpdateTypeEnum::StoppedMessageGeneration,
+            $this->getWidgetQuery() !== null => UpdateTypeEnum::WidgetQuery,
+            $this->getSharedWidgetQuery() !== null => UpdateTypeEnum::SharedWidgetQuery,
             default => null,
         };
     }
 }
-
 // endregion CLASS_Update

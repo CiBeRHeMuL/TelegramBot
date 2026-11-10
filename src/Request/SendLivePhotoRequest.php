@@ -17,12 +17,13 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 
 // region CLASS_SendLivePhotoRequest
 /**
- * @see https://core.telegram.org/bots/api#sendlivephoto
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendlivephoto
  */
 class SendLivePhotoRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target channel (in the format \@channelusername)
+     * @param ChatId|null                                                                  $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup, or channel in
+     *                                                                                                                   the format \@username; required unless the message is sent as an ephemeral reply to a callback query
      * @param Filename|Url|string                                                          $live_photo                   Live photo video to send. The video must be no longer than 10 seconds and must not
      *                                                                                                                   exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload
      *                                                                                                                   a new video using multipart/form-data. More information on Sending Files ». Sending live photos by a URL is currently unsupported.
@@ -52,13 +53,14 @@ class SendLivePhotoRequest implements RequestInterface
      *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
      *                                                                                                                   a reply from the user.
      * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
-     * @param bool|null                                                                    $show_caption_above_media     Pass True, if the caption must be shown above the message media
+     * @param bool|null                                                                    $show_caption_above_media     Pass True if the caption must be shown above the message media
      * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
      *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      *                                                                                                                   post is automatically declined.
-     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the
-     *                                                                                                                   ephemeral message
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters A JSON-serialized object containing the parameters of
+     *                                                                                                                   the ephemeral message to send
      *
+     * @see https://core.telegram.org/bots/api#ephemeralmessageparameters EphemeralMessageParameters
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -75,7 +77,7 @@ class SendLivePhotoRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
-        private ChatId $chat_id,
+        private ?ChatId $chat_id,
         private Filename|Url|string $live_photo,
         private Filename|Url|string $photo,
         private ?bool $allow_paid_broadcast = null,
@@ -96,12 +98,12 @@ class SendLivePhotoRequest implements RequestInterface
         private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
-    public function getChatId(): ChatId
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId $chat_id): SendLivePhotoRequest
+    public function setChatId(?ChatId $chat_id): SendLivePhotoRequest
     {
         $this->chat_id = $chat_id;
 
@@ -312,19 +314,11 @@ class SendLivePhotoRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return EphemeralMessageParameters|null
-     */
     public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
         return $this->ephemeral_message_parameters;
     }
 
-    /**
-     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
-     *
-     * @return SendLivePhotoRequest
-     */
     public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendLivePhotoRequest
     {
         $this->ephemeral_message_parameters = $ephemeral_message_parameters;

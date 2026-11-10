@@ -17,6 +17,8 @@ use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
     InputContactMessageContent::class,
     InputInvoiceMessageContent::class,
     InputRichMessageContent::class,
+    InputWidgetMessageContent::class,
+    InputSharedWidgetMessageContent::class,
 ])]
 abstract class AbstractInputMessageContent implements EntityInterface {}
 // endregion CLASS_AbstractInputMessageContent

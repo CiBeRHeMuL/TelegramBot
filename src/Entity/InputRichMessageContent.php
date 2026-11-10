@@ -2,12 +2,17 @@
 
 namespace AndrewGos\TelegramBot\Entity;
 
+use AndrewGos\ClassBuilder\Attribute\BuildIf;
+use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
+use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
+
 // region CLASS_InputRichMessageContent
 /**
  * Represents the content of a rich message to be sent as the result of an inline query.
  *
  * @see https://core.telegram.org/bots/api#inputrichmessagecontent
  */
+#[BuildIf(new FieldCompareChecker('rich_message', null, CompareOperatorEnum::StrictNotEqual))]
 final class InputRichMessageContent extends AbstractInputMessageContent
 {
     /**

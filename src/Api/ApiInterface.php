@@ -2367,5 +2367,68 @@ interface ApiInterface
      * @see https://core.telegram.org/bots/api#deleteephemeralmessage
      */
     public function deleteEphemeralMessage(Req\DeleteEphemeralMessageRequest $request): Res\DeleteEphemeralMessageResponse;
+
+    /**
+     * Use this method to send a message with an HTML widget. Currently, in the production environment, widgets can be sent only
+     * to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the
+     * sent Message is returned.
+     *
+     * @param Req\SendWidgetRequest $request
+     *
+     * @return Res\SendWidgetResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendwidget
+     */
+    public function sendWidget(Req\SendWidgetRequest $request): Res\SendWidgetResponse;
+
+    /**
+     * Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be
+     * sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success,
+     * the sent Message is returned.
+     *
+     * @param Req\SendSharedWidgetRequest $request
+     *
+     * @return Res\SendSharedWidgetResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendsharedwidget
+     */
+    public function sendSharedWidget(Req\SendSharedWidgetRequest $request): Res\SendSharedWidgetResponse;
+
+    /**
+     * Use this method to send an answer to a query from a widget. The query must be answered within 15 seconds. The answer is received
+     * only by the widget that sent the query and doesn't change data of the widget; use editMessageWidgetData or editSharedWidgetData
+     * to change it. On success, True is returned.
+     *
+     * @param Req\AnswerWidgetQueryRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#answerwidgetquery
+     */
+    public function answerWidgetQuery(Req\AnswerWidgetQueryRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to edit data of a widget in a message sent by the bot or via the bot (for inline bots). Public data of a shared
+     * widget can be changed at most once per second. On success, True is returned.
+     *
+     * @param Req\EditMessageWidgetDataRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#editmessagewidgetdata
+     */
+    public function editMessageWidgetData(Req\EditMessageWidgetDataRequest $request): Res\RawResponse;
+
+    /**
+     * Use this method to edit public data of a shared widget created by the bot. A shared widget can be edited at most once per
+     * second. On success, True is returned.
+     *
+     * @param Req\EditSharedWidgetDataRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#editsharedwidgetdata
+     */
+    public function editSharedWidgetData(Req\EditSharedWidgetDataRequest $request): Res\RawResponse;
 }
 // endregion INTERFACE_ApiInterface

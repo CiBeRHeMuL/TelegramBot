@@ -16,7 +16,6 @@ use AndrewGos\TelegramBot\Request as Req;
 use AndrewGos\TelegramBot\Request\RequestInterface;
 use AndrewGos\TelegramBot\Response as Res;
 use AndrewGos\TelegramBot\Response\GetFileResponse;
-use AndrewGos\TelegramBot\Response\RawResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use AndrewGos\TelegramBot\ValueObject\EncodedJson;
 use AndrewGos\TelegramBot\ValueObject\Url;
@@ -137,11 +136,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetWebhookRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setwebhook
      */
-    public function setWebhook(Req\SetWebhookRequest $request): RawResponse
+    public function setWebhook(Req\SetWebhookRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -151,11 +150,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteWebhookRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletewebhook
      */
-    public function deleteWebhook(Req\DeleteWebhookRequest $request): RawResponse
+    public function deleteWebhook(Req\DeleteWebhookRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -200,11 +199,11 @@ class Api implements ApiInterface
      * but will not be able to log in back to the cloud Bot API server for 10 minutes.
      * Returns True on success. Requires no parameters.
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#logout
      */
-    public function logOut(): RawResponse
+    public function logOut(): Res\RawResponse
     {
         return $this->send(__FUNCTION__);
     }
@@ -215,11 +214,11 @@ class Api implements ApiInterface
      * The method will return error 429 in the first 10 minutes after the bot is launched.
      * Returns True on success. Requires no parameters.
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#close
      */
-    public function close(): RawResponse
+    public function close(): Res\RawResponse
     {
         return $this->send(__FUNCTION__);
     }
@@ -578,11 +577,11 @@ class Api implements ApiInterface
      *
      * @param Req\SendChatActionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendchataction
      */
-    public function sendChatAction(Req\SendChatActionRequest $request): RawResponse
+    public function sendChatAction(Req\SendChatActionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -594,11 +593,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMessageReactionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendmessagereaction
      */
-    public function setMessageReaction(Req\SetMessageReactionRequest $request): RawResponse
+    public function setMessageReaction(Req\SetMessageReactionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -652,11 +651,11 @@ class Api implements ApiInterface
      *
      * @param Req\BanChatMemberRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#banchatmember
      */
-    public function banChatMember(Req\BanChatMemberRequest $request): RawResponse
+    public function banChatMember(Req\BanChatMemberRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -671,11 +670,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnbanChatMemberRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unbanchatmember
      */
-    public function unbanChatMember(Req\UnbanChatMemberRequest $request): RawResponse
+    public function unbanChatMember(Req\UnbanChatMemberRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -687,11 +686,11 @@ class Api implements ApiInterface
      *
      * @param Req\RestrictChatMemberRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#restrictchatmember
      */
-    public function restrictChatMember(Req\RestrictChatMemberRequest $request): RawResponse
+    public function restrictChatMember(Req\RestrictChatMemberRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -703,11 +702,11 @@ class Api implements ApiInterface
      *
      * @param Req\PromoteChatMemberRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#promotechatmember
      */
-    public function promoteChatMember(Req\PromoteChatMemberRequest $request): RawResponse
+    public function promoteChatMember(Req\PromoteChatMemberRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -717,11 +716,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatAdministratorCustomTitleRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatadministratorcustomtitle
      */
-    public function setChatAdministratorCustomTitle(Req\SetChatAdministratorCustomTitleRequest $request): RawResponse
+    public function setChatAdministratorCustomTitle(Req\SetChatAdministratorCustomTitleRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -733,11 +732,11 @@ class Api implements ApiInterface
      *
      * @param Req\BanChatSenderChatRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#banchatsenderchat
      */
-    public function banChatSenderChat(Req\BanChatSenderChatRequest $request): RawResponse
+    public function banChatSenderChat(Req\BanChatSenderChatRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -748,11 +747,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnbanChatSenderChatRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unbanchatsenderchat
      */
-    public function unbanChatSenderChat(Req\UnbanChatSenderChatRequest $request): RawResponse
+    public function unbanChatSenderChat(Req\UnbanChatSenderChatRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -763,11 +762,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatPermissionsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatpermissions
      */
-    public function setChatPermissions(Req\SetChatPermissionsRequest $request): RawResponse
+    public function setChatPermissions(Req\SetChatPermissionsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -859,11 +858,11 @@ class Api implements ApiInterface
      *
      * @param Req\ApproveChatJoinRequestRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#approvechatjoinrequest
      */
-    public function approveChatJoinRequest(Req\ApproveChatJoinRequestRequest $request): RawResponse
+    public function approveChatJoinRequest(Req\ApproveChatJoinRequestRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -874,11 +873,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeclineChatJoinRequestRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#declinechatjoinrequest
      */
-    public function declineChatJoinRequest(Req\DeclineChatJoinRequestRequest $request): RawResponse
+    public function declineChatJoinRequest(Req\DeclineChatJoinRequestRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -889,11 +888,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatPhotoRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatphoto
      */
-    public function setChatPhoto(Req\SetChatPhotoRequest $request): RawResponse
+    public function setChatPhoto(Req\SetChatPhotoRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -904,11 +903,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteChatPhotoRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletechatphoto
      */
-    public function deleteChatPhoto(Req\DeleteChatPhotoRequest $request): RawResponse
+    public function deleteChatPhoto(Req\DeleteChatPhotoRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -919,11 +918,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatTitleRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchattitle
      */
-    public function setChatTitle(Req\SetChatTitleRequest $request): RawResponse
+    public function setChatTitle(Req\SetChatTitleRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -934,11 +933,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatDescriptionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatdescription
      */
-    public function setChatDescription(Req\SetChatDescriptionRequest $request): RawResponse
+    public function setChatDescription(Req\SetChatDescriptionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -950,11 +949,11 @@ class Api implements ApiInterface
      *
      * @param Req\PinChatMessageRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#pinchatmessage
      */
-    public function pinChatMessage(Req\PinChatMessageRequest $request): RawResponse
+    public function pinChatMessage(Req\PinChatMessageRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -966,11 +965,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnpinChatMessageRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unpinchatmessage
      */
-    public function unpinChatMessage(Req\UnpinChatMessageRequest $request): RawResponse
+    public function unpinChatMessage(Req\UnpinChatMessageRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -982,11 +981,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnpinAllChatMessagesRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unpinallchatmessages
      */
-    public function unpinAllChatMessages(Req\UnpinAllChatMessagesRequest $request): RawResponse
+    public function unpinAllChatMessages(Req\UnpinAllChatMessagesRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -996,11 +995,11 @@ class Api implements ApiInterface
      *
      * @param Req\LeaveChatRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#leavechat
      */
-    public function leaveChat(Req\LeaveChatRequest $request): RawResponse
+    public function leaveChat(Req\LeaveChatRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1080,11 +1079,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatStickerSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatstickerset
      */
-    public function setChatStickerSet(Req\SetChatStickerSetRequest $request): RawResponse
+    public function setChatStickerSet(Req\SetChatStickerSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1096,11 +1095,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteChatStickerSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletechatstickerset
      */
-    public function deleteChatStickerSet(Req\DeleteChatStickerSetRequest $request): RawResponse
+    public function deleteChatStickerSet(Req\DeleteChatStickerSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1147,11 +1146,11 @@ class Api implements ApiInterface
      *
      * @param Req\EditForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#editforumtopic
      */
-    public function editForumTopic(Req\EditForumTopicRequest $request): RawResponse
+    public function editForumTopic(Req\EditForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1162,11 +1161,11 @@ class Api implements ApiInterface
      *
      * @param Req\CloseForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#closeforumtopic
      */
-    public function closeForumTopic(Req\CloseForumTopicRequest $request): RawResponse
+    public function closeForumTopic(Req\CloseForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1177,11 +1176,11 @@ class Api implements ApiInterface
      *
      * @param Req\ReopenForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#reopenforumtopic
      */
-    public function reopenForumTopic(Req\ReopenForumTopicRequest $request): RawResponse
+    public function reopenForumTopic(Req\ReopenForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1192,11 +1191,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deleteforumtopic
      */
-    public function deleteForumTopic(Req\DeleteForumTopicRequest $request): RawResponse
+    public function deleteForumTopic(Req\DeleteForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1207,11 +1206,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnpinAllForumTopicMessagesRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unpinallforumtopicmessages
      */
-    public function unpinAllForumTopicMessages(Req\UnpinAllForumTopicMessagesRequest $request): RawResponse
+    public function unpinAllForumTopicMessages(Req\UnpinAllForumTopicMessagesRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1222,11 +1221,11 @@ class Api implements ApiInterface
      *
      * @param Req\EditGeneralForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#editgeneralforumtopic
      */
-    public function editGeneralForumTopic(Req\EditGeneralForumTopicRequest $request): RawResponse
+    public function editGeneralForumTopic(Req\EditGeneralForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1237,11 +1236,11 @@ class Api implements ApiInterface
      *
      * @param Req\CloseGeneralForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#closegeneralforumtopic
      */
-    public function closeGeneralForumTopic(Req\CloseGeneralForumTopicRequest $request): RawResponse
+    public function closeGeneralForumTopic(Req\CloseGeneralForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1253,11 +1252,11 @@ class Api implements ApiInterface
      *
      * @param Req\ReopenGeneralForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#reopengeneralforumtopic
      */
-    public function reopenGeneralForumTopic(Req\ReopenGeneralForumTopicRequest $request): RawResponse
+    public function reopenGeneralForumTopic(Req\ReopenGeneralForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1269,11 +1268,11 @@ class Api implements ApiInterface
      *
      * @param Req\HideGeneralForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#hidegeneralforumtopic
      */
-    public function hideGeneralForumTopic(Req\HideGeneralForumTopicRequest $request): RawResponse
+    public function hideGeneralForumTopic(Req\HideGeneralForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1284,11 +1283,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnhideGeneralForumTopicRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unhidegeneralforumtopic
      */
-    public function unhideGeneralForumTopic(Req\UnhideGeneralForumTopicRequest $request): RawResponse
+    public function unhideGeneralForumTopic(Req\UnhideGeneralForumTopicRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1299,11 +1298,11 @@ class Api implements ApiInterface
      *
      * @param Req\UnpinAllGeneralForumTopicMessagesRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#unpinallgeneralforumtopicmessages
      */
-    public function unpinAllGeneralForumTopicMessages(Req\UnpinAllGeneralForumTopicMessagesRequest $request): RawResponse
+    public function unpinAllGeneralForumTopicMessages(Req\UnpinAllGeneralForumTopicMessagesRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1318,11 +1317,11 @@ class Api implements ApiInterface
      *
      * @param Req\AnswerCallbackQueryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#answercallbackquery
      */
-    public function answerCallbackQuery(Req\AnswerCallbackQueryRequest $request): RawResponse
+    public function answerCallbackQuery(Req\AnswerCallbackQueryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1369,12 +1368,12 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyCommandsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmycommands
      * @see https://core.telegram.org/bots/features#commands
      */
-    public function setMyCommands(Req\SetMyCommandsRequest $request): RawResponse
+    public function setMyCommands(Req\SetMyCommandsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1385,11 +1384,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteMyCommandsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletemycommands
      */
-    public function deleteMyCommands(Req\DeleteMyCommandsRequest $request): RawResponse
+    public function deleteMyCommands(Req\DeleteMyCommandsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1417,11 +1416,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyNameRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmyname
      */
-    public function setMyName(Req\SetMyNameRequest $request): RawResponse
+    public function setMyName(Req\SetMyNameRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1449,11 +1448,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyDescriptionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmydescription
      */
-    public function setMyDescription(Req\SetMyDescriptionRequest $request): RawResponse
+    public function setMyDescription(Req\SetMyDescriptionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1481,11 +1480,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyShortDescriptionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmyshortdescription
      */
-    public function setMyShortDescription(Req\SetMyShortDescriptionRequest $request): RawResponse
+    public function setMyShortDescription(Req\SetMyShortDescriptionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1512,11 +1511,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatMenuButtonRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatmenubutton
      */
-    public function setChatMenuButton(Req\SetChatMenuButtonRequest $request): RawResponse
+    public function setChatMenuButton(Req\SetChatMenuButtonRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1546,11 +1545,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyDefaultAdministratorRightsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmydefaultadministratorrights
      */
-    public function setMyDefaultAdministratorRights(Req\SetMyDefaultAdministratorRightsRequest $request): RawResponse
+    public function setMyDefaultAdministratorRights(Req\SetMyDefaultAdministratorRightsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1749,11 +1748,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteMessageRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletemessage
      */
-    public function deleteMessage(Req\DeleteMessageRequest $request): RawResponse
+    public function deleteMessage(Req\DeleteMessageRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1764,11 +1763,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteMessagesRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletemessages
      */
-    public function deleteMessages(Req\DeleteMessagesRequest $request): RawResponse
+    public function deleteMessages(Req\DeleteMessagesRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1848,11 +1847,11 @@ class Api implements ApiInterface
      *
      * @param Req\CreateNewStickerSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#createnewstickerset
      */
-    public function createNewStickerSet(Req\CreateNewStickerSetRequest $request): RawResponse
+    public function createNewStickerSet(Req\CreateNewStickerSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1863,11 +1862,11 @@ class Api implements ApiInterface
      *
      * @param Req\AddStickerToSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#addstickertoset
      */
-    public function addStickerToSet(Req\AddStickerToSetRequest $request): RawResponse
+    public function addStickerToSet(Req\AddStickerToSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1877,11 +1876,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerPositionInSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickerpositioninset
      */
-    public function setStickerPositionInSet(Req\SetStickerPositionInSetRequest $request): RawResponse
+    public function setStickerPositionInSet(Req\SetStickerPositionInSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1891,11 +1890,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteStickerFromSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletestickerfromset
      */
-    public function deleteStickerFromSet(Req\DeleteStickerFromSetRequest $request): RawResponse
+    public function deleteStickerFromSet(Req\DeleteStickerFromSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1906,11 +1905,11 @@ class Api implements ApiInterface
      *
      * @param Req\ReplaceStickerInSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#replacestickerinset
      */
-    public function replaceStickerInSet(Req\ReplaceStickerInSetRequest $request): RawResponse
+    public function replaceStickerInSet(Req\ReplaceStickerInSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1921,11 +1920,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerEmojiListRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickeremojilist
      */
-    public function setStickerEmojiList(Req\SetStickerEmojiListRequest $request): RawResponse
+    public function setStickerEmojiList(Req\SetStickerEmojiListRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1936,11 +1935,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerKeywordsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickerkeywords
      */
-    public function setStickerKeywords(Req\SetStickerKeywordsRequest $request): RawResponse
+    public function setStickerKeywords(Req\SetStickerKeywordsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1951,11 +1950,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerMaskPositionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickermaskposition
      */
-    public function setStickerMaskPosition(Req\SetStickerMaskPositionRequest $request): RawResponse
+    public function setStickerMaskPosition(Req\SetStickerMaskPositionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1965,11 +1964,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerSetTitleRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickersettitle
      */
-    public function setStickerSetTitle(Req\SetStickerSetTitleRequest $request): RawResponse
+    public function setStickerSetTitle(Req\SetStickerSetTitleRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1980,11 +1979,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetStickerSetThumbnailRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setstickersetthumbnail
      */
-    public function setStickerSetThumbnail(Req\SetStickerSetThumbnailRequest $request): RawResponse
+    public function setStickerSetThumbnail(Req\SetStickerSetThumbnailRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -1994,11 +1993,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetCustomEmojiStickerSetThumbnailRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setcustomemojistickersetthumbnail
      */
-    public function setCustomEmojiStickerSetThumbnail(Req\SetCustomEmojiStickerSetThumbnailRequest $request): RawResponse
+    public function setCustomEmojiStickerSetThumbnail(Req\SetCustomEmojiStickerSetThumbnailRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2008,11 +2007,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteStickerSetRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletestickerset
      */
-    public function deleteStickerSet(Req\DeleteStickerSetRequest $request): RawResponse
+    public function deleteStickerSet(Req\DeleteStickerSetRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2022,11 +2021,11 @@ class Api implements ApiInterface
      *
      * @param Req\AnswerInlineQueryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#answerinlinequery
      */
-    public function answerInlineQuery(Req\AnswerInlineQueryRequest $request): RawResponse
+    public function answerInlineQuery(Req\AnswerInlineQueryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2089,11 +2088,11 @@ class Api implements ApiInterface
      *
      * @param Req\AnswerShippingQueryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#answershippingquery
      */
-    public function answerShippingQuery(Req\AnswerShippingQueryRequest $request): RawResponse
+    public function answerShippingQuery(Req\AnswerShippingQueryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2105,11 +2104,11 @@ class Api implements ApiInterface
      *
      * @param Req\AnswerPreCheckoutQueryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#answerprecheckoutquery
      */
-    public function answerPreCheckoutQuery(Req\AnswerPreCheckoutQueryRequest $request): RawResponse
+    public function answerPreCheckoutQuery(Req\AnswerPreCheckoutQueryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2125,11 +2124,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetPassportDataErrorsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setpassportdataerrors
      */
-    public function setPassportDataErrors(Req\SetPassportDataErrorsRequest $request): RawResponse
+    public function setPassportDataErrors(Req\SetPassportDataErrorsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2201,11 +2200,11 @@ class Api implements ApiInterface
      *
      * @param Req\RefundStarPaymentRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#refundstarpayment
      */
-    public function refundStarPayment(Req\RefundStarPaymentRequest $request): RawResponse
+    public function refundStarPayment(Req\RefundStarPaymentRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2287,11 +2286,11 @@ class Api implements ApiInterface
      *
      * @param Req\EditUserStarSubscriptionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#edituserstarsubscription
      */
-    public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): RawResponse
+    public function editUserStarSubscription(Req\EditUserStarSubscriptionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2302,11 +2301,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetUserEmojiStatusRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setuseremojistatus
      */
-    public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): RawResponse
+    public function setUserEmojiStatus(Req\SetUserEmojiStatusRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2350,11 +2349,11 @@ class Api implements ApiInterface
      *
      * @param Req\SendGiftRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendgift
      */
-    public function sendGift(Req\SendGiftRequest $request): RawResponse
+    public function sendGift(Req\SendGiftRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2364,11 +2363,11 @@ class Api implements ApiInterface
      *
      * @param Req\VerifyUserRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#verifyuser
      */
-    public function verifyUser(Req\VerifyUserRequest $request): RawResponse
+    public function verifyUser(Req\VerifyUserRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2378,11 +2377,11 @@ class Api implements ApiInterface
      *
      * @param Req\VerifyChatRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#verifychat
      */
-    public function verifyChat(Req\VerifyChatRequest $request): RawResponse
+    public function verifyChat(Req\VerifyChatRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2393,11 +2392,11 @@ class Api implements ApiInterface
      *
      * @param Req\RemoveUserVerificationRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#removeuserverification
      */
-    public function removeUserVerification(Req\RemoveUserVerificationRequest $request): RawResponse
+    public function removeUserVerification(Req\RemoveUserVerificationRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2408,11 +2407,11 @@ class Api implements ApiInterface
      *
      * @param Req\RemoveChatVerificationRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#removechatverification
      */
-    public function removeChatVerification(Req\RemoveChatVerificationRequest $request): RawResponse
+    public function removeChatVerification(Req\RemoveChatVerificationRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2423,11 +2422,11 @@ class Api implements ApiInterface
      *
      * @param Req\ReadBusinessMessageRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#readbusinessmessage
      */
-    public function readBusinessMessage(Req\ReadBusinessMessageRequest $request): RawResponse
+    public function readBusinessMessage(Req\ReadBusinessMessageRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2438,11 +2437,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteBusinessMessagesRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletebusinessmessages
      */
-    public function deleteBusinessMessages(Req\DeleteBusinessMessagesRequest $request): RawResponse
+    public function deleteBusinessMessages(Req\DeleteBusinessMessagesRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2453,11 +2452,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetBusinessAccountNameRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setbusinessaccountname
      */
-    public function setBusinessAccountName(Req\SetBusinessAccountNameRequest $request): RawResponse
+    public function setBusinessAccountName(Req\SetBusinessAccountNameRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2467,11 +2466,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetBusinessAccountUsernameRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setbusinessaccountusername
      */
-    public function setBusinessAccountUsername(Req\SetBusinessAccountUsernameRequest $request): RawResponse
+    public function setBusinessAccountUsername(Req\SetBusinessAccountUsernameRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2481,11 +2480,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetBusinessAccountBioRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setbusinessaccountbio
      */
-    public function setBusinessAccountBio(Req\SetBusinessAccountBioRequest $request): RawResponse
+    public function setBusinessAccountBio(Req\SetBusinessAccountBioRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2496,11 +2495,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetBusinessAccountProfilePhotoRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
      */
-    public function setBusinessAccountProfilePhoto(Req\SetBusinessAccountProfilePhotoRequest $request): RawResponse
+    public function setBusinessAccountProfilePhoto(Req\SetBusinessAccountProfilePhotoRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2511,11 +2510,11 @@ class Api implements ApiInterface
      *
      * @param Req\RemoveBusinessAccountProfilePhotoRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#removebusinessaccountprofilephoto
      */
-    public function removeBusinessAccountProfilePhoto(Req\RemoveBusinessAccountProfilePhotoRequest $request): RawResponse
+    public function removeBusinessAccountProfilePhoto(Req\RemoveBusinessAccountProfilePhotoRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2526,11 +2525,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetBusinessAccountGiftSettingsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setbusinessaccountgiftsettings
      */
-    public function setBusinessAccountGiftSettings(Req\SetBusinessAccountGiftSettingsRequest $request): RawResponse
+    public function setBusinessAccountGiftSettings(Req\SetBusinessAccountGiftSettingsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2559,11 +2558,11 @@ class Api implements ApiInterface
      *
      * @param Req\TransferBusinessAccountStarsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#transferbusinessaccountstars
      */
-    public function transferBusinessAccountStars(Req\TransferBusinessAccountStarsRequest $request): RawResponse
+    public function transferBusinessAccountStars(Req\TransferBusinessAccountStarsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2592,11 +2591,11 @@ class Api implements ApiInterface
      *
      * @param Req\ConvertGiftToStarsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#convertgifttostars
      */
-    public function convertGiftToStars(Req\ConvertGiftToStarsRequest $request): RawResponse
+    public function convertGiftToStars(Req\ConvertGiftToStarsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2607,11 +2606,11 @@ class Api implements ApiInterface
      *
      * @param Req\UpgradeGiftRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#upgradegift
      */
-    public function upgradeGift(Req\UpgradeGiftRequest $request): RawResponse
+    public function upgradeGift(Req\UpgradeGiftRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2622,11 +2621,11 @@ class Api implements ApiInterface
      *
      * @param Req\TransferGiftRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#transfergift
      */
-    public function transferGift(Req\TransferGiftRequest $request): RawResponse
+    public function transferGift(Req\TransferGiftRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2673,11 +2672,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteStoryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletestory
      */
-    public function deleteStory(Req\DeleteStoryRequest $request): RawResponse
+    public function deleteStory(Req\DeleteStoryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2738,11 +2737,11 @@ class Api implements ApiInterface
      *
      * @param Req\GiftPremiumSubscriptionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#giftpremiumsubscription
      */
-    public function giftPremiumSubscription(Req\GiftPremiumSubscriptionRequest $request): RawResponse
+    public function giftPremiumSubscription(Req\GiftPremiumSubscriptionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2753,11 +2752,11 @@ class Api implements ApiInterface
      *
      * @param Req\ApproveSuggestedPostRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#approvesuggestedpost
      */
-    public function approveSuggestedPost(Req\ApproveSuggestedPostRequest $request): RawResponse
+    public function approveSuggestedPost(Req\ApproveSuggestedPostRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2768,11 +2767,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeclineSuggestedPostRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#declinesuggestedpost
      */
-    public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): RawResponse
+    public function declineSuggestedPost(Req\DeclineSuggestedPostRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2783,11 +2782,11 @@ class Api implements ApiInterface
      *
      * @param Req\SendMessageDraftRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendmessagedraft
      */
-    public function sendMessageDraft(Req\SendMessageDraftRequest $request): RawResponse
+    public function sendMessageDraft(Req\SendMessageDraftRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2867,11 +2866,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetMyProfilePhotoRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmyprofilephoto
      */
-    public function setMyProfilePhoto(Req\SetMyProfilePhotoRequest $request): RawResponse
+    public function setMyProfilePhoto(Req\SetMyProfilePhotoRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -2879,11 +2878,11 @@ class Api implements ApiInterface
     /**
      * Removes the profile photo of the bot. Requires no parameters. Returns True on success.
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#removemyprofilephoto
      */
-    public function removeMyProfilePhoto(): RawResponse
+    public function removeMyProfilePhoto(): Res\RawResponse
     {
         return $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
     }
@@ -2894,11 +2893,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetChatMemberTagRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setchatmembertag
      */
-    public function setChatMemberTag(Req\SetChatMemberTagRequest $request): RawResponse
+    public function setChatMemberTag(Req\SetChatMemberTagRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -3028,11 +3027,11 @@ class Api implements ApiInterface
      *
      * @param Req\SetManagedBotAccessSettingsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#setmanagedbotaccesssettings
      */
-    public function setManagedBotAccessSettings(Req\SetManagedBotAccessSettingsRequest $request): RawResponse
+    public function setManagedBotAccessSettings(Req\SetManagedBotAccessSettingsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -3043,11 +3042,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteMessageReactionRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deletemessagereaction
      */
-    public function deleteMessageReaction(Req\DeleteMessageReactionRequest $request): RawResponse
+    public function deleteMessageReaction(Req\DeleteMessageReactionRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -3058,11 +3057,11 @@ class Api implements ApiInterface
      *
      * @param Req\DeleteAllMessageReactionsRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#deleteallmessagereactions
      */
-    public function deleteAllMessageReactions(Req\DeleteAllMessageReactionsRequest $request): RawResponse
+    public function deleteAllMessageReactions(Req\DeleteAllMessageReactionsRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
@@ -3173,11 +3172,11 @@ class Api implements ApiInterface
      * @param RequestInterface|null $data
      * @param HttpMethodEnum        $httpMethod
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @throws ErrorResponseException When throwOnErrorResponse is true and API response is not ok
      */
-    protected function send(string $method, ?RequestInterface $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): RawResponse
+    protected function send(string $method, ?RequestInterface $data = null, HttpMethodEnum $httpMethod = HttpMethodEnum::Get): Res\RawResponse
     {
         $code = 200;
         $prevException = null;
@@ -3194,12 +3193,12 @@ class Api implements ApiInterface
             $code = $response->getStatusCode();
             $result = new EncodedJson($response->getBody()->getContents());
             $result = json_decode($result->getJson(), true);
-            $rawResponse = $this->classBuilder->build(RawResponse::class, $result);
+            $rawResponse = $this->classBuilder->build(Res\RawResponse::class, $result);
         } catch (Throwable $e) {
             $code = 500;
             $prevException = $e;
             $this->logger->error($e->getMessage());
-            $rawResponse = new RawResponse(
+            $rawResponse = new Res\RawResponse(
                 false,
                 'Invalid response',
                 (string) $e,
@@ -3225,16 +3224,16 @@ class Api implements ApiInterface
 
     // region METHOD_buildClassForResponse
     /**
-     * Deserialize a single entity from a RawResponse result using ClassBuilder.
+     * Deserialize a single entity from a Res\RawResponse result using ClassBuilder.
      *
      * @template T of object
      *
      * @param class-string<T> $entityClass
-     * @param RawResponse     $rawResponse
+     * @param Res\RawResponse $rawResponse
      *
      * @return T|null
      */
-    private function buildClassForResponse(string $entityClass, RawResponse $rawResponse): ?object
+    private function buildClassForResponse(string $entityClass, Res\RawResponse $rawResponse): ?object
     {
         $data = $rawResponse->getResult();
         try {
@@ -3251,16 +3250,16 @@ class Api implements ApiInterface
 
     // region METHOD_buildClassArrayForResponse
     /**
-     * Deserialize an array of entities from a RawResponse result using ClassBuilder.
+     * Deserialize an array of entities from a Res\RawResponse result using ClassBuilder.
      *
      * @template T of object
      *
      * @param class-string<T> $entityClass
-     * @param RawResponse     $rawResponse
+     * @param Res\RawResponse $rawResponse
      *
      * @return T[]|null
      */
-    private function buildClassArrayForResponse(string $entityClass, RawResponse $rawResponse): ?array
+    private function buildClassArrayForResponse(string $entityClass, Res\RawResponse $rawResponse): ?array
     {
         $data = $rawResponse->getResult();
         try {
@@ -3299,11 +3298,11 @@ class Api implements ApiInterface
      *
      * @param Req\SendRichMessageDraftRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendrichmessagedraft
      */
-    public function sendRichMessageDraft(Req\SendRichMessageDraftRequest $request): RawResponse
+    public function sendRichMessageDraft(Req\SendRichMessageDraftRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request);
     }
@@ -3315,11 +3314,11 @@ class Api implements ApiInterface
      *
      * @param Req\AnswerChatJoinRequestQueryRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#answerchatjoinrequestquery
      */
-    public function answerChatJoinRequestQuery(Req\AnswerChatJoinRequestQueryRequest $request): RawResponse
+    public function answerChatJoinRequestQuery(Req\AnswerChatJoinRequestQueryRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request);
     }
@@ -3331,11 +3330,11 @@ class Api implements ApiInterface
      *
      * @param Req\SendChatJoinRequestWebAppRequest $request
      *
-     * @return RawResponse
+     * @return Res\RawResponse
      *
      * @see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp
      */
-    public function sendChatJoinRequestWebApp(Req\SendChatJoinRequestWebAppRequest $request): RawResponse
+    public function sendChatJoinRequestWebApp(Req\SendChatJoinRequestWebAppRequest $request): Res\RawResponse
     {
         return $this->send(__FUNCTION__, $request);
     }
@@ -3455,5 +3454,89 @@ class Api implements ApiInterface
         return new Res\DeleteEphemeralMessageResponse($rawResponse, $result);
     }
     // endregion METHOD_deleteEphemeralMessage
+
+    /**
+     * Use this method to send a message with an HTML widget. Currently, in the production environment, widgets can be sent only
+     * to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the
+     * sent Message is returned.
+     *
+     * @param Req\SendWidgetRequest $request
+     *
+     * @return Res\SendWidgetResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendwidget
+     */
+    public function sendWidget(Req\SendWidgetRequest $request): Res\SendWidgetResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+
+        return new Res\SendWidgetResponse($rawResponse, $message);
+    }
+
+    /**
+     * Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be
+     * sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success,
+     * the sent Message is returned.
+     *
+     * @param Req\SendSharedWidgetRequest $request
+     *
+     * @return Res\SendSharedWidgetResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendsharedwidget
+     */
+    public function sendSharedWidget(Req\SendSharedWidgetRequest $request): Res\SendSharedWidgetResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $message = $this->buildClassForResponse(Ent\Message::class, $rawResponse);
+
+        return new Res\SendSharedWidgetResponse($rawResponse, $message);
+    }
+
+    /**
+     * Use this method to send an answer to a query from a widget. The query must be answered within 15 seconds. The answer is received
+     * only by the widget that sent the query and doesn't change data of the widget; use editMessageWidgetData or editSharedWidgetData
+     * to change it. On success, True is returned.
+     *
+     * @param Req\AnswerWidgetQueryRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#answerwidgetquery
+     */
+    public function answerWidgetQuery(Req\AnswerWidgetQueryRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to edit data of a widget in a message sent by the bot or via the bot (for inline bots). Public data of a shared
+     * widget can be changed at most once per second. On success, True is returned.
+     *
+     * @param Req\EditMessageWidgetDataRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#editmessagewidgetdata
+     */
+    public function editMessageWidgetData(Req\EditMessageWidgetDataRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
+
+    /**
+     * Use this method to edit public data of a shared widget created by the bot. A shared widget can be edited at most once per
+     * second. On success, True is returned.
+     *
+     * @param Req\EditSharedWidgetDataRequest $request
+     *
+     * @return Res\RawResponse
+     *
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#editsharedwidgetdata
+     */
+    public function editSharedWidgetData(Req\EditSharedWidgetDataRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+    }
 }
 // endregion CLASS_Api

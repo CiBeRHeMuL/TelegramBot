@@ -21,7 +21,6 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldCompareChecker('title', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('description', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('payload', null, CompareOperatorEnum::StrictNotEqual),
-    new FieldCompareChecker('provider_token', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('currency', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('prices', null, CompareOperatorEnum::StrictNotEqual),
 ]))]

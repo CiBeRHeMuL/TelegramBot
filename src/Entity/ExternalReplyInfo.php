@@ -8,7 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  *
- * @see https://core.telegram.org/bots/api#externalreplyinfo
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#externalreplyinfo
  */
 final class ExternalReplyInfo implements EntityInterface
 {
@@ -42,6 +42,7 @@ final class ExternalReplyInfo implements EntityInterface
      * @param PaidMediaInfo|null      $paid_media           Optional. Message contains paid media; information about the paid media
      * @param Checklist|null          $checklist            Optional. Message is a checklist
      * @param LivePhoto|null          $live_photo           Optional. Message is a live photo, information about the live photo
+     * @param Widget|null             $widget               Optional. Message is an HTML widget, information about the widget
      *
      * @see https://core.telegram.org/bots/api#messageorigin MessageOrigin
      * @see https://core.telegram.org/bots/api#chat Chat
@@ -58,6 +59,7 @@ final class ExternalReplyInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#videonote VideoNote
      * @see https://telegram.org/blog/video-messages-and-telescope video note
      * @see https://core.telegram.org/bots/api#voice Voice
+     * @see https://core.telegram.org/bots/api#widget Widget
      * @see https://core.telegram.org/bots/api#checklist Checklist
      * @see https://core.telegram.org/bots/api#contact Contact
      * @see https://core.telegram.org/bots/api#dice Dice
@@ -99,6 +101,7 @@ final class ExternalReplyInfo implements EntityInterface
         protected ?PaidMediaInfo $paid_media = null,
         protected ?Checklist $checklist = null,
         protected ?LivePhoto $live_photo = null,
+        protected ?Widget $widget = null,
     ) {}
 
     /**
@@ -617,6 +620,26 @@ final class ExternalReplyInfo implements EntityInterface
     public function setLivePhoto(?LivePhoto $live_photo): ExternalReplyInfo
     {
         $this->live_photo = $live_photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Widget|null
+     */
+    public function getWidget(): ?Widget
+    {
+        return $this->widget;
+    }
+
+    /**
+     * @param Widget|null $widget
+     *
+     * @return ExternalReplyInfo
+     */
+    public function setWidget(?Widget $widget): ExternalReplyInfo
+    {
+        $this->widget = $widget;
 
         return $this;
     }

@@ -14,13 +14,13 @@ use AndrewGos\TelegramBot\ValueObject\Phone;
 
 // region CLASS_SendContactRequest
 /**
- * @see https://core.telegram.org/bots/api#sendcontact
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendcontact
  */
 class SendContactRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     *                                                                                                                   \@username
+     * @param ChatId|null                                                                  $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup, or channel in
+     *                                                                                                                   the format \@username; required unless the message is sent as an ephemeral reply to a callback query
      * @param string                                                                       $first_name                   Contact's first name
      * @param Phone                                                                        $phone_number                 Contact's phone number
      * @param string|null                                                                  $business_connection_id       Unique identifier of the business connection on behalf of which the message will
@@ -32,7 +32,7 @@ class SendContactRequest implements RequestInterface
      * @param bool|null                                                                    $protect_content              Protects the contents of the sent message from forwarding and saving
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options.
      *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     *                                                                                                                   a reply from the user
+     *                                                                                                                   a reply from the user.
      * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
      * @param string|null                                                                  $vcard                        Additional data about the contact in the form of a vCard, 0-2048 bytes
      * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats
@@ -44,8 +44,10 @@ class SendContactRequest implements RequestInterface
      * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
      *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      *                                                                                                                   post is automatically declined.
-     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters A JSON-serialized object containing the parameters of
+     *                                                                                                                   the ephemeral message to send
      *
+     * @see https://core.telegram.org/bots/api#ephemeralmessageparameters EphemeralMessageParameters
      * @see https://en.wikipedia.org/wiki/VCard vCard
      * @see https://telegram.org/blog/channels-2-0#silent-messages silently
      * @see https://core.telegram.org/bots/faq#how-can-i-message-all-of-my-bot-39s-subscribers-at-once broadcasting limits
@@ -59,7 +61,7 @@ class SendContactRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
-        private ChatId $chat_id,
+        private ?ChatId $chat_id,
         private string $first_name,
         private Phone $phone_number,
         private ?string $business_connection_id = null,
@@ -77,12 +79,12 @@ class SendContactRequest implements RequestInterface
         private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
-    public function getChatId(): ChatId
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId $chat_id): SendContactRequest
+    public function setChatId(?ChatId $chat_id): SendContactRequest
     {
         $this->chat_id = $chat_id;
 
@@ -257,19 +259,11 @@ class SendContactRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return EphemeralMessageParameters|null
-     */
     public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
         return $this->ephemeral_message_parameters;
     }
 
-    /**
-     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
-     *
-     * @return SendContactRequest
-     */
     public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendContactRequest
     {
         $this->ephemeral_message_parameters = $ephemeral_message_parameters;

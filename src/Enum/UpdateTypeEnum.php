@@ -31,7 +31,8 @@ enum UpdateTypeEnum: string
     case ManagedBot = 'managed_bot';
     case GuestMessage = 'guest_message';
     case Subscription = 'subscription';
-    /** A user stopped message generation */
     case StoppedMessageGeneration = 'stopped_message_generation';
+    case WidgetQuery = 'widget_query';
+    case SharedWidgetQuery = 'shared_widget_query';
 }
 // endregion ENUM_UpdateTypeEnum

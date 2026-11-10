@@ -17,13 +17,13 @@ use AndrewGos\TelegramBot\ValueObject\Url;
 
 // region CLASS_SendVoiceRequest
 /**
- * @see https://core.telegram.org/bots/api#sendvoice
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#sendvoice
  */
 class SendVoiceRequest implements RequestInterface
 {
     /**
-     * @param ChatId                                                                       $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup or channel in the format
-     *                                                                                                                   \@username
+     * @param ChatId|null                                                                  $chat_id                      Unique identifier for the target chat or username of the target bot, supergroup, or channel in
+     *                                                                                                                   the format \@username; required unless the message is sent as an ephemeral reply to a callback query
      * @param Filename|Url|string                                                          $voice                        Audio file to send. Pass a file_id as String to send a file that exists on the Telegram
      *                                                                                                                   servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using
      *                                                                                                                   multipart/form-data. More information on Sending Files »
@@ -41,7 +41,7 @@ class SendVoiceRequest implements RequestInterface
      * @param bool|null                                                                    $protect_content              Protects the contents of the sent message from forwarding and saving
      * @param InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null $reply_markup                 Additional interface options.
      *                                                                                                                   A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force
-     *                                                                                                                   a reply from the user
+     *                                                                                                                   a reply from the user.
      * @param ReplyParameters|null                                                         $reply_parameters             Description of the message to reply to
      * @param string|null                                                                  $message_effect_id            Unique identifier of the message effect to be added to the message; for private chats
      *                                                                                                                   only
@@ -52,8 +52,10 @@ class SendVoiceRequest implements RequestInterface
      * @param SuggestedPostParameters|null                                                 $suggested_post_parameters    A JSON-serialized object containing the parameters of the suggested
      *                                                                                                                   post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested
      *                                                                                                                   post is automatically declined.
-     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters Optional. A JSON-serialized object containing the parameters of the ephemeral message
+     * @param EphemeralMessageParameters|null                                              $ephemeral_message_parameters A JSON-serialized object containing the parameters of
+     *                                                                                                                   the ephemeral message to send
      *
+     * @see https://core.telegram.org/bots/api#ephemeralmessageparameters EphemeralMessageParameters
      * @see https://core.telegram.org/bots/api#inputfile InputFile
      * @see https://core.telegram.org/bots/api#sending-files More information on Sending Files »
      * @see https://core.telegram.org/bots/api#formatting-options formatting options
@@ -70,7 +72,7 @@ class SendVoiceRequest implements RequestInterface
      * @see https://core.telegram.org/bots/features#keyboards custom reply keyboard
      */
     public function __construct(
-        private ChatId $chat_id,
+        private ?ChatId $chat_id,
         private Filename|Url|string $voice,
         private ?string $business_connection_id = null,
         private ?string $caption = null,
@@ -89,12 +91,12 @@ class SendVoiceRequest implements RequestInterface
         private ?EphemeralMessageParameters $ephemeral_message_parameters = null,
     ) {}
 
-    public function getChatId(): ChatId
+    public function getChatId(): ?ChatId
     {
         return $this->chat_id;
     }
 
-    public function setChatId(ChatId $chat_id): SendVoiceRequest
+    public function setChatId(?ChatId $chat_id): SendVoiceRequest
     {
         $this->chat_id = $chat_id;
 
@@ -281,19 +283,11 @@ class SendVoiceRequest implements RequestInterface
         return $this;
     }
 
-    /**
-     * @return EphemeralMessageParameters|null
-     */
     public function getEphemeralMessageParameters(): ?EphemeralMessageParameters
     {
         return $this->ephemeral_message_parameters;
     }
 
-    /**
-     * @param EphemeralMessageParameters|null $ephemeral_message_parameters
-     *
-     * @return SendVoiceRequest
-     */
     public function setEphemeralMessageParameters(?EphemeralMessageParameters $ephemeral_message_parameters): SendVoiceRequest
     {
         $this->ephemeral_message_parameters = $ephemeral_message_parameters;

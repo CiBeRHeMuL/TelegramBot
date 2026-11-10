@@ -17,7 +17,6 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 #[BuildIf(new AndChecker([
     new FieldCompareChecker('latitude', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('longitude', null, CompareOperatorEnum::StrictNotEqual),
-    new FieldCompareChecker('horizontal_accuracy', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
 final class InputLocationMessageContent extends AbstractInputMessageContent
 {

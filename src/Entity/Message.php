@@ -11,21 +11,21 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 /**
  * This object represents a message.
  *
- * @see https://core.telegram.org/bots/api#message
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#message
  */
 #[BuildIf(new FieldCompareChecker('date', 0, CompareOperatorEnum::NotEqual))]
 final class Message extends AbstractMaybeInaccessibleMessage
 {
     /**
-     * @param int                                   $message_id                        Unique message identifier inside this chat. In specific instances (e.g., message containing a video
-     *                                                                                 sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this
-     *                                                                                 field will be 0 and the relevant message will be unusable until it is actually sent
+     * @param int                                   $message_id                        Unique message identifier inside this chat; 0 for ephemeral messages. In specific instances (e.g.,
+     *                                                                                 a message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it
+     *                                                                                 immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
      * @param int                                   $date                              Date the message was sent in Unix time. It is always a positive number, representing a valid date.
      * @param Chat                                  $chat                              Chat the message belongs to
      * @param int|null                              $message_thread_id                 Optional. Unique identifier of a message thread or forum topic to which the message belongs;
      *                                                                                 for supergroups and private chats only
      * @param User|null                             $from                              Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility,
-     *                                                                                 if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
+     *                                                                                 if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats.
      * @param Chat|null                             $sender_chat                       Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself
      *                                                                                 for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's
      *                                                                                 discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake
@@ -38,7 +38,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param bool|null                             $is_automatic_forward              Optional. True, if the message is a channel post that was automatically forwarded to
      *                                                                                 the connected discussion group
      * @param Message|null                          $reply_to_message                  Optional. For replies in the same chat and message thread, the original message. Note
-     *                                                                                 that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+     *                                                                                 that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply. If the
+     *                                                                                 message is a reply to an ephemeral message, then this field may be omitted.
      * @param ExternalReplyInfo|null                $external_reply                    Optional. Information about the message that is being replied to, which may
      *                                                                                 come from another chat or forum topic
      * @param TextQuote|null                        $quote                             Optional. For replies that quote part of the original message, the quoted part of the message
@@ -56,7 +57,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param LinkPreviewOptions|null               $link_preview_options              Optional. Options used for link preview generation for the message, if
      *                                                                                 it is a text message and link preview options were changed
      * @param Animation|null                        $animation                         Optional. Message is an animation, information about the animation. For backward compatibility,
-     *                                                                                 when this field is set, the document field will also be set
+     *                                                                                 when this field is set, the document field will also be set.
      * @param Audio|null                            $audio                             Optional. Message is an audio file, information about the file
      * @param Document|null                         $document                          Optional. Message is a general file, information about the file
      * @param PhotoSize[]|null                      $photo                             Optional. Message is a photo, available sizes of the photo
@@ -65,7 +66,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param Video|null                            $video                             Optional. Message is a video, information about the video
      * @param VideoNote|null                        $video_note                        Optional. Message is a video note, information about the video message
      * @param Voice|null                            $voice                             Optional. Message is a voice message, information about the file
-     * @param string|null                           $caption                           Optional. Caption for the animation, audio, document, paid media, photo, video or voice
+     * @param string|null                           $caption                           Optional. Caption for the animation, audio, document, live photo, paid media, photo, video, voice,
+     *                                                                                 or widget
      * @param MessageEntity[]|null                  $caption_entities                  Optional. For messages with a caption, special entities like usernames, URLs,
      *                                                                                 bot commands, etc. that appear in the caption
      * @param bool|null                             $has_media_spoiler                 Optional. True, if the message media is covered by a spoiler animation
@@ -74,7 +76,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param Game|null                             $game                              Optional. Message is a game, information about the game. More about games »
      * @param Poll|null                             $poll                              Optional. Message is a native poll, information about the poll
      * @param Venue|null                            $venue                             Optional. Message is a venue, information about the venue. For backward compatibility, when this
-     *                                                                                 field is set, the location field will also be set
+     *                                                                                 field is set, the location field will also be set.
      * @param Location|null                         $location                          Optional. Message is a shared location, information about the location
      * @param User[]|null                           $new_chat_members                  Optional. New members that were added to the group or supergroup and information about
      *                                                                                 them (the bot itself may be one of these members)
@@ -114,8 +116,8 @@ final class Message extends AbstractMaybeInaccessibleMessage
      *                                                                                 after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web
      *                                                                                 App sent by the method requestWriteAccess
      * @param PassportData|null                     $passport_data                     Optional. Telegram Passport data
-     * @param ProximityAlertTriggered|null          $proximity_alert_triggered         Optional. Service message. A user in the chat triggered another
-     *                                                                                 user's proximity alert while sharing Live Location.
+     * @param ProximityAlertTriggered|null          $proximity_alert_triggered         Optional. Service message: a user in the chat triggered another
+     *                                                                                 user's proximity alert while sharing Live Location
      * @param ChatBoostAdded|null                   $boost_added                       Optional. Service message: user boosted the chat
      * @param ForumTopicCreated|null                $forum_topic_created               Optional. Service message: forum topic created
      * @param ForumTopicEdited|null                 $forum_topic_edited                Optional. Service message: forum topic edited
@@ -144,7 +146,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param bool|null                             $is_from_offline                   Optional. True, if the message was sent by an implicit action, for example, as an away or
      *                                                                                 a greeting business message, or as a scheduled message
      * @param string|null                           $effect_id                         Optional. Unique identifier of the message effect added to the message
-     * @param bool|null                             $show_caption_above_media          Optional. True, if the caption must be shown above the message media
+     * @param bool|null                             $show_caption_above_media          Optional. True, if the caption must be shown above the message media or the widget
      * @param PaidMediaInfo|null                    $paid_media                        Optional. Message contains paid media; information about the paid media
      * @param RefundedPayment|null                  $refunded_payment                  Optional. Message is a service message about a refunded payment, information
      *                                                                                 about the payment. More about payments »
@@ -192,13 +194,18 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @param Chat|null                             $guest_bot_caller_chat             Optional. For a message sent by a guest bot, this is the chat whose original message
      *                                                                                 triggered the bot's response
      * @param LivePhoto|null                        $live_photo                        Optional. Message is a live photo, information about the live photo. For backward compatibility,
-     *                                                                                 when this field is set, the photo field will also be set
-     * @param RichMessage|null                      $rich_message                      Optional. Rich formatted message
-     * @param User|null                             $receiver_user                     Optional. The user that receives the message
-     * @param int|null                              $ephemeral_message_id              Optional. Unique identifier of the ephemeral message
-     * @param CommunityChatAdded|null               $community_chat_added              Optional. Service message: a chat was added to a community
-     * @param CommunityChatRemoved|null             $community_chat_removed            Optional. Service message: a chat was removed from a community
-     * @param CommunityChatJoined|null              $community_chat_joined             Optional. Service message: a chat was joined by a user from a community
+     *                                                                                 when this field is set, the photo field will also be set.
+     * @param RichMessage|null                      $rich_message                      Optional. Message is a rich formatted message
+     * @param User|null                             $receiver_user                     Optional. For ephemeral messages, the user who received the message
+     * @param int|null                              $ephemeral_message_id              Optional. For ephemeral messages, identifier of the ephemeral message inside this chat.
+     *                                                                                 The identifier may be reused for another ephemeral message after the message is deleted or expires.
+     * @param CommunityChatAdded|null               $community_chat_added              Optional. Service message: chat or bot added to a Community
+     * @param CommunityChatRemoved|null             $community_chat_removed            Optional. Service message: chat or bot removed from a Community
+     * @param CommunityChatJoined|null              $community_chat_joined             Optional. Service message: chat was joined by a user from a Community
+     * @param Widget|null                           $widget                            Optional. Message is an HTML widget, information about the widget
+     * @param PaidMessagesWaived|null               $paid_messages_waived              Optional. Service message: the sender of the message used a link of the
+     *                                                                                 other user, which allows sending messages to the user without paying Telegram Stars
+     * @param TonWalletTransfer|null                $ton_wallet_transfer               Optional. Service message: a transfer with a TON wallet
      *
      * @see https://core.telegram.org/bots/api#directmessagestopic DirectMessagesTopic
      * @see https://core.telegram.org/bots/api#user User
@@ -212,6 +219,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#messageentity MessageEntity
      * @see https://core.telegram.org/bots/api#linkpreviewoptions LinkPreviewOptions
      * @see https://core.telegram.org/bots/api#suggestedpostinfo SuggestedPostInfo
+     * @see https://core.telegram.org/bots/api#richmessage RichMessage
      * @see https://core.telegram.org/bots/api#animation Animation
      * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#document Document
@@ -223,6 +231,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#videonote VideoNote
      * @see https://telegram.org/blog/video-messages-and-telescope video note
      * @see https://core.telegram.org/bots/api#voice Voice
+     * @see https://core.telegram.org/bots/api#widget Widget
      * @see https://core.telegram.org/bots/api#checklist Checklist
      * @see https://core.telegram.org/bots/api#contact Contact
      * @see https://core.telegram.org/bots/api#dice Dice
@@ -252,6 +261,10 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#chatbackground ChatBackground
      * @see https://core.telegram.org/bots/api#checklisttasksdone ChecklistTasksDone
      * @see https://core.telegram.org/bots/api#checklisttasksadded ChecklistTasksAdded
+     * @see https://core.telegram.org/bots/api#communitychatadded CommunityChatAdded
+     * @see https://core.telegram.org/bots/api#community Community
+     * @see https://core.telegram.org/bots/api#communitychatjoined CommunityChatJoined
+     * @see https://core.telegram.org/bots/api#communitychatremoved CommunityChatRemoved
      * @see https://core.telegram.org/bots/api#directmessagepricechanged DirectMessagePriceChanged
      * @see https://core.telegram.org/bots/api#forumtopiccreated ForumTopicCreated
      * @see https://core.telegram.org/bots/api#forumtopicedited ForumTopicEdited
@@ -265,6 +278,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#giveawaycompleted GiveawayCompleted
      * @see https://core.telegram.org/bots/api#managedbotcreated ManagedBotCreated
      * @see https://core.telegram.org/bots/api#paidmessagepricechanged PaidMessagePriceChanged
+     * @see https://core.telegram.org/bots/api#paidmessageswaived PaidMessagesWaived
      * @see https://core.telegram.org/bots/api#polloptionadded PollOptionAdded
      * @see https://core.telegram.org/bots/api#polloptiondeleted PollOptionDeleted
      * @see https://core.telegram.org/bots/api#suggestedpostapproved SuggestedPostApproved
@@ -272,6 +286,7 @@ final class Message extends AbstractMaybeInaccessibleMessage
      * @see https://core.telegram.org/bots/api#suggestedpostdeclined SuggestedPostDeclined
      * @see https://core.telegram.org/bots/api#suggestedpostpaid SuggestedPostPaid
      * @see https://core.telegram.org/bots/api#suggestedpostrefunded SuggestedPostRefunded
+     * @see https://core.telegram.org/bots/api#tonwallettransfer TonWalletTransfer
      * @see https://core.telegram.org/bots/api#videochatscheduled VideoChatScheduled
      * @see https://core.telegram.org/bots/api#videochatstarted VideoChatStarted
      * @see https://core.telegram.org/bots/api#videochatended VideoChatEnded
@@ -406,6 +421,9 @@ final class Message extends AbstractMaybeInaccessibleMessage
         protected ?CommunityChatAdded $community_chat_added = null,
         protected ?CommunityChatRemoved $community_chat_removed = null,
         protected ?CommunityChatJoined $community_chat_joined = null,
+        protected ?Widget $widget = null,
+        protected ?PaidMessagesWaived $paid_messages_waived = null,
+        protected ?TonWalletTransfer $ton_wallet_transfer = null,
     ) {
         parent::__construct($this->date);
     }
@@ -2809,6 +2827,65 @@ final class Message extends AbstractMaybeInaccessibleMessage
 
         return $this;
     }
-}
 
+    /**
+     * @return Widget|null
+     */
+    public function getWidget(): ?Widget
+    {
+        return $this->widget;
+    }
+
+    /**
+     * @param Widget|null $widget
+     *
+     * @return Message
+     */
+    public function setWidget(?Widget $widget): Message
+    {
+        $this->widget = $widget;
+
+        return $this;
+    }
+
+    /**
+     * @return PaidMessagesWaived|null
+     */
+    public function getPaidMessagesWaived(): ?PaidMessagesWaived
+    {
+        return $this->paid_messages_waived;
+    }
+
+    /**
+     * @param PaidMessagesWaived|null $paid_messages_waived
+     *
+     * @return Message
+     */
+    public function setPaidMessagesWaived(?PaidMessagesWaived $paid_messages_waived): Message
+    {
+        $this->paid_messages_waived = $paid_messages_waived;
+
+        return $this;
+    }
+
+    /**
+     * @return TonWalletTransfer|null
+     */
+    public function getTonWalletTransfer(): ?TonWalletTransfer
+    {
+        return $this->ton_wallet_transfer;
+    }
+
+    /**
+     * @param TonWalletTransfer|null $ton_wallet_transfer
+     *
+     * @return Message
+     */
+    public function setTonWalletTransfer(?TonWalletTransfer $ton_wallet_transfer): Message
+    {
+        $this->ton_wallet_transfer = $ton_wallet_transfer;
+
+        return $this;
+    }
+}
 // endregion CLASS_Message
