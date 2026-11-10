@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object is received when messages are deleted from a connected business account.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_messages_deleted
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BusinessMessagesDeleted, Telegram, Bot API, DTO, business_messages_deleted
-// STRUCTURE: ▶ ┌business_connection_id,chat┐ → ∑ BusinessMessagesDeleted
 // region CLASS_BusinessMessagesDeleted
-
 /**
  * This object is received when messages are deleted from a connected business account.
  *

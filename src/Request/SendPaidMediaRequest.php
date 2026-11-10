@@ -15,21 +15,6 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendPaidMedia method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendpaidmedia
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Paid, Media
-// STRUCTURE: ▶ ┌chat_id + media + star_count + caption + caption_entities┐ → ◇ construct → ⊕ → ∑ ⟦SendPaidMediaRequest⟧
-
 // region CLASS_SendPaidMediaRequest
 /**
  * @see https://core.telegram.org/bots/api#sendpaidmedia

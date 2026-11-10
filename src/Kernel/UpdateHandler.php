@@ -16,35 +16,7 @@ use InvalidArgumentException;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 
-// region MODULE_CONTRACT [DOMAIN(10): Telegram Bot; CONCEPT(10): Kernel; TECH(9): Pipeline]
-/**
- * @moduleContract
- * @purpose Orchestrate the complete update processing pipeline: receive updates, dispatch to prioritized HandlerGroups, execute middleware chains.
- * @scope Update reception via UpdateSource, HandlerGroup priority sorting, plugin registration, event dispatching, middleware chain execution.
- * @input Update objects from UpdateSourceInterface
- * @output Response objects from RequestHandler execution
- *
- * @sees USES(9): HandlerGroup, Checker, Middleware, Plugin, RequestHandler, UpdateSource; USES_API(7): PSR-14 EventDispatcher
- *
- * @invariants
- * - HandlerGroups are sorted by priority descending before each handle() call
- * - Each update is processed by handler groups until one returns stopRequestPropagation or all are processed
- * - Plugins register handler groups automatically via registerPlugin()
- *
- * @rationale
- * Q: Why a pipeline architecture instead of direct callback registration?
- * A: Provides extensibility (plugins, middlewares) and separation of concerns (checking vs handling vs responding).
- *
- * @changes
- * LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UpdateHandler, kernel, update processing, handler groups, middleware chain, plugin, event dispatcher, pipeline
-// STRUCTURE: ▶ handle() → ○ UpdateSource.getUpdates() → ⊕ foreach update: handleUpdate()
-//            → handleUpdate() → sortGroups() → ○ foreach HandlerGroup: ◇ checker.check(update)? → MiddlewareChain → ⊕ Response[]
-//            → listen() → ○ while(true): handle() → usleep(timeout)
-
-// region CLASS_UpdateHandler [DOMAIN(10): Telegram Bot; CONCEPT(10): Kernel]
+// region CLASS_UpdateHandler
 class UpdateHandler implements UpdateHandlerInterface
 {
     /**
@@ -207,10 +179,9 @@ class UpdateHandler implements UpdateHandlerInterface
         return $result;
     }
 
-    // region METHOD_sortGroups [DOMAIN(8): Kernel; CONCEPT(7): Sorting]
+    // region METHOD_sortGroups
     /**
-     * @purpose Sort handler groups by priority descending using inverted spaceship operator.
-     * @complexity 3
+     * Sort handler groups by priority descending using inverted spaceship operator.
      */
     private function sortGroups(): void
     {

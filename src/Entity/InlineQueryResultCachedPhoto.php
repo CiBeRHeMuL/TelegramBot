@@ -13,6 +13,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region CLASS_InlineQueryResultCachedPhoto
 /**
  * Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional
  * caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
@@ -23,19 +24,6 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Photo),
     new FieldCompareChecker('photo_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a photo stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedphoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedPhoto, Telegram, Bot API, DTO, inlinequeryresultcachedphoto
-// STRUCTURE: ▶ ┌id,photo_file_id┐ → ◇ caption,title,description → ∑ result
-// region CLASS_InlineQueryResultCachedPhoto
 final class InlineQueryResultCachedPhoto extends AbstractInlineQueryResult
 {
     /**

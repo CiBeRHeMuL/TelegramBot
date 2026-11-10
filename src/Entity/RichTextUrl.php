@@ -10,18 +10,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A text with a link.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtexturl
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichTextUrl, Telegram, Bot API, DTO, Rich Text Url
-// STRUCTURE: ▶ ┌type,text,url┐ → ∑ RichTextUrl
 // region CLASS_RichTextUrl
 /**
  * A text with a link.

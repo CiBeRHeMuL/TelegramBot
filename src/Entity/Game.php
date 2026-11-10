@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a game. Use BotFather to create and edit games.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#game
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Game, BotFather, Telegram Bot API
-// STRUCTURE: ┌title, description, photo┐ + optional text + optional text_entities + optional animation → ∑ Game
 // region CLASS_Game
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\SuggestedPostInfoStateEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about a suggested channel post.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SuggestedPostInfo, Telegram, Bot API, DTO, suggestedpostinfo
-// STRUCTURE: ▶ ┌message_thread_id,post_id┐ → ◇ ... → ∑ SuggestedPostInfo
 // region CLASS_SuggestedPostInfo
-
 /**
  * Contains information about a suggested post.
  *

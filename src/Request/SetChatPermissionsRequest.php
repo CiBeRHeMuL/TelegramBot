@@ -7,21 +7,6 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\ChatPermissions;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API setChatPermissions method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#setchatpermissions
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Set, Chat, Permissions
-// STRUCTURE: ▶ ┌chat_id + permissions + use_independent_chat_permissions┐ → ◇ construct → ⊕ → ∑ ⟦SetChatPermissionsRequest⟧
-
 // region CLASS_SetChatPermissionsRequest
 /**
  * @see https://core.telegram.org/bots/api#setchatpermissions

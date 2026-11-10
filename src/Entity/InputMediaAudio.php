@@ -12,20 +12,7 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an audio file to be treated as music to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediaaudio
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaAudio, Telegram, Bot API, DTO, inputmediaaudio
-// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ thumbnail,duration,performer,title → ∑ InputMediaAudio
 // region CLASS_InputMediaAudio
-
 /**
  * Represents an audio file to be treated as music to be sent.
  *

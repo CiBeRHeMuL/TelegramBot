@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains basic information about a refunded payment.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#refundedpayment
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RefundedPayment, Telegram, Bot API, DTO, refundedpayment
-// STRUCTURE: ▶ ┌currency,total_amount,invoice_payload,telegram_payment_charge_id┐ → ◇ ... → ∑ RefundedPayment
 // region CLASS_RefundedPayment
-
 /**
  * This object contains basic information about a refunded payment.
  *

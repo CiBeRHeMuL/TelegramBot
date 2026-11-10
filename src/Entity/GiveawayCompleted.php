@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about the completion of a giveaway without public winners.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveawaycompleted
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: GiveawayCompleted, giveaway, completed, service message, Telegram Bot API
-// STRUCTURE: ┌winner_count┐ + optional unclaimed_prize_count + giveaway_message + is_star_giveaway → ∑ GiveawayCompleted
 // region CLASS_GiveawayCompleted
 /**
  * This object represents a service message about the completion of a giveaway without public winners.

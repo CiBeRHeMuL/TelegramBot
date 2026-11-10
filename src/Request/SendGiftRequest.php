@@ -8,21 +8,6 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendGift method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendgift
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Gift
-// STRUCTURE: ▶ ┌gift_id + chat_id + pay_for_upgrade + text + text_entities┐ → ◇ construct → ⊕ → ∑ ⟦SendGiftRequest⟧
-
 // region CLASS_SendGiftRequest
 /**
  * @see https://core.telegram.org/bots/api#sendgift

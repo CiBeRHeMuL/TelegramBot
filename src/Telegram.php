@@ -12,28 +12,7 @@ use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(10): Telegram Bot; CONCEPT(10): Facade; TECH(8): DI]
-/**
- * @moduleContract
- * @purpose Provide the main library facade — aggregate Api + UpdateHandler into a single entry point for bot operations.
- * @scope Version info, bot info (getMe), token validation, API/UpdateHandler wiring.
- * @input BotToken, ApiInterface, UpdateHandlerInterface
- * @output Consolidated bot interface with token consistency enforcement
- *
- * @sees USES_API(9): ApiInterface, UpdateHandlerInterface; READS_DATA_FROM(8): BotToken
- *
- * @invariants
- * - Api and bot must share the same token (enforced in setApi)
- * - getMe() caches the result after first call
- *
- * @changes
- * LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, facade, bot, API, update handler, token, version, getMe
-// STRUCTURE: ▶ ┌token + api + updateHandler┐ → ◇ setApi() validates token match → ⊕ getMe(): lazy-load User via api → ∑ getVersion()
-
-// region CLASS_Telegram [DOMAIN(10): Telegram Bot; CONCEPT(10): Facade]
+// region CLASS_Telegram
 class Telegram
 {
     /**
@@ -80,11 +59,9 @@ class Telegram
         $this->updateHandler = $updateHandler;
     }
 
-    // region METHOD_getMe [DOMAIN(9): Telegram Bot; CONCEPT(8): LazyLoad]
+    // region METHOD_getMe
     /**
-     * @purpose Retrieve the bot's own User object, lazily cached after first API call.
-     *
-     * @using ApiInterface::getMe()
+     * Retrieve the bot's own User object, lazily cached after first API call.
      *
      * @return User
      *

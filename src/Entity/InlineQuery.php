@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an incoming inline query from the user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequery
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQuery, Telegram, Bot API, DTO, inlinequery
-// STRUCTURE: ▶ ┌id,from,query,offset┐ → ◇ chat_type/location → ⊕ InlineQuery
 // region CLASS_InlineQuery
-
 /**
  * This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or
  * trending results.

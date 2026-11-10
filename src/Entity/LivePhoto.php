@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a live photo (video+photo pair).
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#livephoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: LivePhoto, Telegram, Bot API, DTO, livephoto
-// STRUCTURE: ▶ ┌file_id,file_unique_id┐ → ◇ video_file_id,video_file_unique_id → ∑ LivePhoto
 // region CLASS_LivePhoto
-
 /**
  * This object represents a live photo.
  *

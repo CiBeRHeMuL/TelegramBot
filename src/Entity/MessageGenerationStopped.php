@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object describes an update about a user stopping message generation.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#messagegenerationstopped
- *
- * @changes LAST_CHANGE: Added in Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MessageGenerationStopped, Telegram, Bot API, DTO, Message Generation Stopped
-// STRUCTURE: ▶ ┌chat + draft_id + message_thread_id┐ → ∑ MessageGenerationStopped
 // region CLASS_MessageGenerationStopped
 /**
  * This object describes an update about a user stopping message generation.

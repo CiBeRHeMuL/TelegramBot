@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a “Thinking…” placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft, therefore it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji, which are recommended for usage in the block.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockthinking
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockThinking, Telegram, Bot API, DTO, Rich Block Thinking
-// STRUCTURE: ▶ ┌type,text┐ → ∑ RichBlockThinking
 // region CLASS_RichBlockThinking
 /**
  * A block with a “Thinking…” placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft, therefore it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji, which are recommended for usage in the block.

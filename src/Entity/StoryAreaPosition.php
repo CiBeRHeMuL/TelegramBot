@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the position of a story area.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareaposition
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StoryAreaPosition, Telegram, Bot API, DTO, storyareaposition
-// STRUCTURE: ▶ ┌x_percentage,y_percentage,width_percentage,height_percentage,rotation_angle,corner_radius_percentage┐ → ∑ StoryAreaPosition
 // region CLASS_StoryAreaPosition
-
 /**
  * Describes the position of a clickable area within a story.
  *

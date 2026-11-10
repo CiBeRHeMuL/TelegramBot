@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a story area type that contains a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypeuniquegift
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StoryAreaTypeUniqueGift, Telegram, Bot API, DTO, storyareatypeuniquegift
-// STRUCTURE: ▶ ┌type,name┐ → ∑ StoryAreaTypeUniqueGift
 // region CLASS_StoryAreaTypeUniqueGift
-
 /**
  * Describes a story area pointing to a unique gift. Currently, a story can have at most 1 unique gift area.
  *

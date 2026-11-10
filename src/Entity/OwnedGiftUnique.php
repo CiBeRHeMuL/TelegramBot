@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\OwnedGiftTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a unique gift owned by a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#ownedgiftunique
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: OwnedGiftUnique, Telegram, Bot API, DTO, ownedgiftunique
-// STRUCTURE: ▶ ┌type,gift┐ → ◇ ... → ∑ OwnedGiftUnique
 // region CLASS_OwnedGiftUnique
-
 /**
  * Describes a unique gift received and owned by a user or a chat.
  *

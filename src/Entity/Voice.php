@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a voice note.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#voice
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Voice, Telegram, Bot API, DTO, voice
-// STRUCTURE: ▶ ┌file_id,file_unique_id,duration┐ → ◇ mime_type,file_size → ∑ Voice
 // region CLASS_Voice
-
 /**
  * This object represents a voice note.
  *

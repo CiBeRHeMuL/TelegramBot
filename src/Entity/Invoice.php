@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about an invoice for a payment.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#invoice
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Invoice, Telegram, Bot API, DTO, invoice
-// STRUCTURE: ▶ ┌title,description,start_parameter,currency,total_amount┐ → ∑ Invoice
 // region CLASS_Invoice
-
 /**
  * This object contains basic information about an invoice.
  *

@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a file uploaded to Telegram Passport.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportfile
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PassportFile, Telegram, Bot API, DTO, passportfile
-// STRUCTURE: ▶ ┌file_id,file_unique_id,file_size,file_date┐ → ∑ PassportFile
 // region CLASS_PassportFile
-
 /**
  * This object represents a file uploaded to Telegram Passport. Currently all Telegram Passport files are in JPEG format when
  * decrypted and don't exceed 10MB.

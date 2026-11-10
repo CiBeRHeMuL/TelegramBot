@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BotCommandScopeTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#bot_command_scope_chat_member
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BotCommandScopeChatMember, Telegram, Bot API, DTO, bot_command_scope_chat_member
-// STRUCTURE: ▶ ┌chat_id,user_id┐ → ∑ BotCommandScopeChatMember
 // region CLASS_BotCommandScopeChatMember
-
 /**
  * Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
  *

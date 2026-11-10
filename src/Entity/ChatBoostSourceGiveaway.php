@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatBoostSourceEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_boost_source_giveaway
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatBoostSourceGiveaway, Telegram, Bot API, DTO, chat_boost_source_giveaway
-// STRUCTURE: ▶ ┌giveaway_message_id,is_unclaimed,user,prize_star_count┐ → ∑ ChatBoostSourceGiveaway
 // region CLASS_ChatBoostSourceGiveaway
-
 /**
  * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for
  * the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500

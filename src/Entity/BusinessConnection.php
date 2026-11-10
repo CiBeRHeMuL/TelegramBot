@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the connection of the bot with a business account.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_connection
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BusinessConnection, Telegram, Bot API, DTO, business_connection
-// STRUCTURE: ▶ ┌id,user,user_chat_id,date,is_enabled┐ → ∑ BusinessConnection
 // region CLASS_BusinessConnection
-
 /**
  * Describes the connection of the bot with a business account.
  *

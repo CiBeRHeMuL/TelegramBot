@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a story area type that contains weather information.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypeweather
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StoryAreaTypeWeather, Telegram, Bot API, DTO, storyareatypeweather
-// STRUCTURE: ▶ ┌type,temperature,emoji,color...┐ → ∑ StoryAreaTypeWeather
 // region CLASS_StoryAreaTypeWeather
-
 /**
  * Describes a story area containing weather information. Currently, a story can have up to 3 weather areas.
  *

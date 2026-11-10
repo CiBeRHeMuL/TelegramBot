@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\UniqueGiftInfoOriginEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftinfo
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added text, entities, is_private
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftInfo, Telegram, Bot API, DTO, Unique Gift Info
-// STRUCTURE: ▶ ┌gift: UniqueGift,origin,owned_gift_id┐ → ◇ transfer_star_count → ∑ info
 // region CLASS_UniqueGiftInfo
-
 /**
  * Describes a service message about a unique gift that was sent or received.
  *

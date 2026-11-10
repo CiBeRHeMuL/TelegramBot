@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes a topic of a direct messages chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#directmessagestopic
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: DirectMessagesTopic, topic, direct messages, chat, Telegram Bot API
-// STRUCTURE: ┌topic_id┐ + optional user → ∑ DirectMessagesTopic
 // region CLASS_DirectMessagesTopic
 /**
  * Describes a topic of a direct messages chat.

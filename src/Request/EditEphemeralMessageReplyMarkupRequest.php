@@ -7,21 +7,6 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API editEphemeralMessageReplyMarkup method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#editephemeralmessagereplymarkup
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Ephemeral, Message, Reply, Markup
-// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageReplyMarkupRequest⟧
-
 // region CLASS_EditEphemeralMessageReplyMarkupRequest
 /**
  * @see https://core.telegram.org/bots/api#editephemeralmessagereplymarkup

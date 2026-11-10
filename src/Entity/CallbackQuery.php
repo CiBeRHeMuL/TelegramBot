@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#callback_query
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: CallbackQuery, Telegram, Bot API, DTO, callback_query
-// STRUCTURE: ▶ ┌id,from,chat_instance,data,game_short_name┐ → ∑ CallbackQuery
 // region CLASS_CallbackQuery
-
 /**
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated
  * the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message

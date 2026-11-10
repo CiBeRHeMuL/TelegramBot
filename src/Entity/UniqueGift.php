@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegift
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGift, Telegram, Bot API, DTO, uniquegift
-// STRUCTURE: ▶ ┌title,name,number,model,type,backdrop,symbol┐ → ∑ UniqueGift
 // region CLASS_UniqueGift
-
 /**
  * This object describes a unique gift that was upgraded from a regular gift.
  *

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a custom keyboard with reply options.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replykeyboardmarkup
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added force_reply
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ReplyKeyboardMarkup, Telegram, Bot API, DTO, replykeyboardmarkup
-// STRUCTURE: ▶ ┌keyboard: KeyboardButton[][]┐ → ◇ resize_keyboard,one_time_keyboard,force_reply → ∑ markup
 // region CLASS_ReplyKeyboardMarkup
-
 /**
  * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported
  * in channels and for messages sent on behalf of a business account.

@@ -13,6 +13,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region CLASS_InlineQueryResultCachedMpeg4Gif
 /**
  * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default,
  * this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content
@@ -24,19 +25,6 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Mpeg4Gif->value),
     new FieldCompareChecker('mpeg4_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedMpeg4Gif, Telegram, Bot API, DTO, inlinequeryresultcachedmpeg4gif
-// STRUCTURE: ▶ ┌id,mpeg4_file_id┐ → ◇ caption,title → ∑ result
-// region CLASS_InlineQueryResultCachedMpeg4Gif
 final class InlineQueryResultCachedMpeg4Gif extends AbstractInlineQueryResult
 {
     /**

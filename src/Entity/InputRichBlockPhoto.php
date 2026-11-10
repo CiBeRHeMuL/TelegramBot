@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a photo, corresponding to the HTML tag <photo>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockphoto
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockPhoto, Telegram, Bot API, DTO, Input Rich Block Photo
-// STRUCTURE: ▶ ┌type,photo,caption┐ → ∑ InputRichBlockPhoto
 // region CLASS_InputRichBlockPhoto
 /**
  * A block with a photo, corresponding to the HTML tag <photo>.

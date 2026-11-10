@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains the list of gifts owned by a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#ownedgifts
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: OwnedGifts, Telegram, Bot API, DTO, ownedgifts
-// STRUCTURE: ▶ ┌gifts: OwnedGift[]┐ → ◇ next_offset,total_count → ∑ OwnedGifts
 // region CLASS_OwnedGifts
-
 /**
  * Contains the list of gifts received and owned by a user or a chat.
  *

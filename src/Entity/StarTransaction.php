@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a Telegram Star transaction.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#startransaction
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StarTransaction, Telegram, Bot API, DTO, startransaction
-// STRUCTURE: ▶ ┌id,amount,date┐ → ◇ source/recipient → ∑ transaction
 // region CLASS_StarTransaction
-
 /**
  * Describes a Telegram Star transaction. Note that if the buyer initiates a chargeback with the payment provider from whom they
  * acquired Stars (e.g., Apple, Google) following this transaction, the refunded Stars will be deducted from the bot's balance.

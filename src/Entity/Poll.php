@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 use AndrewGos\TelegramBot\Enum\PollTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about a poll.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#poll
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Poll, Telegram, Bot API, DTO, poll
-// STRUCTURE: ▶ ┌id,question,options[],total_voter_count,is_closed,is_anonymous,type,allows_multiple_answers┐ → ◇ ... → ∑ Poll
 // region CLASS_Poll
-
 /**
  * This object contains information about a poll.
  *

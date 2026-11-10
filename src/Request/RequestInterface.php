@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
-// region INTERFACE_RequestInterface [DOMAIN(10): Telegram; CONCEPT(10): Request; TECH(8): PHP]
+// region INTERFACE_RequestInterface
 /**
  * @moduleContract
- * @purpose Marker interface for all Telegram Bot API request DTOs.
+ * Marker interface for all Telegram Bot API request DTOs.
  * @scope 170+ request classes across the Request namespace.
  * @input Method-specific parameters matching Telegram API fields.
  * @output Typed DTO ready for serialization to API call.
@@ -27,7 +27,5 @@ namespace AndrewGos\TelegramBot\Request;
  * INTERFACE [10][Marker interface for all request DTOs] => RequestInterface
  */
 // endregion INTERFACE_RequestInterface
-// GREP_SUMMARY: RequestInterface, Telegram Bot API, request DTO, marker interface
-// STRUCTURE: ▶ ┌RequestInterface┐ → 170+ implements → ⟦Typed DTOs⟧ → ∑ serialize() → ⚡ HTTP request
 
 interface RequestInterface {}

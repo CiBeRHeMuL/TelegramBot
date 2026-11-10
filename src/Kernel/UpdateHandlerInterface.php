@@ -12,18 +12,6 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
-/**
- * @moduleContract
- * @purpose Контракт обработчика входящих update от Telegram Bot API: управление источниками, API, плагинами и обработчиками.
- *
- * @sees USES_API(X): Telegram Bot API — Update handling
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UpdateHandlerInterface, Telegram, kernel, update, handler, plugin, interface
-// STRUCTURE: ▶ ┌updateSource, api, logger, dispatcher, plugins, groups┐ → ○ handle() → iterable<Response> → ○ listen() → void
 // region INTERFACE_UpdateHandlerInterface
 interface UpdateHandlerInterface
 {

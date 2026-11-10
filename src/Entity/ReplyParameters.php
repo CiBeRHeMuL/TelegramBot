@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes reply parameters for a message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replyparameters
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - message_id now optional, added ephemeral_message_id
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ReplyParameters, Telegram, Bot API, DTO, replyparameters
-// STRUCTURE: ▶ ┌message_id,ephemeral_message_id┐ → ◇ chat_id,allow_sending_without_reply,quote → ∑ params
 // region CLASS_ReplyParameters
-
 /**
  * Describes reply parameters for the message that is being sent.
  *

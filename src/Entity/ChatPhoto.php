@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a chat photo.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_photo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatPhoto, Telegram, Bot API, DTO, chat_photo
-// STRUCTURE: ▶ ┌small_file_id,small_file_unique_id,big_file_id,big_file_unique_id┐ → ∑ ChatPhoto
 // region CLASS_ChatPhoto
-
 /**
  * This object represents a chat photo.
  *

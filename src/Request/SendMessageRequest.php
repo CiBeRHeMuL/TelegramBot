@@ -16,21 +16,6 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendMessage method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendmessage
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Message
-// STRUCTURE: ▶ ┌chat_id + text + business_connection_id + disable_notification + entities + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendMessageRequest⟧
-
 // region CLASS_SendMessageRequest
 /**
  * @see https://core.telegram.org/bots/api#sendmessage

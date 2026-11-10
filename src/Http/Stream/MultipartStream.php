@@ -9,19 +9,6 @@ use Psr\Http\Message\StreamInterface;
 use Random\RandomException;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): Stream; TECH(9): Multipart]
-/**
- * @moduleContract
- * @purpose Implement a PSR-7 StreamInterface for multipart/form-data bodies, used for Telegram file uploads.
- *
- * @sees USES_API(8): Psr\Http\Message\StreamInterface, MimeType, AppendStream
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MultipartStream, multipart form-data, file upload, PSR-7, stream
-// STRUCTURE: ┌elements[] + boundary┐ → ○ createStream: build AppendStream with headers + body + trailing boundary for each element → ○ delegate PSR-7 methods to inner stream
-
 // region CLASS_MultipartStream
 class MultipartStream implements StreamInterface
 {

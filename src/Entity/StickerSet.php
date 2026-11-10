@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\StickerTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a sticker set.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#stickerset
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StickerSet, Telegram, Bot API, DTO, stickerset
-// STRUCTURE: ▶ ┌name,title,sticker_type,stickers: Sticker[]┐ → ◇ thumbnail → ∑ StickerSet
 // region CLASS_StickerSet
-
 /**
  * This object represents a sticker set.
  *

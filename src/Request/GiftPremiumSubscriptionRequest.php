@@ -7,21 +7,6 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API giftPremiumSubscription method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#giftpremiumsubscription
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Gift, Premium, Subscription
-// STRUCTURE: ▶ ┌month_count + star_count + user_id + text + text_entities┐ → ◇ construct → ⊕ → ∑ ⟦GiftPremiumSubscriptionRequest⟧
-
 // region CLASS_GiftPremiumSubscriptionRequest
 /**
  * @see https://core.telegram.org/bots/api#giftpremiumsubscription

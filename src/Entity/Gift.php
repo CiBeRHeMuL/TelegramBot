@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a gift that can be sent by the bot.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#gift
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Gift, gift, Telegram Bot API
-// STRUCTURE: ┌id, sticker, star_count┐ + optional remaining_count + total_count + upgrade_star_count + publisher_chat + is_premium + has_colors + personal_total_count + personal_remaining_count + background + unique_gift_variant_count → ∑ Gift
 // region CLASS_Gift
 /**
  * This object represents a gift that can be sent by the bot.

@@ -8,21 +8,6 @@ use AndrewGos\TelegramBot\Enum\StickerFormatEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API uploadStickerFile method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#uploadstickerfile
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Upload, Sticker, File
-// STRUCTURE: ▶ ┌sticker + sticker_format + user_id┐ → ◇ construct → ⊕ → ∑ ⟦UploadStickerFileRequest⟧
-
 // region CLASS_UploadStickerFileRequest
 /**
  * @see https://core.telegram.org/bots/api#uploadstickerfile

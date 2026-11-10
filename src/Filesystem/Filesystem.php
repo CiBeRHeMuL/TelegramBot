@@ -7,19 +7,6 @@ namespace AndrewGos\TelegramBot\Filesystem;
 use Stringable;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(6): Filesystem; TECH(7): PHP]
-/**
- * @moduleContract
- * @purpose Implement filesystem operations: creating directories, saving file content, and touching files.
- *
- * @sees USES_API(7): FilesystemInterface, Dir, File
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Filesystem, filesystem, mkdir, save, create, chmod
-// STRUCTURE: ┌Dir/File + options┐ → ○ mkdir (chmod|mkdir) → ○ save (create+fwrite|stream_copy) → ○ create (chmod|touch+chmod) → ⊕ bool
-
 // region CLASS_Filesystem
 class Filesystem implements FilesystemInterface
 {

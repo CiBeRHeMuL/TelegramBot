@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an unspecified error in a Telegram Passport element.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrorunspecified
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PassportElementErrorUnspecified, Telegram, Bot API, DTO, passportelementerrorunspecified
-// STRUCTURE: ▶ ┌type,element_hash,message┐ → ∑ error
 // region CLASS_PassportElementErrorUnspecified
-
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  *

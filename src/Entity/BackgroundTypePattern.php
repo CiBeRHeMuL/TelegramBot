@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined with the background fill chosen by the user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#background_type_pattern
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BackgroundTypePattern, Telegram, Bot API, DTO, background_type_pattern
-// STRUCTURE: ▶ ┌document,fill,intensity,is_inverted,is_moving┐ → ∑ BackgroundTypePattern
 // region CLASS_BackgroundTypePattern
-
 /**
  * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined
  * with the background fill chosen by the user.

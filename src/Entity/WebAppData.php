@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains data sent from a Web App to the bot.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#webappdata
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: WebAppData, Telegram, Bot API, DTO, webappdata
-// STRUCTURE: ▶ ┌data,button_text┐ → ∑ WebAppData
 // region CLASS_WebAppData
-
 /**
  * Describes data sent from a Web App to the bot.
  *

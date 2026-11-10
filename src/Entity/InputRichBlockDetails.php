@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose An expandable block for details disclosure, corresponding to the HTML tag <details>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockdetails
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockDetails, Telegram, Bot API, DTO, Input Rich Block Details
-// STRUCTURE: ▶ ┌type,summary,blocks,is_open┐ → ∑ InputRichBlockDetails
 // region CLASS_InputRichBlockDetails
 /**
  * An expandable block for details disclosure, corresponding to the HTML tag <details>.

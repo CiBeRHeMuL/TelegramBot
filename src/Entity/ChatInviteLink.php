@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an invite link for a chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_invite_link
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatInviteLink, Telegram, Bot API, DTO, chat_invite_link
-// STRUCTURE: ▶ ┌invite_link,creator,creates_join_request,is_primary,is_revoked┐ → ∑ ChatInviteLink
 // region CLASS_ChatInviteLink
-
 /**
  * Represents an invite link for a chat.
  *

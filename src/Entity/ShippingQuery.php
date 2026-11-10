@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about an incoming shipping query.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#shippingquery
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ShippingQuery, Telegram, Bot API, DTO, shippingquery
-// STRUCTURE: ▶ ┌id,from,invoice_payload,shipping_address┐ → ∑ ShippingQuery
 // region CLASS_ShippingQuery
-
 /**
  * This object contains information about an incoming shipping query.
  *

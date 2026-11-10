@@ -10,21 +10,6 @@ use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API setWebhook method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#setwebhook
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Set, Webhook
-// STRUCTURE: ▶ ┌url + allowed_updates + certificate + drop_pending_updates + ip_address┐ → ◇ construct → ⊕ → ∑ ⟦SetWebhookRequest⟧
-
 // region CLASS_SetWebhookRequest
 class SetWebhookRequest implements RequestInterface
 {

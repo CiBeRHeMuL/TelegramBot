@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object contains full information about a chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_full_info
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added community
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatFullInfo, Telegram, Bot API, DTO, chat_full_info
-// STRUCTURE: ▶ ┌id,type,accent_color_id,max_reaction_count,accepted_gift_types┐ → ∑ ChatFullInfo
 // region CLASS_ChatFullInfo
-
 /**
  * This object contains full information about a chat.
  *

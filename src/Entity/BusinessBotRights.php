@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the rights of a business bot.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_bot_rights
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BusinessBotRights, Telegram, Bot API, DTO, business_bot_rights
-// STRUCTURE: ▶ ┌can_change_gift_settings,can_convert_gifts_to_stars,can_delete_all_messages,can_delete_sent_messages,can_edit_bio┐ → ∑ BusinessBotRights
 // region CLASS_BusinessBotRights
-
 /**
  * Represents the rights of a business bot.
  *

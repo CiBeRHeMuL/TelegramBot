@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a change in the price of paid messages.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#paidmessagepricechanged
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PaidMessagePriceChanged, Telegram, Bot API, DTO, paidmessagepricechanged
-// STRUCTURE: ▶ ┌from,star_count...┐ → ∑ PaidMessagePriceChanged
 // region CLASS_PaidMessagePriceChanged
-
 /**
  * Describes a service message about a change in the price of paid messages within a chat.
  *

@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Kernel\Checker;
 use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
-/**
- * @moduleContract
- * @purpose Checks if update type matches expected enum.
- *
- * @sees USES_API(9): UpdateTypeEnum, Update entity, CheckerInterface
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UpdateTypeChecker, update type, enum check
-// STRUCTURE: ▶ check() → ◇ $update->getType() === $expectedType → ⊕ bool
-
-// region CLASS_UpdateTypeChecker [DOMAIN(8): Telegram; CONCEPT(7): Checker; TECH(9): PHP]
+// region CLASS_UpdateTypeChecker
 /**
  * Checks that update have specified type.
  */

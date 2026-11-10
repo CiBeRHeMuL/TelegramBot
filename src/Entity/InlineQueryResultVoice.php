@@ -14,6 +14,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region CLASS_InlineQueryResultVoice
 /**
  * Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent
  * by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the
@@ -25,19 +26,6 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Voice->value),
     new FieldCompareChecker('voice_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a voice recording in an .OGG container encoded with OPUS.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultvoice
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultVoice, Telegram, Bot API, DTO, inlinequeryresultvoice
-// STRUCTURE: ▶ ┌id,voice_url,title┐ → ◇ caption,caption_entities → ∑ result
-// region CLASS_InlineQueryResultVoice
 final class InlineQueryResultVoice extends AbstractInlineQueryResult
 {
     /**

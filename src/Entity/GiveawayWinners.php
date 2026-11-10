@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a message about the completion of a giveaway with public winners.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveawaywinners
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: GiveawayWinners, giveaway, winners, Telegram Bot API
-// STRUCTURE: ┌chat, giveaway_message_id, winners_selection_date, winner_count, winners[]┐ + optional additional_chat_count + premium_subscription_month_count + unclaimed_prize_count + only_new_members + was_refunded + prize_description + prize_star_count → ∑ GiveawayWinners
 // region CLASS_GiveawayWinners
 /**
  * This object represents a message about the completion of a giveaway with public winners.

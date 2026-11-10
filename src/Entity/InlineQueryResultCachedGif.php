@@ -13,6 +13,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region CLASS_InlineQueryResultCachedGif
 /**
  * Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent
  * by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content
@@ -24,19 +25,6 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Gif->value),
     new FieldCompareChecker('gif_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to an animated GIF file stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedgif
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedGif, Telegram, Bot API, DTO, inlinequeryresultcachedgif
-// STRUCTURE: ▶ ┌id,gif_file_id┐ → ◇ caption,title → ∑ result
-// region CLASS_InlineQueryResultCachedGif
 final class InlineQueryResultCachedGif extends AbstractInlineQueryResult
 {
     /**

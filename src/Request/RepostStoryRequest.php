@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API repostStory method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#repoststory
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Repost, Story
-// STRUCTURE: ▶ ┌active_period + business_connection_id + from_chat_id + from_story_id + post_to_chat_page┐ → ◇ construct → ⊕ → ∑ ⟦RepostStoryRequest⟧
-
 // region CLASS_RepostStoryRequest
 /**
  * @see https://core.telegram.org/bots/api#repoststory

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\BotSubscriptionStateEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents changes in the bot's subscription.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#botsubscriptionupdated
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BotSubscriptionUpdated, Telegram, Bot API, DTO, bot subscription updated
-// STRUCTURE: ▶ ┌user,invoice_payload,state┐ → ∑ BotSubscriptionUpdated
 // region CLASS_BotSubscriptionUpdated
-
 /**
  * Represents changes in the bot's subscription.
  *

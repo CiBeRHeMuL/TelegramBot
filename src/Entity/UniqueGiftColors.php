@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the colors of a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftcolors
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftColors, Telegram, Bot API, DTO, uniquegiftcolors
-// STRUCTURE: ▶ ┌center,edge,symbol,text_light,text_dark,accent_light,accent_dark,pattern_color,pattern_emoji┐ → ∑ colors
 // region CLASS_UniqueGiftColors
-
 /**
  * This object contains information about the color scheme for a user's name, message replies and link previews based on a unique
  * gift.

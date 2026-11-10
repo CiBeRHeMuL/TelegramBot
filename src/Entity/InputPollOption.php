@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a single option in a poll.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputpolloption
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputPollOption, Telegram, Bot API, DTO, inputpolloption
-// STRUCTURE: ▶ ┌text┐ → ◇ text_parse_mode,text_entities → ∑ InputPollOption
 // region CLASS_InputPollOption
-
 /**
  * This object contains information about one answer option in a poll to be sent.
  *

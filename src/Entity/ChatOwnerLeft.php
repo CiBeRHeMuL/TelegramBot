@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes a service message about the chat owner leaving the chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_owner_left
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatOwnerLeft, Telegram, Bot API, DTO, chat_owner_left
-// STRUCTURE: ▶ ┌new_owner┐ → ∑ ChatOwnerLeft
 // region CLASS_ChatOwnerLeft
-
 /**
  * Describes a service message about the chat owner leaving the chat.
  *

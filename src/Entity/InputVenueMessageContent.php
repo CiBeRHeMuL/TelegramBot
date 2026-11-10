@@ -9,6 +9,7 @@ use AndrewGos\ClassBuilder\Checker\AndChecker;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 
+// region CLASS_InputVenueMessageContent
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
  *
@@ -21,19 +22,6 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
     new FieldCompareChecker('title', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('address', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the content of a venue message to be sent as the result of an inline query.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputvenuemessagecontent
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputVenueMessageContent, Telegram, Bot API, DTO, inputvenuemessagecontent
-// STRUCTURE: ▶ ┌latitude,longitude,title,address┐ → ◇ foursquare_id → ∑ content
-// region CLASS_InputVenueMessageContent
 final class InputVenueMessageContent extends AbstractInputMessageContent
 {
     /**

@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a forum topic.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#forumtopic
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ForumTopic, forum topic, Telegram Bot API
-// STRUCTURE: ┌message_thread_id, name, icon_color┐ + optional icon_custom_emoji_id + optional is_name_implicit → ∑ ForumTopic
 // region CLASS_ForumTopic
 /**
  * This object represents a forum topic.

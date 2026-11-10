@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorDataFieldTypeEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an error in a data field of a Telegram Passport element.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrordatafield
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PassportElementErrorDataField, Telegram, Bot API, DTO, passportelementerrordatafield
-// STRUCTURE: ▶ ┌type,field_name,data_hash,message┐ → ∑ error
 // region CLASS_PassportElementErrorDataField
-
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's
  * value changes.

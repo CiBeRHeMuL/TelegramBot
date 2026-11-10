@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a video message (round video).
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#videonote
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: VideoNote, Telegram, Bot API, DTO, videonote
-// STRUCTURE: ▶ ┌file_id,file_unique_id,length,duration┐ → ◇ thumbnail,file_size → ∑ VideoNote
 // region CLASS_VideoNote
-
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  *

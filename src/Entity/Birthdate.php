@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the birthdate of a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#birthdate
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Birthdate, Telegram, Bot API, DTO, birthdate
-// STRUCTURE: ▶ ┌day,month,year┐ → ∑ Birthdate
 // region CLASS_Birthdate
-
 /**
  * Describes the birthdate of a user.
  *

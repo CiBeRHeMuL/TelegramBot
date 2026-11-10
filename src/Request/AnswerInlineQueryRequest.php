@@ -7,21 +7,6 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\AbstractInlineQueryResult;
 use AndrewGos\TelegramBot\Entity\InlineQueryResultsButton;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API answerInlineQuery method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#answerinlinequery
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Answer, Inline, Query
-// STRUCTURE: ▶ ┌inline_query_id + results + button + cache_time + is_personal┐ → ◇ construct → ⊕ → ∑ ⟦AnswerInlineQueryRequest⟧
-
 // region CLASS_AnswerInlineQueryRequest
 /**
  * @see https://core.telegram.org/bots/api#answerinlinequery

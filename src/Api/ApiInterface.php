@@ -12,24 +12,7 @@ use AndrewGos\TelegramBot\Response\GetFileResponse;
 use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Log\LoggerInterface;
 
-// region MODULE_CONTRACT [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): HTTP]
-/**
- * @moduleContract
- * @purpose Define the complete contract for all 150+ Telegram Bot API methods.
- * @scope Type-safe method signatures for every Telegram Bot API endpoint.
- * @input Request DTOs per method
- * @output Response DTOs per method
- *
- * @sees USES_API(10): Telegram Bot API https://core.telegram.org/bots/api
- *
- * @changes
- * LAST_CHANGE: Updated for Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ApiInterface, Telegram Bot API, API methods, getUpdates, sendMessage, setWebhook, webhook, polling
-// STRUCTURE: ▶ 150+ methods ┌Request DTO → HTTP call → Response DTO┐ each mapping 1:1 to Telegram Bot API endpoint
-
-// region INTERFACE_ApiInterface [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
+// region INTERFACE_ApiInterface
 interface ApiInterface
 {
     /**

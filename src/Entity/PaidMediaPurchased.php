@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about a paid media purchase.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#paidmediapurchased
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PaidMediaPurchased, Telegram, Bot API, DTO, paidmediapurchased
-// STRUCTURE: ▶ ┌from,paid_media_payload┐ → ∑ purchase
 // region CLASS_PaidMediaPurchased
-
 /**
  * This object contains information about a paid media purchase.
  *

@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an HTTP link to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmedialink
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaLink, Telegram, Bot API, DTO, Input Media Link
-// STRUCTURE: ▶ ┌type,url┐ → ∑ InputMediaLink
 // region CLASS_InputMediaLink
 /**
  * Represents an HTTP link to be sent.

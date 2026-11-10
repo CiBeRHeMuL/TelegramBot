@@ -14,6 +14,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region CLASS_InlineQueryResultPhoto
 /**
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can
  * use input_message_content to send a message with the specified content instead of the photo.
@@ -24,19 +25,6 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Photo->value),
     new FieldCompareChecker('photo_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a photo.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultphoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultPhoto, Telegram, Bot API, DTO, inlinequeryresultphoto
-// STRUCTURE: ▶ ┌id,photo_url,thumbnail_url┐ → ◇ photo_width,photo_height,title → ∑ result
-// region CLASS_InlineQueryResultPhoto
 final class InlineQueryResultPhoto extends AbstractInlineQueryResult
 {
     /**

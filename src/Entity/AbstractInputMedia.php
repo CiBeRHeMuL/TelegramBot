@@ -7,23 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents the content of a media message to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmedia
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- *
- * @modulemap
- * CLASS 5[Input media types] => InputMediaVenue, InputMediaSticker, InputMediaLivePhoto, InputMediaLocation, InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo, InputMediaVoiceNote
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: AbstractInputMedia, Telegram Bot API, abstract, input, media, DTO
-// STRUCTURE: ▶ ┌type: InputMediaTypeEnum┐ → abstract base with AvailableInheritors
-
-// region CLASS_AbstractInputMedia [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_AbstractInputMedia
 /**
  * This object represents the content of a media message to be sent.
  *

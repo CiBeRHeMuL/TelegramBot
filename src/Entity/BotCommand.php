@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a bot command.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#bot_command
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added is_ephemeral
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BotCommand, Telegram, Bot API, DTO, bot_command
-// STRUCTURE: ▶ ┌command,description,is_ephemeral┐ → ∑ BotCommand
 // region CLASS_BotCommand
-
 /**
  * This object represents a bot command.
  *

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an answer of a user in a non-anonymous poll.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#pollanswer
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PollAnswer, Telegram, Bot API, DTO, pollanswer
-// STRUCTURE: ▶ ┌poll_id,voter_chat/option_ids┐ → ∑ PollAnswer
 // region CLASS_PollAnswer
-
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  *

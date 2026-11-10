@@ -9,18 +9,6 @@ use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 use Throwable;
 use Uri\WhatWg\Url as WhatWgUrl;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
-/**
- * @moduleContract
- * @purpose Хранит и валидирует URL через FILTER_VALIDATE_URL. Нормализует ссылки без схемы добавлением https://.
- *
- * @sees USES_API(X): PHP filter_var
- *
- * @changes LAST_CHANGE: Added normalization for scheme-less URLs
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Url, Telegram, URL, validation, filter, normalization, scheme
-// STRUCTURE: ▶ ┌url┐ → ○ filter_var(url, FILTER_VALIDATE_URL) → ◇ valid ? ✓ store : → ○ prepend "https://" → ○ filter_var(normalized, FILTER_VALIDATE_URL) → ◇ valid ? ✓ store normalized : ✗ throw InvalidValueObjectConfigException → ∑ getUrl()
 // region CLASS_Url
 #[CanBeBuiltFromScalar]
 readonly class Url

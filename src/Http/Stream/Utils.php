@@ -10,19 +10,6 @@ use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(7): Stream; TECH(8): Utility]
-/**
- * @moduleContract
- * @purpose Provide static utility functions for stream operations: copy, create, open, and read streams safely.
- *
- * @sees USES_API(7): Psr\Http\Message\StreamInterface
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Utils, stream utilities, copy, fopen, stream_get_contents, PSR-7
-// STRUCTURE: ┌variadic input┐ → ○ streamFor (string/resource/StreamInterface/Iterator/callable/null) → ⊕ Stream → ○ copyToString/tryFopen/tryGetContents → ⊕ string/resource
-
 // region CLASS_Utils
 final class Utils
 {

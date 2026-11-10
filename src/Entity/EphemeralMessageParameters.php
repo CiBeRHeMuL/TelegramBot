@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the parameters of an ephemeral message sent to a user or in place of a callback query message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#ephemeralmessageparameters
- *
- * @changes LAST_CHANGE: Added in Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: EphemeralMessageParameters, Telegram, Bot API, DTO, Ephemeral Message Parameters
-// STRUCTURE: ▶ ┌receiver_user_id┐ → ◇ callback_query_id / replace_callback_query_message → ∑ EphemeralMessageParameters
 // region CLASS_EphemeralMessageParameters
 /**
  * Describes the parameters of an ephemeral message sent to a user or in place of a callback query message.

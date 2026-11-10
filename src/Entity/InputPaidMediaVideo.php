@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a paid video to be sent as part of a paid media group.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputpaidmediavideo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputPaidMediaVideo, Telegram, Bot API, DTO, inputpaidmediavideo
-// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ thumbnail,width,height,duration → ∑ InputPaidMediaVideo
 // region CLASS_InputPaidMediaVideo
-
 /**
  * The paid media to send is a video.
  *

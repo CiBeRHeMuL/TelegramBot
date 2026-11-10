@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains basic information about a successful payment.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#successfulpayment
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SuccessfulPayment, Telegram, Bot API, DTO, successfulpayment
-// STRUCTURE: ▶ ┌currency,total_amount,invoice_payload,telegram_payment_charge_id,provider_payment_charge_id┐ → ◇ ... → ∑ SuccessfulPayment
 // region CLASS_SuccessfulPayment
-
 /**
  * This object contains basic information about a successful payment. Note that if the buyer initiates a chargeback with the
  * relevant payment provider following this transaction, the funds may be debited from your balance. This is outside of Telegram's

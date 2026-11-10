@@ -7,19 +7,6 @@ namespace AndrewGos\TelegramBot\Http\Uri;
 use InvalidArgumentException;
 use Psr\Http\Message\UriInterface;
 
-// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(7): HTTP; TECH(8): PSR-7]
-/**
- * @moduleContract
- * @purpose Implement PSR-7 UriInterface for parsing and manipulating URI components.
- *
- * @sees USES_API(8): Psr\Http\Message\UriInterface, parse_url
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Uri, PSR-7, URI, parsing, manipulation
-// STRUCTURE: ┌uri string┐ → ○ parse_url → ⊕ scheme/host/path/query/fragment/port → ○ immutable with* methods → ⊕ cloned instance
-
 // region CLASS_Uri
 class Uri implements UriInterface
 {

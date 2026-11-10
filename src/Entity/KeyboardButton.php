@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\KeyboardButtonStyleEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents one button of the reply keyboard.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbutton
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: KeyboardButton, Telegram, Bot API, DTO, keyboardbutton
-// STRUCTURE: ▶ ┌text┐ → ◇ request_users/request_chat/request_contact → ∑ button
 // region CLASS_KeyboardButton
-
 /**
  * This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id,
  * and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object

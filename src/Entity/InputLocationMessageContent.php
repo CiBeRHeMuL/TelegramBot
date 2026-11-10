@@ -9,6 +9,7 @@ use AndrewGos\ClassBuilder\Checker\AndChecker;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 
+// region CLASS_InputLocationMessageContent
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
  *
@@ -20,19 +21,6 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
     new FieldCompareChecker('longitude', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('horizontal_accuracy', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the content of a location message to be sent as the result of an inline query.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputlocationmessagecontent
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputLocationMessageContent, Telegram, Bot API, DTO, inputlocationmessagecontent
-// STRUCTURE: ▶ ┌latitude,longitude┐ → ◇ horizontal_accuracy,live_period → ∑ content
-// region CLASS_InputLocationMessageContent
 final class InputLocationMessageContent extends AbstractInputMessageContent
 {
     /**

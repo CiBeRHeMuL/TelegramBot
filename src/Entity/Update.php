@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an incoming update from Telegram Bot API.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#update
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added stopped_message_generation
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Update, Telegram, Bot API, DTO, update
-// STRUCTURE: ▶ ┌update_id┐ → ◇ message,edited_message,channel_post,callback_query,stopped_message_generation,... → ∑ Update
 // region CLASS_Update
-
 /**
  * This object represents an incoming update.At most one of the optional fields can be present in any given update.
  *

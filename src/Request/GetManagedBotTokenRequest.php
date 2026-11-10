@@ -4,21 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API getManagedBotToken method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#getmanagedbottoken
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Get, Managed, Bot, Token
-// STRUCTURE: ▶ ┌user_id┐ → ◇ construct → ⊕ → ∑ ⟦GetManagedBotTokenRequest⟧
-
 // region CLASS_GetManagedBotTokenRequest
 /**
  * @see https://core.telegram.org/bots/api#getmanagedbottoken

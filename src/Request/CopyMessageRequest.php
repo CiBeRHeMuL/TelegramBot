@@ -14,21 +14,6 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API copyMessage method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#copymessage
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Copy, Message
-// STRUCTURE: ▶ ┌chat_id + from_chat_id + message_id + message_thread_id + caption┐ → ◇ construct → ⊕ → ∑ ⟦CopyMessageRequest⟧
-
 // region CLASS_CopyMessageRequest
 /**
  * @see https://core.telegram.org/bots/api#copymessage

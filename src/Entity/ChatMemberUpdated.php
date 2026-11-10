@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents changes in the status of a chat member.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_updated
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatMemberUpdated, Telegram, Bot API, DTO, chat_member_updated
-// STRUCTURE: ▶ ┌chat,from,date,old_chat_member,new_chat_member┐ → ∑ ChatMemberUpdated
 // region CLASS_ChatMemberUpdated
-
 /**
  * This object represents changes in the status of a chat member.
  *

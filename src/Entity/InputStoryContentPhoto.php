@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a photo to be used as story content.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputstorycontentphoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputStoryContentPhoto, Telegram, Bot API, DTO, inputstorycontentphoto
-// STRUCTURE: ▶ ┌photo(FileUrlStr)┐ → ∑ InputStoryContentPhoto
 // region CLASS_InputStoryContentPhoto
-
 /**
  * Describes a photo to post as a story.
  *

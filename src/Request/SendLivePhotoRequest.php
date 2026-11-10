@@ -17,21 +17,6 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendLivePhoto method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendlivephoto
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added ephemeral_message_parameters
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Live, Photo
-// STRUCTURE: ▶ ┌chat_id + live_photo + photo + allow_paid_broadcast + business_connection_id + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendLivePhotoRequest⟧
-
 // region CLASS_SendLivePhotoRequest
 /**
  * @see https://core.telegram.org/bots/api#sendlivephoto

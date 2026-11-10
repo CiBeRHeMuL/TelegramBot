@@ -6,19 +6,6 @@ namespace AndrewGos\TelegramBot\Filesystem;
 
 use RuntimeException;
 
-// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(6): Filesystem; TECH(7): Utility]
-/**
- * @moduleContract
- * @purpose Provide static utility functions for filesystem path normalization, home directory resolution, and path splitting.
- *
- * @sees USES_API(6): normalize, getHomeDir, split
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Utils, filesystem, path normalization, home directory, path splitting
-// STRUCTURE: ┌path string┐ → ○ normalize: expand ~, normalize separators, resolve . and .. → ⊕ normalized path → ○ getHomeDir/split → ⊕ string | string[]
-
 // region CLASS_Utils
 final class Utils
 {

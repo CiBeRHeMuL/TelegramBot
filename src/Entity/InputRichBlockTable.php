@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A table, corresponding to the HTML tag <table>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblocktable
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added is_compact
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockTable, Telegram, Bot API, DTO, Input Rich Block Table
-// STRUCTURE: ▶ ┌type,cells,is_bordered,is_striped,is_compact,caption┐ → ∑ InputRichBlockTable
 // region CLASS_InputRichBlockTable
 /**
  * A table, corresponding to the HTML tag <table>.

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\MaskPositionEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the position on faces where a mask should be placed.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#maskposition
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MaskPosition, Telegram, Bot API, DTO, maskposition
-// STRUCTURE: ▶ ┌point,x_shift,y_shift,scale┐ → ∑ MaskPosition
 // region CLASS_MaskPosition
-
 /**
  * This object describes the position on faces where a mask should be placed by default.
  *

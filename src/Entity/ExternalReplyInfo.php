@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about a message that is being replied to, which may come from another chat or forum topic.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#externalreplyinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ExternalReplyInfo, reply, message, chat, forum topic, Telegram Bot API
-// STRUCTURE: ┌origin┐ + optional chat + optional message_id + optional link_preview_options + optional media fields → ∑ ExternalReplyInfo
 // region CLASS_ExternalReplyInfo
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.

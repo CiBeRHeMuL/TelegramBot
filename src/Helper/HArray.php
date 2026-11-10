@@ -6,16 +6,6 @@ namespace AndrewGos\TelegramBot\Helper;
 
 use Traversable;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
-/**
- * @moduleContract
- * @purpose Утилитарный класс для работы с массивами: индексация, группировка, фильтрация.
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: HArray, Telegram, helper, array, utility, index, group, filter
-// STRUCTURE: ▶ Static methods: index → group → groupIndexing → groupExtended → indexExtended → filterRecursive
 // region CLASS_HArray
 class HArray
 {

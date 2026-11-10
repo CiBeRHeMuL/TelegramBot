@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RevenueWithdrawalStateTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a successful revenue withdrawal state.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RevenueWithdrawalStateSucceeded, Telegram, Bot API, DTO, revenuewithdrawalstatesucceeded
-// STRUCTURE: ▶ ┌type,date,url┐ → ∑ RevenueWithdrawalStateSucceeded
 // region CLASS_RevenueWithdrawalStateSucceeded
-
 /**
  * The withdrawal succeeded.
  *

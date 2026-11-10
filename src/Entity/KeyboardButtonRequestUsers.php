@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a request to select users via a keyboard button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestusers
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: KeyboardButtonRequestUsers, Telegram, Bot API, DTO, keyboardbuttonrequestusers
-// STRUCTURE: ▶ ┌request_id┐ → ◇ user_is_bot,... → ∑ request
 // region CLASS_KeyboardButtonRequestUsers
-
 /**
  * This object defines the criteria used to request suitable users. Information about the selected users will be shared with
  * the bot when the corresponding button is pressed. More about requesting users ».

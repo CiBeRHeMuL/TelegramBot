@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a location to which a chat is connected.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_location
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatLocation, Telegram, Bot API, DTO, chat_location
-// STRUCTURE: ▶ ┌location,address┐ → ∑ ChatLocation
 // region CLASS_ChatLocation
-
 /**
  * Represents a location to which a chat is connected.
  *

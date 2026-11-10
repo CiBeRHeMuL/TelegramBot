@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a transaction partner from the affiliate program.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#transactionpartneraffiliateprogram
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: TransactionPartnerAffiliateProgram, Telegram, Bot API, DTO, transactionpartneraffiliateprogram
-// STRUCTURE: ▶ ┌type,commission_per_mille,withdrawal_state...┐ → ∑ partner
 // region CLASS_TransactionPartnerAffiliateProgram
-
 /**
  * Describes the affiliate program that issued the affiliate commission received via this transaction.
  *

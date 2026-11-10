@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\UniqueGistModelRarityEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the model of a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftmodel
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftModel, Telegram, Bot API, DTO, uniquegiftmodel
-// STRUCTURE: ▶ ┌name,rarity_per_mille,sticker┐ → ∑ model
 // region CLASS_UniqueGiftModel
-
 /**
  * This object describes the model of a unique gift.
  *

@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a community chat removed.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#communitychatremoved
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: CommunityChatRemoved, Telegram, Bot API, DTO, community, chat, removed
-// STRUCTURE: ▶ ┌name,icon_color,icon_custom_emoji_id,is_name_implicit┐ → ∑ CommunityChatRemoved
 // region CLASS_CommunityChatRemoved
-
 /**
  * Represents a service message about a community chat removed.
  *

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a poll option deleted.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#polloptiondeleted
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PollOptionDeleted, Telegram, Bot API, DTO, polloptiondeleted
-// STRUCTURE: ▶ ┌option: PollOption┐ → ∑ PollOptionDeleted
 // region CLASS_PollOptionDeleted
-
 /**
  * Describes a service message about an option deleted from a poll.
  *

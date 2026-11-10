@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\Enum\MessageEntityTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents one special entity in a text message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#messageentity
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MessageEntity, Telegram, Bot API, DTO, messageentity
-// STRUCTURE: ▶ ┌type,offset,length┐ → ◇ url,user,language,custom_emoji_id → ∑ entity
 // region CLASS_MessageEntity
-
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  *

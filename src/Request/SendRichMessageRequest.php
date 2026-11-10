@@ -14,20 +14,7 @@ use AndrewGos\TelegramBot\Entity\ReplyParameters;
 use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Optional. additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#sendrichmessage
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added ephemeral_message_parameters
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SendRichMessageRequest, Telegram, Bot API, DTO, send Rich Message
-// STRUCTURE: ▶ ┌fields + ephemeral_message_parameters┐ → ∑ SendRichMessageRequest
 // region CLASS_SendRichMessageRequest
-
 /**
  * Optional. additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  *

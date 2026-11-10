@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains a list of profile photos for a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#userprofilephotos
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UserProfilePhotos, Telegram, Bot API, DTO, userprofilephotos
-// STRUCTURE: ▶ ┌total_count,photos: PhotoSize[][]┐ → ∑ UserProfilePhotos
 // region CLASS_UserProfilePhotos
-
 /**
  * This object represent a user's profile pictures.
  *

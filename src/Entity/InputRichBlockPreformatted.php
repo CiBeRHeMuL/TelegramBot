@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A preformatted text block, corresponding to the nested HTML tags <pre> and <code>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockpreformatted
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockPreformatted, Telegram, Bot API, DTO, Input Rich Block Preformatted
-// STRUCTURE: ▶ ┌type,text,language┐ → ∑ InputRichBlockPreformatted
 // region CLASS_InputRichBlockPreformatted
 /**
  * A preformatted text block, corresponding to the nested HTML tags <pre> and <code>.

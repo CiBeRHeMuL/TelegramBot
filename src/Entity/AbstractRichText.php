@@ -7,23 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a rich formatted text.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtext
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added RichTextButton
- *
- * @modulemap
- * CLASS 5[RichText types] => AbstractRichText
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: AbstractRichText, Telegram Bot API, abstract, RichText, DTO
-// STRUCTURE: ▶ ┌type: RichTextTypeEnum┐ → abstract base with AvailableInheritors
-
-// region CLASS_AbstractRichText [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_AbstractRichText
 /**
  * This object represents a rich formatted text.
  *

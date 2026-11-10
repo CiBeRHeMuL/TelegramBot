@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API unpinAllForumTopicMessages method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#unpinallforumtopicmessages
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Unpin, All, Forum, Topic, Messages
-// STRUCTURE: ▶ ┌chat_id + message_thread_id┐ → ◇ construct → ⊕ → ∑ ⟦UnpinAllForumTopicMessagesRequest⟧
-
 // region CLASS_UnpinAllForumTopicMessagesRequest
 /**
  * @see https://core.telegram.org/bots/api#unpinallforumtopicmessages

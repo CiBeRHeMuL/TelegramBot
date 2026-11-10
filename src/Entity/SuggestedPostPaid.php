@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a paid suggested channel post.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostpaid
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SuggestedPostPaid, Telegram, Bot API, DTO, suggestedpostpaid
-// STRUCTURE: ▶ ┌star_count...┐ → ∑ SuggestedPostPaid
 // region CLASS_SuggestedPostPaid
-
 /**
  * Describes a service message about a successful payment for a suggested post.
  *

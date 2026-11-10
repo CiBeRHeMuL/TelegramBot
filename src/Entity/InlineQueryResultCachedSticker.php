@@ -11,6 +11,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 
+// region CLASS_InlineQueryResultCachedSticker
 /**
  * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively,
  * you can use input_message_content to send a message with the specified content instead of the sticker.
@@ -21,19 +22,6 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Sticker->value),
     new FieldCompareChecker('sticker_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a sticker stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedsticker
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedSticker, Telegram, Bot API, DTO, inlinequeryresultcachedsticker
-// STRUCTURE: ▶ ┌id,sticker_file_id┐ → ◇ reply_markup → ∑ result
-// region CLASS_InlineQueryResultCachedSticker
 final class InlineQueryResultCachedSticker extends AbstractInlineQueryResult
 {
     /**

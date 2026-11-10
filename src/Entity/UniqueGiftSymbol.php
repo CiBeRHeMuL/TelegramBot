@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the symbol of a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftsymbol
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftSymbol, Telegram, Bot API, DTO, uniquegiftsymbol
-// STRUCTURE: ▶ ┌name,rarity_per_mille,sticker┐ → ∑ symbol
 // region CLASS_UniqueGiftSymbol
-
 /**
  * This object describes the symbol shown on the pattern of a unique gift.
  *

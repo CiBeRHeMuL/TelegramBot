@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes an interval of time during which a business is open.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_opening_hours_interval
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BusinessOpeningHoursInterval, Telegram, Bot API, DTO, business_opening_hours_interval
-// STRUCTURE: ▶ ┌opening_minute,closing_minute┐ → ∑ BusinessOpeningHoursInterval
 // region CLASS_BusinessOpeningHoursInterval
-
 /**
  * Describes an interval of time during which a business is open.
  *

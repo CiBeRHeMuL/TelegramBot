@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API deleteMessages method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#deletemessages
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Delete, Messages
-// STRUCTURE: ▶ ┌chat_id + message_ids┐ → ◇ construct → ⊕ → ∑ ⟦DeleteMessagesRequest⟧
-
 // region CLASS_DeleteMessagesRequest
 /**
  * @see https://core.telegram.org/bots/api#deletemessages

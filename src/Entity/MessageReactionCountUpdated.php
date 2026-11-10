@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a change in the count of reactions on a message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#messagereactioncountupdated
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MessageReactionCountUpdated, Telegram, Bot API, DTO, messagereactioncountupdated
-// STRUCTURE: ▶ ┌chat,message_id,date,reactions[]┐ → ∑ count_updated
 // region CLASS_MessageReactionCountUpdated
-
 /**
  * This object represents reaction changes on a message with anonymous reactions.
  *

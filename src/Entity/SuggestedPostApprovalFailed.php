@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a suggested channel post that failed approval.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#suggestedpostapprovalfailed
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SuggestedPostApprovalFailed, Telegram, Bot API, DTO, suggestedpostapprovalfailed
-// STRUCTURE: ▶ ┌reason...┐ → ∑ SuggestedPostApprovalFailed
 // region CLASS_SuggestedPostApprovalFailed
-
 /**
  * Describes a service message about the failed approval of a suggested post. Currently, only caused by insufficient user funds
  * at the time of approval.

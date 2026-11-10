@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a map, corresponding to the custom HTML tag <tg-map>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockmap
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockMap, Telegram, Bot API, DTO, Rich Block Map
-// STRUCTURE: ▶ ┌type,location,zoom,width,height,caption┐ → ∑ RichBlockMap
 // region CLASS_RichBlockMap
 /**
  * A block with a map, corresponding to the custom HTML tag <tg-map>.

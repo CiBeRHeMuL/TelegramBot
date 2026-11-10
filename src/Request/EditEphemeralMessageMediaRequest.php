@@ -8,21 +8,6 @@ use AndrewGos\TelegramBot\Entity\AbstractInputMedia;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API editEphemeralMessageMedia method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#editephemeralmessagemedia
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Ephemeral, Message, Media
-// STRUCTURE: ▶ ┌chat_id + receiver_user_id + ephemeral_message_id + media + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditEphemeralMessageMediaRequest⟧
-
 // region CLASS_EditEphemeralMessageMediaRequest
 /**
  * @see https://core.telegram.org/bots/api#editephemeralmessagemedia

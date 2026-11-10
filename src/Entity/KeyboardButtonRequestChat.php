@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a request to a chat for a keyboard button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestchat
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: KeyboardButtonRequestChat, Telegram, Bot API, DTO, keyboardbuttonrequestchat
-// STRUCTURE: ▶ ┌request_id,chat_is_channel┐ → ◇ chat_is_forum,... → ∑ request
 // region CLASS_KeyboardButtonRequestChat
-
 /**
  * This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with
  * the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More

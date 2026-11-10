@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a prepared inline message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#preparedinlinemessage
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PreparedInlineMessage, Telegram, Bot API, DTO, preparedinlinemessage
-// STRUCTURE: ▶ ┌id,result: InlineQueryResult┐ → ∑ PreparedInlineMessage
 // region CLASS_PreparedInlineMessage
-
 /**
  * Describes an inline message to be sent by a user of a Mini App.
  *

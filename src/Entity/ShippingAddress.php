@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a shipping address.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#shippingaddress
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ShippingAddress, Telegram, Bot API, DTO, shippingaddress
-// STRUCTURE: ▶ ┌country_code,state,city,street_line1,street_line2,post_code┐ → ∑ address
 // region CLASS_ShippingAddress
-
 /**
  * This object represents a shipping address.
  *

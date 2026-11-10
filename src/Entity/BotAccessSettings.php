@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object describes the access settings of a bot.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#bot_access_settings
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BotAccessSettings, Telegram, Bot API, DTO, bot_access_settings
-// STRUCTURE: ▶ ┌is_access_restricted┐ → ∑ BotAccessSettings
 // region CLASS_BotAccessSettings
-
 /**
  * This object describes the access settings of a bot.
  *

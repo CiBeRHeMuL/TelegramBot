@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\ValueObject;
 
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
-/**
- * @moduleContract
- * @purpose Хранит и валидирует токен бота Telegram по регулярному выражению.
- *
- * @sees USES_API(X): Telegram Bot API
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BotToken, Telegram, bot token, validation, regex
-// STRUCTURE: ▶ ┌token┐ → ○ preg_match(TOKEN_REGEX) → ◇ match ? ✓ store : ✗ throw InvalidValueObjectConfigException → ∑ getToken()
 // region CLASS_BotToken
 /**
  * Класс для хранения токена бота Telegram.

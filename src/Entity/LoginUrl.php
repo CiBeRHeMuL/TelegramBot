@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a parameter of the inline keyboard button used to automatically authorize a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#loginurl
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: LoginUrl, Telegram, Bot API, DTO, loginurl
-// STRUCTURE: ▶ ┌url┐ → ◇ forward_text,bot_username,request_write_access → ∑ LoginUrl
 // region CLASS_LoginUrl
-
 /**
  * This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great
  * replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button

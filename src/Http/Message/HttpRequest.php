@@ -13,19 +13,6 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 
-// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): HTTP; TECH(8): PSR-7]
-/**
- * @moduleContract
- * @purpose Implement PSR-7 RequestInterface for outgoing HTTP requests to the Telegram API.
- *
- * @sees USES_API(8): Psr\Http\Message\RequestInterface
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: HttpRequest, PSR-7, HTTP request, message
-// STRUCTURE: ┌method + uri + headers + body + protocolVersion┐ → ○ immutable with* methods → ⊕ cloned instance with mutated property
-
 // region CLASS_HttpRequest
 class HttpRequest implements RequestInterface
 {

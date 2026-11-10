@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The background is taken directly from a built-in chat theme.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#backgroundtypechattheme
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BackgroundTypeChatTheme, Telegram Bot API, background, type, chat, theme, extends AbstractBackgroundType, DTO
-// STRUCTURE: ▶ ┌theme_name┐
-
-// region CLASS_BackgroundTypeChatTheme [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_BackgroundTypeChatTheme
 /**
  * The background is taken directly from a built-in chat theme.
  *

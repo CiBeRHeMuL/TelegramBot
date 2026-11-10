@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a user allowing the bot to write messages.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#writeaccessallowed
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: WriteAccessAllowed, Telegram, Bot API, DTO, writeaccessallowed
-// STRUCTURE: ▶ ◇ web_app_name,from_request,... → ∑ WriteAccessAllowed
 // region CLASS_WriteAccessAllowed
-
 /**
  * This object represents a service message about a user allowing a bot to write messages after adding it to the attachment menu,
  * launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.

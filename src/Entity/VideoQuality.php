@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the video quality setting.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#videoquality
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: VideoQuality, Telegram, Bot API, DTO, videoquality
-// STRUCTURE: ▶ ┌quality: string┐ → ∑ VideoQuality
 // region CLASS_VideoQuality
-
 /**
  * This object represents a video file of a specific quality.
  *

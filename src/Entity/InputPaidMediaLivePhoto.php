@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\Enum\InputPaidMediaTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a paid live photo to be sent as part of a paid media group.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputpaidmedialivephoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputPaidMediaLivePhoto, Telegram, Bot API, DTO, inputpaidmedialivephoto
-// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode → ∑ InputPaidMediaLivePhoto
 // region CLASS_InputPaidMediaLivePhoto
-
 /**
  * The paid media to send is a live photo.
  *

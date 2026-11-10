@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\InputSticker;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API replaceStickerInSet method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#replacestickerinset
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Replace, Sticker, In, Set
-// STRUCTURE: ▶ ┌name + old_sticker + sticker + user_id┐ → ◇ construct → ⊕ → ∑ ⟦ReplaceStickerInSetRequest⟧
-
 // region CLASS_ReplaceStickerInSetRequest
 /**
  * @see https://core.telegram.org/bots/api#replacestickerinset

@@ -9,19 +9,6 @@ use InvalidArgumentException;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
-// region MODULE_CONTRACT [DOMAIN(5): Telegram; CONCEPT(8): Stream; TECH(9): PSR-7]
-/**
- * @moduleContract
- * @purpose Implement a read-only PSR-7 StreamInterface that concatenates multiple readable streams sequentially.
- *
- * @sees USES_API(8): Psr\Http\Message\StreamInterface
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: AppendStream, composite stream, PSR-7, read-only
-// STRUCTURE: ┌StreamInterface[]┐ → ○ addStream (checks readable) → ○ read: loop streams until $remaining=0 → ○ seek: rewind all + skip-read
-
 // region CLASS_AppendStream
 class AppendStream implements StreamInterface
 {

@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a location to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmedialocation
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaLocation, Telegram, Bot API, DTO, inputmedialocation
-// STRUCTURE: ▶ ┌latitude,longitude┐ → ◇ heading,horizontal_accuracy → ∑ InputMediaLocation
 // region CLASS_InputMediaLocation
-
 /**
  * Represents a location to be sent.
  *

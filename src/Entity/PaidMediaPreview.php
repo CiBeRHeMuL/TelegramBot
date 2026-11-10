@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PaidMediaTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a preview of paid media.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#paidmediapreview
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PaidMediaPreview, Telegram, Bot API, DTO, paidmediapreview
-// STRUCTURE: ▶ ┌type┐ → ◇ width,height,duration → ∑ preview
 // region CLASS_PaidMediaPreview
-
 /**
  * The paid media isn't available before the payment.
  *

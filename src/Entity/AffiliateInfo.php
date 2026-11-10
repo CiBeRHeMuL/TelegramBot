@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about the affiliate that received a commission via this transaction.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#affiliateinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: AffiliateInfo, Telegram Bot API, affiliate, commission, transaction, DTO
-// STRUCTURE: ▶ ┌commission_per_mille, amount, affiliate_chat?, affiliate_user?┐
-
-// region CLASS_AffiliateInfo [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_AffiliateInfo
 /**
  * Contains information about the affiliate that received a commission via this transaction.
  *

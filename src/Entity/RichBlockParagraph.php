@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A text paragraph, corresponding to the HTML tag <p>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockparagraph
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockParagraph, Telegram, Bot API, DTO, Rich Block Paragraph
-// STRUCTURE: ▶ ┌type,text┐ → ∑ RichBlockParagraph
 // region CLASS_RichBlockParagraph
 /**
  * A text paragraph, corresponding to the HTML tag <p>.

@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a story area type that contains a location.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypelocation
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StoryAreaTypeLocation, Telegram, Bot API, DTO, storyareatypelocation
-// STRUCTURE: ▶ ┌type,latitude,longitude,address┐ → ∑ StoryAreaTypeLocation
 // region CLASS_StoryAreaTypeLocation
-
 /**
  * Describes a story area pointing to a location. Currently, a story can have up to 10 location areas.
  *

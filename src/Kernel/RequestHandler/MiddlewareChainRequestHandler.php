@@ -8,20 +8,7 @@ use AndrewGos\TelegramBot\Kernel\Middleware\MiddlewareInterface;
 use AndrewGos\TelegramBot\Kernel\Request\Request;
 use AndrewGos\TelegramBot\Kernel\Response\Response;
 
-// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
-/**
- * @moduleContract
- * @purpose Wraps handler with middleware chain.
- *
- * @sees USES_API(9): MiddlewareInterface, RequestHandlerInterface, Request, Response
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MiddlewareChainRequestHandler, middleware chain, handler wrapper
-// STRUCTURE: ▶ handle() → ◇ empty(middlewares) ? → ⊕ handler->handle() | ○ shift middleware → ┌new self(next)┐ → ⊕ middleware->process()
-
-// region CLASS_MiddlewareChainRequestHandler [DOMAIN(8): Telegram; CONCEPT(7): RequestHandler; TECH(9): PHP]
+// region CLASS_MiddlewareChainRequestHandler
 final class MiddlewareChainRequestHandler implements RequestHandlerInterface
 {
     /**

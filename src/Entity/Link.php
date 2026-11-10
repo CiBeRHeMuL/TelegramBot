@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an HTTP link.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#link
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Link, Telegram, Bot API, DTO, Link
-// STRUCTURE: ▶ ┌url┐ → ∑ Link
 // region CLASS_Link
 /**
  * Represents an HTTP link.

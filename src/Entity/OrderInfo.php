@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents order information.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#orderinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: OrderInfo, Telegram, Bot API, DTO, orderinfo
-// STRUCTURE: ▶ ◇ name,phone_number,email,shipping_address → ∑ OrderInfo
 // region CLASS_OrderInfo
-
 /**
  * This object represents information about an order.
  *

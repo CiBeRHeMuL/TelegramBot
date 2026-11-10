@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a “Thinking…” placeholder, corresponding to the custom HTML tag <tg-thinking>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockthinking
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockThinking, Telegram, Bot API, DTO, Input Rich Block Thinking
-// STRUCTURE: ▶ ┌type,text┐ → ∑ InputRichBlockThinking
 // region CLASS_InputRichBlockThinking
 /**
  * A block with a “Thinking…” placeholder, corresponding to the custom HTML tag <tg-thinking>.

@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\ValueObject\IpV4;
 use AndrewGos\TelegramBot\ValueObject\IpV6;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about the current status of a webhook.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#webhookinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: WebhookInfo, Telegram, Bot API, DTO, webhookinfo
-// STRUCTURE: ▶ ┌url,has_custom_certificate,pending_update_count┐ → ◇ ... → ∑ WebhookInfo
 // region CLASS_WebhookInfo
-
 /**
  * Describes the current status of a webhook.
  *

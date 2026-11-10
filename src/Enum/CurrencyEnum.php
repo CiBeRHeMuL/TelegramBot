@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Enum;
 
-// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
-/**
- * @moduleContract
- * @purpose Enumeration of currencies (ISO 4217) supported in Telegram Bot API, including Telegram Stars (XTR) and TON.
- *
- * @sees USES_API(6): Telegram Bot API
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Currency, currency, ISO 4217, Telegram Stars, XTR, TON, enum
-// STRUCTURE: ▶ BackedEnum(string): [case => value] + getSymbol(): string + getName(): string
 // region ENUM_CurrencyEnum
 enum CurrencyEnum: string
 {

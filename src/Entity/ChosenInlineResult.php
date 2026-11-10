@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a result of an inline query that was chosen by the user and sent to their chat partner.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#choseninlineresult
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChosenInlineResult, inline query, chosen result, Telegram Bot API
-// STRUCTURE: ┌result_id, from, query┐ + optional inline_message_id + optional location → ∑ ChosenInlineResult
 // region CLASS_ChosenInlineResult
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.

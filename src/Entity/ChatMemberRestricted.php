@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a chat member that is under certain restrictions in the chat. Supergroups only.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_restricted
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatMemberRestricted, Telegram, Bot API, DTO, chat_member_restricted
-// STRUCTURE: ▶ ┌user,is_member,can_send_messages,can_send_audios,can_send_documents┐ → ∑ ChatMemberRestricted
 // region CLASS_ChatMemberRestricted
-
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  *

@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains a list of profile audios for a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#userprofileaudios
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UserProfileAudios, Telegram, Bot API, DTO, userprofileaudios
-// STRUCTURE: ▶ ┌total_count,audios: Audio[]┐ → ∑ UserProfileAudios
 // region CLASS_UserProfileAudios
-
 /**
  * This object represents the audios displayed on a user's profile.
  *

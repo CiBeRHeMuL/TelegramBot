@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a new poll option added.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#polloptionadded
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PollOptionAdded, Telegram, Bot API, DTO, polloptionadded
-// STRUCTURE: ▶ ┌option: PollOption┐ → ∑ PollOptionAdded
 // region CLASS_PollOptionAdded
-
 /**
  * Describes a service message about an option added to a poll.
  *

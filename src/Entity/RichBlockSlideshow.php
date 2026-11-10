@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A slideshow, corresponding to the custom HTML tag <tg-slideshow>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockslideshow
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockSlideshow, Telegram, Bot API, DTO, Rich Block Slideshow
-// STRUCTURE: ▶ ┌type,blocks,caption┐ → ∑ RichBlockSlideshow
 // region CLASS_RichBlockSlideshow
 /**
  * A slideshow, corresponding to the custom HTML tag <tg-slideshow>.

@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a request to select a managed bot via a keyboard button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: KeyboardButtonRequestManagedBot, Telegram, Bot API, DTO, keyboardbuttonrequestmanagedbot
-// STRUCTURE: ▶ ┌request_id┐ → ◇ bot_username → ∑ request
 // region CLASS_KeyboardButtonRequestManagedBot
-
 /**
  * This object defines the parameters for the creation of a managed bot. Information about the created bot will be shared with
  * the bot using the update managed_bot and a Message with the field managed_bot_created.

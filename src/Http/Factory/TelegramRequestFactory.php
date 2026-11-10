@@ -16,19 +16,6 @@ use AndrewGos\TelegramBot\ValueObject\BotToken;
 use Psr\Http\Message\RequestInterface;
 use Random\RandomException;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): HTTP; TECH(9): PSR-7]
-/**
- * @moduleContract
- * @purpose Create PSR-7 Request instances for Telegram Bot API calls, supporting both JSON and multipart form data.
- *
- * @sees USES_API(8): TelegramRequestFactoryInterface, MultipartStream, HttpRequest
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: TelegramRequestFactory, request factory, Telegram API, multipart, PSR-7
-// STRUCTURE: ┌token + method + data┐ → ○ array_walk detect Stream resources → ◇ has resource? ⊕ MultipartStream : ⊕ json body → ⊕ HttpRequest
-
 // region CLASS_TelegramRequestFactory
 final class TelegramRequestFactory implements TelegramRequestFactoryInterface
 {

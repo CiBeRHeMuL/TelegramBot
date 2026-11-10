@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InputMediaTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a venue to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediavenue
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaVenue, Telegram, Bot API, DTO, inputmediavenue
-// STRUCTURE: ▶ ┌latitude,longitude,title,address┐ → ◇ foursquare_id → ∑ InputMediaVenue
 // region CLASS_InputMediaVenue
-
 /**
  * Represents a venue to be sent.
  *

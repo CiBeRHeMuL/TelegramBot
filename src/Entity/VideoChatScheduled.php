@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about a video chat scheduled.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#videochatscheduled
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: VideoChatScheduled, Telegram, Bot API, DTO, videochatscheduled
-// STRUCTURE: ▶ ┌start_date┐ → ∑ VideoChatScheduled
 // region CLASS_VideoChatScheduled
-
 /**
  * This object represents a service message about a video chat scheduled in the chat.
  *

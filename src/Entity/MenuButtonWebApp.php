@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\MenuButtonTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a menu button that launches a Web App.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#menubuttonwebapp
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MenuButtonWebApp, Telegram, Bot API, DTO, menubuttonwebapp
-// STRUCTURE: ▶ ┌text,web_app┐ → ∑ MenuButtonWebApp
 // region CLASS_MenuButtonWebApp
-
 /**
  * Represents a menu button, which launches a Web App.
  *

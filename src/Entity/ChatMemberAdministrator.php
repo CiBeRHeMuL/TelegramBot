@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a chat member that has some additional privileges.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_administrator
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_send_welcome_messages
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatMemberAdministrator, Telegram, Bot API, DTO, chat_member_administrator
-// STRUCTURE: ▶ ┌user,can_be_edited,is_anonymous,can_manage_chat,can_delete_messages┐ → ∑ ChatMemberAdministrator
 // region CLASS_ChatMemberAdministrator
-
 /**
  * Represents a chat member that has some additional privileges.
  *

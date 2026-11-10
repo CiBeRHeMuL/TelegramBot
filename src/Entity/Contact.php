@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a phone contact.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#contact
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Contact, phone contact, Telegram Bot API
-// STRUCTURE: ┌phone_number, first_name┐ + optional last_name + optional user_id + optional vcard → ∑ Contact
 // region CLASS_Contact
 /**
  * This object represents a phone contact.

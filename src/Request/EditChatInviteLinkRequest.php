@@ -7,21 +7,6 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API editChatInviteLink method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#editchatinvitelink
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Chat, Invite, Link
-// STRUCTURE: ▶ ┌chat_id + invite_link + creates_join_request + expire_date + member_limit┐ → ◇ construct → ⊕ → ∑ ⟦EditChatInviteLinkRequest⟧
-
 // region CLASS_EditChatInviteLinkRequest
 /**
  * @see https://core.telegram.org/bots/api#editchatinvitelink

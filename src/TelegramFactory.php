@@ -18,25 +18,7 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-// region MODULE_CONTRACT [DOMAIN(9): Telegram Bot; CONCEPT(9): Factory; TECH(7): DI]
-/**
- * @moduleContract
- * @purpose Provide static factory methods to create pre-configured Telegram instances for webhook and polling modes.
- * @scope Full DI wiring: Api, HttpClient, Serializer, UpdateHandler, UpdateSource construction.
- * @input BotToken, optional EventDispatcher, Logger
- * @output Fully configured Telegram instance
- *
- * @sees USES(8): Api, Serializer, Http, Filesystem, Kernel; USES_API(5): PSR-14 EventDispatcher
- *
- * @changes
- * LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: TelegramFactory, factory, webhook, polling, getUpdates, PhpInputUpdateSource, GetUpdatesUpdateSource
-// STRUCTURE: ▶ getDefaultTelegram → ┌ClassBuilder + Api + HttpClient + PhpInputUpdateSource┐ → ⊕ Telegram
-// ▶ getGetUpdatesTelegram → ┌ClassBuilder + Api + HttpClient + GetUpdatesUpdateSource┐ → ⊕ Telegram
-
-// region CLASS_TelegramFactory [DOMAIN(9): Telegram Bot; CONCEPT(9): Factory]
+// region CLASS_TelegramFactory
 class TelegramFactory
 {
     /**

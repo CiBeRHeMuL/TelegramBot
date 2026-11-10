@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\Enum\InputStoryContentTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a video to be used as story content.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputstorycontentvideo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputStoryContentVideo, Telegram, Bot API, DTO, inputstorycontentvideo
-// STRUCTURE: ▶ ┌video(FileUrlStr)┐ → ◇ duration,width,height → ∑ InputStoryContentVideo
 // region CLASS_InputStoryContentVideo
-
 /**
  * Describes a video to post as a story.
  *

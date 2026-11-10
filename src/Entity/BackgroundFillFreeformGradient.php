@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The background is a freeform gradient that rotates after every message in the chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#backgroundfillfreeformgradient
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BackgroundFillFreeformGradient, Telegram Bot API, background, fill, freeform, gradient, extends AbstractBackgroundFill, DTO
-// STRUCTURE: ▶ ┌colors: int[]┐
-
-// region CLASS_BackgroundFillFreeformGradient [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_BackgroundFillFreeformGradient
 /**
  * The background is a freeform gradient that rotates after every message in the chat.
  *

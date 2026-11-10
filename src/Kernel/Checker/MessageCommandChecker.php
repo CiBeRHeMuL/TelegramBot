@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Kernel\Checker;
 use AndrewGos\TelegramBot\Entity\Update;
 use AndrewGos\TelegramBot\Enum\UpdateTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
-/**
- * @moduleContract
- * @purpose Checks if message contains specific bot command.
- *
- * @sees USES_API(9): UpdateTypeEnum, Update entity, CheckerInterface
- *
- * @changes LAST_CHANGE: Added null guard for Message::getText() null return
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: MessageCommandChecker, bot command, message check
-// STRUCTURE: ▶ check() → ◇ $update->getType() === Message → ◇ text === null → false → ◇ text === /command → ⊕ bool
-
-// region CLASS_MessageCommandChecker [DOMAIN(8): Telegram; CONCEPT(7): Checker; TECH(9): PHP]
+// region CLASS_MessageCommandChecker
 /**
  * Checks, that message starts with specified command.
  */

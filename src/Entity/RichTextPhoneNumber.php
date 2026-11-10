@@ -10,18 +10,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A text with a phone number.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtextphonenumber
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichTextPhoneNumber, Telegram, Bot API, DTO, Rich Text Phone Number
-// STRUCTURE: ▶ ┌type,text,phone_number┐ → ∑ RichTextPhoneNumber
 // region CLASS_RichTextPhoneNumber
 /**
  * A text with a phone number.

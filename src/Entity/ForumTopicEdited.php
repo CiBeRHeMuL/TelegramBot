@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a service message about an edited forum topic.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#forumtopicedited
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ForumTopicEdited, forum topic, edited, service message, Telegram Bot API
-// STRUCTURE: ┌name┐ + optional icon_custom_emoji_id → ∑ ForumTopicEdited
 // region CLASS_ForumTopicEdited
 /**
  * This object represents a service message about an edited forum topic.

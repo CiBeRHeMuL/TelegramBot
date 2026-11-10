@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object contains information about a chat boost.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_boost
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatBoost, Telegram, Bot API, DTO, chat_boost
-// STRUCTURE: ▶ ┌boost_id,add_date,expiration_date,source┐ → ∑ ChatBoost
 // region CLASS_ChatBoost
-
 /**
  * This object contains information about a chat boost.
  *

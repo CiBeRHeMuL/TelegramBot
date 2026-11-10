@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes a service message about a regular gift that was sent or received.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giftinfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: GiftInfo, gift, service message, Telegram Bot API
-// STRUCTURE: ┌gift┐ + optional can_be_upgraded + convert_star_count + entities + is_private + owned_gift_id + prepaid_upgrade_star_count + text + is_upgrade_separate + unique_gift_number → ∑ GiftInfo
 // region CLASS_GiftInfo
 /**
  * Describes a service message about a regular gift that was sent or received.

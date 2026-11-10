@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a transaction partner that is a chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#transactionpartnerchat
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: TransactionPartnerChat, Telegram, Bot API, DTO, transactionpartnerchat
-// STRUCTURE: ▶ ┌type,chat,gift...┐ → ∑ partner
 // region CLASS_TransactionPartnerChat
-
 /**
  * Describes a transaction with a chat.
  *

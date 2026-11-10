@@ -17,21 +17,6 @@ use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendPhoto method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendphoto
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Photo
-// STRUCTURE: ▶ ┌chat_id + photo + message_thread_id + has_spoiler + caption + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendPhotoRequest⟧
-
 // region CLASS_SendPhotoRequest
 /**
  * @see https://core.telegram.org/bots/api#sendphoto

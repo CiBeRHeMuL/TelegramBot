@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a Telegram user or bot.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#user
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: User, Telegram, Bot API, DTO, user
-// STRUCTURE: ▶ ┌id,is_bot,first_name┐ → ◇ last_name,username,language_code → ∑ User
 // region CLASS_User
-
 /**
  * This object represents a Telegram user or bot.
  *

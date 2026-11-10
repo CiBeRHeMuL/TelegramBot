@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The background is a wallpaper in the JPEG format.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#background_type_wallpaper
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BackgroundTypeWallpaper, Telegram, Bot API, DTO, background_type_wallpaper
-// STRUCTURE: ▶ ┌document,dark_theme_dimming,is_blurred,is_moving┐ → ∑ BackgroundTypeWallpaper
 // region CLASS_BackgroundTypeWallpaper
-
 /**
  * The background is a wallpaper in the JPEG format.
  *

@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AbstractInlineQueryResult;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API savePreparedInlineMessage method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#savepreparedinlinemessage
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Save, Prepared, Inline, Message
-// STRUCTURE: ▶ ┌result + user_id + allow_bot_chats + allow_channel_chats + allow_group_chats┐ → ◇ construct → ⊕ → ∑ ⟦SavePreparedInlineMessageRequest⟧
-
 // region CLASS_SavePreparedInlineMessageRequest
 /**
  * @see https://core.telegram.org/bots/api#savepreparedinlinemessage

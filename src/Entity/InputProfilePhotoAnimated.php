@@ -10,20 +10,7 @@ use AndrewGos\TelegramBot\Enum\InputProfilePhotoTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an animated profile photo to be set.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputprofilephotoanimated
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputProfilePhotoAnimated, Telegram, Bot API, DTO, inputprofilephotoanimated
-// STRUCTURE: ▶ ┌animation(InputFile)┐ → ◇ main_frame_timestamp → ∑ photo
 // region CLASS_InputProfilePhotoAnimated
-
 /**
  * An animated profile photo in the MPEG4 format.
  *

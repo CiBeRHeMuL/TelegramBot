@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\ChatMemberStatusEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a chat member that owns the chat and has all administrator privileges.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_member_owner
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatMemberOwner, Telegram, Bot API, DTO, chat_member_owner
-// STRUCTURE: ▶ ┌user,is_anonymous,custom_title┐ → ∑ ChatMemberOwner
 // region CLASS_ChatMemberOwner
-
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
  *

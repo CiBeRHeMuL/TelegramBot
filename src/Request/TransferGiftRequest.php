@@ -4,21 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API transferGift method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#transfergift
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Transfer, Gift
-// STRUCTURE: ▶ ┌business_connection_id + new_owner_chat_id + owned_gift_id + star_count┐ → ◇ construct → ⊕ → ∑ ⟦TransferGiftRequest⟧
-
 // region CLASS_TransferGiftRequest
 /**
  * @see https://core.telegram.org/bots/api#transfergift

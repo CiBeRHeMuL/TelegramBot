@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose An italicized text.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtextitalic
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichTextItalic, Telegram, Bot API, DTO, Rich Text Italic
-// STRUCTURE: ▶ ┌type,text┐ → ∑ RichTextItalic
 // region CLASS_RichTextItalic
 /**
  * An italicized text.

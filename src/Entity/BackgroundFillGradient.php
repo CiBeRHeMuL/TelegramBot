@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\BackgroundFillTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose The background is a gradient fill.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#backgroundfillgradient
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BackgroundFillGradient, Telegram Bot API, background, fill, gradient, extends AbstractBackgroundFill, DTO
-// STRUCTURE: ▶ ┌top_color, bottom_color, rotation_angle┐
-
-// region CLASS_BackgroundFillGradient [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_BackgroundFillGradient
 /**
  * The background is a gradient fill.
  *

@@ -13,6 +13,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region CLASS_InlineQueryResultCachedDocument
 /**
  * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional
  * caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
@@ -23,19 +24,6 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Document->value),
     new FieldCompareChecker('document_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a file stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedDocument, Telegram, Bot API, DTO, inlinequeryresultcacheddocument
-// STRUCTURE: ▶ ┌id,title,document_file_id┐ → ◇ caption,description → ∑ result
-// region CLASS_InlineQueryResultCachedDocument
 final class InlineQueryResultCachedDocument extends AbstractInlineQueryResult
 {
     /**

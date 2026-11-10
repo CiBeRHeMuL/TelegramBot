@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a checklist to be sent as part of a message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputchecklist
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputChecklist, Telegram, Bot API, DTO, inputchecklist
-// STRUCTURE: ▶ ┌checklist_tasks: InputChecklistTask[]┐ → ∑ InputChecklist
 // region CLASS_InputChecklist
-
 /**
  * Describes a checklist to create.
  *

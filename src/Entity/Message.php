@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#message
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added community_chat_joined
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Message, Telegram, Bot API, DTO, message
-// STRUCTURE: ▶ ┌message_id,date,chat,message_thread_id,from,receiver_user,ephemeral_message_id,community_chat_added,community_chat_removed,community_chat_joined┐ → ∑ Message
 // region CLASS_Message
-
 /**
  * This object represents a message.
  *

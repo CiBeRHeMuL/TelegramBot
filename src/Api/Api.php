@@ -26,30 +26,7 @@ use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): HTTP]
-/**
- * @moduleContract
- * @purpose Implement all 150+ Telegram Bot API methods as typed PHP calls with HTTP transport and response deserialization.
- * @scope HTTP request construction via TelegramRequestFactory, response deserialization via ClassBuilder, file downloads.
- * @input Request DTOs per method
- * @output Response DTOs per method with deserialized entities
- *
- * @sees USES(9): Http\Factory\TelegramRequestFactory, ClassBuilder; USES_API(9): Telegram Bot API https://core.telegram.org/bots/api
- *
- * @invariants
- * - Every public method calls send() internally then builds typed response
- * - ErrorResponseException thrown when throwOnErrorResponse is true and response is not ok
- *
- * @changes
- * LAST_CHANGE: Updated for Bot API 10.3 - bumped version to 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Api, Telegram API implementation, HTTP client, send, getUpdates, setWebhook, file download, ClassBuilder
-// STRUCTURE: ▶ ┌Request DTO┐ → serialize → HttpRequest → HttpClient → HttpResponse → deserialize → ┌Response DTO┐
-//            ▶ send(): ┌method + params + HttpMethod┐ → TelegramRequestFactory::create() → client.sendRequest() → build RawResponse
-//            ▶ buildClassForResponse/buildClassArrayForResponse: ClassBuilder::build/buildArray
-
-// region CLASS_Api [DOMAIN(10): Telegram Bot; CONCEPT(10): API]
+// region CLASS_Api
 class Api implements ApiInterface
 {
     private const TELEGRAM_BOT_API_VERSION = '10.3';
@@ -3190,14 +3167,9 @@ class Api implements ApiInterface
         }
     }
 
-    // region METHOD_send [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(10): HTTP]
+    // region METHOD_send
     /**
-     * @purpose Execute a Telegram Bot API method: serialize request → create HTTP request → send via PSR-18 client → deserialize response → validate.
-     *
-     * @using TelegramRequestFactoryInterface::createRequest(), SerializerInterface::normalize(), ClassBuilder::build(), HArray::filterRecursive()
-     *
-     * @io string $method, ?RequestInterface $data, HttpMethodEnum $httpMethod -> RawResponse
-     * @complexity 7
+     * Execute a Telegram Bot API method: serialize request → create HTTP request → send via PSR-18 client → deserialize response → validate.
      *
      * @param string                $method     method (ex. getMe)
      * @param RequestInterface|null $data
@@ -3253,16 +3225,11 @@ class Api implements ApiInterface
     }
     // endregion METHOD_send
 
-    // region METHOD_buildClassForResponse [DOMAIN(8): Telegram Bot; CONCEPT(8): API; TECH(8): Deserialization]
+    // region METHOD_buildClassForResponse
     /**
-     * @purpose Deserialize a single entity from a RawResponse result using ClassBuilder.
-     *
-     * @using ClassBuilderInterface::build()
+     * Deserialize a single entity from a RawResponse result using ClassBuilder.
      *
      * @template T of object
-     *
-     * @io class-string $entityClass, RawResponse $rawResponse -> T|null
-     * @complexity 3
      *
      * @param class-string<T> $entityClass
      * @param RawResponse     $rawResponse
@@ -3284,16 +3251,11 @@ class Api implements ApiInterface
     }
     // endregion METHOD_buildClassForResponse
 
-    // region METHOD_buildClassArrayForResponse [DOMAIN(8): Telegram Bot; CONCEPT(8): API; TECH(8): Deserialization]
+    // region METHOD_buildClassArrayForResponse
     /**
-     * @purpose Deserialize an array of entities from a RawResponse result using ClassBuilder.
-     *
-     * @using ClassBuilderInterface::buildArray()
+     * Deserialize an array of entities from a RawResponse result using ClassBuilder.
      *
      * @template T of object
-     *
-     * @io class-string $entityClass, RawResponse $rawResponse -> T[]|null
-     * @complexity 3
      *
      * @param class-string<T> $entityClass
      * @param RawResponse     $rawResponse
@@ -3314,11 +3276,9 @@ class Api implements ApiInterface
         }
     }
 
-    // region METHOD_sendRichMessage [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_sendRichMessage
     /**
-     * @purpose Send rich messages to a chat.
-     *
-     * @using send()
+     * Send rich messages to a chat.
      *
      * @param Req\SendRichMessageRequest $request
      *
@@ -3335,11 +3295,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_sendRichMessage
 
-    // region METHOD_sendRichMessageDraft [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_sendRichMessageDraft
     /**
-     * @purpose Stream a partial rich message to a user.
-     *
-     * @using send()
+     * Stream a partial rich message to a user.
      *
      * @param Req\SendRichMessageDraftRequest $request
      *
@@ -3353,11 +3311,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_sendRichMessageDraft
 
-    // region METHOD_answerChatJoinRequestQuery [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_answerChatJoinRequestQuery
     /**
-     * @purpose Process a received chat join request query.
-     *
-     * @using send()
+     * Process a received chat join request query.
      *
      * @param Req\AnswerChatJoinRequestQueryRequest $request
      *
@@ -3371,11 +3327,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_answerChatJoinRequestQuery
 
-    // region METHOD_sendChatJoinRequestWebApp [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_sendChatJoinRequestWebApp
     /**
-     * @purpose Process a chat join request query by showing a Mini App.
-     *
-     * @using send()
+     * Process a chat join request query by showing a Mini App.
      *
      * @param Req\SendChatJoinRequestWebAppRequest $request
      *
@@ -3389,11 +3343,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_sendChatJoinRequestWebApp
 
-    // region METHOD_editEphemeralMessageText [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_editEphemeralMessageText
     /**
-     * @purpose Edit ephemeral message text.
-     *
-     * @using send()
+     * Edit ephemeral message text.
      *
      * @param Req\EditEphemeralMessageTextRequest $request
      *
@@ -3415,11 +3367,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_editEphemeralMessageText
 
-    // region METHOD_editEphemeralMessageMedia [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_editEphemeralMessageMedia
     /**
-     * @purpose Edit ephemeral message media.
-     *
-     * @using send()
+     * Edit ephemeral message media.
      *
      * @param Req\EditEphemeralMessageMediaRequest $request
      *
@@ -3441,11 +3391,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_editEphemeralMessageMedia
 
-    // region METHOD_editEphemeralMessageCaption [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_editEphemeralMessageCaption
     /**
-     * @purpose Edit ephemeral message caption.
-     *
-     * @using send()
+     * Edit ephemeral message caption.
      *
      * @param Req\EditEphemeralMessageCaptionRequest $request
      *
@@ -3467,11 +3415,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_editEphemeralMessageCaption
 
-    // region METHOD_editEphemeralMessageReplyMarkup [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_editEphemeralMessageReplyMarkup
     /**
-     * @purpose Edit ephemeral message reply markup.
-     *
-     * @using send()
+     * Edit ephemeral message reply markup.
      *
      * @param Req\EditEphemeralMessageReplyMarkupRequest $request
      *
@@ -3493,11 +3439,9 @@ class Api implements ApiInterface
     }
     // endregion METHOD_editEphemeralMessageReplyMarkup
 
-    // region METHOD_deleteEphemeralMessage [DOMAIN(10): Telegram Bot; CONCEPT(10): API; TECH(9): Telegram]
+    // region METHOD_deleteEphemeralMessage
     /**
-     * @purpose Delete an ephemeral message.
-     *
-     * @using send()
+     * Delete an ephemeral message.
      *
      * @param Req\DeleteEphemeralMessageRequest $request
      *

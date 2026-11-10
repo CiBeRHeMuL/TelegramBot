@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a video, corresponding to the HTML tag <video>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockvideo
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockVideo, Telegram, Bot API, DTO, Input Rich Block Video
-// STRUCTURE: ▶ ┌type,video,caption┐ → ∑ InputRichBlockVideo
 // region CLASS_InputRichBlockVideo
 /**
  * A block with a video, corresponding to the HTML tag <video>.

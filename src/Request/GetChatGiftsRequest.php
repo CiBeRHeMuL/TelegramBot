@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API getChatGifts method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#getchatgifts
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Get, Chat, Gifts
-// STRUCTURE: ▶ ┌chat_id + exclude_from_blockchain + exclude_limited_non_upgradable + exclude_limited_upgradable + exclude_saved┐ → ◇ construct → ⊕ → ∑ ⟦GetChatGiftsRequest⟧
-
 // region CLASS_GetChatGiftsRequest
 /**
  * @see https://core.telegram.org/bots/api#getchatgifts

@@ -4,21 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Request;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API setManagedBotAccessSettings method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#setmanagedbotaccesssettings
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Set, Managed, Bot, Access, Settings
-// STRUCTURE: ▶ ┌is_access_restricted + user_id + added_user_ids┐ → ◇ construct → ⊕ → ∑ ⟦SetManagedBotAccessSettingsRequest⟧
-
 // region CLASS_SetManagedBotAccessSettingsRequest
 /**
  * @see https://core.telegram.org/bots/api#setmanagedbotaccesssettings

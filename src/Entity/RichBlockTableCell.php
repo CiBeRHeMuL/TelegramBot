@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\RichBlockTableCellAlignEnum;
 use AndrewGos\TelegramBot\Enum\RichBlockTableCellVerticalAlignEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Cell in a table.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblocktablecell
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockTableCell, Telegram, Bot API, DTO, Rich Block Table Cell
-// STRUCTURE: ▶ ┌text,is_header,colspan,rowspan,align,valign┐ → ∑ RichBlockTableCell
 // region CLASS_RichBlockTableCell
 /**
  * Cell in a table.

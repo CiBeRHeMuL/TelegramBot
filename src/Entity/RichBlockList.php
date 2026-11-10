@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A list of blocks, corresponding to the HTML tag <ul> or <ol> with multiple nested tags <li>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblocklist
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockList, Telegram, Bot API, DTO, Rich Block List
-// STRUCTURE: ▶ ┌type,items┐ → ∑ RichBlockList
 // region CLASS_RichBlockList
 /**
  * A list of blocks, corresponding to the HTML tag <ul> or <ol> with multiple nested tags <li>.

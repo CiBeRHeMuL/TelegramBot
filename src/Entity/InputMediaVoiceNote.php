@@ -12,20 +12,7 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a voice note to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediavoicenote
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaVoiceNote, Telegram, Bot API, DTO, Input Media Voice Note
-// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode,caption_entities,duration → ∑ InputMediaVoiceNote
 // region CLASS_InputMediaVoiceNote
-
 /**
  * Represents a voice note to be sent.
  *

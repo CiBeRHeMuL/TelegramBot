@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Caption of a rich formatted block.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockcaption
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockCaption, Telegram, Bot API, DTO, Rich Block Caption
-// STRUCTURE: ▶ ┌text,credit┐ → ∑ RichBlockCaption
 // region CLASS_RichBlockCaption
 /**
  * Caption of a rich formatted block.

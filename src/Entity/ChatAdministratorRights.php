@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the rights of an administrator in a chat.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_administrator_rights
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_send_welcome_messages
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatAdministratorRights, Telegram, Bot API, DTO, chat_administrator_rights
-// STRUCTURE: ▶ ┌is_anonymous,can_manage_chat,can_delete_messages,can_manage_video_chats,can_restrict_members┐ → ∑ ChatAdministratorRights
 // region CLASS_ChatAdministratorRights
-
 /**
  * Represents the rights of an administrator in a chat.
  *

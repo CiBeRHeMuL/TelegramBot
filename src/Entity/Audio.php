@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents an audio file to be treated as music by the Telegram clients.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#audio
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Audio, Telegram Bot API, audio, file, music, media, DTO
-// STRUCTURE: ▶ ┌file_id, file_unique_id, duration, performer?, title?┐
-
-// region CLASS_Audio [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_Audio
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  *

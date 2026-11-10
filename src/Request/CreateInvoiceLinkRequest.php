@@ -8,21 +8,6 @@ use AndrewGos\TelegramBot\Entity\LabeledPrice;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API createInvoiceLink method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#createinvoicelink
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Create, Invoice, Link
-// STRUCTURE: ▶ ┌currency + description + payload + prices + title┐ → ◇ construct → ⊕ → ∑ ⟦CreateInvoiceLinkRequest⟧
-
 // region CLASS_CreateInvoiceLinkRequest
 /**
  * @see https://core.telegram.org/bots/api#createinvoicelink

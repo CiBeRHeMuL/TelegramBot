@@ -7,18 +7,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\RichBlockListItemTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose An item of a list used as input.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblocklistitem
- *
- * @changes LAST_CHANGE: Added in Bot API 10.2
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockListItem, Telegram, Bot API, DTO, Input Rich Block List Item
-// STRUCTURE: ▶ ┌type,blocks,has_checkbox,is_checked,value┐ → ∑ InputRichBlockListItem
 // region CLASS_InputRichBlockListItem
 /**
  * An item of a list.

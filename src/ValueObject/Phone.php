@@ -10,18 +10,6 @@ use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberUtil;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telecom; CONCEPT(Y): PhoneNumber; TECH(Z): libphonenumber]
-/**
- * @moduleContract
- * @purpose Wraps a validated, E.164-normalized phone number. Accepts any readable format.
- *
- * @sees USES_API(X): giggsey/libphonenumber-for-php (Google libphonenumber)
- *
- * @changes LAST_CHANGE: Replaced custom regex validation with libphonenumber-based parsing and E.164 normalization. Country-specific validity check delegated to Telegram API.
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Phone, phone number, E.164, libphonenumber, validation
-// STRUCTURE: ▶ ┌phone string┐ → ○ PhoneNumberUtil::parse() → ◇ parse OK ? ✓ normalize(E164) ⊕ store : ✗ throw InvalidValueObjectConfigException → ∑ getPhone()
 // region CLASS_Phone
 /**
  * Phone value object — always normalized to E.164 format on construction.

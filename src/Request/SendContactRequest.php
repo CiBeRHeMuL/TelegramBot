@@ -14,21 +14,6 @@ use AndrewGos\TelegramBot\Entity\SuggestedPostParameters;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API sendContact method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#sendcontact
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - removed receiver_user_id, callback_query_id; added ephemeral_message_parameters
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Send, Contact
-// STRUCTURE: ▶ ┌chat_id + first_name + phone_number + business_connection_id + disable_notification + ephemeral_message_parameters┐ → ◇ construct → ⊕ → ∑ ⟦SendContactRequest⟧
-
 // region CLASS_SendContactRequest
 /**
  * @see https://core.telegram.org/bots/api#sendcontact

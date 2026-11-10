@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a reaction count for a message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#reactioncount
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ReactionCount, Telegram, Bot API, DTO, reactioncount
-// STRUCTURE: ▶ ┌type: ReactionType,total_count┐ → ∑ count
 // region CLASS_ReactionCount
-
 /**
  * Represents a reaction added to a message along with the number of times it was added.
  *

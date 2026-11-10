@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the options used for link preview generation.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#linkpreviewoptions
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: LinkPreviewOptions, Telegram, Bot API, DTO, linkpreviewoptions
-// STRUCTURE: ▶ ◇ is_disabled,url,prefer_small_media → ∑ options
 // region CLASS_LinkPreviewOptions
-
 /**
  * Describes the options used for link preview generation.
  *

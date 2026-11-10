@@ -8,20 +8,7 @@ use AndrewGos\TelegramBot\Enum\KeyboardButtonStyleEnum;
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents one button of an inline keyboard.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinekeyboardbutton
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added disabled
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineKeyboardButton, Telegram, Bot API, DTO, inlinekeyboardbutton
-// STRUCTURE: ▶ ┌text┐ → ○ ◇ callback_data / url / disabled / ... → ⊕ result button
 // region CLASS_InlineKeyboardButton
-
 /**
  * This object represents one button of an inline keyboard. Exactly one of the fields other than text, icon_custom_emoji_id,
  * and style must be used to specify the type of the button.

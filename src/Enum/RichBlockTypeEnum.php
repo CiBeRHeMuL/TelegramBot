@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Enum;
 
-// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
-/**
- * @moduleContract
- * @purpose Enumeration of Rich Block Type types in Telegram Bot API.
- *
- * @sees USES_API(6): Telegram Bot API
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockTypeEnum, Rich Block Type, Telegram, enum
-// STRUCTURE: ▶ BackedEnum(string): [case => value]
 // region ENUM_RichBlockTypeEnum
 /**
  * Enumeration of Rich Block Type types in Telegram Bot API.
@@ -24,53 +12,53 @@ namespace AndrewGos\TelegramBot\Enum;
  */
 enum RichBlockTypeEnum: string
 {
-    /** @purpose Text paragraph (<p>) */
+    /** Text paragraph (<p>) */
     case Paragraph = 'paragraph';
-    /** @purpose Section heading (<h1>-<h6>) */
+    /** Section heading (<h1>-<h6>) */
     case Heading = 'heading';
-    /** @purpose Preformatted text (<pre><code>) */
+    /** Preformatted text (<pre><code>) */
     case Pre = 'pre';
-    /** @purpose Footer (<footer>) */
+    /** Footer (<footer>) */
     case Footer = 'footer';
-    /** @purpose Divider / horizontal rule (<hr/>) */
+    /** Divider / horizontal rule (<hr/>) */
     case Divider = 'divider';
-    /** @purpose Mathematical expression in LaTeX format */
+    /** Mathematical expression in LaTeX format */
     case MathematicalExpression = 'mathematical_expression';
-    /** @purpose Anchor with name */
+    /** Anchor with name */
     case Anchor = 'anchor';
-    /** @purpose List (<ul> / <ol>) */
+    /** List (<ul> / <ol>) */
     case List = 'list';
-    /** @purpose Block quotation (<blockquote>) */
+    /** Block quotation (<blockquote>) */
     case Blockquote = 'blockquote';
-    /** @purpose Pull quotation / centered quote (<aside>) */
+    /** Pull quotation / centered quote (<aside>) */
     case Pullquote = 'pullquote';
-    /** @purpose Collage (<tg-collage>) */
+    /** Collage (<tg-collage>) */
     case Collage = 'collage';
-    /** @purpose Slideshow (<tg-slideshow>) */
+    /** Slideshow (<tg-slideshow>) */
     case Slideshow = 'slideshow';
-    /** @purpose Table (<table>) */
+    /** Table (<table>) */
     case Table = 'table';
-    /** @purpose Expandable details (<details>) */
+    /** Expandable details (<details>) */
     case Details = 'details';
-    /** @purpose Map block (<tg-map>) */
+    /** Map block (<tg-map>) */
     case Map = 'map';
-    /** @purpose Animation block (<video>) */
+    /** Animation block (<video>) */
     case Animation = 'animation';
-    /** @purpose Audio block (<audio>) */
+    /** Audio block (<audio>) */
     case Audio = 'audio';
-    /** @purpose Photo block (<photo>) */
+    /** Photo block (<photo>) */
     case Photo = 'photo';
-    /** @purpose Video block (<video>) */
+    /** Video block (<video>) */
     case Video = 'video';
-    /** @purpose Voice note block (<audio>) */
+    /** Voice note block (<audio>) */
     case VoiceNote = 'voice_note';
-    /** @purpose Thinking placeholder (<tg-thinking>) */
+    /** Thinking placeholder (<tg-thinking>) */
     case Thinking = 'thinking';
-    /** @purpose Expandable block quotation, corresponding to the HTML tag <blockquote> with details */
+    /** Expandable block quotation, corresponding to the HTML tag <blockquote> with details */
     case ExpandableBlockquote = 'expandable_blockquote';
-    /** @purpose Row of buttons (<tg-button-row>) */
+    /** Row of buttons (<tg-button-row>) */
     case Buttons = 'buttons';
-    /** @purpose Document block (<tg-document>) */
+    /** Document block (<tg-document>) */
     case Document = 'document';
 }
 // endregion ENUM_RichBlockTypeEnum

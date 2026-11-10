@@ -12,6 +12,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\CurrencyEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region CLASS_InputInvoiceMessageContent
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  *
@@ -26,19 +27,6 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldCompareChecker('currency', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('prices', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the content of an invoice message to be sent as the result of an inline query.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputinvoicemessagecontent
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputInvoiceMessageContent, Telegram, Bot API, DTO, inputinvoicemessagecontent
-// STRUCTURE: ▶ ┌title,description,payload,provider_token,currency,prices┐ → ◇ ... → ∑ content
-// region CLASS_InputInvoiceMessageContent
 final class InputInvoiceMessageContent extends AbstractInputMessageContent
 {
     /**

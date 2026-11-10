@@ -9,20 +9,7 @@ use AndrewGos\TelegramBot\Entity\Update;
 use InvalidArgumentException;
 use Throwable;
 
-// region MODULE_CONTRACT [DOMAIN(8): Telegram; CONCEPT(7): BotAPI; TECH(9): PHP]
-/**
- * @moduleContract
- * @purpose Custom callable update source — reads JSON from a file/stream.
- *
- * @sees USES_API(9): UpdateSourceInterface, ClassBuilderInterface, Update entity
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: CustomInputUpdateSource, custom source, JSON input
-// STRUCTURE: ▶ __construct() → ○ fopen(source) → ◇ false ? throw | fclose()   ▶ getUpdates() → ○ file_get_contents() → ○ json_decode() → ◇ array_is_list ? → ⊕ buildArray() → ⊕ yield
-
-// region CLASS_CustomInputUpdateSource [DOMAIN(8): Telegram; CONCEPT(7): UpdateSource; TECH(9): PHP]
+// region CLASS_CustomInputUpdateSource
 /**
  * Get updates from a file. Working with JSON format.
  */

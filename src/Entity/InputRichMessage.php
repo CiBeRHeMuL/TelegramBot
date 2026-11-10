@@ -6,18 +6,6 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes a rich message to be sent. Exactly one of the fields html or markdown must be used.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichmessage
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.2 - added media and blocks
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichMessage, Telegram, Bot API, DTO, Input Rich Message
-// STRUCTURE: ▶ ┌html,markdown,is_rtl,skip_entity_detection,media,blocks┐ → ∑ InputRichMessage
 // region CLASS_InputRichMessage
 /**
  * Describes a rich message to be sent. Exactly one of the fields html or markdown must be used.

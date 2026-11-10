@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes why a request was unsuccessful.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#responseparameters
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ResponseParameters, Telegram, Bot API, DTO, responseparameters
-// STRUCTURE: ▶ ◇ migrate_to_chat_id,retry_after → ∑ ResponseParameters
 // region CLASS_ResponseParameters
-
 /**
  * Describes why a request was unsuccessful.
  *

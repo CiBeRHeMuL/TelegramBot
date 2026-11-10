@@ -8,21 +8,6 @@ use AndrewGos\TelegramBot\Entity\AbstractInputMedia;
 use AndrewGos\TelegramBot\Entity\InlineKeyboardMarkup;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API editMessageMedia method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#editmessagemedia
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Message, Media
-// STRUCTURE: ▶ ┌media + chat_id + inline_message_id + message_id + reply_markup┐ → ◇ construct → ⊕ → ∑ ⟦EditMessageMediaRequest⟧
-
 // region CLASS_EditMessageMediaRequest
 /**
  * @see https://core.telegram.org/bots/api#editmessagemedia

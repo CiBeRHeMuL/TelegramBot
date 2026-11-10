@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an inline keyboard that appears right next to the message it belongs to.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinekeyboardmarkup
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added force_reply
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineKeyboardMarkup, Telegram, Bot API, DTO, inlinekeyboardmarkup
-// STRUCTURE: ▶ ┌inline_keyboard,force_reply┐ → ∑ InlineKeyboardMarkup
 // region CLASS_InlineKeyboardMarkup
-
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  *

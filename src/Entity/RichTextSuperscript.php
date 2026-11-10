@@ -9,18 +9,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A superscript text.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtextsuperscript
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichTextSuperscript, Telegram, Bot API, DTO, Rich Text Superscript
-// STRUCTURE: ▶ ┌type,text┐ → ∑ RichTextSuperscript
 // region CLASS_RichTextSuperscript
 /**
  * A superscript text.

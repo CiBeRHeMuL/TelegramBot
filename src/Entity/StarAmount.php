@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes an amount of Telegram Stars.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#staramount
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StarAmount, Telegram, Bot API, DTO, staramount
-// STRUCTURE: ▶ ┌amount┐ → ◇ nanostar_amount → ∑ StarAmount
 // region CLASS_StarAmount
-
 /**
  * Describes an amount of Telegram Stars.
  *

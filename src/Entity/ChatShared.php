@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#chat_shared
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChatShared, Telegram, Bot API, DTO, chat_shared
-// STRUCTURE: ▶ ┌request_id,chat_id┐ → ∑ ChatShared
 // region CLASS_ChatShared
-
 /**
  * This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
  *

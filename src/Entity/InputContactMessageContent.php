@@ -10,6 +10,7 @@ use AndrewGos\ClassBuilder\Checker\FieldCompareChecker;
 use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
+// region CLASS_InputContactMessageContent
 /**
  * Represents the content of a contact message to be sent as the result of an inline query.
  *
@@ -20,19 +21,6 @@ use AndrewGos\TelegramBot\ValueObject\Phone;
     new FieldCompareChecker('phone_number', null, CompareOperatorEnum::StrictNotEqual),
     new FieldCompareChecker('first_name', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the content of a contact message to be sent as the result of an inline query.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputcontactmessagecontent
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputContactMessageContent, Telegram, Bot API, DTO, inputcontactmessagecontent
-// STRUCTURE: ▶ ┌phone_number,first_name┐ → ◇ last_name,vcard → ∑ content
-// region CLASS_InputContactMessageContent
 final class InputContactMessageContent extends AbstractInputMessageContent
 {
     /**

@@ -7,18 +7,6 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 use AndrewGos\TelegramBot\Enum\CountryCodeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a message about a scheduled giveaway.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#giveaway
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Giveaway, giveaway, scheduled, Telegram Bot API
-// STRUCTURE: ┌chats[], winners_selection_date, winner_count┐ + optional only_new_members + has_public_winners + prize_description + country_codes + premium_subscription_month_count + prize_star_count → ∑ Giveaway
 // region CLASS_Giveaway
 /**
  * This object represents a message about a scheduled giveaway.

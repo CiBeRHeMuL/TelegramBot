@@ -15,6 +15,7 @@ use AndrewGos\TelegramBot\Enum\InlineQueryResultVideoMimeTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
+// region CLASS_InlineQueryResultVideo
 /**
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent
  * by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified
@@ -28,19 +29,6 @@ use AndrewGos\TelegramBot\ValueObject\Url;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Video->value),
     new FieldCompareChecker('video_url', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a page containing an embedded video player or a video file.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultvideo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultVideo, Telegram, Bot API, DTO, inlinequeryresultvideo
-// STRUCTURE: ▶ ┌id,video_url,mime_type,thumbnail_url,title┐ → ◇ video_width,video_height → ∑ result
-// region CLASS_InlineQueryResultVideo
 final class InlineQueryResultVideo extends AbstractInlineQueryResult
 {
     /**

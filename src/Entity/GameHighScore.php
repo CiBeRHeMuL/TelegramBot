@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents one row of the high scores table for a game.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#gamehighscore
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: GameHighScore, high score, game, Telegram Bot API
-// STRUCTURE: ┌position, user, score┐ → ∑ GameHighScore
 // region CLASS_GameHighScore
 /**
  * This object represents one row of the high scores table for a game.

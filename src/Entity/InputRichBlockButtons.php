@@ -10,18 +10,6 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockButtonsAlignEnum;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block containing a list of buttons that are shown in one row, corresponding to the custom HTML tag <tg-button-row>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichblockbuttons
- *
- * @changes LAST_CHANGE: Added in Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichBlockButtons, Telegram, Bot API, DTO, Input Rich Block Buttons
-// STRUCTURE: ▶ ┌type,buttons,align┐ → ∑ InputRichBlockButtons
 // region CLASS_InputRichBlockButtons
 /**
  * A block containing a list of buttons that are shown in one row, corresponding to the custom HTML tag <tg-button-row>.

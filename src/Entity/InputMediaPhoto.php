@@ -12,20 +12,7 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\Filename;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a photo to be sent.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputmediaphoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputMediaPhoto, Telegram, Bot API, DTO, inputmediaphoto
-// STRUCTURE: ▶ ┌media(FileUrlStr)┐ → ◇ caption,parse_mode,has_spoiler → ∑ InputMediaPhoto
 // region CLASS_InputMediaPhoto
-
 /**
  * Represents a photo to be sent.
  *

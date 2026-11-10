@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a location on a map.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultlocation
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultLocation, Telegram, Bot API, DTO, inlinequeryresultlocation
-// STRUCTURE: ▶ ┌id,latitude,longitude,title┐ → ◇ horizontal_accuracy,live_period → ∑ result
 // region CLASS_InlineQueryResultLocation
-
 /**
  * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content
  * to send a message with the specified content instead of the location.

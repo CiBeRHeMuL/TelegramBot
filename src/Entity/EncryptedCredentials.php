@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes data required for decrypting and authenticating EncryptedPassportElement.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#encryptedcredentials
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: EncryptedCredentials, passport, encrypted, credentials, Telegram Bot API
-// STRUCTURE: ┌data, hash, secret┐ → ∑ EncryptedCredentials
 // region CLASS_EncryptedCredentials
 /**
  * Describes data required for decrypting and authenticating EncryptedPassportElement. See the Telegram Passport Documentation

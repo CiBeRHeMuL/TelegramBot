@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a video file.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#video
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Video, Telegram, Bot API, DTO, video
-// STRUCTURE: ▶ ┌file_id,file_unique_id,width,height,duration┐ → ◇ thumbnail,file_name,mime_type,file_size → ∑ Video
 // region CLASS_Video
-
 /**
  * This object represents a video file.
  *

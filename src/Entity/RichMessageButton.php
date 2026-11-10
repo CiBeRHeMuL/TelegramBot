@@ -9,18 +9,6 @@ use AndrewGos\TelegramBot\Enum\RichMessageButtonStyleEnum;
 use AndrewGos\TelegramBot\ValueObject\CallbackData;
 use AndrewGos\TelegramBot\ValueObject\Url;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a button in a RichMessage. Exactly one of the fields other than text and style must be used to specify the type of the button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richmessagebutton
- *
- * @changes LAST_CHANGE: Added in Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichMessageButton, Telegram, Bot API, DTO, Rich Message Button
-// STRUCTURE: ▶ ┌text┐ → ◇ style/url/callback_data/web_app/... → ⊕ result button
 // region CLASS_RichMessageButton
 /**
  * This object represents a button in a RichMessage. Exactly one of the fields other than text and style must be used to specify the type of the button.

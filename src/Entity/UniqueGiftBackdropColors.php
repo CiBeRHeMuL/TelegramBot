@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents the backdrop colors of a unique gift.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#uniquegiftbackdropcolors
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UniqueGiftBackdropColors, Telegram, Bot API, DTO, uniquegiftbackdropcolors
-// STRUCTURE: ▶ ┌center,edge,symbol,text_light,text_dark,accent_light,accent_dark,pattern_color,pattern_emoji┐ → ∑ colors
 // region CLASS_UniqueGiftBackdropColors
-
 /**
  * This object describes the colors of the backdrop of a unique gift.
  *

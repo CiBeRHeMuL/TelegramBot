@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Upon receiving a message with this object, Telegram clients will remove the current custom keyboard.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#replykeyboardremove
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ReplyKeyboardRemove, Telegram, Bot API, DTO, replykeyboardremove
-// STRUCTURE: ▶ ◇ remove_keyboard,selective → ∑ ReplyKeyboardRemove
 // region CLASS_ReplyKeyboardRemove
-
 /**
  * Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display the default
  * letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for

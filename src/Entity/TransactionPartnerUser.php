@@ -10,20 +10,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\TransactionPartnerTypeEnum;
 use AndrewGos\TelegramBot\Enum\TransactionTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a transaction partner that is a user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#transactionpartneruser
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: TransactionPartnerUser, Telegram, Bot API, DTO, transactionpartneruser
-// STRUCTURE: ▶ ┌type,user,gift/paid_media...┐ → ∑ partner
 // region CLASS_TransactionPartnerUser
-
 /**
  * Describes a transaction with a user.
  *

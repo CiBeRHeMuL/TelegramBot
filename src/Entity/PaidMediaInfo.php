@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains information about paid media.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#paidmediainfo
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PaidMediaInfo, Telegram, Bot API, DTO, paidmediainfo
-// STRUCTURE: ▶ ┌paid_media: PaidMedia[]┐ → ∑ PaidMediaInfo
 // region CLASS_PaidMediaInfo
-
 /**
  * Describes the paid media added to a message.
  *

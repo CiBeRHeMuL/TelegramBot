@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A button.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richtextbutton
- *
- * @changes LAST_CHANGE: Added in Bot API 10.3
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichTextButton, Telegram, Bot API, DTO, Rich Text Button
-// STRUCTURE: ▶ ┌type,button┐ → ∑ RichTextButton
 // region CLASS_RichTextButton
 /**
  * A button.

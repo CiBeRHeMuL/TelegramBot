@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes the opening hours of a business.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#business_opening_hours
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: BusinessOpeningHours, Telegram, Bot API, DTO, business_opening_hours
-// STRUCTURE: ▶ ┌time_zone_name┐ → ∑ BusinessOpeningHours
 // region CLASS_BusinessOpeningHours
-
 /**
  * Describes the opening hours of a business.
  *

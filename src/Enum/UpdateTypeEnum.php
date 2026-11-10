@@ -4,18 +4,6 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Enum;
 
-// region MODULE_CONTRACT [DOMAIN(6): Telegram; CONCEPT(7): Enum; TECH(6): BackedEnum]
-/**
- * @moduleContract
- * @purpose Enumeration of update types in Telegram Bot API.
- *
- * @sees USES_API(6): Telegram Bot API
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added StoppedMessageGeneration case
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UpdateType, update, type, Telegram, enum
-// STRUCTURE: ▶ BackedEnum(string): [case => value]
 // region ENUM_UpdateTypeEnum
 enum UpdateTypeEnum: string
 {
@@ -45,7 +33,7 @@ enum UpdateTypeEnum: string
     case ManagedBot = 'managed_bot';
     case GuestMessage = 'guest_message';
     case Subscription = 'subscription';
-    /** @purpose A user stopped message generation */
+    /** A user stopped message generation */
     case StoppedMessageGeneration = 'stopped_message_generation';
 }
 // endregion ENUM_UpdateTypeEnum

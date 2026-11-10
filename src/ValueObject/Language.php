@@ -7,18 +7,6 @@ namespace AndrewGos\TelegramBot\ValueObject;
 use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;
 use AndrewGos\TelegramBot\Exception\InvalidValueObjectConfigException;
 
-// region MODULE_CONTRACT [DOMAIN(X): Telegram; CONCEPT(Y): BotAPI; TECH(Z): PHP]
-/**
- * @moduleContract
- * @purpose Хранит и валидирует IETF-код языка (BCP 47) по регулярному выражению.
- *
- * @sees USES_API(X): IETF BCP 47 Language Tag
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Language, Telegram, IETF, BCP47, language, code, validation
-// STRUCTURE: ▶ ┌language┐ → ○ preg_match(LANGTAG|GRANDFATHERED|PRIVATEUSE) → ◇ valid ? ✓ store(strtolower) : ✗ throw → ∑ getLanguage()
 // region CLASS_Language
 /**
  * Описывает код языка в соответствии со спецификацией IETF.

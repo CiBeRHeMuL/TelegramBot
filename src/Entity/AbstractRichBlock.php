@@ -7,23 +7,7 @@ namespace AndrewGos\TelegramBot\Entity;
 use AndrewGos\ClassBuilder\Attribute\AvailableInheritors;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose This object represents a block in a rich formatted message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblock
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added RichBlockButtons, RichBlockExpandableBlockQuotation, RichBlockDocument
- *
- * @modulemap
- * CLASS 5[RichBlock types] => AbstractRichBlock
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: AbstractRichBlock, Telegram Bot API, abstract, RichBlock, DTO
-// STRUCTURE: ▶ ┌type: RichBlockTypeEnum┐ → abstract base with AvailableInheritors
-
-// region CLASS_AbstractRichBlock [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
+// region CLASS_AbstractRichBlock
 /**
  * This object represents a block in a rich formatted message.
  *

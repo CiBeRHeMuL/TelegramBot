@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\ShippingOption;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API answerShippingQuery method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#answershippingquery
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Answer, Shipping, Query
-// STRUCTURE: ▶ ┌ok + shipping_query_id + error_message + shipping_options┐ → ◇ construct → ⊕ → ∑ ⟦AnswerShippingQueryRequest⟧
-
 // region CLASS_AnswerShippingQueryRequest
 /**
  * @see https://core.telegram.org/bots/api#answershippingquery

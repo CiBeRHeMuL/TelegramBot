@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API forwardMessages method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#forwardmessages
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Forward, Messages
-// STRUCTURE: ▶ ┌chat_id + from_chat_id + message_ids + message_thread_id + disable_notification┐ → ◇ construct → ⊕ → ∑ ⟦ForwardMessagesRequest⟧
-
 // region CLASS_ForwardMessagesRequest
 /**
  * @see https://core.telegram.org/bots/api#forwardmessages

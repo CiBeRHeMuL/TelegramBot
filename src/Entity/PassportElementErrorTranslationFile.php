@@ -9,20 +9,7 @@ use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorSourceEnum;
 use AndrewGos\TelegramBot\Enum\PassportElementErrorTranslationFileTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents an error in a translation file of a Telegram Passport document.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#passportelementerrortranslationfile
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: PassportElementErrorTranslationFile, Telegram, Bot API, DTO, passportelementerrortranslationfile
-// STRUCTURE: ▶ ┌type,file_hash,message┐ → ∑ error
 // region CLASS_PassportElementErrorTranslationFile
-
 /**
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved
  * when the file changes.

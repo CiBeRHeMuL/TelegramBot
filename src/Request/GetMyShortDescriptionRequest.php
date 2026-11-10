@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\ValueObject\Language;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API getMyShortDescription method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#getmyshortdescription
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Get, My, Short, Description
-// STRUCTURE: ▶ ┌language_code┐ → ◇ construct → ⊕ → ∑ ⟦GetMyShortDescriptionRequest⟧
-
 // region CLASS_GetMyShortDescriptionRequest
 /**
  * @see https://core.telegram.org/bots/api#getmyshortdescription

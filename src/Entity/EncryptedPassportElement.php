@@ -9,18 +9,6 @@ use AndrewGos\TelegramBot\Enum\EncryptedPassportElementTypeEnum;
 use AndrewGos\TelegramBot\ValueObject\Email;
 use AndrewGos\TelegramBot\ValueObject\Phone;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes documents or other Telegram Passport elements shared with the bot by the user.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#encryptedpassportelement
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: EncryptedPassportElement, passport, encrypted, element, Telegram Bot API
-// STRUCTURE: ┌type, hash┐ + optional data + optional phone_number + optional email + optional files + optional front_side + optional reverse_side + optional selfie + optional translation → ∑ EncryptedPassportElement
 // region CLASS_EncryptedPassportElement
 /**
  * Describes documents or other Telegram Passport elements shared with the bot by the user.

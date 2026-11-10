@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Contains a user rating.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#userrating
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: UserRating, Telegram, Bot API, DTO, userrating
-// STRUCTURE: ▶ ┌user: User,rating: float┐ → ∑ rating
 // region CLASS_UserRating
-
 /**
  * This object describes the rating of a user based on their Telegram Star spendings.
  *

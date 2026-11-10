@@ -6,20 +6,7 @@ namespace AndrewGos\TelegramBot\Entity;
 
 use AndrewGos\ClassBuilder\Attribute\ArrayType;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Describes a service message about checklist tasks marked as done or not done.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#checklist_tasks_done
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: ChecklistTasksDone, Telegram, Bot API, DTO, checklist_tasks_done
-// STRUCTURE: ▶ ┌checklist_message┐ → ∑ ChecklistTasksDone
 // region CLASS_ChecklistTasksDone
-
 /**
  * Describes a service message about checklist tasks marked as done or not done.
  *

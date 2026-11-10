@@ -7,20 +7,7 @@ namespace AndrewGos\TelegramBot\Request;
 use AndrewGos\TelegramBot\Entity\InputRichMessage;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Optional. unique identifier for the target message thread
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#sendrichmessagedraft
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added can_stop, keep_on_stop
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: SendRichMessageDraftRequest, Telegram, Bot API, DTO, send Rich Message Draft
-// STRUCTURE: ▶ ┌fields + can_stop + keep_on_stop┐ → ∑ SendRichMessageDraftRequest
 // region CLASS_SendRichMessageDraftRequest
-
 /**
  * Optional. unique identifier for the target message thread.
  *

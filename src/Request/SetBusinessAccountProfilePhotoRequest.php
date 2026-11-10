@@ -6,21 +6,6 @@ namespace AndrewGos\TelegramBot\Request;
 
 use AndrewGos\TelegramBot\Entity\AbstractInputProfilePhoto;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API setBusinessAccountProfilePhoto method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#setbusinessaccountprofilephoto
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Set, Business, Account, Profile, Photo
-// STRUCTURE: ▶ ┌business_connection_id + photo + is_public┐ → ◇ construct → ⊕ → ∑ ⟦SetBusinessAccountProfilePhotoRequest⟧
-
 // region CLASS_SetBusinessAccountProfilePhotoRequest
 /**
  * @see https://core.telegram.org/bots/api#setbusinessaccountprofilephoto

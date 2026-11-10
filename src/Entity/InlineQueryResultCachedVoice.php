@@ -13,6 +13,7 @@ use AndrewGos\ClassBuilder\Enum\CompareOperatorEnum;
 use AndrewGos\TelegramBot\Enum\InlineQueryResultTypeEnum;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 
+// region CLASS_InlineQueryResultCachedVoice
 /**
  * Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user.
  * Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
@@ -23,19 +24,6 @@ use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
     new FieldIsChecker('type', InlineQueryResultTypeEnum::Voice->value),
     new FieldCompareChecker('voice_file_id', null, CompareOperatorEnum::StrictNotEqual),
 ]))]
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a link to a voice message stored on the Telegram servers.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inlinequeryresultcachedvoice
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InlineQueryResultCachedVoice, Telegram, Bot API, DTO, inlinequeryresultcachedvoice
-// STRUCTURE: ▶ ┌id,voice_file_id,title┐ → ◇ caption → ∑ result
-// region CLASS_InlineQueryResultCachedVoice
 final class InlineQueryResultCachedVoice extends AbstractInlineQueryResult
 {
     /**

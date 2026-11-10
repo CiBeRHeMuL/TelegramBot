@@ -8,18 +8,6 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\RichBlockTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose A block with a voice note, corresponding to the HTML tag <audio>.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#richblockvoicenote
- *
- * @changes LAST_CHANGE: Added in Bot API 10.1
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: RichBlockVoiceNote, Telegram, Bot API, DTO, Rich Block Voice Note
-// STRUCTURE: ▶ ┌type,voice_note,caption┐ → ∑ RichBlockVoiceNote
 // region CLASS_RichBlockVoiceNote
 /**
  * A block with a voice note, corresponding to the HTML tag <audio>.

@@ -11,21 +11,6 @@ use AndrewGos\TelegramBot\Entity\MessageEntity;
 use AndrewGos\TelegramBot\Enum\TelegramParseModeEnum;
 use AndrewGos\TelegramBot\ValueObject\ChatId;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): Request]
-/**
- * @moduleContract
- * @purpose Request DTO for Telegram Bot API editMessageText method.
- *
- * @links USES_API(7): Telegram Bot API
- *
- * @see https://core.telegram.org/bots/api#editmessagetext
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: Telegram, Bot API, Request, Edit, Message, Text
-// STRUCTURE: ▶ ┌text + chat_id + entities + inline_message_id + link_preview_options┐ → ◇ construct → ⊕ → ∑ ⟦EditMessageTextRequest⟧
-
 // region CLASS_EditMessageTextRequest
 /**
  * @see https://core.telegram.org/bots/api#editmessagetext

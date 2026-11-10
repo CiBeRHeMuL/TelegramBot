@@ -8,20 +8,7 @@ use AndrewGos\ClassBuilder\Attribute\BuildIf;
 use AndrewGos\ClassBuilder\Checker\FieldIsChecker;
 use AndrewGos\TelegramBot\Enum\StoryAreaTypeTypeEnum;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a story area type that contains a suggested reaction.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#storyareatypesuggestedreaction
- *
- * @changes LAST_CHANGE: Initial creation with semantic documentation markup
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: StoryAreaTypeSuggestedReaction, Telegram, Bot API, DTO, storyareatypesuggestedreaction
-// STRUCTURE: ▶ ┌type,reaction_type: ReactionType┐ → ∑ StoryAreaTypeSuggestedReaction
 // region CLASS_StoryAreaTypeSuggestedReaction
-
 /**
  * Describes a story area pointing to a suggested reaction. Currently, a story can have up to 5 suggested reaction areas.
  *

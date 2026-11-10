@@ -4,20 +4,7 @@ declare(strict_types=1);
 
 namespace AndrewGos\TelegramBot\Entity;
 
-// region MODULE_CONTRACT [DOMAIN(7): Telegram; CONCEPT(8): BotAPI; TECH(7): DTO]
-/**
- * @moduleContract
- * @purpose Represents a media to be sent as part of a rich message.
- *
- * @sees USES_API(7): Telegram Bot API https://core.telegram.org/bots/api#inputrichmessagemedia
- *
- * @changes LAST_CHANGE: Updated for Bot API 10.3 - added InputMediaDocument to the media union
- */
-// endregion MODULE_CONTRACT
-// GREP_SUMMARY: InputRichMessageMedia, Telegram, Bot API, DTO, Input Rich Message Media
-// STRUCTURE: ▶ ┌id,media(IAudio|IVideo|IPhoto|IAnimation|IVoiceNote|IDocument)┐ → ∑ InputRichMessageMedia
 // region CLASS_InputRichMessageMedia
-
 /**
  * Represents a media to be sent as part of a rich message.
  *
