@@ -26,7 +26,7 @@ use Throwable;
 // region CLASS_Api
 class Api implements ApiInterface
 {
-    private const TELEGRAM_BOT_API_VERSION = '10.3';
+    private const TELEGRAM_BOT_API_VERSION = '10.4';
 
     public function __construct(
         private readonly BotToken $token,
