@@ -2,7 +2,6 @@
 
 namespace AndrewGos\TelegramBot\Response;
 
-
 use AndrewGos\TelegramBot\Entity\ChatShareThemeBackdrops;
 
 class GetChatShareThemeBackdropsResponse extends AbstractResponse

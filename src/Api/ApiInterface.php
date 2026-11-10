@@ -2436,8 +2436,31 @@ interface ApiInterface
      * to a user or a chat. Requires no parameters. Returns a ChatShareThemeBackdrops object.
      *
      * @return Res\GetChatShareThemeBackdropsResponse
+     *
      * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getchatsharethemebackdrops
      */
     public function getChatShareThemeBackdrops(): Res\GetChatShareThemeBackdropsResponse;
+
+    /**
+     * Use this method to get information about a unique gift by its name. Returns a UniqueGift object on success.
+     *
+     * @param Req\GetUniqueGiftRequest $request
+     *
+     * @return Res\GetUniqueGiftResponse
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getuniquegift
+     */
+    public function getUniqueGift(Req\GetUniqueGiftRequest $request): Res\GetUniqueGiftResponse;
+
+    /**
+     * Deletes a regular gift owned by a managed business account without receiving Telegram Stars for it. Requires the can_convert_gifts_to_stars
+     * business bot right. The gift can be deleted only if it isn't limited (the field total_count of the Gift is omitted) and wasn't
+     * refunded. Returns True on success.
+     *
+     * @param Req\DeleteBusinessAccountGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#deletebusinessaccountgift
+     */
+    public function deleteBusinessAccountGift(Req\DeleteBusinessAccountGiftRequest $request): Res\RawResponse;
 }
 // endregion INTERFACE_ApiInterface

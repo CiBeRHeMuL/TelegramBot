@@ -3544,13 +3544,46 @@ class Api implements ApiInterface
      * to a user or a chat. Requires no parameters. Returns a ChatShareThemeBackdrops object.
      *
      * @return Res\GetChatShareThemeBackdropsResponse
+     *
      * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getchatsharethemebackdrops
      */
     public function getChatShareThemeBackdrops(): Res\GetChatShareThemeBackdropsResponse
     {
         $rawResponse = $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
         $chatShareThemeBackdrops = $this->buildClassForResponse(Ent\ChatShareThemeBackdrops::class, $rawResponse);
+
         return new Res\GetChatShareThemeBackdropsResponse($rawResponse, $chatShareThemeBackdrops);
+    }
+
+    /**
+     * Use this method to get information about a unique gift by its name. Returns a UniqueGift object on success.
+     *
+     * @param Req\GetUniqueGiftRequest $request
+     *
+     * @return Res\GetUniqueGiftResponse
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getuniquegift
+     */
+    public function getUniqueGift(Req\GetUniqueGiftRequest $request): Res\GetUniqueGiftResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
+        $uniqueGift = $this->buildClassForResponse(Ent\UniqueGift::class, $rawResponse);
+
+        return new Res\GetUniqueGiftResponse($rawResponse, $uniqueGift);
+    }
+
+    /**
+     * Deletes a regular gift owned by a managed business account without receiving Telegram Stars for it. Requires the can_convert_gifts_to_stars
+     * business bot right. The gift can be deleted only if it isn't limited (the field total_count of the Gift is omitted) and wasn't
+     * refunded. Returns True on success.
+     *
+     * @param Req\DeleteBusinessAccountGiftRequest $request
+     *
+     * @return Res\RawResponse
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#deletebusinessaccountgift
+     */
+    public function deleteBusinessAccountGift(Req\DeleteBusinessAccountGiftRequest $request): Res\RawResponse
+    {
+        return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
 }
 // endregion CLASS_Api
