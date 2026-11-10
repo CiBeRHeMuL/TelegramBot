@@ -2447,6 +2447,7 @@ interface ApiInterface
      * @param Req\GetUniqueGiftRequest $request
      *
      * @return Res\GetUniqueGiftResponse
+     *
      * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getuniquegift
      */
     public function getUniqueGift(Req\GetUniqueGiftRequest $request): Res\GetUniqueGiftResponse;
@@ -2459,6 +2460,7 @@ interface ApiInterface
      * @param Req\DeleteBusinessAccountGiftRequest $request
      *
      * @return Res\RawResponse
+     *
      * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#deletebusinessaccountgift
      */
     public function deleteBusinessAccountGift(Req\DeleteBusinessAccountGiftRequest $request): Res\RawResponse;
