@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.10.0] - 2026-11-10
+
+### Added
+
+- Update to Bot API 10.4 (changelog from 09 November 2026)
+
 ## [4.9.0] - 2026-08-24
 
 ### Added
@@ -294,7 +300,8 @@
 ### Changed
 - Small cosmetic fixes
 
-[Unreleased]: https://github.com/CiBeRHeMuL/TelegramBot/compare/4.9.0...HEAD
+[Unreleased]: https://github.com/CiBeRHeMuL/TelegramBot/compare/4.10.0...HEAD
+[4.10.0]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.9.0...4.10.0
 [4.9.0]: https://github.com/CiBeRHeMuL/TelegramBot/compare/v4.8.0...4.9.0
 [4.8.0]: https://github.com/CiBeRHeMuL/TelegramBot/compare/4.7.3...v4.8.0
 [4.7.3]: https://github.com/CiBeRHeMuL/TelegramBot/releases/tag/4.7.3
