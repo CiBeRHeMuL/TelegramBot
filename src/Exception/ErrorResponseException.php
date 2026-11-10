@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace AndrewGos\TelegramBot\Exception;
 
 use AndrewGos\TelegramBot\Enum\HttpMethodEnum;

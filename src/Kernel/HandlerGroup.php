@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace AndrewGos\TelegramBot\Kernel;
 
 use AndrewGos\TelegramBot\Kernel\Checker\CheckerInterface;

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace AndrewGos\TelegramBot\ValueObject;
 
 use AndrewGos\ClassBuilder\Attribute\CanBeBuiltFromScalar;

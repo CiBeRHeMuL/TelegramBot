@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace AndrewGos\TelegramBot\Response;
 
 use AndrewGos\TelegramBot\Entity\BotCommand;

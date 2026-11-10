@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace AndrewGos\TelegramBot\Http\Container;
 
 use AndrewGos\TelegramBot\Exception\Http\Container\NotFoundException;
