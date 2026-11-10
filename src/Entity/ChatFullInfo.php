@@ -98,7 +98,7 @@ final class ChatFullInfo implements EntityInterface
      * @param Community|null              $community                               Optional. The Community to which the chat belongs
      * @param TonWalletCard|null          $ton_wallet_card                         Optional. For private chats, the TON wallet card of the user, which is shown on
      *                                                                             their profile page
-     * @param ChatShareTheme|null         $share_theme                             Optional. For private chats, supergroups and channels, the theme of the screen for
+     * @param AbstractChatShareTheme|null $share_theme                             Optional. For private chats, supergroups and channels, the theme of the screen for
      *                                                                             sharing a link to the user or the chat; omitted if the default theme is used
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
@@ -182,7 +182,7 @@ final class ChatFullInfo implements EntityInterface
         protected ?User $guard_bot = null,
         protected ?Community $community = null,
         protected ?TonWalletCard $ton_wallet_card = null,
-        protected ?ChatShareTheme $share_theme = null,
+        protected ?AbstractChatShareTheme $share_theme = null,
     ) {}
 
     /**
@@ -1266,19 +1266,19 @@ final class ChatFullInfo implements EntityInterface
     }
 
     /**
-     * @return ChatShareTheme|null
+     * @return AbstractChatShareTheme|null
      */
-    public function getShareTheme(): ?ChatShareTheme
+    public function getShareTheme(): ?AbstractChatShareTheme
     {
         return $this->share_theme;
     }
 
     /**
-     * @param ChatShareTheme|null $share_theme
+     * @param AbstractChatShareTheme|null $share_theme
      *
      * @return ChatFullInfo
      */
-    public function setShareTheme(?ChatShareTheme $share_theme): ChatFullInfo
+    public function setShareTheme(?AbstractChatShareTheme $share_theme): ChatFullInfo
     {
         $this->share_theme = $share_theme;
 

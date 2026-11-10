@@ -11,8 +11,8 @@ namespace AndrewGos\TelegramBot\Entity;
 final class StoryArea implements EntityInterface
 {
     /**
-     * @param AreaPosition     $position  Position of the area
-     * @param AbstractStoryAreaType $type Type of the area
+     * @param AreaPosition          $position Position of the area
+     * @param AbstractStoryAreaType $type     Type of the area
      *
      * @see https://core.telegram.org/bots/api#storyareaposition StoryAreaPosition
      * @see https://core.telegram.org/bots/api#storyareatype StoryAreaType

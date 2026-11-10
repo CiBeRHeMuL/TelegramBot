@@ -3538,5 +3538,19 @@ class Api implements ApiInterface
     {
         return $this->send(__FUNCTION__, $request, HttpMethodEnum::Post);
     }
+
+    /**
+     * Use this method to get the list of backdrops, which can be used as the background of a theme of the screen for sharing a link
+     * to a user or a chat. Requires no parameters. Returns a ChatShareThemeBackdrops object.
+     *
+     * @return Res\GetChatShareThemeBackdropsResponse
+     * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#getchatsharethemebackdrops
+     */
+    public function getChatShareThemeBackdrops(): Res\GetChatShareThemeBackdropsResponse
+    {
+        $rawResponse = $this->send(__FUNCTION__, null, HttpMethodEnum::Post);
+        $chatShareThemeBackdrops = $this->buildClassForResponse(Ent\ChatShareThemeBackdrops::class, $rawResponse);
+        return new Res\GetChatShareThemeBackdropsResponse($rawResponse, $chatShareThemeBackdrops);
+    }
 }
 // endregion CLASS_Api
