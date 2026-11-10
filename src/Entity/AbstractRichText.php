@@ -12,6 +12,7 @@ use AndrewGos\TelegramBot\Enum\RichTextTypeEnum;
  * @see https://core.telegram.org/bots/api#richtext
  */
 #[AvailableInheritors([
+    RichTextTonAddress::class,
     RichTextBold::class,
     RichTextItalic::class,
     RichTextUnderline::class,

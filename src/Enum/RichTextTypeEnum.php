@@ -62,5 +62,6 @@ enum RichTextTypeEnum: string
     case ReferenceLink = 'reference_link';
     /** Button inside rich text */
     case Button = 'button';
+    case TonAddress = 'ton_address';
 }
 // endregion ENUM_RichTextTypeEnum

@@ -25,5 +25,7 @@ enum MessageEntityTypeEnum: string
     case CustomEmoji = 'custom_emoji';
     case ExpandableBlockquote = 'expandable_blockquote';
     case DateTime = 'date_time';
+    case TonAddress = 'ton_address';
+    case BankCardNumber = 'bank_card_number';
 }
 // endregion ENUM_MessageEntityTypeEnum

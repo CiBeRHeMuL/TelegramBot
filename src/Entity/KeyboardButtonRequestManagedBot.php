@@ -8,14 +8,17 @@ namespace AndrewGos\TelegramBot\Entity;
  * the bot using the update managed_bot and a Message with the field managed_bot_created.
  *
  * @see https://core.telegram.org/bots/api#message Message
- * @see https://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#keyboardbuttonrequestmanagedbot
  */
 final class KeyboardButtonRequestManagedBot implements EntityInterface
 {
     /**
-     * @param int         $request_id         Signed 32-bit identifier of the request. Must be unique within the message
+     * @param int         $request_id         Signed 32-bit identifier of the request. Must be unique within the message.
      * @param string|null $suggested_name     Optional. Suggested name for the bot
-     * @param string|null $suggested_username Optional. Suggested username for the bot
+     * @param string|null $suggested_username Optional. Suggested username for the bot. The username must end with “bot”. If
+     *                                        the user creating the bot has a Telegram Premium subscription, then the username can also end with “agent”, “ai”,
+     *                                        “app”, “game”, or “gay”; in this case, the username will be assigned to the bot as a secondary username, and a
+     *                                        regular username ending with “bot” will be assigned to the bot automatically.
      */
     public function __construct(
         protected int $request_id,
@@ -83,5 +86,4 @@ final class KeyboardButtonRequestManagedBot implements EntityInterface
         return $this;
     }
 }
-
 // endregion CLASS_KeyboardButtonRequestManagedBot
