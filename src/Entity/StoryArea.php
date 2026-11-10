@@ -11,31 +11,31 @@ namespace AndrewGos\TelegramBot\Entity;
 final class StoryArea implements EntityInterface
 {
     /**
-     * @param StoryAreaPosition     $position Position of the area
-     * @param AbstractStoryAreaType $type     Type of the area
+     * @param AreaPosition     $position  Position of the area
+     * @param AbstractStoryAreaType $type Type of the area
      *
      * @see https://core.telegram.org/bots/api#storyareaposition StoryAreaPosition
      * @see https://core.telegram.org/bots/api#storyareatype StoryAreaType
      */
     public function __construct(
-        protected StoryAreaPosition $position,
+        protected AreaPosition $position,
         protected AbstractStoryAreaType $type,
     ) {}
 
     /**
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function getPosition(): StoryAreaPosition
+    public function getPosition(): AreaPosition
     {
         return $this->position;
     }
 
     /**
-     * @param StoryAreaPosition $position
+     * @param AreaPosition $position
      *
      * @return StoryArea
      */
-    public function setPosition(StoryAreaPosition $position): StoryArea
+    public function setPosition(AreaPosition $position): StoryArea
     {
         $this->position = $position;
 

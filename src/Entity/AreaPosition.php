@@ -6,9 +6,9 @@ namespace AndrewGos\TelegramBot\Entity;
 /**
  * Describes the position of a clickable area within a story.
  *
- * @see https://core.telegram.org/bots/api#storyareaposition
+ * @see https://core.telegram.org/bots/api#areaposition
  */
-final class StoryAreaPosition implements EntityInterface
+final class AreaPosition implements EntityInterface
 {
     /**
      * @param float $x_percentage             The abscissa of the area's center, as a percentage of the media width
@@ -38,9 +38,9 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $x_percentage
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setXPercentage(float $x_percentage): StoryAreaPosition
+    public function setXPercentage(float $x_percentage): AreaPosition
     {
         $this->x_percentage = $x_percentage;
 
@@ -58,9 +58,9 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $y_percentage
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setYPercentage(float $y_percentage): StoryAreaPosition
+    public function setYPercentage(float $y_percentage): AreaPosition
     {
         $this->y_percentage = $y_percentage;
 
@@ -78,9 +78,9 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $width_percentage
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setWidthPercentage(float $width_percentage): StoryAreaPosition
+    public function setWidthPercentage(float $width_percentage): AreaPosition
     {
         $this->width_percentage = $width_percentage;
 
@@ -98,9 +98,9 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $height_percentage
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setHeightPercentage(float $height_percentage): StoryAreaPosition
+    public function setHeightPercentage(float $height_percentage): AreaPosition
     {
         $this->height_percentage = $height_percentage;
 
@@ -118,9 +118,9 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $rotation_angle
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setRotationAngle(float $rotation_angle): StoryAreaPosition
+    public function setRotationAngle(float $rotation_angle): AreaPosition
     {
         $this->rotation_angle = $rotation_angle;
 
@@ -138,14 +138,15 @@ final class StoryAreaPosition implements EntityInterface
     /**
      * @param float $corner_radius_percentage
      *
-     * @return StoryAreaPosition
+     * @return AreaPosition
      */
-    public function setCornerRadiusPercentage(float $corner_radius_percentage): StoryAreaPosition
+    public function setCornerRadiusPercentage(float $corner_radius_percentage): AreaPosition
     {
         $this->corner_radius_percentage = $corner_radius_percentage;
 
         return $this;
     }
 }
-
 // endregion CLASS_StoryAreaPosition
+
+class_alias(AreaPosition::class, 'AndrewGos\\TelegramBot\\Entity\\StoryAreaPosition');

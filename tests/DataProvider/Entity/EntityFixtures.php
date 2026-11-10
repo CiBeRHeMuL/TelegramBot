@@ -1637,7 +1637,7 @@ class EntityFixtures
             'id' => 123_456_789,
         ]];
         yield 'StoryArea' => [Entity\StoryArea::class, [
-            'position' => new Entity\StoryAreaPosition(
+            'position' => new Entity\AreaPosition(
                 x_percentage: 1.5,
                 y_percentage: 1.5,
                 width_percentage: 1.5,
@@ -1649,7 +1649,7 @@ class EntityFixtures
                 url: new Url('https://example.com'),
             ),
         ]];
-        yield 'StoryAreaPosition' => [Entity\StoryAreaPosition::class, [
+        yield 'StoryAreaPosition' => [Entity\AreaPosition::class, [
             'x_percentage' => 1.5,
             'y_percentage' => 1.5,
             'width_percentage' => 1.5,

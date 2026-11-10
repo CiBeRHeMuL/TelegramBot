@@ -9,7 +9,7 @@ use AndrewGos\TelegramBot\Enum\ChatTypeEnum;
 /**
  * This object contains full information about a chat.
  *
- * @see https://core.telegram.org/bots/api#chatfullinfo
+ * @link https://core.telegram.org/bots/apihttps://core.telegram.org/bots/api#chatfullinfo
  */
 final class ChatFullInfo implements EntityInterface
 {
@@ -90,12 +90,16 @@ final class ChatFullInfo implements EntityInterface
      * @param UserRating|null             $rating                                  Optional. For private chats, the rating of the user if any
      * @param UniqueGiftColors|null       $unique_gift_colors                      Optional. The color scheme based on a unique gift that must be used for the
      *                                                                             chat's name, message replies and link previews
-     * @param int|null                    $paid_message_star_count                 Optional. The number of Telegram Stars a general user have to pay to send a message
+     * @param int|null                    $paid_message_star_count                 Optional. The number of Telegram Stars a general user has to pay to send a message
      *                                                                             to the chat
      * @param Audio|null                  $first_profile_audio                     Optional. For private chats, the first audio added to the profile of the user
-     * @param User|null                   $guard_bot                               Optional. The bot that processes join request queries
-     *                                                                             in the chat. The field is only available to chat administrators.
-     * @param Community|null              $community                               Optional. Information about the community of the chat
+     * @param User|null                   $guard_bot                               Optional. The bot that processes join request queries in the chat. The field is only available
+     *                                                                             to chat administrators.
+     * @param Community|null              $community                               Optional. The Community to which the chat belongs
+     * @param TonWalletCard|null          $ton_wallet_card                         Optional. For private chats, the TON wallet card of the user, which is shown on
+     *                                                                             their profile page
+     * @param ChatShareTheme|null         $share_theme                             Optional. For private chats, supergroups and channels, the theme of the screen for
+     *                                                                             sharing a link to the user or the chat; omitted if the default theme is used
      *
      * @see https://telegram.org/blog/topics-in-groups-collectible-usernames#topics-in-groups topics
      * @see https://core.telegram.org/bots/api#accent-colors accent colors
@@ -116,6 +120,10 @@ final class ChatFullInfo implements EntityInterface
      * @see https://core.telegram.org/bots/api#userrating UserRating
      * @see https://core.telegram.org/bots/api#audio Audio
      * @see https://core.telegram.org/bots/api#uniquegiftcolors UniqueGiftColors
+     * @see https://core.telegram.org/bots/api#user User
+     * @see https://core.telegram.org/bots/api#community Community
+     * @see https://core.telegram.org/bots/api#tonwalletcard TonWalletCard
+     * @see https://core.telegram.org/bots/api#chatsharetheme ChatShareTheme
      */
     public function __construct(
         protected int $id,
@@ -173,6 +181,8 @@ final class ChatFullInfo implements EntityInterface
         protected ?Audio $first_profile_audio = null,
         protected ?User $guard_bot = null,
         protected ?Community $community = null,
+        protected ?TonWalletCard $ton_wallet_card = null,
+        protected ?ChatShareTheme $share_theme = null,
     ) {}
 
     /**
@@ -1231,6 +1241,46 @@ final class ChatFullInfo implements EntityInterface
     public function setCommunity(?Community $community): ChatFullInfo
     {
         $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * @return TonWalletCard|null
+     */
+    public function getTonWalletCard(): ?TonWalletCard
+    {
+        return $this->ton_wallet_card;
+    }
+
+    /**
+     * @param TonWalletCard|null $ton_wallet_card
+     *
+     * @return ChatFullInfo
+     */
+    public function setTonWalletCard(?TonWalletCard $ton_wallet_card): ChatFullInfo
+    {
+        $this->ton_wallet_card = $ton_wallet_card;
+
+        return $this;
+    }
+
+    /**
+     * @return ChatShareTheme|null
+     */
+    public function getShareTheme(): ?ChatShareTheme
+    {
+        return $this->share_theme;
+    }
+
+    /**
+     * @param ChatShareTheme|null $share_theme
+     *
+     * @return ChatFullInfo
+     */
+    public function setShareTheme(?ChatShareTheme $share_theme): ChatFullInfo
+    {
+        $this->share_theme = $share_theme;
 
         return $this;
     }
